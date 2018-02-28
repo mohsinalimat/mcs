@@ -1,0 +1,23 @@
+//
+//  color.swift
+//  mcs
+//
+//  Created by gener on 2018/1/12.
+//  Copyright © 2018年 Light. All rights reserved.
+//
+
+import Foundation
+import UIKit
+
+let kTheme_color = UIColor (colorLiteralRed: 0.212, green: 0.188, blue: 0.427, alpha: 1)
+
+let kTableviewBackgroundColor = UIColor.init(colorLiteralRed: 231/255.0, green: 231/255.0, blue: 231/255.0, alpha: 1)
+
+let kButtonTitleDefaultColor = UIColor.init(colorLiteralRed: 0/255.0, green: 122/255.0, blue: 255/255.0, alpha: 1)
+
+///飞机告警等级颜色值
+let kFlightWarnLevelColor = ["1":UIColor.red,
+                          "10":UIColor.orange,
+                          "120":UIColor.yellow,
+                          "200":UIColor.white,
+                          "1000":UIColor.blue]

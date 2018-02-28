@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="mcs" customModuleProvider="target">
+            <connections>
+                <outlet property="loginTableView" destination="2cR-v6-IB1" id="oWM-Zw-Yig"/>
+                <outlet property="view" destination="HG1-Hw-xJY" id="i58-hT-dgd"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="HG1-Hw-xJY">
+            <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_bg" translatesAutoresizingMaskIntoConstraints="NO" id="0Zz-xU-AE0"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="2cR-v6-IB1">
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="500" id="aDg-co-Jw6"/>
+                        <constraint firstAttribute="height" constant="400" id="peO-EV-SlP"/>
+                    </constraints>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="vB8-ry-lhr"/>
+                        <outlet property="delegate" destination="-1" id="wD6-K9-mVX"/>
+                    </connections>
+                </tableView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="维修控制系统" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ySu-vW-Wnj">
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="0Zz-xU-AE0" firstAttribute="leading" secondItem="HG1-Hw-xJY" secondAttribute="leading" id="GfL-0r-Epi"/>
+                <constraint firstItem="2cR-v6-IB1" firstAttribute="centerX" secondItem="HG1-Hw-xJY" secondAttribute="centerX" id="NMA-cb-uUa"/>
+                <constraint firstItem="2cR-v6-IB1" firstAttribute="top" secondItem="HG1-Hw-xJY" secondAttribute="top" constant="160" id="RDx-KU-FDY"/>
+                <constraint firstItem="0Zz-xU-AE0" firstAttribute="top" secondItem="HG1-Hw-xJY" secondAttribute="top" id="eDb-IJ-ceT"/>
+                <constraint firstItem="2cR-v6-IB1" firstAttribute="top" secondItem="ySu-vW-Wnj" secondAttribute="bottom" constant="20" id="f78-Dj-e4j"/>
+                <constraint firstItem="ySu-vW-Wnj" firstAttribute="centerX" secondItem="HG1-Hw-xJY" secondAttribute="centerX" id="ogX-Ys-cRW"/>
+                <constraint firstAttribute="trailing" secondItem="0Zz-xU-AE0" secondAttribute="trailing" id="pHZ-5p-WaL"/>
+                <constraint firstAttribute="bottom" secondItem="0Zz-xU-AE0" secondAttribute="bottom" id="wQN-kM-Y0L"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-466" y="-23"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="login_bg" width="1024" height="768"/>
+    </resources>
+</document>

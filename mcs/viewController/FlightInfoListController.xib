@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FlightInfoListController" customModule="mcs" customModuleProvider="target">
+            <connections>
+                <outlet property="collectionView" destination="zKt-fp-ff7" id="PBw-cp-75d"/>
+                <outlet property="dateBtn" destination="jOH-L8-YRC" id="Mug-F7-ax6"/>
+                <outlet property="flight_No" destination="qrm-FO-a0I" id="DwG-4Y-MWN"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="64" width="694" height="704"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="B-MAG" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qrm-FO-a0I">
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="30"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="zKt-fp-ff7" customClass="BaseCollectionView" customModule="mcs" customModuleProvider="target">
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Gpf-At-tBt">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="JGr-dC-Wav"/>
+                        <outlet property="delegate" destination="-1" id="cb7-0w-JKl"/>
+                    </connections>
+                </collectionView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jOH-L8-YRC">
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" title="2018-01-19"/>
+                    <connections>
+                        <action selector="selectDateAction:" destination="-1" eventType="touchUpInside" id="VYt-ZY-cQa"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="zKt-fp-ff7" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="5" id="0v5-0j-JhT"/>
+                <constraint firstItem="jOH-L8-YRC" firstAttribute="bottom" secondItem="qrm-FO-a0I" secondAttribute="bottom" id="1ue-Tu-lMi"/>
+                <constraint firstItem="qrm-FO-a0I" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="5" id="Bdc-yv-zqD"/>
+                <constraint firstItem="qrm-FO-a0I" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="Dly-79-bwt"/>
+                <constraint firstItem="zKt-fp-ff7" firstAttribute="top" secondItem="jOH-L8-YRC" secondAttribute="bottom" constant="8" id="asg-hv-PId"/>
+                <constraint firstAttribute="trailing" secondItem="jOH-L8-YRC" secondAttribute="trailing" constant="20" id="bsr-ka-3Gv"/>
+                <constraint firstAttribute="trailing" secondItem="zKt-fp-ff7" secondAttribute="trailing" constant="5" id="fhj-Hj-bNe"/>
+                <constraint firstAttribute="bottom" secondItem="zKt-fp-ff7" secondAttribute="bottom" constant="49" id="uRt-i2-RNW"/>
+            </constraints>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+            <point key="canvasLocation" x="35.5" y="54.5"/>
+        </view>
+    </objects>
+</document>
