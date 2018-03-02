@@ -99,12 +99,17 @@ class LoginViewController: BaseViewController,UITableViewDelegate,UITableViewDat
                 UserDefaults.standard.synchronize()
                 
                 //页面跳转
-                let vc = HomeViewController()
-                let nav = BaseNavigationController(rootViewController:vc)
-                nav.navigationBar.barTintColor = UIColor.white
-                nav.navigationBar.tintColor = UIColor.red
+//                let vc = HomeViewController()
+//                let vc2 = HistoryFaultController()
+//                let vc3 = PlaneInfoController()
                 
-                UIApplication.shared.keyWindow?.rootViewController = nav
+                let tab = BaseTabBarController()
+                
+//                let nav = BaseNavigationController(rootViewController:tab)
+//                nav.navigationBar.barTintColor = UIColor.white
+//                nav.navigationBar.tintColor = UIColor.red
+                
+                UIApplication.shared.keyWindow?.rootViewController = tab
                 }
             )
         }else{

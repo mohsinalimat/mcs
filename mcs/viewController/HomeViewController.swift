@@ -84,7 +84,7 @@ class HomeViewController: BaseViewController,UICollectionViewDelegate,UICollecti
         let _w = (kCurrentScreenWidth - 25 - 15) / 4.0
         _largeflowlayout.itemSize = CGSize (width: _w, height: 160 )
         
-        _collectionView = UICollectionView.init(frame: CGRect (x: 10, y: 0, width: kCurrentScreenWidth - 20, height: kCurrentScreenHeight - 64), collectionViewLayout: _largeflowlayout)
+        _collectionView = UICollectionView.init(frame: CGRect (x: 10, y: 0, width: kCurrentScreenWidth - 20, height: kCurrentScreenHeight - 64 - 0), collectionViewLayout: _largeflowlayout)
         _collectionView.delegate = self
         _collectionView.dataSource = self
         _collectionView.register(UINib (nibName: "HomeCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: ImgCollectionViewCellReuseId)
@@ -111,7 +111,7 @@ class HomeViewController: BaseViewController,UICollectionViewDelegate,UICollecti
         let leftItem = UIBarButtonItem (customView: imgv)
         navigationItem.leftBarButtonItem = leftItem
 
-        title = "当前用户 \(UserDefaults.standard.value(forKey:"user-name")!)"
+        //title = "当前用户 \(UserDefaults.standard.value(forKey:"user-name")!)"
         
         //msg
         let msgBtn = UIButton (frame: CGRect (x: 0, y: 5, width: 50, height: 40))

@@ -16,6 +16,10 @@ class WarnInfoDetailController: BaseViewController,UITableViewDelegate {
 
     @IBOutlet weak var _tableView: UITableView!
     
+    var current_selected_btn:UIButton!
+    var current_selected_btn_index = 0
+    let current_selected_btn_bgcolor = UIColor.init(colorLiteralRed: 242/255.0, green: 242/255.0, blue: 242/255.0, alpha: 1)
+    
     let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
@@ -122,10 +126,12 @@ class WarnInfoDetailController: BaseViewController,UITableViewDelegate {
             btn.setTitleColor(UIColor.darkGray, for: .normal)
             btn.setTitleColor(UIColor.black, for: .selected)
             btn.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+            btn.addTarget(self, action: #selector(sectionBtnClicked(_:)), for: .touchUpInside)
             
             if i == 0{
                 btn.isSelected = i == 0;
-                btn.backgroundColor = UIColor.init(colorLiteralRed: 242/255.0, green: 242/255.0, blue: 242/255.0, alpha: 1)
+                btn.backgroundColor = current_selected_btn_bgcolor
+                current_selected_btn = btn
             }
             
             
@@ -149,6 +155,21 @@ class WarnInfoDetailController: BaseViewController,UITableViewDelegate {
         
     }
     
+    
+    func sectionBtnClicked(_ button:UIButton) {
+        guard button.tag != current_selected_btn.tag else { return}
+        
+        current_selected_btn.isSelected = false
+        current_selected_btn.backgroundColor = UIColor.white
+        
+        button.isSelected = true
+        button.backgroundColor = current_selected_btn_bgcolor
+        
+        current_selected_btn = button
+        
+        //_tableView.reloadSections([2], animationStyle: .none)
+        
+    }
     
     
     override func didReceiveMemoryWarning() {

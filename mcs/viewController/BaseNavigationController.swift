@@ -14,7 +14,7 @@ class BaseNavigationController: UINavigationController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        navigationBar.barTintColor = UIColor (colorLiteralRed: 0.212, green: 0.188, blue: 0.427, alpha: 1)
+        navigationBar.barTintColor = UIColor.white //UIColor (colorLiteralRed: 0.212, green: 0.188, blue: 0.427, alpha: 1)
         navigationBar.isTranslucent = false
         navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.black,
                                              NSFontAttributeName:UIFont.boldSystemFont(ofSize: 16)]

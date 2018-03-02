@@ -75,6 +75,7 @@
 		A1DF738E2043EF5B0099B858 /* WarnInfoDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1DF738C2043EF5B0099B858 /* WarnInfoDetailController.xib */; };
 		A1E32F1D2016D45F00842A18 /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E32F1C2016D45F00842A18 /* Tools.swift */; };
 		A1E65C582018236E006D1085 /* FIBViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E65C572018236E006D1085 /* FIBViewController.swift */; };
+		A1FE5095204796E1004F2330 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FE5094204796E0004F2330 /* BaseTabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -155,6 +156,7 @@
 		A1DF738C2043EF5B0099B858 /* WarnInfoDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WarnInfoDetailController.xib; sourceTree = "<group>"; };
 		A1E32F1C2016D45F00842A18 /* Tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
 		A1E65C572018236E006D1085 /* FIBViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FIBViewController.swift; sourceTree = "<group>"; };
+		A1FE5094204796E0004F2330 /* BaseTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -310,6 +312,7 @@
 				A120283A2008812400CB8633 /* DatePickerController.swift */,
 				A120283B2008812500CB8633 /* DatePickerController.xib */,
 				A1923FD2201733E20057AD1E /* BaseWebViewController.swift */,
+				A1FE5094204796E0004F2330 /* BaseTabBarController.swift */,
 			);
 			name = BaseVC;
 			sourceTree = "<group>";
@@ -535,6 +538,7 @@
 			files = (
 				A1E65C582018236E006D1085 /* FIBViewController.swift in Sources */,
 				A1A6B2772011B79D00F7D048 /* FlightInfoListController.swift in Sources */,
+				A1FE5095204796E1004F2330 /* BaseTabBarController.swift in Sources */,
 				A1A658CA2011BDE70079B354 /* FlightInfoListCell.swift in Sources */,
 				A1C0A3D9200DF04F00A1762C /* TTRefreshHeader.swift in Sources */,
 				A1CF2A1120070AA1009FE6A4 /* BaseNavigationController.swift in Sources */,
