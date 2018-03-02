@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import MJRefresh
 
-class HomeViewController: BaseViewController,UICollectionViewDelegate,UICollectionViewDataSource {
+class HomeViewController: BaseTabItemController,UICollectionViewDelegate,UICollectionViewDataSource {
 
     var _collectionView : UICollectionView!
     let ImgCollectionViewCellReuseId = "HomeCollectionViewCellIdentifier"
@@ -105,13 +105,12 @@ class HomeViewController: BaseViewController,UICollectionViewDelegate,UICollecti
     }
     
     func addNavigationItem()  {
-        let imgv = UIImageView (frame: CGRect (x: 0, y: 0, width: 160, height: 40))
-        imgv.image = UIImage (named: "logo_icon")
-        
-        let leftItem = UIBarButtonItem (customView: imgv)
-        navigationItem.leftBarButtonItem = leftItem
 
-        //title = "当前用户 \(UserDefaults.standard.value(forKey:"user-name")!)"
+
+        let user = UILabel (frame: CGRect (x: 0, y: 0, width: 100, height: 30))
+        user.font = UIFont.systemFont(ofSize: 15)
+        user.text = "当前用户 \(UserDefaults.standard.value(forKey:"user-name")!)"
+        navigationItem.titleView = user
         
         //msg
         let msgBtn = UIButton (frame: CGRect (x: 0, y: 5, width: 50, height: 40))

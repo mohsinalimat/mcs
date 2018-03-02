@@ -32,7 +32,7 @@ class HomeDetailTabController: UITabBarController {
         viewControllers = [vc1,vc2,vc3];
         
         let bgView = UIView (frame: CGRect (x: 0, y: kCurrentScreenHeight - 49 - 64, width: kCurrentScreenWidth, height: 49))
-        bgView.backgroundColor = UIColor (colorLiteralRed: 105/255.0, green: 124/255.0, blue: 142/255.0, alpha: 1)
+        bgView.backgroundColor = kViewDefaultBgColor
         view.addSubview(bgView)
         
         let _w = kCurrentScreenWidth / 3.0

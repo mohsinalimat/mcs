@@ -15,6 +15,8 @@ let kTableviewBackgroundColor = UIColor.init(colorLiteralRed: 231/255.0, green: 
 
 let kButtonTitleDefaultColor = UIColor.init(colorLiteralRed: 0/255.0, green: 122/255.0, blue: 255/255.0, alpha: 1)
 
+let kViewDefaultBgColor = UIColor (colorLiteralRed: 105/255.0, green: 124/255.0, blue: 142/255.0, alpha: 1)
+
 ///飞机告警等级颜色值
 let kFlightWarnLevelColor = ["1":UIColor.red,
                           "10":UIColor.orange,

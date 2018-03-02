@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TaskPoolBaseController" customModule="mcs" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="64" width="1024" height="704"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aae-tB-Py8">
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2018-03-02" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZZ9-lt-LVT">
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shift:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qw9-Qa-sNu">
+                            <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1110" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MGV-OS-jhX">
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Station:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6v9-vB-BfQ">
+                            <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MFM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2os-oc-ZHX">
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nYL-Ep-wZe">
+                            <color key="backgroundColor" red="0.40106409790000003" green="0.60073119399999997" blue="0.5976739526" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="85" id="HDN-91-FIO"/>
+                                <constraint firstAttribute="height" constant="35" id="gpR-Ie-vrK"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <state key="normal" title="Select">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="Qw9-Qa-sNu" firstAttribute="leading" secondItem="ZZ9-lt-LVT" secondAttribute="trailing" constant="29" id="3aG-hm-Qs3"/>
+                        <constraint firstItem="Qw9-Qa-sNu" firstAttribute="centerY" secondItem="ZZ9-lt-LVT" secondAttribute="centerY" id="4eW-u8-59F"/>
+                        <constraint firstAttribute="trailing" secondItem="nYL-Ep-wZe" secondAttribute="trailing" constant="24" id="4fl-cQ-oqX"/>
+                        <constraint firstItem="ZZ9-lt-LVT" firstAttribute="leading" secondItem="aae-tB-Py8" secondAttribute="leading" constant="8" id="82d-n9-wqS"/>
+                        <constraint firstItem="6v9-vB-BfQ" firstAttribute="leading" secondItem="MGV-OS-jhX" secondAttribute="trailing" constant="30" id="9t6-DS-5oB"/>
+                        <constraint firstAttribute="bottom" secondItem="nYL-Ep-wZe" secondAttribute="bottom" constant="5" id="E3c-eu-fe3"/>
+                        <constraint firstAttribute="bottom" secondItem="ZZ9-lt-LVT" secondAttribute="bottom" constant="8" id="R0f-SQ-NhQ"/>
+                        <constraint firstItem="MGV-OS-jhX" firstAttribute="leading" secondItem="Qw9-Qa-sNu" secondAttribute="trailing" constant="8" id="X6s-PT-3b0"/>
+                        <constraint firstItem="6v9-vB-BfQ" firstAttribute="centerY" secondItem="ZZ9-lt-LVT" secondAttribute="centerY" id="X9x-aH-8Ho"/>
+                        <constraint firstItem="2os-oc-ZHX" firstAttribute="centerY" secondItem="ZZ9-lt-LVT" secondAttribute="centerY" id="Y8d-BZ-eXT"/>
+                        <constraint firstItem="2os-oc-ZHX" firstAttribute="leading" secondItem="6v9-vB-BfQ" secondAttribute="trailing" constant="8" id="ogr-Oe-PBq"/>
+                        <constraint firstItem="MGV-OS-jhX" firstAttribute="centerY" secondItem="ZZ9-lt-LVT" secondAttribute="centerY" id="s9K-Pb-6na"/>
+                        <constraint firstAttribute="height" constant="50" id="shi-0c-7fh"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="aae-tB-Py8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Fva-5r-Adh"/>
+                <constraint firstItem="aae-tB-Py8" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="IMA-Bg-smy"/>
+                <constraint firstAttribute="trailing" secondItem="aae-tB-Py8" secondAttribute="trailing" id="Y6D-ax-YIf"/>
+            </constraints>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+        </view>
+    </objects>
+</document>

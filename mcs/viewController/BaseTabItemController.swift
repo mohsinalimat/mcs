@@ -1,23 +1,27 @@
 //
-//  BaseViewController.swift
+//  BaseTabItemController.swift
 //  mcs
 //
-//  Created by gener on 2018/1/11.
+//  Created by gener on 2018/3/2.
 //  Copyright © 2018年 Light. All rights reserved.
 //
 
 import UIKit
-import RxDataSources
-import RxSwift
-import RxCocoa
 
-class BaseViewController: UIViewController {
+class BaseTabItemController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        view.backgroundColor = kTableviewBackgroundColor
+        
+        let imgv = UIImageView (frame: CGRect (x: 0, y: 0, width: 160, height: 40))
+        imgv.image = UIImage (named: "logo_icon")
+        
+        let leftItem = UIBarButtonItem (customView: imgv)
+        navigationItem.leftBarButtonItem = leftItem
+        
+        
         
     }
 
