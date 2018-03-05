@@ -30,8 +30,8 @@ class HomeCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        icon.layer.cornerRadius = 20
-        icon.layer.masksToBounds = true
+//        icon.layer.cornerRadius = 15
+//        icon.layer.masksToBounds = true
         
         layer.borderWidth = 1
         layer.borderColor = UIColor.init(colorLiteralRed: 242/255.0, green: 242/255.0, blue: 242/255.0, alpha: 1).cgColor
@@ -43,11 +43,17 @@ class HomeCollectionViewCell: UICollectionViewCell {
     
     func fillCell(_ dic:[String:Any] ,taskNumber:Int = 0 ,status:[String:Any]? = nil)  {
         flightNo.text = String.stringIsNullOrNil(dic["acId"])
-        arri_dep.text = {
+        
+        let s = String.stringIsNullOrNil(dic["arrApt"])
+        
+        icon.image = UIImage (named: s == "MFM" ? "icon_arrival":"icon_departure")
+    
+        
+        /*arri_dep.text = {
             let s = String.stringIsNullOrNil(dic["arrApt"])
             if s == " " { return "";}
             return s == "MFM" ? "ARRIVALS":"DEPARTURES"
-        }()
+        }()*/
         
         taskNo.text = "\(taskNumber)"//任务数
         

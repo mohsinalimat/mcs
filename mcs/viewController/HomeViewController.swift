@@ -108,7 +108,7 @@ class HomeViewController: BaseTabItemController,UICollectionViewDelegate,UIColle
 
 
         let user = UILabel (frame: CGRect (x: 0, y: 0, width: 100, height: 30))
-        user.font = UIFont.systemFont(ofSize: 15)
+        user.font = UIFont.boldSystemFont(ofSize: 16)
         user.text = "当前用户 \(UserDefaults.standard.value(forKey:"user-name")!)"
         navigationItem.titleView = user
         

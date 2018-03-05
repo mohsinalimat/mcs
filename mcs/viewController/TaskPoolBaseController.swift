@@ -10,6 +10,8 @@ import UIKit
 
 class TaskPoolBaseController: BaseTabItemController {
 
+    @IBOutlet weak var search_bgview: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -45,8 +47,9 @@ class TaskPoolBaseController: BaseTabItemController {
     }
     
     func segClicked( _ seg:UISegmentedControl)  {
+        search_bgview.isHidden = seg.selectedSegmentIndex == 1
         
-        NotificationCenter.default.post(name: NSNotification.Name.init(rawValue: "TaskPoolChangedNotificationName"), object: nil, userInfo: nil)
+        NotificationCenter.default.post(name: NSNotification.Name.init(rawValue: "TaskPoolChangedNotificationName"), object: nil, userInfo: ["index":seg.selectedSegmentIndex])
     
     
     

@@ -23,6 +23,8 @@ class DatePickerController: BasePickerViewController {
         navigationItem.titleView = _titlev
         
         // Do any additional setup after loading the view.
+        self.navigationController?.navigationBar.barTintColor = UIColor (colorLiteralRed: 0.212, green: 0.188, blue: 0.427, alpha: 1)
+        
         _init()
     }
 

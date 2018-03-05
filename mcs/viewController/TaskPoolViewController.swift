@@ -16,6 +16,8 @@ class TaskPoolViewController: BaseViewController,UITableViewDelegate {
     @IBOutlet weak var _tableView: UITableView!
     let disposeBag = DisposeBag()
     
+    var type = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,9 +31,15 @@ class TaskPoolViewController: BaseViewController,UITableViewDelegate {
         
         dataSource.configureCell = {_, tableView, indexPath, user in
             var identifier =  "TaskPoolCellIdentifier"
-            if indexPath.row > 0 {
-                identifier = "TaskActionCellIdentifier";
+            
+            if self.type == 0 {
+                if indexPath.row > 0 {
+                    identifier = "TaskActionCellIdentifier";
+                }
+            }else {
+                identifier = "TaskHandCellIdentifier";
             }
+
             
             let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
             cell.selectionStyle = .none
@@ -63,7 +71,15 @@ class TaskPoolViewController: BaseViewController,UITableViewDelegate {
         
         /////
         NotificationCenter.default.rx.notification(Notification.Name.init(rawValue: "TaskPoolChangedNotificationName"), object: nil).subscribe { (notification) in
-            print("rec noti...")
+            
+            if let index = notification.element?.userInfo?["index"] as? Int {
+                self.type = index
+                self._tableView.separatorStyle = index == 0 ? UITableViewCellSeparatorStyle.none : .singleLine
+                self._tableView.reloadData()
+            }
+            
+            
+            
         }.addDisposableTo(disposeBag)
         
         
@@ -87,9 +103,17 @@ class TaskPoolViewController: BaseViewController,UITableViewDelegate {
     
     //MARK: 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return indexPath.row == 0 ? 75 : 30
+        if type == 0 {
+            return indexPath.row == 0 ? 75 : 30;
+        }else {
+            return 80;
+        }
+        
     }
 
+    
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

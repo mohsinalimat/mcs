@@ -15,11 +15,6 @@
                 <frame key="frameInset" width="1024" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Action:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WYY-og-r9c">
-                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="being asked to animate its opacity. This will cause the effect to appear broken until opacity returns to 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qe8-t9-34l">
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -27,10 +22,9 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="WYY-og-r9c" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="50" id="1En-fw-xdb"/>
-                    <constraint firstItem="WYY-og-r9c" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="BqL-ad-Lsz"/>
-                    <constraint firstItem="Qe8-t9-34l" firstAttribute="centerY" secondItem="WYY-og-r9c" secondAttribute="centerY" id="bhK-V8-xoH"/>
-                    <constraint firstItem="Qe8-t9-34l" firstAttribute="leading" secondItem="WYY-og-r9c" secondAttribute="trailing" constant="8" id="gkI-Xr-RXm"/>
+                    <constraint firstItem="Qe8-t9-34l" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="A2L-4A-agm"/>
+                    <constraint firstItem="Qe8-t9-34l" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="145" id="KrA-57-q26"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Qe8-t9-34l" secondAttribute="trailing" constant="15" id="Pcl-7b-hx8"/>
                 </constraints>
             </tableViewCellContentView>
         </tableViewCell>
