@@ -21,6 +21,7 @@ class FlightInfoListController: BaseViewController,UICollectionViewDelegate,UICo
     var arr_dataArray:[[String:Any]] = []
     var dep_dataArray:[[String:Any]] = []
 
+    var dataArray:[[String:Any]] = []
     
     @IBAction func selectDateAction(_ sender: UIButton) {
         let frame = CGRect (x: 0, y: 0, width: 500, height: 240)
@@ -62,17 +63,17 @@ class FlightInfoListController: BaseViewController,UICollectionViewDelegate,UICo
         HUD.show(withStatus: "Loading")
         netHelper_request(withUrl: get_flights_url, method: .post, parameters: d, successHandler: {[weak self] (result) in
             HUD.dismiss()
-            guard let body = result["body"] as? [String : Any] else {return;}
+            guard let body = result["body"] as? [[String : Any]] else {return;}
             guard let strongSelf = self else{return}
 
-            if let arr = body["arr"] as? [[String:Any]] {
+            /*if let arr = body["arr"] as? [[String:Any]] {
                strongSelf.arr_dataArray = strongSelf.arr_dataArray + arr;
             }
             
             if let arr = body["dep"] as? [[String:Any]] {
                strongSelf.dep_dataArray = strongSelf.dep_dataArray + arr;
-            }
-            
+            }*/
+            strongSelf.dataArray = strongSelf.dataArray + body
             strongSelf.collectionView.reloadData()
             }
         )
@@ -103,8 +104,8 @@ class FlightInfoListController: BaseViewController,UICollectionViewDelegate,UICo
     
     //MARK: -
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        return arr_dataArray.count > dep_dataArray.count ? arr_dataArray.count * 2 + 2 : dep_dataArray.count * 2 + 2
+        return dataArray.count * 2 + 2
+        //return arr_dataArray.count > dep_dataArray.count ? arr_dataArray.count * 2 + 2 : dep_dataArray.count * 2 + 2
     }
     
     
@@ -117,13 +118,15 @@ class FlightInfoListController: BaseViewController,UICollectionViewDelegate,UICo
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FlightInfoListCellIdentifier, for: indexPath) as! FlightInfoListCell
 
-        guard let d = getDataAtIndex(indexPath) else {
+        let couple = getDataAtIndex(indexPath)
+            
+        guard let d = couple.dic , couple.isExist == true else {
             let  cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UICollectionViewCellReuseIdentifier", for: indexPath)
             cell.backgroundColor = UIColor.clear
             return cell
         }
         
-        cell.fillCell(d,show: indexPath.row == 2)
+        cell.fillCell(d,show: indexPath.row == 2,left: indexPath.row % 2 == 0)////.....
         
         cell.backgroundColor = UIColor.white
         return cell
@@ -132,7 +135,7 @@ class FlightInfoListController: BaseViewController,UICollectionViewDelegate,UICo
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard indexPath.row > 1 else {return}
-        guard let d = getDataAtIndex(indexPath) ,let fltDate = d["fltDate"] as? String,let fltNo = d["fltNo"]  as? String else{return}
+        guard let d = getDataAtIndex(indexPath).dic ,let fltDate = d["fltDate"] as? String,let fltNo = d["fltNo"]  as? String else{return}
         
         let vc = FlightInfoDetailController.init()
         vc.fltDate = fltDate
@@ -147,39 +150,52 @@ class FlightInfoListController: BaseViewController,UICollectionViewDelegate,UICo
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let _w = (kCurrentScreenWidth - 10 - 3) / 2.0
-        
         if indexPath.row < 2 {
             return CGSize (width: _w, height: 40 )
         }
         
         
-        return CGSize (width: _w, height: 100 )
+        return CGSize (width: _w, height: 100)
     }
 
     
-    
-    func getDataAtIndex(_ indexPath:IndexPath) -> [String:Any]? {
+    func getDataAtIndex(_ indexPath:IndexPath) -> (isExist:Bool,dic:[String:Any]?) {
         let index = indexPath.row - 2
-        if index % 2 == 0 {
-            let i = index / 2
-            if i < arr_dataArray.count {
-                let d = arr_dataArray[i]
-                return d
-            }else{
-                return nil
-            }
-            
-        }else{
-            let i = (index - 1 ) / 2
-            if i < dep_dataArray.count {
-                let d = dep_dataArray[i]
-                return d;
-            }else{
-                return nil
-            }
+        let d = dataArray[index / 2]
+        let s = index % 2 == 0 ? "fromFltNo":"toFltNo"
+        var b = false
+        if d[s] is String {
+            b = true;
         }
         
+        return (b,d)
     }
+    
+    
+    
+//    func getDataAtIndex(_ indexPath:IndexPath) -> [String:Any]? {
+//        let index = indexPath.row - 2
+//        
+//        if index % 2 == 0 {
+//            let i = index / 2
+//            if i < arr_dataArray.count {
+//                let d = arr_dataArray[i]
+//                return d
+//            }else{
+//                return nil
+//            }
+//            
+//        }else{
+//            let i = (index - 1 ) / 2
+//            if i < dep_dataArray.count {
+//                let d = dep_dataArray[i]
+//                return d;
+//            }else{
+//                return nil
+//            }
+//        }
+//        
+//    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

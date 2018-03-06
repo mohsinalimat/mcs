@@ -78,6 +78,28 @@ class HomeCollectionViewCell: UICollectionViewCell {
             sta.text = Tools.dateToString(d, formatter: "HHmm")
         }
         
+        ///////
+        let _atd = Tools.date(String.stringIsNullOrNil(dic["atd"]))
+        if let d = _atd {
+            std.text = Tools.dateToString(d, formatter: "HHmm")
+        }
+        
+        let _ata = Tools.date(String.stringIsNullOrNil(dic["ata"]))
+        if let d = _ata {
+            ata.text = Tools.dateToString(d, formatter: "HHmm")
+        }
+        
+        
+        let _etd = Tools.date(String.stringIsNullOrNil(dic["etd"]))
+        if let d = _etd {
+            etd.text = Tools.dateToString(d, formatter: "HHmm")
+        }
+        
+        let _eta = Tools.date(String.stringIsNullOrNil(dic["eta"]))
+        if let d = _eta {
+            eta.text = Tools.dateToString(d, formatter: "HHmm")
+        }
+        
         
         ///track line
         trackView.displayMsg(dic)

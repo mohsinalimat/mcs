@@ -108,7 +108,7 @@ class HomeViewController: BaseTabItemController,UICollectionViewDelegate,UIColle
 
 
         let user = UILabel (frame: CGRect (x: 0, y: 0, width: 100, height: 30))
-        user.font = UIFont.boldSystemFont(ofSize: 16)
+        user.font = UIFont.boldSystemFont(ofSize: 17)
         user.text = "当前用户 \(UserDefaults.standard.value(forKey:"user-name")!)"
         navigationItem.titleView = user
         
@@ -133,7 +133,7 @@ class HomeViewController: BaseTabItemController,UICollectionViewDelegate,UIColle
         //let fibItem = UIBarButtonItem.init(title: "FIB", style: .plain, target: self, action: #selector(fibBtnAction))
         //fibItem.setTitleTextAttributes([/*NSForegroundColorAttributeName:UIColor.black,*/NSFontAttributeName:UIFont.systemFont(ofSize: 16)], for: .normal)
         
-        navigationItem.rightBarButtonItems = [fixed,msgItem,fixed,fixed,fixed,fibItem]
+        navigationItem.rightBarButtonItems = [/*fixed,msgItem,*/fixed,fixed,fixed,fibItem]
     }
     
     func msgBtnAction()  {

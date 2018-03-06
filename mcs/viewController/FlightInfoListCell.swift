@@ -21,8 +21,12 @@ class FlightInfoListCell: UICollectionViewCell {
     
     @IBOutlet weak var gate: UILabel!
     
+    @IBOutlet weak var t1: UILabel!
+    @IBOutlet weak var t2: UILabel!
     
     @IBOutlet weak var directionLab: UILabel!
+    
+    @IBOutlet weak var warn_tap: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -35,22 +39,19 @@ class FlightInfoListCell: UICollectionViewCell {
     }
 
     
-    func fillCell(_ dic:[String:Any] , show:Bool? = false)  {
-        flightNo.text = String.stringIsNullOrNil(dic["fltNo"])
+    func fillCell(_ dic:[String:Any] , show:Bool? = false , left:Bool = true)  {
+        let fltno = left ? "fromFltNo":"toFltNo"
+        flightNo.text = String.stringIsNullOrNil(dic[fltno])
         
-        let arr = String.stringIsNullOrNil(dic["arrApt"])
+        directionLab.text = left ? "FRM":"TO"
+        from.text = String.stringIsNullOrNil(dic[left ? "fromApt" :"toApt"])
+        t1.text = left ? "STA":"STD"
+        t2.text = left ? "ATA":"ATD"
         
-        if arr == "MFM" {
-            directionLab.text = "FRM"
-            from.text = String.stringIsNullOrNil(dic["depApt"])
-        }else{
-            directionLab.text = "TO"
-            from.text = arr
-        }
-            
-
+        std.text = String.stringIsNullOrNil(dic[left ? "sta":"std"])
+        sta.text = String.stringIsNullOrNil(dic[left ? "ata":"atd"])
         
-        let _std = Tools.date(String.stringIsNullOrNil(dic["std"]))
+        /*let _std = Tools.date(String.stringIsNullOrNil(dic["std"]))
         if let d = _std {
             std.text = Tools.dateToString(d, formatter: "HHmm")
         }
@@ -58,7 +59,7 @@ class FlightInfoListCell: UICollectionViewCell {
         let _sta = Tools.date(String.stringIsNullOrNil(dic["sta"]))
         if let d = _sta {
             sta.text = Tools.dateToString(d, formatter: "HHmm")
-        }
+        }*/
         
         
         ////

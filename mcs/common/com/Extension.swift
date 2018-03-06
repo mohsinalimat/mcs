@@ -16,6 +16,10 @@ extension String {
             return " "
         }
         
+        if s is  NSNull {
+            return "-";
+        }
+        
         return "\(s)"
     }
 }

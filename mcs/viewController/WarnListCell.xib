@@ -15,8 +15,11 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="730 080 53 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mTU-w9-NIA">
-                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                        <nil key="textColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="uKF-5h-Lqc"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
+                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pYr-bv-Dis">
@@ -36,7 +39,10 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2018-01-22" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0m6-Yp-wU0">
-                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16" id="kEt-vU-xd4"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="13"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -45,16 +51,22 @@
             <constraints>
                 <constraint firstItem="9Nb-T7-CpB" firstAttribute="top" secondItem="mTU-w9-NIA" secondAttribute="bottom" constant="3" id="A1D-ye-2iM"/>
                 <constraint firstAttribute="trailing" secondItem="9Nb-T7-CpB" secondAttribute="trailing" constant="10" id="P8s-h0-dWJ"/>
-                <constraint firstAttribute="trailing" secondItem="pYr-bv-Dis" secondAttribute="trailing" constant="1" id="awG-cS-bFc"/>
+                <constraint firstAttribute="trailing" secondItem="pYr-bv-Dis" secondAttribute="trailing" constant="5" id="awG-cS-bFc"/>
                 <constraint firstItem="9Nb-T7-CpB" firstAttribute="leading" secondItem="mTU-w9-NIA" secondAttribute="leading" id="gHo-Mn-2pr"/>
                 <constraint firstItem="mTU-w9-NIA" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="p9h-K3-sOF"/>
                 <constraint firstItem="mTU-w9-NIA" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="q2D-Yx-qxX"/>
-                <constraint firstItem="pYr-bv-Dis" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="1" id="sbX-to-Ytq"/>
+                <constraint firstItem="pYr-bv-Dis" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="sbX-to-Ytq"/>
                 <constraint firstAttribute="bottom" secondItem="0m6-Yp-wU0" secondAttribute="bottom" constant="3" id="u89-Ev-dwF"/>
                 <constraint firstAttribute="trailing" secondItem="0m6-Yp-wU0" secondAttribute="trailing" constant="8" id="yJ6-2u-i4b"/>
             </constraints>
             <size key="customSize" width="450" height="117"/>
-            <point key="canvasLocation" x="234" y="87.5"/>
+            <connections>
+                <outlet property="msg" destination="9Nb-T7-CpB" id="R6T-Em-ahO"/>
+                <outlet property="time" destination="0m6-Yp-wU0" id="i7L-A8-3Q0"/>
+                <outlet property="warnLevel" destination="pYr-bv-Dis" id="ha7-cy-Ku4"/>
+                <outlet property="warnNo" destination="mTU-w9-NIA" id="pJP-VT-wtZ"/>
+            </connections>
+            <point key="canvasLocation" x="234" y="87"/>
         </collectionViewCell>
     </objects>
 </document>

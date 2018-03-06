@@ -15,6 +15,9 @@ class FlightInfoDetailController: BaseViewController ,UICollectionViewDelegate,U
     var fltIsArrival:Bool = true
     var fltDic = [String:Any]()
     
+    var alarm_body = [[String:Any]]()
+    var alarm = [[String:Any]]()
+    
     private var collectionView: UICollectionView!
     private var flight_info:[String:Any]!
     
@@ -49,15 +52,31 @@ class FlightInfoDetailController: BaseViewController ,UICollectionViewDelegate,U
     
     
     func get_warn_list() {
-        let d = ["aircraftNo":fltDic["acId"]!,
-            "flightNo":"\(fltNo!)",
-            "beginDate":Tools.dateToString(Tools.date("\(fltDic["std"]!)")!, formatter: "yyyy/MM/dd HH:mm:ss"),
-            "endDate":Tools.dateToString(Tools.date("\(fltDic["sta"]!)")!, formatter: "yyyy/MM/dd HH:mm:ss")
+//        let d = ["aircraftNo":fltDic["acId"]!,
+//            "flightNo":"\(fltNo!)",
+//            "beginDate":Tools.dateToString(Tools.date("\(fltDic["std"]!)")!, formatter: "yyyy/MM/dd HH:mm:ss"),
+//            "endDate":Tools.dateToString(Tools.date("\(fltDic["sta"]!)")!, formatter: "yyyy/MM/dd HH:mm:ss")
+//        ]
+        //...
+        let d = ["aircraftNo":"B-MBM",
+                 "flightNo":"NX825",
+                 "beginDate":"2018/02/25 11:00:00",
+                 "endDate":"2018/02/26 22:59:59"
         ]
         
-        netHelper_request(withUrl: get_warn_list_url, method: .post, parameters: d, successHandler: { (res) in
+        netHelper_request(withUrl: get_warn_list_url, method: .post, parameters: d, successHandler: { [weak self](result) in
+            HUD.dismiss()
+            guard let body = result["body"] as? [[String : Any]] else {return;}
+            guard let strongSelf = self else{return}
             
-            }) { (error) in
+            strongSelf.alarm_body = body;
+            if let _a = body.first?["alarm"] as? [[String : Any]] {
+                strongSelf.alarm = _a;
+                strongSelf.collectionView.reloadData()
+            }
+
+            
+        }) { (error) in
                 
         }
         
@@ -70,8 +89,8 @@ class FlightInfoDetailController: BaseViewController ,UICollectionViewDelegate,U
         _flowlayout.minimumInteritemSpacing = 2
         _flowlayout.scrollDirection = .vertical
         let _w = (kCurrentScreenWidth - 45) / 4.0
-        _flowlayout.itemSize = CGSize (width: _w, height: 110 )
-        _flowlayout.headerReferenceSize = CGSize (width: kCurrentScreenWidth, height: 280)
+        _flowlayout.itemSize = CGSize (width: _w, height: 100 )
+        _flowlayout.headerReferenceSize = CGSize (width: kCurrentScreenWidth, height: 260)
         
         collectionView = UICollectionView.init(frame: CGRect (x: 0, y: 0, width: kCurrentScreenWidth, height: kCurrentScreenHeight - 64), collectionViewLayout: _flowlayout)
         collectionView.delegate = self
@@ -90,26 +109,23 @@ class FlightInfoDetailController: BaseViewController ,UICollectionViewDelegate,U
     }
     
     //MARK: -
-    let cellnumber = 12
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return cellnumber
+        return alarm.count > 10 ? 12 : alarm.count
     }
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-        let identifier = indexPath.row == cellnumber - 1 ? "UICollectionViewCellReuseIdentifier":"WarnListCellIdentifier"
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) //as! WarnListCell
+        let identifier = "WarnListCellIdentifier"
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! WarnListCell
         
-        //        let d = dataArray[indexPath.row]
-        //        var taskno:Int = 0
-        //        if let acId = d["acId"] as? String , let n = taskNoData[acId] {
-        //            taskno = n
-        //        }
-        //
-        //        cell.fillCell(d,taskNumber: taskno)
-        if indexPath.row == cellnumber - 1 {
+        let d = alarm[indexPath.row]
+        cell.fillWith(status: d)
+        
+        if alarm.count > 10 && indexPath.row == 11 {
+           let  cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UICollectionViewCellReuseIdentifier", for: indexPath)
+            
             for v in cell.subviews  {
                 if v is UILabel {
                     v.removeFromSuperview();
@@ -117,17 +133,19 @@ class FlightInfoDetailController: BaseViewController ,UICollectionViewDelegate,U
             }
             let itemsize = (collectionView.collectionViewLayout as! UICollectionViewFlowLayout).itemSize
             let l = UILabel.init(frame: CGRect (x: 0, y: 0, width: itemsize.width, height: itemsize.height))
-            l.text = "More..."
+            l.text = "More"
             l.textAlignment = .center
             l.textColor = UIColor.darkGray
-            l.font = UIFont.systemFont(ofSize: 18)
+            l.font = UIFont.systemFont(ofSize: 16)
             cell.addSubview(l)
+            
+            cell.backgroundColor = UIColor.white
+            cell.layer.borderWidth = 1
+            cell.layer.borderColor = UIColor.lightGray.cgColor
+            return cell
         }
         
-        cell.backgroundColor = UIColor.white
-        cell.layer.borderWidth = 1
-        cell.layer.borderColor = UIColor.lightGray.cgColor
-        
+        cell.backgroundColor = UIColor.init(colorLiteralRed: 242/255.0, green: 242/255.0, blue: 242/255.0, alpha: 0.5);
         return cell
     }
     
@@ -145,7 +163,7 @@ class FlightInfoDetailController: BaseViewController ,UICollectionViewDelegate,U
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard indexPath.row < cellnumber - 1 else {
+        if  indexPath.row == 11 {
             let v = FlightAllWarnController()
             
             self.navigationController?.pushViewController(v, animated: true)
