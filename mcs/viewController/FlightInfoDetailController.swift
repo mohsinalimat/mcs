@@ -36,7 +36,7 @@ class FlightInfoDetailController: BaseViewController ,UICollectionViewDelegate,U
     func load() {
         HUD.show(withStatus: "Loading...")
         
-        let d = ["fltDate":"\(fltDate!)","fltNo":"\(fltNo!)"]
+        let d = ["fltDate":"\(fltDate!.substring(to: fltDate.index(fltDate.startIndex, offsetBy: 10)))","fltNo":"\(fltNo!)"]
         netHelper_request(withUrl: get_flightInfo_url, method: .post, parameters: d, successHandler: { [weak self](result) in
             HUD.dismiss()
             guard let body = result["body"] as? [String : Any] else {return;}
@@ -163,7 +163,8 @@ class FlightInfoDetailController: BaseViewController ,UICollectionViewDelegate,U
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if  indexPath.row == 11 {
+        
+        if  indexPath.row == 1 {
             let v = FlightAllWarnController()
             
             self.navigationController?.pushViewController(v, animated: true)

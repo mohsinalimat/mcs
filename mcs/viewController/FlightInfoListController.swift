@@ -113,6 +113,7 @@ class FlightInfoListController: BaseViewController,UICollectionViewDelegate,UICo
         if indexPath.row < 2 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TextMsgViewCellIdentifier", for: indexPath) as! TextMsgViewCell
             cell.msgLable.text = indexPath.row == 0 ? "ARRIVALS":"DEPARTURES"
+            cell.isUserInteractionEnabled = false
             return cell
         }
         
@@ -135,9 +136,22 @@ class FlightInfoListController: BaseViewController,UICollectionViewDelegate,UICo
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard indexPath.row > 1 else {return}
-        guard let d = getDataAtIndex(indexPath).dic ,let fltDate = d["fltDate"] as? String,let fltNo = d["fltNo"]  as? String else{return}
         
-        let vc = FlightInfoDetailController.init()
+        let couple = getDataAtIndex(indexPath)
+        guard let d = couple.dic , couple.isExist == true ,let fltDate = d[indexPath.row % 2 == 0 ? "ymdsta" : "ymdstd"] as? String,let fltNo = d[indexPath.row % 2 == 0 ? "fromFltNo" : "toFltNo"]  as? String else {
+            return;
+        }
+        
+        
+        //guard let d = getDataAtIndex(indexPath).dic ,let fltDate = d["fltDate"] as? String,let fltNo = d["fltNo"]  as? String else{return}
+        
+        /*let vc = FlightInfoDetailController.init()
+        vc.fltDate = fltDate
+        vc.fltNo = fltNo
+        vc.fltIsArrival = indexPath.row % 2 == 0
+        vc.fltDic = d*/
+        
+        let vc = FlightWarnListController.init()
         vc.fltDate = fltDate
         vc.fltNo = fltNo
         vc.fltIsArrival = indexPath.row % 2 == 0

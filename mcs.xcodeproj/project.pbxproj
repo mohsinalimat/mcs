@@ -60,6 +60,14 @@
 		A1BC1F4C2015C733007D0E1C /* WarnListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1BC1F4A2015C733007D0E1C /* WarnListCell.xib */; };
 		A1C0A3D8200DF04F00A1762C /* TTRefreshFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C0A3D6200DF04B00A1762C /* TTRefreshFooter.swift */; };
 		A1C0A3D9200DF04F00A1762C /* TTRefreshHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C0A3D7200DF04B00A1762C /* TTRefreshHeader.swift */; };
+		A1C26DA9204FB76700B11F63 /* FlightWarnListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C26DA7204FB76700B11F63 /* FlightWarnListController.swift */; };
+		A1C26DAA204FB76700B11F63 /* FlightWarnListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1C26DA8204FB76700B11F63 /* FlightWarnListController.xib */; };
+		A1C26DAD204FBA2700B11F63 /* FlightWarnListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C26DAB204FBA2700B11F63 /* FlightWarnListCell.swift */; };
+		A1C26DAE204FBA2700B11F63 /* FlightWarnListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1C26DAC204FBA2700B11F63 /* FlightWarnListCell.xib */; };
+		A1C26DB0204FBD2800B11F63 /* FlightWarnListHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C26DAF204FBD2800B11F63 /* FlightWarnListHeadView.swift */; };
+		A1C26DB2204FBD3B00B11F63 /* FlightWarnListHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1C26DB1204FBD3B00B11F63 /* FlightWarnListHeadView.xib */; };
+		A1C26DB4204FDDAC00B11F63 /* FlightWarnListTopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1C26DB3204FDDAC00B11F63 /* FlightWarnListTopView.xib */; };
+		A1C26DB6204FDDCC00B11F63 /* FlightWarnListTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C26DB5204FDDCC00B11F63 /* FlightWarnListTopView.swift */; };
 		A1CF29FA20070029009FE6A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CF29F920070029009FE6A4 /* AppDelegate.swift */; };
 		A1CF29FC20070029009FE6A4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CF29FB20070029009FE6A4 /* ViewController.swift */; };
 		A1CF29FF20070029009FE6A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1CF29FD20070029009FE6A4 /* Main.storyboard */; };
@@ -150,6 +158,14 @@
 		A1BC1F4A2015C733007D0E1C /* WarnListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WarnListCell.xib; sourceTree = "<group>"; };
 		A1C0A3D6200DF04B00A1762C /* TTRefreshFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTRefreshFooter.swift; sourceTree = "<group>"; };
 		A1C0A3D7200DF04B00A1762C /* TTRefreshHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTRefreshHeader.swift; sourceTree = "<group>"; };
+		A1C26DA7204FB76700B11F63 /* FlightWarnListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlightWarnListController.swift; sourceTree = "<group>"; };
+		A1C26DA8204FB76700B11F63 /* FlightWarnListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FlightWarnListController.xib; sourceTree = "<group>"; };
+		A1C26DAB204FBA2700B11F63 /* FlightWarnListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlightWarnListCell.swift; sourceTree = "<group>"; };
+		A1C26DAC204FBA2700B11F63 /* FlightWarnListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FlightWarnListCell.xib; sourceTree = "<group>"; };
+		A1C26DAF204FBD2800B11F63 /* FlightWarnListHeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlightWarnListHeadView.swift; sourceTree = "<group>"; };
+		A1C26DB1204FBD3B00B11F63 /* FlightWarnListHeadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FlightWarnListHeadView.xib; sourceTree = "<group>"; };
+		A1C26DB3204FDDAC00B11F63 /* FlightWarnListTopView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FlightWarnListTopView.xib; sourceTree = "<group>"; };
+		A1C26DB5204FDDCC00B11F63 /* FlightWarnListTopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlightWarnListTopView.swift; sourceTree = "<group>"; };
 		A1CF29F620070029009FE6A4 /* mcs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mcs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1CF29F920070029009FE6A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A1CF29FB20070029009FE6A4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -350,6 +366,8 @@
 				A1A6B2752011B79D00F7D048 /* FlightInfoListController.swift */,
 				A1A6B2762011B79D00F7D048 /* FlightInfoListController.xib */,
 				A1BC1F382015ABEB007D0E1C /* FlightInfoDetailController.swift */,
+				A1C26DA7204FB76700B11F63 /* FlightWarnListController.swift */,
+				A1C26DA8204FB76700B11F63 /* FlightWarnListController.xib */,
 				A1A20F52202AF3D300407276 /* FlightAllWarnController.swift */,
 				A1A20F53202AF3D300407276 /* FlightAllWarnController.xib */,
 				A1BC1F3A2015AC4A007D0E1C /* HistoryFaultController.swift */,
@@ -374,6 +392,8 @@
 				A1BC1F3520157D2F007D0E1C /* TextMsgViewCell.xib */,
 				A1BC1F452015BBA0007D0E1C /* FlightWarnHeaderView.swift */,
 				A1BC1F462015BBA0007D0E1C /* FlightWarnHeaderView.xib */,
+				A1C26DB3204FDDAC00B11F63 /* FlightWarnListTopView.xib */,
+				A1C26DB5204FDDCC00B11F63 /* FlightWarnListTopView.swift */,
 				A1BC1F432015BA3D007D0E1C /* FlightLineView.swift */,
 				A1BC1F492015C733007D0E1C /* WarnListCell.swift */,
 				A1BC1F4A2015C733007D0E1C /* WarnListCell.xib */,
@@ -385,6 +405,10 @@
 				A1D15D8B20464466004A2C58 /* WarnFaultInfoCell.xib */,
 				A1D15D8E204644A7004A2C58 /* WarnDisPoseCell.swift */,
 				A1D15D8F204644A7004A2C58 /* WarnDisPoseCell.xib */,
+				A1C26DAB204FBA2700B11F63 /* FlightWarnListCell.swift */,
+				A1C26DAC204FBA2700B11F63 /* FlightWarnListCell.xib */,
+				A1C26DAF204FBD2800B11F63 /* FlightWarnListHeadView.swift */,
+				A1C26DB1204FBD3B00B11F63 /* FlightWarnListHeadView.xib */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -504,6 +528,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1C26DAA204FB76700B11F63 /* FlightWarnListController.xib in Resources */,
 				A1CF2A1520070B90009FE6A4 /* LoginViewController.xib in Resources */,
 				A12028602008A1C200CB8633 /* success@2x.png in Resources */,
 				A1BC1F3720157D2F007D0E1C /* TextMsgViewCell.xib in Resources */,
@@ -513,6 +538,7 @@
 				A1D15D8D20464466004A2C58 /* WarnFaultInfoCell.xib in Resources */,
 				A120285D2008A1C000CB8633 /* error@2x.png in Resources */,
 				A13F1AED20074693004FDFF4 /* LoginViewFooter.xib in Resources */,
+				A1C26DB4204FDDAC00B11F63 /* FlightWarnListTopView.xib in Resources */,
 				A120283D2008812500CB8633 /* DatePickerController.xib in Resources */,
 				A1D3E3B2200C3A2D00CE31F0 /* HomeCollectionViewCell.xib in Resources */,
 				A1BC1F482015BBA0007D0E1C /* FlightWarnHeaderView.xib in Resources */,
@@ -520,8 +546,10 @@
 				A1CF29FF20070029009FE6A4 /* Main.storyboard in Resources */,
 				A120285F2008A1C200CB8633 /* success.png in Resources */,
 				A1E5C10F2048EAF900511F58 /* TaskPoolViewController.xib in Resources */,
+				A1C26DB2204FBD3B00B11F63 /* FlightWarnListHeadView.xib in Resources */,
 				A1AAF14F2049331800E8CB3B /* TaskActionCell.xib in Resources */,
 				A1D15D91204644A7004A2C58 /* WarnDisPoseCell.xib in Resources */,
+				A1C26DAE204FBA2700B11F63 /* FlightWarnListCell.xib in Resources */,
 				A120285C2008A1C000CB8633 /* error.png in Resources */,
 				A1AAF15320494DCD00E8CB3B /* TaskHandCell.xib in Resources */,
 				A1D3E3B4200C478300CE31F0 /* Assets.xcassets in Resources */,
@@ -605,11 +633,13 @@
 				A1BC1F3B2015AC4A007D0E1C /* HistoryFaultController.swift in Sources */,
 				A1A658CD2011D4D00079B354 /* BaseCollectionView.swift in Sources */,
 				A1CF29FA20070029009FE6A4 /* AppDelegate.swift in Sources */,
+				A1C26DA9204FB76700B11F63 /* FlightWarnListController.swift in Sources */,
 				A120283820084EFB00CB8633 /* DataPickerController.swift in Sources */,
 				A13F1AEB200745F1004FDFF4 /* LoginViewFooter.swift in Sources */,
 				A165B67C20107FA3006080D8 /* HomeDetailTabController.swift in Sources */,
 				A1E32F1D2016D45F00842A18 /* Tools.swift in Sources */,
 				A1202841200896EE00CB8633 /* HomeViewController.swift in Sources */,
+				A1C26DB6204FDDCC00B11F63 /* FlightWarnListTopView.swift in Sources */,
 				A1AAF1482049167600E8CB3B /* TaskPoolBaseController.swift in Sources */,
 				A1BC1F4B2015C733007D0E1C /* WarnListCell.swift in Sources */,
 				A120283C2008812500CB8633 /* DatePickerController.swift in Sources */,
@@ -635,6 +665,8 @@
 				A1E5C1132048EE7D00511F58 /* TaskPoolCell.swift in Sources */,
 				A120285E2008A1C100CB8633 /* HUD.swift in Sources */,
 				A1BC1F442015BA3D007D0E1C /* FlightLineView.swift in Sources */,
+				A1C26DB0204FBD2800B11F63 /* FlightWarnListHeadView.swift in Sources */,
+				A1C26DAD204FBA2700B11F63 /* FlightWarnListCell.swift in Sources */,
 				A1D15D90204644A7004A2C58 /* WarnDisPoseCell.swift in Sources */,
 				A1CF2A1420070B90009FE6A4 /* LoginViewController.swift in Sources */,
 				A1923FD3201733E20057AD1E /* BaseWebViewController.swift in Sources */,
