@@ -47,6 +47,9 @@ class HomeCellTrackView: UIView {
         ctx?.addArc(center: CGPoint (x: p6.x + radius, y: start_point.y), radius: radius, startAngle: 0, endAngle:  CGFloat.init(360) , clockwise: false)
         ctx?.fillPath()
         ctx?.strokePath()
+        
+        
+        addPath(plane_location_index);
     }
     
     override func awakeFromNib() {
@@ -72,10 +75,11 @@ class HomeCellTrackView: UIView {
         
         start_station.text =  String.stringIsNullOrNil(dic["depApt"])
         arrive_station.text = String.stringIsNullOrNil(dic["arrApt"])
-        start_time.text = "12:40"
-        arrive_time.text = "15:00"
+        //start_time.text = "12:40"
+        //arrive_time.text = "15:00"
         
        plane_location_index = Int(arc4random_uniform(3))
+
     }
     
 
@@ -83,8 +87,8 @@ class HomeCellTrackView: UIView {
         let _w = (self.frame.width - 100)/4.0
         p1 = CGPoint (x: start_point.x + radius, y: start_point.y)
         p2 = CGPoint (x: p1.x + _w, y: start_point.y)
-        p3 = CGPoint (x: p2.x + _w * 0.5, y: start_point.y - 15)
-        p4 = CGPoint (x: p3.x + _w , y: start_point.y - 15)
+        p3 = CGPoint (x: p2.x + _w * 0.5, y: start_point.y - 0)//15
+        p4 = CGPoint (x: p3.x + _w , y: start_point.y - 0)
         p5 = CGPoint (x: p4.x + _w * 0.5, y: start_point.y)
         p6 = CGPoint (x: p5.x + _w , y: start_point.y)
         
@@ -141,9 +145,40 @@ class HomeCellTrackView: UIView {
             default:break
         }
 
+        
+
     }
     
 
+    let strole_color = UIColor (colorLiteralRed: 53/255.0, green: 138/255.0, blue: 216/255.0, alpha: 1).cgColor
+    
+    func addPath(_ loc:Int)  {
+        let p = UIBezierPath.init()
+        let circle = UIBezierPath.init(arcCenter: start_point, radius: radius, startAngle: 0, endAngle:  CGFloat.init(360), clockwise: true)
+        p.append(circle)
+        
+        p.move(to: p1);
+        p.addLine(to: planeIcon.center)
+        
+        
+        let layer = CAShapeLayer.init()
+        layer.fillColor = strole_color
+        layer.lineWidth = 1
+
+        layer.strokeColor = strole_color
+        layer.path = p.cgPath
+        layer.fillRule = kCAFillRuleEvenOdd
+        
+        layer.strokeEnd = 1
+        
+        self.layer.addSublayer(layer)
+        
+        
+    }
+    
+    
+    
+    
 //    displayMsg()
 //    layoutSubviews()
 //    layoutSubviews()

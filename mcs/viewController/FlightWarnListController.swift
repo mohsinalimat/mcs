@@ -72,6 +72,7 @@ class FlightWarnListController: BaseViewController ,UITableViewDelegate,UITableV
              return b;
              })*/.subscribe { [weak self] (event) in
                 guard let strongSelf = self else { return }
+                strongSelf.has_selected_index.removeAll()
                 strongSelf.tableView.reloadData()
             }.addDisposableTo(disposeBag)
        
@@ -117,6 +118,7 @@ class FlightWarnListController: BaseViewController ,UITableViewDelegate,UITableV
                  "beginDate":"2018/02/25 11:00:00",
                  "endDate":"2018/02/26 22:59:59"
         ]
+        //TODO:
         
         netHelper_request(withUrl: get_warn_list_url, method: .post, parameters: d, successHandler: { [weak self](result) in
             HUD.dismiss()
@@ -208,22 +210,34 @@ class FlightWarnListController: BaseViewController ,UITableViewDelegate,UITableV
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        _tableviewDidSelectHandle(indexPath.section)
+        
+    }
+    
+    
+    func topBtnClick(_ btn: UIButton) {
+        _tableviewDidSelectHandle(btn.tag)
+    }
+    
+    
+    func _tableviewDidSelectHandle(_ index:Int) {
         guard !is_in_editing.value else {
-            if has_selected_index.contains(indexPath.section) {
-                has_selected_index.remove(at: has_selected_index.index(of: indexPath.section)!);
+            if has_selected_index.contains(index) {
+                has_selected_index.remove(at: has_selected_index.index(of: index)!);
             }else{
-                has_selected_index.append(indexPath.section);
+                has_selected_index.append(index);
             }
             
-            tableView.reloadSections([indexPath.section], animationStyle: .none);return
+            tableView.reloadSections([index], animationStyle: .none);return
         }
         
-        if  indexPath.section == 1 {
+        /*if  index == 1 {
             let v = FlightAllWarnController()
             
             self.navigationController?.pushViewController(v, animated: true)
             return
-        }
+        }*/
         
         let v = WarnInfoDetailController()
         
@@ -231,21 +245,6 @@ class FlightWarnListController: BaseViewController ,UITableViewDelegate,UITableV
         
         
     }
-    
-    
-    func topBtnClick(_ btn: UIButton) {
-        guard !is_in_editing.value else {
-            if has_selected_index.contains(btn.tag) {
-                has_selected_index.remove(at: has_selected_index.index(of: btn.tag)!);
-            }else{
-                has_selected_index.append(btn.tag);
-            }
-            
-            tableView.reloadSections([btn.tag], animationStyle: .none);return
-        }
-    }
-    
-    
     
     
     override func didReceiveMemoryWarning() {

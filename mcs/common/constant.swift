@@ -39,12 +39,15 @@ let flight_info_url = "/biz/task/flightStatus" //飞机状态信息
 let get_flights_url = "/biz/task/flightStatusByAcId" //获取某个飞机某个日期的所有航班
 
 let get_flightInfo_url = "/biz/task/flightStatusByNo" //根据日期和航班号查询航班信息
+let flight_haswarn_url = "/alarm/flight/list" //标记航班是否有告警
 
 let get_fib_url = "/biz/task/FIB" //航班信息板（FIB）
 let get_task_pool_url = "/biz/task/pool"//...
 
 let get_aircraft_status_url = "/alarm/aircraft/status"//飞机状态-GET请求
 let get_warn_list_url = "/alarm/list" //航班告警列表
+
+
 let get_warn_info_url = "/alarm/detail"///{alarm_id} 告警详情-GET请求
 
 

@@ -22,6 +22,7 @@ class FlightInfoListController: BaseViewController,UICollectionViewDelegate,UICo
     var dep_dataArray:[[String:Any]] = []
 
     var dataArray:[[String:Any]] = []
+    var warnDataArray = [[String:Any]]()//航班告警信息
     
     @IBAction func selectDateAction(_ sender: UIButton) {
         let frame = CGRect (x: 0, y: 0, width: 500, height: 240)
@@ -51,7 +52,7 @@ class FlightInfoListController: BaseViewController,UICollectionViewDelegate,UICo
         title = "Flight Info"
         
         load()
-
+        get_warn_list();
     }
 
     func load()  {
@@ -80,6 +81,33 @@ class FlightInfoListController: BaseViewController,UICollectionViewDelegate,UICo
         
     }
     
+    
+    func get_warn_list() {
+        //        let d = ["aircraftNo":fltDic["acId"]!,
+        //            "flightNo":"\(fltNo!)",
+        //            "beginDate":Tools.dateToString(Tools.date("\(fltDic["std"]!)")!, formatter: "yyyy/MM/dd HH:mm:ss"),
+        //            "endDate":Tools.dateToString(Tools.date("\(fltDic["sta"]!)")!, formatter: "yyyy/MM/dd HH:mm:ss")
+        //        ]
+        //...
+        let d = ["aircraftNo":"B-MCB",
+                 //"flightNo":"NX825",
+                 "beginDate":"2018/02/24 11:00:00",
+                 "endDate":"2018/02/26 11:59:59"
+        ]
+        //TODO:
+        
+        netHelper_request(withUrl: flight_haswarn_url, method: .post, parameters: d, successHandler: { [weak self](result) in
+            HUD.dismiss()
+            guard let body = result["body"] as? [[String : Any]] else {return;}
+            guard let strongSelf = self else{return}
+            strongSelf.warnDataArray = strongSelf.warnDataArray + body
+            
+        }) { (error) in
+            
+        }
+        
+        
+    }
 
     func _init()  {
         collectionView.register(UINib (nibName: "FlightInfoListCell", bundle: nil), forCellWithReuseIdentifier: FlightInfoListCellIdentifier)
@@ -187,6 +215,21 @@ class FlightInfoListController: BaseViewController,UICollectionViewDelegate,UICo
     
     
     
+    func _has_warn(_ airId:String) -> Bool {
+        guard warnDataArray.count > 0 else {return false}
+        
+        for obj in warnDataArray {
+            if let tail = obj["tailNo"] as? String {
+                if tail == airId {
+                    guard obj["grade"] != nil else {return false}
+                    return true
+                }
+            }
+        }
+
+        return false
+    }
+    
 //    func getDataAtIndex(_ indexPath:IndexPath) -> [String:Any]? {
 //        let index = indexPath.row - 2
 //        
@@ -215,16 +258,6 @@ class FlightInfoListController: BaseViewController,UICollectionViewDelegate,UICo
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
