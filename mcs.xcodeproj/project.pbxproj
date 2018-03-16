@@ -24,6 +24,8 @@
 		A12028602008A1C200CB8633 /* success@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A12028562008A19000CB8633 /* success@2x.png */; };
 		A12028612008A1C200CB8633 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12028572008A19200CB8633 /* LocationManager.swift */; };
 		A12028622008A1C200CB8633 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = A120285A2008A19700CB8633 /* Reachability.m */; };
+		A1284D8B205BB00500B7B576 /* WarnInfoDetailController_new.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1284D89205BB00500B7B576 /* WarnInfoDetailController_new.swift */; };
+		A1284D8C205BB00500B7B576 /* WarnInfoDetailController_new.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1284D8A205BB00500B7B576 /* WarnInfoDetailController_new.xib */; };
 		A13F1AEB200745F1004FDFF4 /* LoginViewFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13F1AEA200745F1004FDFF4 /* LoginViewFooter.swift */; };
 		A13F1AED20074693004FDFF4 /* LoginViewFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = A13F1AEC20074693004FDFF4 /* LoginViewFooter.xib */; };
 		A165B67C20107FA3006080D8 /* HomeDetailTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A165B67B20107FA3006080D8 /* HomeDetailTabController.swift */; };
@@ -118,6 +120,8 @@
 		A12028572008A19200CB8633 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		A12028592008A19600CB8633 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		A120285A2008A19700CB8633 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		A1284D89205BB00500B7B576 /* WarnInfoDetailController_new.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WarnInfoDetailController_new.swift; sourceTree = "<group>"; };
+		A1284D8A205BB00500B7B576 /* WarnInfoDetailController_new.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WarnInfoDetailController_new.xib; sourceTree = "<group>"; };
 		A13F1AEA200745F1004FDFF4 /* LoginViewFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewFooter.swift; sourceTree = "<group>"; };
 		A13F1AEC20074693004FDFF4 /* LoginViewFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewFooter.xib; sourceTree = "<group>"; };
 		A165B67B20107FA3006080D8 /* HomeDetailTabController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeDetailTabController.swift; sourceTree = "<group>"; };
@@ -375,6 +379,8 @@
 				A1E65C572018236E006D1085 /* FIBViewController.swift */,
 				A1DF738B2043EF5B0099B858 /* WarnInfoDetailController.swift */,
 				A1DF738C2043EF5B0099B858 /* WarnInfoDetailController.xib */,
+				A1284D89205BB00500B7B576 /* WarnInfoDetailController_new.swift */,
+				A1284D8A205BB00500B7B576 /* WarnInfoDetailController_new.xib */,
 			);
 			name = home;
 			sourceTree = "<group>";
@@ -546,6 +552,7 @@
 				A1A658CB2011BDE70079B354 /* FlightInfoListCell.xib in Resources */,
 				A1CF29FF20070029009FE6A4 /* Main.storyboard in Resources */,
 				A120285F2008A1C200CB8633 /* success.png in Resources */,
+				A1284D8C205BB00500B7B576 /* WarnInfoDetailController_new.xib in Resources */,
 				A1E5C10F2048EAF900511F58 /* TaskPoolViewController.xib in Resources */,
 				A1C26DB2204FBD3B00B11F63 /* FlightWarnListHeadView.xib in Resources */,
 				A1AAF14F2049331800E8CB3B /* TaskActionCell.xib in Resources */,
@@ -637,6 +644,7 @@
 				A1FE5095204796E1004F2330 /* BaseTabBarController.swift in Sources */,
 				A1A658CA2011BDE70079B354 /* FlightInfoListCell.swift in Sources */,
 				A1C0A3D9200DF04F00A1762C /* TTRefreshHeader.swift in Sources */,
+				A1284D8B205BB00500B7B576 /* WarnInfoDetailController_new.swift in Sources */,
 				A1CF2A1120070AA1009FE6A4 /* BaseNavigationController.swift in Sources */,
 				A1CF29FC20070029009FE6A4 /* ViewController.swift in Sources */,
 				A1AAF14B20491D7E00E8CB3B /* BaseTabItemController.swift in Sources */,

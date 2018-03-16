@@ -70,6 +70,9 @@ class LoginViewController: BaseViewController,UITableViewDelegate,UITableViewDat
             btn.setTitle(i == 0 ? "登录":"重置", for: .normal)
             btn.addTarget(self, action: #selector(buttonAction(_ :)), for: .touchUpInside)
             btn.tag = 100 + i;
+            btn.layer.cornerRadius = 5
+            btn.layer.masksToBounds = true
+            
             _view.addSubview(btn)
         }
         
@@ -227,6 +230,7 @@ class LoginViewController: BaseViewController,UITableViewDelegate,UITableViewDat
         vc.view.frame = frame
         
         let nav = BaseNavigationController(rootViewController:vc)
+        nav.navigationBar.barTintColor = UIColor (colorLiteralRed: 0.212, green: 0.188, blue: 0.427, alpha: 1)
         nav.modalPresentationStyle = .formSheet
         nav.preferredContentSize = frame.size
         self.present(nav, animated: true, completion: nil)

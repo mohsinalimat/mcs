@@ -23,3 +23,6 @@ let kFlightWarnLevelColor = ["1":UIColor.red,
                           "120":UIColor.yellow,
                           "200":UIColor.white,
                           "1000":UIColor.blue]
+
+
+let bar_color = UIColor.init(colorLiteralRed: 0.318, green: 0.243, blue: 0.533, alpha: 1)

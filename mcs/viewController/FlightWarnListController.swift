@@ -239,7 +239,7 @@ class FlightWarnListController: BaseViewController ,UITableViewDelegate,UITableV
             return
         }*/
         
-        let v = WarnInfoDetailController()
+        let v = WarnInfoDetailController_new()
         
         self.navigationController?.pushViewController(v, animated: true)
         
