@@ -232,18 +232,16 @@ class FlightWarnListController: BaseViewController ,UITableViewDelegate,UITableV
             tableView.reloadSections([index], animationStyle: .none);return
         }
         
-        /*if  index == 1 {
-            let v = FlightAllWarnController()
+
+        if let arr = alarm[index - 1]["detail"] as? [[String:Any]] , let _d = alarm[index - 1]["id"] as? String {
+            let d = arr[0];//....
             
+            let v = WarnInfoDetailController_new()
+            v._warnInfoLast = d
+            v._id = _d
             self.navigationController?.pushViewController(v, animated: true)
-            return
-        }*/
-        
-        let v = WarnInfoDetailController_new()
-        
-        self.navigationController?.pushViewController(v, animated: true)
-        
-        
+        }
+ 
     }
     
     

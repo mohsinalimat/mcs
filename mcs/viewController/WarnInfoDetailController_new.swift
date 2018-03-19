@@ -11,11 +11,20 @@ import UIKit
 class WarnInfoDetailController_new: BaseViewController,UITableViewDelegate,UITableViewDataSource {
 
     @IBOutlet weak var _tableView: UITableView!
+    
     var current_selected_btn:UIButton!
     var current_selected_btn_index = 0
     let current_selected_btn_bgcolor = UIColor.init(colorLiteralRed: 242/255.0, green: 242/255.0, blue: 242/255.0, alpha: 1)
     
+    var _warnInfoDetail :[String:Any]!
+    var _warnInfoLast :[String:Any]!
+    var _id:String!
     
+    var _shouldLoad = false
+    
+    var _warn_detail = [[String:Any]]()
+    var _warn_possible = [[String:Any]]()
+    var _warn_tsm = [[String:Any]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,10 +33,14 @@ class WarnInfoDetailController_new: BaseViewController,UITableViewDelegate,UITab
         // Do any additional setup after loading the view.
         _init()
     
+        get_warn_detailInfo()
     
     }
 
-    
+    override func awakeFromNib() {
+        _tableView.tableFooterView = UIView()
+        _tableView.tableHeaderView = UIView()
+    }
     
     func _init() {
         self.automaticallyAdjustsScrollViewInsets = false
@@ -35,16 +48,47 @@ class WarnInfoDetailController_new: BaseViewController,UITableViewDelegate,UITab
         _tableView.register(UINib (nibName: "WarnDetailTopCell", bundle: nil), forCellReuseIdentifier: "WarnDetailTopCellIdentifier")
         _tableView.register(UINib (nibName: "WarnFaultInfoCell", bundle: nil), forCellReuseIdentifier: "WarnFaultInfoCellIdentifier")
         _tableView.register(UINib (nibName: "WarnDisPoseCell", bundle: nil), forCellReuseIdentifier: "WarnDisPoseCellIdentifier")
-        
-        _tableView.tableFooterView = UIView()
+
         _tableView.separatorStyle = .none
         _tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
-        
+ 
         _tableView.dataSource = self
         _tableView.delegate = self
-        
-
     }
+    
+    func get_warn_detailInfo() {
+
+        HUD.show()
+        let url = get_warn_info_url.appending("/\(_id!)")
+        netHelper_request(withUrl: url, method: .get, parameters: nil, successHandler: { [weak self](result) in
+            HUD.dismiss()
+            guard let body = result["body"] as? [String : Any] else {return;}
+            guard let strongSelf = self else{return}
+            
+            strongSelf._shouldLoad = true
+            strongSelf._warnInfoDetail = body;
+            
+            if let _detail = body["alarm"] as? [[String:Any]] {
+                strongSelf._warn_detail = strongSelf._warn_detail + _detail;
+            }
+            
+            if let _detail = body["possibleCause"] as? [[String:Any]] {
+                strongSelf._warn_possible = strongSelf._warn_possible + _detail;
+            }
+            
+            if let _detail = body["tsm"] as? [[String:Any]] {
+                strongSelf._warn_tsm = strongSelf._warn_tsm + _detail;
+            }
+            
+            
+            strongSelf._tableView.reloadData()
+        }) { (error) in
+            
+        }
+        
+        
+    }
+    
     
     
     
@@ -87,19 +131,19 @@ class WarnInfoDetailController_new: BaseViewController,UITableViewDelegate,UITab
         l.backgroundColor = UIColor.white
         
         let t = ["Probable reason of fault","Fault isolation manual","MEL","Other files"]
-        let x = [0,230,430,530]
+        let x = [0,230,430,580]
         for i in 0..<t.count {
             let btn = UIButton (frame: CGRect (x: x[i], y: 0, width: i > 1 ? 150:200, height: 50));
             btn.setTitle(t[i], for: .normal)
-            btn.tag = 100 + i
+            btn.tag = i
             btn.setTitleColor(UIColor.darkGray, for: .normal)
             btn.setTitleColor(UIColor.black, for: .selected)
             btn.titleLabel?.font = UIFont.systemFont(ofSize: 16)
             btn.titleLabel?.textAlignment = .center
             btn.addTarget(self, action: #selector(sectionBtnClicked(_:)), for: .touchUpInside)
             
-            if i == 0{
-                btn.isSelected = i == 0;
+            if i == current_selected_btn_index {
+                btn.isSelected = true;
                 btn.backgroundColor = current_selected_btn_bgcolor
                 current_selected_btn = btn
             }
@@ -113,50 +157,46 @@ class WarnInfoDetailController_new: BaseViewController,UITableViewDelegate,UITab
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return _shouldLoad ? 3 : 0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return 1;
         }else if section == 1 {
-            return 2;
+            return _warn_detail.count;
         }
         
-        return 3
+        return _warn_possible.count
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var identifier =  "WarnDetailTopCellIdentifier"
-        if indexPath.section == 1 {
-            identifier = "WarnFaultInfoCellIdentifier";
-        }else if indexPath.section == 2 {
-            identifier = "WarnDisPoseCellIdentifier";
+        
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "WarnDetailTopCellIdentifier", for: indexPath) as! WarnDetailTopCell
+            
+            cell.fillCell(_warnInfoDetail , d2: _warnInfoLast)
+           
+            return cell
+        }else if indexPath.section == 1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "WarnFaultInfoCellIdentifier", for: indexPath)
+           
+            return cell
+        }else {
+
+            let cell = tableView.dequeueReusableCell(withIdentifier: "WarnDisPoseCellIdentifier", for: indexPath)
+            
+            return cell
         }
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
-        cell.selectionStyle = .none
-        
-        return cell
+ 
     }
     
     
     
     //MARK:
-    func get_warn_list() {
-        let d = ["":""]
-        
-        netHelper_request(withUrl: get_warn_list_url, method: .post, parameters: d, successHandler: { (res) in
-            
-        }) { (error) in
-            
-        }
-        
-        
-    }
-    
-    
+
     func sectionBtnClicked(_ button:UIButton) {
         guard button.tag != current_selected_btn.tag else { return}
         
@@ -167,6 +207,7 @@ class WarnInfoDetailController_new: BaseViewController,UITableViewDelegate,UITab
         button.backgroundColor = current_selected_btn_bgcolor
         
         current_selected_btn = button
+        current_selected_btn_index = button.tag
         
         _tableView.reloadSections([2], animationStyle: .none)
         

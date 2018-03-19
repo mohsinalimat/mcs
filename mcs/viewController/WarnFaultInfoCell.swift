@@ -10,6 +10,19 @@ import UIKit
 
 class WarnFaultInfoCell: UITableViewCell {
 
+    @IBOutlet weak var code: UILabel!
+    
+    @IBOutlet weak var msg: UILabel!
+    
+    @IBOutlet weak var type: UILabel!
+    
+    @IBOutlet weak var phase: UILabel!
+    
+    @IBOutlet weak var isactive: UILabel!
+    
+    @IBOutlet weak var time: UILabel!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
