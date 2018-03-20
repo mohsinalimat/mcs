@@ -25,10 +25,7 @@ class FlightWarnListController: BaseViewController ,UITableViewDelegate,UITableV
     @IBOutlet weak var topView: FlightWarnListTopView!
     
     var is_in_editing = Variable(false)
-    
-    let kbg_color1 = UIColor.white
-    let kbg_color2 = UIColor (colorLiteralRed: 217/255.0, green: 237/255.0, blue: 247/255.0, alpha: 1)
-    
+        
     var has_selected_index = [Int]()
     
     var alarm_body = [[String:Any]]()
@@ -171,7 +168,7 @@ class FlightWarnListController: BaseViewController ,UITableViewDelegate,UITableV
             cell.fillWith(status: d)
         }
         
-        cell.backgroundColor = indexPath.section % 2 == 1 ? kbg_color1 : kbg_color2
+        cell.backgroundColor = indexPath.section % 2 == 1 ? kTableViewCellbg_whiteColor : kTableViewCellbg_hightlightColor
 
         return cell
     }
@@ -181,7 +178,7 @@ class FlightWarnListController: BaseViewController ,UITableViewDelegate,UITableV
         
         let v = Bundle.main.loadNibNamed("FlightWarnListHeadView", owner: nil, options: nil)?.last as! FlightWarnListHeadView
 
-        v.backgroundColor = section % 2 == 1 ? kbg_color1 : kbg_color2
+        v.backgroundColor = section % 2 == 1 ? kTableViewCellbg_whiteColor : kTableViewCellbg_hightlightColor
         
         v.selecedtBtn.isHidden = is_in_editing.value == false
         

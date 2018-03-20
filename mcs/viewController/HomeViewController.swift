@@ -105,39 +105,46 @@ class HomeViewController: BaseTabItemController,UICollectionViewDelegate,UIColle
     }
     
     func addNavigationItem()  {
-
-
         let user = UILabel (frame: CGRect (x: 0, y: 0, width: 100, height: 30))
-        user.font = UIFont.boldSystemFont(ofSize: 17)
+        user.font = UIFont.boldSystemFont(ofSize: 18)
         user.text = "当前用户 \(UserDefaults.standard.value(forKey:"user-name")!)"
         navigationItem.titleView = user
         
         //msg
         let msgBtn = UIButton (frame: CGRect (x: 0, y: 5, width: 50, height: 40))
-        msgBtn.setImage(UIImage (named: "mail_icon"), for: .normal)//30 30
-        msgBtn.setImage(UIImage (named: "mail_icon"), for: .highlighted)
-        msgBtn.imageEdgeInsets = UIEdgeInsetsMake(0, -10, 0, 20)
-        msgBtn.titleEdgeInsets = UIEdgeInsetsMake(0, -20, 0, 0)
+        msgBtn.setImage(UIImage (named: "error_sdk_login_night"), for: .normal)//30 30
+        msgBtn.setImage(UIImage (named: "error_sdk_login_night"), for: .highlighted)
+//        msgBtn.imageEdgeInsets = UIEdgeInsetsMake(5, 10, 5, 10)
+//        msgBtn.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0)
         msgBtn.addTarget(self, action: #selector(msgBtnAction), for: .touchUpInside)
-        msgBtn.setTitle("200", for: .normal)
-        msgBtn.setTitleColor(UIColor.red, for: .normal)
-        msgBtn.titleLabel?.font = UIFont.systemFont(ofSize: 11)
         _msgBtn = msgBtn
-        
-        let fixed = UIBarButtonItem (barButtonSystemItem: .fixedSpace, target: nil, action: nil)
-        fixed.width = 10
         let msgItem  = UIBarButtonItem (customView: msgBtn)
         
         //FIB
-        let fibItem = UIBarButtonItem.init(image: UIImage (named: "icon_fib")?.withRenderingMode(.alwaysOriginal) , style: .done, target: self, action: #selector(fibBtnAction))
-        //let fibItem = UIBarButtonItem.init(title: "FIB", style: .plain, target: self, action: #selector(fibBtnAction))
-        //fibItem.setTitleTextAttributes([/*NSForegroundColorAttributeName:UIColor.black,*/NSFontAttributeName:UIFont.systemFont(ofSize: 16)], for: .normal)
+        let flibBtn = UIButton (frame: CGRect (x: 0, y: 5, width: 50, height: 40))
+        flibBtn.setImage(UIImage (named: "icon_fib"), for: .normal)
+        flibBtn.setImage(UIImage (named: "icon_fib"), for: .highlighted)
+        flibBtn.addTarget(self, action: #selector(fibBtnAction), for: .touchUpInside)
+        let fibItem  = UIBarButtonItem (customView: flibBtn);
         
-        navigationItem.rightBarButtonItems = [/*fixed,msgItem,*/fixed,fixed,fixed,fibItem]
+        let fixed = UIBarButtonItem (barButtonSystemItem: .fixedSpace, target: nil, action: nil)
+        fixed.width = 20
+        
+        navigationItem.rightBarButtonItems = [fixed,msgItem,fixed,fixed,fibItem]
     }
     
     func msgBtnAction()  {
-        
+        let vc = UIAlertController.init(title: "确定退出?",message: nil, preferredStyle: .alert)
+        let action = UIAlertAction.init(title:"取消", style: .default)
+        let action2 = UIAlertAction.init(title: "确定", style: .default) { (action) in
+            let loginvc = LoginViewController()
+            
+            UIApplication.shared.keyWindow?.rootViewController = loginvc
+        }
+
+        vc.addAction(action)
+        vc.addAction(action2)
+        self.navigationController?.present(vc, animated: true, completion: nil);
     }
     
     func fibBtnAction() {

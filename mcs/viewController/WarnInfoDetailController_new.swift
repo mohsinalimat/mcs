@@ -19,7 +19,6 @@ class WarnInfoDetailController_new: BaseViewController,UITableViewDelegate,UITab
     var _warnInfoDetail :[String:Any]!
     var _warnInfoLast :[String:Any]!
     var _id:String!
-    
     var _shouldLoad = false
     
     var _warn_detail = [[String:Any]]()
@@ -50,8 +49,6 @@ class WarnInfoDetailController_new: BaseViewController,UITableViewDelegate,UITab
         _tableView.register(UINib (nibName: "WarnDisPoseCell", bundle: nil), forCellReuseIdentifier: "WarnDisPoseCellIdentifier")
 
         _tableView.separatorStyle = .none
-        _tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
- 
         _tableView.dataSource = self
         _tableView.delegate = self
     }
@@ -93,71 +90,15 @@ class WarnInfoDetailController_new: BaseViewController,UITableViewDelegate,UITab
     
     
     //MARK:- UITableViewDelegate
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        guard indexPath.section > 0 else { return 130 }
-        guard indexPath.section > 1 else { return 40 }
-        
-        return 40
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section > 0 {
-            return 50;
-        }
-        
-        return 0.01;
-    }
-    
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        if section == 1 {return 15}
-        return 0.01
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if section == 0 {return nil}
-        else if section == 1 {
-            let v = UIView (frame: CGRect.init(x: 0, y: 0, width: tableView.frame.size.width, height: 50))
-            let _l = UILabel (frame: CGRect (x: 15, y: 10, width: 300, height: 40))
-            _l.text = "Fault Information"
-            _l.textColor = UIColor.darkGray
-            _l.font = UIFont.systemFont(ofSize: 16)
-            v.addSubview(_l)
-            
-            return v
-        }
-
-        
-        let l = UIView (frame: CGRect (x: 0, y: 0, width: kCurrentScreenWidth, height: 50))
-        l.backgroundColor = UIColor.white
-        
-        let t = ["Probable reason of fault","Fault isolation manual","MEL","Other files"]
-        let x = [0,230,430,580]
-        for i in 0..<t.count {
-            let btn = UIButton (frame: CGRect (x: x[i], y: 0, width: i > 1 ? 150:200, height: 50));
-            btn.setTitle(t[i], for: .normal)
-            btn.tag = i
-            btn.setTitleColor(UIColor.darkGray, for: .normal)
-            btn.setTitleColor(UIColor.black, for: .selected)
-            btn.titleLabel?.font = UIFont.systemFont(ofSize: 16)
-            btn.titleLabel?.textAlignment = .center
-            btn.addTarget(self, action: #selector(sectionBtnClicked(_:)), for: .touchUpInside)
-            
-            if i == current_selected_btn_index {
-                btn.isSelected = true;
-                btn.backgroundColor = current_selected_btn_bgcolor
-                current_selected_btn = btn
-            }
-            
-            
-            l.addSubview(btn)
-        }
-        
-        
-        return l
-    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return _shouldLoad ? 3 : 0
+        guard _shouldLoad else {return 0}
+        
+        if current_selected_btn_index == 0 {
+            return _warn_possible.count + 2;
+        }
+        
+        return  3
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -167,9 +108,93 @@ class WarnInfoDetailController_new: BaseViewController,UITableViewDelegate,UITab
             return _warn_detail.count;
         }
         
-        return _warn_possible.count
+        if current_selected_btn_index == 0 {
+            if let  d = _warn_possible[section - 2]["pc"] as? [String]{
+                return d.count;
+            }
+            
+            return 0
+        }else if current_selected_btn_index == 1 {
+            return _warn_tsm.count;
+        }
+        
+        return 0
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        guard indexPath.section > 0 else { return 130 }
+        guard indexPath.section > 1 else { return 40 }
+        
+        return 30
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 1 {
+            return 50;
+        }else if section > 1 && current_selected_btn_index == 0 {
+            return 30
+        }
+        
+        return 0.01;
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if section == 1 {return 70}
+        return 0.01
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 0 {return nil}
+        else if section == 1 {
+            let v = UIView (frame: CGRect.init(x: 0, y: 0, width: tableView.frame.size.width, height: 50))
+            let _l = UILabel (frame: CGRect (x: 15, y: 10, width: 300, height: 40))
+            _l.text = "Fault Information"
+            //_l.textColor = UIColor.darkGray
+            _l.font = UIFont.systemFont(ofSize: 15)
+            v.addSubview(_l)
+            return v
+        }
+
+        let d = _warn_possible[section - 2]
+        let _l = UILabel (frame: CGRect (x: 15, y: 0, width: tableView.frame.size.width, height: 30))
+        _l.text = String.stringIsNullOrNil(d["taskCode"]) + ":" + String.stringIsNullOrNil(d["taskName"])
+        _l.backgroundColor = kTableViewCellbg_hightlightColor
+        _l.font = UIFont.boldSystemFont(ofSize: 16)
+
+        return _l
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        if section == 1 {
+            let l = UIView (frame: CGRect (x: 0, y: 0, width: kCurrentScreenWidth, height: 70))
+            l.backgroundColor = current_selected_btn_bgcolor
+            let t = ["Probable reason of fault","Fault isolation manual","MEL","Other files"]
+            let x = [0,200,400,600]
+            for i in 0..<t.count {
+                let btn = UIButton (frame: CGRect (x: x[i], y: 20, width: 200, height: 50));
+                btn.setTitle(t[i], for: .normal)
+                btn.tag = i
+                btn.setTitleColor(kButtonTitleDefaultColor, for: .normal)
+                btn.setTitleColor(UIColor.black, for: .selected)
+                btn.setBackgroundImage(UIImage (named: "bg_bar"), for: .selected)
+                btn.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+                btn.titleLabel?.textAlignment = .center
+                btn.addTarget(self, action: #selector(sectionBtnClicked(_:)), for: .touchUpInside)
+                
+                if i == current_selected_btn_index {
+                    btn.isSelected = true;
+                    current_selected_btn = btn
+                }
+                l.addSubview(btn)
+            }
+            
+            
+            return l
+
+        }
+        
+        return nil
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -180,12 +205,27 @@ class WarnInfoDetailController_new: BaseViewController,UITableViewDelegate,UITab
            
             return cell
         }else if indexPath.section == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "WarnFaultInfoCellIdentifier", for: indexPath)
-           
+            let cell = tableView.dequeueReusableCell(withIdentifier: "WarnFaultInfoCellIdentifier", for: indexPath) as! WarnFaultInfoCell
+            if let d = _warn_detail[indexPath.row]["detail"] as? [[String:Any]] {
+                if let f = d.first{
+                    cell.fillCell(f)
+                }
+            }
+            
             return cell
         }else {
-
-            let cell = tableView.dequeueReusableCell(withIdentifier: "WarnDisPoseCellIdentifier", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "WarnDisPoseCellIdentifier", for: indexPath) as! WarnDisPoseCell
+            
+            if current_selected_btn_index == 0 {
+                if let  d = _warn_possible[indexPath.section - 2]["pc"] as? [String]{
+                    let s = d[indexPath.row]
+                    cell.fillCell(s)
+                }
+            }else if current_selected_btn_index == 1 {
+                let d = _warn_tsm[indexPath.row];
+                cell.fillCell(d1: d)
+            }
+            
             
             return cell
         }
@@ -201,16 +241,15 @@ class WarnInfoDetailController_new: BaseViewController,UITableViewDelegate,UITab
         guard button.tag != current_selected_btn.tag else { return}
         
         current_selected_btn.isSelected = false
-        current_selected_btn.backgroundColor = UIColor.white
+        //current_selected_btn.backgroundColor = current_selected_btn_bgcolor
         
         button.isSelected = true
-        button.backgroundColor = current_selected_btn_bgcolor
+        //button.backgroundColor = UIColor.white
         
         current_selected_btn = button
         current_selected_btn_index = button.tag
         
         _tableView.reloadSections([2], animationStyle: .none)
-        
     }
     
     

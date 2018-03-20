@@ -46,10 +46,7 @@ class FlightInfoListController: BaseViewController,UICollectionViewDelegate,UICo
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         _init()
-        
-        title = "Flight Info"
         
         load()
         get_warn_list();
@@ -60,6 +57,7 @@ class FlightInfoListController: BaseViewController,UICollectionViewDelegate,UICo
         
         arr_dataArray.removeAll()
         dep_dataArray.removeAll()
+        dataArray.removeAll()
         
         HUD.show(withStatus: "Loading")
         netHelper_request(withUrl: get_flights_url, method: .post, parameters: d, successHandler: {[weak self] (result) in

@@ -26,3 +26,8 @@ let kFlightWarnLevelColor = ["1":UIColor.red,
 
 
 let bar_color = UIColor.init(colorLiteralRed: 0.318, green: 0.243, blue: 0.533, alpha: 1)
+
+
+///////////////////////////
+let kTableViewCellbg_whiteColor = UIColor.white
+let kTableViewCellbg_hightlightColor = UIColor (colorLiteralRed: 217/255.0, green: 237/255.0, blue: 247/255.0, alpha: 1)

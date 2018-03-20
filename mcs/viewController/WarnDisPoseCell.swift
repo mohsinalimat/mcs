@@ -9,12 +9,28 @@
 import UIKit
 
 class WarnDisPoseCell: UITableViewCell {
+    @IBOutlet weak var taskcode: UILabel!
+    @IBOutlet weak var headLayout: NSLayoutConstraint!
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
+    
+    func fillCell(_ d1:String )  {
+        taskcode.text = String.stringIsNullOrNil(d1)
+    
+    
+    }
+    
+    func fillCell(d1:[String : Any] )  {
+        taskcode.text = String.stringIsNullOrNil(d1["taskCode"]) + " " + String.stringIsNullOrNil(d1["docName"])
+        
+        
+    }
+    
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

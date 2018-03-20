@@ -28,6 +28,23 @@ class WarnFaultInfoCell: UITableViewCell {
         // Initialization code
     }
 
+    
+    func fillCell(_ d1:[String:Any] )  {
+        code.text = String.stringIsNullOrNil(d1["code"])
+        msg.text = String.stringIsNullOrNil(d1["message"])
+        type.text = String.stringIsNullOrNil(d1["alarmType"])
+        phase.text = String.stringIsNullOrNil(d1["phase"])
+    
+        let _time = Tools.date(String.stringIsNullOrNil(d1["faultOccurrenceDate"]))
+        if let d = _time {
+            time.text = Tools.dateToString(d, formatter: "MM-dd HH:mm")
+        }
+    }
+    
+    
+    
+    
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

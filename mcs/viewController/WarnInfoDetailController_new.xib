@@ -20,7 +20,6 @@
                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                 </tableView>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="Yvw-fa-lst" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="bde-RW-yfg"/>
                 <constraint firstAttribute="trailing" secondItem="Yvw-fa-lst" secondAttribute="trailing" id="jS9-gj-chi"/>

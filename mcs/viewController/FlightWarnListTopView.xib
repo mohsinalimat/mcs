@@ -28,7 +28,7 @@
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="---" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PdS-w9-YLT">
                     <fontDescription key="fontDescription" type="italicSystem" pointSize="18"/>
-                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="From:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uug-LZ-9HS">
@@ -115,9 +115,9 @@
                 <constraint firstAttribute="bottom" secondItem="mrA-LI-osL" secondAttribute="bottom" constant="5" id="DpO-GX-xDZ"/>
                 <constraint firstAttribute="trailing" secondItem="mrA-LI-osL" secondAttribute="trailing" constant="20" id="Lxm-Jk-ZiU"/>
                 <constraint firstItem="W3V-dk-EaN" firstAttribute="centerY" secondItem="PdS-w9-YLT" secondAttribute="centerY" id="OGr-rF-MKg"/>
-                <constraint firstItem="Mgb-PC-7aY" firstAttribute="leading" secondItem="W3V-dk-EaN" secondAttribute="trailing" constant="50" id="XcN-MQ-jox"/>
+                <constraint firstItem="Mgb-PC-7aY" firstAttribute="leading" secondItem="W3V-dk-EaN" secondAttribute="trailing" constant="60" id="XcN-MQ-jox"/>
                 <constraint firstItem="PHJ-TT-j84" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="Zlz-o8-TRN"/>
-                <constraint firstItem="mrA-LI-osL" firstAttribute="leading" secondItem="VXM-SO-pDr" secondAttribute="trailing" constant="50" id="anq-FO-rRf"/>
+                <constraint firstItem="mrA-LI-osL" firstAttribute="leading" secondItem="VXM-SO-pDr" secondAttribute="trailing" constant="40" id="anq-FO-rRf"/>
                 <constraint firstItem="PdS-w9-YLT" firstAttribute="leading" secondItem="PHJ-TT-j84" secondAttribute="trailing" constant="20" id="cfO-nn-Oqv"/>
                 <constraint firstItem="mvs-yb-hhH" firstAttribute="centerY" secondItem="PdS-w9-YLT" secondAttribute="centerY" id="fcy-R7-aRV"/>
                 <constraint firstItem="Mgb-PC-7aY" firstAttribute="centerY" secondItem="PdS-w9-YLT" secondAttribute="centerY" id="gL8-r6-nL7"/>
