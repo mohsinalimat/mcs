@@ -25,6 +25,7 @@ class HomeViewController: BaseTabItemController,UICollectionViewDelegate,UIColle
         _initSubview()
         
         getFlightStatusData()
+                
     }
 
     
@@ -78,13 +79,13 @@ class HomeViewController: BaseTabItemController,UICollectionViewDelegate,UIColle
         view.backgroundColor = UIColor.white;
         
         let _largeflowlayout = UICollectionViewFlowLayout()
-        _largeflowlayout.minimumLineSpacing = 5
+        _largeflowlayout.minimumLineSpacing = 10
         _largeflowlayout.minimumInteritemSpacing = 5
         _largeflowlayout.scrollDirection = .vertical
         let _w = (kCurrentScreenWidth - 25 - 15) / 4.0
         _largeflowlayout.itemSize = CGSize (width: _w, height: 160 )
         
-        _collectionView = UICollectionView.init(frame: CGRect (x: 10, y: 0, width: kCurrentScreenWidth - 20, height: kCurrentScreenHeight - 64 - 0), collectionViewLayout: _largeflowlayout)
+        _collectionView = UICollectionView.init(frame: CGRect (x: 10, y: 10, width: kCurrentScreenWidth - 20, height: kCurrentScreenHeight - 64 - 20), collectionViewLayout: _largeflowlayout)
         _collectionView.delegate = self
         _collectionView.dataSource = self
         _collectionView.register(UINib (nibName: "HomeCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: ImgCollectionViewCellReuseId)

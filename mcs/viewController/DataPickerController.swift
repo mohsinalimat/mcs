@@ -12,7 +12,6 @@ class DataPickerController: BasePickerViewController ,UIPickerViewDelegate,UIPic
 
     @IBOutlet weak var pickView: UIPickerView!
     
-    let dataArray = ["1","2","3","4","5","6",]
     private var _row : Int = 0
 
     override func viewDidLoad() {
@@ -24,10 +23,13 @@ class DataPickerController: BasePickerViewController ,UIPickerViewDelegate,UIPic
     //MARK:
 
     override func finishedBtnAction()  {
-        if let handler = pickerDidSelectedHandler {
-            handler(dataArray[_row]);
+        if  (dataArray != nil){
+            if let handler = pickerDidSelectedHandler {
+                handler(dataArray![_row]);
+            }
+
         }
-    
+
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -38,11 +40,20 @@ class DataPickerController: BasePickerViewController ,UIPickerViewDelegate,UIPic
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return dataArray.count
+        guard let arr = dataArray else {return 0}
+        return arr.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return dataArray[row]
+        if dataType == .str {
+            return dataArray?[row] as? String
+        }else {
+            if let d = dataArray?[row] as? [String:String] {//shifts
+                return d["value"];
+            }
+        }
+        
+        return nil
     }
     
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {

@@ -30,10 +30,10 @@ class FlightInfoListController: BaseViewController,UICollectionViewDelegate,UICo
         let vc = DatePickerController()
         vc.view.frame = frame
         vc.pickerDidSelectedHandler = { s in
-            sender.setTitle(s, for: .normal);
-            kFlightInfoListController_flightDate = s
+            sender.setTitle("\(s)", for: .normal);
+            kFlightInfoListController_flightDate = "\(s)"
             
-            self.load()
+            self.get_flight_data()
         }
         
         
@@ -48,11 +48,11 @@ class FlightInfoListController: BaseViewController,UICollectionViewDelegate,UICo
         super.viewDidLoad()
         _init()
         
-        load()
-        get_warn_list();
+        get_flight_data()
+        
     }
 
-    func load()  {
+    func get_flight_data()  {
         let d = ["fltDate":"\(kFlightInfoListController_flightDate!)","acId":"\(kFlightInfoListController_airId!)"]
         
         arr_dataArray.removeAll()
@@ -72,15 +72,20 @@ class FlightInfoListController: BaseViewController,UICollectionViewDelegate,UICo
             if let arr = body["dep"] as? [[String:Any]] {
                strongSelf.dep_dataArray = strongSelf.dep_dataArray + arr;
             }*/
+            
+            strongSelf.get_warn_for_flight();
+
             strongSelf.dataArray = strongSelf.dataArray + body
             strongSelf.collectionView.reloadData()
+            
+            
             }
         )
         
     }
     
     
-    func get_warn_list() {
+    func get_warn_for_flight() {
         //        let d = ["aircraftNo":fltDic["acId"]!,
         //            "flightNo":"\(fltNo!)",
         //            "beginDate":Tools.dateToString(Tools.date("\(fltDic["std"]!)")!, formatter: "yyyy/MM/dd HH:mm:ss"),
@@ -99,7 +104,7 @@ class FlightInfoListController: BaseViewController,UICollectionViewDelegate,UICo
             guard let body = result["body"] as? [[String : Any]] else {return;}
             guard let strongSelf = self else{return}
             strongSelf.warnDataArray = strongSelf.warnDataArray + body
-            
+            strongSelf.collectionView.reloadData()
         }) { (error) in
             
         }
@@ -154,6 +159,7 @@ class FlightInfoListController: BaseViewController,UICollectionViewDelegate,UICo
         }
         
         cell.fillCell(d,show: indexPath.row == 2,left: indexPath.row % 2 == 0)////.....
+        cell.warn_tap.isHidden = !_flight_has_warn(d["acReg"] as! String)
         
         cell.backgroundColor = UIColor.white
         return cell
@@ -213,7 +219,7 @@ class FlightInfoListController: BaseViewController,UICollectionViewDelegate,UICo
     
     
     
-    func _has_warn(_ airId:String) -> Bool {
+    func _flight_has_warn(_ airId:String) -> Bool {
         guard warnDataArray.count > 0 else {return false}
         
         for obj in warnDataArray {

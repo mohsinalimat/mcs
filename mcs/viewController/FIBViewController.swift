@@ -57,12 +57,12 @@ class FIBViewController: BaseWebViewController {
         let vc = DatePickerController()
         vc.view.frame = frame
         vc.pickerDidSelectedHandler = {[weak self] s in
-            sender.setTitle(s, for: .normal);
+            sender.setTitle("\(s)", for: .normal);
             guard let strongSelf = self else {
                 return
             }
             
-            strongSelf.currentDateStr = s
+            strongSelf.currentDateStr = "\(s)"
             strongSelf.loadData()
         }
         

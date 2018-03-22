@@ -8,9 +8,24 @@
 
 import UIKit
 
+enum PickerDataSourceItemTpye {
+    case str
+    
+    case obj
+}
+
+
+
 class BasePickerViewController: BaseViewController {
 
-    var pickerDidSelectedHandler:((String) -> Void)?//选中操作回调
+    var pickerDidSelectedHandler:((Any) -> Void)?//选中操作回调
+    
+    var dataType :PickerDataSourceItemTpye =  .str
+    
+    var dataArray:[Any]?
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

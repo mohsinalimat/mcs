@@ -50,6 +50,12 @@ let get_warn_list_url = "/alarm/list" //航班告警列表
 
 let get_warn_info_url = "/alarm/detail"///{alarm_id} 告警详情-GET请求
 
+////base
+let get_basedata_url = "/biz/data/mobile/active" //基础数据
+let get_basedata2_url = "/biz/data/mobile/basic"//// biz/data/basic
+
+
+
 
 
 
@@ -57,6 +63,7 @@ let get_warn_info_url = "/alarm/detail"///{alarm_id} 告警详情-GET请求
 var kFlightInfoListController_flightDate:String! //航班日期
 var kFlightInfoListController_airId:String!//飞机ID
 
+var kBASE_DATA:[String:Any]!
 
 
 

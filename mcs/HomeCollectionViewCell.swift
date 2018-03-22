@@ -34,7 +34,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
 //        icon.layer.masksToBounds = true
         
         layer.borderWidth = 1
-        layer.borderColor = UIColor.init(colorLiteralRed: 242/255.0, green: 242/255.0, blue: 242/255.0, alpha: 1).cgColor
+        layer.borderColor = UIColor.lightGray.cgColor //UIColor.init(colorLiteralRed: 242/255.0, green: 242/255.0, blue: 242/255.0, alpha: 1).cgColor
         layer.cornerRadius = 10
         layer.masksToBounds = true
     
@@ -103,6 +103,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
         
         ///track line
         trackView.displayMsg(dic)
+        trackView.setNeedsDisplay();
     }
     
     

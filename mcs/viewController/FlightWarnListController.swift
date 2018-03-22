@@ -202,6 +202,13 @@ class FlightWarnListController: BaseViewController ,UITableViewDelegate,UITableV
         v.topButton.addTarget(self, action: #selector(topBtnClick(_ :)), for: .touchUpInside)
         v.topButton.tag = section
         
+        if let arr = alarm[section - 1]["detail"] as? [[String:Any]] {
+            let d = arr[0];
+            
+            if let warn_level = d["grade"] as? String {
+                v.statusLable.backgroundColor = kFlightWarnLevelColor["\(warn_level)"];
+            }
+        }
         
         return v
     }

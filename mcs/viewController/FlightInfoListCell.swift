@@ -35,9 +35,13 @@ class FlightInfoListCell: UICollectionViewCell {
 //        layer.borderColor = UIColor.lightGray.cgColor
 //        layer.borderWidth = 1
         
-        
+        warn_tap.isHidden = true        
     }
 
+    override func prepareForReuse() {
+        warn_tap.isHidden = true
+    }
+    
     
     func fillCell(_ dic:[String:Any] , show:Bool? = false , left:Bool = true)  {
         let fltno = left ? "fromFltNo":"toFltNo"

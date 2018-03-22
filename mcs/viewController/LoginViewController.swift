@@ -19,6 +19,8 @@ class LoginViewController: BaseViewController,UITableViewDelegate,UITableViewDat
     var username_tf:UITextField!
     var pwd_tf:UITextField!
     
+    var _selectedValue = [Int:Any]()
+    
     //test
 //    let u_name = "test"
 //    let u_pwd = "111111"
@@ -26,30 +28,52 @@ class LoginViewController: BaseViewController,UITableViewDelegate,UITableViewDat
     let u_name = "offline"
     let u_pwd = "111111"
 
+    override func awakeFromNib() {
+
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        _initSubview();
+        get_basedata();
         
+        _initSubview();
+        loginTableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 15);
     }
 
     func _initSubview() {
-        //...
+
         loginTableView.register(UITableViewCell.self, forCellReuseIdentifier: "UITableViewCellReuseIdentifier")
         
         let _footview = footview()
         //footview.frame =  CGRect (x: 0, y: 0, width: 500, height: 100)
         loginTableView.tableFooterView = _footview
- 
+        
+        loginTableView.rowHeight = 60;
+
+        loginTableView.separatorColor = kTableviewBackgroundColor
+
     }
     
+    //MARK: -
+    func get_basedata() {
+        HUD.show()
+        netHelper_request(withUrl: get_basedata_url, method: .post, parameters: nil, successHandler: {[weak self] (result) in
+            guard let body = result["body"] as? [String : Any] else {return;}
+            //guard let strongSelf = self else{return}
+            HUD.dismiss()
+            
+            kBASE_DATA = body
+            
+            }
+        )
+    }
+
     
     func footview() -> UIView {
        let _view = UIView (frame: CGRect (x: 0, y: 0, width: 500, height: 100))
-        let line = UILabel (frame: CGRect (x: 15, y: 0, width: 500 - 15, height: 0.5))
-        line.backgroundColor = UIColor.lightGray
-        line.alpha = 0.7
+        let line = UILabel (frame: CGRect (x: 15, y: 0, width: 500 - 30, height: 0.5))
+        line.backgroundColor = kTableviewBackgroundColor
         _view.addSubview(line)
         
        let _s = UISwitch (frame: CGRect (x: 500 - 60, y: 8, width: 60, height: 30))
@@ -61,7 +85,6 @@ class LoginViewController: BaseViewController,UITableViewDelegate,UITableViewDat
         info.textColor = UIColor.lightGray
         info.text = "Shift Info"
         _view.addSubview(info)
-        
         _view.addSubview(_s)
         
         for i in 0..<2 {
@@ -70,9 +93,8 @@ class LoginViewController: BaseViewController,UITableViewDelegate,UITableViewDat
             btn.setTitle(i == 0 ? "登录":"重置", for: .normal)
             btn.addTarget(self, action: #selector(buttonAction(_ :)), for: .touchUpInside)
             btn.tag = 100 + i;
-            btn.layer.cornerRadius = 5
-            btn.layer.masksToBounds = true
-            
+            btn.layer.cornerRadius = 8
+            btn.layer.masksToBounds = true            
             _view.addSubview(btn)
         }
         
@@ -84,41 +106,27 @@ class LoginViewController: BaseViewController,UITableViewDelegate,UITableViewDat
         if btn.tag == 100 {
             //...
             guard let name = username_tf.text, let pwd = pwd_tf.text else {
-                HUD.show(info: "用户名或密码不能为空!")
-                return
+                HUD.show(info: "用户名或密码不能为空!"); return
             }
 
             HUD.show(withStatus: "登录中...")
             netHelper_request(withUrl: login_url, method: .post, parameters: ["username":name,"password":pwd], successHandler: { (result) in
-                
                 HUD.show(successInfo: "登录成功!")
                 //数据保存
-                guard let token = result["body"] else {
-                    return;
-                }
+                guard let token = result["body"] else {return;}
                 
                 UserDefaults.standard.set(token, forKey: "user-token")
                 UserDefaults.standard.set(name, forKey: "user-name")
                 UserDefaults.standard.synchronize()
                 
-                //页面跳转
-//                let vc = HomeViewController()
-//                let vc2 = HistoryFaultController()
-//                let vc3 = PlaneInfoController()
-                
                 let tab = BaseTabBarController()
-                
-//                let nav = BaseNavigationController(rootViewController:tab)
-//                nav.navigationBar.barTintColor = UIColor.white
-//                nav.navigationBar.tintColor = UIColor.red
-                
                 UIApplication.shared.keyWindow?.rootViewController = tab
                 }
             )
         }else{
             //....清空数据
-            
-            print("reset")
+            _selectedValue.removeAll()
+            loginTableView.reloadData()
         }
         
     }
@@ -136,23 +144,13 @@ class LoginViewController: BaseViewController,UITableViewDelegate,UITableViewDat
         return isOpenAll ? 5 : 2
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row < 2 {
-            return 60
-        }else{
-            return isOpenAll ? 60 : 0
-        }
-        
-    }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCellReuseIdentifier", for: indexPath)
         
         for _v  in cell.subviews {
-            if _v.isKind(of: UITextField.self){
+            if _v.isKind(of: UIView.self) && _v.tag == 101 {
                 _v.removeFromSuperview()
             }
-            
         }
         
         if indexPath.row == 0 {
@@ -171,6 +169,7 @@ class LoginViewController: BaseViewController,UITableViewDelegate,UITableViewDat
             username.leftView = v0;
             username.leftViewMode = .always;
             username.text = u_name
+            username.tag = 101
             username_tf = username;
             
         }else if indexPath.row == 1 {
@@ -185,24 +184,40 @@ class LoginViewController: BaseViewController,UITableViewDelegate,UITableViewDat
             let v1 = UIView.init(frame: CGRect.init(x: 0, y: 5, width: 35, height: 30))
             let pwdleftv = UIImageView.init(image: UIImage.init(imageLiteralResourceName: "user_pwd"))
             pwdleftv.frame = CGRect.init(x: 10, y: (v1.frame.height - 16)/2.0, width: 16, height: 16)
+            userpwd.tag = 101
             v1.addSubview(pwdleftv)
             userpwd.leftView = v1;
             userpwd.leftViewMode = .always;
             userpwd.text = u_pwd
             pwd_tf = userpwd;
             
-        }
-        
-        if indexPath.row > 1 {
+        } else {
+            
             cell.textLabel?.text = titleArr[indexPath.row]
             cell.textLabel?.textColor = UIColor.darkGray
-            cell.textLabel?.font  = UIFont.systemFont(ofSize: 16)
+            cell.textLabel?.font  = UIFont.systemFont(ofSize: 15)
+            
+            let detail = UILabel (frame: CGRect (x: cell.frame.width - 130, y: 0, width: 100, height: cell.frame.height))
+            if indexPath.row == 2 {
+               if  let obj = _selectedValue[indexPath.row] as? [String:String] {
+                    detail.text = obj["value"]
+                }
+            }else {
+                let s  =  _selectedValue[indexPath.row] as? String;
+                detail.text = s
+            }
+            
+            
+            detail.textAlignment = .left
+            detail.font  = UIFont.systemFont(ofSize: 15)
+            //detail.textColor = UIColor.lightGray
+            detail.tag = 101
+            cell.addSubview(detail)
         }
 
         cell.selectionStyle = .none
         cell.backgroundColor = UIColor.clear
         cell.accessoryType = indexPath.row > 1 ? .disclosureIndicator : .none
-        
         return cell
     }
     
@@ -210,25 +225,30 @@ class LoginViewController: BaseViewController,UITableViewDelegate,UITableViewDat
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard indexPath.row > 1 else {return }
         
-        var vc:UIViewController = UIViewController()
+        var vc = BasePickerViewController()
         let frame = CGRect (x: 0, y: 0, width: 500, height: 240)
         
         switch indexPath.row {
             case 2,4:
                 vc = DataPickerController()
+                vc.dataType = indexPath.row == 2 ? PickerDataSourceItemTpye.obj : .str
+                if let station = kBASE_DATA[indexPath.row == 2 ? "shifts" : "stations"] as? [Any] {
+                    vc.dataArray = station;
+                }
+                
                 break
-            case 3:
-                vc = DatePickerController()
-                break
-            case 4:
-                break
-
+            case 3:vc = DatePickerController();break
             default:break
         }
         
+        vc.pickerDidSelectedHandler = { [weak self] s in
+            guard let strongSelf = self else { return}
+            
+            strongSelf._selectedValue[indexPath.row] = s
+            strongSelf.loginTableView.reloadData()
+        }
 
         vc.view.frame = frame
-        
         let nav = BaseNavigationController(rootViewController:vc)
         nav.navigationBar.barTintColor = UIColor (colorLiteralRed: 0.212, green: 0.188, blue: 0.427, alpha: 1)
         nav.modalPresentationStyle = .formSheet
@@ -236,20 +256,12 @@ class LoginViewController: BaseViewController,UITableViewDelegate,UITableViewDat
         self.present(nav, animated: true, completion: nil)
     }
 
+    
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
