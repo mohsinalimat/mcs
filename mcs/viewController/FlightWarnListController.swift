@@ -89,7 +89,9 @@ class FlightWarnListController: BaseViewController ,UITableViewDelegate,UITableV
     func get_flight_info() {
         HUD.show(withStatus: "Loading...")
         
-        let d = ["fltDate":"\(fltDate!.substring(to: fltDate.index(fltDate.startIndex, offsetBy: 10)))","fltNo":"\(fltNo!)"]
+        let d = ["fltDate":"\(fltDate!.substring(to: fltDate.index(fltDate.startIndex, offsetBy: 10)))",
+            "fltNo":"\(fltNo!)"]
+        
         netHelper_request(withUrl: get_flightInfo_url, method: .post, parameters: d, successHandler: { [weak self](result) in
             HUD.dismiss()
             guard let body = result["body"] as? [String : Any] else {return;}
@@ -110,10 +112,10 @@ class FlightWarnListController: BaseViewController ,UITableViewDelegate,UITableV
         //            "endDate":Tools.dateToString(Tools.date("\(fltDic["sta"]!)")!, formatter: "yyyy/MM/dd HH:mm:ss")
         //        ]
         //...
-        let d = ["aircraftNo":"B-MBM",
-                 "flightNo":"NX825",
-                 "beginDate":"2018/02/25 11:00:00",
-                 "endDate":"2018/02/26 22:59:59"
+        let d = ["aircraftNo":fltDic["acReg"]!,
+                 "flightNo":"NX\(fltNo!)",
+                 "beginDate":"2018/03/17 00:00:00",
+                 "endDate":"2018/03/19 23:59:59"
         ]
         //TODO:
         

@@ -24,15 +24,11 @@ class HomeCellTrackView: UIView {
     
     private let start_point = CGPoint (x: 45, y: 25)
     private let radius:CGFloat = 2
-    
     private var _total_width:CGFloat = 0
     
     //MARK:
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
-        
-        print(#function)
+        //print(#function)
         
         // Drawing code
         let ctx = UIGraphicsGetCurrentContext()
@@ -52,14 +48,10 @@ class HomeCellTrackView: UIView {
         ctx?.addArc(center: CGPoint (x: p6.x + radius, y: start_point.y), radius: radius, startAngle: 0, endAngle:  CGFloat.init(360) , clockwise: false)
         ctx?.fillPath()
         ctx?.strokePath()
-        
-        
-        //addPath(plane_location_index);
     }
     
     override func awakeFromNib() {
-        print(#function)
-        
+        //print(#function)
         super.awakeFromNib()
         
         start_station = UILabel()
@@ -78,42 +70,42 @@ class HomeCellTrackView: UIView {
     //MARK: - display
     var plane_location_index:Int = 0
     var scale_x : TimeInterval = 0
-    
     func displayMsg(_ dic:[String:Any]) {
-        print(#function)
-        
+        //print(#function)
         start_station.text =  String.stringIsNullOrNil(dic["depApt"])
         arrive_station.text = String.stringIsNullOrNil(dic["arrApt"])
-
         scale_x = 0;
         
         ////////
         if let std = dic["std"] , let sta =  dic["sta"] {
-
             let s1 = TimeInterval.init("\(std)")
             let s2 = TimeInterval.init("\(sta)")
             let interval = s2! - s1!
             
             let _now = Date().timeIntervalSince1970;
-            
             let scale = (_now * TimeInterval.init(1000) - s1!) / interval
-            
             if scale > 0 {
                 scale_x = scale;
             }
             
-            print(scale_x)
+            if scale > 1 {
+                scale_x = 1;
+            }
         }
         
+        if p1 != nil {
+            _total_width = (self.frame.width - 100)
+            let new = CGFloat.init(scale_x) * _total_width
+            
+            planeIcon.center = CGPoint (x: p1.x + new, y: p1.y);
+            addPath(plane_location_index);
+        }
         
-        
-       //plane_location_index = Int(arc4random_uniform(3))
-
     }
     
 
     override func layoutSubviews() {
-        print(#function)
+        //print(#function)
         
         let _w = (self.frame.width - 100)/4.0
         p1 = CGPoint (x: start_point.x + radius, y: start_point.y)
@@ -122,7 +114,6 @@ class HomeCellTrackView: UIView {
         p4 = CGPoint (x: p3.x + _w , y: start_point.y - 0)
         p5 = CGPoint (x: p4.x + _w * 0.5, y: start_point.y)
         p6 = CGPoint (x: p5.x + _w , y: start_point.y)
-        
         _total_width = (self.frame.width - 100)
         
         //START-END
@@ -168,7 +159,6 @@ class HomeCellTrackView: UIView {
 
         let new = CGFloat.init(scale_x) * _total_width
         igv?.center = CGPoint (x: p1.x + new, y: p1.y)
-        
         planeIcon.center = CGPoint (x: p1.x + new, y: p1.y);
         
         /*let i = plane_location_index
@@ -181,47 +171,50 @@ class HomeCellTrackView: UIView {
             case 2: planeIcon.center = p6;break
             default:break
         }*/
-        
-        
-
-        
 
     }
     
 
     let strole_color = UIColor (colorLiteralRed: 53/255.0, green: 138/255.0, blue: 216/255.0, alpha: 1).cgColor
-    
     func addPath(_ loc:Int)  {
+        
+        if let layers = self.layer.sublayers {
+            for _layer in layers {
+                if _layer is CAShapeLayer {
+                    _layer.removeFromSuperlayer();
+                }
+            }
+        }
+
+        ///////
         let p = UIBezierPath.init()
         let circle = UIBezierPath.init(arcCenter: start_point, radius: radius, startAngle: 0, endAngle:  CGFloat.init(360), clockwise: true)
         p.append(circle)
-        
         p.move(to: p1);
         p.addLine(to: planeIcon.center)
-        
         
         let layer = CAShapeLayer.init()
         layer.fillColor = strole_color
         layer.lineWidth = 1
-
         layer.strokeColor = strole_color
         layer.path = p.cgPath
         layer.fillRule = kCAFillRuleEvenOdd
-        
         layer.strokeEnd = 1
         
         self.layer.addSublayer(layer)
-        
-        
     }
     
     
     
-    
+//    awakeFromNib()
 //    displayMsg()
 //    layoutSubviews()
 //    layoutSubviews()
 //    draw
     
+////...子视图xib加载过程，有待研究？
+//    awakeFromNib()
+//    layoutSubviews()
+//    draw
     
 }

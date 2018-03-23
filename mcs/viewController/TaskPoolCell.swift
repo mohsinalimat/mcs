@@ -10,14 +10,50 @@ import UIKit
 
 class TaskPoolCell: UITableViewCell {
 
+    @IBOutlet weak var taskNo: UILabel!
+    @IBOutlet weak var actions: UILabel!
+    @IBOutlet weak var from: UILabel!
+    @IBOutlet weak var to: UILabel!
+    
+    @IBOutlet weak var fltno: UILabel!
+    
+    @IBOutlet weak var descri: UILabel!
+    
+    @IBOutlet weak var reason: UILabel!
+    
+    @IBOutlet weak var to_sb: UILabel!
+    
+    @IBOutlet weak var r_igv: UIImageView!
+    @IBOutlet weak var p_igv: UIImageView!
+    @IBOutlet weak var cld_igv: UIImageView!
+    
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
     
-    override func draw(_ rect: CGRect) {
+    func fill(_ d:[String:Any]) {
+        taskNo.text = String.stringIsNullOrNil(d["taskNo"])
         
+        from.text = String.stringIsNullOrNil(d["mh"])
+        to.text = String.stringIsNullOrNil(d["finalAction"])
+        
+        fltno.text = String.stringIsNullOrNil(d["fltNo"])
+        
+        
+        
+        
+        
+    }
+    
+    
+    
+    
+    override func draw(_ rect: CGRect) {
+        //画虚线
         let ctx = UIGraphicsGetCurrentContext()
         
         ctx?.setStrokeColor(UIColor.lightGray.cgColor)

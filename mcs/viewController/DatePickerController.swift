@@ -28,6 +28,18 @@ class DatePickerController: BasePickerViewController {
         _init()
     }
 
+    init(_ formatter:String? = "yyyy") {
+        super.init(nibName: nil, bundle: nil)
+        
+        
+        
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+
     
     func _init() {
         
@@ -62,8 +74,8 @@ class DatePickerController: BasePickerViewController {
     override func finishedBtnAction()  {
 
         if let handler = pickerDidSelectedHandler {
-            let str = dateToString(datePicker.date,formatter: "yyyy-MM-dd")
-            handler(str);
+            //let str = dateToString(datePicker.date,formatter: "yyyy-MM-dd")
+            handler(datePicker.date);
         }
         
         self.dismiss(animated: true, completion: nil)

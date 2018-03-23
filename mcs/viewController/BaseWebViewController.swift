@@ -21,7 +21,7 @@ class BaseWebViewController: BaseViewController,UIWebViewDelegate,UIGestureRecog
         webview = UIWebView.init(frame: CGRect (x: 0, y: 0, width: kCurrentScreenWidth, height: kCurrentScreenHeight - 64))
         webview.delegate = self
         //webview.scrollView.bounces = false
-        webview.backgroundColor = kTableviewBackgroundColor;
+        webview.backgroundColor = UIColor.white //kTableviewBackgroundColor;
         view.addSubview(webview)
         
         ////add UILongPressGestureRecognizer
@@ -53,7 +53,7 @@ class BaseWebViewController: BaseViewController,UIWebViewDelegate,UIGestureRecog
     
     func loadData(){}
     func requestWithUrl(_ url:String,parameters:[String:Any]? = nil) {
-        HUD.show(withStatus: "Loading...")
+        HUD.show(withStatus: msg_loading)
         
         netHelper_request(withUrl: url, method: .post, parameters: parameters, successHandler: {[weak self] result in
             guard let body = result["body"] as? String else {HUD.show(info: "请求服务器失败");return;}

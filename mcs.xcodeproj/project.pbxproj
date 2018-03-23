@@ -62,6 +62,7 @@
 		A1BC1F4C2015C733007D0E1C /* WarnListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1BC1F4A2015C733007D0E1C /* WarnListCell.xib */; };
 		A1C0A3D8200DF04F00A1762C /* TTRefreshFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C0A3D6200DF04B00A1762C /* TTRefreshFooter.swift */; };
 		A1C0A3D9200DF04F00A1762C /* TTRefreshHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C0A3D7200DF04B00A1762C /* TTRefreshHeader.swift */; };
+		A1C1BB522064C6D700A92B9B /* TaskPoolDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C1BB512064C6D600A92B9B /* TaskPoolDetailController.swift */; };
 		A1C26DA9204FB76700B11F63 /* FlightWarnListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C26DA7204FB76700B11F63 /* FlightWarnListController.swift */; };
 		A1C26DAA204FB76700B11F63 /* FlightWarnListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1C26DA8204FB76700B11F63 /* FlightWarnListController.xib */; };
 		A1C26DAD204FBA2700B11F63 /* FlightWarnListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C26DAB204FBA2700B11F63 /* FlightWarnListCell.swift */; };
@@ -162,6 +163,7 @@
 		A1BC1F4A2015C733007D0E1C /* WarnListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WarnListCell.xib; sourceTree = "<group>"; };
 		A1C0A3D6200DF04B00A1762C /* TTRefreshFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTRefreshFooter.swift; sourceTree = "<group>"; };
 		A1C0A3D7200DF04B00A1762C /* TTRefreshHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTRefreshHeader.swift; sourceTree = "<group>"; };
+		A1C1BB512064C6D600A92B9B /* TaskPoolDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskPoolDetailController.swift; sourceTree = "<group>"; };
 		A1C26DA7204FB76700B11F63 /* FlightWarnListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlightWarnListController.swift; sourceTree = "<group>"; };
 		A1C26DA8204FB76700B11F63 /* FlightWarnListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FlightWarnListController.xib; sourceTree = "<group>"; };
 		A1C26DAB204FBA2700B11F63 /* FlightWarnListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlightWarnListCell.swift; sourceTree = "<group>"; };
@@ -427,6 +429,7 @@
 				A1AAF1472049167600E8CB3B /* TaskPoolBaseController.xib */,
 				A1E5C10C2048EAF800511F58 /* TaskPoolViewController.swift */,
 				A1E5C10D2048EAF900511F58 /* TaskPoolViewController.xib */,
+				A1C1BB512064C6D600A92B9B /* TaskPoolDetailController.swift */,
 			);
 			name = taskPool;
 			sourceTree = "<group>";
@@ -679,6 +682,7 @@
 				A12028622008A1C200CB8633 /* Reachability.m in Sources */,
 				A1BC1F392015ABEB007D0E1C /* FlightInfoDetailController.swift in Sources */,
 				A1D15D8C20464466004A2C58 /* WarnFaultInfoCell.swift in Sources */,
+				A1C1BB522064C6D700A92B9B /* TaskPoolDetailController.swift in Sources */,
 				A1A6B26D2011944C00F7D048 /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
 				A120285B2008A1AB00CB8633 /* Extension.swift in Sources */,
 				A120283F2008938100CB8633 /* BasePickerViewController.swift in Sources */,

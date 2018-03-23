@@ -15,6 +15,17 @@ class TaskHandCell: UITableViewCell {
         // Initialization code
     }
 
+    
+    
+    
+    func fill(_d:[String:Any]? , first:Bool = false) {
+        
+        
+        
+    }
+    
+    
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

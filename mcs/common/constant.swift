@@ -16,8 +16,7 @@ var APP_IS_BACKGROUND:Bool = false //app是否处于后台
 
 let user_token = UserDefaults.standard.value(forKey: "user-token")
 
-//MARK: - url
-
+//MARK: -  url
 
 #if false
     
@@ -51,8 +50,32 @@ let get_warn_list_url = "/alarm/list" //航班告警列表
 let get_warn_info_url = "/alarm/detail"///{alarm_id} 告警详情-GET请求
 
 ////base
-let get_basedata_url = "/biz/data/mobile/active" //基础数据
+let get_basedata_url = "/biz/mobile/data/active" //基础数据
+
 let get_basedata2_url = "/biz/data/mobile/basic"//// biz/data/basic
+
+/* 获取mcs中航线部门工作库数据
+ 必须shift:'74f3c2d68ac34fcfb03963a428865055', // 班次id
+ 必须scheduleTime:'26/02/2018', // 日期
+ 可选的 station: 'MFM' // 航站
+ */
+let task_pool_url = "/biz/task/pooldata"
+
+/*获取mcs航线工作库中任务的详情
+必须taskId:' 708cd28b-f508-11e7-933d-448a5be48bfb', // 工作库列表中获取的taskId
+可选 shiftId: '4835345483935fehiur32321edswqrwq', // 当前登录的班次id
+可选 date: ' 26/02/2018', // 日期
+ */
+let task_pooldetail_url = "/biz/task/detail"
+
+
+
+/// 提交故障信息到mcs 系统中
+
+let submit_fault_url = "/biz/fault"
+
+
+
 
 
 
@@ -64,6 +87,13 @@ var kFlightInfoListController_flightDate:String! //航班日期
 var kFlightInfoListController_airId:String!//飞机ID
 
 var kBASE_DATA:[String:Any]!
+
+var kCurrent_shift:[String:String]?
+var kCurrent_station:String?
+var kCurrent_date:Date?
+
+//MARK:
+let msg_loading = "Loading"
 
 
 

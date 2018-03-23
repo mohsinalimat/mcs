@@ -30,8 +30,12 @@ class FlightInfoListController: BaseViewController,UICollectionViewDelegate,UICo
         let vc = DatePickerController()
         vc.view.frame = frame
         vc.pickerDidSelectedHandler = { s in
-            sender.setTitle("\(s)", for: .normal);
-            kFlightInfoListController_flightDate = "\(s)"
+            let date = s as! Date
+            let str = Tools.dateToString(date, formatter: "yyyy-MM-dd")
+            
+            
+            sender.setTitle("\(str)", for: .normal);
+            kFlightInfoListController_flightDate = "\(str)"
             
             self.get_flight_data()
         }

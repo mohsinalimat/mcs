@@ -10,11 +10,22 @@ import UIKit
 
 class TaskActionCell: UITableViewCell {
 
+    @IBOutlet weak var msg: UILabel!
+    
+    @IBOutlet weak var actions: UILabel!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
+    func fill(_d:[String:Any]? , first:Bool = false) {
+        
+        actions.isHidden = !first
+        
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

@@ -202,6 +202,10 @@ class LoginViewController: BaseViewController,UITableViewDelegate,UITableViewDat
                if  let obj = _selectedValue[indexPath.row] as? [String:String] {
                     detail.text = obj["value"]
                 }
+            } else if indexPath.row == 3 {
+                if  let obj = _selectedValue[indexPath.row] as? Date {
+                    detail.text = Tools.dateToString(obj, formatter: "yyyy-MM-dd")
+                }
             }else {
                 let s  =  _selectedValue[indexPath.row] as? String;
                 detail.text = s
@@ -237,12 +241,27 @@ class LoginViewController: BaseViewController,UITableViewDelegate,UITableViewDat
                 }
                 
                 break
-            case 3:vc = DatePickerController();break
+            case 3:vc = DatePickerController();
+            
+            break
             default:break
         }
         
         vc.pickerDidSelectedHandler = { [weak self] s in
             guard let strongSelf = self else { return}
+            if indexPath.row == 2 {
+                let obj = s as! [String:String]
+                kCurrent_shift = obj
+            }else if indexPath.row == 3 {
+                let obj = s as! Date
+                kCurrent_date = obj
+
+            }else if indexPath.row == 4 {
+                let obj = s as! String
+                kCurrent_station = obj
+                
+            }
+            
             
             strongSelf._selectedValue[indexPath.row] = s
             strongSelf.loginTableView.reloadData()
