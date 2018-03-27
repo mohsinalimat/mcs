@@ -20,9 +20,11 @@ class TaskActionCell: UITableViewCell {
         // Initialization code
     }
 
-    func fill(_d:[String:Any]? , first:Bool = false) {
+    func fill(_ d:[String:Any]? , first:Bool = false) {
         
         actions.isHidden = !first
+        
+        msg.text = String.stringIsNullOrNil(d?["actionDetail"])
         
     }
     

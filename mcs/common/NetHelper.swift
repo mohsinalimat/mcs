@@ -52,7 +52,7 @@ func netHelper_request(withUrl:String,
                        method:HTTPMethod = .get,
                        parameters:[String:Any]? = nil,
                        successHandler:(([String:Any]) -> Void)? = nil,
-                       failureHandler:((Error?) -> Void)? = nil)
+                       failureHandler:((String?) -> Void)? = nil)
 {
     guard withUrl.lengthOfBytes(using: String.Encoding.utf8) > 0 else { return}
     
@@ -62,19 +62,21 @@ func netHelper_request(withUrl:String,
     }
     
     
-    Alamofire.request(BASE_URL + withUrl, method: method, parameters: parameters, encoding: URLEncoding.default, headers: header).responseJSON { (dataResponse) in
+    Alamofire.request(BASE_URL + withUrl, method: method, parameters: parameters, encoding: URLEncoding.default, headers: header).validate().responseJSON { (dataResponse) in
         DispatchQueue.main.async {
-            if let dic = dataResponse.result.value as? [String:Any] ,let status = dic["state"] ,"\(status)" == "200" {
-                if let success = successHandler {
-                    success(dic);
+            if let dic = dataResponse.result.value as? [String:Any] ,let status = dic["state"] {
+                if "\(status)" == "200" {
+                    if let success = successHandler {
+                        success(dic);
+                    }
+
+                }else{
+                    if let failure = failureHandler {
+                        failure(dic["msg"] as? String)
+                        
+                    }
                 }
-            }else{
                 
-                if let failure = failureHandler {
-                    print("请求服务器错误 ： \(dataResponse.error?.localizedDescription)")
-                    failure(dataResponse.error)
-                    HUD.show(info: dataResponse.error?.localizedDescription ?? "请求服务器失败!")
-                }
             }
         }
     }

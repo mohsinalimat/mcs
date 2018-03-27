@@ -85,6 +85,7 @@ let submit_fault_url = "/biz/fault"
 ///vc constant
 var kFlightInfoListController_flightDate:String! //航班日期
 var kFlightInfoListController_airId:String!//飞机ID
+var kFlightInfoListController_fltNo:String!//飞机航班号
 
 var kBASE_DATA:[String:Any]!
 

@@ -15,28 +15,37 @@
                 <frame key="frameInset" width="1024" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="730 080 53 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FXc-fq-Su1">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FXc-fq-Su1">
+                        <constraints>
+                            <constraint firstAttribute="width" constant="100" id="Fnu-60-94c"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2018-01-22" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uL9-8Q-JPx">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uL9-8Q-JPx">
+                        <constraints>
+                            <constraint firstAttribute="width" constant="125" id="TG7-Su-ZtQ"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UIVisualEffectView 0x144d4ad00&gt; is being asked to animate its " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6sP-Z1-Osr">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6sP-Z1-Osr">
                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="6sP-Z1-Osr" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="5" id="1Sv-hs-jPP"/>
                     <constraint firstItem="6sP-Z1-Osr" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="D4W-Vm-j03"/>
-                    <constraint firstItem="FXc-fq-Su1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="15" id="H9O-Ee-iq5"/>
-                    <constraint firstItem="6sP-Z1-Osr" firstAttribute="leading" secondItem="FXc-fq-Su1" secondAttribute="trailing" constant="15" id="Ijx-5V-uMW"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="uL9-8Q-JPx" secondAttribute="trailing" constant="30" id="Y99-2e-4oK"/>
+                    <constraint firstItem="FXc-fq-Su1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="H9O-Ee-iq5"/>
+                    <constraint firstItem="6sP-Z1-Osr" firstAttribute="leading" secondItem="FXc-fq-Su1" secondAttribute="trailing" constant="5" id="Ijx-5V-uMW"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="uL9-8Q-JPx" secondAttribute="trailing" constant="20" id="Y99-2e-4oK"/>
                     <constraint firstItem="FXc-fq-Su1" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="dJN-2P-Wo8"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="6sP-Z1-Osr" secondAttribute="bottom" constant="5" id="kMT-Qa-E9b"/>
                     <constraint firstItem="uL9-8Q-JPx" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="uZ1-Jd-am2"/>
+                    <constraint firstItem="uL9-8Q-JPx" firstAttribute="leading" secondItem="6sP-Z1-Osr" secondAttribute="trailing" constant="20" id="vHS-rU-xCv"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

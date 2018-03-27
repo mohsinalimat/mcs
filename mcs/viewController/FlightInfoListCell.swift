@@ -35,11 +35,15 @@ class FlightInfoListCell: UICollectionViewCell {
 //        layer.borderColor = UIColor.lightGray.cgColor
 //        layer.borderWidth = 1
         
-        warn_tap.isHidden = true        
+        warn_tap.isHidden = true
+        iconImgWidth.constant = 0;
     }
 
     override func prepareForReuse() {
         warn_tap.isHidden = true
+        flightNo.text = nil
+        iconImgWidth.constant = 0;
+        
     }
     
     
@@ -65,12 +69,13 @@ class FlightInfoListCell: UICollectionViewCell {
             sta.text = Tools.dateToString(d, formatter: "HHmm")
         }*/
         
-        
-        ////
-        if let b = show {
-            if !b {
-                iconImgWidth.constant = 0;
-            }
+
+        if flightNo.text == kFlightInfoListController_fltNo {
+            
+            iconImgWidth.constant = 40;
+            
+        }else {
+            iconImgWidth.constant = 0;
         }
         
     }

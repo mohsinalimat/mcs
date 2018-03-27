@@ -139,12 +139,12 @@ class TaskPoolViewController: BaseViewController,UITableViewDelegate,UITableView
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if let list = dataArray[section]["actionList"] as? [String], list.count > 0 {
+        if let list = dataArray[section]["actionList"] as? [[String:Any]], list.count >= 0 {
             return list.count + 1;
         }
         
         
-        return 5
+        return 1
     }
     
     
@@ -154,14 +154,17 @@ class TaskPoolViewController: BaseViewController,UITableViewDelegate,UITableView
             if indexPath.row == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TaskPoolCellIdentifier", for: indexPath) as! TaskPoolCell
                 
-                let d = dataArray[indexPath.row]
+                let d = dataArray[indexPath.section]
                 
                 cell.fill( d)
                 
                 return cell
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TaskActionCellIdentifier", for: indexPath) as! TaskActionCell
-                cell.fill(_d: nil, first: indexPath.row == 1);
+                let d = dataArray[indexPath.section]
+                if let _actions = d["actionList"] as? [[String:Any]]{
+                    cell.fill( _actions[indexPath.row - 1], first: indexPath.row == 1);
+                }
                 
                 return cell
             }
@@ -179,22 +182,23 @@ class TaskPoolViewController: BaseViewController,UITableViewDelegate,UITableView
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if type == 0 {
-            return indexPath.row == 0 ? 75 : 30;
+            return indexPath.row == 0 ? 90 : 30;
         }else {
             return 80;
         }
         
     }
 
+    let _sectinHeight:CGFloat = 40
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 30
+        return _sectinHeight
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let v = UIView (frame: CGRect (x: 0, y: 0, width: tableView.frame.width, height: 30))
+        let v = UIView (frame: CGRect (x: 0, y: 0, width: tableView.frame.width, height: _sectinHeight))
         v.backgroundColor = UIColor.white
         
-        let lable = UILabel (frame: CGRect (x: 20, y: 0, width: tableView.frame.width - 20, height: 30))
+        let lable = UILabel (frame: CGRect (x: 20, y: _sectinHeight - 30, width: tableView.frame.width - 20, height: 30))
         if let d = dataArray[section]["ac"]  as? String {
             lable.text = d
         }
@@ -208,8 +212,7 @@ class TaskPoolViewController: BaseViewController,UITableViewDelegate,UITableView
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        
+
         let vc = TaskPoolDetailController()
         self.navigationController?.pushViewController(vc, animated: true)
     }

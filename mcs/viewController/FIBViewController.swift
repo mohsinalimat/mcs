@@ -36,7 +36,7 @@ class FIBViewController: BaseWebViewController {
         msgBtn.addTarget(self, action: #selector(selectDateAction(_ :)), for: .touchUpInside)
         msgBtn.setTitle("200", for: .normal)
         msgBtn.setTitleColor(kButtonTitleDefaultColor, for: .normal)
-        msgBtn.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+        msgBtn.titleLabel?.font = UIFont.systemFont(ofSize: 16)
         
         currentDateStr = Tools.dateToString(Date(), formatter: "yyyy-MM-dd")
         msgBtn.setTitle(currentDateStr, for: .normal)
@@ -70,6 +70,7 @@ class FIBViewController: BaseWebViewController {
         }
         
         let nav = BaseNavigationController(rootViewController:vc)
+        nav.navigationBar.barTintColor = kPop_navigationBar_color
         nav.modalPresentationStyle = .formSheet
         nav.preferredContentSize = frame.size
         self.present(nav, animated: true, completion: nil)

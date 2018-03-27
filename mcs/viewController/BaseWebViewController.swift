@@ -36,7 +36,7 @@ class BaseWebViewController: BaseViewController,UIWebViewDelegate,UIGestureRecog
         let msgBtn = UIButton (frame: CGRect (x: 0, y: 5, width: 50, height: 40))
         msgBtn.addTarget(self, action: #selector(_refreshAction), for: .touchUpInside)
         msgBtn.setImage(UIImage (named: "refreshicon_dynamic_titlebar"), for: .normal);
-        msgBtn.imageEdgeInsets = UIEdgeInsetsMake(10, 15, 10, 15)
+        msgBtn.imageEdgeInsets = UIEdgeInsetsMake(13, 15, 13, 15)
         
         let fixed = UIBarButtonItem (barButtonSystemItem: .fixedSpace, target: nil, action: nil)
         fixed.width = 15
@@ -61,7 +61,7 @@ class BaseWebViewController: BaseViewController,UIWebViewDelegate,UIGestureRecog
 
             strongSelf.webview.loadHTMLString(body, baseURL: nil)
         }) { error in
-            HUD.show(info: error?.localizedDescription ?? "请求服务器失败")
+            HUD.show(info: error ?? "请求服务器失败")
         }
     }
     

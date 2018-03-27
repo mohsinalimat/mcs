@@ -25,8 +25,8 @@ class LoginViewController: BaseViewController,UITableViewDelegate,UITableViewDat
 //    let u_name = "test"
 //    let u_pwd = "111111"
     
-    let u_name = "offline"
-    let u_pwd = "111111"
+    var u_name = "offline"
+    var u_pwd = "111111"
 
     override func awakeFromNib() {
 
@@ -58,9 +58,8 @@ class LoginViewController: BaseViewController,UITableViewDelegate,UITableViewDat
     //MARK: -
     func get_basedata() {
         HUD.show()
-        netHelper_request(withUrl: get_basedata_url, method: .post, parameters: nil, successHandler: {[weak self] (result) in
+        netHelper_request(withUrl: get_basedata_url, method: .post, parameters: nil, successHandler: {(result) in
             guard let body = result["body"] as? [String : Any] else {return;}
-            //guard let strongSelf = self else{return}
             HUD.dismiss()
             
             kBASE_DATA = body
@@ -89,8 +88,8 @@ class LoginViewController: BaseViewController,UITableViewDelegate,UITableViewDat
         
         for i in 0..<2 {
             let btn = UIButton (frame: CGRect (x: i == 0 ? 10:290, y: 60, width: 200, height: 40));
-            btn.backgroundColor = i == 0 ? UIColor.init(colorLiteralRed: 0.318, green: 0.243, blue: 0.533, alpha: 1):UIColor.lightGray;
-            btn.setTitle(i == 0 ? "登录":"重置", for: .normal)
+            btn.backgroundColor = i == 1 ? UIColor.init(colorLiteralRed: 0.318, green: 0.243, blue: 0.533, alpha: 1):UIColor.lightGray;
+            btn.setTitle(i == 1 ? "登录":"重置", for: .normal)
             btn.addTarget(self, action: #selector(buttonAction(_ :)), for: .touchUpInside)
             btn.tag = 100 + i;
             btn.layer.cornerRadius = 8
@@ -103,7 +102,7 @@ class LoginViewController: BaseViewController,UITableViewDelegate,UITableViewDat
     
     func buttonAction(_ btn:UIButton)  {
         
-        if btn.tag == 100 {
+        if btn.tag == 101 {
             //...
             guard let name = username_tf.text, let pwd = pwd_tf.text else {
                 HUD.show(info: "用户名或密码不能为空!"); return
@@ -121,11 +120,17 @@ class LoginViewController: BaseViewController,UITableViewDelegate,UITableViewDat
                 
                 let tab = BaseTabBarController()
                 UIApplication.shared.keyWindow?.rootViewController = tab
+                } , failureHandler: { err in
+                    HUD.show(info: err ?? "request error!")
                 }
+
             )
         }else{
-            //....清空数据
+            //清空数据
+            u_name = ""
+            u_pwd = ""
             _selectedValue.removeAll()
+            
             loginTableView.reloadData()
         }
         
@@ -269,7 +274,7 @@ class LoginViewController: BaseViewController,UITableViewDelegate,UITableViewDat
 
         vc.view.frame = frame
         let nav = BaseNavigationController(rootViewController:vc)
-        nav.navigationBar.barTintColor = UIColor (colorLiteralRed: 0.212, green: 0.188, blue: 0.427, alpha: 1)
+        nav.navigationBar.barTintColor = kPop_navigationBar_color
         nav.modalPresentationStyle = .formSheet
         nav.preferredContentSize = frame.size
         self.present(nav, animated: true, completion: nil)

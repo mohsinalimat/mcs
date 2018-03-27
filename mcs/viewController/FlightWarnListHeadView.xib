@@ -21,11 +21,6 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="告警等级" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="poA-HT-aQp">
-                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="12"/>
-                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R4U-9C-xcv">
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="Xns-Wj-EgX"/>
@@ -37,16 +32,14 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hgx-e1-r03"/>
             </subviews>
             <constraints>
-                <constraint firstItem="poA-HT-aQp" firstAttribute="centerY" secondItem="R4U-9C-xcv" secondAttribute="centerY" id="0mx-nu-7wj"/>
-                <constraint firstItem="To3-AV-J1S" firstAttribute="centerY" secondItem="poA-HT-aQp" secondAttribute="centerY" id="4y9-xz-dWk"/>
                 <constraint firstAttribute="trailing" secondItem="Hgx-e1-r03" secondAttribute="trailing" id="8F5-Fv-6sS"/>
                 <constraint firstItem="R4U-9C-xcv" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="30" id="OEo-yB-AY5"/>
+                <constraint firstItem="To3-AV-J1S" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Pt7-m9-83y"/>
                 <constraint firstItem="Hgx-e1-r03" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="T0x-g0-kWd"/>
                 <constraint firstAttribute="bottom" secondItem="Hgx-e1-r03" secondAttribute="bottom" id="lSE-Ld-VvR"/>
-                <constraint firstItem="poA-HT-aQp" firstAttribute="leading" secondItem="R4U-9C-xcv" secondAttribute="trailing" constant="80" id="lgZ-ub-Lpw"/>
-                <constraint firstItem="To3-AV-J1S" firstAttribute="leading" secondItem="poA-HT-aQp" secondAttribute="trailing" constant="5" id="rRX-Y8-ukD"/>
                 <constraint firstAttribute="bottom" secondItem="R4U-9C-xcv" secondAttribute="bottom" constant="5" id="rdL-Df-cxM"/>
                 <constraint firstItem="Hgx-e1-r03" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="u2A-GP-63o"/>
+                <constraint firstItem="To3-AV-J1S" firstAttribute="leading" secondItem="R4U-9C-xcv" secondAttribute="trailing" constant="134.5" id="y8F-or-F2V"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

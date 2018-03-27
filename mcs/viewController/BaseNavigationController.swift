@@ -28,11 +28,11 @@ class BaseNavigationController: UINavigationController {
         if self.viewControllers.count > 0 {
             let backbtn = UIButton (frame: CGRect (x: 0, y: 0, width: 50, height: 35))
             backbtn.setImage(UIImage (named: "leftbackicon_sdk_login"), for: .normal)
-            backbtn.imageEdgeInsets = UIEdgeInsetsMake(0, -8, 0, 20)
+            backbtn.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 20)
             backbtn.titleEdgeInsets = UIEdgeInsetsMake(0, -5, 0, 0)
             backbtn.addTarget(self, action: #selector(navigationBackButtonAction), for: .touchUpInside)
-            backbtn.setTitle("返回", for: .normal)
-            backbtn.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+            //backbtn.setTitle("返回", for: .normal)
+            backbtn.titleLabel?.font = UIFont.systemFont(ofSize: 16)
             backbtn.setTitleColor(UIColor.darkGray, for: .normal)
             let leftitem = UIBarButtonItem.init(customView: backbtn)
             viewController.navigationItem.leftBarButtonItem = leftitem

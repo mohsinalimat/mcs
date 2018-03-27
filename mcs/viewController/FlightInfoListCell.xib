@@ -92,7 +92,7 @@
                 <constraint firstItem="Lk8-UB-6Zw" firstAttribute="centerY" secondItem="ROP-9X-FTp" secondAttribute="centerY" id="8Sb-TQ-Vne"/>
                 <constraint firstItem="iHl-pB-2KG" firstAttribute="centerY" secondItem="QMl-j6-qnk" secondAttribute="centerY" id="Bh4-YS-NIP"/>
                 <constraint firstItem="4NJ-xz-Ntn" firstAttribute="leading" secondItem="kbM-RA-xuj" secondAttribute="leading" id="FbX-eV-j2d"/>
-                <constraint firstItem="ROP-9X-FTp" firstAttribute="leading" secondItem="0PN-ts-N10" secondAttribute="trailing" constant="20" id="Gxd-OR-LKB"/>
+                <constraint firstItem="ROP-9X-FTp" firstAttribute="leading" secondItem="0PN-ts-N10" secondAttribute="trailing" constant="25" id="Gxd-OR-LKB"/>
                 <constraint firstItem="Cyv-WR-mwo" firstAttribute="leading" secondItem="6ns-VU-0zW" secondAttribute="leading" id="H8F-jX-txP"/>
                 <constraint firstItem="ROP-9X-FTp" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="12" id="Kyj-bR-D0y"/>
                 <constraint firstItem="Cyv-WR-mwo" firstAttribute="centerY" secondItem="QMl-j6-qnk" secondAttribute="centerY" id="NDw-TU-AEc"/>
@@ -108,7 +108,7 @@
                 <constraint firstItem="iHl-pB-2KG" firstAttribute="centerX" secondItem="hv3-It-kVD" secondAttribute="centerX" id="pBe-KB-81S"/>
                 <constraint firstItem="4NJ-xz-Ntn" firstAttribute="centerY" secondItem="QMl-j6-qnk" secondAttribute="centerY" id="rhf-s8-IDc"/>
                 <constraint firstItem="7xb-cs-W85" firstAttribute="centerY" secondItem="QMl-j6-qnk" secondAttribute="centerY" id="tD3-hA-fQz"/>
-                <constraint firstItem="0PN-ts-N10" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="7" id="w9N-wD-oMk"/>
+                <constraint firstItem="0PN-ts-N10" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="w9N-wD-oMk"/>
                 <constraint firstAttribute="bottom" secondItem="djs-C4-OqD" secondAttribute="bottom" constant="5" id="x4B-id-C6l"/>
             </constraints>
             <size key="customSize" width="450" height="102"/>

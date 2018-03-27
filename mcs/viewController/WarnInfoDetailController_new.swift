@@ -121,6 +121,7 @@ class WarnInfoDetailController_new: BaseViewController,UITableViewDelegate,UITab
         return 0
     }
     
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         guard indexPath.section > 0 else { return 130 }
         guard indexPath.section > 1 else { return 40 }
@@ -128,9 +129,12 @@ class WarnInfoDetailController_new: BaseViewController,UITableViewDelegate,UITab
         return 30
     }
     
+    private let section1_header_h:CGFloat = 60
+    private let section1_footer_h:CGFloat = 100
+
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 1 {
-            return 50;
+            return section1_header_h;
         }else if section > 1 && current_selected_btn_index == 0 {
             return 30
         }
@@ -139,15 +143,15 @@ class WarnInfoDetailController_new: BaseViewController,UITableViewDelegate,UITab
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        if section == 1 {return 70}
+        if section == 1 {return section1_footer_h}
         return 0.01
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 {return nil}
         else if section == 1 {
-            let v = UIView (frame: CGRect.init(x: 0, y: 0, width: tableView.frame.size.width, height: 50))
-            let _l = UILabel (frame: CGRect (x: 15, y: 10, width: 300, height: 40))
+            let v = UIView (frame: CGRect.init(x: 0, y: 0, width: tableView.frame.size.width, height: section1_header_h))
+            let _l = UILabel (frame: CGRect (x: 15, y: section1_header_h - 45, width: 300, height: 45))
             _l.text = "Fault Information"
             //_l.textColor = UIColor.darkGray
             _l.font = UIFont.systemFont(ofSize: 15)
@@ -155,28 +159,32 @@ class WarnInfoDetailController_new: BaseViewController,UITableViewDelegate,UITab
             return v
         }
 
+        guard _warn_possible.count > 0 else {return nil}
+        
         let d = _warn_possible[section - 2]
-        let _l = UILabel (frame: CGRect (x: 15, y: 0, width: tableView.frame.size.width, height: 30))
+        let _l = UILabel (frame: CGRect (x: 5, y: 0, width: tableView.frame.size.width - 10, height: 30))
         _l.text = String.stringIsNullOrNil(d["taskCode"]) + ":" + String.stringIsNullOrNil(d["taskName"])
         _l.backgroundColor = kTableViewCellbg_hightlightColor
         _l.font = UIFont.boldSystemFont(ofSize: 16)
 
-        return _l
+        let _v = UIView (frame: CGRect (x: 0, y: 0, width: tableView.frame.size.width, height: 30))
+        _v.addSubview(_l)
+        return _v
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         if section == 1 {
-            let l = UIView (frame: CGRect (x: 0, y: 0, width: kCurrentScreenWidth, height: 70))
+            let l = UIView (frame: CGRect (x: 0, y: 0, width: kCurrentScreenWidth, height: section1_footer_h))
             l.backgroundColor = current_selected_btn_bgcolor
             let t = ["Probable reason of fault","Fault isolation manual","MEL","Other files"]
             let x = [0,200,400,600]
             for i in 0..<t.count {
-                let btn = UIButton (frame: CGRect (x: x[i], y: 20, width: 200, height: 50));
+                let btn = UIButton (frame: CGRect (x: x[i], y: Int(section1_footer_h - 60), width: 200, height: 50));
                 btn.setTitle(t[i], for: .normal)
                 btn.tag = i
                 btn.setTitleColor(kButtonTitleDefaultColor, for: .normal)
                 btn.setTitleColor(UIColor.black, for: .selected)
-                btn.setBackgroundImage(UIImage (named: "bg_bar"), for: .selected)
+                btn.setBackgroundImage(UIImage (named: "buttonbg"), for: .selected)
                 btn.titleLabel?.font = UIFont.systemFont(ofSize: 16)
                 btn.titleLabel?.textAlignment = .center
                 btn.addTarget(self, action: #selector(sectionBtnClicked(_:)), for: .touchUpInside)
@@ -249,7 +257,8 @@ class WarnInfoDetailController_new: BaseViewController,UITableViewDelegate,UITab
         current_selected_btn = button
         current_selected_btn_index = button.tag
         
-        _tableView.reloadSections([2], animationStyle: .none)
+        //_tableView.reloadSections([2], animationStyle: .none)
+        _tableView.reloadData()
     }
     
     

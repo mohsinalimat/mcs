@@ -54,6 +54,8 @@ class FlightWarnListController: BaseViewController ,UITableViewDelegate,UITableV
         tableView.dataSource = self
         tableView.sectionFooterHeight = 0.01
         tableView.tableFooterView = UIView()
+        tableView.estimatedRowHeight = 20
+        tableView.rowHeight = UITableViewAutomaticDimension
         
         title = "Flight Warn"
         
@@ -74,7 +76,7 @@ class FlightWarnListController: BaseViewController ,UITableViewDelegate,UITableV
             }.addDisposableTo(disposeBag)
        
         //创建故障报告
-        topView.reportBtn.rx.controlEvent(UIControlEvents.touchUpInside).subscribe { [weak self] (event) in
+        topView.reportBtn.rx.controlEvent(UIControlEvents.touchUpInside) .subscribe { [weak self] (event) in
             guard let strongSelf = self else { return }
             
             print("创建故障报告")
@@ -126,9 +128,20 @@ class FlightWarnListController: BaseViewController ,UITableViewDelegate,UITableV
             
             strongSelf.alarm_body = body;
             if let _a = body.first?["alarm"] as? [[String : Any]] {
-                strongSelf.alarm = _a;
-                strongSelf.tableView.reloadData()
+                if _a.count > 0 {
+                    strongSelf.alarm = _a;
+                    strongSelf.tableView.reloadData()
+                }
+            }else {
+                let l = UILabel (frame: CGRect (x: 0, y: 100, width: kCurrentScreenWidth, height: 60))
+                l.text = "No Warn"
+                l.textColor = UIColor.lightGray
+                l.font = UIFont.systemFont(ofSize: 18)
+                
+                l.textAlignment = .center
+                strongSelf.view.addSubview(l)
             }
+
             
             
         }) { (error) in
@@ -153,13 +166,13 @@ class FlightWarnListController: BaseViewController ,UITableViewDelegate,UITableV
         return  arr.count //Int(arc4random_uniform(5)) + 1
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 30
-    }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 30
+//    }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         guard section > 0 else {return 1}
-        return 50
+        return 40
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

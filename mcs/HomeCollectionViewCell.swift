@@ -35,6 +35,10 @@ class HomeCollectionViewCell: UICollectionViewCell {
         layer.cornerRadius = 10
         layer.masksToBounds = true
     
+        
+        warnLevel.layer.borderColor = UIColor.lightGray.cgColor
+        warnLevel.layer.borderWidth = 1
+        
     }
 
     
@@ -76,12 +80,12 @@ class HomeCollectionViewCell: UICollectionViewCell {
         }
         
         ///////
-        let _atd = Tools.date(String.stringIsNullOrNil(dic["atd"]))
+        let _atd = Tools.date(String.stringIsNullOrNil(dic["outTime"]))
         if let d = _atd {
-            std.text = Tools.dateToString(d, formatter: "HHmm")
+            atd.text = Tools.dateToString(d, formatter: "HHmm")
         }
         
-        let _ata = Tools.date(String.stringIsNullOrNil(dic["ata"]))
+        let _ata = Tools.date(String.stringIsNullOrNil(dic["offTime"]))
         if let d = _ata {
             ata.text = Tools.dateToString(d, formatter: "HHmm")
         }
@@ -101,11 +105,29 @@ class HomeCollectionViewCell: UICollectionViewCell {
         ///track line
         trackView.displayMsg(dic)
         //trackView.setNeedsDisplay();
+        
+        hangbanNo.text = String.stringIsNullOrNil(dic["fltNo"])
+        zhanweiNo.text = String.stringIsNullOrNil(dic[s == "MFM" ? "ac_stop_arr" : "ac_stop"])
     }
     
     
     
-
+    override func prepareForReuse() {
+       flightNo.text = nil
+       warnNo.text = "0"
+        taskNo.text = "0"
+        std.text = "-"
+        sta.text = "-"
+        atd.text = "-"
+        ata.text = "-"
+        etd.text = "-"
+        eta.text = "-"
+        
+        hangbanNo.text = "-"
+        zhanweiNo.text = "-"
+        
+        
+    }
     
     
     

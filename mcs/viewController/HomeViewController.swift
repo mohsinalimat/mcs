@@ -36,11 +36,11 @@ class HomeViewController: BaseTabItemController,UICollectionViewDelegate,UIColle
         netHelper_request(withUrl: flight_info_url, method: .post, parameters: nil, successHandler: {[weak self] (result) in
             HUD.dismiss()
             
-            guard let body = result["body"] as? [[String : Any]] else {
-                return;
-            }
-            
+            guard let body = result["body"] as? [[String : Any]] else { return;}
             guard let strongSelf = self else{return}
+            if strongSelf._collectionView.mj_header.isRefreshing(){
+                strongSelf._collectionView.mj_header.endRefreshing();
+            }
             
             strongSelf.dataArray = strongSelf.dataArray + body
             strongSelf._collectionView.reloadData()
@@ -96,7 +96,15 @@ class HomeViewController: BaseTabItemController,UICollectionViewDelegate,UIColle
         view.addSubview(_collectionView)
         
         let header = TTRefreshHeader.init {
-            self._collectionView.mj_header.endRefreshing()
+            DispatchQueue.main.async {
+                self.dataArray.removeAll()
+                
+                self.getFlightStatusData()
+                
+                
+                
+
+            }
         }
         
         _collectionView.mj_header = header
@@ -123,6 +131,8 @@ class HomeViewController: BaseTabItemController,UICollectionViewDelegate,UIColle
         
         //FIB
         let flibBtn = UIButton (frame: CGRect (x: 0, y: 5, width: 50, height: 40))
+        flibBtn.imageEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5)
+        
         flibBtn.setImage(UIImage (named: "icon_fib"), for: .normal)
         flibBtn.setImage(UIImage (named: "icon_fib"), for: .highlighted)
         flibBtn.addTarget(self, action: #selector(fibBtnAction), for: .touchUpInside)
@@ -199,10 +209,11 @@ class HomeViewController: BaseTabItemController,UICollectionViewDelegate,UIColle
         }
         
         
-        if let acId = d["acId"] as? String, let date = d["fltDate"] as? String{
+        if let acId = d["acId"] as? String, let date = d["fltDate"] as? String , let fltno = d["fltNo"] as? String {
             ///date
             kFlightInfoListController_flightDate = date
             kFlightInfoListController_airId = acId
+            kFlightInfoListController_fltNo = fltno
         }
         
         let vc = HomeDetailTabController.init()
