@@ -37,6 +37,7 @@ class FlightWarnListTopView: UIView {
         
     }
 
+    @IBOutlet weak var selectBtn: UIButton!
     @IBOutlet weak var reportBtn: UIButton!
     
     @IBAction func creatRepostActin(_ sender: UIButton) {

@@ -140,10 +140,9 @@ class FlightWarnListController: BaseViewController ,UITableViewDelegate,UITableV
                 
                 l.textAlignment = .center
                 strongSelf.view.addSubview(l)
+                strongSelf.topView.selectBtn.isEnabled = false
             }
-
-            
-            
+ 
         }) { (error) in
             
         }

@@ -159,7 +159,7 @@ class WarnInfoDetailController_new: BaseViewController,UITableViewDelegate,UITab
             return v
         }
 
-        guard _warn_possible.count > 0 else {return nil}
+        guard _warn_possible.count > 0 && current_selected_btn_index == 0 else {return nil}
         
         let d = _warn_possible[section - 2]
         let _l = UILabel (frame: CGRect (x: 5, y: 0, width: tableView.frame.size.width - 10, height: 30))
@@ -173,35 +173,30 @@ class WarnInfoDetailController_new: BaseViewController,UITableViewDelegate,UITab
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        if section == 1 {
-            let l = UIView (frame: CGRect (x: 0, y: 0, width: kCurrentScreenWidth, height: section1_footer_h))
-            l.backgroundColor = current_selected_btn_bgcolor
-            let t = ["Probable reason of fault","Fault isolation manual","MEL","Other files"]
-            let x = [0,200,400,600]
-            for i in 0..<t.count {
-                let btn = UIButton (frame: CGRect (x: x[i], y: Int(section1_footer_h - 60), width: 200, height: 50));
-                btn.setTitle(t[i], for: .normal)
-                btn.tag = i
-                btn.setTitleColor(kButtonTitleDefaultColor, for: .normal)
-                btn.setTitleColor(UIColor.black, for: .selected)
-                btn.setBackgroundImage(UIImage (named: "buttonbg"), for: .selected)
-                btn.titleLabel?.font = UIFont.systemFont(ofSize: 16)
-                btn.titleLabel?.textAlignment = .center
-                btn.addTarget(self, action: #selector(sectionBtnClicked(_:)), for: .touchUpInside)
-                
-                if i == current_selected_btn_index {
-                    btn.isSelected = true;
-                    current_selected_btn = btn
-                }
-                l.addSubview(btn)
-            }
-            
-            
-            return l
+        guard section == 1 else { return nil }
 
+        let l = UIView (frame: CGRect (x: 0, y: 0, width: kCurrentScreenWidth, height: section1_footer_h))
+        l.backgroundColor = current_selected_btn_bgcolor
+        let t = ["Probable reason of fault","Fault isolation manual","MEL","Other files"]
+        let x = [0,200,400,600]
+        for i in 0..<t.count {
+            let btn = UIButton (frame: CGRect (x: x[i], y: Int(section1_footer_h - 60), width: 200, height: 50));
+            btn.setTitle(t[i], for: .normal)
+            btn.tag = i
+            btn.setTitleColor(kButtonTitleDefaultColor, for: .normal)
+            btn.setTitleColor(UIColor.black, for: .selected)
+            btn.setBackgroundImage(UIImage (named: "buttonbg"), for: .selected)
+            btn.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+            btn.titleLabel?.textAlignment = .center
+            btn.addTarget(self, action: #selector(sectionBtnClicked(_:)), for: .touchUpInside)
+            if i == current_selected_btn_index {
+                btn.isSelected = true;
+                current_selected_btn = btn
+            }
+            l.addSubview(btn)
         }
         
-        return nil
+        return l
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

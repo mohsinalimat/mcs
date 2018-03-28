@@ -74,13 +74,13 @@
                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="djs-C4-OqD">
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="x0J-1B-hWw"/>
-                            <constraint firstAttribute="width" constant="100" id="zWD-wh-rFk"/>
+                            <constraint firstAttribute="width" constant="80" id="zWD-wh-rFk"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        <inset key="imageEdgeInsets" minX="0.0" minY="3" maxX="0.0" maxY="3"/>
-                        <state key="normal" title="has alarms&gt;" image="red_dot">
-                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="3" maxX="0.0" maxY="0.0"/>
+                        <state key="normal" title="alarms" image="red_dot">
+                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                     </button>
                 </subviews>
@@ -102,7 +102,7 @@
                 <constraint firstItem="6ns-VU-0zW" firstAttribute="centerY" secondItem="ROP-9X-FTp" secondAttribute="centerY" id="bJ4-8a-eSs"/>
                 <constraint firstItem="6ns-VU-0zW" firstAttribute="leading" secondItem="ROP-9X-FTp" secondAttribute="trailing" constant="20" id="bc4-QZ-xGu"/>
                 <constraint firstItem="kbM-RA-xuj" firstAttribute="leading" secondItem="Lk8-UB-6Zw" secondAttribute="trailing" constant="10" id="cvz-pa-JQs"/>
-                <constraint firstAttribute="trailing" secondItem="djs-C4-OqD" secondAttribute="trailing" constant="15" id="fKR-iQ-qpN"/>
+                <constraint firstAttribute="trailing" secondItem="djs-C4-OqD" secondAttribute="trailing" constant="10" id="fKR-iQ-qpN"/>
                 <constraint firstItem="0PN-ts-N10" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="20" id="hVU-YV-kMv"/>
                 <constraint firstItem="kbM-RA-xuj" firstAttribute="centerY" secondItem="ROP-9X-FTp" secondAttribute="centerY" id="mvH-XM-CL3"/>
                 <constraint firstItem="iHl-pB-2KG" firstAttribute="centerX" secondItem="hv3-It-kVD" secondAttribute="centerX" id="pBe-KB-81S"/>
@@ -130,6 +130,6 @@
     <resources>
         <image name="icon_plane" width="16" height="18"/>
         <image name="plane_1" width="49" height="49"/>
-        <image name="red_dot" width="12" height="12"/>
+        <image name="red_dot" width="8" height="8"/>
     </resources>
 </document>

@@ -96,7 +96,7 @@ class FlightInfoListController: BaseViewController,UICollectionViewDelegate,UICo
         //            "endDate":Tools.dateToString(Tools.date("\(fltDic["sta"]!)")!, formatter: "yyyy/MM/dd HH:mm:ss")
         //        ]
         //...
-        let d = ["aircraftNo":"B-MCB",
+        let d = ["aircraftNo":kFlightInfoListController_airId!,
                  //"flightNo":"NX825",
                  "beginDate":"2018/02/24 11:00:00",
                  "endDate":"2018/02/26 11:59:59"
@@ -162,8 +162,8 @@ class FlightInfoListController: BaseViewController,UICollectionViewDelegate,UICo
             return cell
         }
         
-        cell.fillCell(d,show: indexPath.row == 2,left: indexPath.row % 2 == 0)////.....
-        cell.warn_tap.isHidden = !_flight_has_warn(d["acReg"] as! String)
+        cell.fillCell(d,show: indexPath.row == 2,left: indexPath.row % 2 == 0 ,warnStatus: warnDataArray)////.....
+        //cell.warn_tap.isHidden = !_flight_has_warn(d["acReg"] as! String)
         
         cell.backgroundColor = UIColor.white
         return cell
@@ -226,10 +226,14 @@ class FlightInfoListController: BaseViewController,UICollectionViewDelegate,UICo
     func _flight_has_warn(_ airId:String) -> Bool {
         guard warnDataArray.count > 0 else {return false}
         
-        for obj in warnDataArray {
-            if let tail = obj["tailNo"] as? String {
-                if tail == airId {
+        for i in 0..<warnDataArray.count {
+            let obj = warnDataArray[i]
+            
+            if let tail = obj["tailNo"] as? String ,let flt = obj["flightNumber"] as? String {
+                if tail == airId && flt == "NX\(kFlightInfoListController_fltNo!)" {
                     guard obj["grade"] != nil else {return false}
+                    warnDataArray.remove(at: i)
+                    
                     return true
                 }
             }

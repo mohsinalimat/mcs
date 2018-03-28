@@ -46,8 +46,19 @@ class FlightInfoListCell: UICollectionViewCell {
         
     }
     
+    func warn_tap_show() {
+        
+    }
     
-    func fillCell(_ dic:[String:Any] , show:Bool? = false , left:Bool = true)  {
+    
+    
+    
+    
+    
+    
+    
+    
+    func fillCell(_ dic:[String:Any] , show:Bool? = false , left:Bool = true , warnStatus:[[String:Any]]? = nil )  {
         let fltno = left ? "fromFltNo":"toFltNo"
         flightNo.text = String.stringIsNullOrNil(dic[fltno])
         
@@ -55,6 +66,10 @@ class FlightInfoListCell: UICollectionViewCell {
         from.text = String.stringIsNullOrNil(dic[left ? "fromApt" :"toApt"])
         t1.text = left ? "STA":"STD"
         t2.text = left ? "ATA":"ATD"
+        
+        ///站位
+        let zhanwei = left ? "ac_stop_arr":"ac_stop"
+        gate.text = String.stringIsNullOrNil(dic[zhanwei])
         
         std.text = String.stringIsNullOrNil(dic[left ? "sta":"std"])
         sta.text = String.stringIsNullOrNil(dic[left ? "ata":"atd"])
@@ -78,7 +93,37 @@ class FlightInfoListCell: UICollectionViewCell {
             iconImgWidth.constant = 0;
         }
         
+        
+        
+        if let arr = warnStatus {
+            let b = _flight_has_warn(arr, fltno: String.stringIsNullOrNil(dic[fltno]), airid: String.stringIsNullOrNil(dic["acReg"]))
+            
+            warn_tap.isHidden = !b
+        }
+
+        
+        
     }
+    
+    
+    func _flight_has_warn(_ arr :[[String:Any]] , fltno:String, airid:String) -> Bool {
+        guard arr.count > 0 else {return false}
+        
+        for i in 0..<arr.count {
+            let obj = arr[i]
+            
+            if let tail = obj["tailNo"] as? String ,let flt = obj["flightNumber"] as? String {
+                if tail == airid && flt == "NX\(fltno)" {
+                    guard obj["grade"] != nil else {return false}
+                    
+                    return true
+                }
+            }
+        }
+        
+        return false
+    }
+    
     
     
 }
