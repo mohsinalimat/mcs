@@ -100,9 +100,9 @@ class BaseTabBarController: UITabBarController {
             [
                 "HomeViewController",
                 "TaskPoolBaseController",
-                "BaseViewController",
-                "BaseViewController",
-                "BaseViewController"]
+                "BaseTabItemController",
+                "BaseTabItemController",
+                "BaseTabItemController"]
         
         var viewControllerArr:Array = [UIViewController]()
         

@@ -10,6 +10,11 @@ import UIKit
 
 class TaskPoolDetailController: BaseWebViewController {
 
+    var taskId:String!
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,9 +28,9 @@ class TaskPoolDetailController: BaseWebViewController {
     
     
     override func loadData()  {
-        let d = ["shift":"30b621f4455545828b0b0e2d9e2fb9f3",
-                 "scheduleTime":"23/03/2018",
-                 "taskId":"ab0075d0-2e52-11e8-a41b-00ffb0abeb6d"
+        let d = [//"shift":"30b621f4455545828b0b0e2d9e2fb9f3",
+                 //"scheduleTime":"23/03/2018",
+                 "taskId":taskId! //"ab0075d0-2e52-11e8-a41b-00ffb0abeb6d"
         ]
         
         

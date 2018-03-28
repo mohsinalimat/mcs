@@ -116,7 +116,7 @@ class HomeViewController: BaseTabItemController,UICollectionViewDelegate,UIColle
     func addNavigationItem()  {
         let user = UILabel (frame: CGRect (x: 0, y: 0, width: 100, height: 30))
         user.font = UIFont.boldSystemFont(ofSize: 18)
-        user.text = "当前用户 \(UserDefaults.standard.value(forKey:"user-name")!)"
+        user.text = "user: \(UserDefaults.standard.value(forKey:"user-name")!)"
         navigationItem.titleView = user
         
         //msg
@@ -145,9 +145,9 @@ class HomeViewController: BaseTabItemController,UICollectionViewDelegate,UIColle
     }
     
     func msgBtnAction()  {
-        let vc = UIAlertController.init(title: "确定退出?",message: nil, preferredStyle: .alert)
-        let action = UIAlertAction.init(title:"取消", style: .default)
-        let action2 = UIAlertAction.init(title: "确定", style: .default) { (action) in
+        let vc = UIAlertController.init(title: "EXIT?",message: nil, preferredStyle: .alert)
+        let action = UIAlertAction.init(title:"Cancel", style: .default)
+        let action2 = UIAlertAction.init(title: "OK", style: .default) { (action) in
             let loginvc = LoginViewController()
             
             UIApplication.shared.keyWindow?.rootViewController = loginvc

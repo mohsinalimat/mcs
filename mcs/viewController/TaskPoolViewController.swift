@@ -212,30 +212,16 @@ class TaskPoolViewController: BaseViewController,UITableViewDelegate,UITableView
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let taskid = dataArray[indexPath.section]["taskId"]  as? String {
+            let vc = TaskPoolDetailController()
+            vc.taskId = taskid
+            
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        
 
-        let vc = TaskPoolDetailController()
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    
-    
-    
-    
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

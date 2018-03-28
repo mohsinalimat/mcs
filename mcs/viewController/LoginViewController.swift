@@ -89,7 +89,7 @@ class LoginViewController: BaseViewController,UITableViewDelegate,UITableViewDat
         for i in 0..<2 {
             let btn = UIButton (frame: CGRect (x: i == 0 ? 10:290, y: 60, width: 200, height: 40));
             btn.backgroundColor = i == 1 ? UIColor.init(colorLiteralRed: 0.318, green: 0.243, blue: 0.533, alpha: 1):UIColor.lightGray;
-            btn.setTitle(i == 1 ? "登录":"重置", for: .normal)
+            btn.setTitle(i == 1 ? "Login":"Reset", for: .normal)
             btn.addTarget(self, action: #selector(buttonAction(_ :)), for: .touchUpInside)
             btn.tag = 100 + i;
             btn.layer.cornerRadius = 8
