@@ -45,14 +45,12 @@ let get_task_pool_url = "/biz/task/pool"//...
 
 let get_aircraft_status_url = "/alarm/aircraft/status"//飞机状态-GET请求
 let get_warn_list_url = "/alarm/list" //航班告警列表
-
-
 let get_warn_info_url = "/alarm/detail"///{alarm_id} 告警详情-GET请求
 
 ////base
-let get_basedata_url = "/biz/mobile/data/active" //基础数据
-
-let get_basedata2_url = "/biz/data/mobile/basic"//// biz/data/basic
+let login_basedata_url = "/biz/mobile/data/active" //基础数据
+let active_basedata_url = "/biz/data/active"
+let basic_basedata_url = "/biz/data/basic"
 
 /* 获取mcs中航线部门工作库数据
  必须shift:'74f3c2d68ac34fcfb03963a428865055', // 班次id
@@ -87,11 +85,14 @@ var kFlightInfoListController_flightDate:String! //航班日期
 var kFlightInfoListController_airId:String!//飞机ID
 var kFlightInfoListController_fltNo:String!//飞机航班号
 
-var kBASE_DATA:[String:Any]!
+var kTaskPool_BASE_DATA:[String:Any]!
+var kTaskpool_shift:[String:String]?
+var kTaskpool_station:String?
+var kTaskpool_date:Date?
 
-var kCurrent_shift:[String:String]?
-var kCurrent_station:String?
-var kCurrent_date:Date?
+var kActive_BASE_DATA:[String:Any]?
+
+
 
 //MARK:
 let msg_loading = "Loading"

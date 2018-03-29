@@ -29,7 +29,7 @@ class HomeViewController: BaseTabItemController,UICollectionViewDelegate,UIColle
     }
 
     
-    //MARK:-
+    //MARK:- Request
     func getFlightStatusData()  {
         HUD.show(withStatus: "Loading")
         
@@ -73,6 +73,17 @@ class HomeViewController: BaseTabItemController,UICollectionViewDelegate,UIColle
             
             })
     }
+    
+    func getActiveData() {
+        netHelper_request(withUrl: active_basedata_url, method: .post, parameters: nil, successHandler: {[weak self] (result) in
+            guard let body = result["body"] as? [String:Any] else {return;}
+            guard let strongSelf = self else{return}
+
+            }
+        )
+    }
+    
+    
     
     //MARK: -
     func _initSubview() {

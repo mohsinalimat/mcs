@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TaskPoolSelectController" customModule="mcs" customModuleProvider="target">
+            <connections>
+                <outlet property="date_btn" destination="FeN-VJ-zun" id="Igt-yZ-BJX"/>
+                <outlet property="shift_btn" destination="5eS-ov-RrV" id="dD4-rl-W5A"/>
+                <outlet property="station_btn" destination="UqR-SH-7NF" id="FSe-m7-EbD"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="500" height="360"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FeN-VJ-zun">
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="i8c-mQ-tnx"/>
+                        <constraint firstAttribute="width" constant="360" id="iv3-ed-te4"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <state key="normal" title="Select" backgroundImage="buttonbg">
+                        <color key="titleColor" red="0.22230920200000001" green="0.59495002029999999" blue="0.98936182260000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="buttonClickedAction:" destination="-1" eventType="touchUpInside" id="2ZA-cO-ICX"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5eS-ov-RrV">
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <state key="normal" title="Select" backgroundImage="buttonbg">
+                        <color key="titleColor" red="0.22230920200000001" green="0.59495002029999999" blue="0.98936182260000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="buttonClickedAction:" destination="-1" eventType="touchUpInside" id="DIx-LC-BGc"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UqR-SH-7NF">
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <state key="normal" title="Select" backgroundImage="buttonbg">
+                        <color key="titleColor" red="0.22230920200000001" green="0.59495002029999999" blue="0.98936182260000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="buttonClickedAction:" destination="-1" eventType="touchUpInside" id="WTU-Ah-EVg"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eEC-YY-MB5">
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shift" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tOD-fj-iUw">
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Station" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eED-bT-1ac">
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="5eS-ov-RrV" firstAttribute="top" secondItem="FeN-VJ-zun" secondAttribute="bottom" constant="40" id="8EW-Z2-eKh"/>
+                <constraint firstItem="FeN-VJ-zun" firstAttribute="width" secondItem="5eS-ov-RrV" secondAttribute="width" id="Awk-OK-yRc"/>
+                <constraint firstItem="UqR-SH-7NF" firstAttribute="centerX" secondItem="FeN-VJ-zun" secondAttribute="centerX" id="BPl-dK-0nq"/>
+                <constraint firstItem="FeN-VJ-zun" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" constant="20" id="Hke-OP-ZAy"/>
+                <constraint firstItem="FeN-VJ-zun" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="60" id="Hpw-xF-agu"/>
+                <constraint firstItem="FeN-VJ-zun" firstAttribute="leading" secondItem="eEC-YY-MB5" secondAttribute="trailing" constant="10" id="KTQ-Ld-uHN"/>
+                <constraint firstItem="FeN-VJ-zun" firstAttribute="centerY" secondItem="eEC-YY-MB5" secondAttribute="centerY" id="Kys-Qt-ObJ"/>
+                <constraint firstItem="FeN-VJ-zun" firstAttribute="height" secondItem="5eS-ov-RrV" secondAttribute="height" id="QbY-Li-K7d"/>
+                <constraint firstItem="5eS-ov-RrV" firstAttribute="leading" secondItem="tOD-fj-iUw" secondAttribute="trailing" constant="10" id="XVj-hG-QFc"/>
+                <constraint firstItem="5eS-ov-RrV" firstAttribute="centerY" secondItem="tOD-fj-iUw" secondAttribute="centerY" id="YfW-OW-8ea"/>
+                <constraint firstItem="UqR-SH-7NF" firstAttribute="top" secondItem="5eS-ov-RrV" secondAttribute="bottom" constant="40" id="bLc-pk-UuL"/>
+                <constraint firstItem="UqR-SH-7NF" firstAttribute="leading" secondItem="eED-bT-1ac" secondAttribute="trailing" constant="10" id="bql-2G-96r"/>
+                <constraint firstItem="UqR-SH-7NF" firstAttribute="height" secondItem="5eS-ov-RrV" secondAttribute="height" id="eyZ-5i-ezw"/>
+                <constraint firstItem="UqR-SH-7NF" firstAttribute="width" secondItem="5eS-ov-RrV" secondAttribute="width" id="hXg-cc-Pab"/>
+                <constraint firstItem="eED-bT-1ac" firstAttribute="centerY" secondItem="UqR-SH-7NF" secondAttribute="centerY" id="uAB-on-d78"/>
+                <constraint firstItem="5eS-ov-RrV" firstAttribute="centerX" secondItem="FeN-VJ-zun" secondAttribute="centerX" id="v1M-35-F8j"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="buttonbg" width="400" height="60"/>
+    </resources>
+</document>

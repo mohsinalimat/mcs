@@ -7,7 +7,9 @@
 //
 
 import UIKit
-
+import RxDataSources
+import RxSwift
+import RxCocoa
 class TaskPoolBaseController: BaseTabItemController {
 
     @IBOutlet weak var topBgView: UIView!
@@ -19,7 +21,7 @@ class TaskPoolBaseController: BaseTabItemController {
     
     @IBOutlet weak var select_station_btn: UIButton!
     
-    
+    let disposeBag =  DisposeBag()
     
     
     
@@ -42,51 +44,45 @@ class TaskPoolBaseController: BaseTabItemController {
         let currentDateStr = Tools.dateToString(Date(), formatter: "yyyy-MM-dd")
         select_date_btn.setTitle(currentDateStr, for: .normal)
         
+        _init_top();
+        
+        NotificationCenter.default.rx.notification(NSNotification.Name.init("notification-selected-complete")).subscribe { [weak self] (event) in
+            guard let strongSelf = self else {return}
+            
+            strongSelf._init_top();
+            
+        }.addDisposableTo(disposeBag)
+        
         
         let vc = TaskPoolViewController()
         vc.view.frame = CGRect (x: 0, y: 60, width: self.view.frame.width, height: self.view.frame.height  - 49 - 60)
-        
         self.addChildViewController(vc)
-        
         self.view.addSubview(vc.view)
 
     
     }
     
+    func _init_top() {
+        guard kTaskpool_date != nil ,kTaskpool_shift != nil , kTaskpool_station != nil else {return}
+        
+        select_shift_btn.setTitle(kTaskpool_shift?["value"], for: .normal)
+        select_date_btn.setTitle(Tools.dateToString(kTaskpool_date!, formatter: "yyyy-MM-dd"), for: .normal)
+        select_station_btn.setTitle(kTaskpool_station, for: .normal)
+
+    }
+    
     @IBAction func selectData(_ sender: UIButton) {
-        let frame = CGRect (x: 0, y: 0, width: 500, height: 240)
-        let vc = DatePickerController()
+        let vc = TaskPoolSelectController()
+        let frame = CGRect (x: 0, y: 0, width: 500, height: 360)
         vc.view.frame = frame
-        vc.pickerDidSelectedHandler = {[weak self] s in
-            let date = s as! Date
-            let str = Tools.dateToString(date, formatter: "yyyy-MM-dd")
-            
-            sender.setTitle("\(str)", for: .normal);
-            guard let strongSelf = self else {
-                return
-            }
-            
-            //            strongSelf.currentDateStr = "\(str)"
-            //            strongSelf.loadData()
-        }
         
         let nav = BaseNavigationController(rootViewController:vc)
         nav.navigationBar.barTintColor = kPop_navigationBar_color
         nav.modalPresentationStyle = .formSheet
         nav.preferredContentSize = frame.size
-        self.present(nav, animated: true, completion: nil)
+        UIApplication.shared.keyWindow?.rootViewController?.present(nav, animated: true, completion: nil)
     }
-    
-    @IBAction func selectShift(_ sender: UIButton) {
-        
-        
-    }
-    
-    @IBAction func selectStation(_ sender: UIButton) {
-        
-    }
-    
-    
+
     
     func navigatoinItemTitleView() -> UIView  {
         let seg = UISegmentedControl.init(items: ["Task Pool","HandleOver"])

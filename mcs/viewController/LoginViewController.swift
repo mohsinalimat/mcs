@@ -58,11 +58,11 @@ class LoginViewController: BaseViewController,UITableViewDelegate,UITableViewDat
     //MARK: -
     func get_basedata() {
         HUD.show()
-        netHelper_request(withUrl: get_basedata_url, method: .post, parameters: nil, successHandler: {(result) in
+        netHelper_request(withUrl: login_basedata_url, method: .post, parameters: nil, successHandler: {(result) in
             guard let body = result["body"] as? [String : Any] else {return;}
             HUD.dismiss()
             
-            kBASE_DATA = body
+            kTaskPool_BASE_DATA = body
             
             }
         )
@@ -241,7 +241,7 @@ class LoginViewController: BaseViewController,UITableViewDelegate,UITableViewDat
             case 2,4:
                 vc = DataPickerController()
                 vc.dataType = indexPath.row == 2 ? PickerDataSourceItemTpye.obj : .str
-                if let station = kBASE_DATA[indexPath.row == 2 ? "shifts" : "stations"] as? [Any] {
+                if let station = kTaskPool_BASE_DATA[indexPath.row == 2 ? "shifts" : "stations"] as? [Any] {
                     vc.dataArray = station;
                 }
                 
@@ -256,14 +256,14 @@ class LoginViewController: BaseViewController,UITableViewDelegate,UITableViewDat
             guard let strongSelf = self else { return}
             if indexPath.row == 2 {
                 let obj = s as! [String:String]
-                kCurrent_shift = obj
+                kTaskpool_shift = obj
             }else if indexPath.row == 3 {
                 let obj = s as! Date
-                kCurrent_date = obj
+                kTaskpool_date = obj
 
             }else if indexPath.row == 4 {
                 let obj = s as! String
-                kCurrent_station = obj
+                kTaskpool_station = obj
                 
             }
             

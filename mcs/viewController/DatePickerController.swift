@@ -16,14 +16,6 @@ class DatePickerController: BasePickerViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let _titlev = UILabel (frame: CGRect (x: 0, y: 0, width: 100, height: 30))
-        _titlev.textColor = UIColor.white
-        _titlev.text = "选择日期"
-        navigationItem.titleView = _titlev
-        
-        // Do any additional setup after loading the view.
-        self.navigationController?.navigationBar.barTintColor = UIColor (colorLiteralRed: 0.212, green: 0.188, blue: 0.427, alpha: 1)
         
         _init()
     }

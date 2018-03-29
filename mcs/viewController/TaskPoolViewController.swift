@@ -81,16 +81,40 @@ class TaskPoolViewController: BaseViewController,UITableViewDelegate,UITableView
             }
         }.addDisposableTo(disposeBag)
         
-        
+        NotificationCenter.default.rx.notification(NSNotification.Name.init("notification-selected-complete")).subscribe { [weak self] (event) in
+            guard let strongSelf = self else {return}
+            
+            strongSelf.getTaskPool();
+            
+            }.addDisposableTo(disposeBag)
         
         
         ///////
-        getTaskPool()
+        //getTaskPool()
+        _test()
     }
+    
+
+    func _pop() {
+        let vc = TaskPoolSelectController()
+        let frame = CGRect (x: 0, y: 0, width: 500, height: 360)
+        vc.view.frame = frame
+        
+        let nav = BaseNavigationController(rootViewController:vc)
+        nav.navigationBar.barTintColor = kPop_navigationBar_color
+        nav.modalPresentationStyle = .formSheet
+        nav.preferredContentSize = frame.size
+        
+        UIApplication.shared.keyWindow?.rootViewController?.present(nav, animated: true, completion: nil)
+    }
+    
+    
+    
     
     //MARK:-
     func getTaskPool()  {
         HUD.show(withStatus: "Loading")
+        
         let d = ["shift":"30b621f4455545828b0b0e2d9e2fb9f3",
                  "scheduleTime":"23/03/2018"
                  ]
@@ -110,6 +134,13 @@ class TaskPoolViewController: BaseViewController,UITableViewDelegate,UITableView
         
     }
     
+    func _test() {
+        netHelper_request(withUrl: basic_basedata_url, method: .post, parameters: nil, successHandler: { (res) in
+            
+            }) { (str) in
+                
+        }
+    }
     
     func _init() {
         
@@ -126,6 +157,12 @@ class TaskPoolViewController: BaseViewController,UITableViewDelegate,UITableView
         _tableView.rowHeight = 80
         
         self.automaticallyAdjustsScrollViewInsets = false
+        
+        guard kTaskpool_date != nil ,kTaskpool_shift != nil , kTaskpool_station != nil else {
+            _pop(); return
+        }
+        
+        getTaskPool()
     }
     
     

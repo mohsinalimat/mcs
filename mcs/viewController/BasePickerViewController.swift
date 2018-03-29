@@ -31,6 +31,13 @@ class BasePickerViewController: BaseViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        let _titlev = UILabel (frame: CGRect (x: 0, y: 0, width: 100, height: 30))
+        _titlev.textColor = UIColor.white
+        _titlev.textAlignment = .center
+        _titlev.text = "请选择"
+        navigationItem.titleView = _titlev
+
+        
         addNavigationItem();
         
     }

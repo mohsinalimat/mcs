@@ -83,7 +83,7 @@
                                 <constraint firstAttribute="width" constant="120" id="G7N-V1-2Ja"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <state key="normal" title="-">
+                            <state key="normal" title="Select">
                                 <color key="titleColor" red="0.22230920200000001" green="0.59495002029999999" blue="0.98936182260000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <userDefinedRuntimeAttributes>
@@ -112,7 +112,7 @@
                                 <constraint firstAttribute="height" constant="35" id="PGX-LB-6Dh"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <state key="normal" title="-">
+                            <state key="normal" title="Select">
                                 <color key="titleColor" red="0.22230920200000001" green="0.59495002029999999" blue="0.98936182260000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <userDefinedRuntimeAttributes>
@@ -122,7 +122,7 @@
                                 <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                             </userDefinedRuntimeAttributes>
                             <connections>
-                                <action selector="selectShift:" destination="-1" eventType="touchUpInside" id="Jbx-VV-qN3"/>
+                                <action selector="selectData:" destination="-1" eventType="touchUpInside" id="dh2-uf-Wsv"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pqd-WX-fnL">
@@ -131,7 +131,7 @@
                                 <constraint firstAttribute="height" constant="35" id="fMK-im-uXk"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <state key="normal" title="-">
+                            <state key="normal" title="Select">
                                 <color key="titleColor" red="0.22230920200000001" green="0.59495002029999999" blue="0.98936182260000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <userDefinedRuntimeAttributes>
@@ -141,7 +141,7 @@
                                 <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                             </userDefinedRuntimeAttributes>
                             <connections>
-                                <action selector="selectStation:" destination="-1" eventType="touchUpInside" id="TIg-OC-dDI"/>
+                                <action selector="selectData:" destination="-1" eventType="touchUpInside" id="JuC-TV-cCy"/>
                             </connections>
                         </button>
                     </subviews>
