@@ -5,7 +5,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TaskPoolBaseController" customModule="mcs" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TaskHandleController" customModule="mcs" customModuleProvider="target">
             <connections>
                 <outlet property="_tableView" destination="bRk-9a-iNH" id="Lw8-Jk-dTG"/>
                 <outlet property="search_bgview" destination="z63-gh-ofV" id="M11-NG-ZzH"/>
@@ -164,7 +164,7 @@
                         <constraint firstItem="oou-N8-gfX" firstAttribute="leading" secondItem="Qw9-Qa-sNu" secondAttribute="trailing" id="tQK-5b-oTT"/>
                     </constraints>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bRk-9a-iNH">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bRk-9a-iNH">
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <color key="separatorColor" red="0.92538958790000003" green="0.92554813619999998" blue="0.92537957429999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <inset key="separatorInset" minX="30" minY="0.0" maxX="30" maxY="0.0"/>

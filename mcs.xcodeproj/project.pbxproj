@@ -28,6 +28,8 @@
 		A1284D8C205BB00500B7B576 /* WarnInfoDetailController_new.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1284D8A205BB00500B7B576 /* WarnInfoDetailController_new.xib */; };
 		A13F1AEB200745F1004FDFF4 /* LoginViewFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13F1AEA200745F1004FDFF4 /* LoginViewFooter.swift */; };
 		A13F1AED20074693004FDFF4 /* LoginViewFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = A13F1AEC20074693004FDFF4 /* LoginViewFooter.xib */; };
+		A165946F206E0DBB00CC8A0D /* TaskHandleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A165946D206E0DBB00CC8A0D /* TaskHandleController.swift */; };
+		A1659470206E0DBB00CC8A0D /* TaskHandleController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A165946E206E0DBB00CC8A0D /* TaskHandleController.xib */; };
 		A165B67C20107FA3006080D8 /* HomeDetailTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A165B67B20107FA3006080D8 /* HomeDetailTabController.swift */; };
 		A1923FD3201733E20057AD1E /* BaseWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1923FD2201733E20057AD1E /* BaseWebViewController.swift */; };
 		A1982F0F200F1E0E00B24DA6 /* NetHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1982F0E200F1E0E00B24DA6 /* NetHelper.swift */; };
@@ -96,10 +98,10 @@
 		A1DF738E2043EF5B0099B858 /* WarnInfoDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1DF738C2043EF5B0099B858 /* WarnInfoDetailController.xib */; };
 		A1E32F1D2016D45F00842A18 /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E32F1C2016D45F00842A18 /* Tools.swift */; };
 		A1E5C10E2048EAF900511F58 /* TaskPoolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E5C10C2048EAF800511F58 /* TaskPoolViewController.swift */; };
-		A1E5C10F2048EAF900511F58 /* TaskPoolViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1E5C10D2048EAF900511F58 /* TaskPoolViewController.xib */; };
 		A1E5C1132048EE7D00511F58 /* TaskPoolCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E5C1112048EE7D00511F58 /* TaskPoolCell.swift */; };
 		A1E5C1142048EE7D00511F58 /* TaskPoolCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1E5C1122048EE7D00511F58 /* TaskPoolCell.xib */; };
 		A1E65C582018236E006D1085 /* FIBViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E65C572018236E006D1085 /* FIBViewController.swift */; };
+		A1F293B2206DDA8900004E9C /* TaskPoolRootController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F293B1206DDA8900004E9C /* TaskPoolRootController.swift */; };
 		A1FE5095204796E1004F2330 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FE5094204796E0004F2330 /* BaseTabBarController.swift */; };
 /* End PBXBuildFile section */
 
@@ -128,6 +130,8 @@
 		A1284D8A205BB00500B7B576 /* WarnInfoDetailController_new.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WarnInfoDetailController_new.xib; sourceTree = "<group>"; };
 		A13F1AEA200745F1004FDFF4 /* LoginViewFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewFooter.swift; sourceTree = "<group>"; };
 		A13F1AEC20074693004FDFF4 /* LoginViewFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewFooter.xib; sourceTree = "<group>"; };
+		A165946D206E0DBB00CC8A0D /* TaskHandleController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskHandleController.swift; sourceTree = "<group>"; };
+		A165946E206E0DBB00CC8A0D /* TaskHandleController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskHandleController.xib; sourceTree = "<group>"; };
 		A165B67B20107FA3006080D8 /* HomeDetailTabController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeDetailTabController.swift; sourceTree = "<group>"; };
 		A1923FD2201733E20057AD1E /* BaseWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseWebViewController.swift; sourceTree = "<group>"; };
 		A1982F0E200F1E0E00B24DA6 /* NetHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetHelper.swift; sourceTree = "<group>"; };
@@ -202,10 +206,10 @@
 		A1DF738C2043EF5B0099B858 /* WarnInfoDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WarnInfoDetailController.xib; sourceTree = "<group>"; };
 		A1E32F1C2016D45F00842A18 /* Tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
 		A1E5C10C2048EAF800511F58 /* TaskPoolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskPoolViewController.swift; sourceTree = "<group>"; };
-		A1E5C10D2048EAF900511F58 /* TaskPoolViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskPoolViewController.xib; sourceTree = "<group>"; };
 		A1E5C1112048EE7D00511F58 /* TaskPoolCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskPoolCell.swift; sourceTree = "<group>"; };
 		A1E5C1122048EE7D00511F58 /* TaskPoolCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskPoolCell.xib; sourceTree = "<group>"; };
 		A1E65C572018236E006D1085 /* FIBViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FIBViewController.swift; sourceTree = "<group>"; };
+		A1F293B1206DDA8900004E9C /* TaskPoolRootController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskPoolRootController.swift; sourceTree = "<group>"; };
 		A1FE5094204796E0004F2330 /* BaseTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -432,10 +436,12 @@
 			isa = PBXGroup;
 			children = (
 				A1E5C1102048EE3800511F58 /* view */,
+				A1F293B1206DDA8900004E9C /* TaskPoolRootController.swift */,
 				A1AAF1462049167600E8CB3B /* TaskPoolBaseController.swift */,
 				A1AAF1472049167600E8CB3B /* TaskPoolBaseController.xib */,
 				A1E5C10C2048EAF800511F58 /* TaskPoolViewController.swift */,
-				A1E5C10D2048EAF900511F58 /* TaskPoolViewController.xib */,
+				A165946D206E0DBB00CC8A0D /* TaskHandleController.swift */,
+				A165946E206E0DBB00CC8A0D /* TaskHandleController.xib */,
 				A1C1BB512064C6D600A92B9B /* TaskPoolDetailController.swift */,
 				A1C6DD71206C7F0F00A09808 /* TaskPoolSelectController.swift */,
 				A1C6DD72206C7F0F00A09808 /* TaskPoolSelectController.xib */,
@@ -566,10 +572,10 @@
 				A1CF29FF20070029009FE6A4 /* Main.storyboard in Resources */,
 				A120285F2008A1C200CB8633 /* success.png in Resources */,
 				A1284D8C205BB00500B7B576 /* WarnInfoDetailController_new.xib in Resources */,
-				A1E5C10F2048EAF900511F58 /* TaskPoolViewController.xib in Resources */,
 				A1C26DB2204FBD3B00B11F63 /* FlightWarnListHeadView.xib in Resources */,
 				A1AAF14F2049331800E8CB3B /* TaskActionCell.xib in Resources */,
 				A1D15D91204644A7004A2C58 /* WarnDisPoseCell.xib in Resources */,
+				A1659470206E0DBB00CC8A0D /* TaskHandleController.xib in Resources */,
 				A1C26DAE204FBA2700B11F63 /* FlightWarnListCell.xib in Resources */,
 				A120285C2008A1C000CB8633 /* error.png in Resources */,
 				A1AAF15320494DCD00E8CB3B /* TaskHandCell.xib in Resources */,
@@ -678,6 +684,7 @@
 				A1AAF1482049167600E8CB3B /* TaskPoolBaseController.swift in Sources */,
 				A1BC1F4B2015C733007D0E1C /* WarnListCell.swift in Sources */,
 				A120283C2008812500CB8633 /* DatePickerController.swift in Sources */,
+				A165946F206E0DBB00CC8A0D /* TaskHandleController.swift in Sources */,
 				A1C6DD73206C7F0F00A09808 /* TaskPoolSelectController.swift in Sources */,
 				A1E5C10E2048EAF900511F58 /* TaskPoolViewController.swift in Sources */,
 				A120284520089D4200CB8633 /* constant.swift in Sources */,
@@ -704,6 +711,7 @@
 				A120285E2008A1C100CB8633 /* HUD.swift in Sources */,
 				A1BC1F442015BA3D007D0E1C /* FlightLineView.swift in Sources */,
 				A1C26DB0204FBD2800B11F63 /* FlightWarnListHeadView.swift in Sources */,
+				A1F293B2206DDA8900004E9C /* TaskPoolRootController.swift in Sources */,
 				A1C26DAD204FBA2700B11F63 /* FlightWarnListCell.swift in Sources */,
 				A1D15D90204644A7004A2C58 /* WarnDisPoseCell.swift in Sources */,
 				A1CF2A1420070B90009FE6A4 /* LoginViewController.swift in Sources */,

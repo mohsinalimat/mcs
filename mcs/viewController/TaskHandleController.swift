@@ -10,7 +10,7 @@ import UIKit
 import RxDataSources
 import RxSwift
 import RxCocoa
-class TaskPoolBaseController: BaseViewController ,UITableViewDelegate,UITableViewDataSource{
+class TaskHandleController: BaseViewController ,UITableViewDelegate,UITableViewDataSource{
 
     @IBOutlet weak var topBgView: UIView!
     @IBOutlet weak var search_bgview: UIView!
@@ -34,10 +34,9 @@ class TaskPoolBaseController: BaseViewController ,UITableViewDelegate,UITableVie
                 strongSelf.getTaskPool();
             }.addDisposableTo(disposeBag)
         
+        guard kTaskpool_date != nil ,kTaskpool_shift != nil , kTaskpool_station != nil else {  /*_pop();*/ return}
+        getTaskPool();
 
-        guard kTaskpool_date != nil ,kTaskpool_shift != nil , kTaskpool_station != nil else {  _pop(); return}
-        getTaskPool()
-        
     }
     
 
@@ -90,14 +89,17 @@ class TaskPoolBaseController: BaseViewController ,UITableViewDelegate,UITableVie
         _tableView.register(UINib (nibName: "TaskActionCell", bundle: nil), forCellReuseIdentifier: "TaskActionCellIdentifier")
         _tableView.register(UINib (nibName: "TaskHandCell", bundle: nil), forCellReuseIdentifier: "TaskHandCellIdentifier")
         _tableView.tableFooterView = UIView()
-        //_tableView.separatorStyle = .none
+        
+        
         _tableView.delegate = self
         _tableView.dataSource = self
-        _tableView.rowHeight = 80
-    
+        _tableView.rowHeight = 85
+        //_tableView.separatorStyle = .singleLine
+
         
         topBgView.layer.borderColor = kTableviewBackgroundColor.cgColor
         topBgView.layer.borderWidth = 1
+        search_bgview.isHidden = true
     }
     
     func _init_top() {
@@ -136,50 +138,15 @@ class TaskPoolBaseController: BaseViewController ,UITableViewDelegate,UITableVie
     }
     
     
-    var type = 0
+    var type = 1
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if self.type == 0 {
-            if indexPath.row == 0 {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "TaskPoolCellIdentifier", for: indexPath) as! TaskPoolCell
-                
-                let d = dataArray[indexPath.section]
-                
-                cell.fill( d)
-                
-                return cell
-            } else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "TaskActionCellIdentifier", for: indexPath) as! TaskActionCell
-                let d = dataArray[indexPath.section]
-                if let _actions = d["actionList"] as? [[String:Any]]{
-                    cell.fill( _actions[indexPath.row - 1], first: indexPath.row == 1);
-                }
-                
-                return cell
-            }
-        }else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "TaskHandCellIdentifier", for: indexPath) as! TaskHandCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TaskHandCellIdentifier", for: indexPath) as! TaskHandCell
             
-            return cell
-        }
-        
-        
-        
-        
-        
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if type == 0 {
-            return indexPath.row == 0 ? 90 : 30;
-        }else {
-            return 80;
-        }
-        
-    }
+        return cell
 
-    
+    }
 
     let _sectinHeight:CGFloat = 40
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
