@@ -21,6 +21,17 @@ class BaseViewController: UIViewController {
         
     }
 
+    
+    func _setTitleView(_ t :String){
+        let _titlev = UILabel (frame: CGRect (x: 0, y: 0, width: 300, height: 30))
+        _titlev.textColor = UIColor.white
+        _titlev.textAlignment = .center
+        _titlev.text = t
+        navigationItem.titleView = _titlev
+    }
+    
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

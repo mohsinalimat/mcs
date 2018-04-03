@@ -35,7 +35,7 @@ class TaskPoolBaseController: BaseViewController ,UITableViewDelegate,UITableVie
             }.addDisposableTo(disposeBag)
         
 
-        guard kTaskpool_date != nil ,kTaskpool_shift != nil , kTaskpool_station != nil else {  _pop(); return}
+        //guard kTaskpool_date != nil ,kTaskpool_shift != nil , kTaskpool_station != nil else {  _pop(); return}
         getTaskPool()
         
     }
@@ -108,15 +108,7 @@ class TaskPoolBaseController: BaseViewController ,UITableViewDelegate,UITableVie
     }
     
     @IBAction func selectData(_ sender: UIButton) {
-        let vc = TaskPoolSelectController()
-        let frame = CGRect (x: 0, y: 0, width: 500, height: 360)
-        vc.view.frame = frame
-        
-        let nav = BaseNavigationController(rootViewController:vc)
-        nav.navigationBar.barTintColor = kPop_navigationBar_color
-        nav.modalPresentationStyle = .formSheet
-        nav.preferredContentSize = frame.size
-        UIApplication.shared.keyWindow?.rootViewController?.present(nav, animated: true, completion: nil)
+        Tools.showAlert("TaskPoolSelectController")
     }
 
     
@@ -204,6 +196,8 @@ class TaskPoolBaseController: BaseViewController ,UITableViewDelegate,UITableVie
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //return
+        
         if let taskid = dataArray[indexPath.section]["taskId"]  as? String {
             let vc = TaskPoolDetailController()
             vc.taskId = taskid
@@ -214,4 +208,57 @@ class TaskPoolBaseController: BaseViewController ,UITableViewDelegate,UITableVie
         
     }
 
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        return .delete
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return indexPath.row == 0 ? true : false
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+
+        if editingStyle == .delete {
+
+        }
+    }
+    
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let action1 = UITableViewRowAction.init(style: .destructive, title: "Delete") { (action, indexPath) in
+            tableView.isEditing = false
+            
+        }
+        
+        
+
+        let action2 = UITableViewRowAction.init(style: .default, title: "Submit") { (action, indexPath) in
+            
+            
+        }
+        action2.backgroundColor = UIColor.init(colorLiteralRed: 0/255.0, green: 153/255.0, blue: 255/255.0, alpha: 1)
+        
+        
+        
+        let action3 = UITableViewRowAction.init(style: .default, title: "Change Shift") { (action, indexPath) in
+            
+            Tools.showAlert("TaskChangeShiftVC" ,withBar: true)
+            
+        }
+
+        action3.backgroundColor = UIColor.init(colorLiteralRed: 102/255.0, green: 153/255.0, blue: 153/255.0, alpha: 1)
+        
+        let action4 = UITableViewRowAction.init(style: .default, title: "Add Action") { (action, indexPath) in
+            
+            
+        }
+        
+        action4.backgroundColor = UIColor.init(colorLiteralRed: 219/255.0, green: 118/255.0, blue: 51/255.0, alpha: 1)
+        
+        return [action1,action2,action3,action4]
+    }
+    
+    
+    
 }

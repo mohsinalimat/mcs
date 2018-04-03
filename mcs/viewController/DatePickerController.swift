@@ -19,19 +19,13 @@ class DatePickerController: BasePickerViewController {
         
         _init()
     }
-
-    init(_ formatter:String? = "yyyy") {
-        super.init(nibName: nil, bundle: nil)
-        
-        
-        
-    }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
-
+//    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+//        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+//        
+//        _init()
+//    }
     
     func _init() {
         

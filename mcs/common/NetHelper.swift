@@ -74,8 +74,11 @@ func netHelper_request(withUrl:String,
                     if let failure = failureHandler {
                         failure(dic["msg"] as? String)
                         
+                    } else {
+                        HUD.show(info: "\(dic["msg"])");
                     }
                 }
+              
                 
             }
         }

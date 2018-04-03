@@ -10,16 +10,61 @@ import UIKit
 
 class TaskPoolDetailController: BaseWebViewController {
 
+    @IBOutlet weak var taskName: UILabel!
+    
+    @IBOutlet weak var time: UILabel!
+    
+    @IBOutlet weak var task_no: UIButton!
+    
     var taskId:String!
+    
+    @IBAction func task_no_action(_ sender: UIButton) {
+        
+        
+    }
+    
+    @IBAction func defectReportAction(_ sender: AnyObject) {
+        
+    }
+    
+    
+    @IBAction func task_operation_action(_ sender: UIButton) {
+        switch sender.tag {
+        case 1:
+            
+            Tools.showAlert("TaskChangeShiftVC" ,withBar: true)
+            
+            break
+            
+        case 2:
+
+            break
+            
+        case 3:
+
+            break
+        case 4:
+            
+            break
+            
+        default:break
+        }
+        
+        
+    }
+    
     
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        view.backgroundColor = UIColor.white;
+        
         title = "TaskPool detail"
+        
+        webview.frame = CGRect (x: 0, y: 45, width: kCurrentScreenWidth, height: kCurrentScreenHeight - 64 - 100)
+        
         
         loadData()
     }

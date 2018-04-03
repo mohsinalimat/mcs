@@ -41,4 +41,67 @@ class Tools: NSObject {
     }
     
     
+    
+    //MARK: - show
+    static func showAlert(_ vcname:String , withBar:Bool = true) {
+        let appname = Bundle.main.infoDictionary!["CFBundleExecutable"] as! String
+        let cls  =  NSClassFromString(appname + "." + vcname) as! BaseViewController.Type
+        let vc = cls.init()
+        
+        let frame = CGRect (x: 0, y: 0, width: 500, height: 360)
+        vc.view.frame = frame
+        
+        if withBar {
+            let nav = BaseNavigationController(rootViewController:vc)
+            nav.navigationBar.barTintColor = kPop_navigationBar_color
+            nav.modalPresentationStyle = .formSheet
+            nav.preferredContentSize = frame.size
+            UIApplication.shared.keyWindow?.rootViewController?.present(nav, animated: true, completion: nil)
+
+        } else {
+            vc.modalPresentationStyle = .formSheet;
+            vc.preferredContentSize = frame.size
+            UIApplication.shared.keyWindow?.rootViewController?.present(vc, animated: true, completion: nil)
+        
+        }
+
+    }
+    
+    
+    static func showDatePicekr(_ s:UIViewController , handler:((Any) -> Void)? = nil){
+        let vc = DatePickerController.init()
+        let frame = CGRect (x: 0, y: 0, width: 500, height: 240)
+        vc.view.frame = frame
+        
+        vc.pickerDidSelectedHandler = handler
+        
+        let nav = BaseNavigationController(rootViewController:vc)
+        nav.navigationBar.barTintColor = kPop_navigationBar_color
+        nav.modalPresentationStyle = .formSheet
+        nav.preferredContentSize = frame.size
+        s.present(nav, animated: true, completion: nil)
+    }
+    
+    
+    static func showShiftPicekr(_ s:UIViewController , handler:((Any) -> Void)? = nil){
+        let vc = DataPickerController.init()
+        let frame = CGRect (x: 0, y: 0, width: 500, height: 240)
+        if let station = kTaskPool_BASE_DATA["shifts"] as? [Any] {
+            vc.dataArray = station;
+        }
+        
+        vc.view.frame = frame
+        vc.dataType = .obj
+        vc.pickerDidSelectedHandler = handler
+        
+        let nav = BaseNavigationController(rootViewController:vc)
+        nav.navigationBar.barTintColor = kPop_navigationBar_color
+        nav.modalPresentationStyle = .formSheet
+        nav.preferredContentSize = frame.size
+        s.present(nav, animated: true, completion: nil)
+    }
+
+    
+    
+    
 }
