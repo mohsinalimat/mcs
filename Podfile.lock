@@ -3,6 +3,7 @@ PODS:
   - FMDB (2.7.2):
     - FMDB/standard (= 2.7.2)
   - FMDB/standard (2.7.2)
+  - IQKeyboardManagerSwift (5.0.0)
   - LKDBHelper (2.4.4):
     - LKDBHelper/standard (= 2.4.4)
   - LKDBHelper/standard (2.4.4):
@@ -20,6 +21,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 4.4)
+  - IQKeyboardManagerSwift (= 5.0.0)
   - LKDBHelper (~> 2.4.2)
   - MJRefresh
   - RxCocoa (= 3.0)
@@ -32,6 +34,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
   FMDB: 6198a90e7b6900cfc046e6bc0ef6ebb7be9236aa
+  IQKeyboardManagerSwift: 3f340202ebe1a7076279b9b9b3c817243ddb3aab
   LKDBHelper: cf467ff69aaf1e13bd4964aca3a79881d54c6d14
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   RxCocoa: 0a2f3ae381cf16f4021a4cee7a4420f83058a965
@@ -41,6 +44,6 @@ SPEC CHECKSUMS:
   SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: 499224181e1d7cb744d17b37a9e22473e136c5d7
+PODFILE CHECKSUM: 4c9f6b481c437e9cd2b6a516134bdf9edd8efcc5
 
 COCOAPODS: 1.0.1

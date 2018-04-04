@@ -12,5 +12,6 @@ pod 'MJRefresh'
 pod 'RxSwift', '3.0'
 pod 'RxCocoa', '3.0'
 pod 'RxDataSources', '~> 1.0.4'
+pod 'IQKeyboardManagerSwift', '5.0.0'
 
 end

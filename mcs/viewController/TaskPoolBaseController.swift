@@ -108,6 +108,7 @@ class TaskPoolBaseController: BaseViewController ,UITableViewDelegate,UITableVie
     }
     
     @IBAction func selectData(_ sender: UIButton) {
+        _tableView.isEditing = false
         Tools.showAlert("TaskPoolSelectController")
     }
 
@@ -251,7 +252,9 @@ class TaskPoolBaseController: BaseViewController ,UITableViewDelegate,UITableVie
         
         let action4 = UITableViewRowAction.init(style: .default, title: "Add Action") { (action, indexPath) in
             
-            
+           let vc = TaskAddActionVC()
+           // let vc = UIStoryboard.init(name: "TaskPool", bundle: nil).instantiateViewController(withIdentifier: "test")
+            self.navigationController?.pushViewController(vc, animated: true)
         }
         
         action4.backgroundColor = UIColor.init(colorLiteralRed: 219/255.0, green: 118/255.0, blue: 51/255.0, alpha: 1)

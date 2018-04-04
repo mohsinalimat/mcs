@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="TaskActionDetailView" customModule="mcs" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="1024" height="60"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vc6-SS-0DW">
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Action Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Guu-bT-1t0">
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Fu-97-aej">
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title="Materal&amp;Tools ">
+                                <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="actionDetailSelect:" destination="iN0-l3-epB" eventType="touchUpInside" id="W2P-ar-GQo"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J7G-IG-bKW">
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title="Component Change">
+                                <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="actionDetailSelect:" destination="iN0-l3-epB" eventType="touchUpInside" id="WIO-0K-ErB"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vau-sp-5dJ">
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title="Basic Info &amp; Detail"/>
+                            <connections>
+                                <action selector="actionDetailSelect:" destination="iN0-l3-epB" eventType="touchUpInside" id="9C9-MR-zkP"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GNh-hb-H2P">
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title="Attachment">
+                                <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="actionDetailSelect:" destination="iN0-l3-epB" eventType="touchUpInside" id="4zY-Tp-eyD"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.96460121870040894" green="0.96476620435714722" blue="0.96459084749221802" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="GNh-hb-H2P" firstAttribute="width" secondItem="vau-sp-5dJ" secondAttribute="width" id="21E-Jt-mgl"/>
+                        <constraint firstItem="Guu-bT-1t0" firstAttribute="leading" secondItem="Vc6-SS-0DW" secondAttribute="leading" constant="20" id="4eB-Um-sgs"/>
+                        <constraint firstAttribute="trailing" secondItem="GNh-hb-H2P" secondAttribute="trailing" id="77p-Oj-szi"/>
+                        <constraint firstItem="GNh-hb-H2P" firstAttribute="leading" secondItem="J7G-IG-bKW" secondAttribute="trailing" id="9Es-zO-JJp"/>
+                        <constraint firstItem="0Fu-97-aej" firstAttribute="centerY" secondItem="vau-sp-5dJ" secondAttribute="centerY" id="AIA-JX-1Q7"/>
+                        <constraint firstItem="GNh-hb-H2P" firstAttribute="centerY" secondItem="vau-sp-5dJ" secondAttribute="centerY" id="IOi-XK-QRz"/>
+                        <constraint firstItem="0Fu-97-aej" firstAttribute="width" secondItem="vau-sp-5dJ" secondAttribute="width" id="Kcg-7i-sWU"/>
+                        <constraint firstItem="J7G-IG-bKW" firstAttribute="width" secondItem="vau-sp-5dJ" secondAttribute="width" id="Nc6-Te-ifO"/>
+                        <constraint firstItem="J7G-IG-bKW" firstAttribute="centerY" secondItem="vau-sp-5dJ" secondAttribute="centerY" id="cwI-1C-wIC"/>
+                        <constraint firstItem="J7G-IG-bKW" firstAttribute="leading" secondItem="0Fu-97-aej" secondAttribute="trailing" id="g9l-QU-Iy2"/>
+                        <constraint firstItem="GNh-hb-H2P" firstAttribute="height" secondItem="vau-sp-5dJ" secondAttribute="height" id="hdg-4W-tMZ"/>
+                        <constraint firstItem="0Fu-97-aej" firstAttribute="leading" secondItem="vau-sp-5dJ" secondAttribute="trailing" id="jQj-7O-oro"/>
+                        <constraint firstItem="vau-sp-5dJ" firstAttribute="leading" secondItem="Guu-bT-1t0" secondAttribute="trailing" constant="180" id="kDL-tl-R4e"/>
+                        <constraint firstItem="Guu-bT-1t0" firstAttribute="centerY" secondItem="Vc6-SS-0DW" secondAttribute="centerY" id="ksm-Gr-UOU"/>
+                        <constraint firstItem="GNh-hb-H2P" firstAttribute="top" secondItem="Vc6-SS-0DW" secondAttribute="top" id="lN3-gO-1pL"/>
+                        <constraint firstItem="J7G-IG-bKW" firstAttribute="height" secondItem="vau-sp-5dJ" secondAttribute="height" id="r15-VN-lni"/>
+                        <constraint firstItem="0Fu-97-aej" firstAttribute="height" secondItem="vau-sp-5dJ" secondAttribute="height" id="rZF-rr-mco"/>
+                        <constraint firstAttribute="bottom" secondItem="GNh-hb-H2P" secondAttribute="bottom" id="zCe-LS-ih0"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Vc6-SS-0DW" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="Oeq-nU-UZR"/>
+                <constraint firstAttribute="trailing" secondItem="Vc6-SS-0DW" secondAttribute="trailing" constant="15" id="YFJ-Hx-5i3"/>
+                <constraint firstItem="Vc6-SS-0DW" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="n5n-fK-xcx"/>
+                <constraint firstAttribute="bottom" secondItem="Vc6-SS-0DW" secondAttribute="bottom" id="ylE-vj-3bf"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="33" y="54"/>
+        </view>
+    </objects>
+</document>

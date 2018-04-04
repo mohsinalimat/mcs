@@ -8,6 +8,8 @@
 
 import UIKit
 
+import IQKeyboardManagerSwift
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -24,6 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window?.makeKeyAndVisible()
         
+        
+        
         _init()
         
         return true
@@ -31,6 +35,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func _init() {
        HUD.config()
+        
+       IQKeyboardManager.sharedManager().enable = true
         
     }
     
