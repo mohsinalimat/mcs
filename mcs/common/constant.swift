@@ -92,6 +92,7 @@ var kTaskpool_date:Date?
 
 var kActive_BASE_DATA:[String:Any]?
 
+var addAction_Section2_SelectedIndex:Int = 0
 
 
 //MARK:

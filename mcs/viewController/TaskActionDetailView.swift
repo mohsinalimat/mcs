@@ -10,25 +10,28 @@ import UIKit
 
 class TaskActionDetailView: UIView {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
-
+    var changeActionHandler:((Int) -> Void)?
+    
+    @IBOutlet weak var bg_v: UIView!
 
     @IBAction func actionDetailSelect(_ sender: UIButton) {
-        
-        print(sender.tag)
-        
-        
+
+        if let handle = changeActionHandler {
+            handle(sender.tag);
+        }
+
     }
     
     
     
-    
+    func _selectedBtnAtIndex(_ index:Int) {
+        for _v in self.bg_v.subviews{
+            if _v.tag == index {
+                let b = _v as! UIButton;
+                b.setTitleColor(kButtonTitleDefaultColor, for: .normal);return
+            }
+        }
+    }
     
     
     

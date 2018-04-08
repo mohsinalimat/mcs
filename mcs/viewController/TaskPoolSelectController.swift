@@ -120,11 +120,7 @@ class TaskPoolSelectController: BaseViewController {
         
     }
     
-    
-    func closeBtn(){
-        self.dismiss(animated: true, completion: nil)
-    }
-    
+
 
 
 }

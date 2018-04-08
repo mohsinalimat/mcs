@@ -40,15 +40,19 @@ class Tools: NSObject {
         
     }
     
+   
+    
+    
+    
+    
+    
     
     
     //MARK: - show
-    static func showAlert(_ vcname:String , withBar:Bool = true) {
+    static func showAlert(_ vcname:String , withBar:Bool = true , frame:CGRect = CGRect(x: 0, y: 0, width: 500, height: 360)) {
         let appname = Bundle.main.infoDictionary!["CFBundleExecutable"] as! String
         let cls  =  NSClassFromString(appname + "." + vcname) as! BaseViewController.Type
         let vc = cls.init()
-        
-        let frame = CGRect (x: 0, y: 0, width: 500, height: 360)
         vc.view.frame = frame
         
         if withBar {
@@ -57,12 +61,10 @@ class Tools: NSObject {
             nav.modalPresentationStyle = .formSheet
             nav.preferredContentSize = frame.size
             UIApplication.shared.keyWindow?.rootViewController?.present(nav, animated: true, completion: nil)
-
         } else {
             vc.modalPresentationStyle = .formSheet;
             vc.preferredContentSize = frame.size
             UIApplication.shared.keyWindow?.rootViewController?.present(vc, animated: true, completion: nil)
-        
         }
 
     }

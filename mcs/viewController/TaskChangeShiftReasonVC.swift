@@ -91,7 +91,6 @@ class TaskChangeShiftReasonVC: BaseViewController ,UITextViewDelegate{
     
     
     func finishedBtnAction() {
-        
         if let  handler = completionHandler {
             handler(textView.text);
         }

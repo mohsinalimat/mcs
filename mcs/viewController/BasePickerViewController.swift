@@ -70,10 +70,7 @@ class BasePickerViewController: BaseViewController {
     
     
     //MARK:
-    func closeBtn(){
-        self.dismiss(animated: true, completion: nil)
-    }
-    
+
     func finishedBtnAction() {}
     
     

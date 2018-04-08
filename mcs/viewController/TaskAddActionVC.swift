@@ -12,6 +12,8 @@ class TaskAddActionVC: BaseViewController ,UITableViewDelegate,UITableViewDataSo
 
     @IBOutlet weak var _tableView: UITableView!
     
+    var section2_selected_index:Int = 1;
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +26,10 @@ class TaskAddActionVC: BaseViewController ,UITableViewDelegate,UITableViewDataSo
         _initSubview()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        HUD.dismiss()
+    }
     
     func _initSubview()  {
         _tableView.delegate = self
@@ -31,6 +37,7 @@ class TaskAddActionVC: BaseViewController ,UITableViewDelegate,UITableViewDataSo
         
         _tableView.register(UINib (nibName: "AddActionInfoCell", bundle: nil), forCellReuseIdentifier: "AddActionInfoCellIdentifier")
         _tableView.register(UINib (nibName: "Action_Detail_Cell", bundle: nil), forCellReuseIdentifier: "Action_Detail_CellIdentifier")
+        _tableView.register(UINib (nibName: "Action_Materal_Cell", bundle: nil), forCellReuseIdentifier: "Action_Materal_CellIdentifier")
     }
     
     
@@ -46,9 +53,20 @@ class TaskAddActionVC: BaseViewController ,UITableViewDelegate,UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var identifier = indexPath.section == 0 ? "AddActionInfoCellIdentifier" : "Action_Detail_CellIdentifier"
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AddActionInfoCellIdentifier", for: indexPath)
+            
+            return cell
+        }
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
+        if section2_selected_index == 1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Action_Detail_CellIdentifier", for: indexPath)
+            return cell
+        }
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Action_Materal_CellIdentifier", for: indexPath) as! Action_Materal_Cell
+        
+        cell._tableView.reloadData()
         
         return cell
     }
@@ -57,7 +75,7 @@ class TaskAddActionVC: BaseViewController ,UITableViewDelegate,UITableViewDataSo
     
     // MARK: - Table view data source
      func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return section == 0 ? 40 : 60
+        return 50
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -65,9 +83,9 @@ class TaskAddActionVC: BaseViewController ,UITableViewDelegate,UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        guard indexPath.section > 0  else {return 200}
+        guard indexPath.section > 0  else {return 180}
         
-        return indexPath.row != 0 ? 0 : kCurrentScreenHeight - 200 - 224
+        return indexPath.row != 0 ? 0 : kCurrentScreenHeight - 180 - 220
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -77,7 +95,16 @@ class TaskAddActionVC: BaseViewController ,UITableViewDelegate,UITableViewDataSo
         }
         
         
-        let v = Bundle.main.loadNibNamed("TaskActionDetailView", owner: nil, options: nil)?.first as! UIView
+        let v = Bundle.main.loadNibNamed("TaskActionDetailView", owner: nil, options: nil)?.first as! TaskActionDetailView
+        v.changeActionHandler = {[weak self ] index in
+            guard let ss = self else {return}
+            ss.section2_selected_index = index
+            addAction_Section2_SelectedIndex = index
+            tableView.reloadData()
+        }
+        
+        v._selectedBtnAtIndex(section2_selected_index)
+        
         return v
         
     }

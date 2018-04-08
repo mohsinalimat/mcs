@@ -251,14 +251,15 @@ class TaskPoolBaseController: BaseViewController ,UITableViewDelegate,UITableVie
         action3.backgroundColor = UIColor.init(colorLiteralRed: 102/255.0, green: 153/255.0, blue: 153/255.0, alpha: 1)
         
         let action4 = UITableViewRowAction.init(style: .default, title: "Add Action") { (action, indexPath) in
-            
-           let vc = TaskAddActionVC()
-           // let vc = UIStoryboard.init(name: "TaskPool", bundle: nil).instantiateViewController(withIdentifier: "test")
-            self.navigationController?.pushViewController(vc, animated: true)
+            DispatchQueue.main.async {
+                HUD.show()
+                let vc = TaskAddActionVC()
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+
         }
         
         action4.backgroundColor = UIColor.init(colorLiteralRed: 219/255.0, green: 118/255.0, blue: 51/255.0, alpha: 1)
-        
         return [action1,action2,action3,action4]
     }
     

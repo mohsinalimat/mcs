@@ -37,7 +37,10 @@ class TaskPoolDetailController: BaseWebViewController {
             break
             
         case 2:
-
+            HUD.show()
+            let vc = TaskAddActionVC()
+            self.navigationController?.pushViewController(vc, animated: true)
+            
             break
             
         case 3:

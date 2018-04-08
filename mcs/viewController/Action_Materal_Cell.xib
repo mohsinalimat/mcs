@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Action_Materal_CellIdentifier" rowHeight="300" id="xhl-Z0-t49" customClass="Action_Materal_Cell" customModule="mcs" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="1024" height="300"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xhl-Z0-t49" id="7Vf-bf-RAJ">
+                <frame key="frameInset" width="1024" height="299"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RbE-UA-FpT">
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AJ6-Pw-NM2">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="5An-XV-85h"/>
+                                    <constraint firstAttribute="height" constant="30" id="Mfw-Jt-mGK"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="15" minY="5" maxX="15" maxY="5"/>
+                                <state key="normal" image="add_subscribe_video">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addAction:" destination="xhl-Z0-t49" eventType="touchUpInside" id="P4N-xb-5XP"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ejR-7w-EWh">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.93709164860000005" green="0.93694382909999996" blue="0.95754462480000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="ejR-7w-EWh" secondAttribute="trailing" id="OUc-Ep-gmA"/>
+                            <constraint firstItem="AJ6-Pw-NM2" firstAttribute="top" secondItem="RbE-UA-FpT" secondAttribute="top" constant="10" id="QnJ-60-ikK"/>
+                            <constraint firstItem="ejR-7w-EWh" firstAttribute="top" secondItem="AJ6-Pw-NM2" secondAttribute="bottom" id="Zku-jU-w02"/>
+                            <constraint firstAttribute="bottom" secondItem="ejR-7w-EWh" secondAttribute="bottom" id="iDk-Jx-zuj"/>
+                            <constraint firstItem="ejR-7w-EWh" firstAttribute="leading" secondItem="RbE-UA-FpT" secondAttribute="leading" id="mWa-Ql-Dcg"/>
+                            <constraint firstAttribute="trailing" secondItem="AJ6-Pw-NM2" secondAttribute="trailing" constant="30" id="sXh-Th-Jov"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="RbE-UA-FpT" firstAttribute="top" secondItem="7Vf-bf-RAJ" secondAttribute="top" id="5hV-Ey-ha3"/>
+                    <constraint firstAttribute="trailing" secondItem="RbE-UA-FpT" secondAttribute="trailing" constant="15" id="OHs-d3-A3X"/>
+                    <constraint firstAttribute="bottom" secondItem="RbE-UA-FpT" secondAttribute="bottom" id="llm-Ck-AkK"/>
+                    <constraint firstItem="RbE-UA-FpT" firstAttribute="leading" secondItem="7Vf-bf-RAJ" secondAttribute="leading" constant="15" id="opM-Gh-SOX"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="_tableView" destination="ejR-7w-EWh" id="0aP-ZD-Rww"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="add_subscribe_video" width="25" height="25"/>
+    </resources>
+</document>
