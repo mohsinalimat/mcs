@@ -108,6 +108,15 @@
                     <constraint firstItem="fgI-ql-wsO" firstAttribute="leading" secondItem="c5T-td-wYN" secondAttribute="leading" id="yth-ke-zdO"/>
                 </constraints>
             </tableViewCellContentView>
+            <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+            <connections>
+                <outlet property="code" destination="c5T-td-wYN" id="xb7-1m-JDN"/>
+                <outlet property="descri" destination="fgI-ql-wsO" id="pBE-Rq-drN"/>
+                <outlet property="rec_time" destination="kNw-NL-Nla" id="MCt-QA-nZU"/>
+                <outlet property="shift" destination="EWK-dk-lOW" id="0eI-9T-OE5"/>
+                <outlet property="station" destination="L5G-cd-nyD" id="RGh-PU-NpT"/>
+                <outlet property="time" destination="yYL-Bq-HcX" id="7qB-vL-yd2"/>
+            </connections>
             <point key="canvasLocation" x="35" y="53.5"/>
         </tableViewCell>
     </objects>

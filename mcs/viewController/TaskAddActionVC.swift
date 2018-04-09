@@ -10,7 +10,15 @@ import UIKit
 
 class TaskAddActionVC: BaseViewController ,UITableViewDelegate,UITableViewDataSource{
 
+    @IBOutlet weak var s_performed: UISwitch!
+    
+    @IBOutlet weak var s_closed: UISwitch!
+    
+    @IBOutlet weak var btn_save: UIButton!
+    
     @IBOutlet weak var _tableView: UITableView!
+    
+    var read_only:Bool = false
     
     var section2_selected_index:Int = 1;
     
@@ -38,9 +46,25 @@ class TaskAddActionVC: BaseViewController ,UITableViewDelegate,UITableViewDataSo
         _tableView.register(UINib (nibName: "AddActionInfoCell", bundle: nil), forCellReuseIdentifier: "AddActionInfoCellIdentifier")
         _tableView.register(UINib (nibName: "Action_Detail_Cell", bundle: nil), forCellReuseIdentifier: "Action_Detail_CellIdentifier")
         _tableView.register(UINib (nibName: "Action_Materal_Cell", bundle: nil), forCellReuseIdentifier: "Action_Materal_CellIdentifier")
+        _tableView.register(UINib (nibName: "AddActionInfoCell_R", bundle: nil), forCellReuseIdentifier: "AddActionInfoCell_RIdentifier")
+        _tableView.register(UINib (nibName: "Action_Detail_Cell_R", bundle: nil), forCellReuseIdentifier: "Action_Detail_Cell_RIdentifier")
+        
+        if read_only {
+            s_performed.isEnabled = false;
+            s_closed.isEnabled = false
+            s_performed.isOn = false
+            s_closed.isOn = false
+            
+            btn_save.isHidden = true
+            title = "Action No.2";
+        }
+        
     }
     
     
+    @IBAction func saveAction(_ sender: UIButton) {
+        
+    }
     
     
     ////MARK: - 
@@ -54,18 +78,20 @@ class TaskAddActionVC: BaseViewController ,UITableViewDelegate,UITableViewDataSo
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "AddActionInfoCellIdentifier", for: indexPath)
+            let _identifier = read_only ? "AddActionInfoCell_RIdentifier" : "AddActionInfoCellIdentifier"
+            let cell = tableView.dequeueReusableCell(withIdentifier: _identifier, for: indexPath)
             
             return cell
         }
         
         if section2_selected_index == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "Action_Detail_CellIdentifier", for: indexPath)
+            let _identifier = read_only ? "Action_Detail_Cell_RIdentifier" : "Action_Detail_CellIdentifier"
+            let cell = tableView.dequeueReusableCell(withIdentifier: _identifier, for: indexPath)
             return cell
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Action_Materal_CellIdentifier", for: indexPath) as! Action_Materal_Cell
-        
+        cell.read_only = read_only
         cell._tableView.reloadData()
         
         return cell

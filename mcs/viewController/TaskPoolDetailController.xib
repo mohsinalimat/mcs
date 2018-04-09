@@ -7,6 +7,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TaskPoolDetailController" customModule="mcs" customModuleProvider="target">
             <connections>
+                <outlet property="btn_change" destination="rvU-wN-xPF" id="z7t-2X-tDq"/>
+                <outlet property="btn_defect" destination="xm2-el-gYb" id="yPz-aP-p3P"/>
+                <outlet property="btn_save" destination="toN-8k-KSJ" id="zSi-gy-8Hf"/>
                 <outlet property="taskName" destination="AkB-nO-Qf9" id="EPH-Ba-4gz"/>
                 <outlet property="task_no" destination="GVP-dh-H6P" id="4eq-Qx-39f"/>
                 <outlet property="time" destination="NM7-49-gvJ" id="SMi-cs-QRA"/>

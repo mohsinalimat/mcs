@@ -34,7 +34,7 @@ class TaskHandleController: BaseViewController ,UITableViewDelegate,UITableViewD
                 strongSelf.getTaskPool();
             }.addDisposableTo(disposeBag)
         
-        guard kTaskpool_date != nil ,kTaskpool_shift != nil , kTaskpool_station != nil else {  /*_pop();*/ return}
+        //guard kTaskpool_date != nil ,kTaskpool_shift != nil , kTaskpool_station != nil else {  /*_pop();*/ return}
         getTaskPool();
 
     }
@@ -42,20 +42,19 @@ class TaskHandleController: BaseViewController ,UITableViewDelegate,UITableViewD
 
     //MARK:-
     func getTaskPool()  {
-        HUD.show(withStatus: "Loading")
+        //HUD.show(withStatus: "Loading")
         
         let d = ["shift":"30b621f4455545828b0b0e2d9e2fb9f3",
                  "scheduleTime":"23/03/2018"
         ]
         
-        netHelper_request(withUrl: task_pool_url, method: .post, parameters: d, successHandler: {[weak self] (result) in
-            HUD.dismiss()
+        netHelper_request(withUrl: handle_over_url, method: .post, parameters: d, successHandler: {[weak self] (result) in
+            //HUD.dismiss()
             
-            guard let body = result["body"] as? [String : Any] else {return;}
-            guard let recordList = body["recordList"] as? [[String : Any]] else {return;}
+            guard let body = result["body"] as? [[String : Any]] else {return;}
             guard let strongSelf = self else{return}
             
-            strongSelf.dataArray = strongSelf.dataArray + recordList
+            strongSelf.dataArray = strongSelf.dataArray + body
             strongSelf._tableView.reloadData()
             
             }
@@ -128,22 +127,16 @@ class TaskHandleController: BaseViewController ,UITableViewDelegate,UITableViewD
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        if let list = dataArray[section]["actionList"] as? [[String:Any]], list.count >= 0 {
-            return list.count + 1;
-        }
-        
-        
-        return 1
+
+        return 1;
     }
-    
-    
-    var type = 1
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "TaskHandCellIdentifier", for: indexPath) as! TaskHandCell
-            
+        let d = dataArray[indexPath.section];
+        cell.fill(d)
+        
         return cell
 
     }
@@ -174,7 +167,7 @@ class TaskHandleController: BaseViewController ,UITableViewDelegate,UITableViewD
         if let taskid = dataArray[indexPath.section]["taskId"]  as? String {
             let vc = TaskPoolDetailController()
             vc.taskId = taskid
-            
+            vc.from_taskPool = false
             self.navigationController?.pushViewController(vc, animated: true)
         }
         

@@ -66,6 +66,8 @@ let task_pool_url = "/biz/task/pooldata"
  */
 let task_pooldetail_url = "/biz/task/detail"
 
+let handle_over_url = "/biz/task/handover"
+
 
 
 /// 提交故障信息到mcs 系统中

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ActionListVC" customModule="mcs" customModuleProvider="target">
+            <connections>
+                <outlet property="_tableView" destination="wdL-aD-lMv" id="aGL-cQ-jcE"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="64" width="1024" height="704"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Actions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q63-d5-Qho">
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="25"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XTf-el-zmI">
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="KIS-Wh-xDd"/>
+                        <constraint firstAttribute="height" constant="35" id="h8D-c1-oH1"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" image="add_subscribe_video">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </button>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wdL-aD-lMv">
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="wdL-aD-lMv" secondAttribute="trailing" id="8AU-w5-Zmp"/>
+                <constraint firstAttribute="bottom" secondItem="wdL-aD-lMv" secondAttribute="bottom" id="95G-U9-LOL"/>
+                <constraint firstItem="Q63-d5-Qho" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="15" id="Jyg-ZH-SAw"/>
+                <constraint firstItem="wdL-aD-lMv" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Oti-nm-4YB"/>
+                <constraint firstItem="Q63-d5-Qho" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="Vx1-k7-gX0"/>
+                <constraint firstItem="wdL-aD-lMv" firstAttribute="top" secondItem="XTf-el-zmI" secondAttribute="bottom" constant="5" id="YOi-6S-ACk"/>
+                <constraint firstItem="XTf-el-zmI" firstAttribute="centerY" secondItem="Q63-d5-Qho" secondAttribute="centerY" id="coR-wz-Qou"/>
+                <constraint firstAttribute="trailing" secondItem="XTf-el-zmI" secondAttribute="trailing" constant="30" id="zSU-hE-x1e"/>
+            </constraints>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="add_subscribe_video" width="25" height="25"/>
+    </resources>
+</document>

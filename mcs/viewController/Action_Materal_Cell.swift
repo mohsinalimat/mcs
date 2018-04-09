@@ -11,11 +11,46 @@ import UIKit
 class Action_Materal_Cell: UITableViewCell,UITableViewDelegate,UITableViewDataSource {
 
     var section_index = 0
+    var read_only:Bool = false
+    
+    @IBOutlet weak var addBtn_H: NSLayoutConstraint!
+    
+    @IBOutlet weak var addBtn: UIButton!
     
     @IBOutlet weak var _tableView: UITableView!
     @IBAction func addAction(_ sender: UIButton) {
-        
-        Tools.showAlert(addAction_Section2_SelectedIndex == 2 ? "Add_MateralVC" : "Add_ComponentVC" ,withBar: true,frame:CGRect (x: 0, y: 0, width: 500, height: 500))
+        switch addAction_Section2_SelectedIndex {
+        case 2:
+            Tools.showAlert("Add_MateralVC" ,withBar: true,frame:CGRect (x: 0, y: 0, width: 500, height: 500))
+            break
+            
+        case 3:
+            Tools.showAlert("Add_ComponentVC" ,withBar: true,frame:CGRect (x: 0, y: 0, width: 500, height: 500))
+            break
+            
+        case 4:
+            let vc = UIAlertController.init(title: nil, message: nil, preferredStyle: .alert)
+            let action_1 =  UIAlertAction (title: "取消", style: .cancel, handler: nil)
+            let action_2 = UIAlertAction (title: "拍照", style: .default, handler: { (action) in
+                
+            })
+            
+            let action_3 = UIAlertAction (title: "视频", style: .default, handler: { (action) in
+                
+            })
+            
+            vc.addAction(action_1)
+            vc.addAction(action_2)
+            vc.addAction(action_3)
+            
+            
+            UIApplication.shared.keyWindow?.rootViewController?.present(vc, animated: true, completion: nil);
+            
+            break
+            
+        default:break
+        }
+
         
     }
     
@@ -35,8 +70,19 @@ class Action_Materal_Cell: UITableViewCell,UITableViewDelegate,UITableViewDataSo
         
         _tableView.tableFooterView = UIView()
         _tableView.rowHeight = 60
+        
+        
     }
 
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        if read_only {
+            addBtn_H.constant = 0;
+            addBtn.isHidden = true
+        }
+        
+    }
+    
     
     override func prepareForReuse() {
         _tableView.scrollsToTop = true;

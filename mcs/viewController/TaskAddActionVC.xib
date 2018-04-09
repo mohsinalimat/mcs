@@ -8,6 +8,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TaskAddActionVC" customModule="mcs" customModuleProvider="target">
             <connections>
                 <outlet property="_tableView" destination="XEE-z9-pVi" id="gLn-kk-DL4"/>
+                <outlet property="btn_save" destination="RXa-rq-vgr" id="nIn-z3-gOu"/>
+                <outlet property="s_closed" destination="l1C-fK-eTN" id="3gO-iu-JhG"/>
+                <outlet property="s_performed" destination="yqI-Zq-hd8" id="bIX-eb-PDO"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -40,6 +43,9 @@
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="saveAction:" destination="-1" eventType="touchUpInside" id="M8W-kI-XNh"/>
+                    </connections>
                 </button>
                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yqI-Zq-hd8">
                     <color key="onTintColor" red="0.066666666669999999" green="0.52941176469999995" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>

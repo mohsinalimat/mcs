@@ -27,7 +27,10 @@ class TaskPoolBaseController: BaseViewController ,UITableViewDelegate,UITableVie
         super.viewDidLoad()
 
         _initSubviews()
-
+        
+        ///..........
+        search_bgview.isHidden = true;
+        
         NotificationCenter.default.rx.notification(NSNotification.Name.init("notification-selected-complete")).subscribe { [weak self] (event) in
             guard let strongSelf = self else {return}
                 strongSelf._init_top();
@@ -254,6 +257,7 @@ class TaskPoolBaseController: BaseViewController ,UITableViewDelegate,UITableVie
             DispatchQueue.main.async {
                 HUD.show()
                 let vc = TaskAddActionVC()
+
                 self.navigationController?.pushViewController(vc, animated: true)
             }
 

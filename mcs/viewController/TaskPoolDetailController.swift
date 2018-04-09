@@ -17,6 +17,13 @@ class TaskPoolDetailController: BaseWebViewController {
     @IBOutlet weak var task_no: UIButton!
     
     var taskId:String!
+    var from_taskPool:Bool = true
+    
+    @IBOutlet weak var btn_defect: UIButton!
+    @IBOutlet weak var btn_save: UIButton!
+    @IBOutlet weak var btn_change: UIButton!
+    
+    
     
     @IBAction func task_no_action(_ sender: UIButton) {
         
@@ -39,12 +46,14 @@ class TaskPoolDetailController: BaseWebViewController {
         case 2:
             HUD.show()
             let vc = TaskAddActionVC()
+
             self.navigationController?.pushViewController(vc, animated: true)
             
             break
             
         case 3:
-
+            let vc = ActionListVC()
+            self.navigationController?.pushViewController(vc, animated: true)
             break
         case 4:
             
@@ -68,6 +77,11 @@ class TaskPoolDetailController: BaseWebViewController {
         
         webview.frame = CGRect (x: 0, y: 45, width: kCurrentScreenWidth, height: kCurrentScreenHeight - 64 - 100)
         
+        if !from_taskPool {
+            btn_defect.isHidden = true;
+            btn_change.isHidden = true;
+            btn_save.isHidden = true
+        }
         
         loadData()
     }
