@@ -22,6 +22,23 @@ extension String {
         
         return "\(s)"
     }
+    
+    
+    static func stringIsNullOrNilToEmpty(_ any:Any?) -> String {
+        guard  let s = any else {
+            return " "
+        }
+        
+        if s is  NSNull {
+            return " ";
+        }
+        
+        return "\(s)"
+    }
+    
+    
+    
+    
 }
 
 

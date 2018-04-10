@@ -10,13 +10,15 @@ import UIKit
 
 class ActionListVC: BaseViewController ,UITableViewDelegate,UITableViewDataSource{
 
+    var ywNo:String?
+    
     @IBOutlet weak var _tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        title = "DDR20180890-123"
+        title = ywNo
         
         _initSubview()
     }

@@ -78,6 +78,11 @@
 		A1AFF6B12074739400ED1FC4 /* TaskAddActionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AFF6B02074739300ED1FC4 /* TaskAddActionController.swift */; };
 		A1AFF6B320748E3300ED1FC4 /* TaskActionTopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1AFF6B220748E3300ED1FC4 /* TaskActionTopView.xib */; };
 		A1AFF6B52074984C00ED1FC4 /* TaskActionDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1AFF6B42074984C00ED1FC4 /* TaskActionDetailView.xib */; };
+		A1B03DE1207C5EF800797564 /* BaseTableViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B03DE0207C5EF800797564 /* BaseTableViewVC.swift */; };
+		A1B03DE4207C7FD700797564 /* BaseTableViewVCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B03DE2207C7FD700797564 /* BaseTableViewVCCell.swift */; };
+		A1B03DE5207C7FD700797564 /* BaseTableViewVCCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1B03DE3207C7FD700797564 /* BaseTableViewVCCell.xib */; };
+		A1B03DE7207C912E00797564 /* TaskNumberListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B03DE6207C912D00797564 /* TaskNumberListVC.swift */; };
+		A1B03DE9207CAE3400797564 /* TaskDefectReportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B03DE8207CAE3400797564 /* TaskDefectReportVC.swift */; };
 		A1BC1F3620157D2F007D0E1C /* TextMsgViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BC1F3420157D2F007D0E1C /* TextMsgViewCell.swift */; };
 		A1BC1F3720157D2F007D0E1C /* TextMsgViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1BC1F3520157D2F007D0E1C /* TextMsgViewCell.xib */; };
 		A1BC1F392015ABEB007D0E1C /* FlightInfoDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BC1F382015ABEB007D0E1C /* FlightInfoDetailController.swift */; };
@@ -225,6 +230,11 @@
 		A1AFF6B02074739300ED1FC4 /* TaskAddActionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskAddActionController.swift; sourceTree = "<group>"; };
 		A1AFF6B220748E3300ED1FC4 /* TaskActionTopView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskActionTopView.xib; sourceTree = "<group>"; };
 		A1AFF6B42074984C00ED1FC4 /* TaskActionDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskActionDetailView.xib; sourceTree = "<group>"; };
+		A1B03DE0207C5EF800797564 /* BaseTableViewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewVC.swift; sourceTree = "<group>"; };
+		A1B03DE2207C7FD700797564 /* BaseTableViewVCCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewVCCell.swift; sourceTree = "<group>"; };
+		A1B03DE3207C7FD700797564 /* BaseTableViewVCCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BaseTableViewVCCell.xib; sourceTree = "<group>"; };
+		A1B03DE6207C912D00797564 /* TaskNumberListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskNumberListVC.swift; sourceTree = "<group>"; };
+		A1B03DE8207CAE3400797564 /* TaskDefectReportVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskDefectReportVC.swift; sourceTree = "<group>"; };
 		A1BC1F3420157D2F007D0E1C /* TextMsgViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextMsgViewCell.swift; sourceTree = "<group>"; };
 		A1BC1F3520157D2F007D0E1C /* TextMsgViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextMsgViewCell.xib; sourceTree = "<group>"; };
 		A1BC1F382015ABEB007D0E1C /* FlightInfoDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlightInfoDetailController.swift; sourceTree = "<group>"; };
@@ -463,6 +473,9 @@
 				A1923FD2201733E20057AD1E /* BaseWebViewController.swift */,
 				A1FE5094204796E0004F2330 /* BaseTabBarController.swift */,
 				A1AAF14A20491D7E00E8CB3B /* BaseTabItemController.swift */,
+				A1B03DE0207C5EF800797564 /* BaseTableViewVC.swift */,
+				A1B03DE2207C7FD700797564 /* BaseTableViewVCCell.swift */,
+				A1B03DE3207C7FD700797564 /* BaseTableViewVCCell.xib */,
 			);
 			name = BaseVC;
 			sourceTree = "<group>";
@@ -552,6 +565,8 @@
 				A1AFF6B02074739300ED1FC4 /* TaskAddActionController.swift */,
 				A1AB9EF1207B00FE000663C3 /* ActionListVC.swift */,
 				A1AB9EF2207B00FE000663C3 /* ActionListVC.xib */,
+				A1B03DE6207C912D00797564 /* TaskNumberListVC.swift */,
+				A1B03DE8207CAE3400797564 /* TaskDefectReportVC.swift */,
 			);
 			name = taskPool;
 			sourceTree = "<group>";
@@ -699,6 +714,7 @@
 				A1C546C5207A0F550060D921 /* Add_MateralVC.xib in Resources */,
 				A1CF2A0420070029009FE6A4 /* LaunchScreen.storyboard in Resources */,
 				A14BA8AF20733AEB0027D51F /* TaskChangeShiftReasonVC.xib in Resources */,
+				A1B03DE5207C7FD700797564 /* BaseTableViewVCCell.xib in Resources */,
 				A1891F5C2074C05600170BFC /* Action_Detail_Cell.xib in Resources */,
 				A1C546B42079B9110060D921 /* Section_Attach_header.xib in Resources */,
 				A1D15D8920464436004A2C58 /* WarnDetailTopCell.xib in Resources */,
@@ -819,9 +835,11 @@
 				A1AFF6AE20746BC400ED1FC4 /* AddActionInfoCell.swift in Sources */,
 				A1AFF6A42074620E00ED1FC4 /* TaskAddActionVC.swift in Sources */,
 				A1AB9EFB207B48E8000663C3 /* AddActionInfoCell_R.swift in Sources */,
+				A1B03DE1207C5EF800797564 /* BaseTableViewVC.swift in Sources */,
 				A1A658CA2011BDE70079B354 /* FlightInfoListCell.swift in Sources */,
 				A1AB9EF7207B0536000663C3 /* ActionListCell.swift in Sources */,
 				A1C0A3D9200DF04F00A1762C /* TTRefreshHeader.swift in Sources */,
+				A1B03DE9207CAE3400797564 /* TaskDefectReportVC.swift in Sources */,
 				A1C546BF2079E5800060D921 /* Section_TableViewCell3.swift in Sources */,
 				A1284D8B205BB00500B7B576 /* WarnInfoDetailController_new.swift in Sources */,
 				A1C546C8207A0F920060D921 /* Add_ComponentVC.swift in Sources */,
@@ -867,8 +885,10 @@
 				A1DF738D2043EF5B0099B858 /* WarnInfoDetailController.swift in Sources */,
 				A1C6DD76206CEB3600A09808 /* BaseDataCheck.swift in Sources */,
 				A12028622008A1C200CB8633 /* Reachability.m in Sources */,
+				A1B03DE7207C912E00797564 /* TaskNumberListVC.swift in Sources */,
 				A1BC1F392015ABEB007D0E1C /* FlightInfoDetailController.swift in Sources */,
 				A1D15D8C20464466004A2C58 /* WarnFaultInfoCell.swift in Sources */,
+				A1B03DE4207C7FD700797564 /* BaseTableViewVCCell.swift in Sources */,
 				A1C1BB522064C6D700A92B9B /* TaskPoolDetailController.swift in Sources */,
 				A1C546C4207A0F550060D921 /* Add_MateralVC.swift in Sources */,
 				A1A6B26D2011944C00F7D048 /* UINavigationController+FDFullscreenPopGesture.m in Sources */,

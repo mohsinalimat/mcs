@@ -24,7 +24,7 @@ let user_token = UserDefaults.standard.value(forKey: "user-token")
   let BASE_URL = "http://192.168.6.57:8081/mcs/rest"
 #else
     
-let BASE_URL = "http://smart.imsp.cn/mcs/rest"
+let BASE_URL = "http://smart.imsp.cn/mcs/rest" //"http://192.168.6.65:8080/mcs/rest"
     
 #endif
 
@@ -67,7 +67,7 @@ let task_pool_url = "/biz/task/pooldata"
 let task_pooldetail_url = "/biz/task/detail"
 
 let handle_over_url = "/biz/task/handover"
-
+let taskPool_deleteMis_url = "/biz/task/deleteMis"
 
 
 /// 提交故障信息到mcs 系统中
@@ -96,6 +96,7 @@ var kActive_BASE_DATA:[String:Any]?
 
 var addAction_Section2_SelectedIndex:Int = 0
 
+var task_pool_taskno_index:Int = 0
 
 //MARK:
 let msg_loading = "Loading"

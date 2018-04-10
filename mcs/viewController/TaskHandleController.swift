@@ -164,14 +164,67 @@ class TaskHandleController: BaseViewController ,UITableViewDelegate,UITableViewD
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let taskid = dataArray[indexPath.section]["taskId"]  as? String {
+        let d = dataArray[indexPath.section];
+
+        if let taskid = d["taskId"]  as? String , let yw = d["bizNo"] as? String , let ywtp = d["bizType"] as? String{
             let vc = TaskPoolDetailController()
             vc.taskId = taskid
+            vc.ywNo = yw
+            vc.ywType = ywtp
+            
+            let scheduletime = Tools.date(String.stringIsNullOrNil(d["scheduleTime"]))
+            if let d = scheduletime {
+                vc.schedule_time = Tools.dateToString(d, formatter: "yyyy-MM-dd")
+            }
+
             vc.from_taskPool = false
             self.navigationController?.pushViewController(vc, animated: true)
         }
         
         
     }
+    
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        /*let action1 = UITableViewRowAction.init(style: .destructive, title: "Delete") { (action, indexPath) in
+            tableView.isEditing = false
+            
+        }
+        
+        
+        
+        let action2 = UITableViewRowAction.init(style: .default, title: "Submit") { (action, indexPath) in
+            
+            
+        }
+        action2.backgroundColor = UIColor.init(colorLiteralRed: 0/255.0, green: 153/255.0, blue: 255/255.0, alpha: 1)
+        
+        
+        
+        let action3 = UITableViewRowAction.init(style: .default, title: "Change Shift") { (action, indexPath) in
+            
+            Tools.showAlert("TaskChangeShiftVC" ,withBar: true)
+            
+        }
+        
+        action3.backgroundColor = UIColor.init(colorLiteralRed: 102/255.0, green: 153/255.0, blue: 153/255.0, alpha: 1)
+        */
+        let action4 = UITableViewRowAction.init(style: .default, title: "Add Action") { (action, indexPath) in
+            DispatchQueue.main.async {
+                HUD.show()
+                let vc = TaskAddActionVC()
+                
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+            
+        }
+        
+        action4.backgroundColor = UIColor.init(colorLiteralRed: 219/255.0, green: 118/255.0, blue: 51/255.0, alpha: 1)
+        return [/*action1,action2,action3,*/action4]
+    }
+    
+    
+    
+    
 
 }

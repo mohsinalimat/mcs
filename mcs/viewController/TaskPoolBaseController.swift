@@ -48,8 +48,11 @@ class TaskPoolBaseController: BaseViewController ,UITableViewDelegate,UITableVie
     func getTaskPool()  {
         HUD.show(withStatus: "Loading")
         
-        let d = ["shift":"30b621f4455545828b0b0e2d9e2fb9f3",
+        let d = [
+            "shift":"30b621f4455545828b0b0e2d9e2fb9f3",
                  "scheduleTime":"23/03/2018"
+            //"scheduleTime":"27/12/2017"
+            
         ]
         
         netHelper_request(withUrl: task_pool_url, method: .post, parameters: d, successHandler: {[weak self] (result) in
@@ -201,10 +204,20 @@ class TaskPoolBaseController: BaseViewController ,UITableViewDelegate,UITableVie
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //return
+        let d = dataArray[indexPath.section];
         
-        if let taskid = dataArray[indexPath.section]["taskId"]  as? String {
+        if let taskid = d["taskId"]  as? String , let yw = d["taskNo"] as? String, let ywtp = d["taskType"] as? String{
             let vc = TaskPoolDetailController()
             vc.taskId = taskid
+            vc.ywNo = yw
+            vc.ywType = ywtp
+            vc.task_pool_dataArr = dataArray
+            let scheduletime = Tools.date(String.stringIsNullOrNil(d["scheduleTime"]))
+            if let d = scheduletime {
+                vc.schedule_time = Tools.dateToString(d, formatter: "yyyy-MM-dd")
+            }
+
+            task_pool_taskno_index = indexPath.section
             
             self.navigationController?.pushViewController(vc, animated: true)
         }
@@ -233,6 +246,12 @@ class TaskPoolBaseController: BaseViewController ,UITableViewDelegate,UITableVie
         let action1 = UITableViewRowAction.init(style: .destructive, title: "Delete") { (action, indexPath) in
             tableView.isEditing = false
             
+            request(taskPool_deleteMis_url, parameters: ["bizIds":["c101335721704a2fbe7b2268cb69f1c3"]], successHandler: { (res) in
+                
+                }, failureHandler: { (str) in
+                    
+            })
+
         }
         
         

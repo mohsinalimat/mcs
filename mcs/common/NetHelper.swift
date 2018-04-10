@@ -88,3 +88,15 @@ func netHelper_request(withUrl:String,
 
 
 
+func request(_ url :String,
+    parameters:[String:Any]? = nil,
+             successHandler:(([String:Any]) -> Void)? = nil,
+             failureHandler:((String?) -> Void)? = nil)
+{
+
+    netHelper_request(withUrl: url, method: .post, parameters: parameters, successHandler: successHandler, failureHandler: failureHandler);
+
+}
+
+
+
