@@ -20,6 +20,9 @@ class TaskPoolBaseController: BaseViewController ,UITableViewDelegate,UITableVie
     @IBOutlet weak var _tableView: UITableView!
     
     var dataArray = [[String:Any]]()
+    
+    private var deleteSectionArr = [Int]()//要删除的
+    
     let disposeBag =  DisposeBag()
     
 
@@ -37,8 +40,13 @@ class TaskPoolBaseController: BaseViewController ,UITableViewDelegate,UITableVie
                 strongSelf.getTaskPool();
             }.addDisposableTo(disposeBag)
         
-
-        //guard kTaskpool_date != nil ,kTaskpool_shift != nil , kTaskpool_station != nil else {  _pop(); return}
+        NotificationCenter.default.rx.notification(NSNotification.Name.init("taskpool_changeShift_completion_notification")).subscribe { [weak self] (event) in
+            guard let strongSelf = self else {return}
+            strongSelf.getTaskPool();
+            }.addDisposableTo(disposeBag)
+        
+        
+        guard kTaskpool_date != nil ,kTaskpool_shift != nil , kTaskpool_station != nil else {  _pop(); return}
         getTaskPool()
         
     }
@@ -48,10 +56,12 @@ class TaskPoolBaseController: BaseViewController ,UITableViewDelegate,UITableVie
     func getTaskPool()  {
         HUD.show(withStatus: "Loading")
         
+        let scheduleTime = Tools.dateToString(kTaskpool_date!, formatter: "dd/MM/yyyy")
+        guard let shift = kTaskpool_shift?["key"] else {return}
+        
         let d = [
-            "shift":"30b621f4455545828b0b0e2d9e2fb9f3",
-                 "scheduleTime":"23/03/2018"
-            //"scheduleTime":"27/12/2017"
+            "shift":shift,
+            "scheduleTime":scheduleTime
             
         ]
         
@@ -61,9 +71,19 @@ class TaskPoolBaseController: BaseViewController ,UITableViewDelegate,UITableVie
             guard let body = result["body"] as? [String : Any] else {return;}
             guard let recordList = body["recordList"] as? [[String : Any]] else {return;}
             guard let strongSelf = self else{return}
-            
+            if strongSelf._tableView.mj_header.isRefreshing(){
+                strongSelf._tableView.mj_header.endRefreshing();
+            }
+
+            strongSelf.dataArray.removeAll()
             strongSelf.dataArray = strongSelf.dataArray + recordList
             strongSelf._tableView.reloadData()
+            
+            if strongSelf.dataArray.count == 0 {
+                strongSelf.displayMsg("No Data");
+            }else {
+                strongSelf.view.viewWithTag(1001)?.removeFromSuperview();
+            }
             
             }
         )
@@ -104,6 +124,18 @@ class TaskPoolBaseController: BaseViewController ,UITableViewDelegate,UITableVie
         
         topBgView.layer.borderColor = kTableviewBackgroundColor.cgColor
         topBgView.layer.borderWidth = 1
+        
+        ///Refresh Data
+        let header = TTRefreshHeader.init {
+            DispatchQueue.main.async {
+                self.dataArray.removeAll()
+                self.getTaskPool()
+            }
+        }
+        
+        _tableView.mj_header = header
+        
+        
     }
     
     func _init_top() {
@@ -135,47 +167,30 @@ class TaskPoolBaseController: BaseViewController ,UITableViewDelegate,UITableVie
     }
     
     
-    var type = 0
-
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        if self.type == 0 {
-            if indexPath.row == 0 {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "TaskPoolCellIdentifier", for: indexPath) as! TaskPoolCell
-                
-                let d = dataArray[indexPath.section]
-                
-                cell.fill( d)
-                
-                return cell
-            } else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "TaskActionCellIdentifier", for: indexPath) as! TaskActionCell
-                let d = dataArray[indexPath.section]
-                if let _actions = d["actionList"] as? [[String:Any]]{
-                    cell.fill( _actions[indexPath.row - 1], first: indexPath.row == 1);
-                }
-                
-                return cell
+
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TaskPoolCellIdentifier", for: indexPath) as! TaskPoolCell
+            
+            let d = dataArray[indexPath.section]
+            
+            cell.fill( d)
+            
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TaskActionCellIdentifier", for: indexPath) as! TaskActionCell
+            let d = dataArray[indexPath.section]
+            if let _actions = d["actionList"] as? [[String:Any]]{
+                cell.fill( _actions[indexPath.row - 1], first: indexPath.row == 1);
             }
-        }else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "TaskHandCellIdentifier", for: indexPath) as! TaskHandCell
             
             return cell
         }
         
-        
-        
-        
-        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if type == 0 {
-            return indexPath.row == 0 ? 90 : 30;
-        }else {
-            return 80;
-        }
-        
+        return indexPath.row == 0 ? 90 : 30;
     }
 
     
@@ -203,8 +218,8 @@ class TaskPoolBaseController: BaseViewController ,UITableViewDelegate,UITableVie
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //return
         let d = dataArray[indexPath.section];
+        taskPoolSelectedTask = dataArray[indexPath.section]
         
         if let taskid = d["taskId"]  as? String , let yw = d["taskNo"] as? String, let ywtp = d["taskType"] as? String{
             let vc = TaskPoolDetailController()
@@ -243,22 +258,26 @@ class TaskPoolBaseController: BaseViewController ,UITableViewDelegate,UITableVie
     
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let action1 = UITableViewRowAction.init(style: .destructive, title: "Delete") { (action, indexPath) in
+        taskPoolSelectedTask = dataArray[indexPath.section]
+        
+        let taskid = dataArray[indexPath.section]["bizId"] as! String
+        let action1 = UITableViewRowAction.init(style: .destructive, title: "Delete") {[weak self] (action, indexPath) in
             tableView.isEditing = false
             
-            request(taskPool_deleteMis_url, parameters: ["bizIds":["c101335721704a2fbe7b2268cb69f1c3"]], successHandler: { (res) in
-                
-                }, failureHandler: { (str) in
-                    
+            guard let ss = self else {return}
+            ss.showMsg("Delete This Task?", title: "Delete", handler: {
+                ss._deleteMisAction([taskid])
             })
 
         }
         
-        
-
-        let action2 = UITableViewRowAction.init(style: .default, title: "Submit") { (action, indexPath) in
+        let action2 = UITableViewRowAction.init(style: .default, title: "Submit") {[weak self] (action, indexPath) in
+            guard let ss = self else {return}
+            let taskid = ss.dataArray[indexPath.section]["taskId"] as! String
             
-            
+            ss.showMsg("Submit This Task?", title: "Submit", handler: {
+                ss._submit([taskid])
+            })
         }
         action2.backgroundColor = UIColor.init(colorLiteralRed: 0/255.0, green: 153/255.0, blue: 255/255.0, alpha: 1)
         
@@ -269,7 +288,6 @@ class TaskPoolBaseController: BaseViewController ,UITableViewDelegate,UITableVie
             Tools.showAlert("TaskChangeShiftVC" ,withBar: true)
             
         }
-
         action3.backgroundColor = UIColor.init(colorLiteralRed: 102/255.0, green: 153/255.0, blue: 153/255.0, alpha: 1)
         
         let action4 = UITableViewRowAction.init(style: .default, title: "Add Action") { (action, indexPath) in
@@ -283,9 +301,59 @@ class TaskPoolBaseController: BaseViewController ,UITableViewDelegate,UITableVie
         }
         
         action4.backgroundColor = UIColor.init(colorLiteralRed: 219/255.0, green: 118/255.0, blue: 51/255.0, alpha: 1)
-        return [action1,action2,action3,action4]
+        
+        if let canDelete = dataArray[indexPath.section]["allowDelete"] as? Bool {
+            return canDelete ? [action1,action2,action3,action4] : [action2,action3,action4];
+        }
+        
+        return [action2,action3,action4]
     }
     
+    
+    //MARK:
+    
+    func _deleteMisAction(_ ids:[String]) {
+        HUD.show()
+        
+        request(taskPool_deleteMis_url, parameters: ["bizIds":ids], successHandler: { [weak self] (res) in
+            HUD.show(successInfo: "Delete Success")
+            
+            guard let ss = self else {return}
+            //ss._tableView.deleteSections([0], animationStyle: .top)
+            ss.getTaskPool()
+            }, failureHandler: { (str) in
+               HUD.show(info: str ?? "Delete Error")
+        })
+  
+    }
+    
+    func _submit(_ ids :[String])  {
+        HUD.show()
+        
+        request(taskPool_submit_url, parameters: ["taskIds":ids], successHandler: { [weak self] (res) in
+            HUD.show(successInfo: "Delete Success")
+            
+            guard let ss = self else {return}
+            ss.getTaskPool()
+            }, failureHandler: { (str) in
+                HUD.show(info: str ?? "Delete Error")
+        })
+    }
+    
+    
+    func showMsg( _ msg:String , title:String , handler:@escaping ((Void) -> Void)) {
+        
+        let vc = UIAlertController.init(title: msg,message: nil, preferredStyle: .alert)
+        let action = UIAlertAction.init(title:"Cancel", style: .default)
+        let action2 = UIAlertAction.init(title: title, style: .destructive) { (action) in
+            handler();
+        }
+        
+        vc.addAction(action)
+        vc.addAction(action2)
+        self.navigationController?.present(vc, animated: true, completion: nil);
+
+    }
     
     
 }

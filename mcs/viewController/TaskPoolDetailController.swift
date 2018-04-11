@@ -29,6 +29,7 @@ class TaskPoolDetailController: BaseWebViewController {
     @IBOutlet weak var btn_save: UIButton!
     @IBOutlet weak var btn_change: UIButton!
     
+    private var current_taskId :String!
     
     
     //ONLY TaskPool
@@ -46,6 +47,8 @@ class TaskPoolDetailController: BaseWebViewController {
             guard let d = ss.task_pool_dataArr[index] as? [String:Any] else {return}
             
             if let taskid = d["taskId"]  as? String , let yw = d["taskNo"] as? String, let ywtp = d["taskType"] as? String{
+                guard taskid != ss.current_taskId else { return}
+                
                 let vc = TaskPoolDetailController()
                 vc.taskId = taskid
                 vc.ywNo = yw
@@ -114,6 +117,8 @@ class TaskPoolDetailController: BaseWebViewController {
         view.backgroundColor = UIColor.white;
         
         _initSubview();
+        
+        current_taskId = taskPoolSelectedTask["taskId"] as! String
         
         loadData()
     }

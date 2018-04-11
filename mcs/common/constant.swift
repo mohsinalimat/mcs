@@ -64,14 +64,14 @@ let task_pool_url = "/biz/task/pooldata"
 可选 shiftId: '4835345483935fehiur32321edswqrwq', // 当前登录的班次id
 可选 date: ' 26/02/2018', // 日期
  */
-let task_pooldetail_url = "/biz/task/detail"
-
-let handle_over_url = "/biz/task/handover"
-let taskPool_deleteMis_url = "/biz/task/deleteMis"
+let task_pooldetail_url         =       "/biz/task/detail"
+let handle_over_url             =       "/biz/task/handover"
+let taskPool_deleteMis_url      =       "/biz/task/deleteMis"
+let taskPool_submit_url         =       "/biz/task/submit"
+let taskPool_changeShift_url    =       "/biz/task/changeShift"
 
 
 /// 提交故障信息到mcs 系统中
-
 let submit_fault_url = "/biz/fault"
 
 
@@ -97,6 +97,8 @@ var kActive_BASE_DATA:[String:Any]?
 var addAction_Section2_SelectedIndex:Int = 0
 
 var task_pool_taskno_index:Int = 0
+
+var taskPoolSelectedTask:[String:Any]!//当前操作的Task
 
 //MARK:
 let msg_loading = "Loading"

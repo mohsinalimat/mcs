@@ -34,7 +34,13 @@ class TaskHandleController: BaseViewController ,UITableViewDelegate,UITableViewD
                 strongSelf.getTaskPool();
             }.addDisposableTo(disposeBag)
         
-        //guard kTaskpool_date != nil ,kTaskpool_shift != nil , kTaskpool_station != nil else {  /*_pop();*/ return}
+        NotificationCenter.default.rx.notification(NSNotification.Name.init("taskpool_changeShift_completion_notification")).subscribe { [weak self] (event) in
+            guard let strongSelf = self else {return}
+            strongSelf.getTaskPool();
+            }.addDisposableTo(disposeBag)
+
+        
+        guard kTaskpool_date != nil ,kTaskpool_shift != nil , kTaskpool_station != nil else {  /*_pop();*/ return}
         getTaskPool();
 
     }
@@ -43,9 +49,14 @@ class TaskHandleController: BaseViewController ,UITableViewDelegate,UITableViewD
     //MARK:-
     func getTaskPool()  {
         //HUD.show(withStatus: "Loading")
+
+        let scheduleTime = Tools.dateToString(kTaskpool_date!, formatter: "dd/MM/yyyy")
+        guard let shift = kTaskpool_shift?["key"] else {return}
         
-        let d = ["shift":"30b621f4455545828b0b0e2d9e2fb9f3",
-                 "scheduleTime":"23/03/2018"
+        let d = [
+            "shift":shift,
+            "scheduleTime":scheduleTime
+            
         ]
         
         netHelper_request(withUrl: handle_over_url, method: .post, parameters: d, successHandler: {[weak self] (result) in
@@ -54,8 +65,19 @@ class TaskHandleController: BaseViewController ,UITableViewDelegate,UITableViewD
             guard let body = result["body"] as? [[String : Any]] else {return;}
             guard let strongSelf = self else{return}
             
+            if strongSelf._tableView.mj_header.isRefreshing(){
+                strongSelf._tableView.mj_header.endRefreshing();
+            }
+
             strongSelf.dataArray = strongSelf.dataArray + body
             strongSelf._tableView.reloadData()
+            
+            if strongSelf.dataArray.count == 0 {
+                strongSelf.displayMsg("No Data");
+            }else {
+                strongSelf.view.viewWithTag(1001)?.removeFromSuperview();
+            }
+            
             
             }
         )
@@ -99,6 +121,17 @@ class TaskHandleController: BaseViewController ,UITableViewDelegate,UITableViewD
         topBgView.layer.borderColor = kTableviewBackgroundColor.cgColor
         topBgView.layer.borderWidth = 1
         search_bgview.isHidden = true
+        
+        ///Refresh Data
+        let header = TTRefreshHeader.init {
+            DispatchQueue.main.async {
+                self.dataArray.removeAll()
+                self.getTaskPool()
+            }
+        }
+        
+        _tableView.mj_header = header
+        
     }
     
     func _init_top() {

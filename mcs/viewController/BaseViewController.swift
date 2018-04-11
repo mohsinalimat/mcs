@@ -22,6 +22,17 @@ class BaseViewController: UIViewController {
     }
 
     
+    func displayMsg(_ info:String) {
+        let l = UILabel (frame: CGRect (x: 0, y: 100, width: kCurrentScreenWidth, height: 100))
+        l.text = info
+        l.textColor = kTableviewBackgroundColor
+        l.font = UIFont.systemFont(ofSize: 20)
+        l.numberOfLines = 0
+        l.textAlignment = .center
+        l.tag = 1001
+        self.view.addSubview(l)
+    }
+    
     func _setTitleView(_ t :String){
         let _titlev = UILabel (frame: CGRect (x: 0, y: 0, width: 300, height: 30))
         _titlev.textColor = UIColor.white
