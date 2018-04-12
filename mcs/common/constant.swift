@@ -69,7 +69,7 @@ let handle_over_url             =       "/biz/task/handover"
 let taskPool_deleteMis_url      =       "/biz/task/deleteMis"
 let taskPool_submit_url         =       "/biz/task/submit"
 let taskPool_changeShift_url    =       "/biz/task/changeShift"
-
+let taskPool_addAction_url      =       "/biz/taskAction/"
 
 /// 提交故障信息到mcs 系统中
 let submit_fault_url = "/biz/fault"

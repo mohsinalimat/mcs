@@ -100,7 +100,7 @@ class BaseTabBarController: UITabBarController {
             [
                 "HomeViewController",
                 "TaskPoolRootController",
-                "BaseTabItemController",
+                "DefectReportController",
                 "BaseTabItemController",
                 "BaseTabItemController"]
         

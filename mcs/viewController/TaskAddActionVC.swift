@@ -63,6 +63,22 @@ class TaskAddActionVC: BaseViewController ,UITableViewDelegate,UITableViewDataSo
     
     
     @IBAction func saveAction(_ sender: UIButton) {
+       let url = taskPool_addAction_url.appending("e6ce72096200441da8b2f2932b143a1a")
+        
+        let d = [
+        "acReg":"B-MCF",
+        "perform":"0",
+        "closed":"0"
+        
+        ]
+        
+        
+        request(url, parameters: d, successHandler: { (res) in
+            
+            }) { (str) in
+                
+        }
+        
         
     }
     

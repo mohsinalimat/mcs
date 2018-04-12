@@ -70,7 +70,7 @@ class Tools: NSObject {
     }
     
     
-    static func showDatePicekr(_ s:UIViewController , handler:((Any) -> Void)? = nil){
+    static func showDatePicekr(_ s:UIViewController? = nil , handler:((Any) -> Void)? = nil){
         let vc = DatePickerController.init()
         let frame = CGRect (x: 0, y: 0, width: 500, height: 240)
         vc.view.frame = frame
@@ -81,11 +81,17 @@ class Tools: NSObject {
         nav.navigationBar.barTintColor = kPop_navigationBar_color
         nav.modalPresentationStyle = .formSheet
         nav.preferredContentSize = frame.size
-        s.present(nav, animated: true, completion: nil)
+        
+        if let ss = s {
+            ss.present(nav, animated: true, completion: nil)
+        }else {
+            UIApplication.shared.keyWindow?.rootViewController?.present(nav, animated: true, completion: nil);
+        }
+
     }
     
     
-    static func showShiftPicekr(_ s:UIViewController , handler:((Any) -> Void)? = nil){
+    static func showShiftPicekr(_ s:UIViewController? = nil , handler:((Any) -> Void)? = nil){
         let vc = DataPickerController.init()
         let frame = CGRect (x: 0, y: 0, width: 500, height: 240)
         if let station = kTaskPool_BASE_DATA["shifts"] as? [Any] {
@@ -100,7 +106,13 @@ class Tools: NSObject {
         nav.navigationBar.barTintColor = kPop_navigationBar_color
         nav.modalPresentationStyle = .formSheet
         nav.preferredContentSize = frame.size
-        s.present(nav, animated: true, completion: nil)
+        
+        if let ss = s {
+            ss.present(nav, animated: true, completion: nil)
+        }else {
+            UIApplication.shared.keyWindow?.rootViewController?.present(nav, animated: true, completion: nil);
+        }
+    
     }
 
     

@@ -71,7 +71,7 @@ class TaskPoolDetailController: BaseWebViewController {
     
     //Defect Report
     @IBAction func defectReportAction(_ sender: AnyObject) {
-        let vc = TaskDefectReportVC()
+        let vc = DefectReportController()
         self.navigationController?.pushViewController(vc, animated: true)
         
     }
