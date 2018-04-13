@@ -48,7 +48,7 @@ class Tools: NSObject {
     
     
     
-    //MARK: - show
+    //MARK: - show pop
     static func showAlert(_ vcname:String , withBar:Bool = true , frame:CGRect = CGRect(x: 0, y: 0, width: 500, height: 360)) {
         let appname = Bundle.main.infoDictionary!["CFBundleExecutable"] as! String
         let cls  =  NSClassFromString(appname + "." + vcname) as! BaseViewController.Type
@@ -91,15 +91,15 @@ class Tools: NSObject {
     }
     
     
-    static func showShiftPicekr(_ s:UIViewController? = nil , handler:((Any) -> Void)? = nil){
+    static func showDataPicekr(_ s:UIViewController? = nil , dataSource:[Any]? = nil, handler:((Any) -> Void)? = nil){
         let vc = DataPickerController.init()
         let frame = CGRect (x: 0, y: 0, width: 500, height: 240)
-        if let station = kTaskPool_BASE_DATA["shifts"] as? [Any] {
+        if let station = dataSource {
             vc.dataArray = station;
         }
         
         vc.view.frame = frame
-        vc.dataType = .obj
+        //vc.dataType = .obj
         vc.pickerDidSelectedHandler = handler
         
         let nav = BaseNavigationController(rootViewController:vc)
@@ -116,6 +116,43 @@ class Tools: NSObject {
     }
 
     
+    //MARK: - 获取基础数据
+    static func loginUserName() -> String {
+        if let name = UserDefaults.standard.value(forKey:"user-name") as? String {
+            return name;
+        }
+        
+        return ""
+    }
     
+    //组织
+    static func teams() -> [Any] {
+        if let t = kActive_BASE_DATA["teams"] as? [Any]{
+            return t;
+        }
+        
+        return []
+    }
+    
+    //飞机号
+    static func acs() -> [String] {
+        if let t = kActive_BASE_DATA["acs"] as? [String]{
+            return t;
+        }
+        
+        return []
+    }
+    
+    
+    static func shift() -> [Any]? {
+        return kTaskPool_BASE_DATA["shifts"] as? [Any]
+
+    }
+    
+    static func station() -> [Any]? {
+        return kTaskPool_BASE_DATA["stations"] as? [Any]
+        
+    }
+
     
 }

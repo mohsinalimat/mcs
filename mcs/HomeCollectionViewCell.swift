@@ -126,7 +126,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
         hangbanNo.text = "-"
         zhanweiNo.text = "-"
         
-        
+       warnLevel.backgroundColor = UIColor.clear;
     }
     
     

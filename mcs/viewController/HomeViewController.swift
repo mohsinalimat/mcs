@@ -25,7 +25,8 @@ class HomeViewController: BaseTabItemController,UICollectionViewDelegate,UIColle
         _initSubview()
         
         getFlightStatusData()
-                
+        
+        getActiveData()
     }
 
     
@@ -78,7 +79,9 @@ class HomeViewController: BaseTabItemController,UICollectionViewDelegate,UIColle
         netHelper_request(withUrl: active_basedata_url, method: .post, parameters: nil, successHandler: {[weak self] (result) in
             guard let body = result["body"] as? [String:Any] else {return;}
             guard let strongSelf = self else{return}
-
+            
+            kActive_BASE_DATA = body;
+            
             }
         )
     }

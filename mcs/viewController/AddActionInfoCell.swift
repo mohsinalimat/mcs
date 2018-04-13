@@ -20,19 +20,23 @@ class AddActionInfoCell: UITableViewCell {
     
     @IBOutlet weak var shiftDate: UIButton!
     
+    var shift_id:String!
+    var team_id:String!
+    
+
     
     @IBAction func buttonAction(_ sender: UIButton) {
         
         switch sender.tag {
         case 1:
             
-            Tools.showShiftPicekr { [weak self](obj) in
+            Tools.showDataPicekr(dataSource:Tools.shift()) { [weak self](obj) in
                 guard let strongSelf = self else {return}
                 
                 let obj = obj as! [String:String]
                 //kTaskpool_shift = obj
                 strongSelf.shift.setTitle(obj["value"], for: .normal)
-                
+                strongSelf.shift_id = obj["key"]!
             }
             
             break
@@ -42,7 +46,7 @@ class AddActionInfoCell: UITableViewCell {
                 let obj = obj as! Date
                 //kTaskpool_date = obj
                 
-                let str = Tools.dateToString(obj, formatter: "yyyy-MM-dd")
+                let str = Tools.dateToString(obj, formatter: "dd/MM/yyyy")
                 guard let strongSelf = self else {return}
                 strongSelf.shiftDate.setTitle(str, for: .normal)
             }
@@ -50,14 +54,13 @@ class AddActionInfoCell: UITableViewCell {
             break
         case 3:
             
-            Tools.showShiftPicekr { [weak self](obj) in
+            Tools.showDataPicekr (dataSource:Tools.teams()){ [weak self](obj) in
                 guard let strongSelf = self else {return}
                 
-                let obj = obj as! [String:String]
-                //kTaskpool_shift = obj
-                //                strongSelf.shift.text = obj["value"]
-                //                strongSelf.rx_shift.value = obj["key"]!
+                let obj = obj as! [String:Any]
                 
+                strongSelf.team.setTitle(obj["value"] as! String?, for: .normal)
+                strongSelf.team_id = obj["key"] as! String
             }
             
             break

@@ -115,7 +115,7 @@ class DefectReportController: BaseTabItemController ,UITableViewDelegate,UITable
     //MARK:
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 3;
+        return 30;
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

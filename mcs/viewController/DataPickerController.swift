@@ -45,12 +45,20 @@ class DataPickerController: BasePickerViewController ,UIPickerViewDelegate,UIPic
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if dataType == .str {
-            return dataArray?[row] as? String
-        }else {
-            if let d = dataArray?[row] as? [String:String] {//shifts
-                return d["value"];
-            }
+//        if dataType == .str {
+//            return dataArray?[row] as? String
+//        }else {
+//            if let d = dataArray?[row] as? [String:Any] {//shifts
+//                return "\(d["value"]!)";
+//            }
+//        }
+        
+        if let str = dataArray?[row] as? String{
+            return str;
+        }
+        
+        if let obj = dataArray?[row] as? [String:Any]{
+            return "\(obj["value"]!)";
         }
         
         return nil

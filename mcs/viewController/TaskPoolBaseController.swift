@@ -272,6 +272,8 @@ class TaskPoolBaseController: BaseViewController ,UITableViewDelegate,UITableVie
         }
         
         let action2 = UITableViewRowAction.init(style: .default, title: "Submit") {[weak self] (action, indexPath) in
+            tableView.isEditing = false
+            
             guard let ss = self else {return}
             let taskid = ss.dataArray[indexPath.section]["taskId"] as! String
             
@@ -284,6 +286,7 @@ class TaskPoolBaseController: BaseViewController ,UITableViewDelegate,UITableVie
         
         
         let action3 = UITableViewRowAction.init(style: .default, title: "Change Shift") { (action, indexPath) in
+            tableView.isEditing = false
             
             Tools.showAlert("TaskChangeShiftVC" ,withBar: true)
             
@@ -291,6 +294,8 @@ class TaskPoolBaseController: BaseViewController ,UITableViewDelegate,UITableVie
         action3.backgroundColor = UIColor.init(colorLiteralRed: 102/255.0, green: 153/255.0, blue: 153/255.0, alpha: 1)
         
         let action4 = UITableViewRowAction.init(style: .default, title: "Add Action") { (action, indexPath) in
+            tableView.isEditing = false
+            
             DispatchQueue.main.async {
                 HUD.show()
                 let vc = TaskAddActionVC()

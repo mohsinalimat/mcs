@@ -97,7 +97,7 @@ class TaskChangeShiftVC: BaseViewController {
         switch sender.tag {
         case 1:
             
-            Tools.showShiftPicekr(self) { [weak self](obj) in
+            Tools.showDataPicekr(self,dataSource: Tools.shift()) { [weak self](obj) in
                 guard let strongSelf = self else {return}
                 
                 let obj = obj as! [String:String]

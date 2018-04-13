@@ -48,9 +48,9 @@ let get_warn_list_url = "/alarm/list" //航班告警列表
 let get_warn_info_url = "/alarm/detail"///{alarm_id} 告警详情-GET请求
 
 ////base
-let login_basedata_url = "/biz/mobile/data/active" //基础数据
-let active_basedata_url = "/biz/data/active"
-let basic_basedata_url = "/biz/data/basic"
+let login_basedata_url = "/biz/mobile/data/active" //登录时基础数据
+let active_basedata_url = "/biz/data/active" //1
+let basic_basedata_url = "/biz/data/basic" //2
 
 /* 获取mcs中航线部门工作库数据
  必须shift:'74f3c2d68ac34fcfb03963a428865055', // 班次id
@@ -70,9 +70,10 @@ let taskPool_deleteMis_url      =       "/biz/task/deleteMis"
 let taskPool_submit_url         =       "/biz/task/submit"
 let taskPool_changeShift_url    =       "/biz/task/changeShift"
 let taskPool_addAction_url      =       "/biz/taskAction/"
+let action_list_url             =       "/biz/getFeedbackData"
 
 /// 提交故障信息到mcs 系统中
-let submit_fault_url = "/biz/fault"
+let submit_fault_url = "/biz/fault"//必须bizId:7e93fcf736dd11e8be99448a5be48bfb   // 当前业务 id
 
 
 
@@ -92,7 +93,7 @@ var kTaskpool_shift:[String:String]?
 var kTaskpool_station:String?
 var kTaskpool_date:Date?
 
-var kActive_BASE_DATA:[String:Any]?
+var kActive_BASE_DATA:[String:Any]! //基础数据1
 
 var addAction_Section2_SelectedIndex:Int = 0
 

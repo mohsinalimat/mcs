@@ -198,7 +198,8 @@ class TaskHandleController: BaseViewController ,UITableViewDelegate,UITableViewD
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let d = dataArray[indexPath.section];
-
+        taskPoolSelectedTask = dataArray[indexPath.section]
+        
         if let taskid = d["taskId"]  as? String , let yw = d["bizNo"] as? String , let ywtp = d["bizType"] as? String{
             let vc = TaskPoolDetailController()
             vc.taskId = taskid
