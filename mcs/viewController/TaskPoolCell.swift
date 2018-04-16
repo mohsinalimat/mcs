@@ -62,14 +62,14 @@ class TaskPoolCell: UITableViewCell {
         let defectDesc = String.stringIsNullOrNil(d["defectDesc"])
         let defectStr = "Description: " + defectDesc
         let defectAttriStr =  NSMutableAttributedString.init(string: defectStr)
-        defectAttriStr.addAttributes([NSFontAttributeName:UIFont.boldSystemFont(ofSize: 16),NSForegroundColorAttributeName:UIColor.darkGray], range: NSMakeRange(0, 12))
+        defectAttriStr.addAttributes([NSFontAttributeName:UIFont.boldSystemFont(ofSize: 15),NSForegroundColorAttributeName:UIColor.darkGray], range: NSMakeRange(0, 12))
         descri.attributedText = defectAttriStr
         
 
         let reasonDesc = String.stringIsNullOrNil(d["reason"])
         let reasonStr = "Reason: " + reasonDesc
         let reasonAttriStr =  NSMutableAttributedString.init(string: reasonStr)
-        reasonAttriStr.addAttributes([NSFontAttributeName:UIFont.boldSystemFont(ofSize: 16),NSForegroundColorAttributeName:UIColor.darkGray], range: NSMakeRange(0, 7))
+        reasonAttriStr.addAttributes([NSFontAttributeName:UIFont.boldSystemFont(ofSize: 15),NSForegroundColorAttributeName:UIColor.darkGray], range: NSMakeRange(0, 7))
         reason.attributedText = reasonAttriStr
         
         let _r = _stringIsNullOrNil(d["repetitive"])

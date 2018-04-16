@@ -88,11 +88,11 @@ class BaseTabBarController: UITabBarController {
         let itemtitleArr = ["Flight Info","Task Pool","Defect Report","DD Mgt","T/S Mgt"]
         
         let itemimg = [
-            "tabicon_airplane_selector",
-            "tabicon_publications",
-            "tabicon_toc",
-            "tabicon_viewer",
-            "tabicon_history",
+            "tabicon_1",
+            "tabicon_2",
+            "tabicon_3",
+            "tabicon_4",
+            "tabicon_5",
             "tabicon_bookmarks",
             "tabicon_manager"]
         

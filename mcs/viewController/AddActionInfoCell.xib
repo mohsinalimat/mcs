@@ -11,7 +11,7 @@
             <rect key="frame" x="0.0" y="0.0" width="1024" height="180"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ome-0W-aeo" id="RnZ-ne-ZMq">
-                <frame key="frameInset" width="1024" height="179.5"/>
+                <frame key="frameInset" width="1024" height="179"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dYK-jw-6kj">
@@ -64,7 +64,7 @@
                                 <frame key="frameInset" minX="140" minY="112" width="174" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" backgroundImage="buttonbg"/>
+                                <state key="normal" backgroundImage="button_bg1"/>
                                 <connections>
                                     <action selector="buttonAction:" destination="Ome-0W-aeo" eventType="touchUpInside" id="NtN-aV-MEr"/>
                                 </connections>
@@ -80,7 +80,7 @@
                                 <frame key="frameInset" minX="140" minY="63" width="174" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" backgroundImage="buttonbg"/>
+                                <state key="normal" backgroundImage="button_bg1"/>
                                 <connections>
                                     <action selector="buttonAction:" destination="Ome-0W-aeo" eventType="touchUpInside" id="WOQ-QN-8ed"/>
                                 </connections>
@@ -89,7 +89,7 @@
                                 <frame key="frameInset" minX="719" minY="63" width="174" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" backgroundImage="buttonbg"/>
+                                <state key="normal" backgroundImage="button_bg1"/>
                                 <connections>
                                     <action selector="buttonAction:" destination="Ome-0W-aeo" eventType="touchUpInside" id="1nO-EJ-dMz"/>
                                 </connections>
@@ -114,6 +114,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="buttonbg" width="400" height="60"/>
+        <image name="button_bg1" width="200" height="30"/>
     </resources>
 </document>

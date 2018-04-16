@@ -51,6 +51,7 @@ func netHelper_download(fromUrl path:String,
 func netHelper_request(withUrl:String,
                        method:HTTPMethod = .get,
                        parameters:[String:Any]? = nil,
+                       encoding: ParameterEncoding = URLEncoding.default,
                        successHandler:(([String:Any]) -> Void)? = nil,
                        failureHandler:((String?) -> Void)? = nil)
 {
@@ -62,7 +63,7 @@ func netHelper_request(withUrl:String,
     }
     
     
-    Alamofire.request(BASE_URL + withUrl, method: method, parameters: parameters, encoding: URLEncoding.default, headers: header).validate().responseJSON { (dataResponse) in
+    Alamofire.request(BASE_URL + withUrl, method: method, parameters: parameters, encoding:encoding, headers: header).validate().responseJSON { (dataResponse) in
         DispatchQueue.main.async {
             if let dic = dataResponse.result.value as? [String:Any] ,let status = dic["state"] {
                 if "\(status)" == "200" {

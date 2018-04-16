@@ -75,8 +75,11 @@ class TaskAddActionVC: BaseViewController ,UITableViewDelegate,UITableViewDataSo
     }
     
     func _fillCell()  {
-        reportInfoCell.actBy.text = Tools.loginUserName()
-        reportInfoCell.reportBy.text = Tools.loginUserName()
+        if !read_only {
+            reportInfoCell.actBy.text = Tools.loginUserName()
+            reportInfoCell.reportBy.text = Tools.loginUserName()
+        }
+
         
     }
     
@@ -107,24 +110,46 @@ class TaskAddActionVC: BaseViewController ,UITableViewDelegate,UITableViewDataSo
         "actionDetail": String.stringIsNullOrNil(actionBaseInfoCell.descri.text),
         "actionRef":String.stringIsNullOrNil(actionBaseInfoCell.ref.text),
         "page":String.stringIsNullOrNil(actionBaseInfoCell.page.text),
-        "item":String.stringIsNullOrNil(actionBaseInfoCell.item.text)
+        "item":String.stringIsNullOrNil(actionBaseInfoCell.item.text),
         
         /*material-tools*/
+        "bizPartList":[["partType":"tool",
+                        "pn":"000000111111",
+                        "description":"description....",
+                        "qty":"5",
+                        "fin":"2222220",
+                        "remark":"mark123",
+                        "storeInAmasis":"store"]
+            ],
+            
             
         /*Advice P/N*/
-        
+        "partList":[["pnOff":"tool",
+                            "snOff":"8880",
+                            "pnOn":"description....",
+                            "snOn":"3",
+                            "fin":"55555",
+                            "partType":"materal",
+                            "pos":"store"]
+            ]
             
         ]
         
         HUD.show()
-        request(url, parameters: d, successHandler: { (res) in
-            HUD.show(successInfo: "ok");
+
+        netHelper_request(withUrl: url, method: .post, parameters: d, encoding: JSONEncoding.default, successHandler: {[weak self] (res) in
+            HUD.show(successInfo: "Ok")
+            guard let ss = self else {return}
+            
+            _ = ss.navigationController?.popViewController(animated: true)
+            
             }) { (str) in
-             HUD.show(info: str ?? "Error");
+                HUD.show(info: str ?? "Request Error")
+                
         }
-        
-        
     }
+
+    
     
     
     //MARK: -
@@ -147,12 +172,17 @@ class TaskAddActionVC: BaseViewController ,UITableViewDelegate,UITableViewDataSo
         }
         
         if section2_selected_index == 1 {
-            let _identifier = read_only ? "Action_Detail_Cell_RIdentifier" : "Action_Detail_CellIdentifier"
-            let cell = tableView.dequeueReusableCell(withIdentifier: _identifier, for: indexPath) as! Action_Detail_Cell
-            
-            actionBaseInfoCell = cell
-            
-            return cell
+            if read_only {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "Action_Detail_Cell_RIdentifier", for: indexPath) as! Action_Detail_Cell_R
+                
+
+                return cell
+            }else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "Action_Detail_CellIdentifier", for: indexPath) as! Action_Detail_Cell
+                actionBaseInfoCell = cell
+                return cell
+            }
+
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Action_Materal_CellIdentifier", for: indexPath) as! Action_Materal_Cell

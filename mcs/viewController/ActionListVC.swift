@@ -12,6 +12,8 @@ class ActionListVC: BaseViewController ,UITableViewDelegate,UITableViewDataSourc
 
     var ywNo:String?
     
+    var dataArray = [[String:Any]]()
+    
     @IBOutlet weak var _tableView: UITableView!
     
     override func viewDidLoad() {
@@ -21,9 +23,17 @@ class ActionListVC: BaseViewController ,UITableViewDelegate,UITableViewDataSourc
         title = ywNo
         
         _initSubview()
+        
+        get_action_list()
     }
 
     
+    @IBAction func addAction(_ sender: AnyObject) {
+        HUD.show()
+        let vc = TaskAddActionVC()
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
     
     func _initSubview()  {
         _tableView.layer.borderWidth = 1
@@ -37,17 +47,41 @@ class ActionListVC: BaseViewController ,UITableViewDelegate,UITableViewDataSourc
         _tableView.estimatedRowHeight = 80
     }
     
+    func get_action_list() {
+        guard let bzid = taskPoolSelectedTask["bizId"] as? String else {return}
+        let d = [ "bizId":bzid ]
+
+        HUD.show(withStatus: "Loading")
+        netHelper_request(withUrl: action_list_url, method: .post, parameters: d, successHandler: { [weak self](result) in
+            HUD.dismiss()
+            guard let body = result["body"] as? [String : Any] else {return;}
+            guard let actionlist = body["actionList"] as? [[String : Any]] else {return}
+            guard let strongSelf = self else{return}
+            
+            strongSelf.dataArray = strongSelf.dataArray + actionlist
+            strongSelf._tableView.reloadData()
+        }) { (error) in
+            HUD.show(info: error ?? "Error")
+        }
+        
+        
+    }
+    
+    
     
     
     //MARK:-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return dataArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {//
         let name = "ActionListCellIdentifier"
 
-        let cell = tableView.dequeueReusableCell(withIdentifier: name, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: name, for: indexPath) as! ActionListCell
+        let d = dataArray[indexPath.row]
+        
+        cell.fill(d)
         
         return cell
     }
