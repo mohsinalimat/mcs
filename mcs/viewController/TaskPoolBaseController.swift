@@ -78,6 +78,7 @@ class TaskPoolBaseController: BaseViewController ,UITableViewDelegate,UITableVie
             strongSelf.dataArray.removeAll()
             strongSelf.dataArray = strongSelf.dataArray + recordList
             strongSelf._tableView.reloadData()
+            strongSelf._tableView.layoutIfNeeded()
             
             if strongSelf.dataArray.count == 0 {
                 strongSelf.displayMsg("No Data");

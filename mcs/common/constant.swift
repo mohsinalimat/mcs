@@ -100,6 +100,8 @@ var addAction_Section2_SelectedIndex:Int = 0
 var task_pool_taskno_index:Int = 0
 
 var taskPoolSelectedTask:[String:Any]!//当前操作的Task
+var addActionMateralDataArr = [[String:String]]()//添加action - Materal
+var addActionComponentDataArr = [[String:String]]()//添加action - Component
 
 //MARK:
 let msg_loading = "Loading"

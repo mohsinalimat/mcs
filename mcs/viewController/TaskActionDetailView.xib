@@ -45,7 +45,7 @@
                                 <action selector="actionDetailSelect:" destination="iN0-l3-epB" eventType="touchUpInside" id="9C9-MR-zkP"/>
                             </connections>
                         </button>
-                        <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GNh-hb-H2P">
+                        <button hidden="YES" opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GNh-hb-H2P">
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <state key="normal" title="Attachment">
                                 <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>

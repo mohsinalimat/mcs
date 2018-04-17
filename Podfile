@@ -13,5 +13,7 @@ pod 'RxSwift', '3.0'
 pod 'RxCocoa', '3.0'
 pod 'RxDataSources', '~> 1.0.4'
 pod 'IQKeyboardManagerSwift', '5.0.0'
+pod 'Kingfisher', '3.13.0'
+pod 'AFNetworking', '3.2.0'
 
 end

@@ -67,9 +67,11 @@ class TaskPoolCell: UITableViewCell {
         
 
         let reasonDesc = String.stringIsNullOrNil(d["reason"])
-        let reasonStr = "Reason: " + reasonDesc
+        let rea_s = "Reason to postpone : "
+        let reasonStr =  rea_s + reasonDesc
         let reasonAttriStr =  NSMutableAttributedString.init(string: reasonStr)
-        reasonAttriStr.addAttributes([NSFontAttributeName:UIFont.boldSystemFont(ofSize: 15),NSForegroundColorAttributeName:UIColor.darkGray], range: NSMakeRange(0, 7))
+        reasonAttriStr.addAttributes([NSFontAttributeName:UIFont.boldSystemFont(ofSize: 15),NSForegroundColorAttributeName:UIColor.darkGray], range: NSMakeRange(0, rea_s.lengthOfBytes(using: String.Encoding.utf8)))
+        
         reason.attributedText = reasonAttriStr
         
         let _r = _stringIsNullOrNil(d["repetitive"])
@@ -96,15 +98,6 @@ class TaskPoolCell: UITableViewCell {
         return "\(s)"
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-
     
     override func draw(_ rect: CGRect) {
         //画虚线

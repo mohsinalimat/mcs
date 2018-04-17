@@ -10,6 +10,35 @@ import UIKit
 
 class Section_TableViewCell: UITableViewCell {
 
+    @IBOutlet weak var pin: UILabel!
+    
+    @IBOutlet weak var type: UILabel!
+    
+    @IBOutlet weak var qty: UILabel!
+    
+    @IBOutlet weak var fin: UILabel!
+    
+    @IBOutlet weak var store_in: UILabel!
+    
+    @IBOutlet weak var descri: UILabel!
+    
+    @IBOutlet weak var remark: UILabel!
+    
+    
+    
+    func fill(_ d : [String:String]) {
+        pin.text = d["pn"]
+        type.text = d["partType"]
+        qty.text = d["qty"]
+        fin.text =  d["fin"]
+        store_in.text = d["storeInAmasis"]
+        descri.text = d["description"]
+        remark.text = d["remark"]
+    }
+    
+    
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

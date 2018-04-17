@@ -69,6 +69,7 @@ class TaskHandleController: BaseViewController ,UITableViewDelegate,UITableViewD
                 strongSelf._tableView.mj_header.endRefreshing();
             }
 
+            strongSelf.dataArray.removeAll()
             strongSelf.dataArray = strongSelf.dataArray + body
             strongSelf._tableView.reloadData()
             

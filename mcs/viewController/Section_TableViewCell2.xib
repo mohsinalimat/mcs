@@ -78,6 +78,15 @@
                     <constraint firstItem="3u0-qf-jN5" firstAttribute="centerY" secondItem="nGk-4P-zlq" secondAttribute="centerY" id="xuZ-rt-7c5"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="fin" destination="nMN-Rg-lwf" id="ZQq-Rv-oHp"/>
+                <outlet property="pn_off" destination="nGk-4P-zlq" id="bZf-SV-ha3"/>
+                <outlet property="pn_on" destination="cej-Nc-gLG" id="K16-n5-G8c"/>
+                <outlet property="pos" destination="4pv-da-Hod" id="qE5-ij-y1Q"/>
+                <outlet property="sn_off" destination="3u0-qf-jN5" id="8Hr-9Z-GG6"/>
+                <outlet property="sn_on" destination="7iN-Pc-0Fx" id="SPY-b7-vG3"/>
+                <outlet property="type" destination="Xoh-2k-cLd" id="oCc-wg-oTb"/>
+            </connections>
         </tableViewCell>
     </objects>
 </document>

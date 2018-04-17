@@ -79,6 +79,15 @@
                     <constraint firstItem="PAb-UQ-l4f" firstAttribute="leading" secondItem="9be-0T-e5w" secondAttribute="trailing" constant="10" id="yVb-QR-sND"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="descri" destination="PAb-UQ-l4f" id="93W-XL-10G"/>
+                <outlet property="fin" destination="9R0-o5-H2w" id="L3L-kC-8Gu"/>
+                <outlet property="pin" destination="wlh-iH-y1X" id="dRY-0p-1f3"/>
+                <outlet property="qty" destination="Rbk-6d-3a8" id="Mxl-zk-a6d"/>
+                <outlet property="remark" destination="Jyd-Ir-s43" id="kIO-Vu-nha"/>
+                <outlet property="store_in" destination="9be-0T-e5w" id="djr-gN-TuL"/>
+                <outlet property="type" destination="4Pa-Lm-wzH" id="dz0-gj-QlP"/>
+            </connections>
         </tableViewCell>
     </objects>
 </document>

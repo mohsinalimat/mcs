@@ -69,7 +69,8 @@ class TaskAddActionVC: BaseViewController ,UITableViewDelegate,UITableViewDataSo
         _fillCell()
         
         
-        
+        addActionMateralDataArr.removeAll()
+        addActionComponentDataArr.removeAll()
         
         
     }
@@ -113,25 +114,26 @@ class TaskAddActionVC: BaseViewController ,UITableViewDelegate,UITableViewDataSo
         "item":String.stringIsNullOrNil(actionBaseInfoCell.item.text),
         
         /*material-tools*/
-        "bizPartList":[["partType":"tool",
+        /*"bizPartList":[["partType":"tool",
                         "pn":"000000111111",
                         "description":"description....",
                         "qty":"5",
                         "fin":"2222220",
                         "remark":"mark123",
                         "storeInAmasis":"store"]
-            ],
+            ],*/
             
-            
+            "bizPartList" :addActionMateralDataArr,
         /*Advice P/N*/
-        "partList":[["pnOff":"tool",
+        /*"partList":[["pnOff":"tool",
                             "snOff":"8880",
                             "pnOn":"description....",
                             "snOn":"3",
                             "fin":"55555",
                             "partType":"materal",
                             "pos":"store"]
-            ]
+            ]*/
+            "partList" : addActionComponentDataArr
             
         ]
         

@@ -71,7 +71,7 @@ class Action_Materal_Cell: UITableViewCell,UITableViewDelegate,UITableViewDataSo
         _tableView.tableFooterView = UIView()
         _tableView.rowHeight = 60
         
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshAction), name:  NSNotification.Name.init("add_materialOrComponent_notification"), object: nil)
     }
 
     override func layoutSubviews() {
@@ -83,34 +83,55 @@ class Action_Materal_Cell: UITableViewCell,UITableViewDelegate,UITableViewDataSo
         
     }
     
+    func refreshAction()  {
+        
+        _tableView.reloadData()
+        
+    }
     
     override func prepareForReuse() {
         _tableView.scrollsToTop = true;
     }
     
+    
+    
     //MARK:-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {//
-        var name = "Section_TableViewCellIdentifier"
-        if addAction_Section2_SelectedIndex == 3 {
-            name = "Section_TableViewCell2Identifier";
-        } else if addAction_Section2_SelectedIndex == 4 {
-            name = "Section_TableViewCell3Identifier";
+        if addAction_Section2_SelectedIndex == 2 {
+            return addActionMateralDataArr.count;
+        } else if addAction_Section2_SelectedIndex == 3 {
+            return addActionComponentDataArr.count;
         }
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: name, for: indexPath)
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+        switch addAction_Section2_SelectedIndex {
+        case 2:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Section_TableViewCellIdentifier", for: indexPath) as! Section_TableViewCell
+            let d = addActionMateralDataArr[indexPath.row]
+            cell.fill(d)
+            return cell
+            
+        case 3:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Section_TableViewCell2Identifier", for: indexPath) as! Section_TableViewCell2
+            let d = addActionComponentDataArr[indexPath.row]
+            cell.fill(d)
+
+            return cell
+
+        default:
+            break
+        }
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Section_TableViewCell3Identifier", for: indexPath)
 
         return cell
     }
 
-    
-    
-    
-    
-    
+
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 40
@@ -134,5 +155,25 @@ class Action_Materal_Cell: UITableViewCell,UITableViewDelegate,UITableViewDataSo
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0.001
     }
+    
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            if addAction_Section2_SelectedIndex == 2 {
+                addActionMateralDataArr.remove(at: indexPath.row)   
+            } else if addAction_Section2_SelectedIndex == 3 {
+                addActionComponentDataArr.remove(at: indexPath.row)
+                
+            }
+            
+            tableView.deleteRows(at: [indexPath], with: .top)
+        }
+    }
+    
+    
     
 }
