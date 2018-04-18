@@ -10,6 +10,25 @@ import UIKit
 
 class AddActionInfoCell_R: UITableViewCell {
 
+    @IBOutlet weak var actBy: UILabel!
+    
+    @IBOutlet weak var reportBy: UILabel!
+    
+    @IBOutlet weak var shift: UILabel!
+    
+    @IBOutlet weak var team: UILabel!
+    
+    @IBOutlet weak var shift_date: UILabel!
+    
+    
+    func fill(_ d :[String:Any])  {
+        actBy.text = String.stringIsNullOrNilToEmpty(d["actBy"])
+        reportBy.text = String.stringIsNullOrNilToEmpty(d["reportBy"])
+        shift.text = String.stringIsNullOrNilToEmpty(d["shift"])
+        team.text = String.stringIsNullOrNilToEmpty(d["team"])
+        shift_date.text = String.stringIsNullOrNilToEmpty(d["shiftDate"])
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

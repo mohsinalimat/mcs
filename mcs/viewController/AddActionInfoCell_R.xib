@@ -7,11 +7,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="AddActionInfoCell_RIdentifier" rowHeight="200" id="wqh-hz-oyl" customClass="AddActionInfoCell" customModule="mcs" customModuleProvider="target">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="AddActionInfoCell_RIdentifier" rowHeight="200" id="wqh-hz-oyl" customClass="AddActionInfoCell_R" customModule="mcs" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="1024" height="180"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wqh-hz-oyl" id="ZgU-zG-joL">
-                <frame key="frameInset" width="1024" height="179"/>
+                <frame key="frameInset" width="1024" height="180"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sb4-Ls-BVL">
@@ -96,6 +96,13 @@
                     <constraint firstAttribute="bottom" secondItem="sb4-Ls-BVL" secondAttribute="bottom" id="m2F-ga-Dto"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="actBy" destination="Het-1Q-NRf" id="3qJ-bw-ZZ1"/>
+                <outlet property="reportBy" destination="CEa-4M-PgB" id="Jjo-CR-6kQ"/>
+                <outlet property="shift" destination="GdP-1H-9Ir" id="0nv-W6-bgC"/>
+                <outlet property="shift_date" destination="HpE-kf-f6Q" id="cmL-aA-CH1"/>
+                <outlet property="team" destination="UIS-5D-JmO" id="TIj-Cd-y5H"/>
+            </connections>
         </tableViewCell>
     </objects>
 </document>

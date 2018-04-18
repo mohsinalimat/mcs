@@ -10,6 +10,10 @@
                 <outlet property="btn_change" destination="rvU-wN-xPF" id="z7t-2X-tDq"/>
                 <outlet property="btn_defect" destination="xm2-el-gYb" id="yPz-aP-p3P"/>
                 <outlet property="btn_save" destination="toN-8k-KSJ" id="zSi-gy-8Hf"/>
+                <outlet property="button_bg" destination="Ljz-MU-0t0" id="e51-uO-yUa"/>
+                <outlet property="button_bg_h" destination="yV4-Uw-kyd" id="co0-nx-ziM"/>
+                <outlet property="button_bg_r" destination="8P7-CR-NTl" id="lj0-51-ebD"/>
+                <outlet property="button_bg_r_h" destination="5h8-D3-OHo" id="kAs-Ii-SXW"/>
                 <outlet property="taskName" destination="AkB-nO-Qf9" id="EPH-Ba-4gz"/>
                 <outlet property="task_no" destination="GVP-dh-H6P" id="4eq-Qx-39f"/>
                 <outlet property="time" destination="NM7-49-gvJ" id="SMi-cs-QRA"/>
@@ -69,43 +73,12 @@
                         <action selector="task_no_action:" destination="-1" eventType="touchUpInside" id="f31-fp-Euh"/>
                     </connections>
                 </button>
-                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rvU-wN-xPF">
-                    <constraints>
-                        <constraint firstAttribute="height" constant="45" id="4ES-Zz-EjL"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <state key="normal" title="Change Shift"/>
-                    <connections>
-                        <action selector="task_operation_action:" destination="-1" eventType="touchUpInside" id="7aX-N8-sFC"/>
-                    </connections>
-                </button>
-                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WVj-0Y-yea">
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <state key="normal" title="Add Action"/>
-                    <connections>
-                        <action selector="task_operation_action:" destination="-1" eventType="touchUpInside" id="UDo-eb-1it"/>
-                    </connections>
-                </button>
-                <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zcd-R8-jRn">
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <state key="normal" title="Action List"/>
-                    <connections>
-                        <action selector="task_operation_action:" destination="-1" eventType="touchUpInside" id="6Qd-4b-tOU"/>
-                    </connections>
-                </button>
-                <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="toN-8k-KSJ">
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <state key="normal" title="Submit"/>
-                    <connections>
-                        <action selector="task_operation_action:" destination="-1" eventType="touchUpInside" id="hb4-C5-02C"/>
-                    </connections>
-                </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NM7-49-gvJ">
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qge-EC-REi">
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qge-EC-REi">
                     <color key="backgroundColor" red="0.92538958790000003" green="0.92554813619999998" blue="0.92537957429999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="xKh-WM-qZy"/>
@@ -114,37 +87,108 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ljz-MU-0t0">
+                    <subviews>
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rvU-wN-xPF">
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title="Change Shift" backgroundImage="button_bg2"/>
+                            <connections>
+                                <action selector="task_operation_action:" destination="-1" eventType="touchUpInside" id="7aX-N8-sFC"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WVj-0Y-yea">
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title="Add Action" backgroundImage="button_bg2"/>
+                            <connections>
+                                <action selector="task_operation_action:" destination="-1" eventType="touchUpInside" id="UDo-eb-1it"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zcd-R8-jRn">
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title="Action List" backgroundImage="button_bg2"/>
+                            <connections>
+                                <action selector="task_operation_action:" destination="-1" eventType="touchUpInside" id="6Qd-4b-tOU"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="toN-8k-KSJ">
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title="Submit" backgroundImage="button_bg2"/>
+                            <connections>
+                                <action selector="task_operation_action:" destination="-1" eventType="touchUpInside" id="hb4-C5-02C"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="WVj-0Y-yea" firstAttribute="centerY" secondItem="rvU-wN-xPF" secondAttribute="centerY" id="3jD-nY-1Ez"/>
+                        <constraint firstItem="toN-8k-KSJ" firstAttribute="leading" secondItem="Zcd-R8-jRn" secondAttribute="trailing" id="7YN-Uk-CdD"/>
+                        <constraint firstItem="toN-8k-KSJ" firstAttribute="centerY" secondItem="rvU-wN-xPF" secondAttribute="centerY" id="GXi-JV-FhF"/>
+                        <constraint firstItem="Zcd-R8-jRn" firstAttribute="leading" secondItem="WVj-0Y-yea" secondAttribute="trailing" id="MK9-6F-rsI"/>
+                        <constraint firstItem="toN-8k-KSJ" firstAttribute="height" secondItem="rvU-wN-xPF" secondAttribute="height" id="OlH-js-Tlk"/>
+                        <constraint firstItem="Zcd-R8-jRn" firstAttribute="width" secondItem="rvU-wN-xPF" secondAttribute="width" id="Q8R-Nn-F6l"/>
+                        <constraint firstItem="WVj-0Y-yea" firstAttribute="width" secondItem="rvU-wN-xPF" secondAttribute="width" id="RGc-Ec-Km1"/>
+                        <constraint firstItem="WVj-0Y-yea" firstAttribute="height" secondItem="rvU-wN-xPF" secondAttribute="height" id="Ri3-Rs-Jbb"/>
+                        <constraint firstItem="Zcd-R8-jRn" firstAttribute="height" secondItem="rvU-wN-xPF" secondAttribute="height" id="Vly-Z2-Rk5"/>
+                        <constraint firstItem="Zcd-R8-jRn" firstAttribute="centerY" secondItem="rvU-wN-xPF" secondAttribute="centerY" id="Wgz-GA-R0S"/>
+                        <constraint firstAttribute="trailing" secondItem="toN-8k-KSJ" secondAttribute="trailing" constant="1" id="XjJ-oG-QNv"/>
+                        <constraint firstItem="WVj-0Y-yea" firstAttribute="leading" secondItem="rvU-wN-xPF" secondAttribute="trailing" id="byp-Mc-Ww9"/>
+                        <constraint firstItem="rvU-wN-xPF" firstAttribute="top" secondItem="Ljz-MU-0t0" secondAttribute="top" id="rC8-og-Avi"/>
+                        <constraint firstItem="toN-8k-KSJ" firstAttribute="width" secondItem="rvU-wN-xPF" secondAttribute="width" id="xJy-9W-FcE"/>
+                        <constraint firstAttribute="bottom" secondItem="rvU-wN-xPF" secondAttribute="bottom" constant="1" id="xdp-Me-uWz"/>
+                        <constraint firstAttribute="height" constant="45" id="yV4-Uw-kyd"/>
+                        <constraint firstItem="rvU-wN-xPF" firstAttribute="leading" secondItem="Ljz-MU-0t0" secondAttribute="leading" constant="1" id="zAK-sh-fII"/>
+                    </constraints>
+                </view>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8P7-CR-NTl">
+                    <subviews>
+                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a2D-gc-tHf">
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title="Add Action" backgroundImage="button_bg2"/>
+                            <connections>
+                                <action selector="task_operation_action:" destination="-1" eventType="touchUpInside" id="4iR-2c-g2n"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="azh-3Q-eoL">
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title="Action List" backgroundImage="button_bg2"/>
+                            <connections>
+                                <action selector="task_operation_action:" destination="-1" eventType="touchUpInside" id="sEA-Si-VuB"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="5h8-D3-OHo"/>
+                        <constraint firstItem="azh-3Q-eoL" firstAttribute="width" secondItem="a2D-gc-tHf" secondAttribute="width" id="Nm1-09-Qog"/>
+                        <constraint firstItem="a2D-gc-tHf" firstAttribute="top" secondItem="8P7-CR-NTl" secondAttribute="top" id="SAJ-Lz-Oud"/>
+                        <constraint firstItem="azh-3Q-eoL" firstAttribute="leading" secondItem="a2D-gc-tHf" secondAttribute="trailing" id="Vlr-wj-HSh"/>
+                        <constraint firstItem="azh-3Q-eoL" firstAttribute="height" secondItem="a2D-gc-tHf" secondAttribute="height" id="Y13-0x-1NL"/>
+                        <constraint firstItem="a2D-gc-tHf" firstAttribute="leading" secondItem="8P7-CR-NTl" secondAttribute="leading" constant="1" id="Z23-74-YjG"/>
+                        <constraint firstAttribute="trailing" secondItem="azh-3Q-eoL" secondAttribute="trailing" constant="1" id="qCj-bU-4zW"/>
+                        <constraint firstAttribute="bottom" secondItem="a2D-gc-tHf" secondAttribute="bottom" id="rhU-8W-5ys"/>
+                        <constraint firstItem="azh-3Q-eoL" firstAttribute="centerY" secondItem="a2D-gc-tHf" secondAttribute="centerY" id="vYJ-w0-FMt"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="WVj-0Y-yea" firstAttribute="leading" secondItem="rvU-wN-xPF" secondAttribute="trailing" id="0a1-z3-3GP"/>
                 <constraint firstItem="xm2-el-gYb" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="24P-eP-73I"/>
                 <constraint firstItem="xm2-el-gYb" firstAttribute="centerY" secondItem="AkB-nO-Qf9" secondAttribute="centerY" id="3qh-uV-qNm"/>
-                <constraint firstItem="WVj-0Y-yea" firstAttribute="centerY" secondItem="rvU-wN-xPF" secondAttribute="centerY" id="6g4-so-sra"/>
-                <constraint firstItem="WVj-0Y-yea" firstAttribute="width" secondItem="rvU-wN-xPF" secondAttribute="width" id="9RT-3k-fo9"/>
-                <constraint firstItem="toN-8k-KSJ" firstAttribute="leading" secondItem="Zcd-R8-jRn" secondAttribute="trailing" id="A8R-oN-Pp1"/>
-                <constraint firstItem="WVj-0Y-yea" firstAttribute="height" secondItem="rvU-wN-xPF" secondAttribute="height" id="Bv1-bC-hSD"/>
-                <constraint firstItem="Zcd-R8-jRn" firstAttribute="width" secondItem="rvU-wN-xPF" secondAttribute="width" id="DZG-2P-ezd"/>
                 <constraint firstItem="xm2-el-gYb" firstAttribute="leading" secondItem="GVP-dh-H6P" secondAttribute="trailing" constant="30" id="Fo7-WC-wbj"/>
-                <constraint firstItem="Zcd-R8-jRn" firstAttribute="centerY" secondItem="rvU-wN-xPF" secondAttribute="centerY" id="Gn7-CG-EjW"/>
+                <constraint firstItem="8P7-CR-NTl" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="I0v-cT-eeq"/>
+                <constraint firstItem="qge-EC-REi" firstAttribute="top" secondItem="8P7-CR-NTl" secondAttribute="bottom" id="J6A-BQ-vg9"/>
                 <constraint firstItem="NM7-49-gvJ" firstAttribute="centerY" secondItem="AkB-nO-Qf9" secondAttribute="centerY" constant="5" id="K7M-S6-Oct"/>
-                <constraint firstItem="toN-8k-KSJ" firstAttribute="centerY" secondItem="rvU-wN-xPF" secondAttribute="centerY" id="KR6-y4-0T3"/>
                 <constraint firstItem="NM7-49-gvJ" firstAttribute="leading" secondItem="AkB-nO-Qf9" secondAttribute="trailing" constant="36" id="KnP-nL-Y1I"/>
                 <constraint firstItem="GVP-dh-H6P" firstAttribute="centerY" secondItem="AkB-nO-Qf9" secondAttribute="centerY" id="Nwk-tw-NmJ"/>
                 <constraint firstAttribute="trailing" secondItem="qge-EC-REi" secondAttribute="trailing" id="Pym-mQ-bdf"/>
-                <constraint firstItem="toN-8k-KSJ" firstAttribute="width" secondItem="rvU-wN-xPF" secondAttribute="width" id="Qnp-0c-w8o"/>
-                <constraint firstItem="Zcd-R8-jRn" firstAttribute="leading" secondItem="WVj-0Y-yea" secondAttribute="trailing" id="QvQ-6y-Hbf"/>
                 <constraint firstAttribute="trailing" secondItem="xm2-el-gYb" secondAttribute="trailing" constant="30" id="XIJ-mo-KBV"/>
                 <constraint firstItem="qge-EC-REi" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="XOH-aZ-khP"/>
-                <constraint firstItem="toN-8k-KSJ" firstAttribute="top" secondItem="qge-EC-REi" secondAttribute="bottom" id="aK4-TZ-7li"/>
-                <constraint firstItem="toN-8k-KSJ" firstAttribute="height" secondItem="rvU-wN-xPF" secondAttribute="height" id="bAv-3u-IE6"/>
-                <constraint firstAttribute="trailing" secondItem="toN-8k-KSJ" secondAttribute="trailing" id="fMN-s1-EQ7"/>
+                <constraint firstItem="Ljz-MU-0t0" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ZtR-w2-cYc"/>
+                <constraint firstAttribute="trailing" secondItem="8P7-CR-NTl" secondAttribute="trailing" id="aUQ-7b-avC"/>
+                <constraint firstAttribute="trailing" secondItem="Ljz-MU-0t0" secondAttribute="trailing" id="byT-bD-tE7"/>
                 <constraint firstItem="xm2-el-gYb" firstAttribute="width" secondItem="GVP-dh-H6P" secondAttribute="width" id="gKD-0P-JU4"/>
-                <constraint firstAttribute="bottom" secondItem="rvU-wN-xPF" secondAttribute="bottom" constant="5" id="gcf-Yf-Cdt"/>
                 <constraint firstItem="xm2-el-gYb" firstAttribute="centerY" secondItem="GVP-dh-H6P" secondAttribute="centerY" id="lH8-St-3yf"/>
-                <constraint firstItem="rvU-wN-xPF" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="mCF-iP-hA7"/>
-                <constraint firstItem="Zcd-R8-jRn" firstAttribute="height" secondItem="rvU-wN-xPF" secondAttribute="height" id="pDp-Lg-ztc"/>
+                <constraint firstAttribute="bottom" secondItem="Ljz-MU-0t0" secondAttribute="bottom" id="lna-U5-vPL"/>
                 <constraint firstItem="AkB-nO-Qf9" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="sOV-ew-lVQ"/>
+                <constraint firstItem="Ljz-MU-0t0" firstAttribute="top" secondItem="qge-EC-REi" secondAttribute="bottom" constant="1" id="uMx-c6-UJK"/>
                 <constraint firstItem="xm2-el-gYb" firstAttribute="height" secondItem="GVP-dh-H6P" secondAttribute="height" id="wqA-TI-ufu"/>
             </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
@@ -152,6 +196,7 @@
     </objects>
     <resources>
         <image name="arrow_down_night_16" width="16" height="14"/>
+        <image name="button_bg2" width="200" height="30"/>
         <image name="buttonbg" width="400" height="60"/>
     </resources>
 </document>

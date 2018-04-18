@@ -21,6 +21,7 @@ class ActionListVC: BaseViewController ,UITableViewDelegate,UITableViewDataSourc
 
         // Do any additional setup after loading the view.
         title = ywNo
+        view.backgroundColor = UIColor.white
         
         _initSubview()
         
@@ -44,7 +45,8 @@ class ActionListVC: BaseViewController ,UITableViewDelegate,UITableViewDataSourc
 
         _tableView.tableFooterView = UIView()
         _tableView.rowHeight = UITableViewAutomaticDimension
-        _tableView.estimatedRowHeight = 80
+        _tableView.estimatedRowHeight = 88
+        _tableView.separatorColor = kTableviewBackgroundColor
     }
     
     func get_action_list() {
@@ -87,11 +89,14 @@ class ActionListVC: BaseViewController ,UITableViewDelegate,UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let d = dataArray[indexPath.row]
+        
         HUD.show()
         let vc = TaskAddActionVC()
         vc.read_only = true
-        self.navigationController?.pushViewController(vc, animated: true)
+        vc.action_detail_info_r = d;
         
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     

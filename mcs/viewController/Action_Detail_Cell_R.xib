@@ -11,7 +11,7 @@
             <rect key="frame" x="0.0" y="0.0" width="1024" height="300"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5SA-38-spt" id="ae3-CT-wV1">
-                <frame key="frameInset" width="1024" height="299"/>
+                <frame key="frameInset" width="1024" height="300"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Qb-HV-NKO">
@@ -139,6 +139,16 @@
                     <constraint firstItem="6Qb-HV-NKO" firstAttribute="leading" secondItem="ae3-CT-wV1" secondAttribute="leading" constant="15" id="WI0-Ua-nEo"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="date" destination="rrN-Mj-eMC" id="Bg9-Xk-xGS"/>
+                <outlet property="descri" destination="lr0-Js-xlM" id="0qE-tV-8WU"/>
+                <outlet property="flt_no" destination="bBJ-BD-aE1" id="CNp-R9-ryL"/>
+                <outlet property="item" destination="vOg-Jc-pjj" id="es6-hN-kR6"/>
+                <outlet property="mh" destination="i1c-xr-E8p" id="oVs-cg-R1q"/>
+                <outlet property="page" destination="vUz-ly-cMb" id="rKp-S8-iHd"/>
+                <outlet property="ref" destination="cTa-zu-WqC" id="o4G-G6-5qM"/>
+                <outlet property="station" destination="qGh-AP-pdc" id="cs2-pz-GCg"/>
+            </connections>
         </tableViewCell>
     </objects>
 </document>

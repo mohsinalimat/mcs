@@ -12,6 +12,8 @@ class Action_Materal_Cell: UITableViewCell,UITableViewDelegate,UITableViewDataSo
 
     var section_index = 0
     var read_only:Bool = false
+    var info:[String:Any]!
+    
     
     @IBOutlet weak var addBtn_H: NSLayoutConstraint!
     
@@ -158,7 +160,7 @@ class Action_Materal_Cell: UITableViewCell,UITableViewDelegate,UITableViewDataSo
     
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
+        return !read_only
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {

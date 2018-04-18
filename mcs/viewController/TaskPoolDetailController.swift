@@ -16,6 +16,14 @@ class TaskPoolDetailController: BaseWebViewController {
     
     @IBOutlet weak var task_no: UIButton!
     
+    @IBOutlet weak var button_bg: UIView!
+    @IBOutlet weak var button_bg_h: NSLayoutConstraint!
+    
+    @IBOutlet weak var button_bg_r: UIView!
+    @IBOutlet weak var button_bg_r_h: NSLayoutConstraint!
+    
+    
+    
     var taskId:String!//任务ID
     var ywNo:String! //业务编号
     var ywType:String! //业务类型
@@ -124,10 +132,6 @@ class TaskPoolDetailController: BaseWebViewController {
         
     }
     
-    
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white;
@@ -148,18 +152,16 @@ class TaskPoolDetailController: BaseWebViewController {
         if !from_taskPool {
             task_no.isHidden = true
             btn_defect.isHidden = true;
-            btn_change.isHidden = true;
-            btn_save.isHidden = true
+
+            button_bg_h.constant = 1
         }else {
             task_no.setTitle("Task(\(task_pool_dataArr.count))", for: .normal);
+            button_bg_r_h.constant = 0
         }
         
-        
-        
+
         taskName.text = ywType
         time.text = schedule_time
-        
-        
     }
     
     override func loadData()  {
@@ -168,11 +170,20 @@ class TaskPoolDetailController: BaseWebViewController {
                  "taskId":taskId! //"ab0075d0-2e52-11e8-a41b-00ffb0abeb6d"
         ]
         
-        
-        
+
         requestWithUrl(task_pooldetail_url, parameters: d)
     }
     
-
+    override func webViewDidFinishLoad(_ webView: UIWebView) {
+        super.webViewDidFinishLoad(webView)
+        
+        if !from_taskPool {
+            button_bg_r.isHidden = false;
+        } else {
+            button_bg.isHidden = false;
+        }
+        
+        
+    }
 
 }

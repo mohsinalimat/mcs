@@ -21,6 +21,7 @@ class TaskAddActionVC: BaseViewController ,UITableViewDelegate,UITableViewDataSo
     @IBOutlet weak var _tableView: UITableView!
 
     var read_only:Bool = false
+    var action_detail_info_r = [String:Any]()
     
     var section2_selected_index:Int = 1;
     var reportInfoCell:AddActionInfoCell!
@@ -53,6 +54,9 @@ class TaskAddActionVC: BaseViewController ,UITableViewDelegate,UITableViewDataSo
         _tableView.register(UINib (nibName: "AddActionInfoCell_R", bundle: nil), forCellReuseIdentifier: "AddActionInfoCell_RIdentifier")
         _tableView.register(UINib (nibName: "Action_Detail_Cell_R", bundle: nil), forCellReuseIdentifier: "Action_Detail_Cell_RIdentifier")
         
+        addActionMateralDataArr.removeAll()
+        addActionComponentDataArr.removeAll()
+        
         if read_only {
             s_performed.isEnabled = false;
             s_closed.isEnabled = false
@@ -60,18 +64,24 @@ class TaskAddActionVC: BaseViewController ,UITableViewDelegate,UITableViewDataSo
             s_closed.isOn = false
             
             btn_save.isHidden = true
-            title = "Action No.2";
+            title = "No." + (action_detail_info_r["id"] as! String);
+            s_performed.isOn = (action_detail_info_r["perform"] as? Int) == 1 ? true : false
+            
+            s_closed.isOn = (action_detail_info_r["closed"] as? Int) == 1 ? true : false
+            
+            if let partlist = action_detail_info_r["partList"] as? [[String:String]] {
+                addActionComponentDataArr = partlist;
+            }
+            
+            if let bizlist = action_detail_info_r["bizPartList"] as? [[String:String]] {
+                addActionMateralDataArr = bizlist;
+            }
         }
         
         _tableView.reloadData()
         _tableView.layoutIfNeeded()
         
         _fillCell()
-        
-        
-        addActionMateralDataArr.removeAll()
-        addActionComponentDataArr.removeAll()
-        
         
     }
     
@@ -80,15 +90,13 @@ class TaskAddActionVC: BaseViewController ,UITableViewDelegate,UITableViewDataSo
             reportInfoCell.actBy.text = Tools.loginUserName()
             reportInfoCell.reportBy.text = Tools.loginUserName()
         }
-
-        
+ 
     }
     
     @IBAction func saveAction(_ sender: UIButton) {
         guard let bzid = taskPoolSelectedTask["bizId"] as? String else {return}
         guard let acreg = taskPoolSelectedTask["ac"] as? String else {return}
-        
-       let url = taskPool_addAction_url.appending(bzid)
+        let url = taskPool_addAction_url.appending(bzid)
         
         /*let arr = [["pnOff":"tool",
                    "snOff":"8880",
@@ -119,19 +127,10 @@ class TaskAddActionVC: BaseViewController ,UITableViewDelegate,UITableViewDataSo
         "actionDetail": String.stringIsNullOrNil(actionBaseInfoCell.descri.text),
         "actionRef":String.stringIsNullOrNil(actionBaseInfoCell.ref.text),
         "page":String.stringIsNullOrNil(actionBaseInfoCell.page.text),
-        "item":String.stringIsNullOrNil(actionBaseInfoCell.item.text),
-        
-        /*material-tools*/
-        /*"bizPartList":[["partType":"tool",
-                        "pn":"000000111111",
-                        "description":"description....",
-                        "qty":"5",
-                        "fin":"2222220",
-                        "remark":"mark123",
-                        "storeInAmasis":"store"]
-            ],*/
+        "item":String.stringIsNullOrNil(actionBaseInfoCell.item.text)
         ]
         
+        /*material-tools*/
         for (key,value) in encodingParameters(addActionMateralDataArr, key: "bizPartList") {
             params[key] = value;
         }
@@ -148,7 +147,6 @@ class TaskAddActionVC: BaseViewController ,UITableViewDelegate,UITableViewDataSo
             NotificationCenter.default.post(name: NSNotification.Name (rawValue: "addActionSubmintOkNotification"), object: nil)
             
             _ = ss.navigationController?.popViewController(animated: true)
-            
             }) { (str) in
                 HUD.show(info: str ?? "Request Error")
                 
@@ -181,18 +179,25 @@ class TaskAddActionVC: BaseViewController ,UITableViewDelegate,UITableViewDataSo
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            let _identifier = read_only ? "AddActionInfoCell_RIdentifier" : "AddActionInfoCellIdentifier"
-            let cell = tableView.dequeueReusableCell(withIdentifier: _identifier, for: indexPath) as! AddActionInfoCell
-            
-            reportInfoCell = cell
-            
-            return cell
+            if read_only {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "AddActionInfoCell_RIdentifier", for: indexPath) as! AddActionInfoCell_R
+                cell.fill(action_detail_info_r)
+
+                return cell
+            }else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "AddActionInfoCellIdentifier", for: indexPath) as! AddActionInfoCell
+                
+                reportInfoCell = cell
+                
+                return cell
+            }
+
         }
         
         if section2_selected_index == 1 {
             if read_only {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "Action_Detail_Cell_RIdentifier", for: indexPath) as! Action_Detail_Cell_R
-                
+                cell.fill(action_detail_info_r)
 
                 return cell
             }else {
@@ -205,6 +210,7 @@ class TaskAddActionVC: BaseViewController ,UITableViewDelegate,UITableViewDataSo
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Action_Materal_CellIdentifier", for: indexPath) as! Action_Materal_Cell
         cell.read_only = read_only
+        cell.info = action_detail_info_r
         cell._tableView.reloadData()
         
         return cell
