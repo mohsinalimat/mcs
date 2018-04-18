@@ -59,14 +59,14 @@ class TaskPoolCell: UITableViewCell {
         to_sb.text = _stringIsNullOrNil(d["taskTo"])
         
 
-        let defectDesc = String.stringIsNullOrNil(d["defectDesc"])
+        let defectDesc = _stringIsNullOrNil(d["defectDesc"])
         let defectStr = "Description: " + defectDesc
         let defectAttriStr =  NSMutableAttributedString.init(string: defectStr)
         defectAttriStr.addAttributes([NSFontAttributeName:UIFont.boldSystemFont(ofSize: 15),NSForegroundColorAttributeName:UIColor.darkGray], range: NSMakeRange(0, 12))
         descri.attributedText = defectAttriStr
         
 
-        let reasonDesc = String.stringIsNullOrNil(d["reason"])
+        let reasonDesc = _stringIsNullOrNil(d["reason"])
         let rea_s = "Reason to postpone : "
         let reasonStr =  rea_s + reasonDesc
         let reasonAttriStr =  NSMutableAttributedString.init(string: reasonStr)

@@ -99,7 +99,23 @@ class TaskPoolDetailController: BaseWebViewController {
             self.navigationController?.pushViewController(vc, animated: true)
             break
         case 4:
+            guard let task_id = taskPoolSelectedTask["taskId"] as? String  else  {return}
             
+            showMsg("Submit This Task?", title: "Submit", handler: {
+                HUD.show()
+                
+                request(taskPool_submit_url, parameters: ["taskIds":[task_id]], successHandler: { [weak self] (res) in
+                    HUD.show(successInfo: "Submit Success")
+                    guard let ss = self else {return}
+                    NotificationCenter.default.post(name: NSNotification.Name (rawValue: "addActionSubmintOkNotification"), object: nil)
+                    
+                    _ = ss.navigationController?.popViewController(animated: true)
+
+                    }, failureHandler: { (str) in
+                        HUD.show(info: str ?? "Submit Error")
+                })
+            })
+
             break
             
         default:break

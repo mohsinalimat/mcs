@@ -233,6 +233,8 @@ class LoginViewController: BaseViewController,UITableViewDelegate,UITableViewDat
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard indexPath.row > 1 else {return }
+        u_name = String.stringIsNullOrNilToEmpty(username_tf.text)
+        u_pwd = String.stringIsNullOrNilToEmpty(pwd_tf.text)
         
         var vc = BasePickerViewController()
         let frame = CGRect (x: 0, y: 0, width: 500, height: 240)

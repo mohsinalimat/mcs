@@ -95,7 +95,7 @@
                 </button>
                 <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="toN-8k-KSJ">
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <state key="normal" title="Save"/>
+                    <state key="normal" title="Submit"/>
                     <connections>
                         <action selector="task_operation_action:" destination="-1" eventType="touchUpInside" id="hb4-C5-02C"/>
                     </connections>

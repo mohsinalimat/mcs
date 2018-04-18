@@ -90,7 +90,15 @@ class TaskAddActionVC: BaseViewController ,UITableViewDelegate,UITableViewDataSo
         
        let url = taskPool_addAction_url.appending(bzid)
         
-        let d : [String : Any] = [
+        /*let arr = [["pnOff":"tool",
+                   "snOff":"8880",
+                   "pnOn":"description....",
+                   "snOn":"3",
+                   "fin":"55555",
+                   "partType":"materal",
+                   "pos":"store"]]*/
+
+        var params : Dictionary = [
         "acReg":acreg,
         "perform":"\(s_performed.isOn ? 1 : 0)",
         "closed":"\(s_closed.isOn ? 1 : 0)",
@@ -122,26 +130,22 @@ class TaskAddActionVC: BaseViewController ,UITableViewDelegate,UITableViewDataSo
                         "remark":"mark123",
                         "storeInAmasis":"store"]
             ],*/
-            
-            "bizPartList" :addActionMateralDataArr,
-        /*Advice P/N*/
-        /*"partList":[["pnOff":"tool",
-                            "snOff":"8880",
-                            "pnOn":"description....",
-                            "snOn":"3",
-                            "fin":"55555",
-                            "partType":"materal",
-                            "pos":"store"]
-            ]*/
-            "partList" : addActionComponentDataArr
-            
         ]
         
-        HUD.show()
+        for (key,value) in encodingParameters(addActionMateralDataArr, key: "bizPartList") {
+            params[key] = value;
+        }
 
-        netHelper_request(withUrl: url, method: .post, parameters: d, encoding: JSONEncoding.default, successHandler: {[weak self] (res) in
-            HUD.show(successInfo: "Ok")
+        for (key,value) in encodingParameters(addActionComponentDataArr, key: "partList") {
+            params[key] = value;
+        }
+
+        HUD.show()
+        netHelper_request(withUrl: url, method: .post, parameters: params, successHandler: {[weak self] (res) in
+            HUD.show(successInfo: "Add success")
+            
             guard let ss = self else {return}
+            NotificationCenter.default.post(name: NSNotification.Name (rawValue: "addActionSubmintOkNotification"), object: nil)
             
             _ = ss.navigationController?.popViewController(animated: true)
             
@@ -152,7 +156,19 @@ class TaskAddActionVC: BaseViewController ,UITableViewDelegate,UITableViewDataSo
     }
 
     
-    
+    func encodingParameters(_ arr :[[String:String]], key:String) -> [String:String] {
+        var _new = [String:String]()
+        
+        for index in 0..<arr.count {
+            let d = arr[index];
+            for (_key,value) in d {
+                _new["\(key)[\(index)].\(_key)"] = value;
+            }
+            
+        }
+        
+        return _new;
+    }
     
     //MARK: -
     func numberOfSections(in tableView: UITableView) -> Int {

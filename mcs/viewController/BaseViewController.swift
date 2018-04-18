@@ -58,6 +58,21 @@ class BaseViewController: UIViewController {
     }
 
     
+    func showMsg( _ msg:String , title:String , handler:@escaping ((Void) -> Void)) {
+        
+        let vc = UIAlertController.init(title: msg,message: nil, preferredStyle: .alert)
+        let action = UIAlertAction.init(title:"Cancel", style: .default)
+        let action2 = UIAlertAction.init(title: title, style: .destructive) { (action) in
+            handler();
+        }
+        
+        vc.addAction(action)
+        vc.addAction(action2)
+        self.navigationController?.present(vc, animated: true, completion: nil);
+        
+    }
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

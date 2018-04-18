@@ -45,6 +45,11 @@ class TaskPoolBaseController: BaseViewController ,UITableViewDelegate,UITableVie
             strongSelf.getTaskPool();
             }.addDisposableTo(disposeBag)
         
+       NotificationCenter.default.rx.notification(NSNotification.Name (rawValue: "addActionSubmintOkNotification")).subscribe { [weak self] (event) in
+        guard let strongSelf = self else {return}
+        strongSelf.getTaskPool();
+        }.addDisposableTo(disposeBag)
+        
         
         guard kTaskpool_date != nil ,kTaskpool_shift != nil , kTaskpool_station != nil else {  _pop(); return}
         getTaskPool()
@@ -337,28 +342,13 @@ class TaskPoolBaseController: BaseViewController ,UITableViewDelegate,UITableVie
         HUD.show()
         
         request(taskPool_submit_url, parameters: ["taskIds":ids], successHandler: { [weak self] (res) in
-            HUD.show(successInfo: "Delete Success")
+            HUD.show(successInfo: "Submit Success")
             
             guard let ss = self else {return}
             ss.getTaskPool()
             }, failureHandler: { (str) in
-                HUD.show(info: str ?? "Delete Error")
+                HUD.show(info: str ?? "Submit Error")
         })
-    }
-    
-    
-    func showMsg( _ msg:String , title:String , handler:@escaping ((Void) -> Void)) {
-        
-        let vc = UIAlertController.init(title: msg,message: nil, preferredStyle: .alert)
-        let action = UIAlertAction.init(title:"Cancel", style: .default)
-        let action2 = UIAlertAction.init(title: title, style: .destructive) { (action) in
-            handler();
-        }
-        
-        vc.addAction(action)
-        vc.addAction(action2)
-        self.navigationController?.present(vc, animated: true, completion: nil);
-
     }
     
     

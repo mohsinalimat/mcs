@@ -129,8 +129,9 @@ class HomeViewController: BaseTabItemController,UICollectionViewDelegate,UIColle
     
     func addNavigationItem()  {
         let user = UILabel (frame: CGRect (x: 0, y: 0, width: 100, height: 30))
-        user.font = UIFont.boldSystemFont(ofSize: 18)
-        user.text = "user: \(UserDefaults.standard.value(forKey:"user-name")!)"
+        user.font = UIFont.systemFont(ofSize: 18)
+        user.textAlignment = .center
+        user.text = "\(UserDefaults.standard.value(forKey:"user-name")!)"
         navigationItem.titleView = user
         
         //msg

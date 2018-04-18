@@ -39,10 +39,13 @@ class TaskHandleController: BaseViewController ,UITableViewDelegate,UITableViewD
             strongSelf.getTaskPool();
             }.addDisposableTo(disposeBag)
 
-        
+        NotificationCenter.default.rx.notification(NSNotification.Name (rawValue: "addActionSubmintOkNotification")).subscribe {[weak self] (event) in
+            guard let strongSelf = self else {return}
+            strongSelf.getTaskPool();
+            }.addDisposableTo(disposeBag)
+
         guard kTaskpool_date != nil ,kTaskpool_shift != nil , kTaskpool_station != nil else {  /*_pop();*/ return}
         getTaskPool();
-
     }
     
 

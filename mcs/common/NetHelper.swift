@@ -63,7 +63,9 @@ func netHelper_request(withUrl:String,
     }
     
     
-    Alamofire.request(BASE_URL + withUrl, method: method, parameters: parameters, encoding:encoding, headers: header).validate().responseJSON { (dataResponse) in
+    Alamofire.request(BASE_URL + withUrl, method: method, parameters: parameters, encoding:encoding, headers: header)
+        .validate()
+        .responseJSON { (dataResponse) in
         DispatchQueue.main.async {
             if let dic = dataResponse.result.value as? [String:Any] ,let status = dic["state"] {
                 if "\(status)" == "200" {
