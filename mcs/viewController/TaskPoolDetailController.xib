@@ -159,7 +159,7 @@
                         <constraint firstAttribute="height" constant="45" id="5h8-D3-OHo"/>
                         <constraint firstItem="azh-3Q-eoL" firstAttribute="width" secondItem="a2D-gc-tHf" secondAttribute="width" id="Nm1-09-Qog"/>
                         <constraint firstItem="a2D-gc-tHf" firstAttribute="top" secondItem="8P7-CR-NTl" secondAttribute="top" id="SAJ-Lz-Oud"/>
-                        <constraint firstItem="azh-3Q-eoL" firstAttribute="leading" secondItem="a2D-gc-tHf" secondAttribute="trailing" id="Vlr-wj-HSh"/>
+                        <constraint firstItem="azh-3Q-eoL" firstAttribute="leading" secondItem="a2D-gc-tHf" secondAttribute="trailing" constant="-4" id="Vlr-wj-HSh"/>
                         <constraint firstItem="azh-3Q-eoL" firstAttribute="height" secondItem="a2D-gc-tHf" secondAttribute="height" id="Y13-0x-1NL"/>
                         <constraint firstItem="a2D-gc-tHf" firstAttribute="leading" secondItem="8P7-CR-NTl" secondAttribute="leading" constant="1" id="Z23-74-YjG"/>
                         <constraint firstAttribute="trailing" secondItem="azh-3Q-eoL" secondAttribute="trailing" constant="1" id="qCj-bU-4zW"/>
@@ -174,7 +174,7 @@
                 <constraint firstItem="xm2-el-gYb" firstAttribute="centerY" secondItem="AkB-nO-Qf9" secondAttribute="centerY" id="3qh-uV-qNm"/>
                 <constraint firstItem="xm2-el-gYb" firstAttribute="leading" secondItem="GVP-dh-H6P" secondAttribute="trailing" constant="30" id="Fo7-WC-wbj"/>
                 <constraint firstItem="8P7-CR-NTl" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="I0v-cT-eeq"/>
-                <constraint firstItem="qge-EC-REi" firstAttribute="top" secondItem="8P7-CR-NTl" secondAttribute="bottom" id="J6A-BQ-vg9"/>
+                <constraint firstItem="qge-EC-REi" firstAttribute="top" secondItem="8P7-CR-NTl" secondAttribute="bottom" constant="-2" id="J6A-BQ-vg9"/>
                 <constraint firstItem="NM7-49-gvJ" firstAttribute="centerY" secondItem="AkB-nO-Qf9" secondAttribute="centerY" constant="5" id="K7M-S6-Oct"/>
                 <constraint firstItem="NM7-49-gvJ" firstAttribute="leading" secondItem="AkB-nO-Qf9" secondAttribute="trailing" constant="36" id="KnP-nL-Y1I"/>
                 <constraint firstItem="GVP-dh-H6P" firstAttribute="centerY" secondItem="AkB-nO-Qf9" secondAttribute="centerY" id="Nwk-tw-NmJ"/>

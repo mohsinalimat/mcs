@@ -53,6 +53,7 @@ class TaskPoolDetailController: BaseWebViewController {
         vc.cellSelectedAction = {[weak self] index in
             guard let ss = self else {return}
             guard let d = ss.task_pool_dataArr[index] as? [String:Any] else {return}
+            taskPoolSelectedTask = d;
             
             if let taskid = d["taskId"]  as? String , let yw = d["taskNo"] as? String, let ywtp = d["taskType"] as? String{
                 guard taskid != ss.current_taskId else { return}

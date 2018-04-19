@@ -90,55 +90,63 @@ class TaskAddActionVC: BaseViewController ,UITableViewDelegate,UITableViewDataSo
             reportInfoCell.actBy.text = Tools.loginUserName()
             reportInfoCell.reportBy.text = Tools.loginUserName()
         }
- 
     }
     
     @IBAction func saveAction(_ sender: UIButton) {
+        
+        showMsg("Save This Action?", title: "Save", handler: {[weak self] in
+            guard let ss = self else {return}
+            ss._save()
+        })
+
+    }
+
+    func _save() {
         guard let bzid = taskPoolSelectedTask["bizId"] as? String else {return}
         guard let acreg = taskPoolSelectedTask["ac"] as? String else {return}
         let url = taskPool_addAction_url.appending(bzid)
         
         /*let arr = [["pnOff":"tool",
-                   "snOff":"8880",
-                   "pnOn":"description....",
-                   "snOn":"3",
-                   "fin":"55555",
-                   "partType":"materal",
-                   "pos":"store"]]*/
-
+         "snOff":"8880",
+         "pnOn":"description....",
+         "snOn":"3",
+         "fin":"55555",
+         "partType":"materal",
+         "pos":"store"]]*/
+        
         var params : Dictionary = [
-        "acReg":acreg,
-        "perform":"\(s_performed.isOn ? 1 : 0)",
-        "closed":"\(s_closed.isOn ? 1 : 0)",
+            "acReg":acreg,
+            "perform":"\(s_performed.isOn ? 1 : 0)",
+            "closed":"\(s_closed.isOn ? 1 : 0)",
             
-         /*reaport info*/
-        "actBy" : String.stringIsNullOrNil(reportInfoCell.actBy.text) ,
-        "reportBy": String.stringIsNullOrNil(reportInfoCell.reportBy.text),
-        "shift": String.stringIsNullOrNil(reportInfoCell.shift_id),
-        "shiftDate": String.stringIsNullOrNil(reportInfoCell.shiftDate.currentTitle),
-        "team": String.stringIsNullOrNil(reportInfoCell.team_id),
-
-        /*action basic info*/
-        "flNo":String.stringIsNullOrNil(actionBaseInfoCell.fltNo.text),
-        "dateType":String.stringIsNullOrNil(actionBaseInfoCell.area.currentTitle?.lowercased()),
-        "actionDate":String.stringIsNullOrNil(actionBaseInfoCell.dateTime.currentTitle),
-        "mainHour": String.stringIsNullOrNil(actionBaseInfoCell.mh.text),
-        "station": String.stringIsNullOrNil(actionBaseInfoCell.station.currentTitle),
-        "actionDetail": String.stringIsNullOrNil(actionBaseInfoCell.descri.text),
-        "actionRef":String.stringIsNullOrNil(actionBaseInfoCell.ref.text),
-        "page":String.stringIsNullOrNil(actionBaseInfoCell.page.text),
-        "item":String.stringIsNullOrNil(actionBaseInfoCell.item.text)
+            /*reaport info*/
+            "actBy" : String.stringIsNullOrNil(reportInfoCell.actBy.text) ,
+            "reportBy": String.stringIsNullOrNil(reportInfoCell.reportBy.text),
+            "shift": String.stringIsNullOrNil(reportInfoCell.shift_id),
+            "shiftDate": String.stringIsNullOrNil(reportInfoCell.shiftDate.currentTitle),
+            "team": String.stringIsNullOrNil(reportInfoCell.team_id),
+            
+            /*action basic info*/
+            "flNo":String.stringIsNullOrNil(actionBaseInfoCell.fltNo.text),
+            "dateType":String.stringIsNullOrNil(actionBaseInfoCell.area.currentTitle?.lowercased()),
+            "actionDate":String.stringIsNullOrNil(actionBaseInfoCell.dateTime.currentTitle),
+            "mainHour": String.stringIsNullOrNil(actionBaseInfoCell.mh.text),
+            "station": String.stringIsNullOrNil(actionBaseInfoCell.station.currentTitle),
+            "actionDetail": String.stringIsNullOrNil(actionBaseInfoCell.descri.text),
+            "actionRef":String.stringIsNullOrNil(actionBaseInfoCell.ref.text),
+            "page":String.stringIsNullOrNil(actionBaseInfoCell.page.text),
+            "item":String.stringIsNullOrNil(actionBaseInfoCell.item.text)
         ]
         
         /*material-tools*/
         for (key,value) in encodingParameters(addActionMateralDataArr, key: "bizPartList") {
             params[key] = value;
         }
-
+        
         for (key,value) in encodingParameters(addActionComponentDataArr, key: "partList") {
             params[key] = value;
         }
-
+        
         HUD.show()
         netHelper_request(withUrl: url, method: .post, parameters: params, successHandler: {[weak self] (res) in
             HUD.show(successInfo: "Add success")
@@ -147,12 +155,15 @@ class TaskAddActionVC: BaseViewController ,UITableViewDelegate,UITableViewDataSo
             NotificationCenter.default.post(name: NSNotification.Name (rawValue: "addActionSubmintOkNotification"), object: nil)
             
             _ = ss.navigationController?.popViewController(animated: true)
-            }) { (str) in
-                HUD.show(info: str ?? "Request Error")
-                
+        }) { (str) in
+            HUD.show(info: str ?? "Request Error")
+            
         }
-    }
 
+    }
+    
+    
+    
     
     func encodingParameters(_ arr :[[String:String]], key:String) -> [String:String] {
         var _new = [String:String]()
