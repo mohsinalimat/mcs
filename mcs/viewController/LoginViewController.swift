@@ -138,6 +138,9 @@ class LoginViewController: BaseViewController,UITableViewDelegate,UITableViewDat
     
     
     func switchStatus(_ s:UISwitch)  {
+        u_name = String.stringIsNullOrNilToEmpty(username_tf.text)
+        u_pwd = String.stringIsNullOrNilToEmpty(pwd_tf.text)
+
         isOpenAll = s.isOn
 
         loginTableView.reloadData()

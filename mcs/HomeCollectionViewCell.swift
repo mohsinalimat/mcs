@@ -85,7 +85,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
             atd.text = Tools.dateToString(d, formatter: "HHmm")
         }
         
-        let _ata = Tools.date(String.stringIsNullOrNil(dic["offTime"]))
+        let _ata = Tools.date(String.stringIsNullOrNil(dic["in_time"]))//offTime->in_time
         if let d = _ata {
             ata.text = Tools.dateToString(d, formatter: "HHmm")
         }

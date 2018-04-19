@@ -39,6 +39,12 @@ let flight_info_url = "/biz/task/flightStatus" //飞机状态信息
 let get_flights_url = "/biz/task/flightStatusByAcId" //获取某个飞机某个日期的所有航班
 
 let get_flightInfo_url = "/biz/task/flightStatusByNo" //根据日期和航班号查询航班信息
+
+/*
+ 必须aircraftNo : B-MBM   // 飞机号
+ 必须beginDate : 2018/3/17	// 开始时间
+ 必须endDate : 2018/3/19	// 结束时间
+ */
 let flight_haswarn_url = "/alarm/flight/list" //标记航班是否有告警
 
 let get_fib_url = "/biz/task/FIB" //航班信息板（FIB）
@@ -72,7 +78,7 @@ let taskPool_submit_url         =       "/biz/task/submit"
 let taskPool_changeShift_url    =       "/biz/task/changeShift"
 let taskPool_addAction_url      =       "/biz/taskAction/"
 let action_list_url             =       "/biz/getFeedbackData"
-
+let action_delete_url           =       "/biz/taskAction/"
 /// 提交故障信息到mcs 系统中
 let submit_fault_url = "/biz/fault"//必须bizId:7e93fcf736dd11e8be99448a5be48bfb   // 当前业务 id
 

@@ -59,7 +59,7 @@ class TaskPoolCell: UITableViewCell {
         to_sb.text = _stringIsNullOrNil(d["taskTo"])
         
 
-        let defectDesc = _stringIsNullOrNil(d["defectDesc"])
+        let defectDesc = _stringIsNullOrNil(d["planningDes"])
         let defectStr = "Description: " + defectDesc
         let defectAttriStr =  NSMutableAttributedString.init(string: defectStr)
         defectAttriStr.addAttributes([NSFontAttributeName:UIFont.boldSystemFont(ofSize: 15),NSForegroundColorAttributeName:UIColor.darkGray], range: NSMakeRange(0, 12))

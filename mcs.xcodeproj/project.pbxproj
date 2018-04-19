@@ -91,7 +91,6 @@
 		A1B144E3207F2BE8006B3806 /* DefectReportController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1B144E1207F2BE8006B3806 /* DefectReportController.xib */; };
 		A1BC1F3620157D2F007D0E1C /* TextMsgViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BC1F3420157D2F007D0E1C /* TextMsgViewCell.swift */; };
 		A1BC1F3720157D2F007D0E1C /* TextMsgViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1BC1F3520157D2F007D0E1C /* TextMsgViewCell.xib */; };
-		A1BC1F392015ABEB007D0E1C /* FlightInfoDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BC1F382015ABEB007D0E1C /* FlightInfoDetailController.swift */; };
 		A1BC1F3B2015AC4A007D0E1C /* HistoryFaultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BC1F3A2015AC4A007D0E1C /* HistoryFaultController.swift */; };
 		A1BC1F3D2015AC73007D0E1C /* PlaneInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BC1F3C2015AC73007D0E1C /* PlaneInfoController.swift */; };
 		A1BC1F442015BA3D007D0E1C /* FlightLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BC1F432015BA3D007D0E1C /* FlightLineView.swift */; };
@@ -249,7 +248,6 @@
 		A1B144E1207F2BE8006B3806 /* DefectReportController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DefectReportController.xib; sourceTree = "<group>"; };
 		A1BC1F3420157D2F007D0E1C /* TextMsgViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextMsgViewCell.swift; sourceTree = "<group>"; };
 		A1BC1F3520157D2F007D0E1C /* TextMsgViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextMsgViewCell.xib; sourceTree = "<group>"; };
-		A1BC1F382015ABEB007D0E1C /* FlightInfoDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlightInfoDetailController.swift; sourceTree = "<group>"; };
 		A1BC1F3A2015AC4A007D0E1C /* HistoryFaultController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryFaultController.swift; sourceTree = "<group>"; };
 		A1BC1F3C2015AC73007D0E1C /* PlaneInfoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaneInfoController.swift; sourceTree = "<group>"; };
 		A1BC1F432015BA3D007D0E1C /* FlightLineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlightLineView.swift; sourceTree = "<group>"; };
@@ -523,7 +521,6 @@
 				A165B67B20107FA3006080D8 /* HomeDetailTabController.swift */,
 				A1A6B2752011B79D00F7D048 /* FlightInfoListController.swift */,
 				A1A6B2762011B79D00F7D048 /* FlightInfoListController.xib */,
-				A1BC1F382015ABEB007D0E1C /* FlightInfoDetailController.swift */,
 				A1C26DA7204FB76700B11F63 /* FlightWarnListController.swift */,
 				A1C26DA8204FB76700B11F63 /* FlightWarnListController.xib */,
 				A1A20F52202AF3D300407276 /* FlightAllWarnController.swift */,
@@ -926,7 +923,6 @@
 				A1C6DD76206CEB3600A09808 /* BaseDataCheck.swift in Sources */,
 				A12028622008A1C200CB8633 /* Reachability.m in Sources */,
 				A1B03DE7207C912E00797564 /* TaskNumberListVC.swift in Sources */,
-				A1BC1F392015ABEB007D0E1C /* FlightInfoDetailController.swift in Sources */,
 				A1D15D8C20464466004A2C58 /* WarnFaultInfoCell.swift in Sources */,
 				A1B03DE4207C7FD700797564 /* BaseTableViewVCCell.swift in Sources */,
 				A1C1BB522064C6D700A92B9B /* TaskPoolDetailController.swift in Sources */,

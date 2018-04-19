@@ -90,19 +90,16 @@ class FlightInfoListController: BaseViewController,UICollectionViewDelegate,UICo
     
     
     func get_warn_for_flight() {
-        //        let d = ["aircraftNo":fltDic["acId"]!,
-        //            "flightNo":"\(fltNo!)",
-        //            "beginDate":Tools.dateToString(Tools.date("\(fltDic["std"]!)")!, formatter: "yyyy/MM/dd HH:mm:ss"),
-        //            "endDate":Tools.dateToString(Tools.date("\(fltDic["sta"]!)")!, formatter: "yyyy/MM/dd HH:mm:ss")
-        //        ]
-        //...
-        let d = ["aircraftNo":kFlightInfoListController_airId!,
-                 //"flightNo":"NX825",
-                 "beginDate":"2018/02/24 11:00:00",
-                 "endDate":"2018/02/26 11:59:59"
-        ]
-        //TODO:
+        guard kFlightInfoListController_flightDate != nil else {return}
         
+        var str = kFlightInfoListController_flightDate!
+        str = str.replacingOccurrences(of: "-", with: "/");
+
+        let d = ["aircraftNo":kFlightInfoListController_airId!,
+                 "beginDate":"\(str) 00:00:00",
+                 "endDate":"\(str) 23:59:59"
+        ]
+
         netHelper_request(withUrl: flight_haswarn_url, method: .post, parameters: d, successHandler: { [weak self](result) in
             HUD.dismiss()
             guard let body = result["body"] as? [[String : Any]] else {return;}
@@ -177,15 +174,6 @@ class FlightInfoListController: BaseViewController,UICollectionViewDelegate,UICo
         guard let d = couple.dic , couple.isExist == true ,let fltDate = d[indexPath.row % 2 == 0 ? "ymdsta" : "ymdstd"] as? String,let fltNo = d[indexPath.row % 2 == 0 ? "fromFltNo" : "toFltNo"]  as? String else {
             return;
         }
-        
-        
-        //guard let d = getDataAtIndex(indexPath).dic ,let fltDate = d["fltDate"] as? String,let fltNo = d["fltNo"]  as? String else{return}
-        
-        /*let vc = FlightInfoDetailController.init()
-        vc.fltDate = fltDate
-        vc.fltNo = fltNo
-        vc.fltIsArrival = indexPath.row % 2 == 0
-        vc.fltDic = d*/
         
         let vc = FlightWarnListController.init()
         vc.fltDate = fltDate

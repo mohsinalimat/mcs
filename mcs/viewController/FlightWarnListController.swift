@@ -90,7 +90,6 @@ class FlightWarnListController: BaseViewController ,UITableViewDelegate,UITableV
     //MARK: -
     func get_flight_info() {
         HUD.show(withStatus: "Loading...")
-        
         let d = ["fltDate":"\(fltDate!.substring(to: fltDate.index(fltDate.startIndex, offsetBy: 10)))",
             "fltNo":"\(fltNo!)"]
         
@@ -102,25 +101,18 @@ class FlightWarnListController: BaseViewController ,UITableViewDelegate,UITableV
             strongSelf.topView.fillData(body)
             
             })
-        
-        
     }
     
     
     func get_warn_list() {
-        //        let d = ["aircraftNo":fltDic["acId"]!,
-        //            "flightNo":"\(fltNo!)",
-        //            "beginDate":Tools.dateToString(Tools.date("\(fltDic["std"]!)")!, formatter: "yyyy/MM/dd HH:mm:ss"),
-        //            "endDate":Tools.dateToString(Tools.date("\(fltDic["sta"]!)")!, formatter: "yyyy/MM/dd HH:mm:ss")
-        //        ]
-        //...
+        var datestr = "\(fltDate!.substring(to: fltDate.index(fltDate.startIndex, offsetBy: 10)))"
+        datestr = datestr.replacingOccurrences(of: "-", with: "/")
         let d = ["aircraftNo":fltDic["acReg"]!,
                  "flightNo":"NX\(fltNo!)",
-                 "beginDate":"2018/03/17 00:00:00",
-                 "endDate":"2018/03/19 23:59:59"
+                 "beginDate":"\(datestr) 00:00:00",
+                 "endDate":"\(datestr) 23:59:59"
         ]
-        //TODO:
-        
+
         netHelper_request(withUrl: get_warn_list_url, method: .post, parameters: d, successHandler: { [weak self](result) in
             HUD.dismiss()
             guard let body = result["body"] as? [[String : Any]] else {return;}//...后台数据问题，待确定？

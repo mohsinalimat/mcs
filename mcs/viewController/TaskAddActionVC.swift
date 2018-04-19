@@ -8,7 +8,8 @@
 
 import UIKit
 import Alamofire
-
+import RxSwift
+import RxCocoa
 
 class TaskAddActionVC: BaseViewController ,UITableViewDelegate,UITableViewDataSource{
 
@@ -27,7 +28,8 @@ class TaskAddActionVC: BaseViewController ,UITableViewDelegate,UITableViewDataSo
     var reportInfoCell:AddActionInfoCell!
     var actionBaseInfoCell:Action_Detail_Cell!
     
-    
+    let disposeBag = DisposeBag()
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Add Action";
@@ -86,9 +88,17 @@ class TaskAddActionVC: BaseViewController ,UITableViewDelegate,UITableViewDataSo
     }
     
     func _fillCell()  {
-        if !read_only {
+        if !read_only {//Add Action
             reportInfoCell.actBy.text = Tools.loginUserName()
             reportInfoCell.reportBy.text = Tools.loginUserName()
+            
+            //操作绑定
+            let observable = actionBaseInfoCell.descri.rx.text.orEmpty.map({$0.lengthOfBytes(using: String.Encoding.utf8) > 0 }).shareReplay(1)
+            observable.bindTo(s_performed.rx.value).addDisposableTo(disposeBag)
+            observable.bindTo(s_closed.rx.isEnabled).addDisposableTo(disposeBag)
+            observable.filter{!$0}.bindTo(s_closed.rx.value).addDisposableTo(disposeBag)
+            
+            s_performed.rx.value.asObservable().bindTo(s_closed.rx.isEnabled).addDisposableTo(disposeBag)
         }
     }
     

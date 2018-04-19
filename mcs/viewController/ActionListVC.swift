@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class ActionListVC: BaseViewController ,UITableViewDelegate,UITableViewDataSource{
 
     var ywNo:String?
     
     var dataArray = [[String:Any]]()
+    let disposeBag =  DisposeBag()
     
     @IBOutlet weak var _tableView: UITableView!
     
@@ -26,6 +29,13 @@ class ActionListVC: BaseViewController ,UITableViewDelegate,UITableViewDataSourc
         _initSubview()
         
         get_action_list()
+        
+        NotificationCenter.default.rx.notification(NSNotification.Name (rawValue: "addActionSubmintOkNotification")).subscribe { [weak self] (event) in
+            guard let strongSelf = self else {return}
+            strongSelf.get_action_list();
+            }.addDisposableTo(disposeBag)
+        
+        
     }
 
     
@@ -60,6 +70,7 @@ class ActionListVC: BaseViewController ,UITableViewDelegate,UITableViewDataSourc
             guard let actionlist = body["actionList"] as? [[String : Any]] else {return}
             guard let strongSelf = self else{return}
             
+            strongSelf.dataArray.removeAll()
             strongSelf.dataArray = strongSelf.dataArray + actionlist
             strongSelf._tableView.reloadData()
         }) { (error) in
@@ -83,7 +94,7 @@ class ActionListVC: BaseViewController ,UITableViewDelegate,UITableViewDataSourc
         let cell = tableView.dequeueReusableCell(withIdentifier: name, for: indexPath) as! ActionListCell
         let d = dataArray[indexPath.row]
         
-        cell.fill(d)
+        cell.fill(d , index: indexPath.row + 1)
         
         return cell
     }
@@ -100,7 +111,31 @@ class ActionListVC: BaseViewController ,UITableViewDelegate,UITableViewDataSourc
     }
     
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            guard let action_id = dataArray[indexPath.row]["id"] as? String else {return}
+            
+            let url = action_delete_url.appending("/\(action_id)")
+            
+            netHelper_request(withUrl: url, method: .delete, parameters: nil, successHandler: {[weak self] (res) in
+                    HUD.show(successInfo: "Delete Success");
+                    
+                    guard let ss = self else {return}
+                    
+                    ss.dataArray.remove(at: indexPath.row)
+                    tableView.deleteRows(at: [indexPath], with: .automatic);
+                    NotificationCenter.default.post(name: NSNotification.Name (rawValue: "addActionSubmintOkNotification"), object: nil)
+                }, failureHandler: { (str) in
+                 HUD.show(successInfo: "Delete Failure")
+            })
+        }
+        
+        
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

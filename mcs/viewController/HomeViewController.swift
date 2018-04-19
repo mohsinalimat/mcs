@@ -129,15 +129,15 @@ class HomeViewController: BaseTabItemController,UICollectionViewDelegate,UIColle
     
     func addNavigationItem()  {
         let user = UILabel (frame: CGRect (x: 0, y: 0, width: 100, height: 30))
-        user.font = UIFont.systemFont(ofSize: 18)
+        user.font = UIFont.systemFont(ofSize: 20)
         user.textAlignment = .center
         user.text = "\(UserDefaults.standard.value(forKey:"user-name")!)"
         navigationItem.titleView = user
         
         //msg
         let msgBtn = UIButton (frame: CGRect (x: 0, y: 5, width: 50, height: 40))
-        msgBtn.setImage(UIImage (named: "error_sdk_login_night"), for: .normal)//30 30
-        msgBtn.setImage(UIImage (named: "error_sdk_login_night"), for: .highlighted)
+        msgBtn.setImage(UIImage (named: "icon_exit"), for: .normal)//30 30
+        msgBtn.setImage(UIImage (named: "icon_exit"), for: .highlighted)
 //        msgBtn.imageEdgeInsets = UIEdgeInsetsMake(5, 10, 5, 10)
 //        msgBtn.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0)
         msgBtn.addTarget(self, action: #selector(msgBtnAction), for: .touchUpInside)
@@ -146,10 +146,10 @@ class HomeViewController: BaseTabItemController,UICollectionViewDelegate,UIColle
         
         //FIB
         let flibBtn = UIButton (frame: CGRect (x: 0, y: 5, width: 50, height: 40))
-        flibBtn.imageEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5)
+        //flibBtn.imageEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5)
         
-        flibBtn.setImage(UIImage (named: "icon_fib"), for: .normal)
-        flibBtn.setImage(UIImage (named: "icon_fib"), for: .highlighted)
+        flibBtn.setImage(UIImage (named: "fib"), for: .normal)
+        flibBtn.setImage(UIImage (named: "fib"), for: .highlighted)
         flibBtn.addTarget(self, action: #selector(fibBtnAction), for: .touchUpInside)
         let fibItem  = UIBarButtonItem (customView: flibBtn);
         
