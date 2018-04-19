@@ -99,6 +99,7 @@ class TaskAddActionVC: BaseViewController ,UITableViewDelegate,UITableViewDataSo
             observable.filter{!$0}.bindTo(s_closed.rx.value).addDisposableTo(disposeBag)
             
             s_performed.rx.value.asObservable().bindTo(s_closed.rx.isEnabled).addDisposableTo(disposeBag)
+            s_performed.rx.value.asObservable().filter{!$0}.bindTo(s_closed.rx.value).addDisposableTo(disposeBag)
         }
     }
     
