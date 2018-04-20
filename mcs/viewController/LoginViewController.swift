@@ -12,6 +12,9 @@ class LoginViewController: BaseViewController,UITableViewDelegate,UITableViewDat
 
     @IBOutlet weak var loginTableView: UITableView!
     
+    @IBOutlet weak var versoinInfo: UILabel!
+    
+    
     let titleArr = ["User","Password","Shift","Schedule Time","Station"]
     
     var isOpenAll:Bool = false
@@ -49,6 +52,10 @@ class LoginViewController: BaseViewController,UITableViewDelegate,UITableViewDat
         loginTableView.rowHeight = 60;
 
         loginTableView.separatorColor = kTableviewBackgroundColor
+
+        if let v = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ,let build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
+            versoinInfo.text = "Version\(v).\(build)";
+        }
 
     }
     

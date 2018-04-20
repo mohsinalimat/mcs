@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="mcs" customModuleProvider="target">
             <connections>
                 <outlet property="loginTableView" destination="2cR-v6-IB1" id="oWM-Zw-Yig"/>
+                <outlet property="versoinInfo" destination="TYe-aC-iiB" id="F0W-K8-2V9"/>
                 <outlet property="view" destination="HG1-Hw-xJY" id="i58-hT-dgd"/>
             </connections>
         </placeholder>
@@ -33,16 +34,23 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version1.0.1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TYe-aC-iiB">
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="0Zz-xU-AE0" firstAttribute="leading" secondItem="HG1-Hw-xJY" secondAttribute="leading" id="GfL-0r-Epi"/>
                 <constraint firstItem="2cR-v6-IB1" firstAttribute="centerX" secondItem="HG1-Hw-xJY" secondAttribute="centerX" id="NMA-cb-uUa"/>
                 <constraint firstItem="2cR-v6-IB1" firstAttribute="top" secondItem="HG1-Hw-xJY" secondAttribute="top" constant="160" id="RDx-KU-FDY"/>
+                <constraint firstItem="TYe-aC-iiB" firstAttribute="centerX" secondItem="HG1-Hw-xJY" secondAttribute="centerX" id="dND-f4-bdp"/>
                 <constraint firstItem="0Zz-xU-AE0" firstAttribute="top" secondItem="HG1-Hw-xJY" secondAttribute="top" id="eDb-IJ-ceT"/>
                 <constraint firstItem="2cR-v6-IB1" firstAttribute="top" secondItem="ySu-vW-Wnj" secondAttribute="bottom" constant="20" id="f78-Dj-e4j"/>
                 <constraint firstItem="ySu-vW-Wnj" firstAttribute="centerX" secondItem="HG1-Hw-xJY" secondAttribute="centerX" id="ogX-Ys-cRW"/>
                 <constraint firstAttribute="trailing" secondItem="0Zz-xU-AE0" secondAttribute="trailing" id="pHZ-5p-WaL"/>
+                <constraint firstAttribute="bottom" secondItem="TYe-aC-iiB" secondAttribute="bottom" constant="5" id="ue4-5u-sRT"/>
                 <constraint firstAttribute="bottom" secondItem="0Zz-xU-AE0" secondAttribute="bottom" id="wQN-kM-Y0L"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
