@@ -22,9 +22,6 @@ class LoginViewController: BaseViewController,UITableViewDelegate,UITableViewDat
     var _selectedValue = [Int:Any]()
     
     //test
-//    let u_name = "test"
-//    let u_pwd = "111111"
-    
     var u_name = "offline"
     var u_pwd = "111111"
 
@@ -80,7 +77,7 @@ class LoginViewController: BaseViewController,UITableViewDelegate,UITableViewDat
         _s.isOn = false
        
         let info = UILabel (frame: CGRect (x: _s.frame.minX - 65, y: 8, width: 60, height: 30))
-        info.font = UIFont.systemFont(ofSize: 14)
+        info.font = UIFont.systemFont(ofSize: 13)
         info.textColor = UIColor.lightGray
         info.text = "Shift Info"
         _view.addSubview(info)
@@ -103,14 +100,14 @@ class LoginViewController: BaseViewController,UITableViewDelegate,UITableViewDat
     func buttonAction(_ btn:UIButton)  {
         
         if btn.tag == 101 {
-            //...
-            guard let name = username_tf.text, let pwd = pwd_tf.text else {
-                HUD.show(info: "用户名或密码不能为空!"); return
+            guard let name = username_tf.text, let pwd = pwd_tf.text else { return}
+            guard name.lengthOfBytes(using: String.Encoding.utf8) > 0 , pwd.lengthOfBytes(using: String.Encoding.utf8) > 0 else {
+                HUD.show(info: "username and password can't null"); return
             }
-
-            HUD.show(withStatus: "登录中...")
+            
+            HUD.show(withStatus: hud_msg_loading)
             netHelper_request(withUrl: login_url, method: .post, parameters: ["username":name,"password":pwd], successHandler: { (result) in
-                HUD.show(successInfo: "登录成功!")
+                HUD.show(successInfo: "Success")
                 //数据保存
                 guard let token = result["body"] else {return;}
                 
@@ -163,7 +160,7 @@ class LoginViewController: BaseViewController,UITableViewDelegate,UITableViewDat
         
         if indexPath.row == 0 {
             let username = UITextField.init(frame: CGRect.init(x:10, y:10, width:tableView.frame.width - 20, height:40))
-            username.placeholder = "input user name"
+            username.placeholder = "username"
             username.borderStyle = .none;
             username.returnKeyType = .next
             username.keyboardType = .asciiCapable
@@ -182,7 +179,7 @@ class LoginViewController: BaseViewController,UITableViewDelegate,UITableViewDat
             
         }else if indexPath.row == 1 {
             let userpwd = UITextField.init(frame: CGRect.init(x:10, y:10, width:tableView.frame.width - 20, height:40))
-            userpwd.placeholder = "input user password"
+            userpwd.placeholder = "password"
             userpwd.borderStyle = .none;
             userpwd.returnKeyType = .done
             userpwd.isSecureTextEntry = true

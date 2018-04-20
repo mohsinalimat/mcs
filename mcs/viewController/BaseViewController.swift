@@ -23,6 +23,8 @@ class BaseViewController: UIViewController {
 
     
     func displayMsg(_ info:String) {
+        guard  self.view.viewWithTag(1001) == nil else  {return;}
+        
         let l = UILabel (frame: CGRect (x: 0, y: 100, width: kCurrentScreenWidth, height: 100))
         l.text = info
         l.textColor = kTableviewBackgroundColor

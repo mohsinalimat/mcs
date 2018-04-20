@@ -79,6 +79,7 @@ let taskPool_changeShift_url    =       "/biz/task/changeShift"
 let taskPool_addAction_url      =       "/biz/taskAction/"
 let action_list_url             =       "/biz/getFeedbackData"
 let action_delete_url           =       "/biz/taskAction/"
+let action_detail_viewDefect_url =      "/biz/viewDefect"
 /// 提交故障信息到mcs 系统中
 let submit_fault_url = "/biz/fault"//必须bizId:7e93fcf736dd11e8be99448a5be48bfb   // 当前业务 id
 
@@ -111,7 +112,7 @@ var addActionMateralDataArr = [[String:String]]()//添加action - Materal
 var addActionComponentDataArr = [[String:String]]()//添加action - Component
 
 //MARK:
-let msg_loading = "Loading"
+let hud_msg_loading = "Loading"
 
 
 

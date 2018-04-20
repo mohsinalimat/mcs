@@ -11,7 +11,10 @@ import UIKit
 class BaseWebViewController: BaseViewController,UIWebViewDelegate,UIGestureRecognizerDelegate {
 
     var webview: UIWebView!
-
+    
+    var req_url:String!
+    var req_parms:[String:Any]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -51,9 +54,17 @@ class BaseWebViewController: BaseViewController,UIWebViewDelegate,UIGestureRecog
         
     }
     
-    func loadData(){}
+    func loadData(){
+    
+        guard req_url != nil else { HUD.show(info: "url error"); return}
+        
+        requestWithUrl(req_url, parameters: req_parms)
+        
+    }
+    
+    
     func requestWithUrl(_ url:String,parameters:[String:Any]? = nil) {
-        HUD.show(withStatus: msg_loading)
+        HUD.show(withStatus: hud_msg_loading)
         
         netHelper_request(withUrl: url, method: .post, parameters: parameters, successHandler: {[weak self] result in
             guard let body = result["body"] as? String else {HUD.show(info: "请求服务器失败");return;}

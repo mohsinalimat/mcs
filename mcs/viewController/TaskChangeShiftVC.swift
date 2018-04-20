@@ -30,7 +30,9 @@ class TaskChangeShiftVC: BaseViewController {
     
     @IBOutlet weak var btn_ok: UIButton!
     
-
+    var origin_shift:String = ""
+    var origin_date:String = ""
+    
     let disposeBag = DisposeBag()
     var rx_shift: Variable<String> = Variable("")
     var rx_time: Variable<String> = Variable("")
@@ -45,14 +47,29 @@ class TaskChangeShiftVC: BaseViewController {
         let r1 = rx_shift.asObservable().map({ $0.lengthOfBytes(using: String.Encoding.utf8) > 0 }).shareReplay(1)
         let r2 = rx_time.asObservable().map({ $0.lengthOfBytes(using: String.Encoding.utf8) > 0 }).shareReplay(1)
         let r3 = rx_reason.asObservable().map({ $0.lengthOfBytes(using: String.Encoding.utf8) > 0 }).shareReplay(1)
-        
         Observable.combineLatest(r1,r2,r3){$0 && $1 && $2}.bindTo(btn_ok.ex_isEnabled).addDisposableTo(disposeBag)
         
-        btn_ok.rx.controlEvent(UIControlEvents.touchUpInside).subscribe {[weak self] event in
+        btn_ok.rx.controlEvent(UIControlEvents.touchUpInside).filter({[weak self] in
+            guard let ss = self else {return false}
+            let b = (ss.shift.text == ss.origin_shift) && (ss.time.text == ss.origin_date)
+            if b {
+                HUD.show(info: "Shift And Date No Change");
+            }
+
+            return !b
+        }).subscribe {[weak self] event in
             guard let strongSelf = self else {return};
             strongSelf._request()
         }.addDisposableTo(disposeBag)
         
+        guard kTaskpool_date != nil ,kTaskpool_shift != nil , kTaskpool_station != nil else {return}
+        origin_shift = (kTaskpool_shift?["value"])!
+        origin_date = Tools.dateToString(kTaskpool_date!, formatter: "yyyy-MM-dd")
+        shift.text = origin_shift
+        time.text = origin_date
+ 
+        rx_shift.value = (kTaskpool_shift?["key"])!
+        rx_time.value = Tools.dateToString(kTaskpool_date!, formatter: "dd/MM/yyyy")
     }
 
     

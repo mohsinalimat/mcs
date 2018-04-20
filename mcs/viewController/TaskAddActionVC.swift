@@ -92,6 +92,13 @@ class TaskAddActionVC: BaseViewController ,UITableViewDelegate,UITableViewDataSo
             reportInfoCell.actBy.text = Tools.loginUserName()
             reportInfoCell.reportBy.text = Tools.loginUserName()
             
+            guard kTaskpool_date != nil ,kTaskpool_shift != nil , kTaskpool_station != nil else {return}
+            reportInfoCell.shift.setTitle(kTaskpool_shift?["value"], for: .normal)
+            reportInfoCell.shiftDate.setTitle(Tools.dateToString(kTaskpool_date!, formatter: "dd/MM/yyyy"), for: .normal)
+            
+            actionBaseInfoCell.dateTime.setTitle(Tools.dateToString(Date(), formatter: "dd/MM/yyyy"), for: .normal)
+            actionBaseInfoCell.station.setTitle(kTaskpool_station, for: .normal)
+            
             //操作绑定
             let observable = actionBaseInfoCell.descri.rx.text.orEmpty.map({$0.lengthOfBytes(using: String.Encoding.utf8) > 0 }).shareReplay(1)
             observable.bindTo(s_performed.rx.value).addDisposableTo(disposeBag)

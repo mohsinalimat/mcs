@@ -152,6 +152,7 @@
 		A1E5C1132048EE7D00511F58 /* TaskPoolCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E5C1112048EE7D00511F58 /* TaskPoolCell.swift */; };
 		A1E5C1142048EE7D00511F58 /* TaskPoolCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1E5C1122048EE7D00511F58 /* TaskPoolCell.xib */; };
 		A1E65C582018236E006D1085 /* FIBViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E65C572018236E006D1085 /* FIBViewController.swift */; };
+		A1EC58A920897BE500936D6B /* ViewDefectReportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EC58A820897BE500936D6B /* ViewDefectReportController.swift */; };
 		A1F293B2206DDA8900004E9C /* TaskPoolRootController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F293B1206DDA8900004E9C /* TaskPoolRootController.swift */; };
 		A1FE5095204796E1004F2330 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FE5094204796E0004F2330 /* BaseTabBarController.swift */; };
 /* End PBXBuildFile section */
@@ -311,6 +312,7 @@
 		A1E5C1112048EE7D00511F58 /* TaskPoolCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskPoolCell.swift; sourceTree = "<group>"; };
 		A1E5C1122048EE7D00511F58 /* TaskPoolCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskPoolCell.xib; sourceTree = "<group>"; };
 		A1E65C572018236E006D1085 /* FIBViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FIBViewController.swift; sourceTree = "<group>"; };
+		A1EC58A820897BE500936D6B /* ViewDefectReportController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewDefectReportController.swift; sourceTree = "<group>"; };
 		A1F293B1206DDA8900004E9C /* TaskPoolRootController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskPoolRootController.swift; sourceTree = "<group>"; };
 		A1FE5094204796E0004F2330 /* BaseTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -598,6 +600,7 @@
 				A1AB9EF1207B00FE000663C3 /* ActionListVC.swift */,
 				A1AB9EF2207B00FE000663C3 /* ActionListVC.xib */,
 				A1B03DE6207C912D00797564 /* TaskNumberListVC.swift */,
+				A1EC58A820897BE500936D6B /* ViewDefectReportController.swift */,
 			);
 			name = taskPool;
 			sourceTree = "<group>";
@@ -894,6 +897,7 @@
 				A120283820084EFB00CB8633 /* DataPickerController.swift in Sources */,
 				A13F1AEB200745F1004FDFF4 /* LoginViewFooter.swift in Sources */,
 				A165B67C20107FA3006080D8 /* HomeDetailTabController.swift in Sources */,
+				A1EC58A920897BE500936D6B /* ViewDefectReportController.swift in Sources */,
 				A1C546BB2079E5580060D921 /* Section_TableViewCell2.swift in Sources */,
 				A1E32F1D2016D45F00842A18 /* Tools.swift in Sources */,
 				A1202841200896EE00CB8633 /* HomeViewController.swift in Sources */,

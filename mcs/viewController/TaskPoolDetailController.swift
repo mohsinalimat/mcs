@@ -22,6 +22,7 @@ class TaskPoolDetailController: BaseWebViewController {
     @IBOutlet weak var button_bg_r: UIView!
     @IBOutlet weak var button_bg_r_h: NSLayoutConstraint!
     
+    @IBOutlet weak var button_defect_report_w: NSLayoutConstraint!
     
     
     var taskId:String!//任务ID
@@ -80,7 +81,7 @@ class TaskPoolDetailController: BaseWebViewController {
     
     //Defect Report
     @IBAction func defectReportAction(_ sender: AnyObject) {
-        let vc = DefectReportController()
+        let vc = ViewDefectReportController()
         self.navigationController?.pushViewController(vc, animated: true)
         
     }
@@ -141,7 +142,19 @@ class TaskPoolDetailController: BaseWebViewController {
         
         current_taskId = taskPoolSelectedTask["taskId"] as! String
         
+        let d = [//"shift":"30b621f4455545828b0b0e2d9e2fb9f3",
+            //"scheduleTime":"23/03/2018",
+            "taskId":taskId! //"ab0075d0-2e52-11e8-a41b-00ffb0abeb6d"
+        ]
+
+        req_url = task_pooldetail_url
+        req_parms = d
         loadData()
+        
+        
+        
+        //TODO....
+        button_defect_report_w.constant = 0
     }
 
     //MARK: -
@@ -165,16 +178,7 @@ class TaskPoolDetailController: BaseWebViewController {
         time.text = schedule_time
     }
     
-    override func loadData()  {
-        let d = [//"shift":"30b621f4455545828b0b0e2d9e2fb9f3",
-                 //"scheduleTime":"23/03/2018",
-                 "taskId":taskId! //"ab0075d0-2e52-11e8-a41b-00ffb0abeb6d"
-        ]
-        
 
-        requestWithUrl(task_pooldetail_url, parameters: d)
-    }
-    
     override func webViewDidFinishLoad(_ webView: UIWebView) {
         super.webViewDidFinishLoad(webView)
         

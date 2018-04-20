@@ -14,6 +14,7 @@
                 <outlet property="button_bg_h" destination="yV4-Uw-kyd" id="co0-nx-ziM"/>
                 <outlet property="button_bg_r" destination="8P7-CR-NTl" id="lj0-51-ebD"/>
                 <outlet property="button_bg_r_h" destination="5h8-D3-OHo" id="kAs-Ii-SXW"/>
+                <outlet property="button_defect_report_w" destination="kdE-XL-42J" id="E7D-TQ-ydR"/>
                 <outlet property="taskName" destination="AkB-nO-Qf9" id="EPH-Ba-4gz"/>
                 <outlet property="task_no" destination="GVP-dh-H6P" id="4eq-Qx-39f"/>
                 <outlet property="time" destination="NM7-49-gvJ" id="SMi-cs-QRA"/>
@@ -30,11 +31,11 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xm2-el-gYb">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xm2-el-gYb">
                     <color key="backgroundColor" red="0.40106409790000003" green="0.60073119399999997" blue="0.5976739526" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="RhE-5a-skO"/>
-                        <constraint firstAttribute="width" constant="160" id="kdE-XL-42J"/>
+                        <constraint firstAttribute="width" constant="180" id="kdE-XL-42J"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <state key="normal" title="View Defect Report">
@@ -54,9 +55,12 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GVP-dh-H6P">
+                    <constraints>
+                        <constraint firstAttribute="width" constant="180" id="Src-4e-Grq"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <inset key="titleEdgeInsets" minX="-20" minY="0.0" maxX="0.0" maxY="0.0"/>
-                    <inset key="imageEdgeInsets" minX="120" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <inset key="imageEdgeInsets" minX="130" minY="0.0" maxX="0.0" maxY="0.0"/>
                     <state key="normal" title="Task(10)" image="arrow_down_night_16" backgroundImage="buttonbg">
                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -184,7 +188,6 @@
                 <constraint firstItem="Ljz-MU-0t0" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ZtR-w2-cYc"/>
                 <constraint firstAttribute="trailing" secondItem="8P7-CR-NTl" secondAttribute="trailing" id="aUQ-7b-avC"/>
                 <constraint firstAttribute="trailing" secondItem="Ljz-MU-0t0" secondAttribute="trailing" id="byT-bD-tE7"/>
-                <constraint firstItem="xm2-el-gYb" firstAttribute="width" secondItem="GVP-dh-H6P" secondAttribute="width" id="gKD-0P-JU4"/>
                 <constraint firstItem="xm2-el-gYb" firstAttribute="centerY" secondItem="GVP-dh-H6P" secondAttribute="centerY" id="lH8-St-3yf"/>
                 <constraint firstAttribute="bottom" secondItem="Ljz-MU-0t0" secondAttribute="bottom" id="lna-U5-vPL"/>
                 <constraint firstItem="AkB-nO-Qf9" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="sOV-ew-lVQ"/>
