@@ -104,7 +104,7 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_arrival" translatesAutoresizingMaskIntoConstraints="NO" id="tDP-o2-Mpg">
+                    <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_arrival" translatesAutoresizingMaskIntoConstraints="NO" id="tDP-o2-Mpg">
                         <constraints>
                             <constraint firstAttribute="width" constant="30" id="MKW-uG-iBr"/>
                             <constraint firstAttribute="height" constant="30" id="We8-vo-2UZ"/>
@@ -149,7 +149,7 @@
                 <constraint firstItem="eqN-9v-SAB" firstAttribute="leading" secondItem="rUl-1j-p17" secondAttribute="leading" id="Q1b-VI-Mlx"/>
                 <constraint firstItem="h5b-tH-yUo" firstAttribute="centerY" secondItem="XsD-te-Y8q" secondAttribute="centerY" id="SC9-Km-HdL"/>
                 <constraint firstAttribute="trailing" secondItem="yRP-za-W8A" secondAttribute="trailing" id="TtB-6d-dOR"/>
-                <constraint firstItem="tDP-o2-Mpg" firstAttribute="top" secondItem="8un-Pg-Rl8" secondAttribute="top" id="UfW-jv-yi3"/>
+                <constraint firstItem="tDP-o2-Mpg" firstAttribute="top" secondItem="8un-Pg-Rl8" secondAttribute="top" constant="-3" id="UfW-jv-yi3"/>
                 <constraint firstItem="c70-1F-dkt" firstAttribute="centerY" secondItem="XsD-te-Y8q" secondAttribute="centerY" id="XvD-BL-LTe"/>
                 <constraint firstItem="z5S-TM-Tha" firstAttribute="leading" secondItem="ecg-eq-oQy" secondAttribute="leading" id="ZZ7-Sb-i88"/>
                 <constraint firstItem="dWr-EN-cJf" firstAttribute="leading" secondItem="XsD-te-Y8q" secondAttribute="trailing" constant="25" id="aLn-EQ-dug"/>

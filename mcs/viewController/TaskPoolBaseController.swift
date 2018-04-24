@@ -208,7 +208,7 @@ class TaskPoolBaseController: BaseViewController ,UITableViewDelegate,UITableVie
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let v = UIView (frame: CGRect (x: 0, y: 0, width: tableView.frame.width, height: _sectinHeight))
-        v.backgroundColor = UIColor.white
+        v.backgroundColor = kTableviewBackgroundColor//UIColor.white
         
         let lable = UILabel (frame: CGRect (x: 20, y: _sectinHeight - 30, width: tableView.frame.width - 20, height: 30))
         if let d = dataArray[section]["ac"]  as? String {

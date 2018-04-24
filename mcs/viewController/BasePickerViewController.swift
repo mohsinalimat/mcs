@@ -34,7 +34,7 @@ class BasePickerViewController: BaseViewController {
         let _titlev = UILabel (frame: CGRect (x: 0, y: 0, width: 100, height: 30))
         _titlev.textColor = UIColor.white
         _titlev.textAlignment = .center
-        _titlev.text = "请选择"
+        _titlev.text = "Please Select"
         navigationItem.titleView = _titlev
 
         
@@ -46,7 +46,7 @@ class BasePickerViewController: BaseViewController {
     func addNavigationItem()  {
         //checkupdatebtn
         let finishedbtn = UIButton (frame: CGRect (x: 0, y: 0, width: 60, height: 40))
-        finishedbtn.setTitle("确定", for: .normal)
+        finishedbtn.setTitle("OK", for: .normal)
         finishedbtn.setTitleColor(UIColor.white, for: .normal)
         finishedbtn.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: 1)
         finishedbtn.addTarget(self, action: #selector(finishedBtnAction), for: .touchUpInside)
@@ -59,7 +59,7 @@ class BasePickerViewController: BaseViewController {
         
         //close
         let closebtn = UIButton (frame: CGRect (x: 0, y: 0, width: 60, height: 40))
-        closebtn.setTitle("取消", for: .normal)
+        closebtn.setTitle("Cancel", for: .normal)
         closebtn.setTitleColor(UIColor.white, for: .normal)
         closebtn.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: 1)
         closebtn.addTarget(self, action: #selector(closeBtn), for: .touchUpInside)

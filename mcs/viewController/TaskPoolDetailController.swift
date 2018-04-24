@@ -154,7 +154,21 @@ class TaskPoolDetailController: BaseWebViewController {
         
         
         //TODO....
-        button_defect_report_w.constant = 0
+        if let task_type = taskPoolSelectedTask["taskType"] as? String  {
+            if task_type == "TS" || task_type == "DD" {
+                button_defect_report_w.constant = 180;
+            }else {
+                button_defect_report_w.constant = 0;
+            }
+            
+        }else {
+            button_defect_report_w.constant = 0;
+        }
+        
+        
+
+        
+        
     }
 
     //MARK: -

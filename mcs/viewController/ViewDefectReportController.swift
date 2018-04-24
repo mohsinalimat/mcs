@@ -16,22 +16,18 @@ class ViewDefectReportController: BaseWebViewController {
         // Do any additional setup after loading the view.
         title = "defect Report"
         
-//        let d = [//"shift":"30b621f4455545828b0b0e2d9e2fb9f3",
-//            //"scheduleTime":"23/03/2018",
-//            "taskId":taskId! //"ab0075d0-2e52-11e8-a41b-00ffb0abeb6d"
-//        ]
 
-//        req_url = task_pooldetail_url
-//        req_parms = d
-//        loadData()
+        guard let parent_id = taskPoolSelectedTask["parentId"] as? String , let parent_type = taskPoolSelectedTask["parentType"] as? String else {
+            return ;
+        }
+        
+        let d = ["type":parent_type,"id":parent_id]
+
+        req_url = action_detail_viewDefect_url
+        req_parms = d
+        loadData()
     }
 
-    
-    
-    
-    
-    
-    
     
     
     override func didReceiveMemoryWarning() {

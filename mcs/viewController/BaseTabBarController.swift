@@ -85,7 +85,7 @@ class BaseTabBarController: UITabBarController {
     func initTabar() {
         tabBar.barTintColor = UIColor.white //kBartintColor
         
-        let itemtitleArr = ["Flight Info","Task Pool","Defect Report","DD Mgt","T/S Mgt"]
+        let itemtitleArr = ["Flight Info","Task Pool","Defect Report","DD Mgt","Aviation Materials"]
         
         let itemimg = [
             "tabicon_1",
@@ -101,8 +101,8 @@ class BaseTabBarController: UITabBarController {
                 "HomeViewController",
                 "TaskPoolRootController",
                 "DefectReportController",
-                "BaseTabItemController",
-                "BaseTabItemController"]
+                "DDViewController",
+                "MaterialsViewController"]
         
         var viewControllerArr:Array = [UIViewController]()
         
