@@ -9,6 +9,23 @@
 import UIKit
 
 class DefectReportCell: UITableViewCell {
+    
+    @IBOutlet weak var report_type: UILabel!
+    @IBOutlet weak var biz_no: UILabel!
+    
+    @IBOutlet weak var ac_reg: UILabel!
+    @IBOutlet weak var performed: UILabel!
+    @IBOutlet weak var cld: UILabel!
+    
+    @IBOutlet weak var fltNo: UILabel!
+    
+    @IBOutlet weak var time: UILabel!
+    
+    @IBOutlet weak var des_detail: UILabel!
+    
+    @IBOutlet weak var status: UILabel!
+    
+    
     var selectedInEdit:Bool = false
     var imgv : UIImageView?
     
@@ -17,6 +34,46 @@ class DefectReportCell: UITableViewCell {
         // Initialization code
     }
 
+    
+    func fill(_ d:[String:Any]) {
+        report_type.text = String.stringIsNullOrNilToEmpty(d["reportType"])
+        biz_no.text = String.stringIsNullOrNilToEmpty(d["bizNo"])
+        ac_reg.text = String.stringIsNullOrNilToEmpty(d["acReg"])
+        
+        if "1" == String.stringIsNullOrNilToEmpty(d["performed"]) {
+            performed.text = "Y"
+        }else {
+            performed.text = "N"
+        }
+
+        if "1" == String.stringIsNullOrNilToEmpty(d["closed"]) {
+            cld.text = "Y"
+        }else {
+            cld.text = "N"
+        }
+        
+        
+        fltNo.text = "FLT No." + String.stringIsNullOrNilToEmpty(d["flNo"])
+
+        let creattime = Tools.date(String.stringIsNullOrNil(d["createDatetime"]))
+        if let d = creattime {
+            time.text = Tools.dateToString(d, formatter: "yyyy-MM-dd HH:mm")
+        }
+        
+        status.text = String.stringIsNullOrNilToEmpty(d["state"])
+        
+        let defectDesc = String.stringIsNullOrNilToEmpty(d["description"])
+        let defectStr = "Description: " + defectDesc
+        let defectAttriStr =  NSMutableAttributedString.init(string: defectStr)
+        defectAttriStr.addAttributes([NSFontAttributeName:UIFont.boldSystemFont(ofSize: 15),NSForegroundColorAttributeName:UIColor.darkGray], range: NSMakeRange(0, 12))
+        des_detail.attributedText = defectAttriStr
+        
+
+    }
+    
+    
+    
+    
     
     
     func setSelectInEdit(_ b : Bool) {

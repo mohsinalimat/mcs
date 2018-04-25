@@ -23,12 +23,14 @@ class DefectReportController: BaseTabItemController ,UITableViewDelegate,UITable
     @IBOutlet weak var btn_delete: UIButton!
     @IBOutlet weak var btn_submit: UIButton!
     
+    var dataArray = [[String:Any]]()
     var _selectedIndexArrr = [Int]()
     
     @IBAction func buttonAction(_ sender: UIButton) {
     
         switch sender.tag {
         case 1:
+            _selectedIndexArrr.removeAll()
             select_bg.isHidden = true
             delete_bg.isHidden = false
             _tableView.isEditing = true
@@ -69,19 +71,16 @@ class DefectReportController: BaseTabItemController ,UITableViewDelegate,UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        //delete_bg_constraint.constant = 0
         view.backgroundColor = UIColor.white
         title = "Defect List"
         
         delete_bg.isHidden = true
         
         _initSubviews()
+        
+        loadData()
     }
 
-    
-    
     
     //MARK: - init
     func _initSubviews()  {
@@ -101,8 +100,8 @@ class DefectReportController: BaseTabItemController ,UITableViewDelegate,UITable
         ///Refresh Data
         let header = TTRefreshHeader.init {
             DispatchQueue.main.async {
-//                self.dataArray.removeAll()
-//                self.getTaskPool()
+                self.dataArray.removeAll()
+                self.loadData()
             }
         }
         
@@ -111,11 +110,32 @@ class DefectReportController: BaseTabItemController ,UITableViewDelegate,UITable
     }
     
     
+    func loadData()  {
+        HUD.show(withStatus: hud_msg_loading)
+        request(defect_list_url, parameters: nil, successHandler: { [weak self](res) in
+            HUD.dismiss()
+            guard let ss = self else {return}
+
+            if ss._tableView.mj_header.isRefreshing(){
+                ss._tableView.mj_header.endRefreshing();
+            }
+            
+            guard let arr = res["body"] as? [[String:Any]] else {return};
+            if arr.count > 0 {
+                ss.dataArray = ss.dataArray + arr;
+                ss._tableView.reloadData()
+            }
+            
+            }) { (str) in
+                print(str);
+        }
+    }
+    
+    
     
     //MARK:
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return 30;
+        return dataArray.count;
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -126,40 +146,36 @@ class DefectReportController: BaseTabItemController ,UITableViewDelegate,UITable
             cell.setSelectInEdit(_selectedIndexArrr.contains(indexPath.row));
         }
         
+        let d = dataArray[indexPath.row]
+        cell.fill(d)
         
         return cell
-        
     }
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("...");
-        
-        if _tableView.isEditing {
-            if _selectedIndexArrr.contains(indexPath.row){
-                _selectedIndexArrr.remove(at: _selectedIndexArrr.index(of: indexPath.row)!);
-            }else {
-                _selectedIndexArrr.append(indexPath.row);
-            }
+        guard _tableView.isEditing else {
+            let v = ReporFormController()
             
-            
-            _tableView.reloadData()
+            HUD.show()
+            self.navigationController?.pushViewController(v, animated: true);return;
         }
+        
+        
+        if _selectedIndexArrr.contains(indexPath.row){
+            _selectedIndexArrr.remove(at: _selectedIndexArrr.index(of: indexPath.row)!);
+        }else {
+            _selectedIndexArrr.append(indexPath.row);
+        }
+        
+        
+        _tableView.reloadData()
 
     }
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

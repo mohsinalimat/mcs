@@ -33,6 +33,16 @@
 		A14BA8AE20733AEB0027D51F /* TaskChangeShiftReasonVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14BA8AC20733AEA0027D51F /* TaskChangeShiftReasonVC.swift */; };
 		A14BA8AF20733AEB0027D51F /* TaskChangeShiftReasonVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A14BA8AD20733AEB0027D51F /* TaskChangeShiftReasonVC.xib */; };
 		A14BA8B12073761D0027D51F /* TaskPoolDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A14BA8B02073761C0027D51F /* TaskPoolDetailController.xib */; };
+		A161216220901EBE00F72C94 /* ReporFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A161216020901EBD00F72C94 /* ReporFormController.swift */; };
+		A161216320901EBE00F72C94 /* ReporFormController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A161216120901EBE00F72C94 /* ReporFormController.xib */; };
+		A161216520901F5600F72C94 /* DefectPreviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A161216420901F5600F72C94 /* DefectPreviewController.swift */; };
+		A161216720902D1200F72C94 /* DefectReportBtnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A161216620902D1100F72C94 /* DefectReportBtnView.swift */; };
+		A161216920902D5000F72C94 /* DefectReportBtnView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A161216820902D5000F72C94 /* DefectReportBtnView.xib */; };
+		A161216C20904DAF00F72C94 /* ReportInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A161216A20904DAF00F72C94 /* ReportInfoCell.swift */; };
+		A161216D20904DAF00F72C94 /* ReportInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A161216B20904DAF00F72C94 /* ReportInfoCell.xib */; };
+		A161217020904DE600F72C94 /* ReportBaseInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A161216E20904DE600F72C94 /* ReportBaseInfoCell.swift */; };
+		A161217120904DE600F72C94 /* ReportBaseInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A161216F20904DE600F72C94 /* ReportBaseInfoCell.xib */; };
+		A161217320906E8B00F72C94 /* MultiButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A161217220906E8B00F72C94 /* MultiButtonView.swift */; };
 		A165946F206E0DBB00CC8A0D /* TaskHandleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A165946D206E0DBB00CC8A0D /* TaskHandleController.swift */; };
 		A1659470206E0DBB00CC8A0D /* TaskHandleController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A165946E206E0DBB00CC8A0D /* TaskHandleController.xib */; };
 		A165B67C20107FA3006080D8 /* HomeDetailTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A165B67B20107FA3006080D8 /* HomeDetailTabController.swift */; };
@@ -193,6 +203,16 @@
 		A14BA8AC20733AEA0027D51F /* TaskChangeShiftReasonVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskChangeShiftReasonVC.swift; sourceTree = "<group>"; };
 		A14BA8AD20733AEB0027D51F /* TaskChangeShiftReasonVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskChangeShiftReasonVC.xib; sourceTree = "<group>"; };
 		A14BA8B02073761C0027D51F /* TaskPoolDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskPoolDetailController.xib; sourceTree = "<group>"; };
+		A161216020901EBD00F72C94 /* ReporFormController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReporFormController.swift; sourceTree = "<group>"; };
+		A161216120901EBE00F72C94 /* ReporFormController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReporFormController.xib; sourceTree = "<group>"; };
+		A161216420901F5600F72C94 /* DefectPreviewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefectPreviewController.swift; sourceTree = "<group>"; };
+		A161216620902D1100F72C94 /* DefectReportBtnView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefectReportBtnView.swift; sourceTree = "<group>"; };
+		A161216820902D5000F72C94 /* DefectReportBtnView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DefectReportBtnView.xib; sourceTree = "<group>"; };
+		A161216A20904DAF00F72C94 /* ReportInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportInfoCell.swift; sourceTree = "<group>"; };
+		A161216B20904DAF00F72C94 /* ReportInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReportInfoCell.xib; sourceTree = "<group>"; };
+		A161216E20904DE600F72C94 /* ReportBaseInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportBaseInfoCell.swift; sourceTree = "<group>"; };
+		A161216F20904DE600F72C94 /* ReportBaseInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReportBaseInfoCell.xib; sourceTree = "<group>"; };
+		A161217220906E8B00F72C94 /* MultiButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiButtonView.swift; sourceTree = "<group>"; };
 		A165946D206E0DBB00CC8A0D /* TaskHandleController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskHandleController.swift; sourceTree = "<group>"; };
 		A165946E206E0DBB00CC8A0D /* TaskHandleController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskHandleController.xib; sourceTree = "<group>"; };
 		A165B67B20107FA3006080D8 /* HomeDetailTabController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeDetailTabController.swift; sourceTree = "<group>"; };
@@ -397,6 +417,9 @@
 				A1B144DB207F245C006B3806 /* view */,
 				A1B144E0207F2BE8006B3806 /* DefectReportController.swift */,
 				A1B144E1207F2BE8006B3806 /* DefectReportController.xib */,
+				A161216020901EBD00F72C94 /* ReporFormController.swift */,
+				A161216120901EBE00F72C94 /* ReporFormController.xib */,
+				A161216420901F5600F72C94 /* DefectPreviewController.swift */,
 			);
 			name = defectReport;
 			sourceTree = "<group>";
@@ -406,6 +429,13 @@
 			children = (
 				A1B144DC207F2483006B3806 /* DefectReportCell.swift */,
 				A1B144DD207F2483006B3806 /* DefectReportCell.xib */,
+				A161216620902D1100F72C94 /* DefectReportBtnView.swift */,
+				A161216820902D5000F72C94 /* DefectReportBtnView.xib */,
+				A161216A20904DAF00F72C94 /* ReportInfoCell.swift */,
+				A161216B20904DAF00F72C94 /* ReportInfoCell.xib */,
+				A161216E20904DE600F72C94 /* ReportBaseInfoCell.swift */,
+				A161216F20904DE600F72C94 /* ReportBaseInfoCell.xib */,
+				A161217220906E8B00F72C94 /* MultiButtonView.swift */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -785,7 +815,9 @@
 				A1CF2A1520070B90009FE6A4 /* LoginViewController.xib in Resources */,
 				A1AFF6B52074984C00ED1FC4 /* TaskActionDetailView.xib in Resources */,
 				A124D41720722D21005E279D /* TaskChangeShiftVC.xib in Resources */,
+				A161216D20904DAF00F72C94 /* ReportInfoCell.xib in Resources */,
 				A1C6DD74206C7F1000A09808 /* TaskPoolSelectController.xib in Resources */,
+				A161216320901EBE00F72C94 /* ReporFormController.xib in Resources */,
 				A12028602008A1C200CB8633 /* success@2x.png in Resources */,
 				A1AB9F00207B4935000663C3 /* Action_Detail_Cell_R.xib in Resources */,
 				A1BC1F3720157D2F007D0E1C /* TextMsgViewCell.xib in Resources */,
@@ -813,10 +845,12 @@
 				A1AB9EFC207B48E8000663C3 /* AddActionInfoCell_R.xib in Resources */,
 				A14BA8B12073761D0027D51F /* TaskPoolDetailController.xib in Resources */,
 				A1A658CB2011BDE70079B354 /* FlightInfoListCell.xib in Resources */,
+				A161216920902D5000F72C94 /* DefectReportBtnView.xib in Resources */,
 				A1EB2147208DAC2500661C45 /* DDViewController.xib in Resources */,
 				A1CF29FF20070029009FE6A4 /* Main.storyboard in Resources */,
 				A120285F2008A1C200CB8633 /* success.png in Resources */,
 				A1284D8C205BB00500B7B576 /* WarnInfoDetailController_new.xib in Resources */,
+				A161217120904DE600F72C94 /* ReportBaseInfoCell.xib in Resources */,
 				A1C26DB2204FBD3B00B11F63 /* FlightWarnListHeadView.xib in Resources */,
 				A1AFF6B320748E3300ED1FC4 /* TaskActionTopView.xib in Resources */,
 				A1AAF14F2049331800E8CB3B /* TaskActionCell.xib in Resources */,
@@ -916,6 +950,8 @@
 				A1A6B2772011B79D00F7D048 /* FlightInfoListController.swift in Sources */,
 				A1891F5E2074C7D500170BFC /* TaskActionDetailView.swift in Sources */,
 				A1FE5095204796E1004F2330 /* BaseTabBarController.swift in Sources */,
+				A161216C20904DAF00F72C94 /* ReportInfoCell.swift in Sources */,
+				A161216520901F5600F72C94 /* DefectPreviewController.swift in Sources */,
 				A1AFF6AE20746BC400ED1FC4 /* AddActionInfoCell.swift in Sources */,
 				A1AFF6A42074620E00ED1FC4 /* TaskAddActionVC.swift in Sources */,
 				A1AB9EFB207B48E8000663C3 /* AddActionInfoCell_R.swift in Sources */,
@@ -956,6 +992,8 @@
 				A165946F206E0DBB00CC8A0D /* TaskHandleController.swift in Sources */,
 				A1C6DD73206C7F0F00A09808 /* TaskPoolSelectController.swift in Sources */,
 				A1E5C10E2048EAF900511F58 /* TaskPoolViewController.swift in Sources */,
+				A161217020904DE600F72C94 /* ReportBaseInfoCell.swift in Sources */,
+				A161216220901EBE00F72C94 /* ReporFormController.swift in Sources */,
 				A120284520089D4200CB8633 /* constant.swift in Sources */,
 				A12028432008977400CB8633 /* color.swift in Sources */,
 				A1D3E3B1200C3A2D00CE31F0 /* HomeCollectionViewCell.swift in Sources */,
@@ -990,6 +1028,8 @@
 				A1BC1F442015BA3D007D0E1C /* FlightLineView.swift in Sources */,
 				A1EB2146208DAC2500661C45 /* DDViewController.swift in Sources */,
 				A14BA8AE20733AEB0027D51F /* TaskChangeShiftReasonVC.swift in Sources */,
+				A161216720902D1200F72C94 /* DefectReportBtnView.swift in Sources */,
+				A161217320906E8B00F72C94 /* MultiButtonView.swift in Sources */,
 				A1C26DB0204FBD2800B11F63 /* FlightWarnListHeadView.swift in Sources */,
 				A1F293B2206DDA8900004E9C /* TaskPoolRootController.swift in Sources */,
 				A1C26DAD204FBA2700B11F63 /* FlightWarnListCell.swift in Sources */,
@@ -1124,15 +1164,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = 8R29X3H9MY;
 				INFOPLIST_FILE = mcs/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.gener-tech.dcttwithpush";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gener-tech.mcs";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "b27c039f-0a39-4921-b390-f1f891f2680c";
-				PROVISIONING_PROFILE_SPECIFIER = dctttttwithpush_dev;
+				PROVISIONING_PROFILE = "a590b502-85ce-4043-8e40-60ca13f38f96";
+				PROVISIONING_PROFILE_SPECIFIER = 1207;
 				SWIFT_OBJC_BRIDGING_HEADER = "mcs/common/mcs-bridging-header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1150,7 +1190,7 @@
 				INFOPLIST_FILE = mcs/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.gener-tech.dcttwithpush";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gener-tech.mcs";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "mcs/common/mcs-bridging-header.h";
 				SWIFT_VERSION = 3.0;

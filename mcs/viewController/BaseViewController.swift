@@ -46,7 +46,7 @@ class BaseViewController: UIViewController {
     func _addCloseItem() {
         //close
         let closebtn = UIButton (frame: CGRect (x: 0, y: 0, width: 60, height: 40))
-        closebtn.setTitle("取消", for: .normal)
+        closebtn.setTitle("Cancel", for: .normal)
         closebtn.setTitleColor(UIColor.white, for: .normal)
         closebtn.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: 1)
         closebtn.addTarget(self, action: #selector(closeBtn), for: .touchUpInside)

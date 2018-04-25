@@ -164,7 +164,7 @@ class TaskPoolBaseController: BaseViewController ,UITableViewDelegate,UITableVie
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if let list = dataArray[section]["actionList"] as? [[String:Any]], list.count >= 0 {
+        if let list = dataArray[section]["allActions"] as? [[String:Any]], list.count >= 0 {//actionList
             return list.count + 1;
         }
         
@@ -186,7 +186,7 @@ class TaskPoolBaseController: BaseViewController ,UITableViewDelegate,UITableVie
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TaskActionCellIdentifier", for: indexPath) as! TaskActionCell
             let d = dataArray[indexPath.section]
-            if let _actions = d["actionList"] as? [[String:Any]]{
+            if let _actions = d["allActions"] as? [[String:Any]]{
                 cell.fill( _actions[indexPath.row - 1], first: indexPath.row == 1);
             }
             

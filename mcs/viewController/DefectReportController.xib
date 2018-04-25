@@ -28,15 +28,15 @@
                     <subviews>
                         <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P5h-D7-axs">
                             <inset key="imageEdgeInsets" minX="0.0" minY="6" maxX="0.0" maxY="0.0"/>
-                            <state key="normal" image="search_subscibe_titilebar" backgroundImage="buttonbg"/>
+                            <state key="normal" image="search_subscibe_titilebar" backgroundImage="button_bg1"/>
                             <connections>
                                 <action selector="buttonAction:" destination="-1" eventType="touchUpInside" id="G4d-Az-uIO"/>
                             </connections>
                         </button>
                         <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x56-1j-RAM">
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <state key="normal" title="Select" backgroundImage="buttonbg">
-                                <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <state key="normal" title="Select" backgroundImage="button_bg1">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
                                 <action selector="buttonAction:" destination="-1" eventType="touchUpInside" id="Qvw-zG-0de"/>
@@ -46,10 +46,10 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="Lgv-fL-F8t"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="28"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="25"/>
                             <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="3"/>
-                            <state key="normal" title="+" backgroundImage="buttonbg">
-                                <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <state key="normal" title="+" backgroundImage="button_bg1">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
                                 <action selector="buttonAction:" destination="-1" eventType="touchUpInside" id="CA3-hK-852"/>
@@ -72,27 +72,21 @@
                         <constraint firstItem="jdX-uB-oex" firstAttribute="leading" secondItem="1WI-Zk-iZB" secondAttribute="leading" constant="10" id="ztX-IJ-DM6"/>
                     </constraints>
                 </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uGh-hh-7Aa">
+                    <color key="backgroundColor" red="0.92538958790000003" green="0.92554813619999998" blue="0.92537957429999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="2" id="7HG-7c-FEH"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sPg-bG-pPH">
                     <subviews>
-                        <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ilN-wo-maL">
-                            <color key="backgroundColor" red="0.2022456229" green="0.59510076050000005" blue="0.85695862769999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <inset key="imageEdgeInsets" minX="0.0" minY="8" maxX="0.0" maxY="0.0"/>
-                            <state key="normal" title="Submit(2)"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                    <integer key="value" value="5"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                            </userDefinedRuntimeAttributes>
-                            <connections>
-                                <action selector="buttonAction:" destination="-1" eventType="touchUpInside" id="TtL-nb-bYu"/>
-                            </connections>
-                        </button>
                         <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FOY-1j-YYB">
                             <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <state key="normal" title="Delete(2)">
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <state key="normal" title="Delete">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <userDefinedRuntimeAttributes>
@@ -109,7 +103,7 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="SxP-hn-Vln"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <state key="normal" title="Cancel" backgroundImage="buttonbg">
                                 <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
@@ -123,30 +117,36 @@
                                 <action selector="buttonAction:" destination="-1" eventType="touchUpInside" id="VGk-el-rXJ"/>
                             </connections>
                         </button>
+                        <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ilN-wo-maL">
+                            <color key="backgroundColor" red="0.2022456229" green="0.59510076050000005" blue="0.85695862769999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="8" maxX="0.0" maxY="0.0"/>
+                            <state key="normal" title="Submit"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="buttonAction:" destination="-1" eventType="touchUpInside" id="TtL-nb-bYu"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <constraints>
-                        <constraint firstItem="jQY-iY-Iy0" firstAttribute="leading" secondItem="sPg-bG-pPH" secondAttribute="leading" constant="10" id="AaH-zO-m47"/>
-                        <constraint firstAttribute="trailing" secondItem="FOY-1j-YYB" secondAttribute="trailing" constant="10" id="Uhx-fW-zry"/>
-                        <constraint firstItem="FOY-1j-YYB" firstAttribute="leading" secondItem="ilN-wo-maL" secondAttribute="trailing" constant="10" id="WAd-hr-kdP"/>
+                        <constraint firstItem="FOY-1j-YYB" firstAttribute="leading" secondItem="sPg-bG-pPH" secondAttribute="leading" constant="10" id="1jf-eb-5l3"/>
+                        <constraint firstItem="ilN-wo-maL" firstAttribute="leading" secondItem="FOY-1j-YYB" secondAttribute="trailing" constant="10" id="aNG-cw-d3u"/>
+                        <constraint firstAttribute="trailing" secondItem="jQY-iY-Iy0" secondAttribute="trailing" constant="10" id="bu3-2b-WXc"/>
                         <constraint firstItem="ilN-wo-maL" firstAttribute="width" secondItem="jQY-iY-Iy0" secondAttribute="width" id="eHY-pV-qEq"/>
                         <constraint firstItem="FOY-1j-YYB" firstAttribute="width" secondItem="jQY-iY-Iy0" secondAttribute="width" id="gfd-k4-3ut"/>
                         <constraint firstItem="jQY-iY-Iy0" firstAttribute="centerY" secondItem="sPg-bG-pPH" secondAttribute="centerY" id="jzb-eS-ke3"/>
-                        <constraint firstItem="ilN-wo-maL" firstAttribute="leading" secondItem="jQY-iY-Iy0" secondAttribute="trailing" constant="10" id="sGd-jx-s2S"/>
                         <constraint firstItem="ilN-wo-maL" firstAttribute="centerY" secondItem="jQY-iY-Iy0" secondAttribute="centerY" id="t98-qU-5k7"/>
                         <constraint firstItem="FOY-1j-YYB" firstAttribute="centerY" secondItem="jQY-iY-Iy0" secondAttribute="centerY" id="tWL-gE-beW"/>
+                        <constraint firstItem="jQY-iY-Iy0" firstAttribute="leading" secondItem="ilN-wo-maL" secondAttribute="trailing" constant="10" id="toS-cU-2K2"/>
                         <constraint firstItem="FOY-1j-YYB" firstAttribute="height" secondItem="jQY-iY-Iy0" secondAttribute="height" id="w8o-vW-ygh"/>
                         <constraint firstItem="ilN-wo-maL" firstAttribute="height" secondItem="jQY-iY-Iy0" secondAttribute="height" id="zVB-gP-AGN"/>
                     </constraints>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uGh-hh-7Aa">
-                    <color key="backgroundColor" red="0.92538958790000003" green="0.92554813619999998" blue="0.92537957429999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="2" id="7HG-7c-FEH"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -168,6 +168,7 @@
         </view>
     </objects>
     <resources>
+        <image name="button_bg1" width="200" height="30"/>
         <image name="buttonbg" width="400" height="60"/>
         <image name="search_subscibe_titilebar" width="18" height="18"/>
     </resources>

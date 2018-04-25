@@ -156,7 +156,7 @@ class HomeViewController: BaseTabItemController,UICollectionViewDelegate,UIColle
         let fixed = UIBarButtonItem (barButtonSystemItem: .fixedSpace, target: nil, action: nil)
         fixed.width = 20
         
-        navigationItem.rightBarButtonItems = [fixed,msgItem,fixed,fixed,fibItem]
+        navigationItem.rightBarButtonItems = [fixed,msgItem,fixed,fibItem]
     }
     
     func msgBtnAction()  {
