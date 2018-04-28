@@ -20,7 +20,7 @@ class BaseNavigationController: UINavigationController {
                                              NSFontAttributeName:UIFont.systemFont(ofSize: 18)]
         
         navigationBar.shadowImage = UIImage()
-        navigationBar.clipsToBounds = true
+        //navigationBar.clipsToBounds = true
     }
 
     

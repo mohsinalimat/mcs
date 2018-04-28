@@ -10,6 +10,9 @@ import UIKit
 
 class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewDataSource{
 
+    var section2_selected_index:Int = 1;
+    var read_only:Bool = false
+    
     @IBOutlet weak var _tableView: UITableView!
     @IBAction func buttonAction(_ sender: UIButton) {
         switch sender.tag {
@@ -58,6 +61,10 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
         _tableView.register(UINib (nibName: "AddActionInfoCell_R", bundle: nil), forCellReuseIdentifier: "AddActionInfoCell_RIdentifier")
         _tableView.register(UINib (nibName: "Action_Detail_Cell_R", bundle: nil), forCellReuseIdentifier: "Action_Detail_Cell_RIdentifier")
         
+        _tableView.register(UINib (nibName: "DDInfoCell", bundle: nil), forCellReuseIdentifier: "DDInfoCellIdentifier")
+        
+        _tableView.register(BaseCellWithTable.self, forCellReuseIdentifier: "BaseCellWithTableIdentifier")
+        
         addActionMateralDataArr.removeAll()
         addActionComponentDataArr.removeAll()
         
@@ -105,14 +112,42 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
             
         }
         
-
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ReportBaseInfoCellIdentifier", for: indexPath) as! ReportBaseInfoCell
-//        cell.read_only = read_only
-//        cell.info = action_detail_info_r
-//        cell._tableView.reloadData()
+        
+/////////////////
+        if section2_selected_index == 1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ReportBaseInfoCellIdentifier", for: indexPath) as! ReportBaseInfoCell;
+            return cell
+        } else if section2_selected_index == 4 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "DDInfoCellIdentifier", for: indexPath) as! ReportBaseInfoCell;
+            return cell
+        }
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Action_Materal_CellIdentifier", for: indexPath) as! Action_Materal_Cell;
+        //let cell = tableView.dequeueReusableCell(withIdentifier: "BaseCellWithTableIdentifier", for: indexPath) as! BaseCellWithTable
+        cell.read_only = read_only
+        //cell.info = action_detail_info_r
+        cell._tableView.reloadData()
+        
+        if section2_selected_index == 5 {
+            cell.didSelectedRowAtIndex = { index in
+                //let d = dataArray[indexPath.row]
+                
+                HUD.show()
+                let vc = TaskAddActionVC()
+                vc.read_only = true
+                //vc.action_detail_info_r = d;
+                
+                //self.navigationController?.pushViewController(vc, animated: true)
+            }
+        }
+        
         
         return cell
     }
+    
+    
+    
+    
     
     // MARK: - Table view data source
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -126,7 +161,7 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         guard indexPath.section > 0  else {return 100}
         
-        return indexPath.row != 0 ? 0 : kCurrentScreenHeight - 100 - 240
+        return indexPath.row != 0 ? 0 : kCurrentScreenHeight - 100 - 240 //420
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -139,54 +174,34 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
                 }
             }
             return v
-            
         }
         
-        
-        //let v = Bundle.main.loadNibNamed("DefectReportBtnView", owner: nil, options: nil)?.first as! DefectReportBtnView
-//        v.changeActionHandler = {[weak self ] index in
-//            guard let ss = self else {return}
-//            ss.section2_selected_index = index
-//            addAction_Section2_SelectedIndex = index
-//            tableView.reloadData()
-//        }
-        
-        //v._selectedBtnAtIndex(section2_selected_index)
-        
         let bg = UIView (frame: CGRect (x: 0, y: 0, width: kCurrentScreenWidth, height: 50))
-        let v = MultiButtonView.init(CGRect (x: 15, y: 0, width: bg.frame.width - 30, height: bg.frame.height), titles: ["Basic Info & Detail","Materal&Tools ","Attachment","DD","Action"].reversed())
         
+        let v = MultiButtonView.init(CGRect (x: 15, y: 0, width: bg.frame.width - 30, height: bg.frame.height), titles: ["Basic Info & Detail","Materal&Tools ","Attachment","DD","Action"] , selectedIndex : section2_selected_index)
         v.title = "Defect Detail"
-        print(bg.frame.width)
-        
+        v.selectedActionHandler = { index in
+            DispatchQueue.main.async {[weak self ] in
+                guard let ss = self else {return}
+                ss.section2_selected_index = index
+                kSectionHeadButtonSelectedIndex = SectionHeadButtonIndex(rawValue: index + 4)!
+                tableView.reloadData()
+
+            }
+
+        }
+
+
         bg.addSubview(v)
-        
         return bg
-        
     }
     
 
-    
-    
-    
-    
-    
-    
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

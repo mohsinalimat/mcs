@@ -59,6 +59,8 @@ class TaskPoolBaseController: BaseViewController ,UITableViewDelegate,UITableVie
 
     //MARK:-
     func getTaskPool()  {
+        guard kTaskpool_date != nil ,kTaskpool_shift != nil , kTaskpool_station != nil else {  return}
+        
         HUD.show(withStatus: "Loading")
         
         let scheduleTime = Tools.dateToString(kTaskpool_date!, formatter: "dd/MM/yyyy")

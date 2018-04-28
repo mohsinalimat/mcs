@@ -116,6 +116,17 @@ class Tools: NSObject {
     }
 
     
+    func show(_ vc : UIViewController) {
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
     //MARK: - 获取基础数据
     static func loginUserName() -> String {
         if let name = UserDefaults.standard.value(forKey:"user-name") as? String {

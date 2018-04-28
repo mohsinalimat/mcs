@@ -33,6 +33,8 @@
 		A14BA8AE20733AEB0027D51F /* TaskChangeShiftReasonVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14BA8AC20733AEA0027D51F /* TaskChangeShiftReasonVC.swift */; };
 		A14BA8AF20733AEB0027D51F /* TaskChangeShiftReasonVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A14BA8AD20733AEB0027D51F /* TaskChangeShiftReasonVC.xib */; };
 		A14BA8B12073761D0027D51F /* TaskPoolDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A14BA8B02073761C0027D51F /* TaskPoolDetailController.xib */; };
+		A15234362093195200939E0F /* SearchAction.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A15234352093195200939E0F /* SearchAction.storyboard */; };
+		A15234382093216B00939E0F /* DefectSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15234372093216B00939E0F /* DefectSearchController.swift */; };
 		A161216220901EBE00F72C94 /* ReporFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A161216020901EBD00F72C94 /* ReporFormController.swift */; };
 		A161216320901EBE00F72C94 /* ReporFormController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A161216120901EBE00F72C94 /* ReporFormController.xib */; };
 		A161216520901F5600F72C94 /* DefectPreviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A161216420901F5600F72C94 /* DefectPreviewController.swift */; };
@@ -43,6 +45,11 @@
 		A161217020904DE600F72C94 /* ReportBaseInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A161216E20904DE600F72C94 /* ReportBaseInfoCell.swift */; };
 		A161217120904DE600F72C94 /* ReportBaseInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A161216F20904DE600F72C94 /* ReportBaseInfoCell.xib */; };
 		A161217320906E8B00F72C94 /* MultiButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A161217220906E8B00F72C94 /* MultiButtonView.swift */; };
+		A1633B0E20941D3700342F92 /* SearchItemSelectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1633B0D20941D3700342F92 /* SearchItemSelectController.swift */; };
+		A1633B102094459500342F92 /* SearBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1633B0F2094459500342F92 /* SearBarView.swift */; };
+		A1633B12209445B200342F92 /* SearBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1633B11209445B200342F92 /* SearBarView.xib */; };
+		A1633B1520944D1200342F92 /* SearchItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1633B1320944D1200342F92 /* SearchItemCell.swift */; };
+		A1633B1620944D1200342F92 /* SearchItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1633B1420944D1200342F92 /* SearchItemCell.xib */; };
 		A165946F206E0DBB00CC8A0D /* TaskHandleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A165946D206E0DBB00CC8A0D /* TaskHandleController.swift */; };
 		A1659470206E0DBB00CC8A0D /* TaskHandleController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A165946E206E0DBB00CC8A0D /* TaskHandleController.xib */; };
 		A165B67C20107FA3006080D8 /* HomeDetailTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A165B67B20107FA3006080D8 /* HomeDetailTabController.swift */; };
@@ -99,6 +106,7 @@
 		A1B144DF207F2483006B3806 /* DefectReportCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1B144DD207F2483006B3806 /* DefectReportCell.xib */; };
 		A1B144E2207F2BE8006B3806 /* DefectReportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B144E0207F2BE8006B3806 /* DefectReportController.swift */; };
 		A1B144E3207F2BE8006B3806 /* DefectReportController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1B144E1207F2BE8006B3806 /* DefectReportController.xib */; };
+		A1B1959F2091CCDF00F5F9DB /* BaseCellWithTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1959E2091CCDF00F5F9DB /* BaseCellWithTable.swift */; };
 		A1BC1F3620157D2F007D0E1C /* TextMsgViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BC1F3420157D2F007D0E1C /* TextMsgViewCell.swift */; };
 		A1BC1F3720157D2F007D0E1C /* TextMsgViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1BC1F3520157D2F007D0E1C /* TextMsgViewCell.xib */; };
 		A1BC1F3B2015AC4A007D0E1C /* HistoryFaultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BC1F3A2015AC4A007D0E1C /* HistoryFaultController.swift */; };
@@ -168,6 +176,8 @@
 		A1EB214C208DAC5100661C45 /* DDListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1EB214A208DAC5100661C45 /* DDListCell.xib */; };
 		A1EB2150208DC92000661C45 /* MaterialsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EB214E208DC92000661C45 /* MaterialsViewController.swift */; };
 		A1EB2151208DC92000661C45 /* MaterialsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1EB214F208DC92000661C45 /* MaterialsViewController.xib */; };
+		A1EB37552092F461008A0FC7 /* DDInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EB37532092F461008A0FC7 /* DDInfoCell.swift */; };
+		A1EB37562092F461008A0FC7 /* DDInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1EB37542092F461008A0FC7 /* DDInfoCell.xib */; };
 		A1EC58A920897BE500936D6B /* ViewDefectReportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EC58A820897BE500936D6B /* ViewDefectReportController.swift */; };
 		A1F293B2206DDA8900004E9C /* TaskPoolRootController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F293B1206DDA8900004E9C /* TaskPoolRootController.swift */; };
 		A1FE5095204796E1004F2330 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FE5094204796E0004F2330 /* BaseTabBarController.swift */; };
@@ -203,6 +213,8 @@
 		A14BA8AC20733AEA0027D51F /* TaskChangeShiftReasonVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskChangeShiftReasonVC.swift; sourceTree = "<group>"; };
 		A14BA8AD20733AEB0027D51F /* TaskChangeShiftReasonVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskChangeShiftReasonVC.xib; sourceTree = "<group>"; };
 		A14BA8B02073761C0027D51F /* TaskPoolDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskPoolDetailController.xib; sourceTree = "<group>"; };
+		A15234352093195200939E0F /* SearchAction.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SearchAction.storyboard; sourceTree = "<group>"; };
+		A15234372093216B00939E0F /* DefectSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefectSearchController.swift; sourceTree = "<group>"; };
 		A161216020901EBD00F72C94 /* ReporFormController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReporFormController.swift; sourceTree = "<group>"; };
 		A161216120901EBE00F72C94 /* ReporFormController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReporFormController.xib; sourceTree = "<group>"; };
 		A161216420901F5600F72C94 /* DefectPreviewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefectPreviewController.swift; sourceTree = "<group>"; };
@@ -213,6 +225,11 @@
 		A161216E20904DE600F72C94 /* ReportBaseInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportBaseInfoCell.swift; sourceTree = "<group>"; };
 		A161216F20904DE600F72C94 /* ReportBaseInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReportBaseInfoCell.xib; sourceTree = "<group>"; };
 		A161217220906E8B00F72C94 /* MultiButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiButtonView.swift; sourceTree = "<group>"; };
+		A1633B0D20941D3700342F92 /* SearchItemSelectController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchItemSelectController.swift; sourceTree = "<group>"; };
+		A1633B0F2094459500342F92 /* SearBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearBarView.swift; sourceTree = "<group>"; };
+		A1633B11209445B200342F92 /* SearBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearBarView.xib; sourceTree = "<group>"; };
+		A1633B1320944D1200342F92 /* SearchItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchItemCell.swift; sourceTree = "<group>"; };
+		A1633B1420944D1200342F92 /* SearchItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchItemCell.xib; sourceTree = "<group>"; };
 		A165946D206E0DBB00CC8A0D /* TaskHandleController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskHandleController.swift; sourceTree = "<group>"; };
 		A165946E206E0DBB00CC8A0D /* TaskHandleController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskHandleController.xib; sourceTree = "<group>"; };
 		A165B67B20107FA3006080D8 /* HomeDetailTabController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeDetailTabController.swift; sourceTree = "<group>"; };
@@ -273,6 +290,7 @@
 		A1B144DD207F2483006B3806 /* DefectReportCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DefectReportCell.xib; sourceTree = "<group>"; };
 		A1B144E0207F2BE8006B3806 /* DefectReportController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefectReportController.swift; sourceTree = "<group>"; };
 		A1B144E1207F2BE8006B3806 /* DefectReportController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DefectReportController.xib; sourceTree = "<group>"; };
+		A1B1959E2091CCDF00F5F9DB /* BaseCellWithTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCellWithTable.swift; sourceTree = "<group>"; };
 		A1BC1F3420157D2F007D0E1C /* TextMsgViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextMsgViewCell.swift; sourceTree = "<group>"; };
 		A1BC1F3520157D2F007D0E1C /* TextMsgViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextMsgViewCell.xib; sourceTree = "<group>"; };
 		A1BC1F3A2015AC4A007D0E1C /* HistoryFaultController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryFaultController.swift; sourceTree = "<group>"; };
@@ -344,6 +362,8 @@
 		A1EB214A208DAC5100661C45 /* DDListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DDListCell.xib; sourceTree = "<group>"; };
 		A1EB214E208DC92000661C45 /* MaterialsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialsViewController.swift; sourceTree = "<group>"; };
 		A1EB214F208DC92000661C45 /* MaterialsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MaterialsViewController.xib; sourceTree = "<group>"; };
+		A1EB37532092F461008A0FC7 /* DDInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDInfoCell.swift; sourceTree = "<group>"; };
+		A1EB37542092F461008A0FC7 /* DDInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DDInfoCell.xib; sourceTree = "<group>"; };
 		A1EC58A820897BE500936D6B /* ViewDefectReportController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewDefectReportController.swift; sourceTree = "<group>"; };
 		A1F293B1206DDA8900004E9C /* TaskPoolRootController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskPoolRootController.swift; sourceTree = "<group>"; };
 		A1FE5094204796E0004F2330 /* BaseTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
@@ -420,6 +440,9 @@
 				A161216020901EBD00F72C94 /* ReporFormController.swift */,
 				A161216120901EBE00F72C94 /* ReporFormController.xib */,
 				A161216420901F5600F72C94 /* DefectPreviewController.swift */,
+				A15234352093195200939E0F /* SearchAction.storyboard */,
+				A15234372093216B00939E0F /* DefectSearchController.swift */,
+				A1633B0D20941D3700342F92 /* SearchItemSelectController.swift */,
 			);
 			name = defectReport;
 			sourceTree = "<group>";
@@ -436,6 +459,13 @@
 				A161216E20904DE600F72C94 /* ReportBaseInfoCell.swift */,
 				A161216F20904DE600F72C94 /* ReportBaseInfoCell.xib */,
 				A161217220906E8B00F72C94 /* MultiButtonView.swift */,
+				A1B1959E2091CCDF00F5F9DB /* BaseCellWithTable.swift */,
+				A1EB37532092F461008A0FC7 /* DDInfoCell.swift */,
+				A1EB37542092F461008A0FC7 /* DDInfoCell.xib */,
+				A1633B0F2094459500342F92 /* SearBarView.swift */,
+				A1633B11209445B200342F92 /* SearBarView.xib */,
+				A1633B1320944D1200342F92 /* SearchItemCell.swift */,
+				A1633B1420944D1200342F92 /* SearchItemCell.xib */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -781,7 +811,7 @@
 					A1CF29F520070029009FE6A4 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = 8R29X3H9MY;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -811,13 +841,16 @@
 				A1AB9EF4207B00FE000663C3 /* ActionListVC.xib in Resources */,
 				A1C26DAA204FB76700B11F63 /* FlightWarnListController.xib in Resources */,
 				A1B144E3207F2BE8006B3806 /* DefectReportController.xib in Resources */,
+				A1EB37562092F461008A0FC7 /* DDInfoCell.xib in Resources */,
 				A1C546C9207A0F920060D921 /* Add_ComponentVC.xib in Resources */,
+				A1633B1620944D1200342F92 /* SearchItemCell.xib in Resources */,
 				A1CF2A1520070B90009FE6A4 /* LoginViewController.xib in Resources */,
 				A1AFF6B52074984C00ED1FC4 /* TaskActionDetailView.xib in Resources */,
 				A124D41720722D21005E279D /* TaskChangeShiftVC.xib in Resources */,
 				A161216D20904DAF00F72C94 /* ReportInfoCell.xib in Resources */,
 				A1C6DD74206C7F1000A09808 /* TaskPoolSelectController.xib in Resources */,
 				A161216320901EBE00F72C94 /* ReporFormController.xib in Resources */,
+				A1633B12209445B200342F92 /* SearBarView.xib in Resources */,
 				A12028602008A1C200CB8633 /* success@2x.png in Resources */,
 				A1AB9F00207B4935000663C3 /* Action_Detail_Cell_R.xib in Resources */,
 				A1BC1F3720157D2F007D0E1C /* TextMsgViewCell.xib in Resources */,
@@ -851,6 +884,7 @@
 				A120285F2008A1C200CB8633 /* success.png in Resources */,
 				A1284D8C205BB00500B7B576 /* WarnInfoDetailController_new.xib in Resources */,
 				A161217120904DE600F72C94 /* ReportBaseInfoCell.xib in Resources */,
+				A15234362093195200939E0F /* SearchAction.storyboard in Resources */,
 				A1C26DB2204FBD3B00B11F63 /* FlightWarnListHeadView.xib in Resources */,
 				A1AFF6B320748E3300ED1FC4 /* TaskActionTopView.xib in Resources */,
 				A1AAF14F2049331800E8CB3B /* TaskActionCell.xib in Resources */,
@@ -949,9 +983,11 @@
 				A1E65C582018236E006D1085 /* FIBViewController.swift in Sources */,
 				A1A6B2772011B79D00F7D048 /* FlightInfoListController.swift in Sources */,
 				A1891F5E2074C7D500170BFC /* TaskActionDetailView.swift in Sources */,
+				A1633B1520944D1200342F92 /* SearchItemCell.swift in Sources */,
 				A1FE5095204796E1004F2330 /* BaseTabBarController.swift in Sources */,
 				A161216C20904DAF00F72C94 /* ReportInfoCell.swift in Sources */,
 				A161216520901F5600F72C94 /* DefectPreviewController.swift in Sources */,
+				A1EB37552092F461008A0FC7 /* DDInfoCell.swift in Sources */,
 				A1AFF6AE20746BC400ED1FC4 /* AddActionInfoCell.swift in Sources */,
 				A1AFF6A42074620E00ED1FC4 /* TaskAddActionVC.swift in Sources */,
 				A1AB9EFB207B48E8000663C3 /* AddActionInfoCell_R.swift in Sources */,
@@ -997,13 +1033,16 @@
 				A120284520089D4200CB8633 /* constant.swift in Sources */,
 				A12028432008977400CB8633 /* color.swift in Sources */,
 				A1D3E3B1200C3A2D00CE31F0 /* HomeCollectionViewCell.swift in Sources */,
+				A1B1959F2091CCDF00F5F9DB /* BaseCellWithTable.swift in Sources */,
 				A124D41620722D21005E279D /* TaskChangeShiftVC.swift in Sources */,
 				A1A6B26B2011944C00F7D048 /* AnimationContoller.m in Sources */,
+				A1633B102094459500342F92 /* SearBarView.swift in Sources */,
 				A1BC1F3D2015AC73007D0E1C /* PlaneInfoController.swift in Sources */,
 				A1A20F58202AFDB000407276 /* AllWarnTableViewCell.swift in Sources */,
 				A1A6B26C2011944C00F7D048 /* KLTNavigationController.m in Sources */,
 				A1BC1F3620157D2F007D0E1C /* TextMsgViewCell.swift in Sources */,
 				A1D15D8820464436004A2C58 /* WarnDetailTopCell.swift in Sources */,
+				A15234382093216B00939E0F /* DefectSearchController.swift in Sources */,
 				A1C546AD2079B17D0060D921 /* Action_Materal_Cell.swift in Sources */,
 				A1AB9EF3207B00FE000663C3 /* ActionListVC.swift in Sources */,
 				A1DF738D2043EF5B0099B858 /* WarnInfoDetailController.swift in Sources */,
@@ -1013,6 +1052,7 @@
 				A1D15D8C20464466004A2C58 /* WarnFaultInfoCell.swift in Sources */,
 				A1EB214B208DAC5100661C45 /* DDListCell.swift in Sources */,
 				A1B03DE4207C7FD700797564 /* BaseTableViewVCCell.swift in Sources */,
+				A1633B0E20941D3700342F92 /* SearchItemSelectController.swift in Sources */,
 				A1C1BB522064C6D700A92B9B /* TaskPoolDetailController.swift in Sources */,
 				A1C546C4207A0F550060D921 /* Add_MateralVC.swift in Sources */,
 				A1A6B26D2011944C00F7D048 /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
@@ -1164,15 +1204,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				DEVELOPMENT_TEAM = 8R29X3H9MY;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = mcs/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.gener-tech.mcs";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a590b502-85ce-4043-8e40-60ca13f38f96";
-				PROVISIONING_PROFILE_SPECIFIER = 1207;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "mcs/common/mcs-bridging-header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1192,6 +1232,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.gener-tech.mcs";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "mcs/common/mcs-bridging-header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

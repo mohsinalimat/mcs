@@ -49,7 +49,6 @@ class TaskAddActionVC: BaseViewController ,UITableViewDelegate,UITableViewDataSo
     func _initSubview()  {
         _tableView.delegate = self
         _tableView.dataSource = self
-        
         _tableView.register(UINib (nibName: "AddActionInfoCell", bundle: nil), forCellReuseIdentifier: "AddActionInfoCellIdentifier")
         _tableView.register(UINib (nibName: "Action_Detail_Cell", bundle: nil), forCellReuseIdentifier: "Action_Detail_CellIdentifier")
         _tableView.register(UINib (nibName: "Action_Materal_Cell", bundle: nil), forCellReuseIdentifier: "Action_Materal_CellIdentifier")
@@ -84,7 +83,6 @@ class TaskAddActionVC: BaseViewController ,UITableViewDelegate,UITableViewDataSo
         _tableView.layoutIfNeeded()
         
         _fillCell()
-        
     }
     
     func _fillCell()  {
@@ -273,7 +271,7 @@ class TaskAddActionVC: BaseViewController ,UITableViewDelegate,UITableViewDataSo
         v.changeActionHandler = {[weak self ] index in
             guard let ss = self else {return}
             ss.section2_selected_index = index
-            addAction_Section2_SelectedIndex = index
+            kSectionHeadButtonSelectedIndex = SectionHeadButtonIndex(rawValue: index)!
             tableView.reloadData()
         }
         

@@ -21,7 +21,7 @@
                                     <constraint firstAttribute="width" constant="50" id="5An-XV-85h"/>
                                     <constraint firstAttribute="height" constant="30" id="Mfw-Jt-mGK"/>
                                 </constraints>
-                                <inset key="imageEdgeInsets" minX="15" minY="5" maxX="15" maxY="5"/>
+                                <inset key="imageEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                 <state key="normal" image="add_subscribe_video">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -33,13 +33,14 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                         </subviews>
+                        <color key="backgroundColor" red="0.96845105229591832" green="0.96845105229591832" blue="0.96845105229591832" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="ejR-7w-EWh" secondAttribute="trailing" constant="10" id="OUc-Ep-gmA"/>
-                            <constraint firstItem="AJ6-Pw-NM2" firstAttribute="top" secondItem="RbE-UA-FpT" secondAttribute="top" constant="10" id="QnJ-60-ikK"/>
-                            <constraint firstItem="ejR-7w-EWh" firstAttribute="top" secondItem="AJ6-Pw-NM2" secondAttribute="bottom" id="Zku-jU-w02"/>
+                            <constraint firstItem="AJ6-Pw-NM2" firstAttribute="top" secondItem="RbE-UA-FpT" secondAttribute="top" constant="15" id="QnJ-60-ikK"/>
+                            <constraint firstItem="ejR-7w-EWh" firstAttribute="top" secondItem="AJ6-Pw-NM2" secondAttribute="bottom" constant="5" id="Zku-jU-w02"/>
                             <constraint firstAttribute="bottom" secondItem="ejR-7w-EWh" secondAttribute="bottom" id="iDk-Jx-zuj"/>
                             <constraint firstItem="ejR-7w-EWh" firstAttribute="leading" secondItem="RbE-UA-FpT" secondAttribute="leading" constant="10" id="mWa-Ql-Dcg"/>
-                            <constraint firstAttribute="trailing" secondItem="AJ6-Pw-NM2" secondAttribute="trailing" constant="30" id="sXh-Th-Jov"/>
+                            <constraint firstAttribute="trailing" secondItem="AJ6-Pw-NM2" secondAttribute="trailing" constant="25" id="sXh-Th-Jov"/>
                         </constraints>
                     </view>
                 </subviews>

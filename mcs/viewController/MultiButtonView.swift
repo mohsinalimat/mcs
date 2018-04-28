@@ -10,11 +10,13 @@ import UIKit
 
 class MultiButtonView: UIView {
     var buttonTitles:[String]!
-    var changeActionHandler:((Int) -> Void)?
-    var selectButtonIndex:Int = 1;
+    var selectedActionHandler:((Int) -> Void)?
+    
+    var selectButtonIndex:Int = 1;//unuse
 
     private let msg = UILabel()
     private var _currentBtn:UIButton!
+    private var _line = UILabel()
     
     let bgColor = UIColor.init(colorLiteralRed: 241/255.0, green: 241/255.0, blue: 241/255.0, alpha: 1)
     
@@ -28,7 +30,7 @@ class MultiButtonView: UIView {
     }
     
 
-    init(_ frame:CGRect , titles:[String]) {
+    init(_ frame:CGRect , titles:[String] , selectedIndex:Int = 1) {
         super.init(frame: frame)
         backgroundColor = bgColor
         
@@ -37,21 +39,25 @@ class MultiButtonView: UIView {
         msg.textColor = UIColor.lightGray
         self.addSubview(msg)
         
-        for i in 0..<titles.count {
-            let b = UIButton (frame: CGRect (x: frame.width - CGFloat.init((i + 1) * 110), y: 0, width: 80, height: frame.height));
-            b.tag = titles.count - i;
-            b.setTitle(titles[i], for: .normal)
+        let ts:[String] = titles.reversed()
+        for i in 0..<ts.count {
+            let b = UIButton (frame: CGRect (x: frame.width - CGFloat.init((i + 1) * 120), y: 0, width: 100, height: frame.height));
+            b.tag = ts.count - i;
+            b.setTitle(ts[i], for: .normal)
             b.titleLabel?.font = UIFont.systemFont(ofSize: 15)
             b.titleLabel?.numberOfLines = 2
             b.setTitleColor(UIColor.darkGray, for: .normal)
             b.setTitleColor(kButtonTitleDefaultColor, for: .selected)
-            
             b.addTarget(self, action: #selector(buttonAction(_:)), for: .touchUpInside)
             self.addSubview(b)
             
-            if selectButtonIndex == b.tag {
+            if selectedIndex == b.tag {
                 b.isSelected = true;
                 _currentBtn = b
+                _line.center = b.center
+                _line.frame = CGRect (x: b.frame.minX + b.frame.width / 4.0, y: b.frame.maxY - 2, width: b.frame.width / 2.0, height: 2)
+                _line.backgroundColor = kButtonTitleDefaultColor
+                self.addSubview(_line)
             }
         }
         
@@ -65,7 +71,7 @@ class MultiButtonView: UIView {
         button.isSelected = true
         _currentBtn = button
         
-        if let handle = changeActionHandler {
+        if let handle = selectedActionHandler {
             handle(button.tag);
         }
     }

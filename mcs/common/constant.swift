@@ -104,7 +104,24 @@ var kTaskpool_date:Date?
 
 var kActive_BASE_DATA:[String:Any]! //基础数据1
 
-var addAction_Section2_SelectedIndex:Int = 0
+enum SectionHeadButtonIndex :Int {
+    case addActoinValue1 = 1;
+    case addActoinValue2 //2开始
+    case addActoinValue3
+    case addActoinValue4 //附件
+    case creatReportValue1
+    case creatReportValue2
+    case creatReportValue3
+    case creatReportValue4
+    case creatReportValue5
+}
+
+var kSectionHeadButtonSelectedIndex:SectionHeadButtonIndex = .addActoinValue1
+
+
+
+
+
 
 var task_pool_taskno_index:Int = 0
 

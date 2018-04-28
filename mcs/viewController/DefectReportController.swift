@@ -38,13 +38,16 @@ class DefectReportController: BaseTabItemController ,UITableViewDelegate,UITable
             break
             
         case 2:
+
+            _pop();
             
             break
             
         case 3:
+            HUD.show()
             
-            break
-            
+            let v = ReporFormController()
+            self.navigationController?.pushViewController(v, animated: true); break
         case 4:
             
             break
@@ -67,7 +70,31 @@ class DefectReportController: BaseTabItemController ,UITableViewDelegate,UITable
     
     
     }
-    
+
+    func _pop() {
+        let maskView = UIView (frame: UIScreen.main.bounds)
+        maskView.backgroundColor = UIColor.black
+        maskView.alpha = 0.5;
+        maskView.tag = 1001
+        UIApplication.shared.keyWindow?.addSubview(maskView)
+        
+        let rect = CGRect (x: kCurrentScreenWidth - 480, y: 0, width: 480, height: kCurrentScreenHeight)
+        let vc = UIStoryboard.init(name: "SearchAction", bundle: nil).instantiateViewController(withIdentifier: "defectSearchSbid")
+        //        vc.preferredContentSize = rect.size
+        //        vc.view.frame = CGRect (x: kCurrentScreenWidth, y: 0, width: rect.width, height: rect.height)
+        
+        let nav = BaseNavigationController(rootViewController:vc)
+        nav.preferredContentSize = rect.size
+        nav.view.frame = CGRect (x: kCurrentScreenWidth, y: 0, width: rect.width, height: rect.height)
+
+        UIApplication.shared.keyWindow?.rootViewController?.addChildViewController(nav)
+        UIApplication.shared.keyWindow?.addSubview(nav.view)
+        
+        UIView.animate(withDuration: 0.3) {
+            nav.view.frame = CGRect (x:rect.minX, y: 0, width: rect.width, height: rect.height)
+        }
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -155,10 +182,11 @@ class DefectReportController: BaseTabItemController ,UITableViewDelegate,UITable
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard _tableView.isEditing else {
-            let v = ReporFormController()
-            
             HUD.show()
-            self.navigationController?.pushViewController(v, animated: true);return;
+
+            let v = ReporFormController()
+            v.read_only = true
+            self.navigationController?.pushViewController(v, animated: true); return;
         }
         
         
