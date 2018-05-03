@@ -28,18 +28,18 @@ class DefectSearchController: UITableViewController {
     @IBAction func searchAction(_ sender: UIButton) {
         
         if sender.tag == 1{//reset
-        
+            _reset();
         }else {//query
-        
+            _dismiss();
         }
-        
-        _dismiss();
-        
+
     }
     
     
+    var _defectType:[String:String]?
+    var _defectStatus:[String:String]?
+    var _reg:[String]?
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -49,7 +49,15 @@ class DefectSearchController: UITableViewController {
         
     }
 
-    
+    func _reset() {
+        s_pending.isOn = false
+        defectNo.text = nil
+        fltNo.text = nil
+        defectType.text = nil
+        reg.text = nil
+        statuss.text = nil
+        descri.text = nil
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -59,11 +67,66 @@ class DefectSearchController: UITableViewController {
     // MARK: - Table view data source
  
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
         guard indexPath.row == 8 else {
+            guard (indexPath.row == 4 || indexPath.row == 5 || indexPath.row == 6) else {return}
             let v = SearchItemSelectController()
-            self.navigationController?.pushViewController(v, animated: true)
-            return
+            
+            switch indexPath.row {
+            case 4 ,6:
+                let path = Bundle.main.url(forResource: "defectStatus", withExtension: "plist")
+                let d = NSDictionary.init(contentsOf: path!)
+                if let arr = d?[indexPath.row == 4 ? "offline" : "defect_type"] as? [[String:String]] {
+                    v.dataArray = arr
+                }
+                
+                if indexPath.row == 4 {
+                    if let type = _defectType {
+                        v.selectedObjs = type;
+                        v.dataType = .defect
+                    }
+                }else {
+                    if let type = _defectStatus {
+                        v.selectedObjs = type;
+                        v.dataType = .status
+                    }
+                }
+                
+                v.selectedHandle = {[weak self] obj in
+                    guard let ss = self else {return}
+                    let _o = obj as! [String:String]
+                    if indexPath.row == 4 {
+                        ss._defectType = _o
+                        ss.defectType.text = _o["value"]
+                    }else {
+                        ss._defectStatus = _o;
+                        ss.statuss.text = _o["value"]
+                    }
+                }
+                
+                break
+                
+            case 5:
+                v.dataArray = Tools.acs()
+                v.dataType = SelectDataType.ac
+                v.selectedHandle = {[weak self] obj in
+                    guard let ss = self else {return}
+                    let _o = obj as! [String]
+                    ss._reg = _o
+                    
+                    let str = _o.joined(separator: ",");
+                    ss.reg.text = str;
+                }
+                
+                if let a = _reg{
+                    v.selectedObjs = a;
+                }
+                
+                break
+            default:break
+            }
+            
+            
+            self.navigationController?.pushViewController(v, animated: true);return
         }
         
         _dismiss();
@@ -89,59 +152,5 @@ class DefectSearchController: UITableViewController {
     deinit {
         print("...")
     }
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

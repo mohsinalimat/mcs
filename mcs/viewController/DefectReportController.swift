@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
 class DefectReportController: BaseTabItemController ,UITableViewDelegate,UITableViewDataSource{
 
@@ -26,6 +28,11 @@ class DefectReportController: BaseTabItemController ,UITableViewDelegate,UITable
     var dataArray = [[String:Any]]()
     var _selectedIndexArrr = [Int]()
     
+    let disposeBag = DisposeBag.init()
+    let rx_selected: Variable<[Int]> = Variable.init([])
+    
+    
+    //MARK:
     @IBAction func buttonAction(_ sender: UIButton) {
     
         switch sender.tag {
@@ -52,15 +59,18 @@ class DefectReportController: BaseTabItemController ,UITableViewDelegate,UITable
             
             break
             
-        case 5:
+        case 5://submit
+            let taskid = _getSelectedId()
+            
+            self.showMsg("Submit This Task?", title: "Submit", handler: {[weak self] in
+                guard let ss = self else {return}
+                ss._submit(taskid)
+            })
             
             break
             
         case 6:
-            select_bg.isHidden = false
-            delete_bg.isHidden = true
-            _tableView.isEditing = false
-            _tableView.reloadData()
+            _initStatus()
             break
             
         default:break
@@ -71,6 +81,42 @@ class DefectReportController: BaseTabItemController ,UITableViewDelegate,UITable
     
     }
 
+    func _initStatus()  {
+        select_bg.isHidden = false
+        delete_bg.isHidden = true
+        _tableView.isEditing = false
+        _tableView.reloadData()
+    }
+    
+    
+    func _getSelectedId() -> [String]{
+        guard _selectedIndexArrr.count > 0 else {return []}
+        var taskids = [String]()
+        for index in _selectedIndexArrr {
+            let d = dataArray[index];
+            if let taskno = d["id"] as? String {
+                taskids.append(taskno);
+            }
+        }
+        
+        return taskids
+    }
+
+    func _submit(_ ids :[String])  {
+        HUD.show()
+        
+        request(defect_submit_url, parameters: ["bizIds":ids], successHandler: { [weak self] (res) in
+            HUD.show(successInfo: "Submit Success")
+            
+            guard let ss = self else {return}
+            ss._initStatus()
+            ss.loadData()
+            }, failureHandler: { (str) in
+                HUD.show(info: str ?? "Submit Error")
+        })
+    }
+
+    
     func _pop() {
         let maskView = UIView (frame: UIScreen.main.bounds)
         maskView.backgroundColor = UIColor.black
@@ -106,6 +152,14 @@ class DefectReportController: BaseTabItemController ,UITableViewDelegate,UITable
         _initSubviews()
         
         loadData()
+        
+        
+        /////
+//        rx_selected.value = _selectedIndexArrr
+//        
+//        let rx =  rx_selected.asObservable().map {$0.count > 0}.shareReplay(1)
+//        rx.bindTo(btn_submit.ex_isEnabled).addDisposableTo(disposeBag);
+//        rx.bindTo(btn_delete.ex_isEnabled).addDisposableTo(disposeBag);
     }
 
     
@@ -120,7 +174,7 @@ class DefectReportController: BaseTabItemController ,UITableViewDelegate,UITable
         _tableView.delegate = self
         _tableView.dataSource = self
         _tableView.rowHeight = 90
-        //_tableView.separatorStyle = .singleLine
+        //_tableView.separatorStyle = .none
         
 
         
@@ -142,7 +196,8 @@ class DefectReportController: BaseTabItemController ,UITableViewDelegate,UITable
         request(defect_list_url, parameters: nil, successHandler: { [weak self](res) in
             HUD.dismiss()
             guard let ss = self else {return}
-
+            ss.dataArray.removeAll();
+            
             if ss._tableView.mj_header.isRefreshing(){
                 ss._tableView.mj_header.endRefreshing();
             }

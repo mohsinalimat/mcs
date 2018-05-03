@@ -85,8 +85,10 @@ let submit_fault_url = "/biz/fault"//必须bizId:7e93fcf736dd11e8be99448a5be48bf
 
 ////defect
 let defect_list_url     =   "/biz/fault/list"
+let defect_submit_url   =   "/biz/defect/submit"
 
-
+///dd
+let dd_list_url = "/biz/dd/list"
 
 
 

@@ -107,6 +107,16 @@
 		A1B144E2207F2BE8006B3806 /* DefectReportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B144E0207F2BE8006B3806 /* DefectReportController.swift */; };
 		A1B144E3207F2BE8006B3806 /* DefectReportController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1B144E1207F2BE8006B3806 /* DefectReportController.xib */; };
 		A1B1959F2091CCDF00F5F9DB /* BaseCellWithTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1959E2091CCDF00F5F9DB /* BaseCellWithTable.swift */; };
+		A1BA575A209AAEF800B2D6E0 /* MaterialSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BA5758209AAEF800B2D6E0 /* MaterialSearchController.swift */; };
+		A1BA575B209AAEF800B2D6E0 /* MaterialSearchController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1BA5759209AAEF800B2D6E0 /* MaterialSearchController.xib */; };
+		A1BA575E209AAF0E00B2D6E0 /* MaterialOrderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BA575C209AAF0E00B2D6E0 /* MaterialOrderController.swift */; };
+		A1BA575F209AAF0E00B2D6E0 /* MaterialOrderController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1BA575D209AAF0E00B2D6E0 /* MaterialOrderController.xib */; };
+		A1BA5763209AB84000B2D6E0 /* MaterialSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BA5761209AB84000B2D6E0 /* MaterialSearchCell.swift */; };
+		A1BA5764209AB84000B2D6E0 /* MaterialSearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1BA5762209AB84000B2D6E0 /* MaterialSearchCell.xib */; };
+		A1BA5767209AB8BC00B2D6E0 /* MaterialOrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BA5765209AB8BC00B2D6E0 /* MaterialOrderCell.swift */; };
+		A1BA5768209AB8BC00B2D6E0 /* MaterialOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1BA5766209AB8BC00B2D6E0 /* MaterialOrderCell.xib */; };
+		A1BA576A209AEEFA00B2D6E0 /* MaterialOrderHead.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BA5769209AEEFA00B2D6E0 /* MaterialOrderHead.swift */; };
+		A1BA576C209AEF7800B2D6E0 /* MaterialOrderHead.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1BA576B209AEF7800B2D6E0 /* MaterialOrderHead.xib */; };
 		A1BC1F3620157D2F007D0E1C /* TextMsgViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BC1F3420157D2F007D0E1C /* TextMsgViewCell.swift */; };
 		A1BC1F3720157D2F007D0E1C /* TextMsgViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1BC1F3520157D2F007D0E1C /* TextMsgViewCell.xib */; };
 		A1BC1F3B2015AC4A007D0E1C /* HistoryFaultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BC1F3A2015AC4A007D0E1C /* HistoryFaultController.swift */; };
@@ -175,10 +185,10 @@
 		A1EB214B208DAC5100661C45 /* DDListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EB2149208DAC5100661C45 /* DDListCell.swift */; };
 		A1EB214C208DAC5100661C45 /* DDListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1EB214A208DAC5100661C45 /* DDListCell.xib */; };
 		A1EB2150208DC92000661C45 /* MaterialsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EB214E208DC92000661C45 /* MaterialsViewController.swift */; };
-		A1EB2151208DC92000661C45 /* MaterialsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1EB214F208DC92000661C45 /* MaterialsViewController.xib */; };
 		A1EB37552092F461008A0FC7 /* DDInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EB37532092F461008A0FC7 /* DDInfoCell.swift */; };
 		A1EB37562092F461008A0FC7 /* DDInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1EB37542092F461008A0FC7 /* DDInfoCell.xib */; };
 		A1EC58A920897BE500936D6B /* ViewDefectReportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EC58A820897BE500936D6B /* ViewDefectReportController.swift */; };
+		A1EE525F20995EB0000E3630 /* defectStatus.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1EE525E20995EB0000E3630 /* defectStatus.plist */; };
 		A1F293B2206DDA8900004E9C /* TaskPoolRootController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F293B1206DDA8900004E9C /* TaskPoolRootController.swift */; };
 		A1FE5095204796E1004F2330 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FE5094204796E0004F2330 /* BaseTabBarController.swift */; };
 /* End PBXBuildFile section */
@@ -291,6 +301,16 @@
 		A1B144E0207F2BE8006B3806 /* DefectReportController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefectReportController.swift; sourceTree = "<group>"; };
 		A1B144E1207F2BE8006B3806 /* DefectReportController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DefectReportController.xib; sourceTree = "<group>"; };
 		A1B1959E2091CCDF00F5F9DB /* BaseCellWithTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCellWithTable.swift; sourceTree = "<group>"; };
+		A1BA5758209AAEF800B2D6E0 /* MaterialSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialSearchController.swift; sourceTree = "<group>"; };
+		A1BA5759209AAEF800B2D6E0 /* MaterialSearchController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MaterialSearchController.xib; sourceTree = "<group>"; };
+		A1BA575C209AAF0E00B2D6E0 /* MaterialOrderController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialOrderController.swift; sourceTree = "<group>"; };
+		A1BA575D209AAF0E00B2D6E0 /* MaterialOrderController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MaterialOrderController.xib; sourceTree = "<group>"; };
+		A1BA5761209AB84000B2D6E0 /* MaterialSearchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialSearchCell.swift; sourceTree = "<group>"; };
+		A1BA5762209AB84000B2D6E0 /* MaterialSearchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MaterialSearchCell.xib; sourceTree = "<group>"; };
+		A1BA5765209AB8BC00B2D6E0 /* MaterialOrderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialOrderCell.swift; sourceTree = "<group>"; };
+		A1BA5766209AB8BC00B2D6E0 /* MaterialOrderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MaterialOrderCell.xib; sourceTree = "<group>"; };
+		A1BA5769209AEEFA00B2D6E0 /* MaterialOrderHead.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialOrderHead.swift; sourceTree = "<group>"; };
+		A1BA576B209AEF7800B2D6E0 /* MaterialOrderHead.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MaterialOrderHead.xib; sourceTree = "<group>"; };
 		A1BC1F3420157D2F007D0E1C /* TextMsgViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextMsgViewCell.swift; sourceTree = "<group>"; };
 		A1BC1F3520157D2F007D0E1C /* TextMsgViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextMsgViewCell.xib; sourceTree = "<group>"; };
 		A1BC1F3A2015AC4A007D0E1C /* HistoryFaultController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryFaultController.swift; sourceTree = "<group>"; };
@@ -361,10 +381,10 @@
 		A1EB2149208DAC5100661C45 /* DDListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDListCell.swift; sourceTree = "<group>"; };
 		A1EB214A208DAC5100661C45 /* DDListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DDListCell.xib; sourceTree = "<group>"; };
 		A1EB214E208DC92000661C45 /* MaterialsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialsViewController.swift; sourceTree = "<group>"; };
-		A1EB214F208DC92000661C45 /* MaterialsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MaterialsViewController.xib; sourceTree = "<group>"; };
 		A1EB37532092F461008A0FC7 /* DDInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDInfoCell.swift; sourceTree = "<group>"; };
 		A1EB37542092F461008A0FC7 /* DDInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DDInfoCell.xib; sourceTree = "<group>"; };
 		A1EC58A820897BE500936D6B /* ViewDefectReportController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewDefectReportController.swift; sourceTree = "<group>"; };
+		A1EE525E20995EB0000E3630 /* defectStatus.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = defectStatus.plist; sourceTree = "<group>"; };
 		A1F293B1206DDA8900004E9C /* TaskPoolRootController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskPoolRootController.swift; sourceTree = "<group>"; };
 		A1FE5094204796E0004F2330 /* BaseTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -470,6 +490,19 @@
 			name = view;
 			sourceTree = "<group>";
 		};
+		A1BA5760209AB4DD00B2D6E0 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				A1BA5761209AB84000B2D6E0 /* MaterialSearchCell.swift */,
+				A1BA5762209AB84000B2D6E0 /* MaterialSearchCell.xib */,
+				A1BA5765209AB8BC00B2D6E0 /* MaterialOrderCell.swift */,
+				A1BA5766209AB8BC00B2D6E0 /* MaterialOrderCell.xib */,
+				A1BA5769209AEEFA00B2D6E0 /* MaterialOrderHead.swift */,
+				A1BA576B209AEF7800B2D6E0 /* MaterialOrderHead.xib */,
+			);
+			name = view;
+			sourceTree = "<group>";
+		};
 		A1BC1F3E2015AC99007D0E1C /* login */ = {
 			isa = PBXGroup;
 			children = (
@@ -537,6 +570,7 @@
 				A1CF29FD20070029009FE6A4 /* Main.storyboard */,
 				A1CF2A0220070029009FE6A4 /* LaunchScreen.storyboard */,
 				A1CF2A0520070029009FE6A4 /* Info.plist */,
+				A1EE525E20995EB0000E3630 /* defectStatus.plist */,
 			);
 			name = src;
 			sourceTree = "<group>";
@@ -738,8 +772,12 @@
 		A1EB214D208DC8C400661C45 /* materials */ = {
 			isa = PBXGroup;
 			children = (
+				A1BA5760209AB4DD00B2D6E0 /* view */,
 				A1EB214E208DC92000661C45 /* MaterialsViewController.swift */,
-				A1EB214F208DC92000661C45 /* MaterialsViewController.xib */,
+				A1BA5758209AAEF800B2D6E0 /* MaterialSearchController.swift */,
+				A1BA5759209AAEF800B2D6E0 /* MaterialSearchController.xib */,
+				A1BA575C209AAF0E00B2D6E0 /* MaterialOrderController.swift */,
+				A1BA575D209AAF0E00B2D6E0 /* MaterialOrderController.xib */,
 			);
 			name = materials;
 			sourceTree = "<group>";
@@ -840,6 +878,7 @@
 			files = (
 				A1AB9EF4207B00FE000663C3 /* ActionListVC.xib in Resources */,
 				A1C26DAA204FB76700B11F63 /* FlightWarnListController.xib in Resources */,
+				A1BA575B209AAEF800B2D6E0 /* MaterialSearchController.xib in Resources */,
 				A1B144E3207F2BE8006B3806 /* DefectReportController.xib in Resources */,
 				A1EB37562092F461008A0FC7 /* DDInfoCell.xib in Resources */,
 				A1C546C9207A0F920060D921 /* Add_ComponentVC.xib in Resources */,
@@ -849,6 +888,7 @@
 				A124D41720722D21005E279D /* TaskChangeShiftVC.xib in Resources */,
 				A161216D20904DAF00F72C94 /* ReportInfoCell.xib in Resources */,
 				A1C6DD74206C7F1000A09808 /* TaskPoolSelectController.xib in Resources */,
+				A1EE525F20995EB0000E3630 /* defectStatus.plist in Resources */,
 				A161216320901EBE00F72C94 /* ReporFormController.xib in Resources */,
 				A1633B12209445B200342F92 /* SearBarView.xib in Resources */,
 				A12028602008A1C200CB8633 /* success@2x.png in Resources */,
@@ -857,7 +897,7 @@
 				A1A20F59202AFDB000407276 /* AllWarnTableViewCell.xib in Resources */,
 				A1C546BC2079E5580060D921 /* Section_TableViewCell2.xib in Resources */,
 				A1C546C5207A0F550060D921 /* Add_MateralVC.xib in Resources */,
-				A1EB2151208DC92000661C45 /* MaterialsViewController.xib in Resources */,
+				A1BA5768209AB8BC00B2D6E0 /* MaterialOrderCell.xib in Resources */,
 				A1CF2A0420070029009FE6A4 /* LaunchScreen.storyboard in Resources */,
 				A14BA8AF20733AEB0027D51F /* TaskChangeShiftReasonVC.xib in Resources */,
 				A1B03DE5207C7FD700797564 /* BaseTableViewVCCell.xib in Resources */,
@@ -882,6 +922,7 @@
 				A1EB2147208DAC2500661C45 /* DDViewController.xib in Resources */,
 				A1CF29FF20070029009FE6A4 /* Main.storyboard in Resources */,
 				A120285F2008A1C200CB8633 /* success.png in Resources */,
+				A1BA5764209AB84000B2D6E0 /* MaterialSearchCell.xib in Resources */,
 				A1284D8C205BB00500B7B576 /* WarnInfoDetailController_new.xib in Resources */,
 				A161217120904DE600F72C94 /* ReportBaseInfoCell.xib in Resources */,
 				A15234362093195200939E0F /* SearchAction.storyboard in Resources */,
@@ -897,6 +938,7 @@
 				A1EB214C208DAC5100661C45 /* DDListCell.xib in Resources */,
 				A1C26DAE204FBA2700B11F63 /* FlightWarnListCell.xib in Resources */,
 				A120285C2008A1C000CB8633 /* error.png in Resources */,
+				A1BA575F209AAF0E00B2D6E0 /* MaterialOrderController.xib in Resources */,
 				A1C546AE2079B17D0060D921 /* Action_Materal_Cell.xib in Resources */,
 				A1AAF15320494DCD00E8CB3B /* TaskHandCell.xib in Resources */,
 				A1D3E3B4200C478300CE31F0 /* Assets.xcassets in Resources */,
@@ -909,6 +951,7 @@
 				A1A20F55202AF3D300407276 /* FlightAllWarnController.xib in Resources */,
 				A120283920084EFB00CB8633 /* DataPickerController.xib in Resources */,
 				A1BC1F4C2015C733007D0E1C /* WarnListCell.xib in Resources */,
+				A1BA576C209AEF7800B2D6E0 /* MaterialOrderHead.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1016,6 +1059,7 @@
 				A165B67C20107FA3006080D8 /* HomeDetailTabController.swift in Sources */,
 				A1EC58A920897BE500936D6B /* ViewDefectReportController.swift in Sources */,
 				A1C546BB2079E5580060D921 /* Section_TableViewCell2.swift in Sources */,
+				A1BA5763209AB84000B2D6E0 /* MaterialSearchCell.swift in Sources */,
 				A1E32F1D2016D45F00842A18 /* Tools.swift in Sources */,
 				A1202841200896EE00CB8633 /* HomeViewController.swift in Sources */,
 				A1C26DB6204FDDCC00B11F63 /* FlightWarnListTopView.swift in Sources */,
@@ -1031,10 +1075,12 @@
 				A161217020904DE600F72C94 /* ReportBaseInfoCell.swift in Sources */,
 				A161216220901EBE00F72C94 /* ReporFormController.swift in Sources */,
 				A120284520089D4200CB8633 /* constant.swift in Sources */,
+				A1BA5767209AB8BC00B2D6E0 /* MaterialOrderCell.swift in Sources */,
 				A12028432008977400CB8633 /* color.swift in Sources */,
 				A1D3E3B1200C3A2D00CE31F0 /* HomeCollectionViewCell.swift in Sources */,
 				A1B1959F2091CCDF00F5F9DB /* BaseCellWithTable.swift in Sources */,
 				A124D41620722D21005E279D /* TaskChangeShiftVC.swift in Sources */,
+				A1BA575E209AAF0E00B2D6E0 /* MaterialOrderController.swift in Sources */,
 				A1A6B26B2011944C00F7D048 /* AnimationContoller.m in Sources */,
 				A1633B102094459500342F92 /* SearBarView.swift in Sources */,
 				A1BC1F3D2015AC73007D0E1C /* PlaneInfoController.swift in Sources */,
@@ -1042,6 +1088,7 @@
 				A1A6B26C2011944C00F7D048 /* KLTNavigationController.m in Sources */,
 				A1BC1F3620157D2F007D0E1C /* TextMsgViewCell.swift in Sources */,
 				A1D15D8820464436004A2C58 /* WarnDetailTopCell.swift in Sources */,
+				A1BA575A209AAEF800B2D6E0 /* MaterialSearchController.swift in Sources */,
 				A15234382093216B00939E0F /* DefectSearchController.swift in Sources */,
 				A1C546AD2079B17D0060D921 /* Action_Materal_Cell.swift in Sources */,
 				A1AB9EF3207B00FE000663C3 /* ActionListVC.swift in Sources */,
@@ -1071,6 +1118,7 @@
 				A161216720902D1200F72C94 /* DefectReportBtnView.swift in Sources */,
 				A161217320906E8B00F72C94 /* MultiButtonView.swift in Sources */,
 				A1C26DB0204FBD2800B11F63 /* FlightWarnListHeadView.swift in Sources */,
+				A1BA576A209AEEFA00B2D6E0 /* MaterialOrderHead.swift in Sources */,
 				A1F293B2206DDA8900004E9C /* TaskPoolRootController.swift in Sources */,
 				A1C26DAD204FBA2700B11F63 /* FlightWarnListCell.swift in Sources */,
 				A1D15D90204644A7004A2C58 /* WarnDisPoseCell.swift in Sources */,

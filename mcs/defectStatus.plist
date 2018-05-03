@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>defect_type</key>
+	<array>
+		<dict>
+			<key>key</key>
+			<string>DD</string>
+			<key>value</key>
+			<string>DD</string>
+		</dict>
+		<dict>
+			<key>key</key>
+			<string>TS</string>
+			<key>value</key>
+			<string>Defect Report</string>
+		</dict>
+		<dict>
+			<key>key</key>
+			<string>NRR</string>
+			<key>value</key>
+			<string>NRR</string>
+		</dict>
+	</array>
+	<key>total_status</key>
+	<dict>
+		<key>offline</key>
+		<string>initial</string>
+		<key>lm_leader</key>
+		<string>lm confirm</string>
+		<key>a_mcc</key>
+		<string>waiting</string>
+		<key>a_received</key>
+		<string>submitted</string>
+		<key>backed</key>
+		<string>reject</string>
+		<key>converted</key>
+		<string>mcc confirm</string>
+		<key>closed</key>
+		<string>closed</string>
+		<key>deserted</key>
+		<string>deserted</string>
+	</dict>
+	<key>offline</key>
+	<array>
+		<dict>
+			<key>key</key>
+			<string>offline</string>
+			<key>value</key>
+			<string>initial</string>
+		</dict>
+		<dict>
+			<key>key</key>
+			<string>lm_leader</string>
+			<key>value</key>
+			<string>lm confirm</string>
+		</dict>
+		<dict>
+			<key>key</key>
+			<string>a_received</string>
+			<key>value</key>
+			<string>submitted</string>
+		</dict>
+		<dict>
+			<key>key</key>
+			<string>backed</string>
+			<key>value</key>
+			<string>reject</string>
+		</dict>
+		<dict>
+			<key>key</key>
+			<string>converted</string>
+			<key>value</key>
+			<string>mcc confirm</string>
+		</dict>
+		<dict>
+			<key>key</key>
+			<string>closed</string>
+			<key>value</key>
+			<string>closed</string>
+		</dict>
+	</array>
+	<key>lm_leader</key>
+	<array>
+		<dict>
+			<key>key</key>
+			<string>lm_leader</string>
+			<key>value</key>
+			<string>lm confirm</string>
+		</dict>
+		<dict>
+			<key>key</key>
+			<string>a_received</string>
+			<key>value</key>
+			<string>submitted</string>
+		</dict>
+		<dict>
+			<key>key</key>
+			<string>backed</string>
+			<key>value</key>
+			<string>reject</string>
+		</dict>
+		<dict>
+			<key>key</key>
+			<string>converted</string>
+			<key>value</key>
+			<string>mcc confirm</string>
+		</dict>
+		<dict>
+			<key>key</key>
+			<string>closed</string>
+			<key>value</key>
+			<string>closed</string>
+		</dict>
+	</array>
+</dict>
+</plist>

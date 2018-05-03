@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MaterialsViewController:BaseTabItemController /* ,UITableViewDelegate,UITableViewDataSource*/ {
+class MaterialsViewController:TaskPoolRootController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,37 +17,29 @@ class MaterialsViewController:BaseTabItemController /* ,UITableViewDelegate,UITa
         title = "Aviation Materials"
         view.backgroundColor = UIColor.white
         
-//        _initSubviews()
-        
+        _init()
+
     }
 
-    //MARK: - init
-//    func _initSubviews()  {
-//        
-//        /////
-//        _tableView.register(UINib (nibName: "DefectReportCell", bundle: nil), forCellReuseIdentifier: "DefectReportCellIdentifier")
-//        _tableView.tableFooterView = UIView()
-//        
-//        
-//        _tableView.delegate = self
-//        _tableView.dataSource = self
-//        _tableView.rowHeight = 90
-//        //_tableView.separatorStyle = .singleLine
-//        
-//        
-//        
-//        ///Refresh Data
-//        let header = TTRefreshHeader.init {
-//            DispatchQueue.main.async {
-//                //                self.dataArray.removeAll()
-//                //                self.getTaskPool()
-//            }
-//        }
-//        
-//        _tableView.mj_header = header
-//        
-//    }
+    func _init()  {
+        seg.removeAllSegments()
+        seg.insertSegment(withTitle: "Aviation Materials", at: 0, animated: false)
+        seg.insertSegment(withTitle: "Orders", at: 1, animated: false)
+        seg.selectedSegmentIndex = 0
+    }
     
+    
+    override func addController() {
+        vc2 = MaterialOrderController()
+        vc2.view.frame = CGRect (x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+        self.addChildViewController(vc2)
+        self.view.addSubview(vc2.view)
+        
+        vc1 = MaterialSearchController()
+        vc1.view.frame = CGRect (x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+        self.addChildViewController(vc1)
+        self.view.addSubview(vc1.view)
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -55,25 +47,5 @@ class MaterialsViewController:BaseTabItemController /* ,UITableViewDelegate,UITa
     }
     
 
-    //MARK:
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        
-//        return 30;
-//    }
-//    
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "DefectReportCellIdentifier", for: indexPath) as! DefectReportCell
-//        
-//        if tableView.isEditing{
-//            cell.setSelectInEdit(_selectedIndexArrr.contains(indexPath.row));
-//        }
-//        
-//        
-//        return cell
-//        
-//    }
-    
-    
 
 }
