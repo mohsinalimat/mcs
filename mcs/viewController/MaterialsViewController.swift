@@ -13,10 +13,6 @@ class MaterialsViewController:TaskPoolRootController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        title = "Aviation Materials"
-        view.backgroundColor = UIColor.white
-        
         _init()
 
     }
@@ -30,15 +26,20 @@ class MaterialsViewController:TaskPoolRootController {
     
     
     override func addController() {
-        vc2 = MaterialOrderController()
-        vc2.view.frame = CGRect (x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
-        self.addChildViewController(vc2)
-        self.view.addSubview(vc2.view)
+        let rect = CGRect (x: 0, y: 0, width: self.view.frame.width, height: kCurrentScreenHeight - 50)
+        print("rect : \(rect)")
         
         vc1 = MaterialSearchController()
-        vc1.view.frame = CGRect (x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+        vc1.view.frame = rect
         self.addChildViewController(vc1)
         self.view.addSubview(vc1.view)
+
+        vc2 = MaterialOrderController()
+        vc2.view.frame = rect
+        self.addChildViewController(vc2)
+        self.view.addSubview(vc2.view)
+
+        self.view.bringSubview(toFront: vc1.view)
     }
     
     override func didReceiveMemoryWarning() {

@@ -173,6 +173,10 @@
 		A1D3E3B2200C3A2D00CE31F0 /* HomeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1D3E3B0200C3A2D00CE31F0 /* HomeCollectionViewCell.xib */; };
 		A1D3E3B4200C478300CE31F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1D3E3B3200C478300CE31F0 /* Assets.xcassets */; };
 		A1D3E3B8200C850D00CE31F0 /* HomeCellTrackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D3E3B7200C850D00CE31F0 /* HomeCellTrackView.swift */; };
+		A1DCEDB520A023D30062EC7E /* DefectSearchCodeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DCEDB320A023D20062EC7E /* DefectSearchCodeController.swift */; };
+		A1DCEDB620A023D30062EC7E /* DefectSearchCodeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1DCEDB420A023D20062EC7E /* DefectSearchCodeController.xib */; };
+		A1DCEDC720A055B30062EC7E /* FMDB.m in Sources */ = {isa = PBXBuildFile; fileRef = A1DCEDC420A055B30062EC7E /* FMDB.m */; };
+		A1DCEDC820A055B30062EC7E /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = A1DCEDC620A055B30062EC7E /* Model.m */; };
 		A1DF738D2043EF5B0099B858 /* WarnInfoDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DF738B2043EF5B0099B858 /* WarnInfoDetailController.swift */; };
 		A1DF738E2043EF5B0099B858 /* WarnInfoDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1DF738C2043EF5B0099B858 /* WarnInfoDetailController.xib */; };
 		A1E32F1D2016D45F00842A18 /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E32F1C2016D45F00842A18 /* Tools.swift */; };
@@ -369,6 +373,12 @@
 		A1D3E3B0200C3A2D00CE31F0 /* HomeCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HomeCollectionViewCell.xib; path = ../HomeCollectionViewCell.xib; sourceTree = "<group>"; };
 		A1D3E3B3200C478300CE31F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A1D3E3B7200C850D00CE31F0 /* HomeCellTrackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCellTrackView.swift; sourceTree = "<group>"; };
+		A1DCEDB320A023D20062EC7E /* DefectSearchCodeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefectSearchCodeController.swift; sourceTree = "<group>"; };
+		A1DCEDB420A023D20062EC7E /* DefectSearchCodeController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DefectSearchCodeController.xib; sourceTree = "<group>"; };
+		A1DCEDC320A055B30062EC7E /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDB.h; sourceTree = "<group>"; };
+		A1DCEDC420A055B30062EC7E /* FMDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDB.m; sourceTree = "<group>"; };
+		A1DCEDC520A055B30062EC7E /* Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Model.h; sourceTree = "<group>"; };
+		A1DCEDC620A055B30062EC7E /* Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Model.m; sourceTree = "<group>"; };
 		A1DF738B2043EF5B0099B858 /* WarnInfoDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WarnInfoDetailController.swift; sourceTree = "<group>"; };
 		A1DF738C2043EF5B0099B858 /* WarnInfoDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WarnInfoDetailController.xib; sourceTree = "<group>"; };
 		A1E32F1C2016D45F00842A18 /* Tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
@@ -407,6 +417,10 @@
 		A120284F2008A18000CB8633 /* com */ = {
 			isa = PBXGroup;
 			children = (
+				A1DCEDC320A055B30062EC7E /* FMDB.h */,
+				A1DCEDC420A055B30062EC7E /* FMDB.m */,
+				A1DCEDC520A055B30062EC7E /* Model.h */,
+				A1DCEDC620A055B30062EC7E /* Model.m */,
 				A12028502008A18700CB8633 /* Extension.swift */,
 				A1C0A3D5200DF04B00A1762C /* Refresh */,
 				A12028512008A18C00CB8633 /* hud */,
@@ -463,6 +477,8 @@
 				A15234352093195200939E0F /* SearchAction.storyboard */,
 				A15234372093216B00939E0F /* DefectSearchController.swift */,
 				A1633B0D20941D3700342F92 /* SearchItemSelectController.swift */,
+				A1DCEDB320A023D20062EC7E /* DefectSearchCodeController.swift */,
+				A1DCEDB420A023D20062EC7E /* DefectSearchCodeController.xib */,
 			);
 			name = defectReport;
 			sourceTree = "<group>";
@@ -926,6 +942,7 @@
 				A1284D8C205BB00500B7B576 /* WarnInfoDetailController_new.xib in Resources */,
 				A161217120904DE600F72C94 /* ReportBaseInfoCell.xib in Resources */,
 				A15234362093195200939E0F /* SearchAction.storyboard in Resources */,
+				A1DCEDB620A023D30062EC7E /* DefectSearchCodeController.xib in Resources */,
 				A1C26DB2204FBD3B00B11F63 /* FlightWarnListHeadView.xib in Resources */,
 				A1AFF6B320748E3300ED1FC4 /* TaskActionTopView.xib in Resources */,
 				A1AAF14F2049331800E8CB3B /* TaskActionCell.xib in Resources */,
@@ -1029,6 +1046,7 @@
 				A1633B1520944D1200342F92 /* SearchItemCell.swift in Sources */,
 				A1FE5095204796E1004F2330 /* BaseTabBarController.swift in Sources */,
 				A161216C20904DAF00F72C94 /* ReportInfoCell.swift in Sources */,
+				A1DCEDC820A055B30062EC7E /* Model.m in Sources */,
 				A161216520901F5600F72C94 /* DefectPreviewController.swift in Sources */,
 				A1EB37552092F461008A0FC7 /* DDInfoCell.swift in Sources */,
 				A1AFF6AE20746BC400ED1FC4 /* AddActionInfoCell.swift in Sources */,
@@ -1066,6 +1084,7 @@
 				A1AFF6A82074624D00ED1FC4 /* TaskActionListVC.swift in Sources */,
 				A1B144DE207F2483006B3806 /* DefectReportCell.swift in Sources */,
 				A1AAF1482049167600E8CB3B /* TaskPoolBaseController.swift in Sources */,
+				A1DCEDB520A023D30062EC7E /* DefectSearchCodeController.swift in Sources */,
 				A1BC1F4B2015C733007D0E1C /* WarnListCell.swift in Sources */,
 				A1B144E2207F2BE8006B3806 /* DefectReportController.swift in Sources */,
 				A120283C2008812500CB8633 /* DatePickerController.swift in Sources */,
@@ -1076,6 +1095,7 @@
 				A161216220901EBE00F72C94 /* ReporFormController.swift in Sources */,
 				A120284520089D4200CB8633 /* constant.swift in Sources */,
 				A1BA5767209AB8BC00B2D6E0 /* MaterialOrderCell.swift in Sources */,
+				A1DCEDC720A055B30062EC7E /* FMDB.m in Sources */,
 				A12028432008977400CB8633 /* color.swift in Sources */,
 				A1D3E3B1200C3A2D00CE31F0 /* HomeCollectionViewCell.swift in Sources */,
 				A1B1959F2091CCDF00F5F9DB /* BaseCellWithTable.swift in Sources */,

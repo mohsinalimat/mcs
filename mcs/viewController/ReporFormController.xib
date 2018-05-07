@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ReporFormController" customModule="mcs" customModuleProvider="target">
             <connections>
                 <outlet property="_tableView" destination="Mfj-Qf-oLY" id="4pX-2L-IJz"/>
+                <outlet property="typeBtn" destination="06x-m3-PT9" id="0Hi-hB-Im5"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,7 +20,7 @@
                 <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ll9-3f-5wH">
                     <color key="backgroundColor" red="0.40106409790000003" green="0.60073119399999997" blue="0.5976739526" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="160" id="exZ-AE-jy2"/>
+                        <constraint firstAttribute="width" constant="180" id="exZ-AE-jy2"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <state key="normal" title="Save and Next">
@@ -61,8 +62,8 @@
                         <constraint firstAttribute="height" constant="35" id="dPX-Bd-Rsw"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <state key="normal" title="Change Defect Type" backgroundImage="buttonbg">
-                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" title="Defect Report" backgroundImage="buttonbg">
+                        <color key="titleColor" red="0.22230920200000001" green="0.59495002029999999" blue="0.98936182260000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -79,7 +80,7 @@
             <constraints>
                 <constraint firstItem="Ll9-3f-5wH" firstAttribute="width" secondItem="buB-mY-HwX" secondAttribute="width" id="45f-g6-9Ez"/>
                 <constraint firstItem="Mfj-Qf-oLY" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="5FD-t4-gek"/>
-                <constraint firstItem="buB-mY-HwX" firstAttribute="leading" secondItem="06x-m3-PT9" secondAttribute="trailing" constant="15" id="E0d-Uw-UuQ"/>
+                <constraint firstItem="buB-mY-HwX" firstAttribute="leading" secondItem="06x-m3-PT9" secondAttribute="trailing" constant="20" id="E0d-Uw-UuQ"/>
                 <constraint firstItem="Ll9-3f-5wH" firstAttribute="height" secondItem="buB-mY-HwX" secondAttribute="height" id="KZ5-EX-y79"/>
                 <constraint firstItem="Ll9-3f-5wH" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="15" id="NZD-3q-ZnB"/>
                 <constraint firstAttribute="trailing" secondItem="Mfj-Qf-oLY" secondAttribute="trailing" id="Osa-TD-zo0"/>
@@ -91,7 +92,7 @@
                 <constraint firstAttribute="bottom" secondItem="Mfj-Qf-oLY" secondAttribute="bottom" id="ooO-7e-ynr"/>
                 <constraint firstItem="buB-mY-HwX" firstAttribute="centerY" secondItem="06x-m3-PT9" secondAttribute="centerY" id="qlV-hK-Otm"/>
                 <constraint firstItem="buB-mY-HwX" firstAttribute="height" secondItem="06x-m3-PT9" secondAttribute="height" id="toI-2W-7fp"/>
-                <constraint firstItem="Ll9-3f-5wH" firstAttribute="leading" secondItem="buB-mY-HwX" secondAttribute="trailing" constant="15" id="yNL-ap-t8K"/>
+                <constraint firstItem="Ll9-3f-5wH" firstAttribute="leading" secondItem="buB-mY-HwX" secondAttribute="trailing" constant="20" id="yNL-ap-t8K"/>
             </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
         </view>

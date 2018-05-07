@@ -40,6 +40,7 @@
                         <constraint firstAttribute="width" constant="40" id="RGh-wB-wma"/>
                     </constraints>
                     <state key="normal" image="cheveron-normal_gry"/>
+                    <state key="selected" image="cheveron-cellOpen_dark"/>
                     <connections>
                         <action selector="buttonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="P4v-uU-vco"/>
                     </connections>
@@ -75,10 +76,10 @@
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qAU-sn-CQ7">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BJ5-r1-Pau">
                     <color key="backgroundColor" red="0.94891661410000006" green="0.9490789771" blue="0.94890636210000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="10" id="BpQ-M6-TAn"/>
+                        <constraint firstAttribute="height" constant="10" id="if4-3U-l7E"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
@@ -92,30 +93,29 @@
                 <constraint firstItem="lxf-Vl-Xwg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="3gm-rg-OfN"/>
                 <constraint firstAttribute="trailing" secondItem="isq-R6-Ryc" secondAttribute="trailing" constant="25" id="4wn-jH-DmV"/>
                 <constraint firstItem="uPQ-MC-gQE" firstAttribute="centerY" secondItem="TPR-uR-eRI" secondAttribute="centerY" id="5BY-yC-BAJ"/>
-                <constraint firstAttribute="trailing" secondItem="qAU-sn-CQ7" secondAttribute="trailing" id="6dp-zw-jhj"/>
                 <constraint firstItem="itq-5M-x9D" firstAttribute="top" secondItem="lxf-Vl-Xwg" secondAttribute="bottom" constant="15" id="6tj-ve-I0b"/>
                 <constraint firstItem="S74-nn-Tnz" firstAttribute="leading" secondItem="VNP-Dd-vfT" secondAttribute="trailing" constant="20" id="AMq-7f-ir0"/>
+                <constraint firstAttribute="trailing" secondItem="BJ5-r1-Pau" secondAttribute="trailing" id="BXQ-pc-gvG"/>
                 <constraint firstItem="isq-R6-Ryc" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="BjE-zT-uyY"/>
                 <constraint firstItem="Y4o-zw-kiz" firstAttribute="centerY" secondItem="itq-5M-x9D" secondAttribute="centerY" id="GEQ-Lh-ZPp"/>
-                <constraint firstItem="S74-nn-Tnz" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-3" id="ICo-xb-ume"/>
+                <constraint firstItem="S74-nn-Tnz" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="5" id="ICo-xb-ume"/>
                 <constraint firstItem="YKf-l2-pfi" firstAttribute="leading" secondItem="uPQ-MC-gQE" secondAttribute="trailing" constant="60" id="NMa-1w-b9w"/>
                 <constraint firstItem="TPR-uR-eRI" firstAttribute="leading" secondItem="cnG-ya-Qns" secondAttribute="leading" id="Opi-LU-8XT"/>
                 <constraint firstItem="TPR-uR-eRI" firstAttribute="leading" secondItem="S74-nn-Tnz" secondAttribute="trailing" constant="20" id="Oz7-iz-58P"/>
                 <constraint firstItem="uPQ-MC-gQE" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="TPR-uR-eRI" secondAttribute="trailing" constant="20" id="Qwc-iy-Qed"/>
-                <constraint firstItem="lxf-Vl-Xwg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="UyA-Vc-oGe"/>
+                <constraint firstItem="lxf-Vl-Xwg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="25" id="UyA-Vc-oGe"/>
+                <constraint firstItem="BJ5-r1-Pau" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Uzi-TD-6lD"/>
                 <constraint firstItem="qgQ-w8-sta" firstAttribute="leading" secondItem="YKf-l2-pfi" secondAttribute="trailing" constant="40" id="YmQ-Ro-bv5"/>
+                <constraint firstItem="BJ5-r1-Pau" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="cAU-G4-MRM"/>
                 <constraint firstItem="uPQ-MC-gQE" firstAttribute="centerY" secondItem="TPR-uR-eRI" secondAttribute="centerY" id="e6g-LC-3Vx"/>
                 <constraint firstItem="qgQ-w8-sta" firstAttribute="centerY" secondItem="TPR-uR-eRI" secondAttribute="centerY" id="ekj-mZ-Ylr"/>
                 <constraint firstItem="VNP-Dd-vfT" firstAttribute="leading" secondItem="lxf-Vl-Xwg" secondAttribute="trailing" constant="10" id="frM-AC-bg3"/>
                 <constraint firstItem="Y4o-zw-kiz" firstAttribute="leading" secondItem="itq-5M-x9D" secondAttribute="trailing" constant="10" id="h7R-Hb-8SL"/>
                 <constraint firstItem="qgQ-w8-sta" firstAttribute="centerY" secondItem="TPR-uR-eRI" secondAttribute="centerY" id="hz2-VO-ZSL"/>
-                <constraint firstItem="TPR-uR-eRI" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="imA-7M-IU2"/>
+                <constraint firstItem="TPR-uR-eRI" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="25" id="imA-7M-IU2"/>
                 <constraint firstAttribute="trailing" secondItem="qgQ-w8-sta" secondAttribute="trailing" constant="150" id="q9s-MH-axq"/>
-                <constraint firstItem="qAU-sn-CQ7" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="uLE-zW-SJS"/>
-                <constraint firstItem="qAU-sn-CQ7" firstAttribute="top" secondItem="cnG-ya-Qns" secondAttribute="bottom" constant="5" id="vg4-JR-9kd"/>
                 <constraint firstItem="cnG-ya-Qns" firstAttribute="top" secondItem="TPR-uR-eRI" secondAttribute="bottom" constant="5" id="zO2-ef-EIz"/>
                 <constraint firstItem="VNP-Dd-vfT" firstAttribute="centerY" secondItem="lxf-Vl-Xwg" secondAttribute="centerY" id="zfQ-nO-jGe"/>
-                <constraint firstAttribute="bottom" secondItem="qAU-sn-CQ7" secondAttribute="bottom" id="zg5-pH-hhL"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -132,6 +132,7 @@
         </view>
     </objects>
     <resources>
+        <image name="cheveron-cellOpen_dark" width="21" height="13"/>
         <image name="cheveron-normal_gry" width="21" height="13"/>
         <image name="line_v" width="1" height="1"/>
     </resources>

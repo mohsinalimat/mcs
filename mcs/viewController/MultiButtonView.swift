@@ -41,7 +41,7 @@ class MultiButtonView: UIView {
         
         let ts:[String] = titles.reversed()
         for i in 0..<ts.count {
-            let b = UIButton (frame: CGRect (x: frame.width - CGFloat.init((i + 1) * 120), y: 0, width: 100, height: frame.height));
+            let b = UIButton (frame: CGRect (x: frame.width - CGFloat.init((i + 1) * 140), y: 0, width: 140, height: frame.height));
             b.tag = ts.count - i;
             b.setTitle(ts[i], for: .normal)
             b.titleLabel?.font = UIFont.systemFont(ofSize: 15)
@@ -55,7 +55,7 @@ class MultiButtonView: UIView {
                 b.isSelected = true;
                 _currentBtn = b
                 _line.center = b.center
-                _line.frame = CGRect (x: b.frame.minX + b.frame.width / 4.0, y: b.frame.maxY - 2, width: b.frame.width / 2.0, height: 2)
+                _line.frame = CGRect (x: b.frame.minX , y: b.frame.maxY - 2, width: b.frame.width , height: 2)
                 _line.backgroundColor = kButtonTitleDefaultColor
                 self.addSubview(_line)
             }

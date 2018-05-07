@@ -16,8 +16,6 @@ class MaterialSearchController: BaseViewController  ,UITableViewDelegate,UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         view.backgroundColor = UIColor.white
         
         _initSubviews()
@@ -26,6 +24,15 @@ class MaterialSearchController: BaseViewController  ,UITableViewDelegate,UITable
         
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.contentInset = UIEdgeInsets.zero
+        tableView.scrollIndicatorInsets = UIEdgeInsets.zero
+
+//        print("search")
+//        print(tableView.frame)
+    }
+    
     //MARK: - init
     func _initSubviews()  {
         

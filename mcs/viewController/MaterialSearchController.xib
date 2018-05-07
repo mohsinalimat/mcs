@@ -88,7 +88,6 @@
                 <constraint firstAttribute="bottom" secondItem="p50-Nz-sRL" secondAttribute="bottom" id="xCt-4x-mqI"/>
             </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
-            <nil key="simulatedBottomBarMetrics"/>
         </view>
     </objects>
     <resources>

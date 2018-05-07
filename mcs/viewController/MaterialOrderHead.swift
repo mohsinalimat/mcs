@@ -23,13 +23,16 @@ class MaterialOrderHead: UIView {
     
     @IBOutlet weak var arrow_btn: UIButton!
     
+    var clickedAction:((Bool) -> Void)?
+    
+    
     @IBAction func buttonAction(_ sender: UIButton) {
+       sender.isSelected = !sender.isSelected
         
-        
-        
-        
-        
-        
+        if let handler = clickedAction {
+            handler(sender.isSelected);
+        }
+
     }
     
     
@@ -39,15 +42,9 @@ class MaterialOrderHead: UIView {
         
     }
    
-    
-    
-    
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    func _setSelected(_ b : Bool)  {
+        
     }
-    */
+    
 
 }

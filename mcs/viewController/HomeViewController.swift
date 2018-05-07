@@ -19,7 +19,7 @@ class HomeViewController: BaseTabItemController,UICollectionViewDelegate,UIColle
     var dataArray:[[String:Any]] = []
     var taskNoData:[String:Int] = [:]
     var warnNoData:[[String:Any]] = []
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         _initSubview()
@@ -27,6 +27,8 @@ class HomeViewController: BaseTabItemController,UICollectionViewDelegate,UIColle
         getFlightStatusData()
         
         getActiveData()
+        
+        print(NSHomeDirectory())
     }
 
     
@@ -46,7 +48,6 @@ class HomeViewController: BaseTabItemController,UICollectionViewDelegate,UIColle
             strongSelf.dataArray = strongSelf.dataArray + body
             strongSelf._collectionView.reloadData()
             strongSelf.getTaskNumber();
-            
             strongSelf.getWarnNumber()
             }
         )
@@ -68,10 +69,8 @@ class HomeViewController: BaseTabItemController,UICollectionViewDelegate,UIColle
         netHelper_request(withUrl: get_aircraft_status_url, successHandler: { [weak self] (result) in
             guard let body = result["body"] as? [[String:Any]] else {return;}
             guard let strongSelf = self else{return}
-            
             strongSelf.warnNoData =  body
             strongSelf._collectionView.reloadData()
-            
             })
     }
     
@@ -79,13 +78,36 @@ class HomeViewController: BaseTabItemController,UICollectionViewDelegate,UIColle
         netHelper_request(withUrl: active_basedata_url, method: .post, parameters: nil, successHandler: {[weak self] (result) in
             guard let body = result["body"] as? [String:Any] else {return;}
             guard let strongSelf = self else{return}
-            
             kActive_BASE_DATA = body;
             
+            guard let version = body["version"] as? String else {return}
+            guard let last = UserDefaults.standard.value(forKey: "MCSTocBaseDataVersion") as? String  else{
+                strongSelf.getDocData(version);return;
+            }
+            
+            guard version > last else {return}
+            strongSelf.getDocData(version)
+
             }
         )
     }
     
+    func getDocData(_ versoin:String) {
+        netHelper_request(withUrl: basic_basedata_url, method: .post, parameters: nil, successHandler: {(result) in
+            guard let body = result["body"] as? [String:[[String:String]]] else {return;}
+            TOCModel.getUsingLKDBHelper().dropAllTable()
+            Model.getUsingLKDBHelper().executeSQL("VACUUM", arguments: nil)
+            
+            for (k,v) in body {
+                FMDB.default().insert(with: v, toc: k)
+            }
+
+            UserDefaults.standard.setValue(versoin, forKey: "MCSTocBaseDataVersion")
+            UserDefaults.standard.synchronize()
+        })
+    }
+    
+
     
     
     //MARK: -

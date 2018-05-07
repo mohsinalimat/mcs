@@ -80,12 +80,11 @@ let taskPool_addAction_url      =       "/biz/taskAction/"
 let action_list_url             =       "/biz/getFeedbackData"
 let action_delete_url           =       "/biz/taskAction/"
 let action_detail_viewDefect_url =      "/biz/viewDefect"
-/// 提交故障信息到mcs 系统中
-let submit_fault_url = "/biz/fault"//必须bizId:7e93fcf736dd11e8be99448a5be48bfb   // 当前业务 id
 
 ////defect
 let defect_list_url     =   "/biz/fault/list"
 let defect_submit_url   =   "/biz/defect/submit"
+let defect_save_fault_url = "/biz/fault"//必须bizId:7e93fcf736dd11e8be99448a5be48bfb   // 当前业务 id
 
 ///dd
 let dd_list_url = "/biz/dd/list"
