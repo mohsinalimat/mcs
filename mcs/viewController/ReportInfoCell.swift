@@ -11,11 +11,8 @@ import UIKit
 class ReportInfoCell: UITableViewCell {
 
     @IBOutlet weak var reg: UIButton!
-
-    @IBOutlet weak var fltNo: UIButton!
-    
-    @IBOutlet weak var fltDate: UIButton!
-    
+    @IBOutlet weak var issueBy: UIButton!
+    @IBOutlet weak var issueDate: UIButton!
     @IBOutlet weak var station: UIButton!
     
     @IBAction func buttonAction(_ sender: UIButton) {
@@ -23,38 +20,33 @@ class ReportInfoCell: UITableViewCell {
         case 0://reg
             Tools.showDataPicekr (dataSource:Tools.acs()){ (obj) in
                 let obj = obj as! String
-                
                 sender.setTitle(obj, for: .normal)
+                report_reg = obj
             }
             break
-            
-        case 1://flt no
-            Tools.showDataPicekr(dataSource:["285","286"]) {(obj) in
-                //guard let strongSelf = self else {return}
-                
+        case 1://station
+            Tools.showDataPicekr (dataSource:Tools.station()){ (obj) in
+                let obj = obj as! String
+                sender.setTitle(obj, for: .normal)
+                report_station = obj
+            }
+            break
+    
+        case 2:
+            Tools.showDataPicekr(dataSource:g_staffs) {(obj) in
                 let obj = obj as! String
                 sender.setTitle(obj, for: .normal)
             }
 
             break
             
-        case 2://date
+        case 3://date
             Tools.showDatePicekr { (obj) in
                 let obj = obj as! Date
                 let str = Tools.dateToString(obj, formatter: "dd/MM/yyyy")
                 sender.setTitle(str, for: .normal)
+                report_date = obj
             }
-            break
-            
-        case 3://station
-            Tools.showDataPicekr (dataSource:Tools.station()){ (obj) in
-                let obj = obj as! String
-                
-                sender.setTitle(obj, for: .normal)
-            }
-            break
-        case 4://查看历史故障
-            
             break
         default:break
         }
@@ -62,11 +54,13 @@ class ReportInfoCell: UITableViewCell {
         
     }
     
-    
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        let today = Tools.dateToString(Date(), formatter: "dd/MM/yyyy");
+        issueDate.setTitle(today, for: .normal)
+        report_date = Date()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

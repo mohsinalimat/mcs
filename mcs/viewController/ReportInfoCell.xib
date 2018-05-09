@@ -16,19 +16,19 @@
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="INc-uB-dpb">
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Station" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lwm-91-OmD">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lwm-91-OmD">
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FLT No." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tUw-kN-fG9">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Station " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tUw-kN-fG9">
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9xe-4o-uab">
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="130" id="THj-CA-tCp"/>
+                                    <constraint firstAttribute="width" constant="150" id="THj-CA-tCp"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" backgroundImage="button_bg1"/>
@@ -36,7 +36,7 @@
                                     <action selector="buttonAction:" destination="Blk-eS-rt5" eventType="touchUpInside" id="5QN-Br-hfV"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FLT  Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vBK-Ul-mcz">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Issue By / Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vBK-Ul-mcz">
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -61,7 +61,7 @@
                                     <action selector="buttonAction:" destination="Blk-eS-rt5" eventType="touchUpInside" id="iVP-69-zTM"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nf4-q3-IVM">
+                            <button hidden="YES" opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nf4-q3-IVM">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="vpt-U3-r0r"/>
                                     <constraint firstAttribute="height" constant="30" id="xvm-k4-YY0"/>
@@ -86,22 +86,43 @@
                                     <action selector="buttonAction:" destination="Blk-eS-rt5" eventType="touchUpInside" id="eGV-Un-1pW"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dKD-8w-XMu">
+                                <frame key="frameInset" minX="40" minY="29" width="18" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hws-ox-FtR">
+                                <frame key="frameInset" minX="280" minY="29" width="18" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lpe-gn-weN">
+                                <frame key="frameInset" minX="567" minY="28" width="18" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="G7Q-Ib-RHX" firstAttribute="leading" secondItem="tUw-kN-fG9" secondAttribute="trailing" constant="10" id="0c7-eI-AW0"/>
+                            <constraint firstItem="G7Q-Ib-RHX" firstAttribute="leading" secondItem="tUw-kN-fG9" secondAttribute="trailing" constant="30" id="0c7-eI-AW0"/>
                             <constraint firstItem="9xe-4o-uab" firstAttribute="centerY" secondItem="G7Q-Ib-RHX" secondAttribute="centerY" id="8Zd-Fb-BSF"/>
                             <constraint firstItem="G7Q-Ib-RHX" firstAttribute="centerY" secondItem="tUw-kN-fG9" secondAttribute="centerY" id="9C7-aM-0fi"/>
-                            <constraint firstItem="d4V-mY-KwR" firstAttribute="leading" secondItem="9Ug-0q-iM9" secondAttribute="trailing" constant="10" id="EiH-b3-U11"/>
+                            <constraint firstItem="d4V-mY-KwR" firstAttribute="leading" secondItem="9Ug-0q-iM9" secondAttribute="trailing" constant="30" id="EiH-b3-U11"/>
                             <constraint firstItem="9Ug-0q-iM9" firstAttribute="leading" secondItem="INc-uB-dpb" secondAttribute="leading" constant="10" id="FQu-96-uPS"/>
                             <constraint firstItem="G7Q-Ib-RHX" firstAttribute="centerY" secondItem="d4V-mY-KwR" secondAttribute="centerY" id="FTN-KU-yXO"/>
-                            <constraint firstItem="Lwm-91-OmD" firstAttribute="leading" secondItem="9xe-4o-uab" secondAttribute="trailing" constant="40" id="Kvw-e9-3pT"/>
-                            <constraint firstItem="9xe-4o-uab" firstAttribute="leading" secondItem="vBK-Ul-mcz" secondAttribute="trailing" constant="10" id="Na7-WY-2tU"/>
+                            <constraint firstItem="Lwm-91-OmD" firstAttribute="leading" secondItem="9xe-4o-uab" secondAttribute="trailing" constant="15" id="Kvw-e9-3pT"/>
+                            <constraint firstItem="9xe-4o-uab" firstAttribute="leading" secondItem="vBK-Ul-mcz" secondAttribute="trailing" constant="30" id="Na7-WY-2tU"/>
                             <constraint firstItem="tUw-kN-fG9" firstAttribute="leading" secondItem="d4V-mY-KwR" secondAttribute="trailing" constant="40" id="O8U-he-Lik"/>
                             <constraint firstItem="Lwm-91-OmD" firstAttribute="centerY" secondItem="G7Q-Ib-RHX" secondAttribute="centerY" id="UcV-GW-g0Z"/>
                             <constraint firstItem="vBK-Ul-mcz" firstAttribute="leading" secondItem="G7Q-Ib-RHX" secondAttribute="trailing" constant="40" id="WgI-fp-ElE"/>
                             <constraint firstItem="vBK-Ul-mcz" firstAttribute="centerY" secondItem="G7Q-Ib-RHX" secondAttribute="centerY" id="Xyb-1E-S2k"/>
                             <constraint firstItem="H80-um-R3T" firstAttribute="centerY" secondItem="G7Q-Ib-RHX" secondAttribute="centerY" id="dt1-vu-bt2"/>
-                            <constraint firstItem="H80-um-R3T" firstAttribute="leading" secondItem="Lwm-91-OmD" secondAttribute="trailing" constant="10" id="jqg-58-YnI"/>
+                            <constraint firstItem="H80-um-R3T" firstAttribute="leading" secondItem="Lwm-91-OmD" secondAttribute="trailing" constant="15" id="jqg-58-YnI"/>
                             <constraint firstItem="d4V-mY-KwR" firstAttribute="centerY" secondItem="9Ug-0q-iM9" secondAttribute="centerY" id="mAn-TB-Jkf"/>
                             <constraint firstAttribute="trailing" secondItem="nf4-q3-IVM" secondAttribute="trailing" constant="20" id="nTI-J2-wOa"/>
                             <constraint firstItem="d4V-mY-KwR" firstAttribute="top" secondItem="INc-uB-dpb" secondAttribute="top" constant="20" id="tJW-XP-h9l"/>
@@ -117,10 +138,10 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="fltDate" destination="9xe-4o-uab" id="Rsl-JM-a5g"/>
-                <outlet property="fltNo" destination="G7Q-Ib-RHX" id="GG7-8w-tv6"/>
+                <outlet property="issueBy" destination="9xe-4o-uab" id="qm7-WE-edA"/>
+                <outlet property="issueDate" destination="H80-um-R3T" id="FQh-ZK-yPo"/>
                 <outlet property="reg" destination="d4V-mY-KwR" id="Ka0-IG-fUB"/>
-                <outlet property="station" destination="H80-um-R3T" id="ySx-WZ-8XW"/>
+                <outlet property="station" destination="G7Q-Ib-RHX" id="lAw-oL-shk"/>
             </connections>
         </tableViewCell>
     </objects>

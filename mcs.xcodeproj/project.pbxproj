@@ -35,6 +35,8 @@
 		A14BA8B12073761D0027D51F /* TaskPoolDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A14BA8B02073761C0027D51F /* TaskPoolDetailController.xib */; };
 		A15234362093195200939E0F /* SearchAction.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A15234352093195200939E0F /* SearchAction.storyboard */; };
 		A15234382093216B00939E0F /* DefectSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15234372093216B00939E0F /* DefectSearchController.swift */; };
+		A157EA7A20A186F800ED8D6D /* DefectDocCodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A157EA7820A186F700ED8D6D /* DefectDocCodeCell.swift */; };
+		A157EA7B20A186F800ED8D6D /* DefectDocCodeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A157EA7920A186F700ED8D6D /* DefectDocCodeCell.xib */; };
 		A161216220901EBE00F72C94 /* ReporFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A161216020901EBD00F72C94 /* ReporFormController.swift */; };
 		A161216320901EBE00F72C94 /* ReporFormController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A161216120901EBE00F72C94 /* ReporFormController.xib */; };
 		A161216520901F5600F72C94 /* DefectPreviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A161216420901F5600F72C94 /* DefectPreviewController.swift */; };
@@ -229,6 +231,8 @@
 		A14BA8B02073761C0027D51F /* TaskPoolDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskPoolDetailController.xib; sourceTree = "<group>"; };
 		A15234352093195200939E0F /* SearchAction.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SearchAction.storyboard; sourceTree = "<group>"; };
 		A15234372093216B00939E0F /* DefectSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefectSearchController.swift; sourceTree = "<group>"; };
+		A157EA7820A186F700ED8D6D /* DefectDocCodeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefectDocCodeCell.swift; sourceTree = "<group>"; };
+		A157EA7920A186F700ED8D6D /* DefectDocCodeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DefectDocCodeCell.xib; sourceTree = "<group>"; };
 		A161216020901EBD00F72C94 /* ReporFormController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReporFormController.swift; sourceTree = "<group>"; };
 		A161216120901EBE00F72C94 /* ReporFormController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReporFormController.xib; sourceTree = "<group>"; };
 		A161216420901F5600F72C94 /* DefectPreviewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefectPreviewController.swift; sourceTree = "<group>"; };
@@ -502,6 +506,8 @@
 				A1633B11209445B200342F92 /* SearBarView.xib */,
 				A1633B1320944D1200342F92 /* SearchItemCell.swift */,
 				A1633B1420944D1200342F92 /* SearchItemCell.xib */,
+				A157EA7820A186F700ED8D6D /* DefectDocCodeCell.swift */,
+				A157EA7920A186F700ED8D6D /* DefectDocCodeCell.xib */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -904,6 +910,7 @@
 				A124D41720722D21005E279D /* TaskChangeShiftVC.xib in Resources */,
 				A161216D20904DAF00F72C94 /* ReportInfoCell.xib in Resources */,
 				A1C6DD74206C7F1000A09808 /* TaskPoolSelectController.xib in Resources */,
+				A157EA7B20A186F800ED8D6D /* DefectDocCodeCell.xib in Resources */,
 				A1EE525F20995EB0000E3630 /* defectStatus.plist in Resources */,
 				A161216320901EBE00F72C94 /* ReporFormController.xib in Resources */,
 				A1633B12209445B200342F92 /* SearBarView.xib in Resources */,
@@ -1078,6 +1085,7 @@
 				A1EC58A920897BE500936D6B /* ViewDefectReportController.swift in Sources */,
 				A1C546BB2079E5580060D921 /* Section_TableViewCell2.swift in Sources */,
 				A1BA5763209AB84000B2D6E0 /* MaterialSearchCell.swift in Sources */,
+				A157EA7A20A186F800ED8D6D /* DefectDocCodeCell.swift in Sources */,
 				A1E32F1D2016D45F00842A18 /* Tools.swift in Sources */,
 				A1202841200896EE00CB8633 /* HomeViewController.swift in Sources */,
 				A1C26DB6204FDDCC00B11F63 /* FlightWarnListTopView.swift in Sources */,

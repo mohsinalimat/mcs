@@ -36,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func _init() {
        HUD.config()
        
-       TOCModel.isExistTable()
+       AMMModel.isExistTable()
        IQKeyboardManager.sharedManager().enable = true
         
     }

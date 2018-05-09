@@ -95,7 +95,7 @@ class HomeViewController: BaseTabItemController,UICollectionViewDelegate,UIColle
     func getDocData(_ versoin:String) {
         netHelper_request(withUrl: basic_basedata_url, method: .post, parameters: nil, successHandler: {(result) in
             guard let body = result["body"] as? [String:[[String:String]]] else {return;}
-            TOCModel.getUsingLKDBHelper().dropAllTable()
+            Model.getUsingLKDBHelper().dropAllTable()
             Model.getUsingLKDBHelper().executeSQL("VACUUM", arguments: nil)
             
             for (k,v) in body {

@@ -34,7 +34,6 @@ class DefectReportController: BaseTabItemController ,UITableViewDelegate,UITable
     
     //MARK:
     @IBAction func buttonAction(_ sender: UIButton) {
-    
         switch sender.tag {
         case 1:
             _selectedIndexArrr.removeAll()
@@ -44,23 +43,22 @@ class DefectReportController: BaseTabItemController ,UITableViewDelegate,UITable
             _tableView.reloadData()
             break
             
-        case 2:
-
-            _pop();
-            
-            break
-            
+        case 2: _pop();break
         case 3:
             HUD.show()
-            
             let v = ReporFormController()
             self.navigationController?.pushViewController(v, animated: true); break
         case 4:
-            
+            let taskid = _getSelectedId()
+            guard taskid.count > 0 else {return}
+            self.showMsg("Delete This Task?", title: "Delete", handler: {[weak self] in
+                guard let ss = self else {return}
+                ss._delete(taskid)
+                })
             break
-            
         case 5://submit
             let taskid = _getSelectedId()
+            guard taskid.count > 0 else {return}
             
             self.showMsg("Submit This Task?", title: "Submit", handler: {[weak self] in
                 guard let ss = self else {return}
@@ -68,17 +66,9 @@ class DefectReportController: BaseTabItemController ,UITableViewDelegate,UITable
             })
             
             break
-            
-        case 6:
-            _initStatus()
-            break
-            
+        case 6:_initStatus();break
         default:break
         }
-    
-    
-    
-    
     }
 
     func _initStatus()  {
@@ -116,6 +106,22 @@ class DefectReportController: BaseTabItemController ,UITableViewDelegate,UITable
         })
     }
 
+    func _delete(_ ids :[String])  {
+        HUD.show()
+        
+        netHelper_request(withUrl: defect_delete_url, method: .delete, parameters: ["bizIds":ids], successHandler: { [weak self] (res) in
+            HUD.show(successInfo: "Delete Success")
+            
+            guard let ss = self else {return}
+            ss._initStatus()
+            ss.loadData()
+            }, failureHandler: { (str) in
+                HUD.show(info: str ?? "Error")
+        })
+
+    }
+    
+    
     
     func _pop() {
         let maskView = UIView (frame: UIScreen.main.bounds)
@@ -146,9 +152,7 @@ class DefectReportController: BaseTabItemController ,UITableViewDelegate,UITable
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         title = "Defect List"
-        
         delete_bg.isHidden = true
-        
         _initSubviews()
         
         loadData()
@@ -160,23 +164,22 @@ class DefectReportController: BaseTabItemController ,UITableViewDelegate,UITable
 //        let rx =  rx_selected.asObservable().map {$0.count > 0}.shareReplay(1)
 //        rx.bindTo(btn_submit.ex_isEnabled).addDisposableTo(disposeBag);
 //        rx.bindTo(btn_delete.ex_isEnabled).addDisposableTo(disposeBag);
+        
+        NotificationCenter.default.rx.notification(NSNotification.Name (rawValue: "creatDefectReportSubmintOkNotification"), object: nil).subscribe { [weak self](e) in
+            guard let ss = self else {return}
+            ss.loadData()
+        }.addDisposableTo(disposeBag)
     }
 
     
     //MARK: - init
     func _initSubviews()  {
-
-        /////
         _tableView.register(UINib (nibName: "DefectReportCell", bundle: nil), forCellReuseIdentifier: "DefectReportCellIdentifier")
         _tableView.tableFooterView = UIView()
-        
-        
         _tableView.delegate = self
         _tableView.dataSource = self
-        _tableView.rowHeight = 90
-        //_tableView.separatorStyle = .none
-        
-
+        _tableView.rowHeight = 105
+        _tableView.separatorStyle = .none
         
         ///Refresh Data
         let header = TTRefreshHeader.init {
@@ -187,7 +190,6 @@ class DefectReportController: BaseTabItemController ,UITableViewDelegate,UITable
         }
         
         _tableView.mj_header = header
-        
     }
     
     
@@ -264,16 +266,6 @@ class DefectReportController: BaseTabItemController ,UITableViewDelegate,UITable
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

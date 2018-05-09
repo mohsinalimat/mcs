@@ -43,11 +43,6 @@ class Tools: NSObject {
    
     
     
-    
-    
-    
-    
-    
     //MARK: - show pop
     static func showAlert(_ vcname:String , withBar:Bool = true , frame:CGRect = CGRect(x: 0, y: 0, width: 500, height: 360)) {
         let appname = Bundle.main.infoDictionary!["CFBundleExecutable"] as! String
@@ -55,6 +50,15 @@ class Tools: NSObject {
         let vc = cls.init()
         vc.view.frame = frame
         
+        Tools.default._show(vc, withBar: true, frame: frame);
+    }
+    
+    static func showVC(_ vc:UIViewController , withBar:Bool = true , frame:CGRect = CGRect(x: 0, y: 0, width: 500, height: 360)) {
+        vc.view.frame = frame
+        Tools.default._show(vc, withBar: true, frame: frame);
+    }
+    
+    func _show(_ vc:UIViewController , withBar:Bool = true , frame:CGRect ) {
         if withBar {
             let nav = BaseNavigationController(rootViewController:vc)
             nav.navigationBar.barTintColor = kPop_navigationBar_color
@@ -114,15 +118,6 @@ class Tools: NSObject {
         }
     
     }
-
-    
-    func show(_ vc : UIViewController) {
-        
-    }
-    
-    
-    
-    
     
     
     
@@ -132,7 +127,6 @@ class Tools: NSObject {
         if let name = UserDefaults.standard.value(forKey:"user-name") as? String {
             return name;
         }
-        
         return ""
     }
     
@@ -157,12 +151,10 @@ class Tools: NSObject {
     
     static func shift() -> [Any]? {
         return kTaskPool_BASE_DATA["shifts"] as? [Any]
-
     }
     
     static func station() -> [Any]? {
         return kTaskPool_BASE_DATA["stations"] as? [Any]
-        
     }
 
     

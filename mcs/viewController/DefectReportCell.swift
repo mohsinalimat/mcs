@@ -65,7 +65,7 @@ class DefectReportCell: UITableViewCell {
         let defectDesc = String.stringIsNullOrNilToEmpty(d["description"])
         let defectStr = "Description: " + defectDesc
         let defectAttriStr =  NSMutableAttributedString.init(string: defectStr)
-        defectAttriStr.addAttributes([NSFontAttributeName:UIFont.boldSystemFont(ofSize: 15),NSForegroundColorAttributeName:UIColor.darkGray], range: NSMakeRange(0, 12))
+        defectAttriStr.addAttributes([NSFontAttributeName:UIFont.boldSystemFont(ofSize: 16),NSForegroundColorAttributeName:UIColor.darkGray], range: NSMakeRange(0, 12))
         des_detail.attributedText = defectAttriStr
         
 

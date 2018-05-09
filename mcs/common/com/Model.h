@@ -58,11 +58,37 @@
 @end
 
 
-@interface TOCModel : Model
+@interface AMMModel : Model
 @property(nonatomic,copy)NSString * taskCode;
 @property(nonatomic,copy)NSString * taskName;
 @property(nonatomic,copy)NSString * doc;
 
 @end
+
+@interface MELModel : Model
+@property(nonatomic,copy)NSString * code;
+@property(nonatomic,copy)NSString * title;
+@property(nonatomic,copy)NSString * _description;
+
+@end
+
+@interface TSMModel : Model
+@property(nonatomic,copy)NSString * code;
+@property(nonatomic,copy)NSString * message;
+
+@end
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
