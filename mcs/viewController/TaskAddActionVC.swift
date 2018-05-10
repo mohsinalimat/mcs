@@ -65,7 +65,7 @@ class TaskAddActionVC: BaseViewController ,UITableViewDelegate,UITableViewDataSo
             s_closed.isOn = false
             
             btn_save.isHidden = true
-            title = "No." + (action_detail_info_r["id"] as! String);
+            title = "No." + String.stringIsNullOrNilToEmpty(action_detail_info_r["id"]);
             s_performed.isOn = (action_detail_info_r["perform"] as? Int) == 1 ? true : false
             
             s_closed.isOn = (action_detail_info_r["closed"] as? Int) == 1 ? true : false
@@ -90,12 +90,14 @@ class TaskAddActionVC: BaseViewController ,UITableViewDelegate,UITableViewDataSo
             reportInfoCell.actBy.text = Tools.loginUserName()
             reportInfoCell.reportBy.text = Tools.loginUserName()
             
-            guard kTaskpool_date != nil ,kTaskpool_shift != nil , kTaskpool_station != nil else {return}
-            reportInfoCell.shift.setTitle(kTaskpool_shift?["value"], for: .normal)
-            reportInfoCell.shiftDate.setTitle(Tools.dateToString(kTaskpool_date!, formatter: "dd/MM/yyyy"), for: .normal)
-            
-            actionBaseInfoCell.dateTime.setTitle(Tools.dateToString(Date(), formatter: "dd/MM/yyyy"), for: .normal)
-            actionBaseInfoCell.station.setTitle(kTaskpool_station, for: .normal)
+            if kTaskpool_date != nil && kTaskpool_shift != nil && kTaskpool_station != nil {
+                reportInfoCell.shift.setTitle(kTaskpool_shift?["value"], for: .normal)
+                reportInfoCell.shiftDate.setTitle(Tools.dateToString(kTaskpool_date!, formatter: "dd/MM/yyyy"), for: .normal)
+                
+                actionBaseInfoCell.dateTime.setTitle(Tools.dateToString(Date(), formatter: "dd/MM/yyyy"), for: .normal)
+                actionBaseInfoCell.station.setTitle(kTaskpool_station, for: .normal)
+            }
+
             
             //操作绑定
             let observable = actionBaseInfoCell.descri.rx.text.orEmpty.map({$0.lengthOfBytes(using: String.Encoding.utf8) > 0 }).shareReplay(1)

@@ -112,7 +112,7 @@
                             <constraint firstItem="G7Q-Ib-RHX" firstAttribute="leading" secondItem="tUw-kN-fG9" secondAttribute="trailing" constant="30" id="0c7-eI-AW0"/>
                             <constraint firstItem="9xe-4o-uab" firstAttribute="centerY" secondItem="G7Q-Ib-RHX" secondAttribute="centerY" id="8Zd-Fb-BSF"/>
                             <constraint firstItem="G7Q-Ib-RHX" firstAttribute="centerY" secondItem="tUw-kN-fG9" secondAttribute="centerY" id="9C7-aM-0fi"/>
-                            <constraint firstItem="d4V-mY-KwR" firstAttribute="leading" secondItem="9Ug-0q-iM9" secondAttribute="trailing" constant="30" id="EiH-b3-U11"/>
+                            <constraint firstItem="d4V-mY-KwR" firstAttribute="leading" secondItem="9Ug-0q-iM9" secondAttribute="trailing" constant="35" id="EiH-b3-U11"/>
                             <constraint firstItem="9Ug-0q-iM9" firstAttribute="leading" secondItem="INc-uB-dpb" secondAttribute="leading" constant="10" id="FQu-96-uPS"/>
                             <constraint firstItem="G7Q-Ib-RHX" firstAttribute="centerY" secondItem="d4V-mY-KwR" secondAttribute="centerY" id="FTN-KU-yXO"/>
                             <constraint firstItem="Lwm-91-OmD" firstAttribute="leading" secondItem="9xe-4o-uab" secondAttribute="trailing" constant="15" id="Kvw-e9-3pT"/>
@@ -122,7 +122,7 @@
                             <constraint firstItem="vBK-Ul-mcz" firstAttribute="leading" secondItem="G7Q-Ib-RHX" secondAttribute="trailing" constant="40" id="WgI-fp-ElE"/>
                             <constraint firstItem="vBK-Ul-mcz" firstAttribute="centerY" secondItem="G7Q-Ib-RHX" secondAttribute="centerY" id="Xyb-1E-S2k"/>
                             <constraint firstItem="H80-um-R3T" firstAttribute="centerY" secondItem="G7Q-Ib-RHX" secondAttribute="centerY" id="dt1-vu-bt2"/>
-                            <constraint firstItem="H80-um-R3T" firstAttribute="leading" secondItem="Lwm-91-OmD" secondAttribute="trailing" constant="15" id="jqg-58-YnI"/>
+                            <constraint firstItem="H80-um-R3T" firstAttribute="leading" secondItem="Lwm-91-OmD" secondAttribute="trailing" constant="20" id="jqg-58-YnI"/>
                             <constraint firstItem="d4V-mY-KwR" firstAttribute="centerY" secondItem="9Ug-0q-iM9" secondAttribute="centerY" id="mAn-TB-Jkf"/>
                             <constraint firstAttribute="trailing" secondItem="nf4-q3-IVM" secondAttribute="trailing" constant="20" id="nTI-J2-wOa"/>
                             <constraint firstItem="d4V-mY-KwR" firstAttribute="top" secondItem="INc-uB-dpb" secondAttribute="top" constant="20" id="tJW-XP-h9l"/>

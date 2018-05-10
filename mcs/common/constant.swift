@@ -102,10 +102,10 @@ enum SectionHeadButtonIndex :Int {
     case addActoinValue3
     case addActoinValue4 //附件
     case creatReportValue1
-    case creatReportValue2
-    case creatReportValue3
-    case creatReportValue4
-    case creatReportValue5
+    case creatReportValue2//material
+    case creatReportValue3//attachment
+    case creatReportValue4//
+    case creatReportValue5//action
 }
 
 var kSectionHeadButtonSelectedIndex:SectionHeadButtonIndex = .addActoinValue1

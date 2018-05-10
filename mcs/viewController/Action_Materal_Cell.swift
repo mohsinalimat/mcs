@@ -15,12 +15,12 @@ class Action_Materal_Cell: UITableViewCell,UITableViewDelegate,UITableViewDataSo
     var info:[String:Any]!
     
     var didSelectedRowAtIndex:((Int) -> Void)?
+    var addAction:((Void) -> Void)?
     
     @IBOutlet weak var addBtn_H: NSLayoutConstraint!
-    
     @IBOutlet weak var addBtn: UIButton!
-    
     @IBOutlet weak var _tableView: UITableView!
+    
     @IBAction func addAction(_ sender: UIButton) {
         switch kSectionHeadButtonSelectedIndex {
         case .addActoinValue2,.creatReportValue2:
@@ -45,15 +45,17 @@ class Action_Materal_Cell: UITableViewCell,UITableViewDelegate,UITableViewDataSo
             vc.addAction(action_1)
             vc.addAction(action_2)
             vc.addAction(action_3)
-            
-            
             UIApplication.shared.keyWindow?.rootViewController?.present(vc, animated: true, completion: nil);
             
+            break
+        case .creatReportValue5:
+            if let add = addAction {
+                add();
+            }
             break
             
         default:break
         }
-
         
     }
 
@@ -112,7 +114,7 @@ class Action_Materal_Cell: UITableViewCell,UITableViewDelegate,UITableViewDataSo
             return 0
             
         case .creatReportValue4:
-            return 5;
+            return 0;
             
         case .creatReportValue5: //action
             return 6;

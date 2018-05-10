@@ -16,15 +16,19 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
     var reportInfoCell:ReportInfoCell!
     var baseInfoCell:ReportBaseInfoCell!
     
+    var current_selected_index = SectionHeadButtonIndex (rawValue: 1)!
+    
     @IBOutlet weak var typeBtn: UIButton!
     @IBOutlet weak var _tableView: UITableView!
     @IBAction func buttonAction(_ sender: UIButton) {
         switch sender.tag {
         case 1://change type [TS , DD , NRR]
-            Tools.showDataPicekr (dataSource:["Defect Report","DD","NRR"]){ (obj) in
+            Tools.showDataPicekr (dataSource:["Defect Report","DD","NRR"]){[weak self] (obj) in
                 let obj = obj as! String
-                
                 sender.setTitle(obj, for: .normal)
+                guard let ss = self else {return}
+                ss.section2_selected_index = 1
+                ss._tableView.reloadData()
             }
             break
             
@@ -50,6 +54,11 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
          _initSubview()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        kSectionHeadButtonSelectedIndex = current_selected_index
+    }
+    
     
     func _initSubview()  {
         _tableView.delegate = self
@@ -61,6 +70,7 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
         _tableView.register(UINib (nibName: "Action_Detail_Cell_R", bundle: nil), forCellReuseIdentifier: "Action_Detail_Cell_RIdentifier")
         _tableView.register(UINib (nibName: "DDInfoCell", bundle: nil), forCellReuseIdentifier: "DDInfoCellIdentifier")
         _tableView.register(BaseCellWithTable.self, forCellReuseIdentifier: "BaseCellWithTableIdentifier")
+        _tableView.register(UINib (nibName: "NRRCell", bundle: nil), forCellReuseIdentifier: "NRRCellIdentifier")
         
         addActionMateralDataArr.removeAll()
         addActionComponentDataArr.removeAll()
@@ -155,25 +165,52 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
             
         }
         
-        
-/////////////////
+
+        //section2
         if section2_selected_index == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ReportBaseInfoCellIdentifier", for: indexPath) as! ReportBaseInfoCell;
             baseInfoCell = cell
             
             return cell
-        } else if section2_selected_index == 4 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "DDInfoCellIdentifier", for: indexPath) as! DDInfoCell;
+        } else if section2_selected_index == 2{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Action_Materal_CellIdentifier", for: indexPath) as! Action_Materal_Cell;
+            cell.read_only = read_only
+            //cell.info = action_detail_info_r
+            cell._tableView.reloadData()
             return cell
-        }
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Action_Materal_CellIdentifier", for: indexPath) as! Action_Materal_Cell;
-        //let cell = tableView.dequeueReusableCell(withIdentifier: "BaseCellWithTableIdentifier", for: indexPath) as! BaseCellWithTable
-        cell.read_only = read_only
-        //cell.info = action_detail_info_r
-        cell._tableView.reloadData()
-        
-        if section2_selected_index == 5 {
+        }else {
+            switch  typeBtn.currentTitle! {
+            case "Defect Report":
+
+                break
+                
+            case "DD":
+                if section2_selected_index == 3 {
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "DDInfoCellIdentifier", for: indexPath) as! DDInfoCell;
+                    return cell
+                }
+
+                break
+                
+            case "NRR":
+                if section2_selected_index == 3 {
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "NRRCellIdentifier", for: indexPath) as! NRRCell;
+                    return cell
+                }
+                break;
+            default:break
+            }
+            
+
+            
+            ///add action
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Action_Materal_CellIdentifier", for: indexPath) as! Action_Materal_Cell;
+            cell.read_only = read_only
+            //cell.info = action_detail_info_r
+            cell._tableView.reloadData()
+            
+            current_selected_index = kSectionHeadButtonSelectedIndex;
+            
             cell.didSelectedRowAtIndex = { index in
                 //let d = dataArray[indexPath.row]
                 
@@ -182,12 +219,52 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
                 vc.read_only = true
                 //vc.action_detail_info_r = d;
                 
-                //self.navigationController?.pushViewController(vc, animated: true)
+                self.navigationController?.pushViewController(vc, animated: true)
             }
+            
+            cell.addAction = {
+                HUD.show()
+                let vc = TaskAddActionVC()
+                self.navigationController?.pushViewController(vc, animated: true)
+
+            }
+            
+            return cell;
+            
         }
         
         
-        return cell
+
+//        if section2_selected_index == 1 {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "ReportBaseInfoCellIdentifier", for: indexPath) as! ReportBaseInfoCell;
+//            baseInfoCell = cell
+//            
+//            return cell
+//        } else if section2_selected_index == 4 {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "DDInfoCellIdentifier", for: indexPath) as! DDInfoCell;
+//            return cell
+//        }
+//        
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "Action_Materal_CellIdentifier", for: indexPath) as! Action_Materal_Cell;
+//        cell.read_only = read_only
+//        //cell.info = action_detail_info_r
+//        cell._tableView.reloadData()
+//        
+//        if section2_selected_index == 5 {
+//            cell.didSelectedRowAtIndex = { index in
+//                //let d = dataArray[indexPath.row]
+//                
+//                HUD.show()
+//                let vc = TaskAddActionVC()
+//                vc.read_only = true
+//                //vc.action_detail_info_r = d;
+//                
+//                //self.navigationController?.pushViewController(vc, animated: true)
+//            }
+//        }
+        
+        
+//        return cell
     }
     
     
@@ -222,7 +299,8 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
         
         let bg = UIView (frame: CGRect (x: 0, y: 0, width: kCurrentScreenWidth, height: 50))
         
-        let v = MultiButtonView.init(CGRect (x: 15, y: 0, width: bg.frame.width - 30, height: bg.frame.height), titles: ["Basic Info & Detail","Materal&Tools ","Attachment","DD","Action"] , selectedIndex : section2_selected_index)
+        let t = _sectionBtnTitle()
+        let v = MultiButtonView.init(CGRect (x: 15, y: 0, width: bg.frame.width - 30, height: bg.frame.height), titles: t , selectedIndex : section2_selected_index)
         v.title = "Defect Detail"
         
         v.selectedActionHandler = { index in
@@ -230,6 +308,27 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
                 guard let ss = self else {return}
                 ss.section2_selected_index = index
                 kSectionHeadButtonSelectedIndex = SectionHeadButtonIndex(rawValue: index + 4)!
+                
+                switch  ss.typeBtn.currentTitle! {
+                    case "Defect Report":
+                        switch index {
+                        case 3:
+                            kSectionHeadButtonSelectedIndex = SectionHeadButtonIndex(rawValue: 5 + 4)!
+                            break
+                        default:break
+                        }
+                        
+                        break
+                        
+                    case "DD","NRR":
+                        if index == 4 {
+                            kSectionHeadButtonSelectedIndex = SectionHeadButtonIndex(rawValue: 5 + 4)!;
+                        }
+                        break
+                    
+                    default:break
+                }
+                
                 tableView.reloadData()
 
             }
@@ -243,11 +342,11 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
     
     func _sectionBtnTitle() -> [String] {
         switch  typeBtn.currentTitle! {
-        case "Defect Report":return ["Basic Info & Detail","Materal&Tools ","Attachment","Action"];
+        case "Defect Report":return ["Basic Info & Detail","Materal&Tools ",/*"Attachment",*/"Action"];
             
-        case "DD":return ["Basic Info & Detail","Materal&Tools ","Attachment","DD","Action"];
+        case "DD":return ["Basic Info & Detail","Materal&Tools ",/*"Attachment",*/"DD","Action"];
 
-        case "NRR":return ["Basic Info & Detail","Materal&Tools ","Attachment","NRR","Action"];
+        case "NRR":return ["Basic Info & Detail","Materal&Tools ",/*"Attachment",*/"NRR","Action"];
         default:break
         }
         

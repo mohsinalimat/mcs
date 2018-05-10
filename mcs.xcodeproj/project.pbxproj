@@ -109,6 +109,8 @@
 		A1B144E2207F2BE8006B3806 /* DefectReportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B144E0207F2BE8006B3806 /* DefectReportController.swift */; };
 		A1B144E3207F2BE8006B3806 /* DefectReportController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1B144E1207F2BE8006B3806 /* DefectReportController.xib */; };
 		A1B1959F2091CCDF00F5F9DB /* BaseCellWithTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1959E2091CCDF00F5F9DB /* BaseCellWithTable.swift */; };
+		A1BA177620A3E343008078EE /* NRRCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BA177420A3E343008078EE /* NRRCell.swift */; };
+		A1BA177720A3E343008078EE /* NRRCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1BA177520A3E343008078EE /* NRRCell.xib */; };
 		A1BA575A209AAEF800B2D6E0 /* MaterialSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BA5758209AAEF800B2D6E0 /* MaterialSearchController.swift */; };
 		A1BA575B209AAEF800B2D6E0 /* MaterialSearchController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1BA5759209AAEF800B2D6E0 /* MaterialSearchController.xib */; };
 		A1BA575E209AAF0E00B2D6E0 /* MaterialOrderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BA575C209AAF0E00B2D6E0 /* MaterialOrderController.swift */; };
@@ -309,6 +311,8 @@
 		A1B144E0207F2BE8006B3806 /* DefectReportController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefectReportController.swift; sourceTree = "<group>"; };
 		A1B144E1207F2BE8006B3806 /* DefectReportController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DefectReportController.xib; sourceTree = "<group>"; };
 		A1B1959E2091CCDF00F5F9DB /* BaseCellWithTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCellWithTable.swift; sourceTree = "<group>"; };
+		A1BA177420A3E343008078EE /* NRRCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NRRCell.swift; sourceTree = "<group>"; };
+		A1BA177520A3E343008078EE /* NRRCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NRRCell.xib; sourceTree = "<group>"; };
 		A1BA5758209AAEF800B2D6E0 /* MaterialSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialSearchController.swift; sourceTree = "<group>"; };
 		A1BA5759209AAEF800B2D6E0 /* MaterialSearchController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MaterialSearchController.xib; sourceTree = "<group>"; };
 		A1BA575C209AAF0E00B2D6E0 /* MaterialOrderController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialOrderController.swift; sourceTree = "<group>"; };
@@ -508,6 +512,8 @@
 				A1633B1420944D1200342F92 /* SearchItemCell.xib */,
 				A157EA7820A186F700ED8D6D /* DefectDocCodeCell.swift */,
 				A157EA7920A186F700ED8D6D /* DefectDocCodeCell.xib */,
+				A1BA177420A3E343008078EE /* NRRCell.swift */,
+				A1BA177520A3E343008078EE /* NRRCell.xib */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -964,6 +970,7 @@
 				A120285C2008A1C000CB8633 /* error.png in Resources */,
 				A1BA575F209AAF0E00B2D6E0 /* MaterialOrderController.xib in Resources */,
 				A1C546AE2079B17D0060D921 /* Action_Materal_Cell.xib in Resources */,
+				A1BA177720A3E343008078EE /* NRRCell.xib in Resources */,
 				A1AAF15320494DCD00E8CB3B /* TaskHandCell.xib in Resources */,
 				A1D3E3B4200C478300CE31F0 /* Assets.xcassets in Resources */,
 				A1C546B02079B8CF0060D921 /* Section_Matera_header.xib in Resources */,
@@ -1070,6 +1077,7 @@
 				A1CF29FC20070029009FE6A4 /* ViewController.swift in Sources */,
 				A1AAF14B20491D7E00E8CB3B /* BaseTabItemController.swift in Sources */,
 				A12028612008A1C200CB8633 /* LocationManager.swift in Sources */,
+				A1BA177620A3E343008078EE /* NRRCell.swift in Sources */,
 				A1AFF6B12074739400ED1FC4 /* TaskAddActionController.swift in Sources */,
 				A1D3E3B8200C850D00CE31F0 /* HomeCellTrackView.swift in Sources */,
 				A1982F0F200F1E0E00B24DA6 /* NetHelper.swift in Sources */,
