@@ -124,7 +124,7 @@ var report_reg:String?
 var report_station:String?
 var report_date:Date?
 
-
+var defect_added_actions = [[String:Any]]()
 
 
 //MARK:

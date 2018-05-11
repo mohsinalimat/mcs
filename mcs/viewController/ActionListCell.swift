@@ -26,7 +26,7 @@ class ActionListCell: UITableViewCell {
 
     
     func fill(_ d :[String:Any] , index:Int = 0) {
-        actionid.text = "\(index)"//String.stringIsNullOrNil(d["id"])
+        actionid.text = "\(index)"
         
         let _eta = Tools.date(String.stringIsNullOrNil(d["actionDate"]))
         if let d = _eta {

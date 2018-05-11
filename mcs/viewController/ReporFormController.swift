@@ -124,6 +124,7 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
         HUD.show()
         netHelper_request(withUrl: defect_save_fault_url, method: .post, parameters: params, successHandler: {[weak self] (res) in
             HUD.show(successInfo: "Add success")
+            defect_added_actions.removeAll()
             
             guard let ss = self else {return}
             
@@ -212,12 +213,12 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
             current_selected_index = kSectionHeadButtonSelectedIndex;
             
             cell.didSelectedRowAtIndex = { index in
-                //let d = dataArray[indexPath.row]
+                let d = defect_added_actions[index]
                 
                 HUD.show()
                 let vc = TaskAddActionVC()
                 vc.read_only = true
-                //vc.action_detail_info_r = d;
+                vc.action_detail_info_r = d;
                 
                 self.navigationController?.pushViewController(vc, animated: true)
             }
@@ -225,8 +226,8 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
             cell.addAction = {
                 HUD.show()
                 let vc = TaskAddActionVC()
+                vc.from_defect_report = true
                 self.navigationController?.pushViewController(vc, animated: true)
-
             }
             
             return cell;

@@ -117,7 +117,7 @@ class Action_Materal_Cell: UITableViewCell,UITableViewDelegate,UITableViewDataSo
             return 0;
             
         case .creatReportValue5: //action
-            return 6;
+            return defect_added_actions.count;
             
         default:return 0
         }
@@ -142,9 +142,9 @@ class Action_Materal_Cell: UITableViewCell,UITableViewDelegate,UITableViewDataSo
             return cell
         case .creatReportValue5:
             let cell = tableView.dequeueReusableCell(withIdentifier: "ActionListCellIdentifier", for: indexPath) as! ActionListCell
-            //let d = dataArray[indexPath.row]
+            let d = defect_added_actions[indexPath.row]
             
-            //cell.fill(d , index: indexPath.row + 1)
+            cell.fill(d , index: indexPath.row + 1)
             return cell
             
         default: break
@@ -205,6 +205,8 @@ class Action_Materal_Cell: UITableViewCell,UITableViewDelegate,UITableViewDataSo
             } else if kSectionHeadButtonSelectedIndex == .addActoinValue3 {
                 addActionComponentDataArr.remove(at: indexPath.row)
                 
+            } else if kSectionHeadButtonSelectedIndex == .creatReportValue5 {
+                defect_added_actions.remove(at: indexPath.row);
             }
             
             tableView.deleteRows(at: [indexPath], with: .top)

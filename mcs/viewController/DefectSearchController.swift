@@ -36,8 +36,9 @@ class DefectSearchController: UITableViewController {
     }
     
     
-    var _defectType:[String:String]?
-    var _defectStatus:[String:String]?
+    var _defectType = [String]()//key
+    var _defectStatus = [String]()//key
+    
     var _reg:[String]?
     
     override func viewDidLoad() {
@@ -75,32 +76,52 @@ class DefectSearchController: UITableViewController {
             case 4 ,6:
                 let path = Bundle.main.url(forResource: "defectStatus", withExtension: "plist")
                 let d = NSDictionary.init(contentsOf: path!)
-                if let arr = d?[indexPath.row == 4 ? "offline" : "defect_type"] as? [[String:String]] {
+                if let arr = d?[indexPath.row == 4 ? "defect_type" : "offline"] as? [[String:String]] {
                     v.dataArray = arr
                 }
                 
                 if indexPath.row == 4 {
-                    if let type = _defectType {
-                        v.selectedObjs = type;
-                        v.dataType = .defect
-                    }
+                    v.selectedObjs = _defectType;
+                    v.dataType = .defect
+                    
                 }else {
-                    if let type = _defectStatus {
-                        v.selectedObjs = type;
-                        v.dataType = .status
-                    }
+                    v.selectedObjs = _defectStatus;
+                    v.dataType = .status
+
                 }
                 
                 v.selectedHandle = {[weak self] obj in
                     guard let ss = self else {return}
-                    let _o = obj as! [String:String]
+                    
+                    let _o = obj as! [[String:String]]
+                    var s = ""
+                    for i in _o {
+                            s = s + "\(i["value"]!),";
+                        
+                        if indexPath.row == 4 {
+                            ss._defectType.append("\(i["key"]!)")
+                        }else {
+                            ss._defectStatus.append("\(i["key"]!)")
+                        }
+
+                    }
+                    
+                    if indexPath.row == 4 {
+                        ss.defectType.text = s
+                    }else {
+                        ss.statuss.text = s
+                    }
+
+                    
+                    /*let _o = obj as! [String:String]
                     if indexPath.row == 4 {
                         ss._defectType = _o
                         ss.defectType.text = _o["value"]
                     }else {
                         ss._defectStatus = _o;
                         ss.statuss.text = _o["value"]
-                    }
+                    }*/
+                    
                 }
                 
                 break

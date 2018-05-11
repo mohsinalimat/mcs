@@ -49,17 +49,30 @@ class SearchItemSelectController: UITableViewController{
                     }
                 }
             }else {
-                let d = last as! [String:String]
-                let key = d["key"]
+                let arr = last as! [String]
+                guard  arr.count > 0 else {return}
+                
                 let ds = dataArray as! [[String:String]]
                 for i in 0..<ds.count {
                     let d = ds[i]
                     let k = d["key"];
-                    if k == key{
+                    if arr.contains(k!){
                         _hasSelectedArr.append(i);
-                        break
                     }
                 }
+
+                
+//                let d = last as! [String:String]
+//                let key = d["key"]
+//                let ds = dataArray as! [[String:String]]
+//                for i in 0..<ds.count {
+//                    let d = ds[i]
+//                    let k = d["key"];
+//                    if k == key{
+//                        _hasSelectedArr.append(i);
+//                        break
+//                    }
+//                }
             }
 
         }
@@ -102,9 +115,9 @@ class SearchItemSelectController: UITableViewController{
     
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if dataType == .defect || dataType == .status {
+        /*if dataType == .defect || dataType == .status {
             _hasSelectedArr.removeAll();
-        }
+        }*/
         
         if _hasSelectedArr.contains(indexPath.row) {
             _hasSelectedArr.remove(at: _hasSelectedArr.index(of: indexPath.row)!);
@@ -146,6 +159,20 @@ class SearchItemSelectController: UITableViewController{
     
     
     func _submit()  {
+        guard _hasSelectedArr.count > 0 else {return}
+        
+        var arr = [Any]()
+        for i in 0..<_hasSelectedArr.count {
+            let s = dataArray[_hasSelectedArr[i]];
+            arr.append(s )
+        }
+        
+        if let handle = selectedHandle {
+            handle(arr);
+        }
+
+        
+        /*
         if dataType == .defect || dataType == .status {
             let d = dataArray[_hasSelectedArr.first!]
             if let handle = selectedHandle {
@@ -161,7 +188,7 @@ class SearchItemSelectController: UITableViewController{
             if let handle = selectedHandle {
                 handle(arr);
             }
-        }
+        }*/
 
     }
     

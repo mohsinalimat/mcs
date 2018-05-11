@@ -22,6 +22,8 @@ class TaskAddActionVC: BaseViewController ,UITableViewDelegate,UITableViewDataSo
     @IBOutlet weak var _tableView: UITableView!
 
     var read_only:Bool = false
+    var from_defect_report:Bool = false
+    
     var action_detail_info_r = [String:Any]()
     
     var section2_selected_index:Int = 1;
@@ -59,16 +61,15 @@ class TaskAddActionVC: BaseViewController ,UITableViewDelegate,UITableViewDataSo
         addActionComponentDataArr.removeAll()
         
         if read_only {
-            s_performed.isEnabled = false;
-            s_closed.isEnabled = false
+            s_performed.isUserInteractionEnabled = false;
+            s_closed.isUserInteractionEnabled = false
             s_performed.isOn = false
             s_closed.isOn = false
             
             btn_save.isHidden = true
             title = "No." + String.stringIsNullOrNilToEmpty(action_detail_info_r["id"]);
-            s_performed.isOn = (action_detail_info_r["perform"] as? Int) == 1 ? true : false
-            
-            s_closed.isOn = (action_detail_info_r["closed"] as? Int) == 1 ? true : false
+            s_performed.isOn = String.stringIsNullOrNilToEmpty(action_detail_info_r["perform"]) == "1" ? true : false
+            s_closed.isOn = String.stringIsNullOrNilToEmpty(action_detail_info_r["closed"]) == "1" ? true : false
             
             if let partlist = action_detail_info_r["partList"] as? [[String:String]] {
                 addActionComponentDataArr = partlist;
@@ -120,20 +121,7 @@ class TaskAddActionVC: BaseViewController ,UITableViewDelegate,UITableViewDataSo
     }
 
     func _save() {
-        guard let bzid = taskPoolSelectedTask["bizId"] as? String else {return}
-        guard let acreg = taskPoolSelectedTask["ac"] as? String else {return}
-        let url = taskPool_addAction_url.appending(bzid)
-        
-        /*let arr = [["pnOff":"tool",
-         "snOff":"8880",
-         "pnOn":"description....",
-         "snOn":"3",
-         "fin":"55555",
-         "partType":"materal",
-         "pos":"store"]]*/
-        
-        var params : Dictionary = [
-            "acReg":acreg,
+        var params : [String:Any] = [
             "perform":"\(s_performed.isOn ? 1 : 0)",
             "closed":"\(s_closed.isOn ? 1 : 0)",
             
@@ -155,6 +143,22 @@ class TaskAddActionVC: BaseViewController ,UITableViewDelegate,UITableViewDataSo
             "page":String.stringIsNullOrNil(actionBaseInfoCell.page.text),
             "item":String.stringIsNullOrNil(actionBaseInfoCell.item.text)
         ]
+        
+        guard !from_defect_report else {//From Report
+            params["bizPartList"] = addActionMateralDataArr;
+            params["partList"] = addActionComponentDataArr;
+            defect_added_actions.append(params)
+            
+            NotificationCenter.default.post(name: NSNotification.Name (rawValue: "add_materialOrComponent_notification"), object: nil)
+            _ = self.navigationController?.popViewController(animated: true)
+            return
+        }
+
+        guard let bzid = taskPoolSelectedTask["bizId"] as? String else {return}
+        guard let acreg = taskPoolSelectedTask["ac"] as? String else {return}
+        let url = taskPool_addAction_url.appending(bzid)
+        
+        params["acReg"] = acreg
         
         /*material-tools*/
         for (key,value) in encodingParameters(addActionMateralDataArr, key: "bizPartList") {
