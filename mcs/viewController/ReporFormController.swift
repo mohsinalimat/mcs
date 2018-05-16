@@ -7,16 +7,23 @@
 //
 
 import UIKit
+import Alamofire
 
 class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewDataSource{
     var section2_selected_index:Int = 1;
     var read_only:Bool = false
+    var reportId:String?
+    var _defect_info:[String:Any]?
     
-    let defectType = ["Defect Report":"TS" ,"DD":"DD" , "NRR":"NRR"]
     var reportInfoCell:ReportInfoCell!
     var baseInfoCell:ReportBaseInfoCell!
     
     var current_selected_index = SectionHeadButtonIndex (rawValue: 1)!
+    
+    @IBOutlet weak var save_bg: UIView!
+    @IBOutlet weak var read_bg: UIView!
+    @IBOutlet weak var printview_btn: UIButton!
+    @IBOutlet weak var form_type: UILabel!
     
     @IBOutlet weak var typeBtn: UIButton!
     @IBOutlet weak var _tableView: UITableView!
@@ -37,7 +44,20 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
         case 3://save next
             
             break
-
+            
+        case 4:
+            guard let info = _defect_info else {return}
+            guard let defect_type = info["reportType"] as? String else {return}
+            guard let defect_id = info["id"] as? String else {return}
+            
+            let vc = ViewDefectReportController()
+            vc.type_id = defect_id
+            vc.type = defect_type == "DD" ? "defectDetail ":"ts"
+            
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+            break
+            
         default:break
         }
 
@@ -45,13 +65,17 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        view.backgroundColor = UIColor.white
-        _tableView.backgroundColor = UIColor.white
-
-        title = "Creat Defect Report"
          _initSubview()
+        
+        if read_only {
+            title = "Defect Detail"
+            _getFalutInfo();
+        }else {
+            title = "Creat Defect Report"
+            save_bg.isHidden = false;
+            read_bg.isHidden = true
+        }
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -59,8 +83,40 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
         kSectionHeadButtonSelectedIndex = current_selected_index
     }
     
+    func _getFalutInfo() {
+        guard let _reportid = reportId else {return}
+        HUD.show(withStatus: hud_msg_loading)
+
+        request(defect_faultDetail_url, parameters: ["id":_reportid], successHandler: { [weak self](res) in
+            HUD.dismiss()
+            guard let ss = self else {return}
+            guard let arr = res["body"] as? [String:Any] else {return};
+            ss._defect_info = arr;
+            
+            if let material = arr["partList"] as? [[String:Any]] {
+                addActionMateralDataArr = material;
+            }
+            
+            if let actionList = arr["actionList"] as? [[String:Any]] {
+                defect_added_actions = actionList;
+            }
+            
+            ss._tableView.reloadData()
+            
+            guard let defect_type = arr["reportType"] as? String else {return}
+            ss.form_type.text = defect_type
+            if defect_type == "NRR" {
+                ss.printview_btn.isHidden = true;
+            }
+        }) { (str) in
+                HUD.show(info: str ?? "Error")
+        }
+    }
     
     func _initSubview()  {
+        view.backgroundColor = UIColor.white
+        _tableView.backgroundColor = UIColor.white
+        
         _tableView.delegate = self
         _tableView.dataSource = self
         _tableView.register(UINib (nibName: "ReportInfoCell", bundle: nil), forCellReuseIdentifier: "ReportInfoCellIdentifier")
@@ -72,9 +128,11 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
         _tableView.register(BaseCellWithTable.self, forCellReuseIdentifier: "BaseCellWithTableIdentifier")
         _tableView.register(UINib (nibName: "NRRCell", bundle: nil), forCellReuseIdentifier: "NRRCellIdentifier")
         
+        _tableView.register(UINib (nibName: "ReportInfoCell_R", bundle: nil), forCellReuseIdentifier: "ReportInfoCell_RIdentifier")
+        _tableView.register(UINib (nibName: "ReportBaseInfoCell_R", bundle: nil), forCellReuseIdentifier: "ReportBaseInfoCell_RIdentifier")
+        
         addActionMateralDataArr.removeAll()
         addActionComponentDataArr.removeAll()
-        
         _tableView.reloadData()
         _tableView.layoutIfNeeded()
     }
@@ -92,11 +150,11 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
         guard baseInfoCell.fltNo_btn.currentTitle != nil else { HUD.show(info: "Select Flt No!"); return}
         guard baseInfoCell.detail_tf.text != nil else { HUD.show(info: "Input Detail!"); return}
         
-        let params : [String:String] = [
-            "reportType":defectType[String.stringIsNullOrNilToEmpty(typeBtn.currentTitle)]!,
+        let params  = [
+            "reportType":kDefectType[String.stringIsNullOrNilToEmpty(typeBtn.currentTitle)]!,
             "acReg":String.stringIsNullOrNilToEmpty(reportInfoCell.reg.currentTitle),
             "issueBy":String.stringIsNullOrNilToEmpty(reportInfoCell.issueBy.currentTitle),
-            "issueDate":String.stringIsNullOrNilToEmpty(reportInfoCell.issueDate.currentTitle),
+            //"issueDate":String.stringIsNullOrNilToEmpty(reportInfoCell.issueDate.currentTitle),
             "station":String.stringIsNullOrNilToEmpty(reportInfoCell.station.currentTitle),
             
             /*basic info*/
@@ -105,7 +163,7 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
             "releaseType": String.stringIsNullOrNilToEmpty(baseInfoCell.release_btn.currentTitle),
             "releaseItem": String.stringIsNullOrNilToEmpty(baseInfoCell.release_tf.text),
             "flNo": String.stringIsNullOrNilToEmpty(baseInfoCell.fltNo_btn.currentTitle),
-            "flDate":String.stringIsNullOrNilToEmpty(baseInfoCell.fltDate_btn.currentTitle),
+            //"flDate":String.stringIsNullOrNilToEmpty(baseInfoCell.fltDate_btn.currentTitle),
             "issueShift":String.stringIsNullOrNilToEmpty(baseInfoCell.shift_btn.currentTitle),
             "issueShiftDate":String.stringIsNullOrNilToEmpty(baseInfoCell.shiftDate_btn.currentTitle),
             "description":String.stringIsNullOrNilToEmpty(baseInfoCell.description_tf.text),
@@ -113,17 +171,29 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
             "temporaryDesc":String.stringIsNullOrNilToEmpty(baseInfoCell.tempAction_tf.text),
             "ata":String.stringIsNullOrNilToEmpty(baseInfoCell.tsm_tf.text),
             "melCode":String.stringIsNullOrNilToEmpty(baseInfoCell.mel_tf.text),
-            "ammCode":String.stringIsNullOrNilToEmpty(baseInfoCell.amm_tf.text)
-        ]
+            "ammCode":String.stringIsNullOrNilToEmpty(baseInfoCell.amm_tf.text),
+            
+            /*"partList": [["partType":"type",
+                "pn": "1111111",
+                "qty": "1",
+                "fin": "1",
+                "storeInAmasis": "111",
+                "description": "11",
+                "remark": "pod"
+                ]
+            ]*/
+            
+            /*material-tools*/
+            "partList": addActionMateralDataArr,
+            "actionList":defect_added_actions
+            
+        ] as [String : Any]
         
-        /*material-tools*/
-//        for (key,value) in encodingParameters(addActionMateralDataArr, key: "bizPartList") {
-//            params[key] = value;
-//        }
-        
+
         HUD.show()
-        netHelper_request(withUrl: defect_save_fault_url, method: .post, parameters: params, successHandler: {[weak self] (res) in
+        netHelper_request(withUrl: defect_save_fault_url, method: .post, parameters: params,encoding: JSONEncoding.default , successHandler: {[weak self] (res) in
             HUD.show(successInfo: "Add success")
+            addActionMateralDataArr.removeAll()
             defect_added_actions.removeAll()
             
             guard let ss = self else {return}
@@ -150,28 +220,28 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            if true {
+            if !read_only {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ReportInfoCellIdentifier", for: indexPath) as! ReportInfoCell
-                //cell.fill(action_detail_info_r)
                 reportInfoCell = cell
-                
                 return cell
             }else {
-//                let cell = tableView.dequeueReusableCell(withIdentifier: "AddActionInfoCellIdentifier", for: indexPath) as! AddActionInfoCell
-//                
-//                reportInfoCell = cell
-//                
-//                return cell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "ReportInfoCell_RIdentifier", for: indexPath) as! ReportInfoCell_R
+                cell.fill(_defect_info)
+                return cell
             }
-            
         }
         
 
         //section2
         if section2_selected_index == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ReportBaseInfoCellIdentifier", for: indexPath) as! ReportBaseInfoCell;
-            baseInfoCell = cell
+            if !read_only {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "ReportBaseInfoCellIdentifier", for: indexPath) as! ReportBaseInfoCell;
+                baseInfoCell = cell
+                return cell
+            }
             
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ReportBaseInfoCell_RIdentifier", for: indexPath) as! ReportBaseInfoCell_R;
+            cell.fill(_defect_info)
             return cell
         } else if section2_selected_index == 2{
             let cell = tableView.dequeueReusableCell(withIdentifier: "Action_Materal_CellIdentifier", for: indexPath) as! Action_Materal_Cell;
@@ -181,24 +251,18 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
             return cell
         }else {
             switch  typeBtn.currentTitle! {
-            case "Defect Report":
-
-                break
-                
+            case "Defect Report":   break
             case "DD":
                 if section2_selected_index == 3 {
                     let cell = tableView.dequeueReusableCell(withIdentifier: "DDInfoCellIdentifier", for: indexPath) as! DDInfoCell;
                     return cell
-                }
-
-                break
+                };break
                 
             case "NRR":
                 if section2_selected_index == 3 {
                     let cell = tableView.dequeueReusableCell(withIdentifier: "NRRCellIdentifier", for: indexPath) as! NRRCell;
                     return cell
-                }
-                break;
+                };break;
             default:break
             }
             

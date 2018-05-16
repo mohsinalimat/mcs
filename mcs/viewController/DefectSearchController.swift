@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
 class DefectSearchController: UITableViewController {
 
-
+    var searchAction:(([String:Any]) -> Void)?
+    
     @IBOutlet weak var s_pending: UISwitch!
     
     @IBOutlet weak var defectNo: UITextField!
@@ -25,11 +28,24 @@ class DefectSearchController: UITableViewController {
     
     @IBOutlet weak var descri: UITextField!
     
+    var _defect_type:String?
+    
     @IBAction func searchAction(_ sender: UIButton) {
         
         if sender.tag == 1{//reset
             _reset();
         }else {//query
+            let d:[String:Any] = ["bizNo":String.stringIsNullOrNilToEmpty(defectNo.text),
+                     "flNo":String.stringIsNullOrNilToEmpty(fltNo.text),
+                     "reportType":_defect_type ?? "",
+                     "acs":_reg ?? [],
+                     "sts":_defectStatus,
+                     "description":String.stringIsNullOrNilToEmpty(descri.text)]
+            
+            if let search = searchAction{
+                search(d);
+            }
+            
             _dismiss();
         }
 
@@ -41,6 +57,8 @@ class DefectSearchController: UITableViewController {
     
     var _reg:[String]?
     
+    let disposeBag = DisposeBag.init()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -48,6 +66,20 @@ class DefectSearchController: UITableViewController {
         tableView.backgroundColor = kTableviewBackgroundColor
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         
+        s_pending.rx.controlEvent(UIControlEvents.valueChanged).subscribe {[weak self] (e) in
+            guard let ss  = self else {return}
+            if ss.s_pending.isOn {
+                ss.statuss.text = "initial" //....
+                ss._defectStatus = ["offline"];
+            }else {
+                ss.statuss.text = "" //....
+                ss._defectStatus.removeAll()
+            }
+            
+        }.addDisposableTo(disposeBag)
+        
+        
+        print (defect_all_status)
     }
 
     func _reset() {
@@ -76,7 +108,7 @@ class DefectSearchController: UITableViewController {
             case 4 ,6:
                 let path = Bundle.main.url(forResource: "defectStatus", withExtension: "plist")
                 let d = NSDictionary.init(contentsOf: path!)
-                if let arr = d?[indexPath.row == 4 ? "defect_type" : "offline"] as? [[String:String]] {
+                if let arr = d?[indexPath.row == 4 ? "defect_type" : "offline"] as? [[String:String]] {//....
                     v.dataArray = arr
                 }
                 
@@ -100,6 +132,7 @@ class DefectSearchController: UITableViewController {
                         
                         if indexPath.row == 4 {
                             ss._defectType.append("\(i["key"]!)")
+                            ss._defect_type = "\(i["key"]!)"
                         }else {
                             ss._defectStatus.append("\(i["key"]!)")
                         }

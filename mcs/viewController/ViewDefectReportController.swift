@@ -10,17 +10,14 @@ import UIKit
 
 class ViewDefectReportController: BaseWebViewController {
 
+    var type:String?
+    var type_id:String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Defect Report View"
 
-        // Do any additional setup after loading the view.
-        title = "defect Report"
-        
-
-        guard let parent_id = taskPoolSelectedTask["parentId"] as? String , let parent_type = taskPoolSelectedTask["parentType"] as? String else {
-            return ;
-        }
-        
+        guard let parent_id = type_id , let parent_type = type else { return ;}
         let d = ["type":parent_type,"id":parent_id]
 
         req_url = action_detail_viewDefect_url

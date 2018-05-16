@@ -9,6 +9,8 @@
 import UIKit
 import RxCocoa
 import RxSwift
+import Alamofire
+import MJRefresh
 
 class DefectReportController: BaseTabItemController ,UITableViewDelegate,UITableViewDataSource{
 
@@ -31,6 +33,9 @@ class DefectReportController: BaseTabItemController ,UITableViewDelegate,UITable
     let disposeBag = DisposeBag.init()
     let rx_selected: Variable<[Int]> = Variable.init([])
     
+    var _pageNum:Int = 1
+    var _isSearch:Bool = false
+    var _searchPars:[String:Any]?
     
     //MARK:
     @IBAction func buttonAction(_ sender: UIButton) {
@@ -131,7 +136,19 @@ class DefectReportController: BaseTabItemController ,UITableViewDelegate,UITable
         UIApplication.shared.keyWindow?.addSubview(maskView)
         
         let rect = CGRect (x: kCurrentScreenWidth - 480, y: 0, width: 480, height: kCurrentScreenHeight)
-        let vc = UIStoryboard.init(name: "SearchAction", bundle: nil).instantiateViewController(withIdentifier: "defectSearchSbid")
+        let vc = UIStoryboard.init(name: "SearchAction", bundle: nil).instantiateViewController(withIdentifier: "defectSearchSbid") as! DefectSearchController
+        
+        vc.searchAction = { [weak self] d in
+            guard let ss = self else {return}
+            ss._searchPars = d
+            ss._isSearch = true
+            
+            ss._pageNum = 1
+            ss.loadData(d)
+            ss._tableView.scrollsToTop = true
+        }
+        
+        
         //        vc.preferredContentSize = rect.size
         //        vc.view.frame = CGRect (x: kCurrentScreenWidth, y: 0, width: rect.width, height: rect.height)
         
@@ -183,36 +200,64 @@ class DefectReportController: BaseTabItemController ,UITableViewDelegate,UITable
         
         ///Refresh Data
         let header = TTRefreshHeader.init {
-            DispatchQueue.main.async {
-                self.dataArray.removeAll()
-                self.loadData()
+            DispatchQueue.main.async {[weak self] in
+                guard let ss = self else {return}
+                ss._pageNum =  1
+                ss.dataArray.removeAll()
+                ss.loadData()
             }
         }
         
         _tableView.mj_header = header
+        
+        let footer = TTRefreshFooter.init{
+            DispatchQueue.main.async {[weak self] in
+                guard let ss = self else {return}
+                ss._pageNum = ss._pageNum + 1
+                ss.loadData(ss._isSearch ? ss._searchPars ?? [:] : [:])
+            }
+        }
+        
+        _tableView.mj_footer = footer
     }
     
     
-    func loadData()  {
+    func loadData(_ d : [String:Any] = [:])  {
         HUD.show(withStatus: hud_msg_loading)
-        request(defect_list_url, parameters: nil, successHandler: { [weak self](res) in
+        
+        var pars : [String:Any] = d
+        pars["page"] = _pageNum
+        
+        netHelper_request(withUrl: defect_list_url, method: .post, parameters: pars, encoding: JSONEncoding.default, successHandler: { [weak self](res) in
             HUD.dismiss()
             guard let ss = self else {return}
-            ss.dataArray.removeAll();
+            if ss._pageNum == 1 {
+                ss.dataArray.removeAll();
+                ss._tableView.mj_footer.resetNoMoreData()
+            }
+            
             
             if ss._tableView.mj_header.isRefreshing(){
                 ss._tableView.mj_header.endRefreshing();
+            } else if  ss._tableView.mj_footer.isRefreshing() {
+                ss._tableView.mj_footer.endRefreshing();
             }
             
             guard let arr = res["body"] as? [[String:Any]] else {return};
             if arr.count > 0 {
                 ss.dataArray = ss.dataArray + arr;
-                ss._tableView.reloadData()
+                
+                if arr.count < 15 {
+                    ss._tableView.mj_footer.state = MJRefreshState.noMoreData;
+                }
             }
+           
+            ss._tableView.reloadData()
             
-            }) { (str) in
-                print(str);
+        }) { (str) in
+            print(str);
         }
+        
     }
     
     
@@ -241,8 +286,12 @@ class DefectReportController: BaseTabItemController ,UITableViewDelegate,UITable
         guard _tableView.isEditing else {
             HUD.show()
 
+            let d = dataArray[indexPath.row]
+            guard let _id = d["id"] as? String else {return}
+            
             let v = ReporFormController()
             v.read_only = true
+            v.reportId = _id
             self.navigationController?.pushViewController(v, animated: true); return;
         }
         

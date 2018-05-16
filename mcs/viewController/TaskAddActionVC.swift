@@ -141,7 +141,7 @@ class TaskAddActionVC: BaseViewController ,UITableViewDelegate,UITableViewDataSo
             "actionDetail": String.stringIsNullOrNil(actionBaseInfoCell.descri.text),
             "actionRef":String.stringIsNullOrNil(actionBaseInfoCell.ref.text),
             "page":String.stringIsNullOrNil(actionBaseInfoCell.page.text),
-            "item":String.stringIsNullOrNil(actionBaseInfoCell.item.text)
+            "item":String.stringIsNullOrNil(actionBaseInfoCell.item.text),
         ]
         
         guard !from_defect_report else {//From Report

@@ -17,16 +17,11 @@ let user_token = UserDefaults.standard.value(forKey: "user-token")
 
 //MARK: -  url
 
-#if false
-    
-//let BASE_URL = "http://192.168.6.59:8080/mcs/rest"
-  let BASE_URL = "http://192.168.6.57:8081/mcs/rest"
-#else
-    
-let BASE_URL = "http://smart.imsp.cn/mcs/rest" //
-//let BASE_URL = "http://192.168.6.65:8080/mcs/rest"//linf
-    
-#endif
+//let BASE_URL = "http://smart.imsp.cn/mcs/rest" //
+//let BASE_URL = "http://192.168.6.57:8081/mcs/rest"//ds
+let BASE_URL = "http://192.168.6.65:8080/mcs/rest"//linf
+//let BASE_URL = "http://192.168.6.59:8080/mcs/rest"//jx
+
 
 let login_url = "/login"
 let task_number_url = "/biz/task/count"  //任务数
@@ -79,6 +74,9 @@ let defect_submit_url   =   "/biz/defect/submit"
 let defect_save_fault_url = "/biz/fault"
 let defect_delete_url   = "/biz/defect/delete"
 let defect_flightNo_url = "/biz/defect/getFlightStatusList"
+let defect_faultDetail_url = "/biz/viewBizFault"
+
+
 
 ///dd
 let dd_list_url = "/biz/dd/list"
@@ -111,7 +109,7 @@ enum SectionHeadButtonIndex :Int {
 var kSectionHeadButtonSelectedIndex:SectionHeadButtonIndex = .addActoinValue1
 var task_pool_taskno_index:Int = 0
 var taskPoolSelectedTask:[String:Any]!//当前操作的Task
-var addActionMateralDataArr = [[String:String]]()//添加action - Materal
+var addActionMateralDataArr = [[String:Any]]()//添加action - Materal
 var addActionComponentDataArr = [[String:String]]()//添加action - Component
 
 //Defect
@@ -119,12 +117,24 @@ let defect_transferred_key = ["null","TLB","CLB","NIL"]
 let defect_transferred_form = ["null":"null","TLB":"0","CLB":"1","NIL":"2"]
 let defect_release_ref = ["null","MEL","AMM","CDL","SRM","RPAS","NIL"]
 let g_staffs = (kActive_BASE_DATA["staffs"] as? [String]) ?? []
+let kDefectType = ["Defect Report":"TS" ,"DD":"DD" , "NRR":"NRR"]
+
 
 var report_reg:String?
 var report_station:String?
 var report_date:Date?
 
 var defect_added_actions = [[String:Any]]()
+
+let defect_all_status : [String:String] = {
+    let path = Bundle.main.url(forResource: "defectStatus", withExtension: "plist")
+    let d = NSDictionary.init(contentsOf: path!)
+    if let arr = d?["total_status"] as? [String:String] {
+        return arr
+    }
+    
+    return [:];
+}()
 
 
 //MARK:

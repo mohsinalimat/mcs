@@ -159,6 +159,10 @@
 		A1C6DD73206C7F0F00A09808 /* TaskPoolSelectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C6DD71206C7F0F00A09808 /* TaskPoolSelectController.swift */; };
 		A1C6DD74206C7F1000A09808 /* TaskPoolSelectController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1C6DD72206C7F0F00A09808 /* TaskPoolSelectController.xib */; };
 		A1C6DD76206CEB3600A09808 /* BaseDataCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C6DD75206CEB3500A09808 /* BaseDataCheck.swift */; };
+		A1CE0F7020A93AA800AF42D6 /* ReportInfoCell_R.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CE0F6E20A93AA700AF42D6 /* ReportInfoCell_R.swift */; };
+		A1CE0F7120A93AA800AF42D6 /* ReportInfoCell_R.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1CE0F6F20A93AA700AF42D6 /* ReportInfoCell_R.xib */; };
+		A1CE0F7420A956F500AF42D6 /* ReportBaseInfoCell_R.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CE0F7220A956F500AF42D6 /* ReportBaseInfoCell_R.swift */; };
+		A1CE0F7520A956F500AF42D6 /* ReportBaseInfoCell_R.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1CE0F7320A956F500AF42D6 /* ReportBaseInfoCell_R.xib */; };
 		A1CF29FA20070029009FE6A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CF29F920070029009FE6A4 /* AppDelegate.swift */; };
 		A1CF29FC20070029009FE6A4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CF29FB20070029009FE6A4 /* ViewController.swift */; };
 		A1CF29FF20070029009FE6A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1CF29FD20070029009FE6A4 /* Main.storyboard */; };
@@ -361,6 +365,10 @@
 		A1C6DD71206C7F0F00A09808 /* TaskPoolSelectController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskPoolSelectController.swift; sourceTree = "<group>"; };
 		A1C6DD72206C7F0F00A09808 /* TaskPoolSelectController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskPoolSelectController.xib; sourceTree = "<group>"; };
 		A1C6DD75206CEB3500A09808 /* BaseDataCheck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseDataCheck.swift; sourceTree = "<group>"; };
+		A1CE0F6E20A93AA700AF42D6 /* ReportInfoCell_R.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportInfoCell_R.swift; sourceTree = "<group>"; };
+		A1CE0F6F20A93AA700AF42D6 /* ReportInfoCell_R.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReportInfoCell_R.xib; sourceTree = "<group>"; };
+		A1CE0F7220A956F500AF42D6 /* ReportBaseInfoCell_R.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportBaseInfoCell_R.swift; sourceTree = "<group>"; };
+		A1CE0F7320A956F500AF42D6 /* ReportBaseInfoCell_R.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReportBaseInfoCell_R.xib; sourceTree = "<group>"; };
 		A1CF29F620070029009FE6A4 /* mcs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mcs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1CF29F920070029009FE6A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A1CF29FB20070029009FE6A4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -500,8 +508,12 @@
 				A161216820902D5000F72C94 /* DefectReportBtnView.xib */,
 				A161216A20904DAF00F72C94 /* ReportInfoCell.swift */,
 				A161216B20904DAF00F72C94 /* ReportInfoCell.xib */,
+				A1CE0F6E20A93AA700AF42D6 /* ReportInfoCell_R.swift */,
+				A1CE0F6F20A93AA700AF42D6 /* ReportInfoCell_R.xib */,
 				A161216E20904DE600F72C94 /* ReportBaseInfoCell.swift */,
 				A161216F20904DE600F72C94 /* ReportBaseInfoCell.xib */,
+				A1CE0F7220A956F500AF42D6 /* ReportBaseInfoCell_R.swift */,
+				A1CE0F7320A956F500AF42D6 /* ReportBaseInfoCell_R.xib */,
 				A161217220906E8B00F72C94 /* MultiButtonView.swift */,
 				A1B1959E2091CCDF00F5F9DB /* BaseCellWithTable.swift */,
 				A1EB37532092F461008A0FC7 /* DDInfoCell.swift */,
@@ -934,6 +946,7 @@
 				A1C546B42079B9110060D921 /* Section_Attach_header.xib in Resources */,
 				A1D15D8920464436004A2C58 /* WarnDetailTopCell.xib in Resources */,
 				A1D15D8D20464466004A2C58 /* WarnFaultInfoCell.xib in Resources */,
+				A1CE0F7120A93AA800AF42D6 /* ReportInfoCell_R.xib in Resources */,
 				A1AFF6A52074620E00ED1FC4 /* TaskAddActionVC.xib in Resources */,
 				A120285D2008A1C000CB8633 /* error@2x.png in Resources */,
 				A13F1AED20074693004FDFF4 /* LoginViewFooter.xib in Resources */,
@@ -957,6 +970,7 @@
 				A15234362093195200939E0F /* SearchAction.storyboard in Resources */,
 				A1DCEDB620A023D30062EC7E /* DefectSearchCodeController.xib in Resources */,
 				A1C26DB2204FBD3B00B11F63 /* FlightWarnListHeadView.xib in Resources */,
+				A1CE0F7520A956F500AF42D6 /* ReportBaseInfoCell_R.xib in Resources */,
 				A1AFF6B320748E3300ED1FC4 /* TaskActionTopView.xib in Resources */,
 				A1AAF14F2049331800E8CB3B /* TaskActionCell.xib in Resources */,
 				A1AB9EF8207B0536000663C3 /* ActionListCell.xib in Resources */,
@@ -1086,6 +1100,8 @@
 				A1A658CD2011D4D00079B354 /* BaseCollectionView.swift in Sources */,
 				A1CF29FA20070029009FE6A4 /* AppDelegate.swift in Sources */,
 				A1C26DA9204FB76700B11F63 /* FlightWarnListController.swift in Sources */,
+				A1CE0F7020A93AA800AF42D6 /* ReportInfoCell_R.swift in Sources */,
+				A1CE0F7420A956F500AF42D6 /* ReportBaseInfoCell_R.swift in Sources */,
 				A1AB9EFF207B4935000663C3 /* Action_Detail_Cell_R.swift in Sources */,
 				A120283820084EFB00CB8633 /* DataPickerController.swift in Sources */,
 				A13F1AEB200745F1004FDFF4 /* LoginViewFooter.swift in Sources */,

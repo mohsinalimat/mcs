@@ -115,9 +115,9 @@ class SearchItemSelectController: UITableViewController{
     
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        /*if dataType == .defect || dataType == .status {
+        if dataType == .defect /*|| dataType == .status */{
             _hasSelectedArr.removeAll();
-        }*/
+        }
         
         if _hasSelectedArr.contains(indexPath.row) {
             _hasSelectedArr.remove(at: _hasSelectedArr.index(of: indexPath.row)!);

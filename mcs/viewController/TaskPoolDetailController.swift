@@ -82,6 +82,9 @@ class TaskPoolDetailController: BaseWebViewController {
     //Defect Report
     @IBAction func defectReportAction(_ sender: AnyObject) {
         let vc = ViewDefectReportController()
+        vc.type_id = taskPoolSelectedTask["parentId"] as? String
+        vc.type = taskPoolSelectedTask["parentType"] as? String
+        
         self.navigationController?.pushViewController(vc, animated: true)
         
     }

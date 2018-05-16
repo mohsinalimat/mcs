@@ -76,13 +76,13 @@ class BaseViewController: UIViewController {
     
     
     //MARK:
-    func encodingParameters(_ arr :[[String:String]], key:String) -> [String:String] {
+    func encodingParameters(_ arr :[[String:Any]], key:String) -> [String:String] {
         var _new = [String:String]()
         
         for index in 0..<arr.count {
             let d = arr[index];
             for (_key,value) in d {
-                _new["\(key)[\(index)].\(_key)"] = value;
+                _new["\(key)[\(index)].\(_key)"] = "\(value)";
             }
             
         }
