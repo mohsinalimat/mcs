@@ -28,19 +28,19 @@ class Action_Detail_Cell_R: UITableViewCell {
     
     
     func fill(_ d :[String:Any])  {
-        flt_no.text = String.stringIsNullOrNilToEmpty(d["flNo"])
+        flt_no.text = String.isNullOrEmpty(d["flNo"])
         
         let _eta = Tools.date(String.stringIsNullOrNil(d["createDatetime"]))
         if let d = _eta {
             date.text = Tools.dateToString(d, formatter: "yyyy-MM-dd")
         }
 
-        mh.text = String.stringIsNullOrNilToEmpty(d["mainHour"])
-        station.text = String.stringIsNullOrNilToEmpty(d["station"])
-        descri.text = String.stringIsNullOrNilToEmpty(d["actionDetail"])
-        ref.text = String.stringIsNullOrNilToEmpty(d["actionRef"])
-        page.text = String.stringIsNullOrNilToEmpty(d["page"])
-        item.text = String.stringIsNullOrNilToEmpty(d["item"])
+        mh.text = String.isNullOrEmpty(d["mainHour"])
+        station.text = String.isNullOrEmpty(d["station"])
+        descri.text = String.isNullOrEmpty(d["actionDetail"])
+        ref.text = String.isNullOrEmpty(d["actionRef"])
+        page.text = String.isNullOrEmpty(d["page"])
+        item.text = String.isNullOrEmpty(d["item"])
     }
     
 

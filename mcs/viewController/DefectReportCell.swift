@@ -36,33 +36,33 @@ class DefectReportCell: UITableViewCell {
 
     
     func fill(_ d:[String:Any]) {
-        report_type.text = String.stringIsNullOrNilToEmpty(d["reportType"])
-        biz_no.text = String.stringIsNullOrNilToEmpty(d["bizNo"])
-        ac_reg.text = String.stringIsNullOrNilToEmpty(d["acReg"])
+        report_type.text = String.isNullOrEmpty(d["reportType"])
+        biz_no.text = String.isNullOrEmpty(d["bizNo"])
+        ac_reg.text = String.isNullOrEmpty(d["acReg"])
         
-        if "1" == String.stringIsNullOrNilToEmpty(d["performed"]) {
+        if "1" == String.isNullOrEmpty(d["performed"]) {
             performed.text = "Y"
         }else {
             performed.text = "N"
         }
 
-        if "1" == String.stringIsNullOrNilToEmpty(d["closed"]) {
+        if "1" == String.isNullOrEmpty(d["closed"]) {
             cld.text = "Y"
         }else {
             cld.text = "N"
         }
         
         
-        fltNo.text = "FLT No." + String.stringIsNullOrNilToEmpty(d["flNo"])
+        fltNo.text = "FLT No." + String.isNullOrEmpty(d["flNo"])
 
         let creattime = Tools.date(String.stringIsNullOrNil(d["createDatetime"]))
         if let d = creattime {
             time.text = Tools.dateToString(d, formatter: "yyyy-MM-dd HH:mm")
         }
         
-        status.text = String.stringIsNullOrNilToEmpty(d["state"])
+        status.text = defect_all_status[String.isNullOrEmpty(d["state"])]
         
-        let defectDesc = String.stringIsNullOrNilToEmpty(d["description"])
+        let defectDesc = String.isNullOrEmpty(d["description"])
         let defectStr = "Description: " + defectDesc
         let defectAttriStr =  NSMutableAttributedString.init(string: defectStr)
         defectAttriStr.addAttributes([NSFontAttributeName:UIFont.boldSystemFont(ofSize: 16),NSForegroundColorAttributeName:UIColor.darkGray], range: NSMakeRange(0, 12))

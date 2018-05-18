@@ -60,13 +60,13 @@ class Add_MateralVC: BaseViewController {
     
     @IBAction func addAction(_ sender: AnyObject) {
        let d =  [
-         "partType":String.stringIsNullOrNilToEmpty(type_btn.currentTitle),
-         "pn":String.stringIsNullOrNilToEmpty(pin.text),
-         "description":String.stringIsNullOrNilToEmpty(descri.text),
-         "qty":String.stringIsNullOrNilToEmpty(qty.text),
-         "fin":String.stringIsNullOrNilToEmpty(fin.text),
-         "remark":String.stringIsNullOrNilToEmpty(mark.text),
-         "storeInAmasis":String.stringIsNullOrNilToEmpty(store_in.text)]
+         "partType":String.isNullOrEmpty(type_btn.currentTitle),
+         "pn":String.isNullOrEmpty(pin.text),
+         "description":String.isNullOrEmpty(descri.text),
+         "qty":String.isNullOrEmpty(qty.text),
+         "fin":String.isNullOrEmpty(fin.text),
+         "remark":String.isNullOrEmpty(mark.text),
+         "storeInAmasis":String.isNullOrEmpty(store_in.text)]
         
         addActionMateralDataArr.insert(d, at: 0);
         

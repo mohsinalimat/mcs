@@ -38,8 +38,8 @@ class ReportBaseInfoCell_R: UITableViewCell {
     func fill(_ dic :[String:Any]?) {
         guard let d = dic else {return}
         
-        ts.text = String.stringIsNullOrNilToEmpty(d["tsType"]) + String.stringIsNullOrNilToEmpty(d["tsFrom"])
-        release_ref.text = String.stringIsNullOrNilToEmpty(d["releaseType"]) + String.stringIsNullOrNilToEmpty(d["releaseItem"])
+        ts.text = String.isNullOrEmpty(d["tsType"]) + String.isNullOrEmpty(d["tsFrom"])
+        release_ref.text = String.isNullOrEmpty(d["releaseType"]) + String.isNullOrEmpty(d["releaseItem"])
         
         let _eta = Tools.date(String.stringIsNullOrNil(d["flDate"]))
         var fltdate:String = ""
@@ -80,18 +80,18 @@ class ReportBaseInfoCell_R: UITableViewCell {
             NSForegroundColorAttributeName:UIColor.darkGray,
             NSKernAttributeName:1 ]
         
-        let defect_detailAttriStr = NSAttributedString.init(string: String.stringIsNullOrNilToEmpty(d["detail"]), attributes: attributes_dic)
+        let defect_detailAttriStr = NSAttributedString.init(string: String.isNullOrEmpty(d["detail"]), attributes: attributes_dic)
         defect_detail.attributedText = defect_detailAttriStr
 
-        let descriAttriStr = NSAttributedString.init(string: String.stringIsNullOrNilToEmpty(d["description"]), attributes: attributes_dic)
+        let descriAttriStr = NSAttributedString.init(string: String.isNullOrEmpty(d["description"]), attributes: attributes_dic)
         descri.attributedText = descriAttriStr
         
-        let tempAttriStr = NSAttributedString.init(string: String.stringIsNullOrNilToEmpty(d["temporaryDesc"]), attributes: attributes_dic)
+        let tempAttriStr = NSAttributedString.init(string: String.isNullOrEmpty(d["temporaryDesc"]), attributes: attributes_dic)
         temp_action.attributedText = tempAttriStr
 
-        tsm.text = String.stringIsNullOrNilToEmpty(d["ata"])
-        mel.text = String.stringIsNullOrNilToEmpty(d["melCode"])
-        amm.text = String.stringIsNullOrNilToEmpty(d["ammCode"])
+        tsm.text = String.isNullOrEmpty(d["ata"])
+        mel.text = String.isNullOrEmpty(d["melCode"])
+        amm.text = String.isNullOrEmpty(d["ammCode"])
     }
     
     

@@ -17,7 +17,7 @@ let user_token = UserDefaults.standard.value(forKey: "user-token")
 
 //MARK: -  url
 
-//let BASE_URL = "http://smart.imsp.cn/mcs/rest" //
+//let BASE_URL = "http://smart.imsp.cn/mcs/rest"
 //let BASE_URL = "http://192.168.6.57:8081/mcs/rest"//ds
 let BASE_URL = "http://192.168.6.65:8080/mcs/rest"//linf
 //let BASE_URL = "http://192.168.6.59:8080/mcs/rest"//jx
@@ -119,6 +119,15 @@ let defect_release_ref = ["null","MEL","AMM","CDL","SRM","RPAS","NIL"]
 let g_staffs = (kActive_BASE_DATA["staffs"] as? [String]) ?? []
 let kDefectType = ["Defect Report":"TS" ,"DD":"DD" , "NRR":"NRR"]
 
+let plist_dic : [String:Any] =  {
+    let path = Bundle.main.url(forResource: "defectConstants", withExtension: "plist")
+    let d = NSDictionary.init(contentsOf: path!)
+    return d as! [String : Any];
+}()
+
+
+
+
 
 var report_reg:String?
 var report_station:String?
@@ -127,9 +136,7 @@ var report_date:Date?
 var defect_added_actions = [[String:Any]]()
 
 let defect_all_status : [String:String] = {
-    let path = Bundle.main.url(forResource: "defectStatus", withExtension: "plist")
-    let d = NSDictionary.init(contentsOf: path!)
-    if let arr = d?["total_status"] as? [String:String] {
+    if let arr = plist_dic["total_status"] as? [String:String] {
         return arr
     }
     

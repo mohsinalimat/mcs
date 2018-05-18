@@ -62,7 +62,7 @@ class ReportBaseInfoCell: UITableViewCell,UITextFieldDelegate {
                     ss.fltDate_btn.setTitle(obj["fltDate"], for: .normal)
                 }
             }else {
-                request(defect_flightNo_url, parameters: ["fltDate":Tools.dateToString(report_date!, formatter: "yyyy-MM-dd") , "acId":String.stringIsNullOrNilToEmpty(report_reg) , "station":String.stringIsNullOrNilToEmpty(report_station)], successHandler: {[weak self] (res) in
+                request(defect_flightNo_url, parameters: ["fltDate":Tools.dateToString(report_date!, formatter: "yyyy-MM-dd") , "acId":String.isNullOrEmpty(report_reg) , "station":String.isNullOrEmpty(report_station)], successHandler: {[weak self] (res) in
                     guard let arr = res["body"] as? [[String:String]] else {return};
                     guard let ss = self else {return}
 

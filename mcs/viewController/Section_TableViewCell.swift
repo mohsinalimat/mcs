@@ -27,13 +27,13 @@ class Section_TableViewCell: UITableViewCell {
     
     
     func fill(_ d : [String:Any]) {
-        pin.text = String.stringIsNullOrNilToEmpty(d["pn"])
-        type.text = String.stringIsNullOrNilToEmpty(d["partType"])
-        qty.text = String.stringIsNullOrNilToEmpty(d["qty"])
-        fin.text =  String.stringIsNullOrNilToEmpty(d["fin"])
-        store_in.text = String.stringIsNullOrNilToEmpty(d["storeInAmasis"])
-        descri.text = String.stringIsNullOrNilToEmpty(d["description"])
-        remark.text = String.stringIsNullOrNilToEmpty(d["remark"])
+        pin.text = String.isNullOrEmpty(d["pn"])
+        type.text = String.isNullOrEmpty(d["partType"])
+        qty.text = String.isNullOrEmpty(d["qty"])
+        fin.text =  String.isNullOrEmpty(d["fin"])
+        store_in.text = String.isNullOrEmpty(d["storeInAmasis"])
+        descri.text = String.isNullOrEmpty(d["description"])
+        remark.text = String.isNullOrEmpty(d["remark"])
     }
     
     

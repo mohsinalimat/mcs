@@ -66,13 +66,13 @@ class Add_ComponentVC: BaseViewController {
     
     @IBAction func action(_ sender: UIButton) {
         
-        let d =          ["pnOff":String.stringIsNullOrNilToEmpty(pin_off.text),
-                          "snOff":String.stringIsNullOrNilToEmpty(sin_off.text),
-                          "pnOn":String.stringIsNullOrNilToEmpty(pin_on.text),
-                          "snOn":String.stringIsNullOrNilToEmpty(sn_on.text),
-                          "fin":String.stringIsNullOrNilToEmpty(fin.text),
-                          "partType":String.stringIsNullOrNilToEmpty(type_btn.currentTitle),
-                          "pos":String.stringIsNullOrNilToEmpty(pos.text)]
+        let d =          ["pnOff":String.isNullOrEmpty(pin_off.text),
+                          "snOff":String.isNullOrEmpty(sin_off.text),
+                          "pnOn":String.isNullOrEmpty(pin_on.text),
+                          "snOn":String.isNullOrEmpty(sn_on.text),
+                          "fin":String.isNullOrEmpty(fin.text),
+                          "partType":String.isNullOrEmpty(type_btn.currentTitle),
+                          "pos":String.isNullOrEmpty(pos.text)]
 
         
     

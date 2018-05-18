@@ -22,11 +22,16 @@ class AddActionInfoCell_R: UITableViewCell {
     
     
     func fill(_ d :[String:Any])  {
-        actBy.text = String.stringIsNullOrNilToEmpty(d["actBy"])
-        reportBy.text = String.stringIsNullOrNilToEmpty(d["reportBy"])
-        shift_date.text = String.stringIsNullOrNilToEmpty(d["shiftDate"])
+        actBy.text = String.isNullOrEmpty(d["actBy"])
+        reportBy.text = String.isNullOrEmpty(d["reportBy"])
+
+        let rec_date = Tools.date(String.stringIsNullOrNil(d["shiftDate"]))
+        if let d = rec_date {
+            shift_date.text = Tools.dateToString(d, formatter: "yyyy-MM-dd")
+        }
+
         
-        //shift.text = String.stringIsNullOrNilToEmpty(d["shift"])//...
+        //shift.text = String.isNullOrEmpty(d["shift"])//...
         if let shift_id = d["shift"] as? String, let shifts = Tools.shift() {
             for obj in shifts {
                 let _obj = obj as![String:String]

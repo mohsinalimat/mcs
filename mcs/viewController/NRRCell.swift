@@ -18,40 +18,74 @@ class NRRCell: UITableViewCell {
     
     @IBOutlet weak var statusBtn: UIButton!
     
+    let defect_nrr_insp : [[String:String]] = {
+        if let arr = plist_dic["nrr_insp"] as? [[String:String]] {
+            return arr
+        }
+        
+        return [];
+    }()
+    
+    let defect_nrr_skill  : [[String:String]] = {
+        if let arr = plist_dic["nrr_skill"] as? [[String:String]] {
+            return arr
+        }
+        
+        return [];
+    }()
+    
+    
+    let defect_nrr_status  : [[String:String]] = {
+        if let arr = plist_dic["nrr_status"] as? [[String:String]] {
+            return arr
+        }
+        
+        return [];
+    }()
+    
+
+    var skil:String?
+    var insp:String?
+    var status:String?
     
     @IBAction func buttonAction(_ sender: UIButton) {
         
         switch sender.tag {
         case 1://station
-            Tools.showDataPicekr (dataSource:Tools.station()){ (obj) in
-                let obj = obj as! String
-                sender.setTitle(obj, for: .normal)
-                report_station = obj
+            Tools.showDataPicekr (dataSource:defect_nrr_skill){ [weak self](obj) in
+                let obj = obj as! [String:String]
+                sender.setTitle(obj["value"], for: .normal)
+                
+                guard let ss = self else {return}
+                ss.skil = obj["key"]
             }
             break
             
         case 2:
-            Tools.showDataPicekr(dataSource:g_staffs) {(obj) in
-                let obj = obj as! String
-                sender.setTitle(obj, for: .normal)
+            Tools.showDataPicekr(dataSource:defect_nrr_insp
+            ) {[weak self] (obj) in
+                let obj = obj as! [String:String]
+                sender.setTitle(obj["value"], for: .normal)
+                
+                guard let ss = self else {return}
+                ss.insp = obj["key"]
             }
             
             break
             
-        case 3://date
-            Tools.showDatePicekr { (obj) in
-                let obj = obj as! Date
-                let str = Tools.dateToString(obj, formatter: "dd/MM/yyyy")
-                sender.setTitle(str, for: .normal)
-                report_date = obj
+        case 3:
+            Tools.showDataPicekr(dataSource:defect_nrr_status
+            ) {[weak self] (obj) in
+                let obj = obj as! [String:String]
+                sender.setTitle(obj["value"], for: .normal)
+                
+                guard let ss = self else {return}
+                ss.status = obj["key"]
             }
             break
         default:break
         }
-        
-        
-        
-        
+
     }
     
     

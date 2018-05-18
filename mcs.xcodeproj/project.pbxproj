@@ -109,6 +109,10 @@
 		A1B144E2207F2BE8006B3806 /* DefectReportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B144E0207F2BE8006B3806 /* DefectReportController.swift */; };
 		A1B144E3207F2BE8006B3806 /* DefectReportController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1B144E1207F2BE8006B3806 /* DefectReportController.xib */; };
 		A1B1959F2091CCDF00F5F9DB /* BaseCellWithTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1959E2091CCDF00F5F9DB /* BaseCellWithTable.swift */; };
+		A1B4E0C120AD88BE00EA7219 /* DDInfoCell_R.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B4E0BF20AD88BD00EA7219 /* DDInfoCell_R.swift */; };
+		A1B4E0C220AD88BE00EA7219 /* DDInfoCell_R.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1B4E0C020AD88BE00EA7219 /* DDInfoCell_R.xib */; };
+		A1B4E0C520AD892600EA7219 /* NRRCell_R.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B4E0C320AD892600EA7219 /* NRRCell_R.swift */; };
+		A1B4E0C620AD892600EA7219 /* NRRCell_R.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1B4E0C420AD892600EA7219 /* NRRCell_R.xib */; };
 		A1BA177620A3E343008078EE /* NRRCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BA177420A3E343008078EE /* NRRCell.swift */; };
 		A1BA177720A3E343008078EE /* NRRCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1BA177520A3E343008078EE /* NRRCell.xib */; };
 		A1BA575A209AAEF800B2D6E0 /* MaterialSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BA5758209AAEF800B2D6E0 /* MaterialSearchController.swift */; };
@@ -200,7 +204,7 @@
 		A1EB37552092F461008A0FC7 /* DDInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EB37532092F461008A0FC7 /* DDInfoCell.swift */; };
 		A1EB37562092F461008A0FC7 /* DDInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1EB37542092F461008A0FC7 /* DDInfoCell.xib */; };
 		A1EC58A920897BE500936D6B /* ViewDefectReportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EC58A820897BE500936D6B /* ViewDefectReportController.swift */; };
-		A1EE525F20995EB0000E3630 /* defectStatus.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1EE525E20995EB0000E3630 /* defectStatus.plist */; };
+		A1EE525F20995EB0000E3630 /* defectConstants.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1EE525E20995EB0000E3630 /* defectConstants.plist */; };
 		A1F293B2206DDA8900004E9C /* TaskPoolRootController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F293B1206DDA8900004E9C /* TaskPoolRootController.swift */; };
 		A1FE5095204796E1004F2330 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FE5094204796E0004F2330 /* BaseTabBarController.swift */; };
 /* End PBXBuildFile section */
@@ -315,6 +319,10 @@
 		A1B144E0207F2BE8006B3806 /* DefectReportController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefectReportController.swift; sourceTree = "<group>"; };
 		A1B144E1207F2BE8006B3806 /* DefectReportController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DefectReportController.xib; sourceTree = "<group>"; };
 		A1B1959E2091CCDF00F5F9DB /* BaseCellWithTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCellWithTable.swift; sourceTree = "<group>"; };
+		A1B4E0BF20AD88BD00EA7219 /* DDInfoCell_R.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDInfoCell_R.swift; sourceTree = "<group>"; };
+		A1B4E0C020AD88BE00EA7219 /* DDInfoCell_R.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DDInfoCell_R.xib; sourceTree = "<group>"; };
+		A1B4E0C320AD892600EA7219 /* NRRCell_R.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NRRCell_R.swift; sourceTree = "<group>"; };
+		A1B4E0C420AD892600EA7219 /* NRRCell_R.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NRRCell_R.xib; sourceTree = "<group>"; };
 		A1BA177420A3E343008078EE /* NRRCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NRRCell.swift; sourceTree = "<group>"; };
 		A1BA177520A3E343008078EE /* NRRCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NRRCell.xib; sourceTree = "<group>"; };
 		A1BA5758209AAEF800B2D6E0 /* MaterialSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialSearchController.swift; sourceTree = "<group>"; };
@@ -410,7 +418,7 @@
 		A1EB37532092F461008A0FC7 /* DDInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDInfoCell.swift; sourceTree = "<group>"; };
 		A1EB37542092F461008A0FC7 /* DDInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DDInfoCell.xib; sourceTree = "<group>"; };
 		A1EC58A820897BE500936D6B /* ViewDefectReportController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewDefectReportController.swift; sourceTree = "<group>"; };
-		A1EE525E20995EB0000E3630 /* defectStatus.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = defectStatus.plist; sourceTree = "<group>"; };
+		A1EE525E20995EB0000E3630 /* defectConstants.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = defectConstants.plist; sourceTree = "<group>"; };
 		A1F293B1206DDA8900004E9C /* TaskPoolRootController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskPoolRootController.swift; sourceTree = "<group>"; };
 		A1FE5094204796E0004F2330 /* BaseTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -518,6 +526,8 @@
 				A1B1959E2091CCDF00F5F9DB /* BaseCellWithTable.swift */,
 				A1EB37532092F461008A0FC7 /* DDInfoCell.swift */,
 				A1EB37542092F461008A0FC7 /* DDInfoCell.xib */,
+				A1B4E0BF20AD88BD00EA7219 /* DDInfoCell_R.swift */,
+				A1B4E0C020AD88BE00EA7219 /* DDInfoCell_R.xib */,
 				A1633B0F2094459500342F92 /* SearBarView.swift */,
 				A1633B11209445B200342F92 /* SearBarView.xib */,
 				A1633B1320944D1200342F92 /* SearchItemCell.swift */,
@@ -526,6 +536,8 @@
 				A157EA7920A186F700ED8D6D /* DefectDocCodeCell.xib */,
 				A1BA177420A3E343008078EE /* NRRCell.swift */,
 				A1BA177520A3E343008078EE /* NRRCell.xib */,
+				A1B4E0C320AD892600EA7219 /* NRRCell_R.swift */,
+				A1B4E0C420AD892600EA7219 /* NRRCell_R.xib */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -610,7 +622,7 @@
 				A1CF29FD20070029009FE6A4 /* Main.storyboard */,
 				A1CF2A0220070029009FE6A4 /* LaunchScreen.storyboard */,
 				A1CF2A0520070029009FE6A4 /* Info.plist */,
-				A1EE525E20995EB0000E3630 /* defectStatus.plist */,
+				A1EE525E20995EB0000E3630 /* defectConstants.plist */,
 			);
 			name = src;
 			sourceTree = "<group>";
@@ -929,7 +941,7 @@
 				A161216D20904DAF00F72C94 /* ReportInfoCell.xib in Resources */,
 				A1C6DD74206C7F1000A09808 /* TaskPoolSelectController.xib in Resources */,
 				A157EA7B20A186F800ED8D6D /* DefectDocCodeCell.xib in Resources */,
-				A1EE525F20995EB0000E3630 /* defectStatus.plist in Resources */,
+				A1EE525F20995EB0000E3630 /* defectConstants.plist in Resources */,
 				A161216320901EBE00F72C94 /* ReporFormController.xib in Resources */,
 				A1633B12209445B200342F92 /* SearBarView.xib in Resources */,
 				A12028602008A1C200CB8633 /* success@2x.png in Resources */,
@@ -947,6 +959,7 @@
 				A1D15D8920464436004A2C58 /* WarnDetailTopCell.xib in Resources */,
 				A1D15D8D20464466004A2C58 /* WarnFaultInfoCell.xib in Resources */,
 				A1CE0F7120A93AA800AF42D6 /* ReportInfoCell_R.xib in Resources */,
+				A1B4E0C620AD892600EA7219 /* NRRCell_R.xib in Resources */,
 				A1AFF6A52074620E00ED1FC4 /* TaskAddActionVC.xib in Resources */,
 				A120285D2008A1C000CB8633 /* error@2x.png in Resources */,
 				A13F1AED20074693004FDFF4 /* LoginViewFooter.xib in Resources */,
@@ -958,6 +971,7 @@
 				A1D3E3B2200C3A2D00CE31F0 /* HomeCollectionViewCell.xib in Resources */,
 				A1BC1F482015BBA0007D0E1C /* FlightWarnHeaderView.xib in Resources */,
 				A1AB9EFC207B48E8000663C3 /* AddActionInfoCell_R.xib in Resources */,
+				A1B4E0C220AD88BE00EA7219 /* DDInfoCell_R.xib in Resources */,
 				A14BA8B12073761D0027D51F /* TaskPoolDetailController.xib in Resources */,
 				A1A658CB2011BDE70079B354 /* FlightInfoListCell.xib in Resources */,
 				A161216920902D5000F72C94 /* DefectReportBtnView.xib in Resources */,
@@ -1085,6 +1099,7 @@
 				A1AB9EF7207B0536000663C3 /* ActionListCell.swift in Sources */,
 				A1C0A3D9200DF04F00A1762C /* TTRefreshHeader.swift in Sources */,
 				A1C546BF2079E5800060D921 /* Section_TableViewCell3.swift in Sources */,
+				A1B4E0C520AD892600EA7219 /* NRRCell_R.swift in Sources */,
 				A1284D8B205BB00500B7B576 /* WarnInfoDetailController_new.swift in Sources */,
 				A1C546C8207A0F920060D921 /* Add_ComponentVC.swift in Sources */,
 				A1CF2A1120070AA1009FE6A4 /* BaseNavigationController.swift in Sources */,
@@ -1150,6 +1165,7 @@
 				A1B03DE7207C912E00797564 /* TaskNumberListVC.swift in Sources */,
 				A1D15D8C20464466004A2C58 /* WarnFaultInfoCell.swift in Sources */,
 				A1EB214B208DAC5100661C45 /* DDListCell.swift in Sources */,
+				A1B4E0C120AD88BE00EA7219 /* DDInfoCell_R.swift in Sources */,
 				A1B03DE4207C7FD700797564 /* BaseTableViewVCCell.swift in Sources */,
 				A1633B0E20941D3700342F92 /* SearchItemSelectController.swift in Sources */,
 				A1C1BB522064C6D700A92B9B /* TaskPoolDetailController.swift in Sources */,

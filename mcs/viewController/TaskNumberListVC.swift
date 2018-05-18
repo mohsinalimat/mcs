@@ -20,7 +20,7 @@ class TaskNumberListVC: BaseTableViewVC {
     override func getTextAt(_ indexPath: Int) -> (len:Int , text: String?)? {
         if let d = dataArray[indexPath] as? [String:Any] {
             let taskno = String.stringIsNullOrNil(d["taskNo"]);
-            let des = String.stringIsNullOrNilToEmpty(d["defectDesc"])
+            let des = String.isNullOrEmpty(d["defectDesc"])
             return (taskno.lengthOfBytes(using: String.Encoding.utf8) , "\(taskno) \(des)")
         }
         

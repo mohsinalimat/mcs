@@ -35,12 +35,12 @@ class DefectSearchController: UITableViewController {
         if sender.tag == 1{//reset
             _reset();
         }else {//query
-            let d:[String:Any] = ["bizNo":String.stringIsNullOrNilToEmpty(defectNo.text),
-                     "flNo":String.stringIsNullOrNilToEmpty(fltNo.text),
+            let d:[String:Any] = ["bizNo":String.isNullOrEmpty(defectNo.text),
+                     "flNo":String.isNullOrEmpty(fltNo.text),
                      "reportType":_defect_type ?? "",
                      "acs":_reg ?? [],
                      "sts":_defectStatus,
-                     "description":String.stringIsNullOrNilToEmpty(descri.text)]
+                     "description":String.isNullOrEmpty(descri.text)]
             
             if let search = searchAction{
                 search(d);
@@ -77,9 +77,7 @@ class DefectSearchController: UITableViewController {
             }
             
         }.addDisposableTo(disposeBag)
-        
-        
-        print (defect_all_status)
+
     }
 
     func _reset() {
@@ -106,7 +104,7 @@ class DefectSearchController: UITableViewController {
             
             switch indexPath.row {
             case 4 ,6:
-                let path = Bundle.main.url(forResource: "defectStatus", withExtension: "plist")
+                let path = Bundle.main.url(forResource: "defectConstants", withExtension: "plist")
                 let d = NSDictionary.init(contentsOf: path!)
                 if let arr = d?[indexPath.row == 4 ? "defect_type" : "offline"] as? [[String:String]] {//....
                     v.dataArray = arr
@@ -200,11 +198,4 @@ class DefectSearchController: UITableViewController {
 
     }
     
-    
-    
-    
-    deinit {
-        print("...")
-    }
-
 }

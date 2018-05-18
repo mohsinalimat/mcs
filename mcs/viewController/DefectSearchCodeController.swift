@@ -135,13 +135,13 @@ class DefectSearchCodeController: BaseViewController ,UITableViewDelegate,UITabl
         
         if docType == "AMM"{
             let model = m as! AMMModel;
-            s = "\(String.stringIsNullOrNilToEmpty(model.taskCode)) - \(String.stringIsNullOrNilToEmpty(model.taskName))"
+            s = "\(String.isNullOrEmpty(model.taskCode)) - \(String.isNullOrEmpty(model.taskName))"
         }else if docType == "MEL"{
             let model = m as! MELModel;
-            s = "\(String.stringIsNullOrNilToEmpty(model.code)) - \(String.stringIsNullOrNilToEmpty(model.title))"
+            s = "\(String.isNullOrEmpty(model.code)) - \(String.isNullOrEmpty(model.title))"
         }else {
             let model = m as! TSMModel;
-            s = "\(String.stringIsNullOrNilToEmpty(model.code)) - \(String.stringIsNullOrNilToEmpty(model.message))"
+            s = "\(String.isNullOrEmpty(model.code)) - \(String.isNullOrEmpty(model.message))"
         }
         
        return s

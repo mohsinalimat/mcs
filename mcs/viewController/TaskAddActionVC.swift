@@ -67,9 +67,9 @@ class TaskAddActionVC: BaseViewController ,UITableViewDelegate,UITableViewDataSo
             s_closed.isOn = false
             
             btn_save.isHidden = true
-            title = "No." + String.stringIsNullOrNilToEmpty(action_detail_info_r["id"]);
-            s_performed.isOn = String.stringIsNullOrNilToEmpty(action_detail_info_r["perform"]) == "1" ? true : false
-            s_closed.isOn = String.stringIsNullOrNilToEmpty(action_detail_info_r["closed"]) == "1" ? true : false
+            title = "No." + String.isNullOrEmpty(action_detail_info_r["id"]);
+            s_performed.isOn = String.isNullOrEmpty(action_detail_info_r["perform"]) == "1" ? true : false
+            s_closed.isOn = String.isNullOrEmpty(action_detail_info_r["closed"]) == "1" ? true : false
             
             if let partlist = action_detail_info_r["partList"] as? [[String:String]] {
                 addActionComponentDataArr = partlist;

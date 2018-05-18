@@ -28,8 +28,8 @@ class ReportInfoCell_R: UITableViewCell {
     func fill(_ dic :[String:Any]?) {
         guard let d = dic else {return}
         
-        reg.text = String.stringIsNullOrNilToEmpty(d["acReg"])
-        station.text = "Station:" + String.stringIsNullOrNilToEmpty(d["station"])
+        reg.text = String.isNullOrEmpty(d["acReg"])
+        station.text = "Station:" + String.isNullOrEmpty(d["station"])
 
         let _eta = Tools.date(String.stringIsNullOrNil(d["flDate"]))
         var date:String = ""
@@ -41,7 +41,7 @@ class ReportInfoCell_R: UITableViewCell {
         flt.text = "Flt No:" + String.stringIsNullOrNil(d["flNo"]) + " \(date)"
         
         
-        fh.text = String.stringIsNullOrNilToEmpty(d["actMh"])
+        fh.text = String.isNullOrEmpty(d["actMh"])
         
     }
     

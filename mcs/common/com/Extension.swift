@@ -24,13 +24,13 @@ extension String {
     }
     
     
-    static func stringIsNullOrNilToEmpty(_ any:Any?) -> String {
+    static func isNullOrEmpty(_ any:Any?) -> String {
         guard  let s = any else {
-            return " "
+            return ""
         }
         
         if s is  NSNull {
-            return " ";
+            return "";
         }
         
         return "\(s)"
