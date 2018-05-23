@@ -23,6 +23,8 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
     var current_selected_index = SectionHeadButtonIndex (rawValue: 1)!
     var _current_materialArr = [[String:Any]]()
     var _current_defect_type:String?
+    var _current_attachmnetArr = [UIImage]()
+    
     
     @IBOutlet weak var save_bg: UIView!
     @IBOutlet weak var read_bg: UIView!
@@ -39,6 +41,7 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
                 let obj = obj as! String
                 sender.setTitle(obj, for: .normal)
                 guard let ss = self else {return}
+                ss.__clearData();
                 ss.section2_selected_index = 1
                 ss._current_defect_type = kDefectType[String.isNullOrEmpty(obj)]!
                 ss._tableView.reloadData()
@@ -51,7 +54,7 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
             
             break
             
-        case 4:
+        case 4://read only - view report
             guard let info = _defect_info else {return}
             guard let defect_type = info["reportType"] as? String else {return}
             guard let defect_id = info["id"] as? String else {return}
@@ -86,8 +89,7 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        kSectionHeadButtonSelectedIndex = current_selected_index
-        addActionMateralDataArr = addActionMateralDataArr + _current_materialArr
+        __fillData();
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -95,6 +97,13 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
         HUD.dismiss()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated);
+        
+        __saveData();
+    }
+    
+
     //MARK:
     func _getFalutInfo() {
         guard let _reportid = reportId else {return}
@@ -108,7 +117,7 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
             
             if let material = arr["partList"] as? [[String:Any]] {
                 ss._current_materialArr = material
-                //addActionMateralDataArr = material;
+                addActionMateralDataArr = material;
             }
             
             if let actionList = arr["actionList"] as? [[String:Any]] {
@@ -147,15 +156,35 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
         _tableView.register(UINib (nibName: "ReportBaseInfoCell_R", bundle: nil), forCellReuseIdentifier: "ReportBaseInfoCell_RIdentifier")
         _tableView.register(BaseCellWithTable.self, forCellReuseIdentifier: "BaseCellWithTableIdentifier")
         
-        addActionMateralDataArr.removeAll()
-        addActionComponentDataArr.removeAll()
-        defect_added_actions.removeAll()
-        
+        __clearData();
         _tableView.reloadData()
         _tableView.layoutIfNeeded()
     }
 
+    private func __clearData() {
+        addActionMateralDataArr.removeAll()
+        addActionComponentDataArr.removeAll()
+        defect_added_actions.removeAll()
+        kAttachmentDataArr.removeAll()
+    }
+    
+    private func __fillData() {
+        kSectionHeadButtonSelectedIndex = current_selected_index
+        addActionMateralDataArr = _current_materialArr
+        
+        guard kSectionHeadButtonSelectedIndex == .creatReportValue5 else {return}
+        kAttachmentDataArr = _current_attachmnetArr
+    }
 
+    private func __saveData() {
+        _current_materialArr = addActionMateralDataArr
+        
+        guard kSectionHeadButtonSelectedIndex == .creatReportValue5 else {return}
+        _current_attachmnetArr = kAttachmentDataArr
+    }
+    
+    
+    
     func _save() {
         guard reportInfoCell.reg.currentTitle != nil else { HUD.show(info: "Select Reg!"); return}
         guard reportInfoCell.station.currentTitle != nil else { HUD.show(info: "Select Station!"); return}
@@ -185,8 +214,8 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
             "melCode"   :   String.isNullOrEmpty(baseInfoCell.mel_tf.text),
             "ammCode"   :   String.isNullOrEmpty(baseInfoCell.amm_tf.text),
             /*material-tools*/
-            "partList": addActionMateralDataArr,
-            "actionList":defect_added_actions
+            "pts": addActionMateralDataArr,
+            "actionListStr":defect_added_actions
         ] as [String : Any]
         
         switch __defect_type() {
@@ -221,21 +250,73 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
         }
 
         HUD.show()
-        netHelper_request(withUrl: defect_save_fault_url, method: .post, parameters: params,encoding: JSONEncoding.default , successHandler: {[weak self] (res) in
-            HUD.show(successInfo: "Add success")
-            addActionMateralDataArr.removeAll()
-            defect_added_actions.removeAll()
-            
-            guard let ss = self else {return}
-            NotificationCenter.default.post(name: NSNotification.Name (rawValue: "creatDefectReportSubmintOkNotification"), object: nil)
-            _ = ss.navigationController?.popViewController(animated: true)
-        }) { (str) in
-            HUD.show(info: str ?? "Request Error")
+        var header:HTTPHeaders = [:]
+        if let token = user_token as? String {
+            header["Authorization"] = token;
+            header["content-type"] = "multipart/form-data"
         }
+        
+        Alamofire.upload(multipartFormData: { (multipartData) in
+            for ig in kAttachmentDataArr {
+                let data  = UIImageJPEGRepresentation(ig, 0.5);
+                if let d = data {
+                    let name = Tools.dateToString(Date(), formatter: "yyyyMMddHHmmss").appending("\(arc4random()%10000)")
+                    multipartData.append(d, withName: "files", fileName: "\(name).jpg", mimeType: "image/jpeg");//image/jpeg ，image/png
+                }
+            }
+            
+            for (k , v) in params {
+                var data:Data?
+                if v is String {
+                    let s = v as! String
+                    data = s.data(using: String.Encoding.utf8)
+                }else if v is [Any] {
+                    let arr = v as! [Any];
+                    if arr.count > 0 {
+                        do {
+                            data =  try JSONSerialization.data(withJSONObject: arr, options: []);
+                        }catch{
+                            print(error.localizedDescription);
+                        }
+                    }
+                }
+                
+                if let d = data {
+                    multipartData.append(d, withName: k)
+                }
+            }
+        }, to:  BASE_URL + defect_save_fault_url, headers: header) { (encodingResult) in
+            switch encodingResult {
+                case .success(request: let upload, streamingFromDisk: _, streamFileURL:_):
+                    upload.responseJSON(completionHandler: {  (res) in
+                        DispatchQueue.main.async {[weak self] in
+                            print(res.result.value)
+                            HUD.dismiss()
+                            
+                            guard let ss = self else {return}
+                            ss.__clearData()
+                            
+                            NotificationCenter.default.post(name: NSNotification.Name (rawValue: "creatDefectReportSubmintOkNotification"), object: nil)
+                            
+                            _ = ss.navigationController?.popViewController(animated: true)
+                        }
+                    })
+                case .failure(let error):
+                    print(error);
+                    break
+            }
+        }
+        
+        
         
     }
     
     
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        get {
+            return .landscape;
+        }
+    }
     
     //MARK: -
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -272,17 +353,20 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
             let cell = tableView.dequeueReusableCell(withIdentifier: "ReportBaseInfoCell_RIdentifier", for: indexPath) as! ReportBaseInfoCell_R;
             cell.fill(_defect_info)
             return cell
-        } else if section2_selected_index == 2{
+        } else if section2_selected_index == 2 || section2_selected_index == 3{
             let cell = tableView.dequeueReusableCell(withIdentifier: "Action_Materal_CellIdentifier", for: indexPath) as! Action_Materal_Cell;
             cell.read_only = read_only
-            //cell.info = action_detail_info_r
             cell._tableView.reloadData()
             return cell
         }else {
             switch  __defect_type() {
-            case "TS":   break
-            case "DD":
+            case "TS":
                 if section2_selected_index == 3 {
+                    //print("....");
+                }
+                break
+            case "DD":
+                if section2_selected_index == 4 {
                     if !read_only {
                         let cell = tableView.dequeueReusableCell(withIdentifier: "DDInfoCellIdentifier", for: indexPath) as! DDInfoCell;
                         ddInfoCell = cell
@@ -295,7 +379,7 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
                 };break
                 
             case "NRR":
-                if section2_selected_index == 3 {
+                if section2_selected_index == 4 {
                     if !read_only{
                         let cell = tableView.dequeueReusableCell(withIdentifier: "NRRCellIdentifier", for: indexPath) as! NRRCell;
                         nrrCell = cell
@@ -340,39 +424,7 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
             return cell;
             
         }
-        
-        
 
-//        if section2_selected_index == 1 {
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "ReportBaseInfoCellIdentifier", for: indexPath) as! ReportBaseInfoCell;
-//            baseInfoCell = cell
-//            
-//            return cell
-//        } else if section2_selected_index == 4 {
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "DDInfoCellIdentifier", for: indexPath) as! DDInfoCell;
-//            return cell
-//        }
-//        
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "Action_Materal_CellIdentifier", for: indexPath) as! Action_Materal_Cell;
-//        cell.read_only = read_only
-//        //cell.info = action_detail_info_r
-//        cell._tableView.reloadData()
-//        
-//        if section2_selected_index == 5 {
-//            cell.didSelectedRowAtIndex = { index in
-//                //let d = dataArray[indexPath.row]
-//                
-//                HUD.show()
-//                let vc = TaskAddActionVC()
-//                vc.read_only = true
-//                //vc.action_detail_info_r = d;
-//                
-//                //self.navigationController?.pushViewController(vc, animated: true)
-//            }
-//        }
-        
-        
-//        return cell
     }
     
     
@@ -416,24 +468,17 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
                 guard let ss = self else {return}
                 ss.section2_selected_index = index
                 kSectionHeadButtonSelectedIndex = SectionHeadButtonIndex(rawValue: index + 4)!
-                
+                ss.current_selected_index = kSectionHeadButtonSelectedIndex
                 switch  ss.__defect_type() {
                     case "TS":
                         switch index {
-                        case 3:
-                            kSectionHeadButtonSelectedIndex = SectionHeadButtonIndex(rawValue: 5 + 4)!
-                            break
+                        case 4:kSectionHeadButtonSelectedIndex = SectionHeadButtonIndex(rawValue: 4 + 5)!;break
                         default:break
                         }
                         
                         break
                         
-                    case "DD","NRR":
-                        if index == 4 {
-                            kSectionHeadButtonSelectedIndex = SectionHeadButtonIndex(rawValue: 5 + 4)!;
-                        }
-                        break
-                    
+
                     default:break
                 }
                 
@@ -452,11 +497,11 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
         let type = __defect_type()
         
         switch  type {
-        case "TS":return ["Basic Info & Detail","Materal&Tools ",/*"Attachment",*/"Action"]
+        case "TS":return ["Basic Info & Detail","Materal&Tools ","Attachment","Action"]
             
-        case "DD":return ["Basic Info & Detail","Materal&Tools ",/*"Attachment",*/"DD","Action"]
+        case "DD":return ["Basic Info & Detail","Materal&Tools ","Attachment","DD","Action"]
 
-        case "NRR":return ["Basic Info & Detail","Materal&Tools ",/*"Attachment",*/"NRR","Action"]
+        case "NRR":return ["Basic Info & Detail","Materal&Tools ","Attachment","NRR","Action"]
         default:break
         }
         

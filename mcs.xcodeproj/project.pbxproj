@@ -55,6 +55,7 @@
 		A165946F206E0DBB00CC8A0D /* TaskHandleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A165946D206E0DBB00CC8A0D /* TaskHandleController.swift */; };
 		A1659470206E0DBB00CC8A0D /* TaskHandleController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A165946E206E0DBB00CC8A0D /* TaskHandleController.xib */; };
 		A165B67C20107FA3006080D8 /* HomeDetailTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A165B67B20107FA3006080D8 /* HomeDetailTabController.swift */; };
+		A16770F220B418C700D93454 /* TTSheetAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16770F120B418C700D93454 /* TTSheetAction.swift */; };
 		A17A5441207E0D2600D035B5 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A17A543E207E0D2600D035B5 /* RxCocoa.framework */; };
 		A17A5442207E0D2600D035B5 /* RxDataSources.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A17A543F207E0D2600D035B5 /* RxDataSources.framework */; };
 		A17A5443207E0D2600D035B5 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A17A5440207E0D2600D035B5 /* RxSwift.framework */; };
@@ -261,6 +262,7 @@
 		A165946D206E0DBB00CC8A0D /* TaskHandleController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskHandleController.swift; sourceTree = "<group>"; };
 		A165946E206E0DBB00CC8A0D /* TaskHandleController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskHandleController.xib; sourceTree = "<group>"; };
 		A165B67B20107FA3006080D8 /* HomeDetailTabController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeDetailTabController.swift; sourceTree = "<group>"; };
+		A16770F120B418C700D93454 /* TTSheetAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTSheetAction.swift; sourceTree = "<group>"; };
 		A17A543E207E0D2600D035B5 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = "../../../../Library/Developer/Xcode/DerivedData/mcs-eoyeqdslwdymqccjeinitcdyuynk/Build/Products/Debug-iphoneos/RxCocoa/RxCocoa.framework"; sourceTree = "<group>"; };
 		A17A543F207E0D2600D035B5 /* RxDataSources.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxDataSources.framework; path = "../../../../Library/Developer/Xcode/DerivedData/mcs-eoyeqdslwdymqccjeinitcdyuynk/Build/Products/Debug-iphoneos/RxDataSources/RxDataSources.framework"; sourceTree = "<group>"; };
 		A17A5440207E0D2600D035B5 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = "../../../../Library/Developer/Xcode/DerivedData/mcs-eoyeqdslwdymqccjeinitcdyuynk/Build/Products/Debug-iphoneos/RxSwift/RxSwift.framework"; sourceTree = "<group>"; };
@@ -451,6 +453,7 @@
 				A12028572008A19200CB8633 /* LocationManager.swift */,
 				A12028582008A19600CB8633 /* Reachability */,
 				A1E32F1C2016D45F00842A18 /* Tools.swift */,
+				A16770F120B418C700D93454 /* TTSheetAction.swift */,
 			);
 			path = com;
 			sourceTree = "<group>";
@@ -1195,6 +1198,7 @@
 				A1CF2A0F20070A5D009FE6A4 /* BaseViewController.swift in Sources */,
 				A1C0A3D8200DF04F00A1762C /* TTRefreshFooter.swift in Sources */,
 				A1AAF15220494DCD00E8CB3B /* TaskHandCell.swift in Sources */,
+				A16770F220B418C700D93454 /* TTSheetAction.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

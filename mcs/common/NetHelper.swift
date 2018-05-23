@@ -58,7 +58,7 @@ func netHelper_request(withUrl:String,
     guard withUrl.lengthOfBytes(using: String.Encoding.utf8) > 0 else { return}
     
     var header:HTTPHeaders = [:]
-    if let token = user_token as? String {
+    if let token = UserDefaults.standard.value(forKey: "user-token") as? String {
         header["Authorization"] = token;
     }
     

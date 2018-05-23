@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class Action_Materal_Cell: UITableViewCell,UITableViewDelegate,UITableViewDataSource {
 
@@ -21,6 +22,7 @@ class Action_Materal_Cell: UITableViewCell,UITableViewDelegate,UITableViewDataSo
     @IBOutlet weak var addBtn: UIButton!
     @IBOutlet weak var _tableView: UITableView!
     
+    //MARK:
     @IBAction func addAction(_ sender: UIButton) {
         switch kSectionHeadButtonSelectedIndex {
         case .addActoinValue2,.creatReportValue2:
@@ -32,10 +34,24 @@ class Action_Materal_Cell: UITableViewCell,UITableViewDelegate,UITableViewDataSo
             break
             
         case .addActoinValue4 , .creatReportValue3:
+            let v = TTSheetAction.share
+            v.selectedAtIndex = { [weak self](index) in
+                DispatchQueue.main.async {
+                    guard let ss = self else {return}
+                    ss.imgPicker(index);
+                }
+                
+            }
+            
+            
+            v.show()
+            
+            /*
             let vc = UIAlertController.init(title: nil, message: nil, preferredStyle: .alert)
             let action_1 =  UIAlertAction (title: "取消", style: .cancel, handler: nil)
-            let action_2 = UIAlertAction (title: "拍照", style: .default, handler: { (action) in
-                
+            let action_2 = UIAlertAction (title: "拍照", style: .default, handler: { [weak self](action) in
+                guard let ss = self else {return}
+                ss.imgPicker()
             })
             
             let action_3 = UIAlertAction (title: "视频", style: .default, handler: { (action) in
@@ -44,8 +60,10 @@ class Action_Materal_Cell: UITableViewCell,UITableViewDelegate,UITableViewDataSo
             
             vc.addAction(action_1)
             vc.addAction(action_2)
-            vc.addAction(action_3)
+            //vc.addAction(action_3)
             UIApplication.shared.keyWindow?.rootViewController?.present(vc, animated: true, completion: nil);
+            */
+            
             
             break
         case .creatReportValue5:
@@ -60,10 +78,9 @@ class Action_Materal_Cell: UITableViewCell,UITableViewDelegate,UITableViewDataSo
     }
 
     
+    //MARK:
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        
         _tableView.layer.borderWidth = 1
         _tableView.layer.borderColor = kTableviewBackgroundColor.cgColor
         _tableView.delegate = self
@@ -71,7 +88,6 @@ class Action_Materal_Cell: UITableViewCell,UITableViewDelegate,UITableViewDataSo
         _tableView.register(UINib (nibName: "Section_TableViewCell", bundle: nil), forCellReuseIdentifier: "Section_TableViewCellIdentifier")
         _tableView.register(UINib (nibName: "Section_TableViewCell2", bundle: nil), forCellReuseIdentifier: "Section_TableViewCell2Identifier")
         _tableView.register(UINib (nibName: "Section_TableViewCell3", bundle: nil), forCellReuseIdentifier: "Section_TableViewCell3Identifier")
-        
         _tableView.register(UINib (nibName: "ActionListCell", bundle: nil), forCellReuseIdentifier: "ActionListCellIdentifier")
         
         _tableView.tableFooterView = UIView()
@@ -90,15 +106,12 @@ class Action_Materal_Cell: UITableViewCell,UITableViewDelegate,UITableViewDataSo
     }
     
     func refreshAction()  {
-        
         _tableView.reloadData()
-        
     }
     
     override func prepareForReuse() {
         _tableView.scrollsToTop = true;
     }
-    
     
     
     //MARK:-
@@ -110,23 +123,19 @@ class Action_Materal_Cell: UITableViewCell,UITableViewDelegate,UITableViewDataSo
         case .addActoinValue3:
             return addActionComponentDataArr.count;
             
-        case .addActoinValue4 , .creatReportValue3://......附件
-            return 0
+        case .addActoinValue4 , .creatReportValue3://附件
+            return kAttachmentDataArr.count
             
         case .creatReportValue4:
             return 0;
             
         case .creatReportValue5: //action
             return defect_added_actions.count;
-            
         default:return 0
         }
-
-        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
         switch kSectionHeadButtonSelectedIndex {
         case .addActoinValue2, .creatReportValue2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "Section_TableViewCellIdentifier", for: indexPath) as! Section_TableViewCell
@@ -150,19 +159,24 @@ class Action_Materal_Cell: UITableViewCell,UITableViewDelegate,UITableViewDataSo
         default: break
         }
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Section_TableViewCell3Identifier", for: indexPath)
-
+        //附件
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Section_TableViewCell3Identifier", for: indexPath) as! Section_TableViewCell3 //img
+        let ig  = kAttachmentDataArr[indexPath.row];
+        cell.fill(ig)
+        
         return cell
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         guard kSectionHeadButtonSelectedIndex != .creatReportValue5 else {return 80;}
+        guard kSectionHeadButtonSelectedIndex != .creatReportValue3 , kSectionHeadButtonSelectedIndex != .addActoinValue4  else {return 280;}
+        
         return 60;
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         switch kSectionHeadButtonSelectedIndex {
-        case .creatReportValue4,.creatReportValue5:
+        case .creatReportValue4, .creatReportValue5, .addActoinValue4 , .creatReportValue3 :
             return 0;
             
         default:return 40
@@ -207,6 +221,8 @@ class Action_Materal_Cell: UITableViewCell,UITableViewDelegate,UITableViewDataSo
                 
             } else if kSectionHeadButtonSelectedIndex == .creatReportValue5 {
                 defect_added_actions.remove(at: indexPath.row);
+            } else if (kSectionHeadButtonSelectedIndex == .addActoinValue4) || (kSectionHeadButtonSelectedIndex == .creatReportValue3) {
+                kAttachmentDataArr.remove(at: indexPath.row)
             }
             
             tableView.deleteRows(at: [indexPath], with: .top)
@@ -222,4 +238,53 @@ class Action_Materal_Cell: UITableViewCell,UITableViewDelegate,UITableViewDataSo
 
     }
     
+    
 }
+
+
+//MARK:
+extension Action_Materal_Cell : UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+
+    func imgPicker(_ index:Int)  {
+        if index == 0 {
+            guard UIImagePickerController.isSourceTypeAvailable(.camera) else {return}
+            guard AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo) == .authorized else { HUD.show(info: " Allow access to the camera in Settings");return}
+        }
+
+
+        let picker = UIImagePickerController.init();
+        picker.delegate  = self
+        picker.allowsEditing = true
+        
+        switch index {
+            case 0:picker.sourceType = .camera;break
+            case 1:picker.sourceType = .photoLibrary;break
+            //case 2:picker.sourceType = .camera;break
+            default:break
+        }
+        
+
+        UIApplication.shared.keyWindow?.rootViewController?.present(picker, animated: true, completion: nil);
+    }
+    
+    
+    
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let img = info["UIImagePickerControllerOriginalImage"] as? UIImage {
+            kAttachmentDataArr.insert(img, at: 0)
+        }
+        
+        picker.dismiss(animated: true, completion: nil)
+        refreshAction()
+    }
+    
+
+
+
+}
+

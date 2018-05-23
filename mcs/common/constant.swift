@@ -17,9 +17,9 @@ let user_token = UserDefaults.standard.value(forKey: "user-token")
 
 //MARK: -  url
 
-//let BASE_URL = "http://smart.imsp.cn/mcs/rest"
+let BASE_URL = "http://smart.imsp.cn/mcs/rest"
 //let BASE_URL = "http://192.168.6.57:8081/mcs/rest"//ds
-let BASE_URL = "http://192.168.6.65:8080/mcs/rest"//linf
+//let BASE_URL = "http://192.168.6.65:8080/mcs/rest"//linf
 //let BASE_URL = "http://192.168.6.59:8080/mcs/rest"//jx
 
 
@@ -99,10 +99,10 @@ enum SectionHeadButtonIndex :Int {
     case addActoinValue2 //2开始
     case addActoinValue3
     case addActoinValue4 //附件
-    case creatReportValue1
-    case creatReportValue2//material
+    case creatReportValue1//base info
+    case creatReportValue2//material tools
     case creatReportValue3//attachment
-    case creatReportValue4//
+    case creatReportValue4//dd/nrr
     case creatReportValue5//action
 }
 
@@ -143,6 +143,7 @@ let defect_all_status : [String:String] = {
     return [:];
 }()
 
+var kAttachmentDataArr = [UIImage]()
 
 //MARK:
 let hud_msg_loading = "Loading"

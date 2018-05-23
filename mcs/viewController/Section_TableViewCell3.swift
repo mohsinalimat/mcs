@@ -10,6 +10,19 @@ import UIKit
 
 class Section_TableViewCell3: UITableViewCell {
 
+    @IBOutlet weak var pre_image: UIImageView!
+    
+    
+    
+    
+    
+    
+    func fill(_ image:UIImage) {
+        
+        pre_image.image = image
+        
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

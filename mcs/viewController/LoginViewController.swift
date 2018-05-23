@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class LoginViewController: BaseViewController,UITableViewDelegate,UITableViewDataSource{
 
@@ -39,6 +40,29 @@ class LoginViewController: BaseViewController,UITableViewDelegate,UITableViewDat
         
         _initSubview();
         loginTableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 15);
+        
+        
+        var header:HTTPHeaders = [:]
+        if let token = user_token as? String {
+            header["Authorization"] = token;
+            header["content-type"] = "multipart/form-data"
+        }
+        
+        
+//        Alamofire.upload(multipartFormData: { (multipartData) in
+//            let img = UIImage (named: "login_bg")
+//            
+//            let img_data = UIImageJPEGRepresentation(img!, 0.1)
+//            multipartData.append(img_data!, withName: "files", fileName: "ig001.png", mimeType: "image/png")//image/jpeg
+//            multipartData.append("123".data(using: String.Encoding.utf8)!, withName: "key")
+//            
+//            
+//        }, to:  "http://192.168.6.54:80/Test/withupload.php", headers: header) { (encodingResult) in
+//            print(encodingResult)
+//            
+//        }
+
+        
     }
 
     func _initSubview() {

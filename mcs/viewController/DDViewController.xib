@@ -20,9 +20,9 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vXG-zd-CvO">
                     <subviews>
-                        <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8QF-L7-gxS">
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <inset key="imageEdgeInsets" minX="130" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8QF-L7-gxS">
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                            <inset key="imageEdgeInsets" minX="180" minY="0.0" maxX="0.0" maxY="0.0"/>
                             <state key="normal" title="A/C" image="arrow_down_night_16" backgroundImage="button_bg1">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
@@ -36,12 +36,12 @@
                                 <action selector="buttonAction:" destination="-1" eventType="touchUpInside" id="24h-HK-60R"/>
                             </connections>
                         </button>
-                        <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OLH-4V-Qf9">
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OLH-4V-Qf9">
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="0Cr-qf-qyb"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <inset key="imageEdgeInsets" minX="130" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                            <inset key="imageEdgeInsets" minX="180" minY="0.0" maxX="0.0" maxY="0.0"/>
                             <state key="normal" title="Status" image="arrow_down_night_16" backgroundImage="button_bg1">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
@@ -59,10 +59,10 @@
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="8QF-L7-gxS" secondAttribute="trailing" constant="15" id="7mc-zv-JKk"/>
                         <constraint firstItem="8QF-L7-gxS" firstAttribute="height" secondItem="OLH-4V-Qf9" secondAttribute="height" id="7uI-O6-sVX"/>
-                        <constraint firstItem="8QF-L7-gxS" firstAttribute="leading" secondItem="OLH-4V-Qf9" secondAttribute="trailing" constant="15" id="C2J-GP-mh2"/>
+                        <constraint firstItem="8QF-L7-gxS" firstAttribute="leading" secondItem="OLH-4V-Qf9" secondAttribute="trailing" constant="20" id="C2J-GP-mh2"/>
                         <constraint firstItem="OLH-4V-Qf9" firstAttribute="leading" secondItem="vXG-zd-CvO" secondAttribute="leading" constant="10" id="OOz-JX-Z6V"/>
                         <constraint firstAttribute="height" constant="50" id="fUo-0o-6G9"/>
-                        <constraint firstAttribute="width" constant="480" id="kKz-7x-F2C"/>
+                        <constraint firstAttribute="width" constant="500" id="kKz-7x-F2C"/>
                         <constraint firstItem="8QF-L7-gxS" firstAttribute="width" secondItem="OLH-4V-Qf9" secondAttribute="width" id="muT-ro-exv"/>
                         <constraint firstItem="OLH-4V-Qf9" firstAttribute="centerY" secondItem="vXG-zd-CvO" secondAttribute="centerY" id="pS6-Kw-tZK"/>
                         <constraint firstItem="8QF-L7-gxS" firstAttribute="centerY" secondItem="OLH-4V-Qf9" secondAttribute="centerY" id="qfy-7f-QFY"/>
