@@ -11,7 +11,7 @@
             <rect key="frame" x="0.0" y="0.0" width="1000" height="280"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <frame key="frameInset" width="1000" height="279"/>
+                <frame key="frameInset" width="1000" height="279.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xjc-nY-5ch">
@@ -21,11 +21,12 @@
                     </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="xjc-nY-5ch" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="3" id="0OJ-b6-dtc"/>
+                    <constraint firstItem="xjc-nY-5ch" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="0OJ-b6-dtc"/>
                     <constraint firstItem="xjc-nY-5ch" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="4R0-q5-fFb"/>
                     <constraint firstItem="xjc-nY-5ch" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="aM9-za-RJQ"/>
                 </constraints>
             </tableViewCellContentView>
+            <inset key="separatorInset" minX="300" minY="0.0" maxX="300" maxY="0.0"/>
             <connections>
                 <outlet property="pre_image" destination="xjc-nY-5ch" id="3mm-zG-xxQ"/>
             </connections>

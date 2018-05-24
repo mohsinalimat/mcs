@@ -18,8 +18,9 @@ let user_token = UserDefaults.standard.value(forKey: "user-token")
 //MARK: -  url
 
 let BASE_URL = "http://smart.imsp.cn/mcs/rest"
-//let BASE_URL = "http://192.168.6.57:8081/mcs/rest"//ds
 //let BASE_URL = "http://192.168.6.65:8080/mcs/rest"//linf
+
+//let BASE_URL = "http://192.168.6.57:8081/mcs/rest"//ds
 //let BASE_URL = "http://192.168.6.59:8080/mcs/rest"//jx
 
 
@@ -75,7 +76,7 @@ let defect_save_fault_url = "/biz/fault"
 let defect_delete_url   = "/biz/defect/delete"
 let defect_flightNo_url = "/biz/defect/getFlightStatusList"
 let defect_faultDetail_url = "/biz/viewBizFault"
-
+let download_url = "/biz/download"
 
 
 ///dd
@@ -143,7 +144,10 @@ let defect_all_status : [String:String] = {
     return [:];
 }()
 
-var kAttachmentDataArr = [UIImage]()
+var kAttachmentDataArr = [Any]()
+
+let kTemporaryDirectory = NSTemporaryDirectory().appending("cache/")
+
 
 //MARK:
 let hud_msg_loading = "Loading"

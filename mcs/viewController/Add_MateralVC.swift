@@ -45,7 +45,7 @@ class Add_MateralVC: BaseViewController {
     
     @IBAction func selectAction(_ sender: UIButton) {
         
-        Tools.showDataPicekr (self,dataSource:["Materal","Tools"] ){ [weak self](obj) in
+        Tools.showDataPicekr (self,dataSource:["MATERIAL","TOOL"] ){ [weak self](obj) in
             guard let strongSelf = self else {return}
             
             let obj = obj as! String

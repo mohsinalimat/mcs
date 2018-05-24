@@ -42,39 +42,15 @@ class Action_Materal_Cell: UITableViewCell,UITableViewDelegate,UITableViewDataSo
                 }
                 
             }
-            
-            
-            v.show()
-            
-            /*
-            let vc = UIAlertController.init(title: nil, message: nil, preferredStyle: .alert)
-            let action_1 =  UIAlertAction (title: "取消", style: .cancel, handler: nil)
-            let action_2 = UIAlertAction (title: "拍照", style: .default, handler: { [weak self](action) in
-                guard let ss = self else {return}
-                ss.imgPicker()
-            })
-            
-            let action_3 = UIAlertAction (title: "视频", style: .default, handler: { (action) in
-                
-            })
-            
-            vc.addAction(action_1)
-            vc.addAction(action_2)
-            //vc.addAction(action_3)
-            UIApplication.shared.keyWindow?.rootViewController?.present(vc, animated: true, completion: nil);
-            */
-            
-            
-            break
+
+            v.show();break
         case .creatReportValue5:
             if let add = addAction {
                 add();
             }
             break
-            
         default:break
         }
-        
     }
 
     
@@ -231,11 +207,9 @@ class Action_Materal_Cell: UITableViewCell,UITableViewDelegate,UITableViewDataSo
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard kSectionHeadButtonSelectedIndex == .creatReportValue5 else { return}
-        
         if let handler = didSelectedRowAtIndex {
             handler(indexPath.row);
         }
-
     }
     
     
@@ -247,8 +221,22 @@ extension Action_Materal_Cell : UIImagePickerControllerDelegate,UINavigationCont
 
     func imgPicker(_ index:Int)  {
         if index == 0 {
-            guard UIImagePickerController.isSourceTypeAvailable(.camera) else {return}
-            guard AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo) == .authorized else { HUD.show(info: " Allow access to the camera in Settings");return}
+            guard UIImagePickerController.isSourceTypeAvailable(.camera) else {HUD.show(info: "NO Camera Available");return}
+            guard AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo) == .authorized else {
+                
+                AVCaptureDevice.requestAccess(forMediaType: AVMediaTypeVideo, completionHandler: { (b) in
+                    DispatchQueue.main.async {
+                        if b {
+                            print("Allow");
+                        }else {
+                            HUD.show(info: "Allow access to the camera in Settings");
+                            print("Not Allow");
+                        }
+                    }
+                })
+
+                return
+            }
         }
 
 
@@ -259,7 +247,6 @@ extension Action_Materal_Cell : UIImagePickerControllerDelegate,UINavigationCont
         switch index {
             case 0:picker.sourceType = .camera;break
             case 1:picker.sourceType = .photoLibrary;break
-            //case 2:picker.sourceType = .camera;break
             default:break
         }
         

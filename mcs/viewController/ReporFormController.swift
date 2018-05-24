@@ -23,7 +23,7 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
     var current_selected_index = SectionHeadButtonIndex (rawValue: 1)!
     var _current_materialArr = [[String:Any]]()
     var _current_defect_type:String?
-    var _current_attachmnetArr = [UIImage]()
+    var _current_attachmnetArr = [Any]()
     
     
     @IBOutlet weak var save_bg: UIView!
@@ -118,6 +118,11 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
             if let material = arr["partList"] as? [[String:Any]] {
                 ss._current_materialArr = material
                 addActionMateralDataArr = material;
+            }
+            
+            if let attachment = arr["attachments"] as? [[String:Any]] {
+                ss._current_attachmnetArr = attachment
+                kAttachmentDataArr = attachment
             }
             
             if let actionList = arr["actionList"] as? [[String:Any]] {
@@ -251,13 +256,15 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
 
         HUD.show()
         var header:HTTPHeaders = [:]
-        if let token = user_token as? String {
+        if let token = UserDefaults.standard.value(forKey: "user-token") as? String {
             header["Authorization"] = token;
             header["content-type"] = "multipart/form-data"
         }
         
         Alamofire.upload(multipartFormData: { (multipartData) in
-            for ig in kAttachmentDataArr {
+            for obj in kAttachmentDataArr {
+                let ig = obj as! UIImage
+                
                 let data  = UIImageJPEGRepresentation(ig, 0.5);
                 if let d = data {
                     let name = Tools.dateToString(Date(), formatter: "yyyyMMddHHmmss").appending("\(arc4random()%10000)")
@@ -393,16 +400,11 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
             default:break
             }
             
-
-            
             ///add action
             let cell = tableView.dequeueReusableCell(withIdentifier: "Action_Materal_CellIdentifier", for: indexPath) as! Action_Materal_Cell;
             cell.read_only = read_only
-            //cell.info = action_detail_info_r
             cell._tableView.reloadData()
-            
             current_selected_index = kSectionHeadButtonSelectedIndex;
-            
             cell.didSelectedRowAtIndex = { index in
                 let d = defect_added_actions[index]
                 

@@ -186,6 +186,7 @@ class DefectReportController: BaseTabItemController ,UITableViewDelegate,UITable
             guard let ss = self else {return}
             ss.loadData()
         }.addDisposableTo(disposeBag)
+        
     }
 
     
@@ -204,7 +205,8 @@ class DefectReportController: BaseTabItemController ,UITableViewDelegate,UITable
                 guard let ss = self else {return}
                 ss._pageNum =  1
                 ss.dataArray.removeAll()
-                ss.loadData()
+                //ss.loadData()
+                ss.loadData(ss._isSearch ? ss._searchPars ?? [:] : [:])
             }
         }
         
