@@ -38,8 +38,8 @@ class ReportBaseInfoCell_R: UITableViewCell {
     func fill(_ dic :[String:Any]?) {
         guard let d = dic else {return}
         
-        ts.text = String.isNullOrEmpty(d["tsType"]) + String.isNullOrEmpty(d["tsFrom"])
-        release_ref.text = String.isNullOrEmpty(d["releaseType"]) + String.isNullOrEmpty(d["releaseItem"])
+        ts.text = String.isNullOrEmpty(d["tsType"]) + "  " + String.isNullOrEmpty(d["tsFrom"])
+        release_ref.text = String.isNullOrEmpty(d["releaseType"]) +  "  " + String.isNullOrEmpty(d["releaseItem"])
         
         let _eta = Tools.date(String.stringIsNullOrNil(d["flDate"]))
         var fltdate:String = ""

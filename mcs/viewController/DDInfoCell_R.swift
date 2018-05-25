@@ -82,8 +82,9 @@ class DDInfoCell_R: UITableViewCell {
         let dd_status = String.isNullOrEmpty(d["statusOfDd"])
         let arr = dd_status.components(separatedBy: ",")
         for s in arr {
-            let i = Int.init(s);
-            __selectedBtnWithTag(dd_status, tag: i! + 40)
+            if let i = Int.init(s){
+                __selectedBtnWithTag(dd_status, tag: i + 40);
+            }
         }
 
         

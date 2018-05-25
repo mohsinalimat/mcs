@@ -255,66 +255,21 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
         }
 
         HUD.show()
-        var header:HTTPHeaders = [:]
-        if let token = UserDefaults.standard.value(forKey: "user-token") as? String {
-            header["Authorization"] = token;
-            header["content-type"] = "multipart/form-data"
-        }
-        
-        Alamofire.upload(multipartFormData: { (multipartData) in
-            for obj in kAttachmentDataArr {
-                let ig = obj as! UIImage
+        netHelper_upload(to: BASE_URL + defect_save_fault_url, parameters: params, uploadFiles: kAttachmentDataArr, successHandler: { (res) in
+            DispatchQueue.main.async {[weak self] in
+                HUD.dismiss()
                 
-                let data  = UIImageJPEGRepresentation(ig, 0.5);
-                if let d = data {
-                    let name = Tools.dateToString(Date(), formatter: "yyyyMMddHHmmss").appending("\(arc4random()%10000)")
-                    multipartData.append(d, withName: "files", fileName: "\(name).jpg", mimeType: "image/jpeg");//image/jpeg ，image/png
-                }
-            }
-            
-            for (k , v) in params {
-                var data:Data?
-                if v is String {
-                    let s = v as! String
-                    data = s.data(using: String.Encoding.utf8)
-                }else if v is [Any] {
-                    let arr = v as! [Any];
-                    if arr.count > 0 {
-                        do {
-                            data =  try JSONSerialization.data(withJSONObject: arr, options: []);
-                        }catch{
-                            print(error.localizedDescription);
-                        }
-                    }
-                }
+                guard let ss = self else {return}
+                ss.__clearData()
                 
-                if let d = data {
-                    multipartData.append(d, withName: k)
-                }
+                NotificationCenter.default.post(name: NSNotification.Name (rawValue: "creatDefectReportSubmintOkNotification"), object: nil)
+                
+                _ = ss.navigationController?.popViewController(animated: true)
             }
-        }, to:  BASE_URL + defect_save_fault_url, headers: header) { (encodingResult) in
-            switch encodingResult {
-                case .success(request: let upload, streamingFromDisk: _, streamFileURL:_):
-                    upload.responseJSON(completionHandler: {  (res) in
-                        DispatchQueue.main.async {[weak self] in
-                            print(res.result.value)
-                            HUD.dismiss()
-                            
-                            guard let ss = self else {return}
-                            ss.__clearData()
-                            
-                            NotificationCenter.default.post(name: NSNotification.Name (rawValue: "creatDefectReportSubmintOkNotification"), object: nil)
-                            
-                            _ = ss.navigationController?.popViewController(animated: true)
-                        }
-                    })
-                case .failure(let error):
-                    print(error);
-                    break
-            }
+            }) {
+                
+              HUD.show(info: "Request Error!")
         }
-        
-        
         
     }
     
