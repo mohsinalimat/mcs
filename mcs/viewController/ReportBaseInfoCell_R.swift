@@ -10,14 +10,17 @@ import UIKit
 
 class ReportBaseInfoCell_R: UITableViewCell {
 
-    
     @IBOutlet weak var ts: UILabel!
+    @IBOutlet weak var ts2: UILabel!
     
     @IBOutlet weak var release_ref: UILabel!
+    @IBOutlet weak var release_ref2: UILabel!
     
     @IBOutlet weak var flt_date: UILabel!
+    @IBOutlet weak var flt_date2: UILabel!
     
     @IBOutlet weak var shift_date: UILabel!
+    @IBOutlet weak var shift_date2: UILabel!
     
     @IBOutlet weak var defect_detail: UITextView!
     
@@ -34,30 +37,45 @@ class ReportBaseInfoCell_R: UITableViewCell {
         // Initialization code
     }
 
+    func _ts_type(_ type:String) -> String  {
+        var s = ""
+        switch type {
+            case "0":s =  defect_transferred_key[1];break
+            case "1":s =  defect_transferred_key[2];break
+            case "2":s =  defect_transferred_key[3];break
+            default:break
+        }
+        
+        return s
+    }
+    
     
     func fill(_ dic :[String:Any]?) {
         guard let d = dic else {return}
         
-        ts.text = String.isNullOrEmpty(d["tsType"]) + "  " + String.isNullOrEmpty(d["tsFrom"])
-        release_ref.text = String.isNullOrEmpty(d["releaseType"]) +  "  " + String.isNullOrEmpty(d["releaseItem"])
+        let type = String.isNullOrEmpty(d["tsType"])
+        ts.text = _ts_type(type)
+        ts2.text = String.isNullOrEmpty(d["tsFrom"])
+            
+        release_ref.text = String.isNullOrEmpty(d["releaseType"])
+        release_ref2.text = String.isNullOrEmpty(d["releaseItem"])
         
         let _eta = Tools.date(String.stringIsNullOrNil(d["flDate"]))
         var fltdate:String = ""
-        
         if let d = _eta {
             fltdate = Tools.dateToString(d, formatter: "yyyy-MM-dd")
         }
-        flt_date.text =  String.stringIsNullOrNil(d["flNo"]) + " \(fltdate)"
+        flt_date.text =  String.stringIsNullOrNil(d["flNo"])
+        flt_date2.text = fltdate
         
         ////
         let _shifteta = Tools.date(String.stringIsNullOrNil(d["flDate"]))
         var shiftdate:String = ""
-        
         if let d = _shifteta {
             shiftdate = Tools.dateToString(d, formatter: "yyyy-MM-dd")
         }
         
-        if let shift_id = d["shift"] as? String, let shifts = Tools.shift() {
+        if let shift_id = d["issueShift"] as? String, let shifts = Tools.shift() {
             for obj in shifts {
                 let _obj = obj as![String:String]
                 let key = _obj["key"]
@@ -67,7 +85,8 @@ class ReportBaseInfoCell_R: UITableViewCell {
             }            
         }
         
-        shift_date.text = shift_date.text ?? "" + " \(shiftdate)"
+        shift_date.text = shift_date.text ?? ""
+        shift_date2.text = shiftdate
         
         ///
         let paragraphStyle = NSMutableParagraphStyle.init()

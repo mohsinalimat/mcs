@@ -29,18 +29,16 @@ class ReportInfoCell_R: UITableViewCell {
         guard let d = dic else {return}
         
         reg.text = String.isNullOrEmpty(d["acReg"])
-        station.text = "Station:" + String.isNullOrEmpty(d["station"])
+        station.text = "Station: " + String.isNullOrEmpty(d["station"])
 
-        let _eta = Tools.date(String.stringIsNullOrNil(d["flDate"]))
+        let _eta = Tools.date(String.stringIsNullOrNil(d["issueDate"]))
         var date:String = ""
         
         if let d = _eta {
             date = Tools.dateToString(d, formatter: "yyyy-MM-dd")
         }
 
-        flt.text = "Flt No:" + String.stringIsNullOrNil(d["flNo"]) + " \(date)"
-        
-        
+        flt.text = String.stringIsNullOrNil(d["issueBy"]) + " / \(date)"
         fh.text = String.isNullOrEmpty(d["actMh"])
         
     }

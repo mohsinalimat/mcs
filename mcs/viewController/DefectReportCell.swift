@@ -62,18 +62,15 @@ class DefectReportCell: UITableViewCell {
         
         status.text = defect_all_status[String.isNullOrEmpty(d["state"])]
         
-        let defectDesc = String.isNullOrEmpty(d["description"])
+        let detail = String.isNullOrEmpty(d["detail"])
+        let tmp = String.isNullOrEmpty(d["temporaryDesc"])
+        let defectDesc = detail + "  " + (tmp.lengthOfBytes(using: String.Encoding.utf8) > 0 ? "(\(tmp))" : "")
+        
         let defectStr = "Description: " + defectDesc
         let defectAttriStr =  NSMutableAttributedString.init(string: defectStr)
         defectAttriStr.addAttributes([NSFontAttributeName:UIFont.boldSystemFont(ofSize: 16),NSForegroundColorAttributeName:UIColor.darkGray], range: NSMakeRange(0, 12))
         des_detail.attributedText = defectAttriStr
-        
-
     }
-    
-    
-    
-    
     
     
     func setSelectInEdit(_ b : Bool) {

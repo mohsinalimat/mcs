@@ -27,7 +27,7 @@
                                 <frame key="frameInset" minX="162" minY="91" width="150" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <state key="normal" title="null" backgroundImage="button_bg1"/>
+                                <state key="normal" backgroundImage="button_bg1"/>
                                 <connections>
                                     <action selector="buttonAction:" destination="dDj-dY-E85" eventType="touchUpInside" id="yrY-AG-iuo"/>
                                 </connections>
@@ -57,7 +57,7 @@
                                 <frame key="frameInset" minX="323" minY="151" width="150" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <state key="normal" title="2018-05-09" backgroundImage="button_bg1"/>
+                                <state key="normal" backgroundImage="button_bg1"/>
                                 <connections>
                                     <action selector="buttonAction:" destination="dDj-dY-E85" eventType="touchUpInside" id="mL9-94-gwe"/>
                                 </connections>
@@ -103,7 +103,7 @@
                                 <frame key="frameInset" minX="162" minY="35" width="150" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <state key="normal" title="null" backgroundImage="button_bg1"/>
+                                <state key="normal" backgroundImage="button_bg1"/>
                                 <connections>
                                     <action selector="buttonAction:" destination="dDj-dY-E85" eventType="touchUpInside" id="rry-wy-jBc"/>
                                 </connections>
@@ -112,7 +112,7 @@
                                 <frame key="frameInset" minX="323" minY="213" width="150" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <state key="normal" title="2018-05-09" backgroundImage="button_bg1"/>
+                                <state key="normal" backgroundImage="button_bg1"/>
                                 <connections>
                                     <action selector="buttonAction:" destination="dDj-dY-E85" eventType="touchUpInside" id="24I-k0-jf9"/>
                                 </connections>
@@ -126,13 +126,6 @@
                                     <action selector="buttonAction:" destination="dDj-dY-E85" eventType="touchUpInside" id="UDy-a4-ose"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="amF-HE-U9f">
-                                <frame key="frameInset" minX="119" minY="99" width="18" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Atg-4f-xdc">
                                 <frame key="frameInset" minX="125" minY="160" width="18" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -191,7 +184,7 @@
                                     <outlet property="delegate" destination="dDj-dY-E85" id="9Ct-MJ-Ulr"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" tag="22" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="AMM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="udv-Zk-LCd">
+                            <textField opaque="NO" clipsSubviews="YES" tag="22" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ATA" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="udv-Zk-LCd">
                                 <frame key="frameInset" minX="864" minY="38" width="100" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>

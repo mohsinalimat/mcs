@@ -29,6 +29,7 @@ class DefectSearchController: UITableViewController {
     @IBOutlet weak var descri: UITextField!
     
     var _defect_type:String?
+    var hasSelected:[String:Any]?
     
     @IBAction func searchAction(_ sender: UIButton) {
         
@@ -40,7 +41,8 @@ class DefectSearchController: UITableViewController {
                      "reportType":_defect_type ?? "",
                      "acs":_reg ?? [],
                      "sts":_defectStatus,
-                     "description":String.isNullOrEmpty(descri.text)]
+                     "description":String.isNullOrEmpty(descri.text),
+                     "isOn":s_pending.isOn]
             
             if let search = searchAction{
                 search(d);
@@ -78,8 +80,47 @@ class DefectSearchController: UITableViewController {
             
         }.addDisposableTo(disposeBag)
 
+        ///
+        _fill()
     }
 
+    func _fill() {
+        guard let pars = hasSelected else {return}
+        if let ison = pars["isOn"] as? Bool {
+            s_pending.isOn = ison;
+        }
+        
+        if let defectno = pars["bizNo"] as? String{
+            defectNo.text = defectno
+        }
+        
+        if let fltno =  pars["flNo"] as? String {
+            fltNo.text = fltno;
+        }
+        
+        if let defect_type = pars["reportType"] as? String {
+            _defect_type = defect_type;
+            defectType.text = defect_type
+        }
+        
+        
+        if let acs = pars["acs"] as? [String] {
+            _reg = acs;
+            reg.text = acs.joined(separator: ",")
+        }
+        
+        if let status = pars["sts"] as? [String]{
+            _defectStatus = status;
+            statuss.text = status.joined(separator: ",")
+        }
+        
+        if let des = pars["description"] as? String {
+            descri.text = des;
+        }
+
+    }
+    
+    
     func _reset() {
         s_pending.isOn = false
         defectNo.text = nil
@@ -88,6 +129,11 @@ class DefectSearchController: UITableViewController {
         reg.text = nil
         statuss.text = nil
         descri.text = nil
+        
+        _defectStatus = []
+        _defect_type = nil
+        _reg = []
+        
     }
     
     override func didReceiveMemoryWarning() {

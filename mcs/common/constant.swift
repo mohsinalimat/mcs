@@ -114,9 +114,9 @@ var addActionMateralDataArr = [[String:Any]]()//添加action - Materal
 var addActionComponentDataArr = [[String:String]]()//添加action - Component
 
 //Defect
-let defect_transferred_key = ["null","TLB","CLB","NIL"]
-let defect_transferred_form = ["null":"null","TLB":"0","CLB":"1","NIL":"2"]
-let defect_release_ref = ["null","MEL","AMM","CDL","SRM","RPAS","NIL"]
+let defect_transferred_key = [" ","TLB","CLB","NIL"]
+let defect_transferred_form = [" ":"null","TLB":"0","CLB":"1","NIL":"2"]
+let defect_release_ref = [" ","MEL","AMM","CDL","SRM","RPAS","NIL"]
 let g_staffs = (kActive_BASE_DATA["staffs"] as? [String]) ?? []
 let kDefectType = ["Defect Report":"TS" ,"DD":"DD" , "NRR":"NRR"]
 

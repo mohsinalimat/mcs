@@ -137,6 +137,9 @@ class DefectReportController: BaseTabItemController ,UITableViewDelegate,UITable
         
         let rect = CGRect (x: kCurrentScreenWidth - 480, y: 0, width: 480, height: kCurrentScreenHeight)
         let vc = UIStoryboard.init(name: "SearchAction", bundle: nil).instantiateViewController(withIdentifier: "defectSearchSbid") as! DefectSearchController
+        if let search = _searchPars {
+            vc.hasSelected = search;
+        }
         
         vc.searchAction = { [weak self] d in
             guard let ss = self else {return}
@@ -148,17 +151,14 @@ class DefectReportController: BaseTabItemController ,UITableViewDelegate,UITable
             ss._tableView.scrollsToTop = true
         }
         
-        
-        //        vc.preferredContentSize = rect.size
-        //        vc.view.frame = CGRect (x: kCurrentScreenWidth, y: 0, width: rect.width, height: rect.height)
-        
+
+        //////
         let nav = BaseNavigationController(rootViewController:vc)
         nav.preferredContentSize = rect.size
         nav.view.frame = CGRect (x: kCurrentScreenWidth, y: 0, width: rect.width, height: rect.height)
 
         UIApplication.shared.keyWindow?.rootViewController?.addChildViewController(nav)
         UIApplication.shared.keyWindow?.addSubview(nav.view)
-        
         UIView.animate(withDuration: 0.3) {
             nav.view.frame = CGRect (x:rect.minX, y: 0, width: rect.width, height: rect.height)
         }

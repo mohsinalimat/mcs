@@ -41,7 +41,7 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
                 let obj = obj as! String
                 sender.setTitle(obj, for: .normal)
                 guard let ss = self else {return}
-                ss.__clearData();
+                //ss.__clearData();
                 ss.section2_selected_index = 1
                 ss._current_defect_type = kDefectType[String.isNullOrEmpty(obj)]!
                 ss._tableView.reloadData()
@@ -61,7 +61,6 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
             let vc = ViewDefectReportController()
             vc.type_id = defect_id
             vc.type = defect_type == "DD" ? "defectDetail ":"ts"
-            
             self.navigationController?.pushViewController(vc, animated: true); break
         default:break
         }
@@ -132,7 +131,7 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
             if let defect_type = arr["reportType"] as? String{
                 ss.form_type.text = defect_type
                 if defect_type == "NRR" {
-                    ss.printview_btn.isHidden = true;
+                    //ss.printview_btn.isHidden = true;
                 }
             }
             
@@ -194,9 +193,9 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
         guard reportInfoCell.reg.currentTitle != nil else { HUD.show(info: "Select Reg!"); return}
         guard reportInfoCell.station.currentTitle != nil else { HUD.show(info: "Select Station!"); return}
         guard reportInfoCell.issueBy.currentTitle != nil else { HUD.show(info: "Select Issue!"); return}
-        guard baseInfoCell.release_btn.currentTitle != nil else { HUD.show(info: "Select Release Ref!"); return}
+        //guard baseInfoCell.release_btn.currentTitle != nil else { HUD.show(info: "Select Release Ref!"); return}
         guard baseInfoCell.fltNo_btn.currentTitle != nil else { HUD.show(info: "Select Flt No!"); return}
-        guard baseInfoCell.detail_tf.text != nil else { HUD.show(info: "Input Detail!"); return}
+        guard baseInfoCell.detail_tf.text.lengthOfBytes(using: String.Encoding.utf8) > 0 else { HUD.show(info: "Input Detail!"); return}
         var params  = [
             "reportType":kDefectType[String.isNullOrEmpty(typeBtn.currentTitle)]!,
             "acReg"     :   String.isNullOrEmpty(reportInfoCell.reg.currentTitle),
@@ -204,13 +203,13 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
             "issueDate" :   String.isNullOrEmpty(reportInfoCell.issueDate.currentTitle),
             "station"   :   String.isNullOrEmpty(reportInfoCell.station.currentTitle),
             /*basic info*/
-            "tsType"    :   String.isNullOrEmpty(baseInfoCell.transferredBtn.currentTitle) ,
+            "tsType"    :   String.isNullOrEmpty(defect_transferred_form[baseInfoCell.transferredBtn.currentTitle ?? " "]) ,
             "tsFrom"    :   String.isNullOrEmpty(baseInfoCell.transferred_tf.text),
             "releaseType":  String.isNullOrEmpty(baseInfoCell.release_btn.currentTitle),
             "releaseItem":  String.isNullOrEmpty(baseInfoCell.release_tf.text),
             "flNo"      :   String.isNullOrEmpty(baseInfoCell.fltNo_btn.currentTitle),
             "flDate"    :   String.isNullOrEmpty(baseInfoCell.fltDate_btn.currentTitle),
-            "issueShift":   String.isNullOrEmpty(baseInfoCell.shift_btn.currentTitle),
+            "issueShift":   String.isNullOrEmpty(baseInfoCell.shift_id),
             "issueShiftDate":String.isNullOrEmpty(baseInfoCell.shiftDate_btn.currentTitle),
             "description":  String.isNullOrEmpty(baseInfoCell.description_tf.text),
             "detail"    :   String.isNullOrEmpty(baseInfoCell.detail_tf.text),

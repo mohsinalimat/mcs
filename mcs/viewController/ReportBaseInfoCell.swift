@@ -28,7 +28,7 @@ class ReportBaseInfoCell: UITableViewCell,UITextFieldDelegate {
     
     @IBOutlet weak var detail_tf: UITextView!
     @IBOutlet weak var tempAction_tf: UITextView!
-    
+    var shift_id:String?
     
     let disposeBag = DisposeBag.init()
     var flts = [[String:String]]()
@@ -88,9 +88,12 @@ class ReportBaseInfoCell: UITableViewCell,UITextFieldDelegate {
 
             break
         case 5:
-            Tools.showDataPicekr(dataSource:Tools.shift()) {(obj) in
+            Tools.showDataPicekr(dataSource:Tools.shift()) {[weak self](obj) in
                 let _obj = obj as! [String:String]
                 sender.setTitle(_obj["value"], for: .normal)
+                
+                guard let ss = self else {return}
+                ss.shift_id = _obj["key"]
             }
             break
         default:break

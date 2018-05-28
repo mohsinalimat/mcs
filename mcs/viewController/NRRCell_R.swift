@@ -44,7 +44,7 @@ class NRRCell_R: UITableViewCell {
         
         let insp = String.isNullOrEmpty(d["inspType"])
         if let skil_i = Int.init(insp) {
-            insp_tf.text = defect_nrr_skill[skil_i];
+            insp_tf.text = defect_nrr_insp[skil_i];
         }
         
         status_tf.text = String.isNullOrEmpty(d["nrrStatus"]) == "1" ? "Closed" : "Open"
