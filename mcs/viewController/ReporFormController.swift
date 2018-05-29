@@ -33,6 +33,12 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
     @IBOutlet weak var typeBtn: UIButton!
     @IBOutlet weak var _tableView: UITableView!
     
+    ///DD Info
+    var dd_notice_selected:Bool = false
+    var dd_ws_selected:Bool = false
+    var dd_wp_selected:Bool = false
+    var dd_notice_type:String?
+    
     //MARK:
     @IBAction func buttonAction(_ sender: UIButton) {
         switch sender.tag {
@@ -82,6 +88,8 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
             _current_defect_type = kDefectType[String.isNullOrEmpty(typeBtn.currentTitle)]!
             
             _tableView.reloadData()
+            
+            NotificationCenter.default.addObserver(self, selector: #selector(ddNoticeTypeChanged(_ :)), name: NSNotification.Name.init("ddNoticeTypeChangedNotification"), object: nil)
         }
         
     }
@@ -103,6 +111,18 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
     }
     
 
+    func ddNoticeTypeChanged(_ noti:Notification) {
+        if let info = noti.userInfo as? [String:String] {
+            guard let type = info["type"] else {return}
+            dd_notice_type = type;
+            
+            _tableView.reloadData()
+        }
+    }
+    
+    
+    
+    
     //MARK:
     func _getFalutInfo() {
         guard let _reportid = reportId else {return}
@@ -158,6 +178,13 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
         _tableView.register(UINib (nibName: "NRRCell_R", bundle: nil), forCellReuseIdentifier: "NRRCell_RIdentifier")
         _tableView.register(UINib (nibName: "ReportInfoCell_R", bundle: nil), forCellReuseIdentifier: "ReportInfoCell_RIdentifier")
         _tableView.register(UINib (nibName: "ReportBaseInfoCell_R", bundle: nil), forCellReuseIdentifier: "ReportBaseInfoCell_RIdentifier")
+        _tableView.register(UINib (nibName: "DDNoticeDefaultCell", bundle: nil), forCellReuseIdentifier: "DDNoticeDefaultCellIdentifier")
+        _tableView.register(UINib (nibName: "DDNoticeStructureCell", bundle: nil), forCellReuseIdentifier: "DDNoticeStructureCelIdentifier")
+        _tableView.register(UINib (nibName: "DDNoticeRestrictionCell", bundle: nil), forCellReuseIdentifier: "DDNoticeRestrictionCelIdentifier")
+        _tableView.register(UINib (nibName: "DDNoticeCabinCell", bundle: nil), forCellReuseIdentifier: "DDNoticeCabinCelldentifier")
+        _tableView.register(UINib (nibName: "DDWPCell", bundle: nil), forCellReuseIdentifier: "DDWPCellIdentifier")
+        _tableView.register(UINib (nibName: "DDWSCell", bundle: nil), forCellReuseIdentifier: "DDWSCellIdentifier")
+        
         _tableView.register(BaseCellWithTable.self, forCellReuseIdentifier: "BaseCellWithTableIdentifier")
         
         __clearData();
@@ -281,11 +308,15 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
     
     //MARK: -
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return (__defect_type() == "DD" && section2_selected_index == 4) ? 4 : 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        guard section != 0 else {return 1}
+        guard section != 1 else {return dd_notice_selected && section2_selected_index == 4 ? 2 : 1}
+        guard section != 2 else {return dd_ws_selected ? 3 : 0}
+        guard section != 3 else {return dd_wp_selected ? 1 : 0}
+        return 0
     }
     
     
@@ -327,16 +358,42 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
                 }
                 break
             case "DD":
-                if section2_selected_index == 4 {
+                if section2_selected_index == 4 {//DD
                     if !read_only {
-                        let cell = tableView.dequeueReusableCell(withIdentifier: "DDInfoCellIdentifier", for: indexPath) as! DDInfoCell;
-                        ddInfoCell = cell
+                        if indexPath.section == 1 {
+                            guard indexPath.row == 0 else {
+                                let _id = __ddNoticeTypeCellWithId(dd_notice_type ?? "DDNoticeDefaultCellIdentifier")
+                                
+                                let cell = tableView.dequeueReusableCell(withIdentifier: _id, for: indexPath) //as! DDNoticeDefaultCell;
+                                //cell.fill(_defect_info)
+                                return cell
+                                
+                            }
+                            
+                            let cell = tableView.dequeueReusableCell(withIdentifier: "DDInfoCellIdentifier", for: indexPath) as! DDInfoCell;
+                            ddInfoCell = cell
+                            cell.buttonClickedWithIndex = {[weak self] index , selected in
+                                guard let ss = self else {return}
+                                ss.__ddButtonAction(index, selected: selected)
+                            }
+                            
+                            return cell
+                        }else if indexPath.section == 2 {
+                            let cell = tableView.dequeueReusableCell(withIdentifier: "DDWSCellIdentifier", for: indexPath) //as! DDNoticeDefaultCell;
+                            //cell.fill(_defect_info)
+                            return cell
+                        }
+                        
+                        let cell = tableView.dequeueReusableCell(withIdentifier: "DDWPCellIdentifier", for: indexPath) //as! DDNoticeDefaultCell;
+                        //cell.fill(_defect_info)
+                        return cell
+
+                    }else {
+                        ////R
+                        let cell = tableView.dequeueReusableCell(withIdentifier: "DDInfoCell_RIdentifier", for: indexPath) as! DDInfoCell_R;
+                        cell.fill(_defect_info)
                         return cell
                     }
-                    
-                    let cell = tableView.dequeueReusableCell(withIdentifier: "DDInfoCell_RIdentifier", for: indexPath) as! DDInfoCell_R;
-                    cell.fill(_defect_info)
-                    return cell
                 };break
                 
             case "NRR":
@@ -383,13 +440,15 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
 
     }
     
-    
-    
-    
+
     
     // MARK: - Table view data source
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50
+        guard section > 1 else {return 50}
+        guard section != 2 else {return dd_ws_selected ? 50 : 0}
+        guard section != 3 else {return dd_wp_selected ? 50 : 0}
+        
+        return 0
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -397,12 +456,14 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        guard indexPath.section > 0  else {return 100}
-        return indexPath.row != 0 ? 0 : kCurrentScreenHeight - 100 - 240 //420
+        guard indexPath.section != 0 else {return 100}
+        guard indexPath.section != 1 else {return indexPath.row != 0 ? 180 : kCurrentScreenHeight - 100 - 240}
+            
+        return 80
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if section == 0 {
+        guard section != 0 else {
             let v = Bundle.main.loadNibNamed("TaskActionTopView", owner: nil, options: nil)?.first as! UIView
             for s in (v.viewWithTag(100)?.subviews)! {
                 if s is UILabel {
@@ -413,40 +474,49 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
             return v
         }
         
-        let bg = UIView (frame: CGRect (x: 0, y: 0, width: kCurrentScreenWidth, height: 50))
-        
-        let t = _sectionBtnTitle()
-        let v = MultiButtonView.init(CGRect (x: 15, y: 0, width: bg.frame.width - 30, height: bg.frame.height), titles: t , selectedIndex : section2_selected_index)
-        v.title = "Defect Detail"
-        
-        v.selectedActionHandler = { index in
-            DispatchQueue.main.async {[weak self ] in
-                guard let ss = self else {return}
-                ss.section2_selected_index = index
-                kSectionHeadButtonSelectedIndex = SectionHeadButtonIndex(rawValue: index + 4)!
-                ss.current_selected_index = kSectionHeadButtonSelectedIndex
-                switch  ss.__defect_type() {
+        guard section != 1 else {
+            let bg = UIView (frame: CGRect (x: 0, y: 0, width: kCurrentScreenWidth, height: 50))
+            let t = _sectionBtnTitle()
+            let v = MultiButtonView.init(CGRect (x: 15, y: 0, width: bg.frame.width - 30, height: bg.frame.height), titles: t , selectedIndex : section2_selected_index)
+            v.title = "Defect Detail"
+            v.selectedActionHandler = { index in
+                DispatchQueue.main.async {[weak self ] in
+                    guard let ss = self else {return}
+                    ss.section2_selected_index = index
+                    kSectionHeadButtonSelectedIndex = SectionHeadButtonIndex(rawValue: index + 4)!
+                    ss.current_selected_index = kSectionHeadButtonSelectedIndex
+                    switch  ss.__defect_type() {
                     case "TS":
                         switch index {
                         case 4:kSectionHeadButtonSelectedIndex = SectionHeadButtonIndex(rawValue: 4 + 5)!;break
                         default:break
-                        }
-                        
-                        break
-                        
-
+                        };break
                     default:break
+                    }
+                    
+                    tableView.reloadData()
                 }
-                
-                tableView.reloadData()
-
             }
-
+            
+            bg.addSubview(v);return bg
+        }
+        
+        guard section != 2 else {
+            if !dd_ws_selected {return nil }
+            let  v = Bundle.main.loadNibNamed("DDWSHeadView", owner: nil, options: nil)?.first as! UIView;
+            
+            return v;
+        }
+        
+        guard section != 3 else {
+            if !dd_wp_selected {return nil }
+            let  v = Bundle.main.loadNibNamed("DDWPHeadView", owner: nil, options: nil)?.first as! UIView;
+            
+            return v;
         }
 
-
-        bg.addSubview(v)
-        return bg
+        
+        return nil
     }
     
     func _sectionBtnTitle() -> [String] {
@@ -464,15 +534,47 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
        return []
     }
 
+    //MARK: - Private
     ///Defect Type
     func __defect_type() -> String {
-        if read_only {
-            return form_type.text ?? ""
-        }
+        if read_only {return form_type.text ?? ""}
         
         return _current_defect_type ?? ""
     }
     
+    func __ddNoticeTypeCellWithId(_ id:String) -> String {
+        var s = "DDNoticeDefaultCellIdentifier"
+        switch id {
+            case "STRUCTURE": s = "DDNoticeStructureCelIdentifier"; break
+            case "RESTRICTION": s = "DDNoticeRestrictionCelIdentifier";break
+            case "CABIN": s = "DDNoticeCabinCelldentifier";break
+            default: break
+        }
+        
+        return s
+    }
+    
+    
+    func __ddButtonAction(_ tag:Int , selected:Bool) {
+        if tag == 41 {
+            dd_ws_selected = selected;
+            _tableView.reloadData()
+            //_tableView.scrollToRow(at: IndexPath.init(row: selected ? 1 : 0, section: 1), at: .none, animated: true)
+        }else if tag == 42 {
+            dd_wp_selected = selected;
+            _tableView.reloadData()
+            //_tableView.scrollToRow(at: IndexPath.init(row: selected ? 1 : 0, section: 1), at: .none, animated: true)
+        }else if tag == 47 {
+            dd_notice_selected = selected;
+            _tableView.reloadData()
+            _tableView.scrollToRow(at: IndexPath.init(row: selected ? 1 : 0, section: 1), at: .none, animated: true)
+        }
+
+    }
+    
+    
+    
+    //MARK:
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

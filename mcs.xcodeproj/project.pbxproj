@@ -135,6 +135,26 @@
 		A1BC1F482015BBA0007D0E1C /* FlightWarnHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1BC1F462015BBA0007D0E1C /* FlightWarnHeaderView.xib */; };
 		A1BC1F4B2015C733007D0E1C /* WarnListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BC1F492015C733007D0E1C /* WarnListCell.swift */; };
 		A1BC1F4C2015C733007D0E1C /* WarnListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1BC1F4A2015C733007D0E1C /* WarnListCell.xib */; };
+		A1BDA7C220BCF09B006DE281 /* DDNoticeDefaultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BDA7C020BCF09B006DE281 /* DDNoticeDefaultCell.swift */; };
+		A1BDA7C320BCF09B006DE281 /* DDNoticeDefaultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1BDA7C120BCF09B006DE281 /* DDNoticeDefaultCell.xib */; };
+		A1BDA7C620BCF0FF006DE281 /* DDNoticeStructureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BDA7C420BCF0FF006DE281 /* DDNoticeStructureCell.swift */; };
+		A1BDA7C720BCF0FF006DE281 /* DDNoticeStructureCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1BDA7C520BCF0FF006DE281 /* DDNoticeStructureCell.xib */; };
+		A1BDA7CA20BCF131006DE281 /* DDNoticeRestrictionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BDA7C820BCF130006DE281 /* DDNoticeRestrictionCell.swift */; };
+		A1BDA7CB20BCF131006DE281 /* DDNoticeRestrictionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1BDA7C920BCF131006DE281 /* DDNoticeRestrictionCell.xib */; };
+		A1BDA7CE20BCF159006DE281 /* DDNoticeCabinCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BDA7CC20BCF159006DE281 /* DDNoticeCabinCell.swift */; };
+		A1BDA7CF20BCF159006DE281 /* DDNoticeCabinCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1BDA7CD20BCF159006DE281 /* DDNoticeCabinCell.xib */; };
+		A1BDA7D120BD3D32006DE281 /* DDWSHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BDA7D020BD3D31006DE281 /* DDWSHeadView.swift */; };
+		A1BDA7D320BD3D4D006DE281 /* DDWSHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1BDA7D220BD3D4D006DE281 /* DDWSHeadView.xib */; };
+		A1BDA7D520BD44A6006DE281 /* DDWPHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BDA7D420BD44A6006DE281 /* DDWPHeadView.swift */; };
+		A1BDA7D720BD44BA006DE281 /* DDWPHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1BDA7D620BD44BA006DE281 /* DDWPHeadView.xib */; };
+		A1BDA7DA20BD4F66006DE281 /* DDWSCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BDA7D820BD4F66006DE281 /* DDWSCell.swift */; };
+		A1BDA7DB20BD4F66006DE281 /* DDWSCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1BDA7D920BD4F66006DE281 /* DDWSCell.xib */; };
+		A1BDA7DE20BD4F78006DE281 /* DDWPCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BDA7DC20BD4F78006DE281 /* DDWPCell.swift */; };
+		A1BDA7DF20BD4F78006DE281 /* DDWPCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1BDA7DD20BD4F78006DE281 /* DDWPCell.xib */; };
+		A1BDA7E220BD593E006DE281 /* DDAddWSController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BDA7E020BD593D006DE281 /* DDAddWSController.swift */; };
+		A1BDA7E320BD593E006DE281 /* DDAddWSController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1BDA7E120BD593E006DE281 /* DDAddWSController.xib */; };
+		A1BDA7E620BD5953006DE281 /* DDAddWPController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BDA7E420BD5953006DE281 /* DDAddWPController.swift */; };
+		A1BDA7E720BD5953006DE281 /* DDAddWPController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1BDA7E520BD5953006DE281 /* DDAddWPController.xib */; };
 		A1C0A3D8200DF04F00A1762C /* TTRefreshFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C0A3D6200DF04B00A1762C /* TTRefreshFooter.swift */; };
 		A1C0A3D9200DF04F00A1762C /* TTRefreshHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C0A3D7200DF04B00A1762C /* TTRefreshHeader.swift */; };
 		A1C1BB522064C6D700A92B9B /* TaskPoolDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C1BB512064C6D600A92B9B /* TaskPoolDetailController.swift */; };
@@ -346,6 +366,26 @@
 		A1BC1F462015BBA0007D0E1C /* FlightWarnHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FlightWarnHeaderView.xib; sourceTree = "<group>"; };
 		A1BC1F492015C733007D0E1C /* WarnListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WarnListCell.swift; sourceTree = "<group>"; };
 		A1BC1F4A2015C733007D0E1C /* WarnListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WarnListCell.xib; sourceTree = "<group>"; };
+		A1BDA7C020BCF09B006DE281 /* DDNoticeDefaultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDNoticeDefaultCell.swift; sourceTree = "<group>"; };
+		A1BDA7C120BCF09B006DE281 /* DDNoticeDefaultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DDNoticeDefaultCell.xib; sourceTree = "<group>"; };
+		A1BDA7C420BCF0FF006DE281 /* DDNoticeStructureCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDNoticeStructureCell.swift; sourceTree = "<group>"; };
+		A1BDA7C520BCF0FF006DE281 /* DDNoticeStructureCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DDNoticeStructureCell.xib; sourceTree = "<group>"; };
+		A1BDA7C820BCF130006DE281 /* DDNoticeRestrictionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDNoticeRestrictionCell.swift; sourceTree = "<group>"; };
+		A1BDA7C920BCF131006DE281 /* DDNoticeRestrictionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DDNoticeRestrictionCell.xib; sourceTree = "<group>"; };
+		A1BDA7CC20BCF159006DE281 /* DDNoticeCabinCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDNoticeCabinCell.swift; sourceTree = "<group>"; };
+		A1BDA7CD20BCF159006DE281 /* DDNoticeCabinCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DDNoticeCabinCell.xib; sourceTree = "<group>"; };
+		A1BDA7D020BD3D31006DE281 /* DDWSHeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDWSHeadView.swift; sourceTree = "<group>"; };
+		A1BDA7D220BD3D4D006DE281 /* DDWSHeadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DDWSHeadView.xib; sourceTree = "<group>"; };
+		A1BDA7D420BD44A6006DE281 /* DDWPHeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDWPHeadView.swift; sourceTree = "<group>"; };
+		A1BDA7D620BD44BA006DE281 /* DDWPHeadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DDWPHeadView.xib; sourceTree = "<group>"; };
+		A1BDA7D820BD4F66006DE281 /* DDWSCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDWSCell.swift; sourceTree = "<group>"; };
+		A1BDA7D920BD4F66006DE281 /* DDWSCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DDWSCell.xib; sourceTree = "<group>"; };
+		A1BDA7DC20BD4F78006DE281 /* DDWPCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDWPCell.swift; sourceTree = "<group>"; };
+		A1BDA7DD20BD4F78006DE281 /* DDWPCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DDWPCell.xib; sourceTree = "<group>"; };
+		A1BDA7E020BD593D006DE281 /* DDAddWSController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDAddWSController.swift; sourceTree = "<group>"; };
+		A1BDA7E120BD593E006DE281 /* DDAddWSController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DDAddWSController.xib; sourceTree = "<group>"; };
+		A1BDA7E420BD5953006DE281 /* DDAddWPController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDAddWPController.swift; sourceTree = "<group>"; };
+		A1BDA7E520BD5953006DE281 /* DDAddWPController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DDAddWPController.xib; sourceTree = "<group>"; };
 		A1C0A3D6200DF04B00A1762C /* TTRefreshFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTRefreshFooter.swift; sourceTree = "<group>"; };
 		A1C0A3D7200DF04B00A1762C /* TTRefreshHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTRefreshHeader.swift; sourceTree = "<group>"; };
 		A1C1BB512064C6D600A92B9B /* TaskPoolDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskPoolDetailController.swift; sourceTree = "<group>"; };
@@ -506,6 +546,10 @@
 				A1633B0D20941D3700342F92 /* SearchItemSelectController.swift */,
 				A1DCEDB320A023D20062EC7E /* DefectSearchCodeController.swift */,
 				A1DCEDB420A023D20062EC7E /* DefectSearchCodeController.xib */,
+				A1BDA7E020BD593D006DE281 /* DDAddWSController.swift */,
+				A1BDA7E120BD593E006DE281 /* DDAddWSController.xib */,
+				A1BDA7E420BD5953006DE281 /* DDAddWPController.swift */,
+				A1BDA7E520BD5953006DE281 /* DDAddWPController.xib */,
 			);
 			name = defectReport;
 			sourceTree = "<group>";
@@ -529,6 +573,22 @@
 				A1B1959E2091CCDF00F5F9DB /* BaseCellWithTable.swift */,
 				A1EB37532092F461008A0FC7 /* DDInfoCell.swift */,
 				A1EB37542092F461008A0FC7 /* DDInfoCell.xib */,
+				A1BDA7C020BCF09B006DE281 /* DDNoticeDefaultCell.swift */,
+				A1BDA7C120BCF09B006DE281 /* DDNoticeDefaultCell.xib */,
+				A1BDA7C420BCF0FF006DE281 /* DDNoticeStructureCell.swift */,
+				A1BDA7C520BCF0FF006DE281 /* DDNoticeStructureCell.xib */,
+				A1BDA7C820BCF130006DE281 /* DDNoticeRestrictionCell.swift */,
+				A1BDA7C920BCF131006DE281 /* DDNoticeRestrictionCell.xib */,
+				A1BDA7CC20BCF159006DE281 /* DDNoticeCabinCell.swift */,
+				A1BDA7CD20BCF159006DE281 /* DDNoticeCabinCell.xib */,
+				A1BDA7D020BD3D31006DE281 /* DDWSHeadView.swift */,
+				A1BDA7D220BD3D4D006DE281 /* DDWSHeadView.xib */,
+				A1BDA7D420BD44A6006DE281 /* DDWPHeadView.swift */,
+				A1BDA7D620BD44BA006DE281 /* DDWPHeadView.xib */,
+				A1BDA7D820BD4F66006DE281 /* DDWSCell.swift */,
+				A1BDA7D920BD4F66006DE281 /* DDWSCell.xib */,
+				A1BDA7DC20BD4F78006DE281 /* DDWPCell.swift */,
+				A1BDA7DD20BD4F78006DE281 /* DDWPCell.xib */,
 				A1B4E0BF20AD88BD00EA7219 /* DDInfoCell_R.swift */,
 				A1B4E0C020AD88BE00EA7219 /* DDInfoCell_R.xib */,
 				A1633B0F2094459500342F92 /* SearBarView.swift */,
@@ -938,6 +998,7 @@
 				A1EB37562092F461008A0FC7 /* DDInfoCell.xib in Resources */,
 				A1C546C9207A0F920060D921 /* Add_ComponentVC.xib in Resources */,
 				A1633B1620944D1200342F92 /* SearchItemCell.xib in Resources */,
+				A1BDA7C320BCF09B006DE281 /* DDNoticeDefaultCell.xib in Resources */,
 				A1CF2A1520070B90009FE6A4 /* LoginViewController.xib in Resources */,
 				A1AFF6B52074984C00ED1FC4 /* TaskActionDetailView.xib in Resources */,
 				A124D41720722D21005E279D /* TaskChangeShiftVC.xib in Resources */,
@@ -962,16 +1023,19 @@
 				A1D15D8920464436004A2C58 /* WarnDetailTopCell.xib in Resources */,
 				A1D15D8D20464466004A2C58 /* WarnFaultInfoCell.xib in Resources */,
 				A1CE0F7120A93AA800AF42D6 /* ReportInfoCell_R.xib in Resources */,
+				A1BDA7D320BD3D4D006DE281 /* DDWSHeadView.xib in Resources */,
 				A1B4E0C620AD892600EA7219 /* NRRCell_R.xib in Resources */,
 				A1AFF6A52074620E00ED1FC4 /* TaskAddActionVC.xib in Resources */,
 				A120285D2008A1C000CB8633 /* error@2x.png in Resources */,
 				A13F1AED20074693004FDFF4 /* LoginViewFooter.xib in Resources */,
+				A1BDA7E320BD593E006DE281 /* DDAddWSController.xib in Resources */,
 				A1C26DB4204FDDAC00B11F63 /* FlightWarnListTopView.xib in Resources */,
 				A1AFF6AB2074694700ED1FC4 /* TaskPool.storyboard in Resources */,
 				A1AFF6AF20746BC400ED1FC4 /* AddActionInfoCell.xib in Resources */,
 				A120283D2008812500CB8633 /* DatePickerController.xib in Resources */,
 				A1AFF6A92074624D00ED1FC4 /* TaskActionListVC.xib in Resources */,
 				A1D3E3B2200C3A2D00CE31F0 /* HomeCollectionViewCell.xib in Resources */,
+				A1BDA7E720BD5953006DE281 /* DDAddWPController.xib in Resources */,
 				A1BC1F482015BBA0007D0E1C /* FlightWarnHeaderView.xib in Resources */,
 				A1AB9EFC207B48E8000663C3 /* AddActionInfoCell_R.xib in Resources */,
 				A1B4E0C220AD88BE00EA7219 /* DDInfoCell_R.xib in Resources */,
@@ -984,6 +1048,7 @@
 				A1BA5764209AB84000B2D6E0 /* MaterialSearchCell.xib in Resources */,
 				A1284D8C205BB00500B7B576 /* WarnInfoDetailController_new.xib in Resources */,
 				A161217120904DE600F72C94 /* ReportBaseInfoCell.xib in Resources */,
+				A1BDA7DB20BD4F66006DE281 /* DDWSCell.xib in Resources */,
 				A15234362093195200939E0F /* SearchAction.storyboard in Resources */,
 				A1DCEDB620A023D30062EC7E /* DefectSearchCodeController.xib in Resources */,
 				A1C26DB2204FBD3B00B11F63 /* FlightWarnListHeadView.xib in Resources */,
@@ -998,7 +1063,9 @@
 				A1659470206E0DBB00CC8A0D /* TaskHandleController.xib in Resources */,
 				A1EB214C208DAC5100661C45 /* DDListCell.xib in Resources */,
 				A1C26DAE204FBA2700B11F63 /* FlightWarnListCell.xib in Resources */,
+				A1BDA7C720BCF0FF006DE281 /* DDNoticeStructureCell.xib in Resources */,
 				A120285C2008A1C000CB8633 /* error.png in Resources */,
+				A1BDA7CB20BCF131006DE281 /* DDNoticeRestrictionCell.xib in Resources */,
 				A1BA575F209AAF0E00B2D6E0 /* MaterialOrderController.xib in Resources */,
 				A1C546AE2079B17D0060D921 /* Action_Materal_Cell.xib in Resources */,
 				A1BA177720A3E343008078EE /* NRRCell.xib in Resources */,
@@ -1010,9 +1077,12 @@
 				A1A6B2782011B79D00F7D048 /* FlightInfoListController.xib in Resources */,
 				A1AAF1492049167600E8CB3B /* TaskPoolBaseController.xib in Resources */,
 				A1DF738E2043EF5B0099B858 /* WarnInfoDetailController.xib in Resources */,
+				A1BDA7DF20BD4F78006DE281 /* DDWPCell.xib in Resources */,
 				A1A20F55202AF3D300407276 /* FlightAllWarnController.xib in Resources */,
 				A120283920084EFB00CB8633 /* DataPickerController.xib in Resources */,
+				A1BDA7D720BD44BA006DE281 /* DDWPHeadView.xib in Resources */,
 				A1BC1F4C2015C733007D0E1C /* WarnListCell.xib in Resources */,
+				A1BDA7CF20BCF159006DE281 /* DDNoticeCabinCell.xib in Resources */,
 				A1BA576C209AEF7800B2D6E0 /* MaterialOrderHead.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1087,6 +1157,7 @@
 			files = (
 				A1E65C582018236E006D1085 /* FIBViewController.swift in Sources */,
 				A1A6B2772011B79D00F7D048 /* FlightInfoListController.swift in Sources */,
+				A1BDA7E620BD5953006DE281 /* DDAddWPController.swift in Sources */,
 				A1891F5E2074C7D500170BFC /* TaskActionDetailView.swift in Sources */,
 				A1633B1520944D1200342F92 /* SearchItemCell.swift in Sources */,
 				A1FE5095204796E1004F2330 /* BaseTabBarController.swift in Sources */,
@@ -1098,6 +1169,7 @@
 				A1AFF6A42074620E00ED1FC4 /* TaskAddActionVC.swift in Sources */,
 				A1AB9EFB207B48E8000663C3 /* AddActionInfoCell_R.swift in Sources */,
 				A1B03DE1207C5EF800797564 /* BaseTableViewVC.swift in Sources */,
+				A1BDA7E220BD593E006DE281 /* DDAddWSController.swift in Sources */,
 				A1A658CA2011BDE70079B354 /* FlightInfoListCell.swift in Sources */,
 				A1AB9EF7207B0536000663C3 /* ActionListCell.swift in Sources */,
 				A1C0A3D9200DF04F00A1762C /* TTRefreshHeader.swift in Sources */,
@@ -1126,6 +1198,7 @@
 				A165B67C20107FA3006080D8 /* HomeDetailTabController.swift in Sources */,
 				A1EC58A920897BE500936D6B /* ViewDefectReportController.swift in Sources */,
 				A1C546BB2079E5580060D921 /* Section_TableViewCell2.swift in Sources */,
+				A1BDA7D520BD44A6006DE281 /* DDWPHeadView.swift in Sources */,
 				A1BA5763209AB84000B2D6E0 /* MaterialSearchCell.swift in Sources */,
 				A157EA7A20A186F800ED8D6D /* DefectDocCodeCell.swift in Sources */,
 				A1E32F1D2016D45F00842A18 /* Tools.swift in Sources */,
@@ -1138,6 +1211,7 @@
 				A1BC1F4B2015C733007D0E1C /* WarnListCell.swift in Sources */,
 				A1B144E2207F2BE8006B3806 /* DefectReportController.swift in Sources */,
 				A120283C2008812500CB8633 /* DatePickerController.swift in Sources */,
+				A1BDA7CE20BCF159006DE281 /* DDNoticeCabinCell.swift in Sources */,
 				A165946F206E0DBB00CC8A0D /* TaskHandleController.swift in Sources */,
 				A1C6DD73206C7F0F00A09808 /* TaskPoolSelectController.swift in Sources */,
 				A1E5C10E2048EAF900511F58 /* TaskPoolViewController.swift in Sources */,
@@ -1156,13 +1230,16 @@
 				A1BC1F3D2015AC73007D0E1C /* PlaneInfoController.swift in Sources */,
 				A1A20F58202AFDB000407276 /* AllWarnTableViewCell.swift in Sources */,
 				A1A6B26C2011944C00F7D048 /* KLTNavigationController.m in Sources */,
+				A1BDA7DA20BD4F66006DE281 /* DDWSCell.swift in Sources */,
 				A1BC1F3620157D2F007D0E1C /* TextMsgViewCell.swift in Sources */,
 				A1D15D8820464436004A2C58 /* WarnDetailTopCell.swift in Sources */,
 				A1BA575A209AAEF800B2D6E0 /* MaterialSearchController.swift in Sources */,
 				A15234382093216B00939E0F /* DefectSearchController.swift in Sources */,
 				A1C546AD2079B17D0060D921 /* Action_Materal_Cell.swift in Sources */,
 				A1AB9EF3207B00FE000663C3 /* ActionListVC.swift in Sources */,
+				A1BDA7C620BCF0FF006DE281 /* DDNoticeStructureCell.swift in Sources */,
 				A1DF738D2043EF5B0099B858 /* WarnInfoDetailController.swift in Sources */,
+				A1BDA7DE20BD4F78006DE281 /* DDWPCell.swift in Sources */,
 				A1C6DD76206CEB3600A09808 /* BaseDataCheck.swift in Sources */,
 				A12028622008A1C200CB8633 /* Reachability.m in Sources */,
 				A1B03DE7207C912E00797564 /* TaskNumberListVC.swift in Sources */,
@@ -1176,6 +1253,7 @@
 				A1A6B26D2011944C00F7D048 /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
 				A120285B2008A1AB00CB8633 /* Extension.swift in Sources */,
 				A120283F2008938100CB8633 /* BasePickerViewController.swift in Sources */,
+				A1BDA7D120BD3D32006DE281 /* DDWSHeadView.swift in Sources */,
 				A1AAF14E2049331800E8CB3B /* TaskActionCell.swift in Sources */,
 				A1C546B72079C34C0060D921 /* Section_TableViewCell.swift in Sources */,
 				A1A20F54202AF3D300407276 /* FlightAllWarnController.swift in Sources */,
@@ -1185,12 +1263,14 @@
 				A120285E2008A1C100CB8633 /* HUD.swift in Sources */,
 				A1BC1F442015BA3D007D0E1C /* FlightLineView.swift in Sources */,
 				A1EB2146208DAC2500661C45 /* DDViewController.swift in Sources */,
+				A1BDA7C220BCF09B006DE281 /* DDNoticeDefaultCell.swift in Sources */,
 				A14BA8AE20733AEB0027D51F /* TaskChangeShiftReasonVC.swift in Sources */,
 				A161216720902D1200F72C94 /* DefectReportBtnView.swift in Sources */,
 				A161217320906E8B00F72C94 /* MultiButtonView.swift in Sources */,
 				A1C26DB0204FBD2800B11F63 /* FlightWarnListHeadView.swift in Sources */,
 				A1BA576A209AEEFA00B2D6E0 /* MaterialOrderHead.swift in Sources */,
 				A1F293B2206DDA8900004E9C /* TaskPoolRootController.swift in Sources */,
+				A1BDA7CA20BCF131006DE281 /* DDNoticeRestrictionCell.swift in Sources */,
 				A1C26DAD204FBA2700B11F63 /* FlightWarnListCell.swift in Sources */,
 				A1D15D90204644A7004A2C58 /* WarnDisPoseCell.swift in Sources */,
 				A1CF2A1420070B90009FE6A4 /* LoginViewController.swift in Sources */,

@@ -10,6 +10,7 @@ import UIKit
 
 class DDInfoCell: UITableViewCell {
     var ddCat_selected:Int?
+    var buttonClickedWithIndex:((_ index:Int ,_ selected: Bool) -> Void)?
     
     @IBOutlet weak var day_tf: UITextField!
     @IBOutlet weak var fh_tf: UITextField!
@@ -158,7 +159,11 @@ class DDInfoCell: UITableViewCell {
                 dd_status.append("\(t)");
             }
             
-            if sender.tag == 43 {
+            if sender.tag == 41 || sender.tag == 42 {//ws,wp
+                if let h = buttonClickedWithIndex {
+                    h(sender.tag , sender.isSelected);
+                }
+            }else if sender.tag == 43 {
                 _enable_textfield(um_tf, b: sender.isSelected);
             }
             
@@ -170,7 +175,13 @@ class DDInfoCell: UITableViewCell {
                 sender.setTitle(obj, for: .normal)
             }
             break
+        case 47:
+            sender.isSelected = !sender.isSelected;
             
+            if let h = buttonClickedWithIndex {
+                h(sender.tag , sender.isSelected);
+            }
+            break
         default:break
         }
         
