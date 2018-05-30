@@ -9,10 +9,11 @@
 import UIKit
 
 class DDWPHeadView: UIView {
-
+    var addAction:((Void) -> Void)?
+    
     @IBAction func addAction(_ sender: UIButton) {
-        
-        
-        
+        if let add = addAction {
+            add();
+        }
     }
 }

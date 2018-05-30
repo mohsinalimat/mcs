@@ -51,6 +51,12 @@
                     </label>
                 </subviews>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="ata" destination="Puj-lb-opa" id="UQz-uP-VKx"/>
+                <outlet property="ed_advice" destination="bHi-ko-c2C" id="EdB-tD-cKJ"/>
+                <outlet property="stas" destination="86g-hs-0EV" id="d7c-GD-UbI"/>
+                <outlet property="tx_wo" destination="Smy-ve-aU2" id="tPP-Ze-1EC"/>
+            </connections>
         </tableViewCell>
     </objects>
 </document>

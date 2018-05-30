@@ -316,5 +316,68 @@
 			<string>Closed</string>
 		</dict>
 	</array>
+	<key>dd_ws_status</key>
+	<array>
+		<dict>
+			<key>key</key>
+			<string>0</string>
+			<key>value</key>
+			<string>Initial</string>
+		</dict>
+		<dict>
+			<key>key</key>
+			<string>1</string>
+			<key>value</key>
+			<string>Pending</string>
+		</dict>
+		<dict>
+			<key>key</key>
+			<string>2</string>
+			<key>value</key>
+			<string>Sourcing</string>
+		</dict>
+		<dict>
+			<key>key</key>
+			<string>3</string>
+			<key>value</key>
+			<string>RO</string>
+		</dict>
+		<dict>
+			<key>key</key>
+			<string>4</string>
+			<key>value</key>
+			<string>PO</string>
+		</dict>
+		<dict>
+			<key>key</key>
+			<string>5</string>
+			<key>value</key>
+			<string>LO</string>
+		</dict>
+		<dict>
+			<key>key</key>
+			<string>6</string>
+			<key>value</key>
+			<string>LM</string>
+		</dict>
+		<dict>
+			<key>key</key>
+			<string>7</string>
+			<key>value</key>
+			<string>Part Arrived</string>
+		</dict>
+		<dict>
+			<key>key</key>
+			<string>8</string>
+			<key>value</key>
+			<string>Available</string>
+		</dict>
+		<dict>
+			<key>key</key>
+			<string>9</string>
+			<key>value</key>
+			<string>Cancelled</string>
+		</dict>
+	</array>
 </dict>
 </plist>

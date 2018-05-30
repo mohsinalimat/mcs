@@ -38,6 +38,8 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
     var dd_ws_selected:Bool = false
     var dd_wp_selected:Bool = false
     var dd_notice_type:String?
+    var dd_ws_arr = [[String:String]]()
+    var dd_wp_arr = [[String:Any]]()
     
     //MARK:
     @IBAction func buttonAction(_ sender: UIButton) {
@@ -184,7 +186,7 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
         _tableView.register(UINib (nibName: "DDNoticeCabinCell", bundle: nil), forCellReuseIdentifier: "DDNoticeCabinCelldentifier")
         _tableView.register(UINib (nibName: "DDWPCell", bundle: nil), forCellReuseIdentifier: "DDWPCellIdentifier")
         _tableView.register(UINib (nibName: "DDWSCell", bundle: nil), forCellReuseIdentifier: "DDWSCellIdentifier")
-        
+        _tableView.register(UITableViewCell.self, forCellReuseIdentifier: "UITableViewCellIdentifier")
         _tableView.register(BaseCellWithTable.self, forCellReuseIdentifier: "BaseCellWithTableIdentifier")
         
         __clearData();
@@ -314,8 +316,8 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard section != 0 else {return 1}
         guard section != 1 else {return dd_notice_selected && section2_selected_index == 4 ? 2 : 1}
-        guard section != 2 else {return dd_ws_selected ? 3 : 0}
-        guard section != 3 else {return dd_wp_selected ? 1 : 0}
+        guard section != 2 else {return dd_ws_selected ? (dd_ws_arr.count > 0 ? dd_ws_arr.count:1) : 0}
+        guard section != 3 else {return dd_wp_selected ? (dd_wp_arr.count > 0 ? dd_wp_arr.count:1) : 0}
         return 0
     }
     
@@ -355,8 +357,7 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
             case "TS":
                 if section2_selected_index == 3 {
                     //print("....");
-                }
-                break
+                };break
             case "DD":
                 if section2_selected_index == 4 {//DD
                     if !read_only {
@@ -379,13 +380,18 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
                             
                             return cell
                         }else if indexPath.section == 2 {
-                            let cell = tableView.dequeueReusableCell(withIdentifier: "DDWSCellIdentifier", for: indexPath) //as! DDNoticeDefaultCell;
-                            //cell.fill(_defect_info)
+                            guard dd_ws_arr.count > 0 else { return tableView.dequeueReusableCell(withIdentifier: "UITableViewCellIdentifier", for: indexPath); }
+                            let cell = tableView.dequeueReusableCell(withIdentifier: "DDWSCellIdentifier", for: indexPath) as! DDWSCell;
+                            let d = dd_ws_arr[indexPath.row]
+                            cell.fill(d)
+                            
                             return cell
                         }
                         
-                        let cell = tableView.dequeueReusableCell(withIdentifier: "DDWPCellIdentifier", for: indexPath) //as! DDNoticeDefaultCell;
-                        //cell.fill(_defect_info)
+                        guard dd_wp_arr.count > 0 else { return tableView.dequeueReusableCell(withIdentifier: "UITableViewCellIdentifier", for: indexPath); }
+                        let cell = tableView.dequeueReusableCell(withIdentifier: "DDWPCellIdentifier", for: indexPath) as! DDWPCell;
+                        let d = dd_wp_arr[indexPath.row]
+                        cell.fill(d)
                         return cell
 
                     }else {
@@ -458,7 +464,9 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         guard indexPath.section != 0 else {return 100}
         guard indexPath.section != 1 else {return indexPath.row != 0 ? 180 : kCurrentScreenHeight - 100 - 240}
-            
+        guard indexPath.section != 2 else {return 60}
+        guard indexPath.section != 3 else {return 50}
+        
         return 80
     }
     
@@ -503,15 +511,37 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
         
         guard section != 2 else {
             if !dd_ws_selected {return nil }
-            let  v = Bundle.main.loadNibNamed("DDWSHeadView", owner: nil, options: nil)?.first as! UIView;
+            let  v = Bundle.main.loadNibNamed("DDWSHeadView", owner: nil, options: nil)?.first as! DDWSHeadView;
+            v.addAction = {
+                let v = DDAddWSController()
+                v.selectedAction = {[weak self] d in
+                    guard let ss = self else {return}
+                    ss.dd_ws_arr.append(d)
+                    ss._tableView.reloadSections([2], animationStyle: .none)
+                    ss._tableView.scrollToRow(at: IndexPath.init(row: ss.dd_ws_arr.count - 1, section: 2), at: .bottom, animated: true)
+                }
+                
+                Tools.showVC(v,frame:CGRect(x: 0, y: 0, width: 800, height: 400))
+            }
             
             return v;
         }
         
         guard section != 3 else {
             if !dd_wp_selected {return nil }
-            let  v = Bundle.main.loadNibNamed("DDWPHeadView", owner: nil, options: nil)?.first as! UIView;
-            
+            let  v = Bundle.main.loadNibNamed("DDWPHeadView", owner: nil, options: nil)?.first as! DDWPHeadView;
+            v.addAction = {
+                let v = DDAddWPController()
+                v.selectedAction = {[weak self] d in
+                    guard let ss = self else {return}
+                    ss.dd_wp_arr.append(d)
+                    ss._tableView.reloadSections([3], animationStyle: .none)
+                    ss._tableView.scrollToRow(at: IndexPath.init(row: ss.dd_wp_arr.count - 1, section: 3), at: .bottom, animated: true)
+                }
+                
+                Tools.showVC(v,frame:CGRect(x: 0, y: 0, width: 600, height: 400))
+            }
+
             return v;
         }
 
@@ -519,6 +549,40 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
         return nil
     }
     
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard indexPath.section > 1 else {return}
+        
+        if indexPath.section == 2 {
+            guard dd_ws_arr.count > 0 else {return}
+            let v = DDAddWSController()
+            
+            Tools.showVC(v,frame:CGRect(x: 0, y: 0, width: 800, height: 400))
+        }else if indexPath.section == 3 {
+            guard dd_wp_arr.count > 0 else {return}
+            let v = DDAddWPController()
+            
+            Tools.showVC(v,frame:CGRect(x: 0, y: 0, width: 600, height: 400))
+        }
+        
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return read_only ? false : true
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        return .delete
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+        
+        }
+    }
+    
+    
+    //MARK: - Private
     func _sectionBtnTitle() -> [String] {
         let type = __defect_type()
         
@@ -534,7 +598,7 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
        return []
     }
 
-    //MARK: - Private
+
     ///Defect Type
     func __defect_type() -> String {
         if read_only {return form_type.text ?? ""}
@@ -559,11 +623,13 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
         if tag == 41 {
             dd_ws_selected = selected;
             _tableView.reloadData()
-            //_tableView.scrollToRow(at: IndexPath.init(row: selected ? 1 : 0, section: 1), at: .none, animated: true)
+            guard selected else {return}
+            _tableView.scrollToRow(at: IndexPath.init(row: 0, section: 2), at: .none, animated: true)
         }else if tag == 42 {
             dd_wp_selected = selected;
             _tableView.reloadData()
-            //_tableView.scrollToRow(at: IndexPath.init(row: selected ? 1 : 0, section: 1), at: .none, animated: true)
+            guard selected else {return}
+            _tableView.scrollToRow(at: IndexPath.init(row: 0, section: 3), at: .none, animated: true)
         }else if tag == 47 {
             dd_notice_selected = selected;
             _tableView.reloadData()

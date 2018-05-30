@@ -10,9 +10,28 @@ import UIKit
 
 class DDWPCell: UITableViewCell {
 
+    @IBOutlet weak var ata: UILabel!
+    @IBOutlet weak var stas: UILabel!
+    @IBOutlet weak var ed_advice: UILabel!
+    
+    @IBOutlet weak var tx_wo: UILabel!
+    
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+    }
+
+    
+    func fill(_ d:[String:Any]) {
+        ata.text = String.isNullOrEmpty(d["wpAta"])
+        stas.text = String.isNullOrEmpty(d["wpStatus"])
+        ed_advice.text = String.isNullOrEmpty(d["wpEdAdvice"])
+        tx_wo.text = String.isNullOrEmpty(d["txToWo"])
+
+        ///file
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

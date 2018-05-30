@@ -10,10 +10,12 @@ import UIKit
 
 class DDWSHeadView: UIView {
 
+    var addAction:((Void) -> Void)?
+    
     @IBAction func addAction(_ sender: UIButton) {
-       let v = DDAddWSController()
-        
-       Tools.showVC(v)
+        if let add = addAction {
+            add();
+        }
         
     }
 
