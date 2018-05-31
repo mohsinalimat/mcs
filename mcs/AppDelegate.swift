@@ -38,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
        
        AMMModel.isExistTable()
        IQKeyboardManager.sharedManager().enable = true
-        
+       //IQKeyboardManager.sharedManager().enableAutoToolbar = false
     }
     
     

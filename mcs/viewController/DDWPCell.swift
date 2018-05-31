@@ -16,6 +16,7 @@ class DDWPCell: UITableViewCell {
     
     @IBOutlet weak var tx_wo: UILabel!
     
+    @IBOutlet weak var attach: UIImageView!
     
     
     override func awakeFromNib() {
@@ -31,7 +32,9 @@ class DDWPCell: UITableViewCell {
         tx_wo.text = String.isNullOrEmpty(d["txToWo"])
 
         ///file
-        
+        if let ig = d["file"] as? UIImage {
+            attach.image = ig;
+        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

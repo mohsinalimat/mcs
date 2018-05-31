@@ -9,7 +9,7 @@
 #ifndef mcs_bridging_header_h
 #define mcs_bridging_header_h
 
-#import "KLTNavigationController.h"
+//#import "KLTNavigationController.h"
 #import "Model.h"
 
 #import "FMDB.h"

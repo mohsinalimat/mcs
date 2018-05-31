@@ -13,6 +13,14 @@ class DDNoticeRestrictionCell: UITableViewCell {
     
     @IBOutlet weak var notice_type_btn: UIButton!
     
+
+
+    @IBOutlet weak var sys: UITextField!
+    @IBOutlet weak var restriction_detail: UITextField!
+    
+    
+    
+    
     @IBAction func buttonAction(_ sender: UIButton) {
         
         Tools.showDataPicekr(dataSource:[" ","STRUCTURE","RESTRICTION","CABIN"]) {(obj) in

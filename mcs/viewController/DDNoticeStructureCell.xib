@@ -11,7 +11,7 @@
             <rect key="frame" x="0.0" y="0.0" width="1024" height="180"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="81W-q6-byS" id="EYA-xU-MM8">
-                <frame key="frameInset" width="1024" height="179"/>
+                <frame key="frameInset" width="1024" height="179.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="acU-Hj-itg">
@@ -130,7 +130,13 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="detail" destination="3zz-ss-LKU" id="iLX-yK-7ce"/>
                 <outlet property="notice_type_btn" destination="VfQ-hZ-OiZ" id="go0-u2-KP0"/>
+                <outlet property="pos" destination="8ZR-aq-fuB" id="6Hz-VZ-rVI"/>
+                <outlet property="size" destination="9gj-ns-BOi" id="cJ5-O0-nAB"/>
+                <outlet property="type" destination="bOP-Bh-m9Y" id="mww-kU-BUg"/>
+                <outlet property="x" destination="1so-2Z-f0b" id="Gpz-7H-0DQ"/>
+                <outlet property="y" destination="466-fJ-veS" id="y9V-Fp-hRb"/>
             </connections>
         </tableViewCell>
     </objects>

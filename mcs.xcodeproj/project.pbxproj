@@ -71,9 +71,6 @@
 		A1A658CA2011BDE70079B354 /* FlightInfoListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A658C82011BDE60079B354 /* FlightInfoListCell.swift */; };
 		A1A658CB2011BDE70079B354 /* FlightInfoListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1A658C92011BDE70079B354 /* FlightInfoListCell.xib */; };
 		A1A658CD2011D4D00079B354 /* BaseCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A658CC2011D4D00079B354 /* BaseCollectionView.swift */; };
-		A1A6B26B2011944C00F7D048 /* AnimationContoller.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A6B2652011944C00F7D048 /* AnimationContoller.m */; };
-		A1A6B26C2011944C00F7D048 /* KLTNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A6B2682011944C00F7D048 /* KLTNavigationController.m */; };
-		A1A6B26D2011944C00F7D048 /* UINavigationController+FDFullscreenPopGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A6B26A2011944C00F7D048 /* UINavigationController+FDFullscreenPopGesture.m */; };
 		A1A6B2772011B79D00F7D048 /* FlightInfoListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A6B2752011B79D00F7D048 /* FlightInfoListController.swift */; };
 		A1A6B2782011B79D00F7D048 /* FlightInfoListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1A6B2762011B79D00F7D048 /* FlightInfoListController.xib */; };
 		A1AAF1482049167600E8CB3B /* TaskPoolBaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AAF1462049167600E8CB3B /* TaskPoolBaseController.swift */; };
@@ -206,6 +203,10 @@
 		A1D3E3B2200C3A2D00CE31F0 /* HomeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1D3E3B0200C3A2D00CE31F0 /* HomeCollectionViewCell.xib */; };
 		A1D3E3B4200C478300CE31F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1D3E3B3200C478300CE31F0 /* Assets.xcassets */; };
 		A1D3E3B8200C850D00CE31F0 /* HomeCellTrackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D3E3B7200C850D00CE31F0 /* HomeCellTrackView.swift */; };
+		A1D4ADFD20BF85E300420AB5 /* TTImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D4ADFC20BF85E300420AB5 /* TTImagePicker.swift */; };
+		A1D4ADFF20BFD30000420AB5 /* TTImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D4ADFE20BFD30000420AB5 /* TTImagePickerViewController.swift */; };
+		A1D4AE0220BFD36D00420AB5 /* PublishImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D4AE0020BFD36D00420AB5 /* PublishImageCell.swift */; };
+		A1D4AE0320BFD36D00420AB5 /* PublishImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1D4AE0120BFD36D00420AB5 /* PublishImageCell.xib */; };
 		A1DCEDB520A023D30062EC7E /* DefectSearchCodeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DCEDB320A023D20062EC7E /* DefectSearchCodeController.swift */; };
 		A1DCEDB620A023D30062EC7E /* DefectSearchCodeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1DCEDB420A023D20062EC7E /* DefectSearchCodeController.xib */; };
 		A1DCEDC720A055B30062EC7E /* FMDB.m in Sources */ = {isa = PBXBuildFile; fileRef = A1DCEDC420A055B30062EC7E /* FMDB.m */; };
@@ -298,12 +299,6 @@
 		A1A658C82011BDE60079B354 /* FlightInfoListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlightInfoListCell.swift; sourceTree = "<group>"; };
 		A1A658C92011BDE70079B354 /* FlightInfoListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FlightInfoListCell.xib; sourceTree = "<group>"; };
 		A1A658CC2011D4D00079B354 /* BaseCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCollectionView.swift; sourceTree = "<group>"; };
-		A1A6B2642011944C00F7D048 /* AnimationContoller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationContoller.h; sourceTree = "<group>"; };
-		A1A6B2652011944C00F7D048 /* AnimationContoller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationContoller.m; sourceTree = "<group>"; };
-		A1A6B2672011944C00F7D048 /* KLTNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLTNavigationController.h; sourceTree = "<group>"; };
-		A1A6B2682011944C00F7D048 /* KLTNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLTNavigationController.m; sourceTree = "<group>"; };
-		A1A6B2692011944C00F7D048 /* UINavigationController+FDFullscreenPopGesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+FDFullscreenPopGesture.h"; sourceTree = "<group>"; };
-		A1A6B26A2011944C00F7D048 /* UINavigationController+FDFullscreenPopGesture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+FDFullscreenPopGesture.m"; sourceTree = "<group>"; };
 		A1A6B270201194EE00F7D048 /* mcs-bridging-header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "mcs-bridging-header.h"; sourceTree = "<group>"; };
 		A1A6B2752011B79D00F7D048 /* FlightInfoListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlightInfoListController.swift; sourceTree = "<group>"; };
 		A1A6B2762011B79D00F7D048 /* FlightInfoListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FlightInfoListController.xib; sourceTree = "<group>"; };
@@ -439,6 +434,10 @@
 		A1D3E3B0200C3A2D00CE31F0 /* HomeCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HomeCollectionViewCell.xib; path = ../HomeCollectionViewCell.xib; sourceTree = "<group>"; };
 		A1D3E3B3200C478300CE31F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A1D3E3B7200C850D00CE31F0 /* HomeCellTrackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCellTrackView.swift; sourceTree = "<group>"; };
+		A1D4ADFC20BF85E300420AB5 /* TTImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTImagePicker.swift; sourceTree = "<group>"; };
+		A1D4ADFE20BFD30000420AB5 /* TTImagePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTImagePickerViewController.swift; sourceTree = "<group>"; };
+		A1D4AE0020BFD36D00420AB5 /* PublishImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublishImageCell.swift; sourceTree = "<group>"; };
+		A1D4AE0120BFD36D00420AB5 /* PublishImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PublishImageCell.xib; sourceTree = "<group>"; };
 		A1DCEDB320A023D20062EC7E /* DefectSearchCodeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefectSearchCodeController.swift; sourceTree = "<group>"; };
 		A1DCEDB420A023D20062EC7E /* DefectSearchCodeController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DefectSearchCodeController.xib; sourceTree = "<group>"; };
 		A1DCEDC320A055B30062EC7E /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDB.h; sourceTree = "<group>"; };
@@ -494,6 +493,10 @@
 				A12028582008A19600CB8633 /* Reachability */,
 				A1E32F1C2016D45F00842A18 /* Tools.swift */,
 				A16770F120B418C700D93454 /* TTSheetAction.swift */,
+				A1D4ADFC20BF85E300420AB5 /* TTImagePicker.swift */,
+				A1D4ADFE20BFD30000420AB5 /* TTImagePickerViewController.swift */,
+				A1D4AE0020BFD36D00420AB5 /* PublishImageCell.swift */,
+				A1D4AE0120BFD36D00420AB5 /* PublishImageCell.xib */,
 			);
 			path = com;
 			sourceTree = "<group>";
@@ -517,19 +520,6 @@
 				A120285A2008A19700CB8633 /* Reachability.m */,
 			);
 			path = Reachability;
-			sourceTree = "<group>";
-		};
-		A1A6B2632011944C00F7D048 /* KLTAnimateNav */ = {
-			isa = PBXGroup;
-			children = (
-				A1A6B2642011944C00F7D048 /* AnimationContoller.h */,
-				A1A6B2652011944C00F7D048 /* AnimationContoller.m */,
-				A1A6B2672011944C00F7D048 /* KLTNavigationController.h */,
-				A1A6B2682011944C00F7D048 /* KLTNavigationController.m */,
-				A1A6B2692011944C00F7D048 /* UINavigationController+FDFullscreenPopGesture.h */,
-				A1A6B26A2011944C00F7D048 /* UINavigationController+FDFullscreenPopGesture.m */,
-			);
-			path = KLTAnimateNav;
 			sourceTree = "<group>";
 		};
 		A1B144DA207F2420006B3806 /* defectReport */ = {
@@ -720,7 +710,6 @@
 		A1CF2A1620070C40009FE6A4 /* BaseVC */ = {
 			isa = PBXGroup;
 			children = (
-				A1A6B2632011944C00F7D048 /* KLTAnimateNav */,
 				A1CF2A0E20070A5D009FE6A4 /* BaseViewController.swift */,
 				A1CF2A1020070AA1009FE6A4 /* BaseNavigationController.swift */,
 				A120283E2008938100CB8633 /* BasePickerViewController.swift */,
@@ -1010,6 +999,7 @@
 				A1633B12209445B200342F92 /* SearBarView.xib in Resources */,
 				A12028602008A1C200CB8633 /* success@2x.png in Resources */,
 				A1AB9F00207B4935000663C3 /* Action_Detail_Cell_R.xib in Resources */,
+				A1D4AE0320BFD36D00420AB5 /* PublishImageCell.xib in Resources */,
 				A1BC1F3720157D2F007D0E1C /* TextMsgViewCell.xib in Resources */,
 				A1A20F59202AFDB000407276 /* AllWarnTableViewCell.xib in Resources */,
 				A1C546BC2079E5580060D921 /* Section_TableViewCell2.xib in Resources */,
@@ -1183,6 +1173,7 @@
 				A12028612008A1C200CB8633 /* LocationManager.swift in Sources */,
 				A1BA177620A3E343008078EE /* NRRCell.swift in Sources */,
 				A1AFF6B12074739400ED1FC4 /* TaskAddActionController.swift in Sources */,
+				A1D4ADFF20BFD30000420AB5 /* TTImagePickerViewController.swift in Sources */,
 				A1D3E3B8200C850D00CE31F0 /* HomeCellTrackView.swift in Sources */,
 				A1982F0F200F1E0E00B24DA6 /* NetHelper.swift in Sources */,
 				A1BC1F472015BBA0007D0E1C /* FlightWarnHeaderView.swift in Sources */,
@@ -1196,6 +1187,7 @@
 				A120283820084EFB00CB8633 /* DataPickerController.swift in Sources */,
 				A13F1AEB200745F1004FDFF4 /* LoginViewFooter.swift in Sources */,
 				A165B67C20107FA3006080D8 /* HomeDetailTabController.swift in Sources */,
+				A1D4ADFD20BF85E300420AB5 /* TTImagePicker.swift in Sources */,
 				A1EC58A920897BE500936D6B /* ViewDefectReportController.swift in Sources */,
 				A1C546BB2079E5580060D921 /* Section_TableViewCell2.swift in Sources */,
 				A1BDA7D520BD44A6006DE281 /* DDWPHeadView.swift in Sources */,
@@ -1225,11 +1217,10 @@
 				A1B1959F2091CCDF00F5F9DB /* BaseCellWithTable.swift in Sources */,
 				A124D41620722D21005E279D /* TaskChangeShiftVC.swift in Sources */,
 				A1BA575E209AAF0E00B2D6E0 /* MaterialOrderController.swift in Sources */,
-				A1A6B26B2011944C00F7D048 /* AnimationContoller.m in Sources */,
+				A1D4AE0220BFD36D00420AB5 /* PublishImageCell.swift in Sources */,
 				A1633B102094459500342F92 /* SearBarView.swift in Sources */,
 				A1BC1F3D2015AC73007D0E1C /* PlaneInfoController.swift in Sources */,
 				A1A20F58202AFDB000407276 /* AllWarnTableViewCell.swift in Sources */,
-				A1A6B26C2011944C00F7D048 /* KLTNavigationController.m in Sources */,
 				A1BDA7DA20BD4F66006DE281 /* DDWSCell.swift in Sources */,
 				A1BC1F3620157D2F007D0E1C /* TextMsgViewCell.swift in Sources */,
 				A1D15D8820464436004A2C58 /* WarnDetailTopCell.swift in Sources */,
@@ -1250,7 +1241,6 @@
 				A1633B0E20941D3700342F92 /* SearchItemSelectController.swift in Sources */,
 				A1C1BB522064C6D700A92B9B /* TaskPoolDetailController.swift in Sources */,
 				A1C546C4207A0F550060D921 /* Add_MateralVC.swift in Sources */,
-				A1A6B26D2011944C00F7D048 /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
 				A120285B2008A1AB00CB8633 /* Extension.swift in Sources */,
 				A120283F2008938100CB8633 /* BasePickerViewController.swift in Sources */,
 				A1BDA7D120BD3D32006DE281 /* DDWSHeadView.swift in Sources */,
@@ -1415,7 +1405,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "mcs/common/mcs-bridging-header.h";
 				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -1436,7 +1426,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "mcs/common/mcs-bridging-header.h";
 				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};

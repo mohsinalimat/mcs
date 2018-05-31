@@ -8,11 +8,20 @@
 
 import UIKit
 
+protocol TTSheetActionDelegate {
+    
+    func ttSheetActionDidSelectedIndex(_ index:Int);
+    
+}
+
+
 class TTSheetAction: NSObject ,UITableViewDelegate,UITableViewDataSource{
 
     static let share = TTSheetAction.init()
     
     let titles = ["Camera","Choose from Album"]
+    
+    var delegate : TTSheetActionDelegate?
     
     var selectedAtIndex:((Int) -> Void)?
     
@@ -99,6 +108,7 @@ class TTSheetAction: NSObject ,UITableViewDelegate,UITableViewDataSource{
             selected(indexPath.row);
         }
         
+        delegate?.ttSheetActionDidSelectedIndex(indexPath.row)
         dismiss();
     }
     

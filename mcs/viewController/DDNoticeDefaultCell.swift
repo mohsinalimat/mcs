@@ -15,6 +15,26 @@ class DDNoticeDefaultCell: UITableViewCell {
     
     @IBOutlet weak var notice_type_btn: UIButton!
     
+    @IBOutlet weak var type: UITextField!
+    
+    @IBOutlet weak var equip: UITextField!
+    
+    @IBOutlet weak var pos: UITextField!
+    
+    @IBOutlet weak var x: UITextField!
+    
+    @IBOutlet weak var y: UITextField!
+    
+    @IBOutlet weak var size: UITextField!
+    @IBOutlet weak var detail: UITextField!
+    @IBOutlet weak var sys: UITextField!
+    @IBOutlet weak var restriction_detail: UITextField!
+    
+    
+    
+    
+    
+    
     @IBAction func buttonAction(_ sender: UIButton) {
         
         Tools.showDataPicekr(dataSource:[" ","STRUCTURE","RESTRICTION","CABIN"]) {(obj) in

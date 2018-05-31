@@ -17,7 +17,9 @@ class DDAddWPController: BasePickerViewController {
     
     @IBOutlet weak var igv: UIImageView!
     
-    var selectedAction:(([String:String]) -> Void)?
+    @IBOutlet weak var deleteIg: UIButton!
+
+    var selectedAction:(([String:Any]) -> Void)?
 
     
     @IBAction func buttonAction(_ sender: UIButton) {
@@ -29,22 +31,39 @@ class DDAddWPController: BasePickerViewController {
             }
             break
         case 2://添加附件
-            
-            break
+            TTImagePicker().show(inView:self, sourceView : sender , completion: { (ig) in
+                DispatchQueue.main.async {[weak self] in
+                    guard let ss = self else {return}
+                    ss.igv.image = ig
+                    ss.deleteIg.isHidden = false
+                }
+            })
 
+            break
+        case 3:
+            igv.image = nil;
+            deleteIg.isHidden = true
+            break
         default: break
         }
         
         
     }
     
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
     }
+
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        get {
+            return .landscape;
+        }
+    }
+    
 
     override func finishedBtnAction() {
         if let action = selectedAction {
@@ -52,8 +71,8 @@ class DDAddWPController: BasePickerViewController {
                      "wpStatus":String.isNullOrEmpty(stas.currentTitle == "Open" ? "0" : "1"),
                      "wpEdAdvice":String.isNullOrEmpty(ed_advice.text),
                      "txToWo":String.isNullOrEmpty(txwo.text),
-                     "file":"" //...
-            ];
+                     "file":igv.image
+            ] as [String : Any];
             
             action(d)
         }

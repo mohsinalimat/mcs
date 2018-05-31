@@ -76,14 +76,14 @@ class DDAddWSController: BasePickerViewController {
                      "pnDes":String.isNullOrEmpty(pn_des.text),
                      "pnAta":String.isNullOrEmpty(pn_data.text),
                      "status":String.isNullOrEmpty(stas.currentTitle),//..
-                "associateNo":String.isNullOrEmpty(associate_no.text),
-                "scheduleDate":String.isNullOrEmpty(schedule_date.currentTitle),
-                "manual":String.isNullOrEmpty(maual.text),
-                "partChange":String.isNullOrEmpty(part_change.text),
-                "po":String.isNullOrEmpty(po.text),
-                "qty":String.isNullOrEmpty(qty.text),
-                "arrivalDate":String.isNullOrEmpty(arri_date.currentTitle),
-                "remark":String.isNullOrEmpty(remark.text)
+                    "associateNo":String.isNullOrEmpty(associate_no.text),
+                    "scheduleDate":String.isNullOrEmpty(schedule_date.currentTitle),
+                    "manual":String.isNullOrEmpty(maual.text),
+                    "partChange":String.isNullOrEmpty(part_change.text),
+                    "po":String.isNullOrEmpty(po.text),
+                    "qty":String.isNullOrEmpty(qty.text),
+                    "arrivalDate":String.isNullOrEmpty(arri_date.currentTitle),
+                    "remark":String.isNullOrEmpty(remark.text)
             ];
             
             action(d)

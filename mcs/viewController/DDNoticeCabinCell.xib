@@ -88,7 +88,10 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="detail" destination="pxE-b6-kdF" id="T2H-Hl-5aV"/>
+                <outlet property="equip" destination="Izw-Nl-Aw5" id="247-HA-gEn"/>
                 <outlet property="notice_type_btn" destination="m6x-0p-drB" id="L1i-um-Aez"/>
+                <outlet property="pos" destination="Pi0-eI-VlZ" id="LMu-0n-dSF"/>
             </connections>
         </tableViewCell>
     </objects>

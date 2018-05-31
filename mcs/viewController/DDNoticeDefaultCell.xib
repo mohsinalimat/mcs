@@ -11,7 +11,7 @@
             <rect key="frame" x="0.0" y="0.0" width="1024" height="180"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UFx-dt-OHO" id="4Uy-Pg-jSE">
-                <frame key="frameInset" width="1024" height="179"/>
+                <frame key="frameInset" width="1024" height="180"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fJh-dj-Ei3">
@@ -27,7 +27,7 @@
                                 <frame key="frameInset" minX="58" minY="42" width="133" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <state key="normal" backgroundImage="button_bg2">
+                                <state key="normal" title=" " backgroundImage="button_bg2">
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -172,7 +172,16 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="detail" destination="F5T-eL-vDy" id="XEi-BC-UcA"/>
+                <outlet property="equip" destination="CKs-2R-8KM" id="Yzt-pG-DS0"/>
                 <outlet property="notice_type_btn" destination="Kg7-fM-6dI" id="1hj-TC-OGu"/>
+                <outlet property="pos" destination="p74-rd-CtS" id="BtK-Xj-Rgo"/>
+                <outlet property="restriction_detail" destination="5Ti-yo-f22" id="6Xb-vc-rmm"/>
+                <outlet property="size" destination="Jz8-Fd-I4r" id="cv4-NM-khr"/>
+                <outlet property="sys" destination="ZPH-ll-wGb" id="iqw-ZM-Ale"/>
+                <outlet property="type" destination="jjT-ln-ePO" id="VMv-FT-Fgy"/>
+                <outlet property="x" destination="6Yr-Ub-9Yq" id="SrU-WD-c2R"/>
+                <outlet property="y" destination="myp-1b-uKK" id="cnb-cV-8bV"/>
             </connections>
         </tableViewCell>
     </objects>

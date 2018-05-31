@@ -75,6 +75,8 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="notice_type_btn" destination="QrR-el-DXY" id="nhu-yH-NnH"/>
+                <outlet property="restriction_detail" destination="L4f-Y4-gRx" id="3aO-WF-15f"/>
+                <outlet property="sys" destination="5Fn-GX-QJC" id="onw-ru-gED"/>
             </connections>
         </tableViewCell>
     </objects>

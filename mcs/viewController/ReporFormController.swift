@@ -38,6 +38,7 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
     var dd_ws_selected:Bool = false
     var dd_wp_selected:Bool = false
     var dd_notice_type:String?
+    var dd_notice_cell:UITableViewCell!
     var dd_ws_arr = [[String:String]]()
     var dd_wp_arr = [[String:Any]]()
     
@@ -272,6 +273,57 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
             params["statusOfDd"] =  ddstatus
             params["umWo"]      =   String.isNullOrEmpty(ddInfoCell.um_tf.text)
             params["ddSource"]  =   String.isNullOrEmpty(ddInfoCell.dd_source.currentTitle)
+            
+            //Notice
+            params["isShowFailure"] = dd_notice_selected ? "1" : ""
+            if dd_notice_selected {
+                let type = dd_notice_type ?? " "
+                switch type {
+                case " ":
+                    let cell = dd_notice_cell as! DDNoticeDefaultCell
+                    params["type"] = String.isNullOrEmpty(cell.type.text);
+                    params["noticeEquip"] = String.isNullOrEmpty(cell.equip.text);
+                    params["pos"] = String.isNullOrEmpty(cell.pos.text);
+                    params["failureX"] = String.isNullOrEmpty(cell.x.text);
+                    params["failurey"] = String.isNullOrEmpty(cell.y.text);
+                    params["failureSize"] = String.isNullOrEmpty(cell.size.text);
+                    params["failureDetail"] = String.isNullOrEmpty(cell.detail.text);
+                    params["noticeSys"] = String.isNullOrEmpty(cell.sys.text);
+                    params["restrictionDetail"] = String.isNullOrEmpty(cell.restriction_detail.text);
+
+                    break
+                case "STRUCTURE":
+                    let cell = dd_notice_cell as! DDNoticeStructureCell
+                    params["failureType"] = "0"
+                    params["type"] = String.isNullOrEmpty(cell.type.text);
+                    params["pos"] = String.isNullOrEmpty(cell.pos.text);
+                    params["failureX"] = String.isNullOrEmpty(cell.x.text);
+                    params["failurey"] = String.isNullOrEmpty(cell.y.text);
+                    params["failureSize"] = String.isNullOrEmpty(cell.size.text);
+                    params["failureDetail"] = String.isNullOrEmpty(cell.detail.text);
+                    break
+                case "RESTRICTION":
+                    let cell = dd_notice_cell as! DDNoticeRestrictionCell
+                    params["failureType"] = "1"
+                    params["noticeSys"] = String.isNullOrEmpty(cell.sys.text);
+                    params["restrictionDetail"] = String.isNullOrEmpty(cell.restriction_detail.text);
+                    break
+                case "CABIN":
+                    let cell = dd_notice_cell as! DDNoticeCabinCell
+                    params["failureType"] = "2"
+                    params["noticeEquip"] = String.isNullOrEmpty(cell.equip.text);
+                    params["pos"] = String.isNullOrEmpty(cell.pos.text);
+                    params["failureDetail"] = String.isNullOrEmpty(cell.detail.text);
+                    break
+                default: break
+                }
+            }
+            
+            //ws
+            params["wsList"] = dd_ws_arr;
+            
+            //wp
+            params["wpList"] = dd_wp_arr
             break;
         case "NRR":
             params["formNo"] = String.isNullOrEmpty(nrrCell.formNo.text)
@@ -359,6 +411,7 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
                     //print("....");
                 };break
             case "DD":
+                //MARK:DD Cell
                 if section2_selected_index == 4 {//DD
                     if !read_only {
                         if indexPath.section == 1 {
@@ -367,8 +420,9 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
                                 
                                 let cell = tableView.dequeueReusableCell(withIdentifier: _id, for: indexPath) //as! DDNoticeDefaultCell;
                                 //cell.fill(_defect_info)
-                                return cell
+                                dd_notice_cell = cell
                                 
+                                return cell
                             }
                             
                             let cell = tableView.dequeueReusableCell(withIdentifier: "DDInfoCellIdentifier", for: indexPath) as! DDInfoCell;

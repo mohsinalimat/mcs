@@ -131,7 +131,7 @@ class BaseCellWithTable: UITableViewCell ,UITableViewDelegate,UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        var name = "Section_Matera_header"
+        let name = "Section_Matera_header"
         /*if kSectionHeadButtonSelectedIndex == 3 {
             name = "Section_Comp_header";
         } else if kSectionHeadButtonSelectedIndex == 4 {
