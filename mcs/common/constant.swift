@@ -17,8 +17,8 @@ let user_token = UserDefaults.standard.value(forKey: "user-token")
 
 //MARK: -  url
 
-let BASE_URL = "http://smart.imsp.cn/mcs/rest"
-//let BASE_URL = "http://192.168.6.65:8080/mcs/rest"//linf
+//let BASE_URL = "http://smart.imsp.cn/mcs/rest"
+let BASE_URL = "http://192.168.6.65:8080/mcs/rest"//linf
 
 //let BASE_URL = "http://192.168.6.57:8081/mcs/rest"//ds
 //let BASE_URL = "http://192.168.6.59:8080/mcs/rest"//jx

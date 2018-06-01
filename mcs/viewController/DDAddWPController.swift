@@ -67,11 +67,17 @@ class DDAddWPController: BasePickerViewController {
 
     override func finishedBtnAction() {
         if let action = selectedAction {
+            var igBase64Str = ""
+            if let ig = igv.image , let data = UIImageJPEGRepresentation(ig, 0.5) {
+                 igBase64Str = "data:image/jpeg;base64";
+                 igBase64Str = igBase64Str.appending(data.base64EncodedString()) ;
+            }
+
             let d = ["wpAta":String.isNullOrEmpty(ata.text),
                      "wpStatus":String.isNullOrEmpty(stas.currentTitle == "Open" ? "0" : "1"),
                      "wpEdAdvice":String.isNullOrEmpty(ed_advice.text),
                      "txToWo":String.isNullOrEmpty(txwo.text),
-                     "file":igv.image
+                     "fileStr":igBase64Str
             ] as [String : Any];
             
             action(d)
@@ -79,9 +85,6 @@ class DDAddWPController: BasePickerViewController {
         
         self.dismiss(animated: true, completion: nil)
     }
-    
-    
-    
     
     
     override func headTitle() -> String? {

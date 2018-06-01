@@ -154,6 +154,9 @@ func netHelper_upload(to:String,
                             print(error.localizedDescription);
                         }
                     }
+                } else if v is Data {
+                    let d = v as! Data;
+                    data = d;
                 }
                 
                 if let d = data {

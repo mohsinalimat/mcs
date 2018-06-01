@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		76CED0D0FBD7FDACB98B6D6D /* Pods_mcs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11A1A93AEFB90F2B52776F34 /* Pods_mcs.framework */; };
+		A117FB3420C153620036994E /* DDNoticeBaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A117FB3320C153610036994E /* DDNoticeBaseCell.swift */; };
 		A120283820084EFB00CB8633 /* DataPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A120283620084EFB00CB8633 /* DataPickerController.swift */; };
 		A120283920084EFB00CB8633 /* DataPickerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A120283720084EFB00CB8633 /* DataPickerController.xib */; };
 		A120283C2008812500CB8633 /* DatePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A120283A2008812400CB8633 /* DatePickerController.swift */; };
@@ -235,6 +236,7 @@
 		11A1A93AEFB90F2B52776F34 /* Pods_mcs.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mcs.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6059D2DAF97940A9C483CBDA /* Pods-mcs.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mcs.debug.xcconfig"; path = "Pods/Target Support Files/Pods-mcs/Pods-mcs.debug.xcconfig"; sourceTree = "<group>"; };
 		815D3B23F04E609955E2DA77 /* Pods-mcs.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mcs.release.xcconfig"; path = "Pods/Target Support Files/Pods-mcs/Pods-mcs.release.xcconfig"; sourceTree = "<group>"; };
+		A117FB3320C153610036994E /* DDNoticeBaseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDNoticeBaseCell.swift; sourceTree = "<group>"; };
 		A120283620084EFB00CB8633 /* DataPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataPickerController.swift; sourceTree = "<group>"; };
 		A120283720084EFB00CB8633 /* DataPickerController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DataPickerController.xib; sourceTree = "<group>"; };
 		A120283A2008812400CB8633 /* DatePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerController.swift; sourceTree = "<group>"; };
@@ -564,6 +566,7 @@
 				A1EB37532092F461008A0FC7 /* DDInfoCell.swift */,
 				A1EB37542092F461008A0FC7 /* DDInfoCell.xib */,
 				A1BDA7C020BCF09B006DE281 /* DDNoticeDefaultCell.swift */,
+				A117FB3320C153610036994E /* DDNoticeBaseCell.swift */,
 				A1BDA7C120BCF09B006DE281 /* DDNoticeDefaultCell.xib */,
 				A1BDA7C420BCF0FF006DE281 /* DDNoticeStructureCell.swift */,
 				A1BDA7C520BCF0FF006DE281 /* DDNoticeStructureCell.xib */,
@@ -1201,6 +1204,7 @@
 				A1AAF1482049167600E8CB3B /* TaskPoolBaseController.swift in Sources */,
 				A1DCEDB520A023D30062EC7E /* DefectSearchCodeController.swift in Sources */,
 				A1BC1F4B2015C733007D0E1C /* WarnListCell.swift in Sources */,
+				A117FB3420C153620036994E /* DDNoticeBaseCell.swift in Sources */,
 				A1B144E2207F2BE8006B3806 /* DefectReportController.swift in Sources */,
 				A120283C2008812500CB8633 /* DatePickerController.swift in Sources */,
 				A1BDA7CE20BCF159006DE281 /* DDNoticeCabinCell.swift in Sources */,

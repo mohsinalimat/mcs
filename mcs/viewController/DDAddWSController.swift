@@ -67,6 +67,16 @@ class DDAddWSController: BasePickerViewController {
     }
     
     
+    let status_key = ["Initial":"0",
+                      "Pending":"1",
+                      "Sourcing":"2",
+                      "RO":"3",
+                      "PO":"4",
+                      "LO":"5",
+                      "LM":"6",
+                      "Part Arrived":"7",
+                      "Available":"8",
+                      "Cancelled":"9"]
     
     override func finishedBtnAction() {
         if let action = selectedAction {
@@ -75,7 +85,7 @@ class DDAddWSController: BasePickerViewController {
                      "pnType":String.isNullOrEmpty(pn_type.currentTitle),
                      "pnDes":String.isNullOrEmpty(pn_des.text),
                      "pnAta":String.isNullOrEmpty(pn_data.text),
-                     "status":String.isNullOrEmpty(stas.currentTitle),//..
+                     "status":String.isNullOrEmpty(status_key[stas.currentTitle!]),
                     "associateNo":String.isNullOrEmpty(associate_no.text),
                     "scheduleDate":String.isNullOrEmpty(schedule_date.currentTitle),
                     "manual":String.isNullOrEmpty(maual.text),

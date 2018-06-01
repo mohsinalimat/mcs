@@ -47,8 +47,7 @@ class DDNoticeDefaultCell: UITableViewCell {
   
     }
     
-    
-    
+
     
     
     

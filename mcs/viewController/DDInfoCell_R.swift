@@ -92,7 +92,10 @@ class DDInfoCell_R: UITableViewCell {
         source_tf.text = String.isNullOrEmpty(d["ddSource"])
         
         //...
-
+        let notice = String.isNullOrEmpty(d["isShowFailure"])
+        __selectedBtnWithTag(notice, tag: 47)
+        
+        
     }
     
     

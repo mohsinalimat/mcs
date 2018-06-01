@@ -134,29 +134,32 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
         request(defect_faultDetail_url, parameters: ["id":_reportid], successHandler: { [weak self](res) in
             HUD.dismiss()
             guard let ss = self else {return}
-            guard let arr = res["body"] as? [String:Any] else {return};
-            ss._defect_info = arr;
+            guard let dic = res["body"] as? [String:Any] else {return};
+            ss._defect_info = dic;
             
-            if let material = arr["partList"] as? [[String:Any]] {
+            if let material = dic["partList"] as? [[String:Any]] {
                 ss._current_materialArr = material
                 addActionMateralDataArr = material;
             }
             
-            if let attachment = arr["attachments"] as? [[String:Any]] {
+            if let attachment = dic["attachments"] as? [[String:Any]] {
                 ss._current_attachmnetArr = attachment
                 kAttachmentDataArr = attachment
             }
             
-            if let actionList = arr["actionList"] as? [[String:Any]] {
+            if let actionList = dic["actionList"] as? [[String:Any]] {
                 defect_added_actions = actionList;
             }
             
-            if let defect_type = arr["reportType"] as? String{
+            if let defect_type = dic["reportType"] as? String{
                 ss.form_type.text = defect_type
                 if defect_type == "NRR" {
                     //ss.printview_btn.isHidden = true;
                 }
             }
+            
+            ss.__fillDD(dic)
+            
             
             ss._tableView.reloadData()
             
@@ -320,10 +323,10 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
             }
             
             //ws
-            params["wsList"] = dd_ws_arr;
+            params["wsListStr"] = dd_ws_arr;
             
             //wp
-            params["wpList"] = dd_wp_arr
+            params["wpListStr"] = dd_wp_arr
             break;
         case "NRR":
             params["formNo"] = String.isNullOrEmpty(nrrCell.formNo.text)
@@ -691,6 +694,32 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
         }
 
     }
+    
+    
+    //MARK: - ReadOnly
+    func __fillDD(_ dic:[String:Any]){
+        if let ddnotice = dic["isShowFailure"] as? String {
+            if ddnotice == "1" {
+                dd_notice_selected = true;
+            }
+        }
+        
+        if let failureType = dic["failureType"] as? String {
+            switch failureType {
+            case "0": dd_notice_type = "STRUCTURE";break
+            case "1": dd_notice_type = "RESTRICTION";break
+            case "2": dd_notice_type = "CABIN";break
+            default:break
+            }
+        }
+        
+        
+        
+        
+    }
+    
+    
+    
     
     
     
