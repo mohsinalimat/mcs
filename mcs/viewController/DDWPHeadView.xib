@@ -80,6 +80,9 @@
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="addBtn" destination="rbz-ic-y9Y" id="kjG-qN-QqU"/>
+            </connections>
         </view>
     </objects>
     <resources>

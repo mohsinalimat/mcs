@@ -194,6 +194,8 @@
 		A1CF2A1120070AA1009FE6A4 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CF2A1020070AA1009FE6A4 /* BaseNavigationController.swift */; };
 		A1CF2A1420070B90009FE6A4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CF2A1220070B90009FE6A4 /* LoginViewController.swift */; };
 		A1CF2A1520070B90009FE6A4 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1CF2A1320070B90009FE6A4 /* LoginViewController.xib */; };
+		A1D1335720C53D4F00A87346 /* DDRepActionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D1335520C53D4E00A87346 /* DDRepActionController.swift */; };
+		A1D1335820C53D5000A87346 /* DDRepActionController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1D1335620C53D4F00A87346 /* DDRepActionController.xib */; };
 		A1D15D8820464436004A2C58 /* WarnDetailTopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D15D8620464436004A2C58 /* WarnDetailTopCell.swift */; };
 		A1D15D8920464436004A2C58 /* WarnDetailTopCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1D15D8720464436004A2C58 /* WarnDetailTopCell.xib */; };
 		A1D15D8C20464466004A2C58 /* WarnFaultInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D15D8A20464466004A2C58 /* WarnFaultInfoCell.swift */; };
@@ -426,6 +428,8 @@
 		A1CF2A1020070AA1009FE6A4 /* BaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		A1CF2A1220070B90009FE6A4 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A1CF2A1320070B90009FE6A4 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		A1D1335520C53D4E00A87346 /* DDRepActionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDRepActionController.swift; sourceTree = "<group>"; };
+		A1D1335620C53D4F00A87346 /* DDRepActionController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DDRepActionController.xib; sourceTree = "<group>"; };
 		A1D15D8620464436004A2C58 /* WarnDetailTopCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WarnDetailTopCell.swift; sourceTree = "<group>"; };
 		A1D15D8720464436004A2C58 /* WarnDetailTopCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WarnDetailTopCell.xib; sourceTree = "<group>"; };
 		A1D15D8A20464466004A2C58 /* WarnFaultInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WarnFaultInfoCell.swift; sourceTree = "<group>"; };
@@ -542,6 +546,8 @@
 				A1BDA7E120BD593E006DE281 /* DDAddWSController.xib */,
 				A1BDA7E420BD5953006DE281 /* DDAddWPController.swift */,
 				A1BDA7E520BD5953006DE281 /* DDAddWPController.xib */,
+				A1D1335520C53D4E00A87346 /* DDRepActionController.swift */,
+				A1D1335620C53D4F00A87346 /* DDRepActionController.xib */,
 			);
 			name = defectReport;
 			sourceTree = "<group>";
@@ -565,8 +571,8 @@
 				A1B1959E2091CCDF00F5F9DB /* BaseCellWithTable.swift */,
 				A1EB37532092F461008A0FC7 /* DDInfoCell.swift */,
 				A1EB37542092F461008A0FC7 /* DDInfoCell.xib */,
-				A1BDA7C020BCF09B006DE281 /* DDNoticeDefaultCell.swift */,
 				A117FB3320C153610036994E /* DDNoticeBaseCell.swift */,
+				A1BDA7C020BCF09B006DE281 /* DDNoticeDefaultCell.swift */,
 				A1BDA7C120BCF09B006DE281 /* DDNoticeDefaultCell.xib */,
 				A1BDA7C420BCF0FF006DE281 /* DDNoticeStructureCell.swift */,
 				A1BDA7C520BCF0FF006DE281 /* DDNoticeStructureCell.xib */,
@@ -1035,6 +1041,7 @@
 				A14BA8B12073761D0027D51F /* TaskPoolDetailController.xib in Resources */,
 				A1A658CB2011BDE70079B354 /* FlightInfoListCell.xib in Resources */,
 				A161216920902D5000F72C94 /* DefectReportBtnView.xib in Resources */,
+				A1D1335820C53D5000A87346 /* DDRepActionController.xib in Resources */,
 				A1EB2147208DAC2500661C45 /* DDViewController.xib in Resources */,
 				A1CF29FF20070029009FE6A4 /* Main.storyboard in Resources */,
 				A120285F2008A1C200CB8633 /* success.png in Resources */,
@@ -1179,6 +1186,7 @@
 				A1D4ADFF20BFD30000420AB5 /* TTImagePickerViewController.swift in Sources */,
 				A1D3E3B8200C850D00CE31F0 /* HomeCellTrackView.swift in Sources */,
 				A1982F0F200F1E0E00B24DA6 /* NetHelper.swift in Sources */,
+				A1D1335720C53D4F00A87346 /* DDRepActionController.swift in Sources */,
 				A1BC1F472015BBA0007D0E1C /* FlightWarnHeaderView.swift in Sources */,
 				A1BC1F3B2015AC4A007D0E1C /* HistoryFaultController.swift in Sources */,
 				A1A658CD2011D4D00079B354 /* BaseCollectionView.swift in Sources */,

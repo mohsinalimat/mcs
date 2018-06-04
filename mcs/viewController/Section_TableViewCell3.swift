@@ -15,23 +15,25 @@ class Section_TableViewCell3: UITableViewCell {
 
     
     func fill(_ obj:Any) {
-
         if obj is [String:Any] {
-            //pre_image.image = UIImage (named: "icon_fib");
             guard let d = obj as? [String:Any] ,let _id = d["id"] as? String else {return}
-            _requestImage(_id)
+            _requestImage(_id, completionHandler: { [weak self] (ig) in
+                guard let ss = self else {return}
+                ss.pre_image.image = ig
+            })
         }else {
             let ig = obj as! UIImage
             pre_image.image = ig;
         }
         
-        
     }
     
     
 
-    func _requestImage(_ id:String) {
-        let url = BASE_URL + download_url + "?id=\(id)"
+    func _requestImage(_ id:String , completionHandler:((UIImage) -> Void)? = nil) {
+        requestImage(id, completionHandler: completionHandler);
+        
+        /*let url = BASE_URL + download_url + "?id=\(id)"
         let path = NSTemporaryDirectory().appending("cache/") + id
         let exist = FileManager.default.fileExists(atPath: kTemporaryDirectory)
         
@@ -71,7 +73,7 @@ class Section_TableViewCell3: UITableViewCell {
                 print("error");
             }
 
-        }
+        }*/
         
         
     }

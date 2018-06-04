@@ -19,13 +19,13 @@ class DDWSCell: UITableViewCell {
     
     
     
-    func fill(_ d:[String:String]) {
-        rq_no.text = d["rqNo"]
-        pn.text = d["pnNo"]
-        qty.text = d["qty"]
-        pn_type.text = d["pnType"]
-        des.text = d["pnDes"]
-        pn_data.text = d["pnAta"]
+    func fill(_ d:[String:Any]) {
+        rq_no.text = String.isNullOrEmpty(d["rqNo"])
+        pn.text = String.isNullOrEmpty(d["pnNo"])
+        qty.text = String.isNullOrEmpty(d["qty"])
+        pn_type.text = String.isNullOrEmpty(d["pnType"])
+        des.text = String.isNullOrEmpty(d["pnDes"])
+        pn_data.text = String.isNullOrEmpty(d["pnAta"])
     }
     
     

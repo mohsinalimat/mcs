@@ -185,6 +185,57 @@ func netHelper_upload(to:String,
 }
 
 
+///download image
+func requestImage(_ id:String , completionHandler:((UIImage) -> Void)? = nil) {
+    let url = BASE_URL + download_url + "?id=\(id)"
+    let path = NSTemporaryDirectory().appending("cache/") + id
+    let exist = FileManager.default.fileExists(atPath: kTemporaryDirectory)
+    
+    if exist {
+        if FileManager.default.fileExists(atPath: path) {
+            do {
+                let data = try Data.init(contentsOf:  URL.init(fileURLWithPath: path))
+                let ig = UIImage.init(data: data)
+                if let handler = completionHandler , let _ig = ig {
+                    handler(_ig);
+                }
+                return;
+            }catch{
+                print("get error");
+            }
+        }
+    }else {
+        do{
+            try FileManager.default.createDirectory(atPath: kTemporaryDirectory, withIntermediateDirectories: true, attributes: nil);
+        }catch {
+            print("createDirectory Error");
+        }
+    }
+    
+    
+    var header:HTTPHeaders = [:]
+    if let token = UserDefaults.standard.value(forKey: "user-token") as? String {
+        header["Authorization"] = token;
+    }
+    
+    Alamofire.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: header).responseData(queue: DispatchQueue.main) { (data) in
+
+        guard let da = data.result.value  else{return}
+        let ig = UIImage.init(data: da)
+        if let handler = completionHandler , let _ig = ig{
+            handler(_ig);
+        }
+
+        do{
+            try da.write(to: URL.init(string: path)!);
+        }catch{
+            print("error");
+        }
+        
+    }
+    
+    
+}
 
 
 

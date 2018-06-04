@@ -10,6 +10,11 @@ import UIKit
 
 class DDWSHeadView: UIView {
 
+    var isR:Bool = false
+    
+    @IBOutlet weak var addBtn: UIButton!
+    
+    
     var addAction:((Void) -> Void)?
     
     @IBAction func addAction(_ sender: UIButton) {
@@ -19,5 +24,8 @@ class DDWSHeadView: UIView {
         
     }
 
+    func _isR()  {
+        addBtn.isHidden = true
+    }
 
 }

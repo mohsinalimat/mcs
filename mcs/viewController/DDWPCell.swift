@@ -27,14 +27,26 @@ class DDWPCell: UITableViewCell {
     
     func fill(_ d:[String:Any]) {
         ata.text = String.isNullOrEmpty(d["wpAta"])
-        stas.text = String.isNullOrEmpty(d["wpStatus"])
+        stas.text = String.isNullOrEmpty(d["wpStatus"])  == "0" ? "Open" : "Closed"
         ed_advice.text = String.isNullOrEmpty(d["wpEdAdvice"])
         tx_wo.text = String.isNullOrEmpty(d["txToWo"])
 
         ///file
-        if let ig = d["file"] as? UIImage {
-            attach.image = ig;
+        if let igstr = d["fileStr"] as? String {
+            var s = igstr
+            s = s.replacingOccurrences(of: "data:image/jpeg;base64,", with: "")
+            let data = Data.init(base64Encoded: s)
+            if let ig = UIImage.init(data: data!){
+                attach.image = ig;
+            }
+        } else if let attachment = d["attachments"] as? [String:Any]  , let _id = attachment["id"] as? String{
+            requestImage(_id, completionHandler: { [weak self] (ig) in
+                guard let ss = self else {return}
+                ss.attach.image = ig;
+                });
+            
         }
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

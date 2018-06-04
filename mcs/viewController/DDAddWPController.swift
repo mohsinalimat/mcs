@@ -10,6 +10,9 @@ import UIKit
 
 class DDAddWPController: BasePickerViewController {
 
+    var isR:Bool = false
+    var dic:[String:Any]!
+
     @IBOutlet weak var ata: UITextField!
     @IBOutlet weak var stas: UIButton!
     @IBOutlet weak var ed_advice: UITextField!
@@ -55,7 +58,10 @@ class DDAddWPController: BasePickerViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
+        if isR{
+            _fillData(dic);
+        }
+
     }
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
@@ -69,7 +75,7 @@ class DDAddWPController: BasePickerViewController {
         if let action = selectedAction {
             var igBase64Str = ""
             if let ig = igv.image , let data = UIImageJPEGRepresentation(ig, 0.5) {
-                 igBase64Str = "data:image/jpeg;base64";
+                 igBase64Str = "data:image/jpeg;base64,";
                  igBase64Str = igBase64Str.appending(data.base64EncodedString()) ;
             }
 
@@ -85,6 +91,32 @@ class DDAddWPController: BasePickerViewController {
         
         self.dismiss(animated: true, completion: nil)
     }
+    
+    
+    func _fillData(_ d:[String:Any]) {
+        ata.text = String.isNullOrEmpty(d["wpAta"])
+        ed_advice.text = String.isNullOrEmpty(d["wpEdAdvice"])
+        stas.setTitle(String.isNullOrEmpty(d["wpStatus"]) == "0" ? "Open" : "Closed", for: .normal)
+        txwo.text = String.isNullOrEmpty(d["txToWo"])
+        
+        if let attachment = d["attachments"] as? [String:Any]  , let _id = attachment["id"] as? String{
+            requestImage(_id, completionHandler: { [weak self] (ig) in
+                guard let ss = self else {return}
+                ss.igv.image = ig;
+            });
+            
+        }
+        
+
+        ///
+        let v = UIView (frame: self.view.frame)
+        self.view.addSubview(v)
+        self.navigationItem.rightBarButtonItem = nil
+    }
+
+    
+    
+    
     
     
     override func headTitle() -> String? {

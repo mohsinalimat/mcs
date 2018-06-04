@@ -32,3 +32,6 @@ let kPop_navigationBar_color = UIColor (colorLiteralRed: 0.212, green: 0.188, bl
 ///////////////////////////
 let kTableViewCellbg_whiteColor = UIColor.white
 let kTableViewCellbg_hightlightColor = UIColor (colorLiteralRed: 217/255.0, green: 237/255.0, blue: 247/255.0, alpha: 1)
+
+
+let _disableBgColor = UIColor.init(colorLiteralRed: 236/255.0, green: 236/255.0, blue: 236/255.0, alpha: 0.6)

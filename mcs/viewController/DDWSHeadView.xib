@@ -93,6 +93,9 @@
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="addBtn" destination="4FW-Ig-ugU" id="hQH-V4-BSX"/>
+            </connections>
         </view>
     </objects>
     <resources>

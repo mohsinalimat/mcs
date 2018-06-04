@@ -10,6 +10,8 @@ import UIKit
 
 class DDNoticeBaseCell: UITableViewCell {
 
+    let noticeTypeDic = ["0":"STRUCTURE","1":"RESTRICTION","2":"CABIN"]
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -21,8 +23,26 @@ class DDNoticeBaseCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    func _show(_ sender:UIButton) {
+        Tools.showDataPicekr(dataSource:[" ","STRUCTURE","RESTRICTION","CABIN"]) {(obj) in
+            let obj = obj as! String
+            guard sender.currentTitle != obj else {return}
+            //sender.setTitle(obj, for: .normal)
+            
+            NotificationCenter.default.post(name: NSNotification.Name.init("ddNoticeTypeChangedNotification"), object: nil, userInfo: ["type":obj])
+        }
+
+    }
     
-    func fill(_ d:[String:Any])  {
+    
+    
+    
+    func isReadOnly()  {
+        
+    }
+    
+    
+    func fill(_ d:[String:Any]? = nil)  {
         
     }
 }

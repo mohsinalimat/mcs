@@ -9,7 +9,7 @@
 import UIKit
 
 
-class DDNoticeDefaultCell: UITableViewCell {
+class DDNoticeDefaultCell: DDNoticeBaseCell {
 
     var selectedTypeAction:((String) -> Void)?
     
@@ -37,19 +37,59 @@ class DDNoticeDefaultCell: UITableViewCell {
     
     @IBAction func buttonAction(_ sender: UIButton) {
         
-        Tools.showDataPicekr(dataSource:[" ","STRUCTURE","RESTRICTION","CABIN"]) {(obj) in
-            let obj = obj as! String
-            guard sender.currentTitle != obj else {return}
-            //sender.setTitle(obj, for: .normal)
-            
-            NotificationCenter.default.post(name: NSNotification.Name.init("ddNoticeTypeChangedNotification"), object: nil, userInfo: ["type":obj])
-        }
+        _show(sender)
   
     }
     
 
+    override func fill(_ d: [String : Any]?) {
+        guard let dic = d else {return}
+        let nt = noticeTypeDic[String.isNullOrEmpty(dic["failureType"])]
+        notice_type_btn.setTitle(String.isNullOrEmpty(nt), for: .normal)
+        
+        type.text = String.isNullOrEmpty(dic["type"])
+        equip.text = String.isNullOrEmpty(dic["noticeEquip"])
+        pos.text = String.isNullOrEmpty(dic["pos"])
+        x.text = String.isNullOrEmpty(dic["failureX"])
+        y.text = String.isNullOrEmpty(dic["failurey"])
+        size.text = String.isNullOrEmpty(dic["failureSize"])
+        detail.text = String.isNullOrEmpty(dic["failureDetail"])
+        sys.text = String.isNullOrEmpty(dic["noticeSys"])
+        restriction_detail.text = String.isNullOrEmpty(dic["restrictionDetail"])
+    }
     
     
+    override func isReadOnly() {
+        notice_type_btn.isUserInteractionEnabled = false
+        notice_type_btn.setBackgroundImage(UIImage(named:"buttonbg"), for: .normal)
+        
+        type.isEnabled = false
+        type.backgroundColor = _disableBgColor
+        
+        equip.isEnabled = false
+        equip.backgroundColor = _disableBgColor
+        
+        pos.isEnabled  = false
+        pos.backgroundColor = _disableBgColor
+        
+        x.isEnabled = false
+        x.backgroundColor = _disableBgColor
+        
+        y.isEnabled = false
+        y.backgroundColor = _disableBgColor
+        
+        size.isEnabled = false
+        size.backgroundColor = _disableBgColor
+        
+        detail.isEnabled = false
+        detail.backgroundColor = _disableBgColor
+        
+        sys.isEnabled = false
+        sys.backgroundColor = _disableBgColor
+        
+        restriction_detail.isEnabled = false
+        restriction_detail.backgroundColor = _disableBgColor
+    }
     
     
     

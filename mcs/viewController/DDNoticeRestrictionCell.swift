@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DDNoticeRestrictionCell: UITableViewCell {
+class DDNoticeRestrictionCell: DDNoticeBaseCell {
 
     
     @IBOutlet weak var notice_type_btn: UIButton!
@@ -23,15 +23,30 @@ class DDNoticeRestrictionCell: UITableViewCell {
     
     @IBAction func buttonAction(_ sender: UIButton) {
         
-        Tools.showDataPicekr(dataSource:[" ","STRUCTURE","RESTRICTION","CABIN"]) {(obj) in
-            let obj = obj as! String
-            guard sender.currentTitle != obj else {return}
-            //sender.setTitle(obj, for: .normal)
-            
-            NotificationCenter.default.post(name: NSNotification.Name.init("ddNoticeTypeChangedNotification"), object: nil, userInfo: ["type":obj])
-        }
-        
+        _show(sender)
     }
+    
+    override func fill(_ d: [String : Any]?) {
+        guard let dic = d else {return}
+        let nt = noticeTypeDic[String.isNullOrEmpty(dic["failureType"])]
+        notice_type_btn.setTitle(String.isNullOrEmpty(nt), for: .normal)
+        
+        sys.text = String.isNullOrEmpty(dic["noticeSys"])
+        restriction_detail.text = String.isNullOrEmpty(dic["restrictionDetail"])
+    }
+    
+    
+    override func isReadOnly() {
+        notice_type_btn.isUserInteractionEnabled = false
+        notice_type_btn.setBackgroundImage(UIImage(named:"buttonbg"), for: .normal)
+        
+        sys.isEnabled = false
+        sys.backgroundColor = _disableBgColor
+        
+        restriction_detail.isEnabled = false
+        restriction_detail.backgroundColor = _disableBgColor
+    }
+    
     
     
     

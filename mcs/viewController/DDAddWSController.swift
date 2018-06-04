@@ -10,6 +10,9 @@ import UIKit
 
 class DDAddWSController: BasePickerViewController {
 
+    var isR:Bool = false
+    var dic:[String:Any]!
+    
     @IBOutlet weak var rq_no: UITextField!
     @IBOutlet weak var pn: UITextField!
     @IBOutlet weak var pn_type: UIButton!
@@ -79,24 +82,27 @@ class DDAddWSController: BasePickerViewController {
                       "Cancelled":"9"]
     
     override func finishedBtnAction() {
-        if let action = selectedAction {
-            let d = ["rqNo":String.isNullOrEmpty(rq_no.text),
-                     "pnNo":String.isNullOrEmpty(pn.text),
-                     "pnType":String.isNullOrEmpty(pn_type.currentTitle),
-                     "pnDes":String.isNullOrEmpty(pn_des.text),
-                     "pnAta":String.isNullOrEmpty(pn_data.text),
-                     "status":String.isNullOrEmpty(status_key[stas.currentTitle!]),
-                    "associateNo":String.isNullOrEmpty(associate_no.text),
-                    "scheduleDate":String.isNullOrEmpty(schedule_date.currentTitle),
-                    "manual":String.isNullOrEmpty(maual.text),
-                    "partChange":String.isNullOrEmpty(part_change.text),
-                    "po":String.isNullOrEmpty(po.text),
-                    "qty":String.isNullOrEmpty(qty.text),
-                    "arrivalDate":String.isNullOrEmpty(arri_date.currentTitle),
-                    "remark":String.isNullOrEmpty(remark.text)
-            ];
-            
-            action(d)
+        if !isR {
+            if let action = selectedAction {
+                let d = ["rqNo":String.isNullOrEmpty(rq_no.text),
+                         "pnNo":String.isNullOrEmpty(pn.text),
+                         "pnType":String.isNullOrEmpty(pn_type.currentTitle),
+                         "pnDes":String.isNullOrEmpty(pn_des.text),
+                         "pnAta":String.isNullOrEmpty(pn_data.text),
+                         "status":String.isNullOrEmpty(status_key[stas.currentTitle!]),
+                         "associateNo":String.isNullOrEmpty(associate_no.text),
+                         "scheduleDate":String.isNullOrEmpty(schedule_date.currentTitle),
+                         "manual":String.isNullOrEmpty(maual.text),
+                         "partChange":String.isNullOrEmpty(part_change.text),
+                         "po":String.isNullOrEmpty(po.text),
+                         "qty":String.isNullOrEmpty(qty.text),
+                         "arrivalDate":String.isNullOrEmpty(arri_date.currentTitle),
+                         "remark":String.isNullOrEmpty(remark.text)
+                ];
+                
+                action(d)
+            }
+
         }
 
         self.dismiss(animated: true, completion: nil)
@@ -106,10 +112,53 @@ class DDAddWSController: BasePickerViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if isR{
+            _fillData(dic);
+        }
     }
 
     
-    
+    func _fillData(_ d:[String:Any]) {
+        rq_no.text = String.isNullOrEmpty(d["rqNo"])
+        pn.text = String.isNullOrEmpty(d["pnNo"])
+        pn_type.setTitle(String.isNullOrEmpty(d["pnType"]), for: .normal)
+        pn_des.text = String.isNullOrEmpty(d["pnDes"])
+        pn_data.text = String.isNullOrEmpty(d["pnAta"])
+        
+        ///status
+        let status = String.isNullOrEmpty(d["status"])
+        for (k ,v) in status_key {
+            if status == v {
+                stas.setTitle(k, for: .normal)
+                break;
+            }
+        }
+        
+        associate_no.text = String.isNullOrEmpty(d["associateNo"])
+        
+        let _eta = Tools.date(String.stringIsNullOrNil(d["scheduleDate"]))
+        if let d = _eta {
+            schedule_date.setTitle(Tools.dateToString(d, formatter: "dd/MM/yyyy"), for: .normal)
+        }
+
+        maual.text = String.isNullOrEmpty(d["manual"])
+        part_change.text = String.isNullOrEmpty(d["partChange"])
+        po.text = String.isNullOrEmpty(d["po"])
+        qty.text = String.isNullOrEmpty(d["qty"])
+        
+        let arri = Tools.date(String.stringIsNullOrNil(d["arrivalDate"]))
+        if let d = arri {
+            arri_date.setTitle(Tools.dateToString(d, formatter: "dd/MM/yyyy"), for: .normal)
+        }
+
+        remark.text = String.isNullOrEmpty(d["remark"])
+
+        ///
+        let v = UIView (frame: self.view.frame)
+        self.view.addSubview(v)
+        self.navigationItem.rightBarButtonItem = nil
+    }
     
     override func headTitle() -> String? {
         return "Add WS"

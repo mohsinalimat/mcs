@@ -39,7 +39,7 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
     var dd_wp_selected:Bool = false
     var dd_notice_type:String?
     var dd_notice_cell:UITableViewCell!
-    var dd_ws_arr = [[String:String]]()
+    var dd_ws_arr = [[String:Any]]()
     var dd_wp_arr = [[String:Any]]()
     
     //MARK:
@@ -416,47 +416,49 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
             case "DD":
                 //MARK:DD Cell
                 if section2_selected_index == 4 {//DD
-                    if !read_only {
-                        if indexPath.section == 1 {
-                            guard indexPath.row == 0 else {
-                                let _id = __ddNoticeTypeCellWithId(dd_notice_type ?? "DDNoticeDefaultCellIdentifier")
-                                
-                                let cell = tableView.dequeueReusableCell(withIdentifier: _id, for: indexPath) //as! DDNoticeDefaultCell;
-                                //cell.fill(_defect_info)
-                                dd_notice_cell = cell
-                                
-                                return cell
-                            }
-                            
-                            let cell = tableView.dequeueReusableCell(withIdentifier: "DDInfoCellIdentifier", for: indexPath) as! DDInfoCell;
-                            ddInfoCell = cell
-                            cell.buttonClickedWithIndex = {[weak self] index , selected in
-                                guard let ss = self else {return}
-                                ss.__ddButtonAction(index, selected: selected)
-                            }
-                            
-                            return cell
-                        }else if indexPath.section == 2 {
-                            guard dd_ws_arr.count > 0 else { return tableView.dequeueReusableCell(withIdentifier: "UITableViewCellIdentifier", for: indexPath); }
-                            let cell = tableView.dequeueReusableCell(withIdentifier: "DDWSCellIdentifier", for: indexPath) as! DDWSCell;
-                            let d = dd_ws_arr[indexPath.row]
-                            cell.fill(d)
-                            
-                            return cell
-                        }
-                        
-                        guard dd_wp_arr.count > 0 else { return tableView.dequeueReusableCell(withIdentifier: "UITableViewCellIdentifier", for: indexPath); }
-                        let cell = tableView.dequeueReusableCell(withIdentifier: "DDWPCellIdentifier", for: indexPath) as! DDWPCell;
-                        let d = dd_wp_arr[indexPath.row]
-                        cell.fill(d)
-                        return cell
-
-                    }else {
-                        ////R
+                    if read_only && indexPath.section == 1 && indexPath.row == 0 {////R
                         let cell = tableView.dequeueReusableCell(withIdentifier: "DDInfoCell_RIdentifier", for: indexPath) as! DDInfoCell_R;
                         cell.fill(_defect_info)
                         return cell
                     }
+                    
+                    if indexPath.section == 1 {
+                        guard indexPath.row == 0 else {
+                            let _id = __ddNoticeTypeCellWithId(dd_notice_type ?? "DDNoticeDefaultCellIdentifier")
+                            
+                            let cell = tableView.dequeueReusableCell(withIdentifier: _id, for: indexPath) as! DDNoticeBaseCell;
+                            if read_only {
+                                cell.fill(_defect_info)
+                                cell.isReadOnly();
+                            }else{
+                                dd_notice_cell = cell
+                            }
+
+                            return cell
+                        }
+                        
+                        let cell = tableView.dequeueReusableCell(withIdentifier: "DDInfoCellIdentifier", for: indexPath) as! DDInfoCell;
+                        ddInfoCell = cell
+                        cell.buttonClickedWithIndex = {[weak self] index , selected in
+                            guard let ss = self else {return}
+                            ss.__ddButtonAction(index, selected: selected)
+                        }
+                        
+                        return cell
+                    }else if indexPath.section == 2 {
+                        guard dd_ws_arr.count > 0 else { return tableView.dequeueReusableCell(withIdentifier: "UITableViewCellIdentifier", for: indexPath); }
+                        let cell = tableView.dequeueReusableCell(withIdentifier: "DDWSCellIdentifier", for: indexPath) as! DDWSCell;
+                        let d = dd_ws_arr[indexPath.row]
+                        cell.fill(d)
+                        
+                        return cell
+                    }
+                    
+                    guard dd_wp_arr.count > 0 else { return tableView.dequeueReusableCell(withIdentifier: "UITableViewCellIdentifier", for: indexPath); }
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "DDWPCellIdentifier", for: indexPath) as! DDWPCell;
+                    let d = dd_wp_arr[indexPath.row]
+                    cell.fill(d)
+                    return cell
                 };break
                 
             case "NRR":
@@ -581,6 +583,8 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
                 Tools.showVC(v,frame:CGRect(x: 0, y: 0, width: 800, height: 400))
             }
             
+            if read_only {v._isR();}
+            
             return v;
         }
         
@@ -599,6 +603,7 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
                 Tools.showVC(v,frame:CGRect(x: 0, y: 0, width: 600, height: 400))
             }
 
+            if read_only {v._isR();}
             return v;
         }
 
@@ -613,19 +618,36 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
         if indexPath.section == 2 {
             guard dd_ws_arr.count > 0 else {return}
             let v = DDAddWSController()
+            if read_only {
+                v.isR = read_only;
+                let d = dd_ws_arr[indexPath.row]
+                v.dic = d
+            }
             
             Tools.showVC(v,frame:CGRect(x: 0, y: 0, width: 800, height: 400))
         }else if indexPath.section == 3 {
             guard dd_wp_arr.count > 0 else {return}
             let v = DDAddWPController()
-            
+            if read_only {
+                v.isR = read_only;
+                let d = dd_wp_arr[indexPath.row]
+                v.dic = d
+            }
             Tools.showVC(v,frame:CGRect(x: 0, y: 0, width: 600, height: 400))
         }
         
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return read_only ? false : true
+        guard !read_only else {return false}
+        guard indexPath.section > 1 else {return false}
+        if indexPath.section == 2 {
+            return dd_ws_arr.count > 0 ? true:false
+        }else if indexPath.section == 3 {
+            return dd_wp_arr.count > 0 ? true:false
+        }
+        
+        return false
     }
     
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
@@ -634,7 +656,16 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-        
+            if indexPath.section == 2 {
+                dd_ws_arr.remove(at: indexPath.row);
+                
+            }else if indexPath.section == 3 {
+                dd_wp_arr.remove(at: indexPath.row);
+            }
+            
+            
+//            tableView.deleteRows(at: [indexPath], with: .top)
+            tableView.reloadSections([indexPath.section], animationStyle: .none)
         }
     }
     
@@ -713,8 +744,19 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
             }
         }
         
+        //ws,wp
+        if let ws = dic["wsList"] as? [[String:Any]]{
+            dd_ws_arr = ws;
+        }
         
+        if let wp = dic["wpList"] as? [[String:Any]]{
+            dd_wp_arr = wp;
+        }
         
+        if let dd_status = dic["statusOfDd"] as? String {
+            dd_ws_selected =  dd_status.contains("1");
+            dd_wp_selected = dd_status.contains("2");
+        }
         
     }
     
