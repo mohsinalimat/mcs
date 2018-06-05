@@ -21,6 +21,12 @@ class DDInfoCell: UITableViewCell {
     var in_chart:Int = 0
     var need_repetitive:Int = 0
     
+    @IBOutlet weak var repBgView: UIView!
+    @IBOutlet weak var rep_day: UITextField!
+    @IBOutlet weak var rep_fh: UITextField!
+    @IBOutlet weak var rep_fc: UITextField!
+    @IBOutlet weak var rep_month: UITextField!
+    
     var produce_o:Int?
     var produce_m:Int?
     var enterInDdList:Int?
@@ -104,11 +110,17 @@ class DDInfoCell: UITableViewCell {
             sender.isSelected = true
             need_action_y.isSelected = false
             need_repetitive = 0
+            repBgView.isHidden = true
+            rep_day.text = nil
+            rep_fh.text = nil
+            rep_fc.text = nil
+            rep_month.text = nil
             break
         case 31:
             sender.isSelected = true
             need_actoin_n.isSelected = false
             need_repetitive = 1
+            repBgView.isHidden = false
             break
             
         case 32:

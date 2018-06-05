@@ -102,6 +102,7 @@ class ReportBaseInfoCell: UITableViewCell,UITextFieldDelegate {
     }
     
     
+    var _descri_code = [String:String]()
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         guard textField.tag >= 10 else {return true}
         
@@ -126,16 +127,30 @@ class ReportBaseInfoCell: UITableViewCell,UITextFieldDelegate {
             if m is AMMModel {
                 let _m = m as! AMMModel;
                 textField.text = _m.taskCode;
-                ss.description_tf.text =  (ss.description_tf.text.lengthOfBytes(using: String.Encoding.utf8) > 0 ? (ss.description_tf.text + "\n") : ss.description_tf.text) +  _m.taskName
+                ss._descri_code["\(textField.tag)"] = _m.taskName
+                
+                //ss.description_tf.text =  (ss.description_tf.text.lengthOfBytes(using: String.Encoding.utf8) > 0 ? (ss.description_tf.text + "\n") : ss.description_tf.text) +  _m.taskName
             }else if m is MELModel{
                 let _m = m as! MELModel;
                 textField.text = _m.code;
-                ss.description_tf.text =  (ss.description_tf.text.lengthOfBytes(using: String.Encoding.utf8) > 0 ? (ss.description_tf.text + "\n") : ss.description_tf.text) +  _m._description
+                ss._descri_code["\((textField.tag == 10 || textField.tag == 21) ? "10" : "10")"] = _m._description
+                if textField.tag == 10 {
+                    ss.mel_tf.text = _m.code;
+                }else if textField.tag == 21 {
+                    if let res = ss.release_btn.currentTitle , res == "MEL"{
+                        ss.release_tf.text = _m.code;
+                    }
+                }
+                
             }else {
                 let _m = m as! TSMModel;
                 textField.text = _m.code;
-                ss.description_tf.text =  (ss.description_tf.text.lengthOfBytes(using: String.Encoding.utf8) > 0 ? (ss.description_tf.text + "\n") : ss.description_tf.text) +  _m.message
+                ss._descri_code["\(textField.tag)"] = _m.message
             }
+            
+            var s = "";
+            for (_ ,v) in ss._descri_code{ s = (s.lengthOfBytes(using: String.Encoding.utf8) > 0 ? (s + "\n") : "") + v }
+            ss.description_tf.text = s
         }
         
         Tools.showVC(v, frame: CGRect (x: 0, y: 0, width: 500, height: 600))

@@ -21,7 +21,11 @@ class DDInfoCell_R: UITableViewCell {
     @IBOutlet weak var wo_tf: UITextField!
     @IBOutlet weak var source_tf: UITextField!
     
-    
+    @IBOutlet weak var repBgView: UIView!
+    @IBOutlet weak var rep_day: UITextField!
+    @IBOutlet weak var rep_fh: UITextField!
+    @IBOutlet weak var rep_fc: UITextField!
+    @IBOutlet weak var rep_month: UITextField!
     
     
     func fill(_ dic :[String:Any]?) {
@@ -59,6 +63,13 @@ class DDInfoCell_R: UITableViewCell {
         
         let repetitiveAction = String.isNullOrEmpty(d["repetitiveAction"])
         __selectedBtnWithTag(repetitiveAction, tag: repetitiveAction == "1" ? 31:30)
+        if repetitiveAction == "1" {
+            repBgView.isHidden = false;
+            rep_day.text = String.isNullOrEmpty(d["repDay"])
+            rep_fh.text = String.isNullOrEmpty(d["repFh"])
+            rep_fc.text = String.isNullOrEmpty(d["repFc"])
+            rep_month.text = String.isNullOrEmpty(d["repMonth"])
+        }
         
         let precedureO = String.isNullOrEmpty(d["precedureO"])
         __selectedBtnWithTag(precedureO, tag: 32)

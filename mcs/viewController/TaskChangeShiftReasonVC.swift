@@ -22,7 +22,7 @@ class TaskChangeShiftReasonVC: BaseViewController ,UITextViewDelegate{
     func textViewDidChange(_ textView: UITextView) {
         msg.isHidden = textView.text.lengthOfBytes(using: String.Encoding.utf8) > 0 ? true : false
         
-        let paragraphStyle = NSMutableParagraphStyle.init()
+        /*let paragraphStyle = NSMutableParagraphStyle.init()
         paragraphStyle.lineSpacing = 3
         paragraphStyle.lineBreakMode = .byCharWrapping
         //paragraphStyle.firstLineHeadIndent = 0
@@ -34,7 +34,7 @@ class TaskChangeShiftReasonVC: BaseViewController ,UITextViewDelegate{
         ]
         
         let attriStr = NSAttributedString.init(string: textView.text, attributes: dic)
-        textView.attributedText = attriStr
+        textView.attributedText = attriStr*/
 
     }
     

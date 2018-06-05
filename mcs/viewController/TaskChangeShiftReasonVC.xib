@@ -21,7 +21,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="150" id="ydP-kU-flH"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
             </subviews>

@@ -21,7 +21,10 @@ class DDWPHeadView: UIView {
     }
     
     func _isR()  {
-        addBtn.isHidden = true
+//        addBtn.isHidden = true
+        addBtn.isUserInteractionEnabled = false
+        addBtn.setImage(nil, for: .normal)
+
     }
     
     

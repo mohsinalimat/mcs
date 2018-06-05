@@ -22,6 +22,8 @@ class TaskAddActionVC: BaseViewController ,UITableViewDelegate,UITableViewDataSo
     @IBOutlet weak var _tableView: UITableView!
 
     var read_only:Bool = false
+    var r_index:Int = 0
+    
     var from_defect_report:Bool = false
     
     var action_detail_info_r = [String:Any]()
@@ -67,7 +69,7 @@ class TaskAddActionVC: BaseViewController ,UITableViewDelegate,UITableViewDataSo
             s_closed.isOn = false
             
             btn_save.isHidden = true
-            title = "No." + String.isNullOrEmpty(action_detail_info_r["id"]);
+            title = "Action \(r_index)" //String.isNullOrEmpty(action_detail_info_r["id"]);
             s_performed.isOn = String.isNullOrEmpty(action_detail_info_r["perform"]) == "1" ? true : false
             s_closed.isOn = String.isNullOrEmpty(action_detail_info_r["closed"]) == "1" ? true : false
             

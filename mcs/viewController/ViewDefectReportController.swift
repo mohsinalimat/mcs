@@ -13,16 +13,28 @@ class ViewDefectReportController: BaseWebViewController {
     var type:String?
     var type_id:String?
     
+    var is_dd:Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Defect Report View"
 
-        guard let parent_id = type_id , let parent_type = type else { return ;}
-        let d = ["type":parent_type,"id":parent_id]
-
-        req_url = action_detail_viewDefect_url
-        req_parms = d
+        if is_dd {
+            guard let parent_id = type_id , let parent_type = type else { return ;}
+            let d = ["type":parent_type,"id":parent_id]
+            
+            req_url = action_detail_viewDefect_url
+            req_parms = d
+        } else {
+            guard let parent_id = type_id else { return ;}
+            let d = ["id":parent_id]
+            
+            req_url = defect_detail_preview_url
+            req_parms = d
+        }
+        
         loadData()
+
     }
 
     

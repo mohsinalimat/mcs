@@ -59,10 +59,17 @@ class TaskPoolCell: UITableViewCell {
         to_sb.text = _stringIsNullOrNil(d["taskTo"])
         
 
-        let defectDesc = _stringIsNullOrNil(d["planningDes"])
-        let defectStr = "Description: " + defectDesc
+        var defectDesc = _stringIsNullOrNil(d["defectDesc"])
+        defectDesc = defectDesc.replacingOccurrences(of: "<br/>", with: "")
+        
+        var planingDesc = _stringIsNullOrNil(d["planningDes"])
+        planingDesc = planingDesc.replacingOccurrences(of: "<br/>", with: "")
+        
+        let defectStr = "Description: " + defectDesc + "\n" + planingDesc
         let defectAttriStr =  NSMutableAttributedString.init(string: defectStr)
-        defectAttriStr.addAttributes([NSFontAttributeName:UIFont.boldSystemFont(ofSize: 15),NSForegroundColorAttributeName:UIColor.darkGray], range: NSMakeRange(0, 12))
+        defectAttriStr.addAttributes([NSFontAttributeName:UIFont.boldSystemFont(ofSize: 14),NSForegroundColorAttributeName:UIColor.darkGray], range: NSMakeRange(0, 12))
+        defectAttriStr.addAttributes([NSFontAttributeName:UIFont.boldSystemFont(ofSize: 14),NSForegroundColorAttributeName:UIColor.darkGray], range: NSMakeRange(defectStr.lengthOfBytes(using: String.Encoding.utf8) - planingDesc.lengthOfBytes(using: String.Encoding.utf8) - 1, planingDesc.lengthOfBytes(using: String.Encoding.utf8)))
+        
         descri.attributedText = defectAttriStr
         
 
@@ -70,7 +77,7 @@ class TaskPoolCell: UITableViewCell {
         let rea_s = "Reason to postpone : "
         let reasonStr =  rea_s + reasonDesc
         let reasonAttriStr =  NSMutableAttributedString.init(string: reasonStr)
-        reasonAttriStr.addAttributes([NSFontAttributeName:UIFont.boldSystemFont(ofSize: 15),NSForegroundColorAttributeName:UIColor.darkGray], range: NSMakeRange(0, rea_s.lengthOfBytes(using: String.Encoding.utf8)))
+        reasonAttriStr.addAttributes([NSFontAttributeName:UIFont.boldSystemFont(ofSize: 14),NSForegroundColorAttributeName:UIColor.darkGray], range: NSMakeRange(0, rea_s.lengthOfBytes(using: String.Encoding.utf8)))
         
         reason.attributedText = reasonAttriStr
         

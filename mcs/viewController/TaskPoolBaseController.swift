@@ -198,7 +198,7 @@ class TaskPoolBaseController: BaseViewController ,UITableViewDelegate,UITableVie
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return indexPath.row == 0 ? 90 : 30;
+        return indexPath.row == 0 ? 100 : 30;
     }
 
     

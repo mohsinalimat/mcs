@@ -211,6 +211,7 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
         
         guard kSectionHeadButtonSelectedIndex == .creatReportValue5 else {return}
         kAttachmentDataArr = _current_attachmnetArr
+        _tableView.reloadData()
     }
 
     private func __saveData() {
@@ -267,6 +268,11 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
             params["dateLine"]  =   String.isNullOrEmpty(ddInfoCell.deadline_btn.currentTitle)
             params["enterInDamageChart"] = String.isNullOrEmpty(ddInfoCell.in_chart)
             params["repetitiveAction"] = String.isNullOrEmpty(ddInfoCell.need_repetitive)
+            params["repDay"] = String.isNullOrEmpty(ddInfoCell.rep_day.text)
+            params["repFh"] = String.isNullOrEmpty(ddInfoCell.rep_fh.text)
+            params["repFc"] = String.isNullOrEmpty(ddInfoCell.rep_fc.text)
+            params["repMonth"] = String.isNullOrEmpty(ddInfoCell.rep_month.text)
+            
             params["precedureO"] =  String.isNullOrEmpty(ddInfoCell.produce_o)
             params["precedureM"] =  String.isNullOrEmpty(ddInfoCell.produce_m)
             params["enterInDdList"] = String.isNullOrEmpty(ddInfoCell.enterInDdList)
@@ -487,6 +493,7 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
                 HUD.show()
                 let vc = TaskAddActionVC()
                 vc.read_only = true
+                vc.r_index = index + 1
                 vc.action_detail_info_r = d;
                 
                 self.navigationController?.pushViewController(vc, animated: true)
@@ -763,7 +770,21 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
     
     
     
-    
+//    $(".defer-dl").each(function(){
+//    if($(this).val()){
+//        flag = false;
+//    }
+//    });
+//    
+//    if((!date && day) || ((!fldate || !flNo) && (fh || fc))  || !acReg || flag)
+//    {
+//        var flNoTip = "";
+//        if(fh || fc){
+//        flNoTip = "and FL No. / Date";
+//        }
+//        BS.errorMsg("Please check A/C Reg and Issued Day "+flNoTip+" and Defer Type not null!");
+//        return false;
+//    }
     
     //MARK:
     override func didReceiveMemoryWarning() {
