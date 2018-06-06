@@ -82,6 +82,9 @@ class AddActionInfoCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        guard let shift = kTaskpool_shift else {return}
+        shift_id = shift["key"]
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -104,6 +104,7 @@ class ActionListVC: BaseViewController ,UITableViewDelegate,UITableViewDataSourc
         
         HUD.show()
         let vc = TaskAddActionVC()
+        vc.r_index = indexPath.row + 1
         vc.read_only = true
         vc.action_detail_info_r = d;
         

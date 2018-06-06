@@ -32,7 +32,7 @@ class WarnFaultInfoCell: UITableViewCell {
     func fillCell(_ d1:[String:Any] )  {
         code.text = String.stringIsNullOrNil(d1["code"])
         msg.text = String.stringIsNullOrNil(d1["message"])
-        type.text = String.stringIsNullOrNil(d1["alarmType"])
+        type.text = String.stringIsNullOrNil(d1["alarmType"]) == "10" ? "FDE" : "MMSG"
         phase.text = String.stringIsNullOrNil(d1["phase"])
     
         let _time = Tools.date(String.stringIsNullOrNil(d1["faultOccurrenceDate"]))

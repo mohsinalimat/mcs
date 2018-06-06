@@ -24,6 +24,7 @@ class WarnInfoDetailController_new: BaseViewController,UITableViewDelegate,UITab
     var _warn_detail = [[String:Any]]()
     var _warn_possible = [[String:Any]]()
     var _warn_tsm = [[String:Any]]()
+    var _melArr = [[String:Any]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,14 +55,12 @@ class WarnInfoDetailController_new: BaseViewController,UITableViewDelegate,UITab
     }
     
     func get_warn_detailInfo() {
-
         HUD.show()
         let url = get_warn_info_url.appending("/\(_id!)")
         netHelper_request(withUrl: url, method: .get, parameters: nil, successHandler: { [weak self](result) in
             HUD.dismiss()
             guard let body = result["body"] as? [String : Any] else {return;}
             guard let strongSelf = self else{return}
-            
             strongSelf._shouldLoad = true
             strongSelf._warnInfoDetail = body;
             
@@ -77,6 +76,10 @@ class WarnInfoDetailController_new: BaseViewController,UITableViewDelegate,UITab
                 strongSelf._warn_tsm = strongSelf._warn_tsm + _detail;
             }
             
+            if let _detail = body["mel"] as? [[String:Any]] {
+                strongSelf._melArr = strongSelf._melArr + _detail;
+            }
+
             
             strongSelf._tableView.reloadData()
         }) { (error) in
@@ -86,14 +89,9 @@ class WarnInfoDetailController_new: BaseViewController,UITableViewDelegate,UITab
         
     }
     
-    
-    
-    
     //MARK:- UITableViewDelegate
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         guard _shouldLoad else {return 0}
-        
         if current_selected_btn_index == 0 {
             return _warn_possible.count + 2;
         }
@@ -102,12 +100,8 @@ class WarnInfoDetailController_new: BaseViewController,UITableViewDelegate,UITab
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return 1;
-        }else if section == 1 {
-            return _warn_detail.count;
-        }
-        
+        guard section != 0 else {return 1}
+        guard section != 1 else {return _warn_detail.count}
         if current_selected_btn_index == 0 {
             if let  d = _warn_possible[section - 2]["pc"] as? [String]{
                 return d.count;
@@ -116,7 +110,10 @@ class WarnInfoDetailController_new: BaseViewController,UITableViewDelegate,UITab
             return 0
         }else if current_selected_btn_index == 1 {
             return _warn_tsm.count;
+        }else if current_selected_btn_index == 2 {
+            return _melArr.count;
         }
+
         
         return 0
     }
@@ -125,13 +122,11 @@ class WarnInfoDetailController_new: BaseViewController,UITableViewDelegate,UITab
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         guard indexPath.section > 0 else { return 130 }
         guard indexPath.section > 1 else { return 40 }
-        
         return 30
     }
     
     private let section1_header_h:CGFloat = 60
     private let section1_footer_h:CGFloat = 100
-
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 1 {
             return section1_header_h;
@@ -203,9 +198,7 @@ class WarnInfoDetailController_new: BaseViewController,UITableViewDelegate,UITab
         
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "WarnDetailTopCellIdentifier", for: indexPath) as! WarnDetailTopCell
-            
             cell.fillCell(_warnInfoDetail , d2: _warnInfoLast)
-           
             return cell
         }else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "WarnFaultInfoCellIdentifier", for: indexPath) as! WarnFaultInfoCell
@@ -218,7 +211,6 @@ class WarnInfoDetailController_new: BaseViewController,UITableViewDelegate,UITab
             return cell
         }else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "WarnDisPoseCellIdentifier", for: indexPath) as! WarnDisPoseCell
-            
             if current_selected_btn_index == 0 {
                 if let  d = _warn_possible[indexPath.section - 2]["pc"] as? [String]{
                     let s = d[indexPath.row]
@@ -227,8 +219,10 @@ class WarnInfoDetailController_new: BaseViewController,UITableViewDelegate,UITab
             }else if current_selected_btn_index == 1 {
                 let d = _warn_tsm[indexPath.row];
                 cell.fillCell(d1: d)
+            }else if current_selected_btn_index == 2 {
+                let d = _melArr[indexPath.row];
+                cell.fillCellMel(d1: d)
             }
-            
             
             return cell
         }
@@ -245,14 +239,11 @@ class WarnInfoDetailController_new: BaseViewController,UITableViewDelegate,UITab
         
         current_selected_btn.isSelected = false
         //current_selected_btn.backgroundColor = current_selected_btn_bgcolor
-        
         button.isSelected = true
         //button.backgroundColor = UIColor.white
         
         current_selected_btn = button
         current_selected_btn_index = button.tag
-        
-        //_tableView.reloadSections([2], animationStyle: .none)
         _tableView.reloadData()
     }
     

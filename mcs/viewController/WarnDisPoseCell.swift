@@ -30,7 +30,12 @@ class WarnDisPoseCell: UITableViewCell {
         
     }
     
-    
+    func fillCellMel(d1:[String : Any] )  {
+        taskcode.text = String.stringIsNullOrNil(d1["item"]) //+ " " + String.stringIsNullOrNil(d1["docName"])
+        
+        
+    }
+
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
