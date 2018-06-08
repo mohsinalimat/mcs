@@ -52,7 +52,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CS1-AL-JsQ">
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CS1-AL-JsQ">
                                 <frame key="frameInset" minX="17" minY="51" width="40" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -60,25 +60,27 @@
                                 <state key="normal" title="A" image="radio1_pre">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <state key="disabled" image="radio2_pre"/>
                                 <state key="selected" image="radio1_selected"/>
                                 <connections>
                                     <action selector="buttonAction:" destination="m2W-K0-NYk" eventType="touchUpInside" id="AtQ-c8-0gg"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XFP-it-rh6">
-                                <frame key="frameInset" minX="110" minY="51" width="40" height="30"/>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XFP-it-rh6">
+                                <frame key="frameInset" minX="110" minY="53" width="40" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="5" maxX="10" maxY="5"/>
                                 <state key="normal" title="B" image="radio1_pre">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <state key="disabled" image="radio2_pre"/>
                                 <state key="selected" image="radio1_selected"/>
                                 <connections>
                                     <action selector="buttonAction:" destination="m2W-K0-NYk" eventType="touchUpInside" id="ddd-nE-w99"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rdi-ZB-7do">
+                            <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rdi-ZB-7do">
                                 <frame key="frameInset" minX="185" minY="51" width="40" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -86,12 +88,13 @@
                                 <state key="normal" title="C" image="radio1_pre">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <state key="disabled" image="radio2_pre"/>
                                 <state key="selected" image="radio1_selected"/>
                                 <connections>
                                     <action selector="buttonAction:" destination="m2W-K0-NYk" eventType="touchUpInside" id="2IM-K2-SIt"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Cj-T7-NmK">
+                            <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Cj-T7-NmK">
                                 <frame key="frameInset" minX="252" minY="51" width="40" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -99,12 +102,13 @@
                                 <state key="normal" title="D" image="radio1_pre">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <state key="disabled" image="radio2_pre"/>
                                 <state key="selected" image="radio1_selected"/>
                                 <connections>
                                     <action selector="buttonAction:" destination="m2W-K0-NYk" eventType="touchUpInside" id="pYq-L7-x53"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pg3-cg-cVg">
+                            <button opaque="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pg3-cg-cVg">
                                 <frame key="frameInset" minX="373" minY="51" width="40" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -112,12 +116,13 @@
                                 <state key="normal" title="E" image="radio1_pre">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <state key="disabled" image="radio2_pre"/>
                                 <state key="selected" image="radio1_selected"/>
                                 <connections>
                                     <action selector="buttonAction:" destination="m2W-K0-NYk" eventType="touchUpInside" id="Rxd-yV-YOk"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H6Y-5e-L8j">
+                            <button opaque="NO" tag="6" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H6Y-5e-L8j">
                                 <frame key="frameInset" minX="523" minY="51" width="40" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -125,12 +130,13 @@
                                 <state key="normal" title="F" image="radio1_pre">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <state key="disabled" image="radio2_pre"/>
                                 <state key="selected" image="radio1_selected"/>
                                 <connections>
                                     <action selector="buttonAction:" destination="m2W-K0-NYk" eventType="touchUpInside" id="hzN-oA-g8N"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="6" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0rB-CQ-LHC">
+                            <button opaque="NO" tag="7" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0rB-CQ-LHC">
                                 <frame key="frameInset" minX="727" minY="51" width="40" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -138,12 +144,13 @@
                                 <state key="normal" title="G" image="radio1_pre">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <state key="disabled" image="radio2_pre"/>
                                 <state key="selected" image="radio1_selected"/>
                                 <connections>
                                     <action selector="buttonAction:" destination="m2W-K0-NYk" eventType="touchUpInside" id="kho-HA-Zxt"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="7" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nC3-4W-wPA">
+                            <button opaque="NO" tag="8" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nC3-4W-wPA">
                                 <frame key="frameInset" minX="825" minY="51" width="40" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -151,12 +158,13 @@
                                 <state key="normal" title="H" image="radio1_pre">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <state key="disabled" image="radio2_pre"/>
                                 <state key="selected" image="radio1_selected"/>
                                 <connections>
                                     <action selector="buttonAction:" destination="m2W-K0-NYk" eventType="touchUpInside" id="rtw-4Z-ga2"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="8" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xyZ-s0-ExM">
+                            <button opaque="NO" tag="9" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xyZ-s0-ExM">
                                 <frame key="frameInset" minX="922" minY="51" width="40" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -164,6 +172,7 @@
                                 <state key="normal" title="I" image="radio1_pre">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <state key="disabled" image="radio2_pre"/>
                                 <state key="selected" image="radio1_selected"/>
                                 <connections>
                                     <action selector="buttonAction:" destination="m2W-K0-NYk" eventType="touchUpInside" id="u3l-BP-LnY"/>
@@ -686,6 +695,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="bg" destination="QWt-IV-04Q" id="qgZ-zc-9vf"/>
                 <outlet property="day_tf" destination="ayM-9B-MQu" id="tYj-uS-0Zw"/>
                 <outlet property="dd_record_pink" destination="FbN-g8-vvk" id="BZs-6C-9Px"/>
                 <outlet property="dd_record_white" destination="CnQ-G7-ODX" id="A1Y-8y-Bdc"/>

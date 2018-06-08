@@ -203,6 +203,15 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
         addActionComponentDataArr.removeAll()
         defect_added_actions.removeAll()
         kAttachmentDataArr.removeAll()
+        
+        ///clear data
+        report_refresh_cat = false
+        report_reg =  nil
+        report_station = nil
+        report_date = nil
+        report_flight_no = nil
+        report_flight_date = nil
+        report_release_ref = nil
     }
     
     private func __fillData() {
@@ -449,7 +458,7 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
                             guard let ss = self else {return}
                             ss.__ddButtonAction(index, selected: selected)
                         }
-                        
+
                         return cell
                     }else if indexPath.section == 2 {
                         guard dd_ws_arr.count > 0 else { return tableView.dequeueReusableCell(withIdentifier: "UITableViewCellIdentifier", for: indexPath); }

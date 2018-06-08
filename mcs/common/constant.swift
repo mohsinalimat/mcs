@@ -121,7 +121,7 @@ var addActionComponentDataArr = [[String:String]]()//添加action - Component
 //Defect
 let defect_transferred_key = [" ","TLB","CLB","NIL"]
 let defect_transferred_form = [" ":"null","TLB":"0","CLB":"1","NIL":"2"]
-let defect_release_ref = [" ","MEL","AMM","CDL","SRM","RPAS","NIL"]
+let defect_release_ref = ["","MEL","AMM","CDL","SRM","RPAS","NIL"]
 let g_staffs = (kActive_BASE_DATA["staffs"] as? [String]) ?? []
 let kDefectType = ["Defect Report":"TS" ,"DD":"DD" , "NRR":"NRR"]
 
@@ -139,6 +139,8 @@ var report_station:String?
 var report_date:Date? //issue date
 var report_flight_no:String?
 var report_flight_date:Date?
+var report_release_ref:String?
+var report_refresh_cat:Bool = false
 
 var defect_added_actions = [[String:Any]]()
 

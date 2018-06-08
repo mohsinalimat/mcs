@@ -44,7 +44,10 @@ class ReportBaseInfoCell: UITableViewCell,UITextFieldDelegate {
             
         case 2:
             Tools.showDataPicekr(dataSource:defect_release_ref) {(obj) in
-                let obj = obj as! String
+                let obj = obj as? String
+                guard obj != sender.currentTitle else {return}
+                report_refresh_cat = true
+                report_release_ref = obj
                 sender.setTitle(obj, for: .normal)
             }
             break
@@ -73,7 +76,7 @@ class ReportBaseInfoCell: UITableViewCell,UITextFieldDelegate {
                             sender.setTitle(fltno, for: .normal)
                             
                             let fltDateStr = String.isNullOrEmpty(obj["fltDate"])
-                            let date = Tools.stringToDate(fltDateStr, formatter: "yyyy-MM-dd")
+                            let date = Tools.stringToDate(fltDateStr, formatter: "dd/MM/yyyy")
                             report_flight_date = date
                             ss.fltDate_btn.setTitle(fltDateStr, for: .normal)
                         }

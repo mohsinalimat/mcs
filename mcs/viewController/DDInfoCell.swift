@@ -12,6 +12,7 @@ class DDInfoCell: UITableViewCell {
     var ddCat_selected:Int?
     var buttonClickedWithIndex:((_ index:Int ,_ selected: Bool) -> Void)?
     
+    @IBOutlet weak var bg: UIView!
     @IBOutlet weak var day_tf: UITextField!
     @IBOutlet weak var fh_tf: UITextField!
     @IBOutlet weak var fc_tf: UITextField!
@@ -31,35 +32,53 @@ class DDInfoCell: UITableViewCell {
     var produce_m:Int?
     var enterInDdList:Int?
     var repetitive_defect:Int?
+    var dd_status = [String]()
     @IBOutlet weak var rec_by: UIButton!
     @IBOutlet weak var rec_date: UIButton!
-    
-    var dd_status = [String]()
-    
     @IBOutlet weak var um_tf: UITextField!
     @IBOutlet weak var dd_source: UIButton!
     
-    
     ///PRIVATE
     var ddCat_selected_btn:UIButton?
-
-    
     @IBOutlet weak var in_chart_btn: UIButton!
     @IBOutlet weak var in_chart_btn_y: UIButton!
-    
     @IBOutlet weak var need_actoin_n: UIButton!
     @IBOutlet weak var need_action_y: UIButton!
-    
     @IBOutlet weak var dd_record_pink: UIButton!
     @IBOutlet weak var dd_record_white: UIButton!
-    
     @IBOutlet weak var defect_n: UIButton!
     @IBOutlet weak var defect_y: UIButton!
-    
-
     @IBAction func buttonAction(_ sender: UIButton) {
         switch sender.tag {
-        case 0,1,2,3,4,5,6,7,8:
+        case 1,2,3,4,5,6,7,8,9:
+            /*CAT约束，根据Release Type 的val
+            if(val == 'MEL'){
+                sArr = 'A,B,C,D';
+            }else if(val == 'AMM' || val == 'SRM'){
+                sArr = 'F';
+            }else if(val == 'CDL'){
+                sArr = 'E';
+            }else if(val == 'RPAS'){
+                sArr = 'G';		
+            }else if(val == 'NIL'){
+                sArr = 'H,I';	
+            }*/
+            /*let release_ref = String.isNullOrEmpty(report_release_ref)
+            let tag = sender.tag
+            if  release_ref.lengthOfBytes(using: String.Encoding.utf8) > 0 {
+                if release_ref == "MEL" {
+                    guard tag < 4 else {return}
+                }else if release_ref == "AMM" || release_ref == "SRM" {
+                    guard tag == 5 else {return}
+                }else if release_ref == "CDL" {
+                    guard tag == 4 else {return};
+                }else if release_ref == "RPAS" {
+                    guard tag == 6 else {return};
+                }else if release_ref == "NIL" {
+                    guard tag == 7 || tag == 8 else {return};
+                }
+            }*/
+            
             if let selected = ddCat_selected_btn {
                 guard selected.tag != sender.tag else {return}
                 selected.isSelected = false
@@ -67,7 +86,7 @@ class DDInfoCell: UITableViewCell {
             
             sender.isSelected = true;
             ddCat_selected_btn = sender
-            ddCat_selected = sender.tag;
+            ddCat_selected = sender.tag - 1;
             break
         
         case 20:
@@ -133,35 +152,28 @@ class DDInfoCell: UITableViewCell {
                     fltnoTip = "and FL No. / Date";
                 }
                
-                HUD.show(info: "Please check A/C Reg and Issued Day " + fltnoTip + " and Defer Type not null!")
-                return
+                HUD.show(info: "Please check A/C Reg and Issued Day " + fltnoTip + " and Defer Type not null!");return
             }
             
-            request(defect_flightNo_url, parameters: ["date":Tools.dateToString(report_date!, formatter: "yyyy-MM-dd") ,
+            request(dd_cal_deadline_url, parameters: ["date":Tools.dateToString(report_date!, formatter: "yyyy-MM-dd") ,
                                                       "acReg":String.isNullOrEmpty(report_reg) ,
-                                                      
+                                                      "fh": String.isNullOrEmpty(fh_tf.text),
+                                                      "fc":String.isNullOrEmpty(fc_tf.text),
+                                                      "day":String.isNullOrEmpty(day_tf.text),
                                                       "fldate":Tools.dateToString(report_date!, formatter: "yyyy-MM-dd") ,
-                                                      "flNo":String.isNullOrEmpty(report_station),
+                                                      "flNo":String.isNullOrEmpty(report_flight_no)
                                                       ], successHandler: {[weak self] (res) in
-                guard let arr = res["body"] as? [[String:String]] else {return};
-                guard let ss = self else {return}
-//                if arr.count > 0 {
-//                    ss.flts = arr
-//                    Tools.showDataPicekr(dataSource:arr) {(obj) in
-//                        let obj = obj as! [String:String]
-//                        let fltno = obj["fltNo"]
-//                        report_flight_no = fltno
-//                        sender.setTitle(fltno, for: .normal)
-//                        
-//                    }
-//                }
+                                                        guard let ss = self else {return}
+                                                        guard let code = res["state"] as? Int , code == 200 else {return}
+                                                        guard let timeStr = res["body"] as? String else {return}
+                                                        
+                                                        let date = Tools.stringToDate(timeStr, formatter: "yyyy-MM-dd")
+                                                        let time = Tools.dateToString(date, formatter: "dd/MM/yyyy")
+                                                        ss.deadline_btn.setTitle(time, for: .normal)
                 }, failureHandler: { (str) in
             })
-            
-            
-            
-            break
 
+            break
         case 30:
             sender.isSelected = true
             need_action_y.isSelected = false
@@ -258,15 +270,7 @@ class DDInfoCell: UITableViewCell {
     
   
     
-    
-    
-    
-    
-    
-    
-    
-    
-    func _enable_textfield(_ textfield:UITextField , b:Bool) {
+    private func _enable_textfield(_ textfield:UITextField , b:Bool) {
         textfield.isEnabled = b
         textfield.backgroundColor = b ? UIColor.white : UIColor.lightGray
         if !b {
@@ -275,13 +279,57 @@ class DDInfoCell: UITableViewCell {
     }
     
 
-    func _init()  {
-        in_chart_btn.isSelected = true
-        need_actoin_n.isSelected = true
+    private func _isResetCat(_ b:Bool) {
+        guard b else {return}
+        let release_ref = String.isNullOrEmpty(report_release_ref)
+        if  release_ref.lengthOfBytes(using: String.Encoding.utf8) > 0 {
+            for i in 1..<10 {
+                let b = __buttonWithTag(i)
+                b.isEnabled = false
+            }
+
+            if release_ref == "MEL" {
+                __buttonWithTag(1).isEnabled = true
+                __buttonWithTag(2).isEnabled = true
+                __buttonWithTag(3).isEnabled = true
+                __buttonWithTag(4).isEnabled = true
+            }else if release_ref == "AMM" || release_ref == "SRM" {
+                __buttonWithTag(6).isEnabled = true
+            }else if release_ref == "CDL" {
+                __buttonWithTag(5).isEnabled = true
+            }else if release_ref == "RPAS" {
+                __buttonWithTag(7).isEnabled = true
+            }else if release_ref == "NIL" {
+                __buttonWithTag(8).isEnabled = true
+                __buttonWithTag(9).isEnabled = true
+            }
+        }else {
+            for i in 1..<10 {
+                let b = __buttonWithTag(i)
+                b.isEnabled = true
+            }
+        }
         
-        
+        report_refresh_cat = false
     }
     
+    private func __buttonWithTag(_ tag:Int) -> UIButton {
+        let v = self.bg.viewWithTag(tag)
+        let b = v as! UIButton
+        return b
+    }
+    
+    private func _init()  {
+        in_chart_btn.isSelected = true
+        need_actoin_n.isSelected = true
+        _isResetCat(report_refresh_cat)
+    }
+    
+    
+    //MARK: -
+    override func prepareForReuse() {
+        _isResetCat(report_refresh_cat)
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
