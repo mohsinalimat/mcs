@@ -53,7 +53,6 @@ class ReportBaseInfoCell: UITableViewCell,UITextFieldDelegate {
             guard report_date != nil else { HUD.show(info: "Select Issue Date!"); return}
             guard report_reg != nil else { HUD.show(info: "Select Reg!"); return};
             guard report_station != nil else { HUD.show(info: "Select Station!"); return}
-            
             if flts.count > 0 {
                 Tools.showDataPicekr(dataSource:flts) {[weak self](obj) in
                     let obj = obj as! [String:String]
@@ -65,14 +64,18 @@ class ReportBaseInfoCell: UITableViewCell,UITextFieldDelegate {
                 request(defect_flightNo_url, parameters: ["fltDate":Tools.dateToString(report_date!, formatter: "yyyy-MM-dd") , "acId":String.isNullOrEmpty(report_reg) , "station":String.isNullOrEmpty(report_station)], successHandler: {[weak self] (res) in
                     guard let arr = res["body"] as? [[String:String]] else {return};
                     guard let ss = self else {return}
-
                     if arr.count > 0 {
                         ss.flts = arr
-                        
                         Tools.showDataPicekr(dataSource:arr) {(obj) in
                             let obj = obj as! [String:String]
-                            sender.setTitle(obj["fltNo"], for: .normal)
-                            ss.fltDate_btn.setTitle(obj["fltDate"], for: .normal)
+                            let fltno = obj["fltNo"]
+                            report_flight_no = fltno
+                            sender.setTitle(fltno, for: .normal)
+                            
+                            let fltDateStr = String.isNullOrEmpty(obj["fltDate"])
+                            let date = Tools.stringToDate(fltDateStr, formatter: "yyyy-MM-dd")
+                            report_flight_date = date
+                            ss.fltDate_btn.setTitle(fltDateStr, for: .normal)
                         }
                     }
                     }, failureHandler: { (str) in

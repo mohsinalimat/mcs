@@ -11,6 +11,7 @@ import UIKit
 class HomeDetailTabController: UITabBarController {
 
     var _maskView:UIView!
+    var _lastSelectedBtn:UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,50 +24,48 @@ class HomeDetailTabController: UITabBarController {
     }
 
     func _init() {
-        self.tabBar.isHidden = true
-        
+        self.tabBar.isHidden = true        
         let vc1 = FlightInfoListController()
         let vc2 = HistoryFaultController()
         let vc3 = PlaneInfoController()
-
         viewControllers = [vc1,vc2,vc3];
         
         let bgView = UIView (frame: CGRect (x: 0, y: kCurrentScreenHeight - 49 - 64, width: kCurrentScreenWidth, height: 49))
-        bgView.backgroundColor = kViewDefaultBgColor
+        bgView.backgroundColor = UIColor.init(colorLiteralRed: 80/255.0, green: 80/255.0, blue: 81/255.0, alpha: 1) //UIColor.black//kTableviewBackgroundColor
         view.addSubview(bgView)
         
         let _w = kCurrentScreenWidth / 3.0
-        let btn_titles = ["航班告警","历史故障","飞机信息"]
-        
+        let btn_titles = ["Flight Warn","History Fault","Plane Info"]
         for i in 0..<3 {
             let btn = UIButton (frame: CGRect (x: _w * CGFloat.init(i), y: 0, width: _w, height: 49))
             btn.backgroundColor = UIColor.clear
             bgView.addSubview(btn)
             btn.setTitle(btn_titles[i], for: .normal)
-            btn.setTitleColor(UIColor.white, for: .normal)
+            btn.setTitleColor(UIColor.lightGray, for: .normal)
+            btn.setTitleColor(kButtonTitleDefaultColor , for: .selected)
             btn.tag =  i
             btn.addTarget(self, action: #selector(changeControllerAction(_ :)), for: .touchUpInside)
-            //btn.setImage(UIImage (named: "icon_tabbar_notification"), for: .normal)
-            //btn.setImage(UIImage (named: "icon_tabbar_notification_active"), for: .selected)
-            btn.titleLabel?.font  = UIFont.systemFont(ofSize: 15)
-            
+            btn.titleLabel?.font  = UIFont.systemFont(ofSize: 16)
+            if i == 0 {
+                _lastSelectedBtn = btn;
+                btn.isSelected = true
+            }
         }
         
         let maskView = UIView (frame: CGRect (x: 0, y: 0, width: _w, height: 49));
         maskView.backgroundColor = UIColor.white
-        maskView.alpha = 0.5
+        maskView.alpha = 0.2
         _maskView = maskView
         bgView.addSubview(maskView)
-        
     }
     
     func changeControllerAction(_ button :UIButton)  {
-        guard button.tag != self.selectedIndex else {
-            return
-        }
-        
+        guard button.tag != self.selectedIndex else { return}
         self.selectedIndex  = button.tag
+        button.isSelected = true
         
+        _lastSelectedBtn.isSelected = false
+        _lastSelectedBtn = button
         _maskView.frame.origin.x = CGFloat.init(button.tag) * button.frame.width
     }
     

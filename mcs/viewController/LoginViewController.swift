@@ -129,7 +129,6 @@ class LoginViewController: BaseViewController,UITableViewDelegate,UITableViewDat
     }
     
     func buttonAction(_ btn:UIButton)  {
-        
         if btn.tag == 101 {
             guard let name = username_tf.text, let pwd = pwd_tf.text else { return}
             guard name.lengthOfBytes(using: String.Encoding.utf8) > 0 , pwd.lengthOfBytes(using: String.Encoding.utf8) > 0 else {
@@ -140,9 +139,15 @@ class LoginViewController: BaseViewController,UITableViewDelegate,UITableViewDat
             netHelper_request(withUrl: login_url, method: .post, parameters: ["username":name,"password":pwd], successHandler: { (result) in
                 HUD.show(successInfo: "Success")
                 //数据保存
-                guard let token = result["body"] else {return;}
+                guard let body = result["body"] as? [String:String] else {return;}
+                if let token = body["token"] {
+                    UserDefaults.standard.set(token, forKey: "user-token");
+                }
                 
-                UserDefaults.standard.set(token, forKey: "user-token")
+                if let  role = body["roleCode"]{
+                    UserDefaults.standard.set(role, forKey: "user-role");
+                }
+                
                 UserDefaults.standard.set(name, forKey: "user-name")
                 UserDefaults.standard.synchronize()
                 
@@ -151,7 +156,6 @@ class LoginViewController: BaseViewController,UITableViewDelegate,UITableViewDat
                 } , failureHandler: { err in
                     HUD.show(info: err ?? "request error!")
                 }
-
             )
         }else{
             //清空数据

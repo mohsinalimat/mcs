@@ -105,7 +105,63 @@ class DDInfoCell: UITableViewCell {
             in_chart_btn.isSelected = false
             in_chart = 1
             break
+        case 27:
+            print("cal deadline")
+            //    $(".defer-dl").each(function(){
+            //    if($(this).val()){
+            //        flag = false;
+            //    }
+            //    });
+            //
+            //    if((!date && day) || ((!fldate || !flNo) && (fh || fc))  || !acReg || flag)
+            //    {
+            //        var flNoTip = "";
+            //        if(fh || fc){
+            //        flNoTip = "and FL No. / Date";
+            //        }
+            //        BS.errorMsg("Please check A/C Reg and Issued Day "+flNoTip+" and Defer Type not null!");
+            //        return false;
+            //    }
+            var flag = true
+            if day_tf.text != nil || fh_tf.text != nil || fc_tf.text != nil {
+                flag = false;
+            }
             
+            if flag || (report_date == nil && day_tf.text != nil) || ((report_flight_date == nil || report_flight_no == nil) && (fh_tf.text != nil || fc_tf.text != nil)) || report_reg == nil {
+                var fltnoTip = ""
+                if(fh_tf.text != nil || fc_tf.text != nil){
+                    fltnoTip = "and FL No. / Date";
+                }
+               
+                HUD.show(info: "Please check A/C Reg and Issued Day " + fltnoTip + " and Defer Type not null!")
+                return
+            }
+            
+            request(defect_flightNo_url, parameters: ["date":Tools.dateToString(report_date!, formatter: "yyyy-MM-dd") ,
+                                                      "acReg":String.isNullOrEmpty(report_reg) ,
+                                                      
+                                                      "fldate":Tools.dateToString(report_date!, formatter: "yyyy-MM-dd") ,
+                                                      "flNo":String.isNullOrEmpty(report_station),
+                                                      ], successHandler: {[weak self] (res) in
+                guard let arr = res["body"] as? [[String:String]] else {return};
+                guard let ss = self else {return}
+//                if arr.count > 0 {
+//                    ss.flts = arr
+//                    Tools.showDataPicekr(dataSource:arr) {(obj) in
+//                        let obj = obj as! [String:String]
+//                        let fltno = obj["fltNo"]
+//                        report_flight_no = fltno
+//                        sender.setTitle(fltno, for: .normal)
+//                        
+//                    }
+//                }
+                }, failureHandler: { (str) in
+            })
+            
+            
+            
+            break
+
         case 30:
             sender.isSelected = true
             need_action_y.isSelected = false

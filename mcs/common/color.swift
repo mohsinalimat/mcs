@@ -21,7 +21,7 @@ let kViewDefaultBgColor = UIColor (colorLiteralRed: 105/255.0, green: 124/255.0,
 let kFlightWarnLevelColor = ["1":UIColor.red,
                           "10":UIColor.orange,
                           "120":UIColor.yellow,
-                          "200":UIColor.white,
+                          "200":UIColor.gray,
                           "1000":UIColor.blue]
 
 

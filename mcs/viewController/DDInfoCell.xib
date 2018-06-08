@@ -492,7 +492,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="24" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8vo-3b-wPF">
-                                <frame key="frameInset" minX="821" minY="111" width="141" height="30"/>
+                                <frame key="frameInset" minX="818" minY="111" width="120" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" backgroundImage="button_bg2">
@@ -665,6 +665,15 @@
                                     <action selector="buttonAction:" destination="m2W-K0-NYk" eventType="touchUpInside" id="VHN-OU-yiv"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" tag="27" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PTI-V9-LE2">
+                                <frame key="frameInset" minX="947" minY="112" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="5" maxX="5" maxY="5"/>
+                                <state key="normal" image="flag_icon"/>
+                                <connections>
+                                    <action selector="buttonAction:" destination="m2W-K0-NYk" eventType="touchUpInside" id="ZsE-fy-DBM"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.93709164860000005" green="0.93694382909999996" blue="0.95754462480000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -704,6 +713,7 @@
     </objects>
     <resources>
         <image name="button_bg2" width="200" height="30"/>
+        <image name="flag_icon" width="20" height="20"/>
         <image name="radio1_pre" width="15" height="15"/>
         <image name="radio1_selected" width="15" height="15"/>
         <image name="radio2_pre" width="15" height="15"/>

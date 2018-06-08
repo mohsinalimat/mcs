@@ -180,6 +180,7 @@ class FlightInfoListController: BaseViewController,UICollectionViewDelegate,UICo
         vc.fltNo = fltNo
         vc.fltIsArrival = indexPath.row % 2 == 0
         vc.fltDic = d
+        vc.isArr = indexPath.row % 2 == 0
         
         self.navigationController?.pushViewController(vc, animated: true)
         

@@ -87,7 +87,7 @@ class DDViewController: BaseTabItemController  ,UITableViewDelegate,UITableViewD
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        title = "DD List"
+        title = "DD Mgt"
         view.backgroundColor = UIColor.white
         
         _initSubviews()

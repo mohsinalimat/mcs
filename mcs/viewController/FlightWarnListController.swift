@@ -17,6 +17,7 @@ class FlightWarnListController: BaseViewController ,UITableViewDelegate,UITableV
     var fltNo:String!
     var fltIsArrival:Bool = true
     var fltDic = [String:Any]()
+    var isArr:Bool = true
     
     let disposeBag = DisposeBag.init()
     
@@ -90,8 +91,15 @@ class FlightWarnListController: BaseViewController ,UITableViewDelegate,UITableV
     //MARK: -
     func get_flight_info() {
         HUD.show(withStatus: "Loading...")
-        let d = ["fltDate":"\(fltDate!.substring(to: fltDate.index(fltDate.startIndex, offsetBy: 10)))",
+        var d = [
+            //"fltDate":"\(fltDate!.substring(to: fltDate.index(fltDate.startIndex, offsetBy: 10)))",
             "fltNo":"\(fltNo!)"]
+        
+        if isArr {
+            d["sta"] = String.isNullOrEmpty(fltDic["ymdsta"]);
+        }else {
+            d["std"] = String.isNullOrEmpty(fltDic["ymdstd"]);
+        }
         
         netHelper_request(withUrl: get_flightInfo_url, method: .post, parameters: d, successHandler: { [weak self](result) in
             HUD.dismiss()
@@ -115,7 +123,7 @@ class FlightWarnListController: BaseViewController ,UITableViewDelegate,UITableV
 
         netHelper_request(withUrl: get_warn_list_url, method: .post, parameters: d, successHandler: { [weak self](result) in
             HUD.dismiss()
-            guard let body = result["body"] as? [[String : Any]] else {return;}//...后台数据问题，待确定？
+            guard let body = result["body"] as? [[String : Any]] else {return;}
             guard let strongSelf = self else{return}
             
             strongSelf.alarm_body = body;

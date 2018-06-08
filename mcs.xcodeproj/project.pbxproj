@@ -232,6 +232,10 @@
 		A1EE525F20995EB0000E3630 /* defectConstants.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1EE525E20995EB0000E3630 /* defectConstants.plist */; };
 		A1F293B2206DDA8900004E9C /* TaskPoolRootController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F293B1206DDA8900004E9C /* TaskPoolRootController.swift */; };
 		A1FE5095204796E1004F2330 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FE5094204796E0004F2330 /* BaseTabBarController.swift */; };
+		A1FE8BE620C8CA8D00155DBA /* HistoryFaultTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FE8BE520C8CA8D00155DBA /* HistoryFaultTopView.swift */; };
+		A1FE8BE820C8CA9E00155DBA /* HistoryFaultTopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1FE8BE720C8CA9E00155DBA /* HistoryFaultTopView.xib */; };
+		A1FE8BEB20C8D57C00155DBA /* HistoryFaultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FE8BE920C8D57C00155DBA /* HistoryFaultCell.swift */; };
+		A1FE8BEC20C8D57C00155DBA /* HistoryFaultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1FE8BEA20C8D57C00155DBA /* HistoryFaultCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -468,6 +472,10 @@
 		A1EE525E20995EB0000E3630 /* defectConstants.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = defectConstants.plist; sourceTree = "<group>"; };
 		A1F293B1206DDA8900004E9C /* TaskPoolRootController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskPoolRootController.swift; sourceTree = "<group>"; };
 		A1FE5094204796E0004F2330 /* BaseTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
+		A1FE8BE520C8CA8D00155DBA /* HistoryFaultTopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryFaultTopView.swift; sourceTree = "<group>"; };
+		A1FE8BE720C8CA9E00155DBA /* HistoryFaultTopView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HistoryFaultTopView.xib; sourceTree = "<group>"; };
+		A1FE8BE920C8D57C00155DBA /* HistoryFaultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryFaultCell.swift; sourceTree = "<group>"; };
+		A1FE8BEA20C8D57C00155DBA /* HistoryFaultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HistoryFaultCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -789,6 +797,10 @@
 				A1C26DAC204FBA2700B11F63 /* FlightWarnListCell.xib */,
 				A1C26DAF204FBD2800B11F63 /* FlightWarnListHeadView.swift */,
 				A1C26DB1204FBD3B00B11F63 /* FlightWarnListHeadView.xib */,
+				A1FE8BE520C8CA8D00155DBA /* HistoryFaultTopView.swift */,
+				A1FE8BE720C8CA9E00155DBA /* HistoryFaultTopView.xib */,
+				A1FE8BE920C8D57C00155DBA /* HistoryFaultCell.swift */,
+				A1FE8BEA20C8D57C00155DBA /* HistoryFaultCell.xib */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -1025,6 +1037,7 @@
 				A1BDA7D320BD3D4D006DE281 /* DDWSHeadView.xib in Resources */,
 				A1B4E0C620AD892600EA7219 /* NRRCell_R.xib in Resources */,
 				A1AFF6A52074620E00ED1FC4 /* TaskAddActionVC.xib in Resources */,
+				A1FE8BE820C8CA9E00155DBA /* HistoryFaultTopView.xib in Resources */,
 				A120285D2008A1C000CB8633 /* error@2x.png in Resources */,
 				A13F1AED20074693004FDFF4 /* LoginViewFooter.xib in Resources */,
 				A1BDA7E320BD593E006DE281 /* DDAddWSController.xib in Resources */,
@@ -1064,6 +1077,7 @@
 				A1EB214C208DAC5100661C45 /* DDListCell.xib in Resources */,
 				A1C26DAE204FBA2700B11F63 /* FlightWarnListCell.xib in Resources */,
 				A1BDA7C720BCF0FF006DE281 /* DDNoticeStructureCell.xib in Resources */,
+				A1FE8BEC20C8D57C00155DBA /* HistoryFaultCell.xib in Resources */,
 				A120285C2008A1C000CB8633 /* error.png in Resources */,
 				A1BDA7CB20BCF131006DE281 /* DDNoticeRestrictionCell.xib in Resources */,
 				A1BA575F209AAF0E00B2D6E0 /* MaterialOrderController.xib in Resources */,
@@ -1169,6 +1183,7 @@
 				A1AFF6A42074620E00ED1FC4 /* TaskAddActionVC.swift in Sources */,
 				A1AB9EFB207B48E8000663C3 /* AddActionInfoCell_R.swift in Sources */,
 				A1B03DE1207C5EF800797564 /* BaseTableViewVC.swift in Sources */,
+				A1FE8BE620C8CA8D00155DBA /* HistoryFaultTopView.swift in Sources */,
 				A1BDA7E220BD593E006DE281 /* DDAddWSController.swift in Sources */,
 				A1A658CA2011BDE70079B354 /* FlightInfoListCell.swift in Sources */,
 				A1AB9EF7207B0536000663C3 /* ActionListCell.swift in Sources */,
@@ -1249,6 +1264,7 @@
 				A1D15D8C20464466004A2C58 /* WarnFaultInfoCell.swift in Sources */,
 				A1EB214B208DAC5100661C45 /* DDListCell.swift in Sources */,
 				A1B4E0C120AD88BE00EA7219 /* DDInfoCell_R.swift in Sources */,
+				A1FE8BEB20C8D57C00155DBA /* HistoryFaultCell.swift in Sources */,
 				A1B03DE4207C7FD700797564 /* BaseTableViewVCCell.swift in Sources */,
 				A1633B0E20941D3700342F92 /* SearchItemSelectController.swift in Sources */,
 				A1C1BB522064C6D700A92B9B /* TaskPoolDetailController.swift in Sources */,

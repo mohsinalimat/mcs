@@ -11,11 +11,10 @@ import UIKit
 
 let kCurrentScreenWidth = UIScreen.main.bounds.width
 let kCurrentScreenHeight = UIScreen.main.bounds.height
-
 var APP_IS_BACKGROUND:Bool = false //app是否处于后台
 let user_token = UserDefaults.standard.value(forKey: "user-token")
 
-//MARK: -  url
+///MARK: -  url
 
 let BASE_URL = "http://smart.imsp.cn/mcs/rest"
 //let BASE_URL = "http://192.168.6.65:8080/mcs/rest"//linf
@@ -29,6 +28,10 @@ let task_number_url = "/biz/task/count"  //任务数
 let flight_info_url = "/biz/task/flightStatus" //飞机状态信息
 let get_flights_url = "/biz/task/flightStatusByAcId" //获取某个飞机某个日期的所有航班
 let get_flightInfo_url = "/biz/task/flightStatusByNo" //根据日期和航班号查询航班信息
+let plane_info_url = "/biz/viewAcReg"
+
+
+
 
 /*
  必须aircraftNo : B-MBM   // 飞机号
@@ -79,7 +82,7 @@ let defect_delete_url   = "/biz/defect/delete"
 let defect_flightNo_url = "/biz/defect/getFlightStatusList"
 let defect_faultDetail_url = "/biz/viewBizFault"
 let download_url = "/biz/download"
-
+let dd_cal_deadline_url = "/biz/calAcDl"
 
 ///dd
 let dd_list_url = "/biz/dd/list"
@@ -130,11 +133,12 @@ let plist_dic : [String:Any] =  {
 
 
 
-
-
-var report_reg:String?
+//TMP
+var report_reg:String?//reg
 var report_station:String?
-var report_date:Date?
+var report_date:Date? //issue date
+var report_flight_no:String?
+var report_flight_date:Date?
 
 var defect_added_actions = [[String:Any]]()
 

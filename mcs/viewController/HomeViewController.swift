@@ -232,7 +232,7 @@ class HomeViewController: BaseTabItemController,UICollectionViewDelegate,UIColle
         }
         
         cell.fillCell(d,taskNumber: taskno,status: warn)
-        cell.backgroundColor = UIColor.init(colorLiteralRed: 242/255.0, green: 242/255.0, blue: 242/255.0, alpha: 0.5);
+        cell.backgroundColor = UIColor.white//UIColor.init(colorLiteralRed: 242/255.0, green: 242/255.0, blue: 242/255.0, alpha: 0.5);
         
         return cell
     }
