@@ -200,12 +200,15 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4nQ-tq-adQ">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="44" id="cOn-lw-yqQ"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Juu-i2-T3Y">
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Juu-i2-T3Y">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -214,6 +217,7 @@
                                                 <constraint firstItem="4nQ-tq-adQ" firstAttribute="centerY" secondItem="f4a-RB-DBC" secondAttribute="centerY" id="9YA-c9-VEu"/>
                                                 <constraint firstItem="4nQ-tq-adQ" firstAttribute="leading" secondItem="f4a-RB-DBC" secondAttribute="leadingMargin" constant="20" id="cOx-Ho-bNd"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="Juu-i2-T3Y" secondAttribute="trailing" constant="10" id="eAN-IH-FOl"/>
+                                                <constraint firstItem="Juu-i2-T3Y" firstAttribute="leading" secondItem="4nQ-tq-adQ" secondAttribute="trailing" constant="30" id="me9-xW-cFI"/>
                                                 <constraint firstItem="Juu-i2-T3Y" firstAttribute="centerY" secondItem="4nQ-tq-adQ" secondAttribute="centerY" id="nZy-xq-u9C"/>
                                             </constraints>
                                         </tableViewCellContentView>

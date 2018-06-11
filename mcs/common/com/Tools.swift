@@ -160,6 +160,22 @@ class Tools: NSObject {
     
     
     
-    /////private
+    //MARK:- private
+    static func user_role() -> String {
+        if let s = UserDefaults.standard.value(forKey: "user-role") as? String {
+            return s;
+        }
+        
+        return ""
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
 }

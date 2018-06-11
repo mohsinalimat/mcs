@@ -15,13 +15,10 @@ var APP_IS_BACKGROUND:Bool = false //app是否处于后台
 let user_token = UserDefaults.standard.value(forKey: "user-token")
 
 ///MARK: -  url
-
-let BASE_URL = "http://smart.imsp.cn/mcs/rest"
-//let BASE_URL = "http://192.168.6.65:8080/mcs/rest"//linf
-
+//let BASE_URL = "http://smart.imsp.cn/mcs/rest"
+let BASE_URL = "http://192.168.6.65:8080/mcs/rest"//linf
 //let BASE_URL = "http://192.168.6.57:8081/mcs/rest"//ds
 //let BASE_URL = "http://192.168.6.59:8080/mcs/rest"//jx
-
 
 let login_url = "/login"
 let task_number_url = "/biz/task/count"  //任务数
@@ -29,8 +26,8 @@ let flight_info_url = "/biz/task/flightStatus" //飞机状态信息
 let get_flights_url = "/biz/task/flightStatusByAcId" //获取某个飞机某个日期的所有航班
 let get_flightInfo_url = "/biz/task/flightStatusByNo" //根据日期和航班号查询航班信息
 let plane_info_url = "/biz/viewAcReg"
-
-
+let defect_history_url = "/biz/defect/history"
+let history_detail_url = "/biz/defect/history/viewDetail"
 
 
 /*

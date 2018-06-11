@@ -10,6 +10,26 @@ import UIKit
 
 class HistoryFaultTopView: UIView {
 
+    var buttonActionHandler:((Int) -> Void)?
+    
+    @IBOutlet weak var reg: UILabel!
+  
+    @IBOutlet weak var ata: UITextField!
+    
+    @IBOutlet weak var component: UITextField!
+    
+    @IBOutlet weak var desc: UITextField!
+    
+    
+    @IBAction func buttonAction(_ sender: UIButton) {
+        if let handler = buttonActionHandler {
+            handler(sender.tag);
+        }
+        
+        
+    }
+    
+    
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.

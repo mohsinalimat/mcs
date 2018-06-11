@@ -198,12 +198,12 @@ class DDViewController: BaseTabItemController  ,UITableViewDelegate,UITableViewD
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let info = dataArray[indexPath.row]
         guard let defect_id = info["id"] as? String else {return}
-        let vc = ViewDefectReportController()
-        vc.type_id = defect_id
-        vc.type = "defectDetail" //defect_type == "DD" ? "defectDetail ":"ts"
-        vc.is_dd = true
-        self.navigationController?.pushViewController(vc, animated: true);
         
+        let vc = TTWebViewController(TTWebDataSource(url:action_detail_viewDefect_url,
+                                                     pars:["type":"defectDetail","id":defect_id],
+                                                     title:"Defect Report View"))
+        
+        self.navigationController?.pushViewController(vc, animated: true);
     }
     
     override func didReceiveMemoryWarning() {

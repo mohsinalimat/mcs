@@ -31,6 +31,9 @@ class DefectSearchController: UITableViewController {
     var _defect_type:String?
     var hasSelected:[String:Any]?
     
+    var _all_status:[[String:String]]!
+    var _userRole:String!
+    
     @IBAction func searchAction(_ sender: UIButton) {
         
         if sender.tag == 1{//reset
@@ -64,6 +67,9 @@ class DefectSearchController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        _userRole = Tools.user_role()
+        _all_status = plist_dic[_userRole] as! [[String:String]]
+        
         tableView.tableFooterView = UIView()
         tableView.backgroundColor = kTableviewBackgroundColor
         self.navigationController?.setNavigationBarHidden(true, animated: false)
@@ -71,10 +77,20 @@ class DefectSearchController: UITableViewController {
         s_pending.rx.controlEvent(UIControlEvents.valueChanged).subscribe {[weak self] (e) in
             guard let ss  = self else {return}
             if ss.s_pending.isOn {
-                ss.statuss.text = "initial" //....
-                ss._defectStatus = ["offline"];
+                if ss._userRole == "offline" {
+                    let first  = ss._all_status[0]
+                    ss.statuss.text = first["value"]
+                    ss._defectStatus = [first["key"]!];
+                }else {
+                    let first  = ss._all_status[0]
+                    let sec  = ss._all_status[2]
+                    
+                    ss.statuss.text = first["value"]! + ",\(sec["value"]!)"
+                    ss._defectStatus = [first["key"]! , sec["key"]!];
+                }
+                
             }else {
-                ss.statuss.text = "" //....
+                ss.statuss.text = ""
                 ss._defectStatus.removeAll()
             }
             
@@ -111,7 +127,17 @@ class DefectSearchController: UITableViewController {
         
         if let status = pars["sts"] as? [String]{
             _defectStatus = status;
-            statuss.text = status.joined(separator: ",")
+            
+            //..
+            var v = [String]()
+            for s in _defectStatus {
+                for t in _all_status {
+                    if t["key"] == s {
+                        v.append(t["value"]!);continue
+                    }
+                }
+            }
+            statuss.text = v.joined(separator: ",")
         }
         
         if let des = pars["description"] as? String {
@@ -150,37 +176,34 @@ class DefectSearchController: UITableViewController {
             
             switch indexPath.row {
             case 4 ,6:
-                let path = Bundle.main.url(forResource: "defectConstants", withExtension: "plist")
-                let d = NSDictionary.init(contentsOf: path!)
-                if let arr = d?[indexPath.row == 4 ? "defect_type" : "offline"] as? [[String:String]] {//....
+                if indexPath.row == 6 && s_pending.isOn && _userRole == "lm_leader" {return}
+                if let arr = plist_dic[indexPath.row == 4 ? "defect_type" : _userRole] as? [[String:String]] {
                     v.dataArray = arr
                 }
                 
                 if indexPath.row == 4 {
                     v.selectedObjs = _defectType;
                     v.dataType = .defect
-                    
                 }else {
                     v.selectedObjs = _defectStatus;
                     v.dataType = .status
-
                 }
                 
                 v.selectedHandle = {[weak self] obj in
                     guard let ss = self else {return}
-                    
                     let _o = obj as! [[String:String]]
                     var s = ""
-                    for i in _o {
-                            s = s + "\(i["value"]!),";
-                        
+                    if indexPath.row == 6 { ss._defectStatus.removeAll(); }
+                    
+                    for _i in 0..<_o.count{
+                        let i = _o[_i];
+                        s = s + (_i == 0 ? "\(i["value"]!)" : ",\(i["value"]!)");
                         if indexPath.row == 4 {
                             ss._defectType.append("\(i["key"]!)")
                             ss._defect_type = "\(i["key"]!)"
                         }else {
                             ss._defectStatus.append("\(i["key"]!)")
                         }
-
                     }
                     
                     if indexPath.row == 4 {
@@ -188,17 +211,7 @@ class DefectSearchController: UITableViewController {
                     }else {
                         ss.statuss.text = s
                     }
-
-                    
-                    /*let _o = obj as! [String:String]
-                    if indexPath.row == 4 {
-                        ss._defectType = _o
-                        ss.defectType.text = _o["value"]
-                    }else {
-                        ss._defectStatus = _o;
-                        ss.statuss.text = _o["value"]
-                    }*/
-                    
+ 
                 }
                 
                 break

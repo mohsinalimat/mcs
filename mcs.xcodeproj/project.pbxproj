@@ -194,6 +194,7 @@
 		A1CF2A1120070AA1009FE6A4 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CF2A1020070AA1009FE6A4 /* BaseNavigationController.swift */; };
 		A1CF2A1420070B90009FE6A4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CF2A1220070B90009FE6A4 /* LoginViewController.swift */; };
 		A1CF2A1520070B90009FE6A4 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1CF2A1320070B90009FE6A4 /* LoginViewController.xib */; };
+		A1CF47D820CE4779009F2902 /* TTWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CF47D720CE4779009F2902 /* TTWebViewController.swift */; };
 		A1D1335720C53D4F00A87346 /* DDRepActionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D1335520C53D4E00A87346 /* DDRepActionController.swift */; };
 		A1D1335820C53D5000A87346 /* DDRepActionController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1D1335620C53D4F00A87346 /* DDRepActionController.xib */; };
 		A1D15D8820464436004A2C58 /* WarnDetailTopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D15D8620464436004A2C58 /* WarnDetailTopCell.swift */; };
@@ -432,6 +433,7 @@
 		A1CF2A1020070AA1009FE6A4 /* BaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		A1CF2A1220070B90009FE6A4 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A1CF2A1320070B90009FE6A4 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		A1CF47D720CE4779009F2902 /* TTWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTWebViewController.swift; sourceTree = "<group>"; };
 		A1D1335520C53D4E00A87346 /* DDRepActionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDRepActionController.swift; sourceTree = "<group>"; };
 		A1D1335620C53D4F00A87346 /* DDRepActionController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DDRepActionController.xib; sourceTree = "<group>"; };
 		A1D15D8620464436004A2C58 /* WarnDetailTopCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WarnDetailTopCell.swift; sourceTree = "<group>"; };
@@ -763,6 +765,7 @@
 				A1DF738C2043EF5B0099B858 /* WarnInfoDetailController.xib */,
 				A1284D89205BB00500B7B576 /* WarnInfoDetailController_new.swift */,
 				A1284D8A205BB00500B7B576 /* WarnInfoDetailController_new.xib */,
+				A1CF47D720CE4779009F2902 /* TTWebViewController.swift */,
 			);
 			name = home;
 			sourceTree = "<group>";
@@ -1261,6 +1264,7 @@
 				A1C6DD76206CEB3600A09808 /* BaseDataCheck.swift in Sources */,
 				A12028622008A1C200CB8633 /* Reachability.m in Sources */,
 				A1B03DE7207C912E00797564 /* TaskNumberListVC.swift in Sources */,
+				A1CF47D820CE4779009F2902 /* TTWebViewController.swift in Sources */,
 				A1D15D8C20464466004A2C58 /* WarnFaultInfoCell.swift in Sources */,
 				A1EB214B208DAC5100661C45 /* DDListCell.swift in Sources */,
 				A1B4E0C120AD88BE00EA7219 /* DDInfoCell_R.swift in Sources */,
