@@ -14,9 +14,11 @@ class HistoryFaultController: BaseViewController  ,UITableViewDelegate,UITableVi
     var tableView:UITableView!
     var _topView:UIView?
     var dataArray = [[String:Any]]()
-    var _searchPars:[String:Any]?
     var _pageNum:Int = 1
     
+    var _isAll = false
+    var _isSearch = false
+    var _searchPars:[String:String]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,15 +44,19 @@ class HistoryFaultController: BaseViewController  ,UITableViewDelegate,UITableVi
         let bgview = UIView (frame: CGRect (x: 0, y: 0, width: 1000, height: 40))
         bgview.addSubview(topView!)
         topView?.frame = bgview.frame
-        topView?.buttonActionHandler = {[weak self] index in
+        topView?.buttonActionHandler = {[weak self] index , pars in
             guard let ss = self else {return}
             switch index {
             case 1:
-                break
-            case 2:
                 let vc = HistoryFaultController()
-                let nav = BaseNavigationController(rootViewController:vc)
-                ss.navigationController?.present(nav, animated: true, completion: nil)
+                vc._isAll = true
+                ss.navigationController?.pushViewController(vc, animated: true)
+                break
+            case 2://search
+                ss._isSearch = true
+                ss._searchPars = pars
+                ss._pageNum =  1
+                ss.loadData(pars!)
                 break
             default: break
             }
@@ -58,36 +64,37 @@ class HistoryFaultController: BaseViewController  ,UITableViewDelegate,UITableVi
         }
         
         _topView = bgview
+        topView?.showAll(_isAll)
+        if _isAll {
+            navigationItem.titleView = _topView
+            tableView.frame = CGRect (x: 0, y: 0, width: kCurrentScreenWidth, height: kCurrentScreenHeight - 64)
+        }
         
+
         ///Refresh Data
         let header = TTRefreshHeader.init {
             DispatchQueue.main.async {[weak self] in
                 guard let ss = self else {return}
                 ss._pageNum =  1
                 ss.dataArray.removeAll()
-                ss.loadData()
+                ss.loadData(ss._isSearch ? ss._searchPars ?? [:] : [:])
             }
         }
-        
         tableView.mj_header = header
         
         let footer = TTRefreshFooter.init{
             DispatchQueue.main.async {[weak self] in
                 guard let ss = self else {return}
                 ss._pageNum = ss._pageNum + 1
-                ss.loadData()
+                ss.loadData(ss._isSearch ? ss._searchPars ?? [:] : [:])
             }
         }
-        
         tableView.mj_footer = footer
-        
-        
         loadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         guard let items = _topView else {return}
         self.tabBarController?.navigationItem.titleView = items
     }
@@ -101,9 +108,17 @@ class HistoryFaultController: BaseViewController  ,UITableViewDelegate,UITableVi
     func loadData(_ d : [String:Any] = [:])  {
         HUD.show(withStatus: hud_msg_loading)
         
-        var pars : [String:Any] = d
+        var pars =  [String:Any]()
         pars["page"] = _pageNum
-
+        pars["scheduleTime"] = Tools.dateToString(Date(), formatter: "dd/MM/yyyy");
+        if !_isAll {
+            pars["acs"] = String.isNullOrEmpty(kFlightInfoListController_airId);
+        }
+        
+        
+        for (k, v) in d {
+            pars[k] = v;
+        }
         
         netHelper_request(withUrl: defect_history_url, method: .post, parameters: pars,  successHandler: { [weak self](res) in
             HUD.dismiss()
@@ -112,8 +127,7 @@ class HistoryFaultController: BaseViewController  ,UITableViewDelegate,UITableVi
                 ss.dataArray.removeAll();
                 ss.tableView.mj_footer.resetNoMoreData()
             }
-            
-            
+
             if ss.tableView.mj_header.isRefreshing(){
                 ss.tableView.mj_header.endRefreshing();
             } else if  ss.tableView.mj_footer.isRefreshing() {
@@ -127,10 +141,11 @@ class HistoryFaultController: BaseViewController  ,UITableViewDelegate,UITableVi
                 if arr.count < 15 {
                     ss.tableView.mj_footer.state = MJRefreshState.noMoreData;
                 }
+            }else {
+                ss.tableView.mj_footer.state = MJRefreshState.noMoreData;
             }
             
             ss.tableView.reloadData()
-            
         }) { (str) in
             print(str);
         }

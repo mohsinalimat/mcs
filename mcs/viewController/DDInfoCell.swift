@@ -155,14 +155,24 @@ class DDInfoCell: UITableViewCell {
                 HUD.show(info: "Please check A/C Reg and Issued Day " + fltnoTip + " and Defer Type not null!");return
             }
             
-            request(dd_cal_deadline_url, parameters: ["date":Tools.dateToString(report_date!, formatter: "yyyy-MM-dd") ,
-                                                      "acReg":String.isNullOrEmpty(report_reg) ,
-                                                      "fh": String.isNullOrEmpty(fh_tf.text),
-                                                      "fc":String.isNullOrEmpty(fc_tf.text),
-                                                      "day":String.isNullOrEmpty(day_tf.text),
-                                                      "fldate":Tools.dateToString(report_date!, formatter: "yyyy-MM-dd") ,
-                                                      "flNo":String.isNullOrEmpty(report_flight_no)
-                                                      ], successHandler: {[weak self] (res) in
+            var d = [//"date":Tools.dateToString(report_date!, formatter: "yyyy-MM-dd") ,
+                     "acReg":String.isNullOrEmpty(report_reg) ,
+                     "fh": String.isNullOrEmpty(fh_tf.text),
+                     "fc":String.isNullOrEmpty(fc_tf.text),
+                     "day":String.isNullOrEmpty(day_tf.text),
+                     //"fldate":Tools.dateToString(report_flight_date!, formatter: "yyyy-MM-dd") ,
+                     "flNo":String.isNullOrEmpty(report_flight_no)
+            ]
+            
+            if report_date != nil {
+                d["date"] = Tools.dateToString(report_date!, formatter: "yyyy-MM-dd");
+            }
+            
+            if report_flight_date != nil {
+                d["fldate"] = Tools.dateToString(report_flight_date!, formatter: "yyyy-MM-dd");
+            }
+            
+            request(dd_cal_deadline_url, parameters: d, successHandler: {[weak self] (res) in
                                                         guard let ss = self else {return}
                                                         guard let code = res["state"] as? Int , code == 200 else {return}
                                                         guard let timeStr = res["body"] as? String else {return}

@@ -32,7 +32,7 @@ class HistoryFaultCell: UITableViewCell {
         shift.text = "shift: \(String.isNullOrEmpty(d["shiftName"]))"
         station.text = "station: \(String.isNullOrEmpty(d["station"]))"
         
-        let issuetime = Tools.date(String.stringIsNullOrNil(d["createDatetime"]))
+        let issuetime = Tools.date(String.stringIsNullOrNil(d["scheduleTime"]))
         if let d = issuetime {
             time.text = Tools.dateToString(d, formatter: "yyyy-MM-dd")
         }

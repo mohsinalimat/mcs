@@ -11,12 +11,11 @@ import UIKit
 
 let kCurrentScreenWidth = UIScreen.main.bounds.width
 let kCurrentScreenHeight = UIScreen.main.bounds.height
-var APP_IS_BACKGROUND:Bool = false //app是否处于后台
 let user_token = UserDefaults.standard.value(forKey: "user-token")
 
 ///MARK: -  url
-//let BASE_URL = "http://smart.imsp.cn/mcs/rest"
-let BASE_URL = "http://192.168.6.65:8080/mcs/rest"//linf
+let BASE_URL = "http://smart.imsp.cn/mcs/rest"
+//let BASE_URL = "http://192.168.6.65:8080/mcs/rest"//linf
 //let BASE_URL = "http://192.168.6.57:8081/mcs/rest"//ds
 //let BASE_URL = "http://192.168.6.59:8080/mcs/rest"//jx
 
@@ -37,7 +36,7 @@ let history_detail_url = "/biz/defect/history/viewDetail"
  */
 let flight_haswarn_url = "/alarm/flight/list" //标记航班是否有告警
 let get_fib_url = "/biz/task/FIB" //航班信息板（FIB）
-let get_task_pool_url = "/biz/task/pool"//...
+let get_task_pool_url = "/biz/task/pool"
 let get_aircraft_status_url = "/alarm/aircraft/status"//飞机状态-GET请求
 let get_warn_list_url = "/alarm/list" //航班告警列表
 let get_warn_info_url = "/alarm/detail"///{alarm_id} 告警详情-GET请求
@@ -85,9 +84,6 @@ let dd_cal_deadline_url = "/biz/calAcDl"
 let dd_list_url = "/biz/dd/list"
 
 
-
-
-
 ///vc constant
 var kFlightInfoListController_flightDate:String! //航班日期
 var kFlightInfoListController_airId:String!//飞机ID
@@ -121,7 +117,6 @@ let defect_transferred_form = [" ":"null","TLB":"0","CLB":"1","NIL":"2"]
 let defect_release_ref = ["","MEL","AMM","CDL","SRM","RPAS","NIL"]
 let g_staffs = (kActive_BASE_DATA["staffs"] as? [String]) ?? []
 let kDefectType = ["Defect Report":"TS" ,"DD":"DD" , "NRR":"NRR"]
-
 let plist_dic : [String:Any] =  {
     let path = Bundle.main.url(forResource: "defectConstants", withExtension: "plist")
     let d = NSDictionary.init(contentsOf: path!)
@@ -140,7 +135,6 @@ var report_release_ref:String?
 var report_refresh_cat:Bool = false
 
 var defect_added_actions = [[String:Any]]()
-
 let defect_all_status : [String:String] = {
     if let arr = plist_dic["total_status"] as? [String:String] {
         return arr
@@ -150,16 +144,11 @@ let defect_all_status : [String:String] = {
 }()
 
 var kAttachmentDataArr = [Any]()
-
 let kTemporaryDirectory = NSTemporaryDirectory().appending("cache/")
 
 
 //MARK:
 let hud_msg_loading = "Loading"
-
-
-
-
 
 
 

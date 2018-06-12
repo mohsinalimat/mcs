@@ -11,7 +11,10 @@
             <rect key="frame" x="0.0" y="0.0" width="1000" height="40"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H9C-u3-q0r">
+                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H9C-u3-q0r">
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="k2G-Ge-UKZ"/>
+                    </constraints>
                     <state key="normal" image="search_subscibe_titilebar">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -31,7 +34,7 @@
                         <constraint firstAttribute="width" constant="200" id="21Y-ZG-VmR"/>
                     </constraints>
                     <nil key="textColor"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Component" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="107-ZN-9Rc">
@@ -40,10 +43,10 @@
                         <constraint firstAttribute="width" constant="150" id="ba7-YY-hsD"/>
                     </constraints>
                     <nil key="textColor"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wa7-6w-WOb">
+                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wa7-6w-WOb">
                     <constraints>
                         <constraint firstAttribute="height" constant="35" id="keE-WO-tVD"/>
                         <constraint firstAttribute="width" constant="50" id="v2J-ci-R5m"/>
@@ -67,35 +70,56 @@
                         <constraint firstAttribute="width" constant="150" id="ElJ-wB-LG5"/>
                     </constraints>
                     <nil key="textColor"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Chc-au-IjF">
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <state key="normal" title="2018-01-19"/>
+                <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Chc-au-IjF">
+                    <constraints>
+                        <constraint firstAttribute="width" constant="150" id="RHM-WF-LCN"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <state key="normal" backgroundImage="button_bg1"/>
+                    <connections>
+                        <action selector="buttonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="ReW-Uf-EeO"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="B-MAG" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MYh-2P-PEu">
                     <fontDescription key="fontDescription" name="HelveticaNeue-BoldItalic" family="Helvetica Neue" pointSize="25"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EE4-Zs-RVq">
+                    <constraints>
+                        <constraint firstAttribute="width" constant="120" id="4gH-JY-sLl"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="15" maxY="0.0"/>
+                    <inset key="imageEdgeInsets" minX="100" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <state key="normal" title="Select" image="arrow_down_night_16" backgroundImage="button_bg1">
+                        <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="buttonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="ZXd-ng-A3H"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="Chc-au-IjF" firstAttribute="centerY" secondItem="MYh-2P-PEu" secondAttribute="centerY" id="1xL-Ki-3Jz"/>
                 <constraint firstItem="107-ZN-9Rc" firstAttribute="leading" secondItem="cvj-Rn-OhL" secondAttribute="trailing" constant="10" id="3qh-Bz-HLT"/>
-                <constraint firstItem="cvj-Rn-OhL" firstAttribute="leading" secondItem="Chc-au-IjF" secondAttribute="trailing" constant="50" id="4VE-35-Moo"/>
+                <constraint firstItem="cvj-Rn-OhL" firstAttribute="leading" secondItem="Chc-au-IjF" secondAttribute="trailing" constant="30" id="4VE-35-Moo"/>
+                <constraint firstItem="Chc-au-IjF" firstAttribute="centerY" secondItem="EE4-Zs-RVq" secondAttribute="centerY" id="4n3-yC-8Xn"/>
                 <constraint firstItem="107-ZN-9Rc" firstAttribute="centerY" secondItem="MYh-2P-PEu" secondAttribute="centerY" id="8Xc-FR-VMh"/>
                 <constraint firstItem="cvj-Rn-OhL" firstAttribute="centerY" secondItem="MYh-2P-PEu" secondAttribute="centerY" id="G7v-SE-SuB"/>
-                <constraint firstItem="wa7-6w-WOb" firstAttribute="width" secondItem="H9C-u3-q0r" secondAttribute="width" id="Hmj-E0-Bh3"/>
                 <constraint firstItem="wa7-6w-WOb" firstAttribute="leading" secondItem="H9C-u3-q0r" secondAttribute="trailing" constant="8" id="OPy-85-d3w"/>
-                <constraint firstItem="Chc-au-IjF" firstAttribute="leading" secondItem="MYh-2P-PEu" secondAttribute="trailing" constant="40" id="T7N-pw-pbw"/>
+                <constraint firstItem="EE4-Zs-RVq" firstAttribute="leading" secondItem="MYh-2P-PEu" secondAttribute="trailing" constant="5" id="QfJ-R9-efw"/>
                 <constraint firstItem="bFB-yd-yTV" firstAttribute="centerY" secondItem="MYh-2P-PEu" secondAttribute="centerY" id="YZr-Q3-TIe"/>
                 <constraint firstItem="bFB-yd-yTV" firstAttribute="leading" secondItem="107-ZN-9Rc" secondAttribute="trailing" constant="10" id="Yhx-b4-P6E"/>
                 <constraint firstAttribute="trailing" secondItem="wa7-6w-WOb" secondAttribute="trailing" constant="5" id="afC-hY-x0T"/>
                 <constraint firstItem="wa7-6w-WOb" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="bja-s4-F7q"/>
                 <constraint firstItem="wa7-6w-WOb" firstAttribute="centerY" secondItem="H9C-u3-q0r" secondAttribute="centerY" id="dWk-FY-T4f"/>
                 <constraint firstItem="wa7-6w-WOb" firstAttribute="height" secondItem="H9C-u3-q0r" secondAttribute="height" id="gAA-NW-JyT"/>
+                <constraint firstItem="Chc-au-IjF" firstAttribute="leading" secondItem="EE4-Zs-RVq" secondAttribute="trailing" constant="30" id="m8C-w3-gl8"/>
                 <constraint firstItem="H9C-u3-q0r" firstAttribute="leading" secondItem="bFB-yd-yTV" secondAttribute="trailing" constant="5" id="vbx-ea-cAy"/>
                 <constraint firstItem="bFB-yd-yTV" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="wqX-cA-3jQ"/>
             </constraints>
@@ -105,12 +129,18 @@
                 <outlet property="ata" destination="cvj-Rn-OhL" id="uIc-Jf-lHC"/>
                 <outlet property="component" destination="107-ZN-9Rc" id="0O4-LQ-mjw"/>
                 <outlet property="desc" destination="bFB-yd-yTV" id="JLe-tG-Y63"/>
+                <outlet property="moreBtnWidth" destination="v2J-ci-R5m" id="URt-LZ-kAJ"/>
                 <outlet property="reg" destination="MYh-2P-PEu" id="xYu-6h-2nY"/>
+                <outlet property="selectDateBtn" destination="Chc-au-IjF" id="0X4-hz-jpN"/>
+                <outlet property="selectRegBtn" destination="EE4-Zs-RVq" id="bd8-EC-Xmq"/>
+                <outlet property="selectRegBtnWidth" destination="4gH-JY-sLl" id="dKq-q5-oBs"/>
             </connections>
-            <point key="canvasLocation" x="34" y="53.5"/>
+            <point key="canvasLocation" x="34" y="53"/>
         </view>
     </objects>
     <resources>
+        <image name="arrow_down_night_16" width="16" height="14"/>
+        <image name="button_bg1" width="200" height="30"/>
         <image name="more_title" width="24" height="24"/>
         <image name="search_subscibe_titilebar" width="18" height="18"/>
     </resources>
