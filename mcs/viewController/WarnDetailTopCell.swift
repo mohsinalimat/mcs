@@ -25,32 +25,32 @@ class WarnDetailTopCell: UITableViewCell {
     
     @IBOutlet weak var time: UILabel!
     
+    var buttonActionHandler:((Void) -> Void)?
+    
     @IBAction func creatReportAction(_ sender: UIButton) {
-        
-        
-        
-        
+        if let handler = buttonActionHandler {
+            handler();
+        }
+  
     }
     
     
     func fillCell(_ d1:[String:Any] ,d2:[String:Any])  {
-        
      tailNo.text = String.stringIsNullOrNil(d1["tailNo"])
      flightNo.text = String.stringIsNullOrNil(d1["flightNumber"])
      from.text = String.stringIsNullOrNil(d1["dep"])
      to.text = String.stringIsNullOrNil(d1["arr"])
      
-     ////
-        seg.text = String.stringIsNullOrNil(d2["phase"])
+        //seg.text = String.stringIsNullOrNil(d2["phase"])
         
         if let warn_level = d2["grade"] as? String {
             warnLevel.backgroundColor = kFlightWarnLevelColor["\(warn_level)"];
         }
         
-        let _time = Tools.date(String.stringIsNullOrNil(d2["faultOccurrenceDate"]))
-        if let d = _time {
-            time.text = Tools.dateToString(d, formatter: "yyyy-MM-dd HH:mm")
-        }
+//        let _time = Tools.date(String.stringIsNullOrNil(d2["faultOccurrenceDate"]))
+//        if let d = _time {
+//            time.text = Tools.dateToString(d, formatter: "yyyy-MM-dd HH:mm")
+//        }
         
         
     }

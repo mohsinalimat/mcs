@@ -14,6 +14,8 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
     var read_only:Bool = false
     var reportId:String?
     var _defect_info:[String:Any]?
+    var is_from_warn:Bool = false
+    var warnInfo:[String:Any]?
     
     var reportInfoCell:ReportInfoCell!
     var baseInfoCell:ReportBaseInfoCell!
@@ -397,6 +399,9 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
             if !read_only {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ReportInfoCellIdentifier", for: indexPath) as! ReportInfoCell
                 reportInfoCell = cell
+                if is_from_warn {
+                    cell.fill(warnInfo);
+                }
                 return cell
             }else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ReportInfoCell_RIdentifier", for: indexPath) as! ReportInfoCell_R
@@ -411,6 +416,9 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
             if !read_only {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ReportBaseInfoCellIdentifier", for: indexPath) as! ReportBaseInfoCell;
                 baseInfoCell = cell
+                if is_from_warn {
+                    cell.fill(warnInfo);
+                }
                 return cell
             }
             

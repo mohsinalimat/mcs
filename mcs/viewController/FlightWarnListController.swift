@@ -31,6 +31,8 @@ class FlightWarnListController: BaseViewController ,UITableViewDelegate,UITableV
     
     var alarm_body = [[String:Any]]()
     var alarm = [[String:Any]]()
+    var _fltDate:String?
+    var _fltInfo:[String:Any]?
     
     //MARK:
     override func viewDidLoad() {
@@ -78,21 +80,41 @@ class FlightWarnListController: BaseViewController ,UITableViewDelegate,UITableV
        
         //创建故障报告
         topView.reportBtn.rx.controlEvent(UIControlEvents.touchUpInside) .subscribe { [weak self] (event) in
-            guard let strongSelf = self else { return }
-            
-            print("创建故障报告")
-            
-        }.addDisposableTo(disposeBag)
-      
-     
+                guard let ss = self else { return }
+                ss._creatReport();
+            }.addDisposableTo(disposeBag)
+    }
+    
+    func _creatReport() {
+        HUD.show()
+        let v = ReporFormController()
+        v.is_from_warn = true
+        
+        var flightDate:String?
+        if let flDate = _fltDate {
+            let date = Tools.stringToDate(flDate, formatter: "yyyy-MM-dd")
+            flightDate = Tools.dateToString(date, formatter: "dd/MM/yyyy")
+        }
+        
+        if let info = _fltInfo {
+            let d = ["acReg":info["acId"],
+                     "station":info["arrApt"],
+                     "flNo":"NX" + String.isNullOrEmpty(info["fltNo"]),
+                     "flDate":flightDate
+            ]
+            v.warnInfo = d
+
+        }
+        
+        self.navigationController?.pushViewController(v, animated: true);
+
     }
     
     
     //MARK: -
     func get_flight_info() {
         HUD.show(withStatus: "Loading...")
-        var d = [
-            //"fltDate":"\(fltDate!.substring(to: fltDate.index(fltDate.startIndex, offsetBy: 10)))",
+        var d = [//"fltDate":"\(fltDate!.substring(to: fltDate.index(fltDate.startIndex, offsetBy: 10)))",
             "fltNo":"\(fltNo!)"]
         
         if isArr {
@@ -102,12 +124,12 @@ class FlightWarnListController: BaseViewController ,UITableViewDelegate,UITableV
         }
         
         netHelper_request(withUrl: get_flightInfo_url, method: .post, parameters: d, successHandler: { [weak self](result) in
-            HUD.dismiss()
-            guard let body = result["body"] as? [String : Any] else {return;}
-            guard let strongSelf = self else{return}
-            
-            strongSelf.topView.fillData(body)
-            
+                HUD.dismiss()
+                guard let body = result["body"] as? [String : Any] else {return;}
+                guard let strongSelf = self else{return}
+                strongSelf._fltDate = body["fltDate"] as? String
+                strongSelf._fltInfo = body
+                strongSelf.topView.fillData(body)
             })
     }
     
@@ -164,11 +186,7 @@ class FlightWarnListController: BaseViewController ,UITableViewDelegate,UITableV
         
         return  arr.count //Int(arc4random_uniform(5)) + 1
     }
-    
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 30
-//    }
-    
+
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         guard section > 0 else {return 1}
         return 40
@@ -197,21 +215,6 @@ class FlightWarnListController: BaseViewController ,UITableViewDelegate,UITableV
         v.selecedtBtn.isHidden = is_in_editing.value == false
         
         v.selecedtBtn.isSelected = has_selected_index.contains(section)
-        /*v.topButton.rx.controlEvent(UIControlEvents.touchUpInside).subscribe { [weak self] (event) in
-            guard let strongSelf = self else { return }
-            print("...")
-            
-            guard !strongSelf.is_in_editing.value else {
-                if strongSelf.has_selected_index.contains(section) {
-                    strongSelf.has_selected_index.remove(at: strongSelf.has_selected_index.index(of: section)!);
-                }else{
-                    strongSelf.has_selected_index.append(section);
-                }
-                
-                //tableView.reloadSections([section], animationStyle: .none);
-                return
-            }
-        }.addDisposableTo(disposeBag)*/
         
         v.topButton.addTarget(self, action: #selector(topBtnClick(_ :)), for: .touchUpInside)
         v.topButton.tag = section
@@ -257,6 +260,7 @@ class FlightWarnListController: BaseViewController ,UITableViewDelegate,UITableV
             let v = WarnInfoDetailController_new()
             v._warnInfoLast = d
             v._id = _d
+            v._flightDate = _fltDate
             self.navigationController?.pushViewController(v, animated: true)
         }
  

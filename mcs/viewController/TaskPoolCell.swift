@@ -49,31 +49,31 @@ class TaskPoolCell: UITableViewCell {
         
         
         
-        from.text = _stringIsNullOrNil(d["mh"])
-        to.text = _stringIsNullOrNil(d["finalAction"])
+        from.text = String.isNullOrEmpty(d["mh"])
+        to.text = String.isNullOrEmpty(d["finalAction"])
         
         _line.isHidden = !(from.text != " " && to.text != " ")
             
-        fltno.text = _stringIsNullOrNil(d["fltNo"])
+        fltno.text = String.isNullOrEmpty(d["fltNo"])
         
-        to_sb.text = _stringIsNullOrNil(d["taskTo"])
+        to_sb.text = String.isNullOrEmpty(d["taskTo"])
         
 
-        var defectDesc = _stringIsNullOrNil(d["defectDesc"])
+        var defectDesc = String.isNullOrEmpty(d["defectDesc"])
         defectDesc = defectDesc.replacingOccurrences(of: "<br/>", with: "")
         
-        var planingDesc = _stringIsNullOrNil(d["planningDes"])
+        var planingDesc = String.isNullOrEmpty(d["planningDes"])
         planingDesc = planingDesc.replacingOccurrences(of: "<br/>", with: "")
         
         let defectStr = "Description: " + defectDesc + "\n" + planingDesc
         let defectAttriStr =  NSMutableAttributedString.init(string: defectStr)
         defectAttriStr.addAttributes([NSFontAttributeName:UIFont.boldSystemFont(ofSize: 14),NSForegroundColorAttributeName:UIColor.darkGray], range: NSMakeRange(0, 12))
-        defectAttriStr.addAttributes([NSFontAttributeName:UIFont.boldSystemFont(ofSize: 14),NSForegroundColorAttributeName:UIColor.darkGray], range: NSMakeRange(defectStr.lengthOfBytes(using: String.Encoding.utf8) - planingDesc.lengthOfBytes(using: String.Encoding.utf8) - 1, planingDesc.lengthOfBytes(using: String.Encoding.utf8)))
+        //defectAttriStr.addAttributes([NSFontAttributeName:UIFont.boldSystemFont(ofSize: 13),NSForegroundColorAttributeName:UIColor.darkGray], range: NSMakeRange(defectStr.lengthOfBytes(using: String.Encoding.utf8) - planingDesc.lengthOfBytes(using: String.Encoding.utf8) - 1, planingDesc.lengthOfBytes(using: String.Encoding.utf8)))
         
         descri.attributedText = defectAttriStr
         
 
-        let reasonDesc = _stringIsNullOrNil(d["reason"])
+        let reasonDesc = String.isNullOrEmpty(d["reason"])
         let rea_s = "Reason to postpone : "
         let reasonStr =  rea_s + reasonDesc
         let reasonAttriStr =  NSMutableAttributedString.init(string: reasonStr)
@@ -81,29 +81,16 @@ class TaskPoolCell: UITableViewCell {
         
         reason.attributedText = reasonAttriStr
         
-        let _r = _stringIsNullOrNil(d["repetitive"])
+        let _r = String.isNullOrEmpty(d["repetitive"])
         r_igv.image = UIImage (named: _r == "1" ? "icon_right" : "icon_error")
         
-        let _p = _stringIsNullOrNil(d["perform"])
+        let _p = String.isNullOrEmpty(d["perform"])
         p_igv.image = UIImage (named: _p == "1" ? "icon_right" : "icon_error")
         
-        let _cld = _stringIsNullOrNil(d["closed"])
+        let _cld = String.isNullOrEmpty(d["closed"])
         cld_igv.image = UIImage (named: _cld == "1" ? "icon_right" : "icon_error")
     }
     
-    
-    
-    
-    
-     func _stringIsNullOrNil(_ any:Any?) -> String {
-        guard  let s = any else { return " "}
-        
-        if s is  NSNull {
-            return " ";
-        }
-        
-        return "\(s)"
-    }
     
     
     override func draw(_ rect: CGRect) {

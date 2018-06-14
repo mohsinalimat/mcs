@@ -28,6 +28,8 @@ class AddActionInfoCell_R: UITableViewCell {
         let rec_date = Tools.date(String.stringIsNullOrNil(d["shiftDate"]))
         if let d = rec_date {
             shift_date.text = Tools.dateToString(d, formatter: "yyyy-MM-dd")
+        }else {
+            shift_date.text = String.stringIsNullOrNil(d["shiftDate"]);
         }
 
         

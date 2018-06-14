@@ -31,7 +31,7 @@ class WarnDisPoseCell: UITableViewCell {
     }
     
     func fillCellMel(d1:[String : Any] )  {
-        taskcode.text = String.stringIsNullOrNil(d1["item"]) //+ " " + String.stringIsNullOrNil(d1["docName"])
+        taskcode.text =  String.stringIsNullOrNil(d1["status"]) + " / " + String.stringIsNullOrNil(d1["item"])
         
         
     }

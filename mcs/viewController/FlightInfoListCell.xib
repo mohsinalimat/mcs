@@ -73,13 +73,13 @@
                     </label>
                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="djs-C4-OqD">
                         <constraints>
-                            <constraint firstAttribute="height" constant="20" id="x0J-1B-hWw"/>
-                            <constraint firstAttribute="width" constant="80" id="zWD-wh-rFk"/>
+                            <constraint firstAttribute="height" constant="15" id="x0J-1B-hWw"/>
+                            <constraint firstAttribute="width" constant="15" id="zWD-wh-rFk"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <inset key="imageEdgeInsets" minX="0.0" minY="3" maxX="0.0" maxY="0.0"/>
-                        <state key="normal" title="alarms" image="red_dot">
+                        <state key="normal">
                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                     </button>
@@ -102,10 +102,10 @@
                 <constraint firstItem="6ns-VU-0zW" firstAttribute="centerY" secondItem="ROP-9X-FTp" secondAttribute="centerY" id="bJ4-8a-eSs"/>
                 <constraint firstItem="6ns-VU-0zW" firstAttribute="leading" secondItem="ROP-9X-FTp" secondAttribute="trailing" constant="20" id="bc4-QZ-xGu"/>
                 <constraint firstItem="kbM-RA-xuj" firstAttribute="leading" secondItem="Lk8-UB-6Zw" secondAttribute="trailing" constant="10" id="cvz-pa-JQs"/>
-                <constraint firstAttribute="trailing" secondItem="djs-C4-OqD" secondAttribute="trailing" constant="10" id="fKR-iQ-qpN"/>
                 <constraint firstItem="0PN-ts-N10" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="20" id="hVU-YV-kMv"/>
                 <constraint firstItem="kbM-RA-xuj" firstAttribute="centerY" secondItem="ROP-9X-FTp" secondAttribute="centerY" id="mvH-XM-CL3"/>
                 <constraint firstItem="iHl-pB-2KG" firstAttribute="centerX" secondItem="hv3-It-kVD" secondAttribute="centerX" id="pBe-KB-81S"/>
+                <constraint firstItem="djs-C4-OqD" firstAttribute="centerX" secondItem="hv3-It-kVD" secondAttribute="centerX" id="rLI-ou-Utp"/>
                 <constraint firstItem="4NJ-xz-Ntn" firstAttribute="centerY" secondItem="QMl-j6-qnk" secondAttribute="centerY" id="rhf-s8-IDc"/>
                 <constraint firstItem="7xb-cs-W85" firstAttribute="centerY" secondItem="QMl-j6-qnk" secondAttribute="centerY" id="tD3-hA-fQz"/>
                 <constraint firstItem="0PN-ts-N10" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="w9N-wD-oMk"/>
@@ -130,6 +130,5 @@
     <resources>
         <image name="icon_plane" width="16" height="18"/>
         <image name="plane_1" width="49" height="49"/>
-        <image name="red_dot" width="8" height="8"/>
     </resources>
 </document>

@@ -18,6 +18,8 @@ class WarnInfoDetailController_new: BaseViewController,UITableViewDelegate,UITab
     
     var _warnInfoDetail :[String:Any]!
     var _warnInfoLast :[String:Any]!
+    var _flightDate:String?
+    
     var _id:String!
     var _shouldLoad = false
     
@@ -120,9 +122,9 @@ class WarnInfoDetailController_new: BaseViewController,UITableViewDelegate,UITab
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        guard indexPath.section > 0 else { return 130 }
-        guard indexPath.section > 1 else { return 40 }
-        return 30
+        guard indexPath.section > 0 else { return 70 }
+        guard indexPath.section > 1 else { return 50 }
+        return 40
     }
     
     private let section1_header_h:CGFloat = 60
@@ -148,14 +150,13 @@ class WarnInfoDetailController_new: BaseViewController,UITableViewDelegate,UITab
             let v = UIView (frame: CGRect.init(x: 0, y: 0, width: tableView.frame.size.width, height: section1_header_h))
             let _l = UILabel (frame: CGRect (x: 15, y: section1_header_h - 45, width: 300, height: 45))
             _l.text = "Fault Information"
-            //_l.textColor = UIColor.darkGray
-            _l.font = UIFont.systemFont(ofSize: 15)
+            _l.textColor = UIColor.darkGray
+            _l.font = UIFont.systemFont(ofSize: 18)
             v.addSubview(_l)
             return v
         }
 
         guard _warn_possible.count > 0 && current_selected_btn_index == 0 else {return nil}
-        
         let d = _warn_possible[section - 2]
         let _l = UILabel (frame: CGRect (x: 5, y: 0, width: tableView.frame.size.width - 10, height: 30))
         _l.text = String.stringIsNullOrNil(d["taskCode"]) + ":" + String.stringIsNullOrNil(d["taskName"])
@@ -170,41 +171,60 @@ class WarnInfoDetailController_new: BaseViewController,UITableViewDelegate,UITab
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         guard section == 1 else { return nil }
 
-        let l = UIView (frame: CGRect (x: 0, y: 0, width: kCurrentScreenWidth, height: section1_footer_h))
-        l.backgroundColor = current_selected_btn_bgcolor
-        let t = ["Probable reason of fault","Fault isolation manual","MEL","Other files"]
-        let x = [0,200,400,600]
-        for i in 0..<t.count {
-            let btn = UIButton (frame: CGRect (x: x[i], y: Int(section1_footer_h - 60), width: 200, height: 50));
-            btn.setTitle(t[i], for: .normal)
-            btn.tag = i
-            btn.setTitleColor(kButtonTitleDefaultColor, for: .normal)
-            btn.setTitleColor(UIColor.black, for: .selected)
-            btn.setBackgroundImage(UIImage (named: "buttonbg"), for: .selected)
-            btn.titleLabel?.font = UIFont.systemFont(ofSize: 16)
-            btn.titleLabel?.textAlignment = .center
-            btn.addTarget(self, action: #selector(sectionBtnClicked(_:)), for: .touchUpInside)
-            if i == current_selected_btn_index {
-                btn.isSelected = true;
-                current_selected_btn = btn
+//        let l = UIView (frame: CGRect (x: 0, y: 0, width: kCurrentScreenWidth, height: section1_footer_h))
+//        l.backgroundColor = current_selected_btn_bgcolor
+//        let t = ["Probable reason of fault","Fault isolation manual","MEL","Other files"]
+//        let x = [0,200,400,600]
+//        for i in 0..<t.count {
+//            let btn = UIButton (frame: CGRect (x: x[i], y: Int(section1_footer_h - 60), width: 200, height: 50));
+//            btn.setTitle(t[i], for: .normal)
+//            btn.tag = i
+//            btn.setTitleColor(kButtonTitleDefaultColor, for: .normal)
+//            btn.setTitleColor(UIColor.black, for: .selected)
+//            btn.setBackgroundImage(UIImage (named: "buttonbg"), for: .selected)
+//            btn.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+//            btn.titleLabel?.textAlignment = .center
+//            btn.addTarget(self, action: #selector(sectionBtnClicked(_:)), for: .touchUpInside)
+//            if i == current_selected_btn_index {
+//                btn.isSelected = true;
+//                current_selected_btn = btn
+//            }
+//            l.addSubview(btn)
+//        }
+//        
+//        return l
+        
+        
+        let bg = UIView (frame: CGRect (x: 0, y: 0, width: kCurrentScreenWidth, height: section1_footer_h))
+        let v = MultiButtonView.init(CGRect (x: 15, y: Int(section1_footer_h - 60), width: Int(bg.frame.width - 30), height: 50), titles: ["Probable reason of fault","Fault isolation manual","MEL","Other files"] , selectedIndex : current_selected_btn_index + 1 , width:(kCurrentScreenWidth - 20) / 4.0)
+        v.selectedActionHandler = { index in
+            DispatchQueue.main.async {[weak self ] in
+                guard let ss = self else {return}
+                ss.current_selected_btn_index = index - 1
+                tableView.reloadData()
             }
-            l.addSubview(btn)
         }
         
-        return l
+        bg.addSubview(v);return bg
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "WarnDetailTopCellIdentifier", for: indexPath) as! WarnDetailTopCell
             cell.fillCell(_warnInfoDetail , d2: _warnInfoLast)
+            cell.buttonActionHandler = { [weak self]  in
+                guard let ss = self else { return }
+                DispatchQueue.main.async {
+                    ss._creatReport();
+                }
+            }
+            
             return cell
         }else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "WarnFaultInfoCellIdentifier", for: indexPath) as! WarnFaultInfoCell
             if let d = _warn_detail[indexPath.row]["detail"] as? [[String:Any]] {
                 if let f = d.first{
-                    cell.fillCell(f)
+                    cell.fillCell(f, d2: _warnInfoLast)
                 }
             }
             
@@ -248,7 +268,25 @@ class WarnInfoDetailController_new: BaseViewController,UITableViewDelegate,UITab
     }
     
     
-    
+    func _creatReport() {
+        HUD.show()
+        let v = ReporFormController()
+        v.is_from_warn = true
+        
+        var flightDate:String?
+        if let flDate = _flightDate {
+            let date = Tools.stringToDate(flDate, formatter: "yyyy-MM-dd")
+            flightDate = Tools.dateToString(date, formatter: "dd/MM/yyyy")
+        }
+        
+        let d = ["acReg":_warnInfoDetail["tailNo"],
+                 "station":_warnInfoDetail["arr"],
+                 "flNo":_warnInfoDetail["flightNumber"],
+                 "flDate":flightDate
+                 ]
+        v.warnInfo = d
+        self.navigationController?.pushViewController(v, animated: true);
+    }
     
     
     override func didReceiveMemoryWarning() {

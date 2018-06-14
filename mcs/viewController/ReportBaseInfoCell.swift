@@ -183,6 +183,16 @@ class ReportBaseInfoCell: UITableViewCell,UITextFieldDelegate {
         
     }
     
+    func fill(_ d:[String:Any]?) {
+        guard let _d = d else {return}
+        let _reg = _d["flNo"] as? String
+        fltNo_btn.setTitle(_reg, for: .normal)
+        
+        let _station = _d["flDate"] as? String
+        fltDate_btn.setTitle(_station, for: .normal)
+        
+    }
+
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

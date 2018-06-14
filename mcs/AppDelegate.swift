@@ -26,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window?.makeKeyAndVisible()
         
+        application.applicationIconBadgeNumber = 0;
         
         
         _init()
@@ -39,9 +40,64 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
        AMMModel.isExistTable()
        IQKeyboardManager.sharedManager().enable = true
        //IQKeyboardManager.sharedManager().enableAutoToolbar = false
+       
+        _initNotification()
+        
+        let d = UIDevice.current
+        
+        print(d.name + "/" + (d.identifierForVendor?.uuidString)! )
     }
     
     
+    //MARK:-
+    func _initNotification() {
+        UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings.init(types: [.alert,.sound,.badge], categories: nil))
+    }
+    
+    func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
+        print(#function)
+        
+        application.registerForRemoteNotifications()
+    }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        print(#function)
+        //AEFD81A8308B15169F992900A85C9CBCA29BF8E8549A154955765A94BE947E99
+        let token = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
+        
+        print(token)
+        
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
+        print("didReceiveRemoteNotification: \(userInfo)")
+        application.applicationIconBadgeNumber = 0;
+        HUD.show(info:"收到通知！")
+    
+    }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print(#function)
+    }
+    
+
+    
+    func _submintDevicesInfo()  {
+        let d = UIDevice.current
+        let pars = ["name" : d.name,
+                    "uuid":String.isNullOrEmpty(d.identifierForVendor?.uuidString)]
+        
+        request("", parameters: pars, successHandler: { (res) in
+            
+            }) { (str) in
+                
+        }
+        
+        print(d)
+        
+    }
+    
+    //MARK:
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
         //// Supported orientations has no common orientation with the application, and [PUUIAlbumListViewController shouldAutorotate] is returning YES
         return .allButUpsideDown

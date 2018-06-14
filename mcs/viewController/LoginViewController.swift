@@ -132,7 +132,7 @@ class LoginViewController: BaseViewController,UITableViewDelegate,UITableViewDat
         if btn.tag == 101 {
             guard let name = username_tf.text, let pwd = pwd_tf.text else { return}
             guard name.lengthOfBytes(using: String.Encoding.utf8) > 0 , pwd.lengthOfBytes(using: String.Encoding.utf8) > 0 else {
-                HUD.show(info: "username and password can't null"); return
+                HUD.show(info: "username and password can't be null"); return
             }
             
             HUD.show(withStatus: hud_msg_loading)

@@ -61,13 +61,13 @@
                     <color key="backgroundColor" red="0.40106409790000003" green="0.60073119399999997" blue="0.5976739526" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="35" id="6Dh-6n-dje"/>
-                        <constraint firstAttribute="width" constant="130" id="yhf-f8-Kyx"/>
+                        <constraint firstAttribute="width" constant="150" id="yhf-f8-Kyx"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <state key="normal" title="Select">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
-                    <state key="selected" title="Unselect ">
+                    <state key="selected" title="Cancel">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <userDefinedRuntimeAttributes>
@@ -84,9 +84,9 @@
                     <color key="backgroundColor" red="0.20224562287330627" green="0.5951007604598999" blue="0.85695862770080566" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="35" id="6wN-eP-JJk"/>
-                        <constraint firstAttribute="width" constant="130" id="fzB-94-rBv"/>
+                        <constraint firstAttribute="width" constant="150" id="fzB-94-rBv"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <state key="normal" title="Defect Report">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -114,11 +114,11 @@
                 <constraint firstItem="Emr-sP-8Nw" firstAttribute="leading" secondItem="uug-LZ-9HS" secondAttribute="trailing" constant="5" id="A8e-Qf-gId"/>
                 <constraint firstItem="mrA-LI-osL" firstAttribute="centerY" secondItem="VXM-SO-pDr" secondAttribute="centerY" id="DPR-J0-daX"/>
                 <constraint firstAttribute="bottom" secondItem="mrA-LI-osL" secondAttribute="bottom" constant="5" id="DpO-GX-xDZ"/>
-                <constraint firstAttribute="trailing" secondItem="mrA-LI-osL" secondAttribute="trailing" constant="20" id="Lxm-Jk-ZiU"/>
+                <constraint firstAttribute="trailing" secondItem="mrA-LI-osL" secondAttribute="trailing" constant="15" id="Lxm-Jk-ZiU"/>
                 <constraint firstItem="W3V-dk-EaN" firstAttribute="centerY" secondItem="PdS-w9-YLT" secondAttribute="centerY" id="OGr-rF-MKg"/>
                 <constraint firstItem="Mgb-PC-7aY" firstAttribute="leading" secondItem="W3V-dk-EaN" secondAttribute="trailing" constant="60" id="XcN-MQ-jox"/>
                 <constraint firstItem="PHJ-TT-j84" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="Zlz-o8-TRN"/>
-                <constraint firstItem="mrA-LI-osL" firstAttribute="leading" secondItem="VXM-SO-pDr" secondAttribute="trailing" constant="40" id="anq-FO-rRf"/>
+                <constraint firstItem="mrA-LI-osL" firstAttribute="leading" secondItem="VXM-SO-pDr" secondAttribute="trailing" constant="20" id="anq-FO-rRf"/>
                 <constraint firstItem="PdS-w9-YLT" firstAttribute="leading" secondItem="PHJ-TT-j84" secondAttribute="trailing" constant="20" id="cfO-nn-Oqv"/>
                 <constraint firstItem="mvs-yb-hhH" firstAttribute="centerY" secondItem="PdS-w9-YLT" secondAttribute="centerY" id="fcy-R7-aRV"/>
                 <constraint firstItem="Mgb-PC-7aY" firstAttribute="centerY" secondItem="PdS-w9-YLT" secondAttribute="centerY" id="gL8-r6-nL7"/>

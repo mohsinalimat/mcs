@@ -31,10 +31,8 @@ class FlightInfoListCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
-//        layer.borderColor = UIColor.lightGray.cgColor
-//        layer.borderWidth = 1
-        
+        warn_tap.layer.borderWidth = 1
+        warn_tap.layer.borderColor = UIColor.black.cgColor
         warn_tap.isHidden = true
         iconImgWidth.constant = 0;
     }
@@ -43,20 +41,8 @@ class FlightInfoListCell: UICollectionViewCell {
         warn_tap.isHidden = true
         flightNo.text = nil
         iconImgWidth.constant = 0;
-        
     }
-    
-    func warn_tap_show() {
-        
-    }
-    
-    
-    
-    
-    
-    
-    
-    
+
     
     func fillCell(_ dic:[String:Any] , show:Bool? = false , left:Bool = true , warnStatus:[[String:Any]]? = nil )  {
         let fltno = left ? "fromFltNo":"toFltNo"
@@ -86,42 +72,38 @@ class FlightInfoListCell: UICollectionViewCell {
         
 
         if flightNo.text == kFlightInfoListController_fltNo {
-            
             iconImgWidth.constant = 40;
-            
         }else {
             iconImgWidth.constant = 0;
         }
         
-        
-        
         if let arr = warnStatus {
             let b = _flight_has_warn(arr, fltno: String.stringIsNullOrNil(dic[fltno]), airid: String.stringIsNullOrNil(dic["acReg"]))
-            
-            warn_tap.isHidden = !b
+            warn_tap.isHidden = !(b.exist)
+            if b.exist {
+                warn_tap.backgroundColor = kFlightWarnLevelColor["\(b.grade)"];
+            }
         }
 
-        
-        
     }
     
     
-    func _flight_has_warn(_ arr :[[String:Any]] , fltno:String, airid:String) -> Bool {
-        guard arr.count > 0 else {return false}
+    func _flight_has_warn(_ arr :[[String:Any]] , fltno:String, airid:String) -> (exist:Bool ,grade:String) {
+        guard arr.count > 0 else {return (false,"")}
         
         for i in 0..<arr.count {
             let obj = arr[i]
             
             if let tail = obj["tailNo"] as? String ,let flt = obj["flightNumber"] as? String {
                 if tail == airid && flt == "NX\(fltno)" {
-                    guard obj["grade"] != nil else {return false}
+                    guard obj["grade"] != nil else {return (false,"")}
                     
-                    return true
+                    return (true,String.isNullOrEmpty(obj["grade"]))
                 }
             }
         }
         
-        return false
+        return (false,"")
     }
     
     

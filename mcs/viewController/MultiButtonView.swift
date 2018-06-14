@@ -30,10 +30,9 @@ class MultiButtonView: UIView {
     }
     
 
-    init(_ frame:CGRect , titles:[String] , selectedIndex:Int = 1) {
+    init(_ frame:CGRect , titles:[String] , selectedIndex:Int = 1 , width:CGFloat = 140) {
         super.init(frame: frame)
-        backgroundColor = bgColor
-        
+        backgroundColor = bgColor        
         msg.frame = CGRect (x: 20, y: 0, width: 100, height: frame.height)
         msg.font = UIFont.systemFont(ofSize: 13)
         msg.textColor = UIColor.lightGray
@@ -41,7 +40,7 @@ class MultiButtonView: UIView {
         
         let ts:[String] = titles.reversed()
         for i in 0..<ts.count {
-            let b = UIButton (frame: CGRect (x: frame.width - CGFloat.init((i + 1) * 140), y: 0, width: 140, height: frame.height));
+            let b = UIButton (frame: CGRect (x: frame.width - CGFloat.init((i + 1)) * width, y: 0, width: width, height: frame.height));
             b.tag = ts.count - i;
             b.setTitle(ts[i], for: .normal)
             b.titleLabel?.font = UIFont.systemFont(ofSize: 15)

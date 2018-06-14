@@ -54,7 +54,18 @@ class ReportInfoCell: UITableViewCell {
         
     }
     
+    func fill(_ d:[String:Any]?) {
+        guard let _d = d else {return}
+        let _reg = _d["acReg"] as? String
+        reg.setTitle(_reg, for: .normal)
+        
+        let _station = _d["station"] as? String
+        station.setTitle(_station, for: .normal)
 
+    }
+    
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

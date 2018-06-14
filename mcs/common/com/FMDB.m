@@ -95,7 +95,7 @@
        
         NSDate *endTime = [NSDate date];
         NSTimeInterval a = [endTime timeIntervalSince1970] - [start timeIntervalSince1970];
-        NSLog(@"使用事务插入%ld条数据用时%.3f秒",arr.count,a);
+        NSLog(@"插入%ld条数据用时%.3f秒",arr.count,a);
         
     } @catch (NSException *exception) {
         NSLog(@"%@", exception.reason);

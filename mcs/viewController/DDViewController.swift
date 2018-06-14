@@ -149,7 +149,7 @@ class DDViewController: BaseTabItemController  ,UITableViewDelegate,UITableViewD
 
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.rowHeight = 150
+        tableView.rowHeight = 140
         tableView.separatorStyle = .none
         
         ///Refresh Data
@@ -190,8 +190,8 @@ class DDViewController: BaseTabItemController  ,UITableViewDelegate,UITableViewD
         let d = dataArray[indexPath.row]
         cell.fill(d)
         
+        cell.backgroundColor = indexPath.row % 2 == 0 ? kTableViewCellbg_whiteColor : UIColor (colorLiteralRed: 244/255.0, green: 247/255.0, blue: 249/255.0, alpha: 1) //kTableViewCellbg_hightlightColor
         return cell
-        
     }
     
     
