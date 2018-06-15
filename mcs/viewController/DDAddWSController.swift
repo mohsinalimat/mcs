@@ -11,7 +11,7 @@ import UIKit
 class DDAddWSController: BasePickerViewController {
 
     var isR:Bool = false
-    var dic:[String:Any]!
+    var dic:[String:Any]?
     
     @IBOutlet weak var rq_no: UITextField!
     @IBOutlet weak var pn: UITextField!
@@ -113,21 +113,22 @@ class DDAddWSController: BasePickerViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if isR{
+        //if isR{
             _fillData(dic);
-        }
+        //}
     }
 
     
-    func _fillData(_ d:[String:Any]) {
-        rq_no.text = String.isNullOrEmpty(d["rqNo"])
-        pn.text = String.isNullOrEmpty(d["pnNo"])
-        pn_type.setTitle(String.isNullOrEmpty(d["pnType"]), for: .normal)
-        pn_des.text = String.isNullOrEmpty(d["pnDes"])
-        pn_data.text = String.isNullOrEmpty(d["pnAta"])
+    func _fillData(_ d:[String:Any]?) {
+        guard let _d = d else {return}
+        rq_no.text = String.isNullOrEmpty(_d["rqNo"])
+        pn.text = String.isNullOrEmpty(_d["pnNo"])
+        pn_type.setTitle(String.isNullOrEmpty(_d["pnType"]), for: .normal)
+        pn_des.text = String.isNullOrEmpty(_d["pnDes"])
+        pn_data.text = String.isNullOrEmpty(_d["pnAta"])
         
         ///status
-        let status = String.isNullOrEmpty(d["status"])
+        let status = String.isNullOrEmpty(_d["status"])
         for (k ,v) in status_key {
             if status == v {
                 stas.setTitle(k, for: .normal)
@@ -135,26 +136,27 @@ class DDAddWSController: BasePickerViewController {
             }
         }
         
-        associate_no.text = String.isNullOrEmpty(d["associateNo"])
+        associate_no.text = String.isNullOrEmpty(_d["associateNo"])
         
-        let _eta = Tools.date(String.stringIsNullOrNil(d["scheduleDate"]))
+        let _eta = Tools.date(String.stringIsNullOrNil(_d["scheduleDate"]))
         if let d = _eta {
             schedule_date.setTitle(Tools.dateToString(d, formatter: "dd/MM/yyyy"), for: .normal)
         }
 
-        maual.text = String.isNullOrEmpty(d["manual"])
-        part_change.text = String.isNullOrEmpty(d["partChange"])
-        po.text = String.isNullOrEmpty(d["po"])
-        qty.text = String.isNullOrEmpty(d["qty"])
+        maual.text = String.isNullOrEmpty(_d["manual"])
+        part_change.text = String.isNullOrEmpty(_d["partChange"])
+        po.text = String.isNullOrEmpty(_d["po"])
+        qty.text = String.isNullOrEmpty(_d["qty"])
         
-        let arri = Tools.date(String.stringIsNullOrNil(d["arrivalDate"]))
+        let arri = Tools.date(String.stringIsNullOrNil(_d["arrivalDate"]))
         if let d = arri {
             arri_date.setTitle(Tools.dateToString(d, formatter: "dd/MM/yyyy"), for: .normal)
         }
 
-        remark.text = String.isNullOrEmpty(d["remark"])
+        remark.text = String.isNullOrEmpty(_d["remark"])
 
         ///
+        guard isR else {return}
         let v = UIView (frame: self.view.frame)
         self.view.addSubview(v)
         self.navigationItem.rightBarButtonItem = nil

@@ -196,7 +196,7 @@ class WarnInfoDetailController_new: BaseViewController,UITableViewDelegate,UITab
         
         
         let bg = UIView (frame: CGRect (x: 0, y: 0, width: kCurrentScreenWidth, height: section1_footer_h))
-        let v = MultiButtonView.init(CGRect (x: 15, y: Int(section1_footer_h - 60), width: Int(bg.frame.width - 30), height: 50), titles: ["Probable reason of fault","Fault isolation manual","MEL","Other files"] , selectedIndex : current_selected_btn_index + 1 , width:(kCurrentScreenWidth - 20) / 4.0)
+        let v = MultiButtonView.init(CGRect (x: 15, y: Int(section1_footer_h - 60), width: Int(bg.frame.width - 30), height: 50), titles: ["Probable reason of fault","Fault isolation manual","MEL"/*,"Other files"*/] , selectedIndex : current_selected_btn_index + 1 , width:(kCurrentScreenWidth - 20) / 4.0)
         v.selectedActionHandler = { index in
             DispatchQueue.main.async {[weak self ] in
                 guard let ss = self else {return}

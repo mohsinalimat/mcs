@@ -15,8 +15,8 @@ import MJRefresh
 class DDViewController: BaseTabItemController  ,UITableViewDelegate,UITableViewDataSource{
 
     let dd_list_status = [
-        "determineReceive",
-        "perfectReport",
+        //"determineReceive",
+        //"perfectReport",
         "createTask",
         "executing",
         "monitoring",

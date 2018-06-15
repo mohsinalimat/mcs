@@ -638,25 +638,40 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard indexPath.section > 1 else {return}
-        
         if indexPath.section == 2 {
             guard dd_ws_arr.count > 0 else {return}
             let v = DDAddWSController()
-            if read_only {
+            //if read_only {
                 v.isR = read_only;
                 let d = dd_ws_arr[indexPath.row]
                 v.dic = d
+            
+            v.selectedAction = { [weak self] dic in
+                guard let ss = self else {return}
+                ss.dd_ws_arr.remove(at: indexPath.row)
+                ss.dd_ws_arr.insert(dic, at: indexPath.row - 1 < 0 ? 0 : indexPath.row)
+                tableView.reloadData()
             }
+            
+            //}
             
             Tools.showVC(v,frame:CGRect(x: 0, y: 0, width: 800, height: 400))
         }else if indexPath.section == 3 {
             guard dd_wp_arr.count > 0 else {return}
             let v = DDAddWPController()
-            if read_only {
+            //if read_only {
                 v.isR = read_only;
                 let d = dd_wp_arr[indexPath.row]
                 v.dic = d
+            //}
+            v.selectedAction = { [weak self] dic in
+                guard let ss = self else {return}
+                ss.dd_wp_arr.remove(at: indexPath.row)
+                ss.dd_wp_arr.insert(dic, at: indexPath.row - 1 < 0 ? 0 : indexPath.row)
+                tableView.reloadData()
             }
+            
+            
             Tools.showVC(v,frame:CGRect(x: 0, y: 0, width: 600, height: 400))
         }
         

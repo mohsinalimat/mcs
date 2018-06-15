@@ -15,27 +15,23 @@ import MJRefresh
 class DefectReportController: BaseTabItemController ,UITableViewDelegate,UITableViewDataSource{
 
     @IBOutlet weak var _tableView: UITableView!
-    
     @IBOutlet weak var select_bg: UIView!
-    
     @IBOutlet weak var delete_bg: UIView!
-    
     @IBOutlet weak var select_bg_constraint: NSLayoutConstraint!
-    
     @IBOutlet weak var delete_bg_constraint: NSLayoutConstraint!
-    
     @IBOutlet weak var btn_delete: UIButton!
     @IBOutlet weak var btn_submit: UIButton!
     
     var dataArray = [[String:Any]]()
     var _selectedIndexArrr = [Int]()
-    
     let disposeBag = DisposeBag.init()
     let rx_selected: Variable<[Int]> = Variable.init([])
-    
     var _pageNum:Int = 1
     var _isSearch:Bool = false
     var _searchPars:[String:Any]?
+    
+    var _disableOperationIndex = [Int]()
+    var _supportStatus:[String]!
     
     //MARK:
     @IBAction func buttonAction(_ sender: UIButton) {
@@ -54,16 +50,24 @@ class DefectReportController: BaseTabItemController ,UITableViewDelegate,UITable
             let v = ReporFormController()
             self.navigationController?.pushViewController(v, animated: true); break
         case 4:
+            guard _disableOperationIndex.count == 0 else {
+                HUD.show(info: "The selected records contain data that cannot be executed in batch operation."); return
+            }
+            
             let taskid = _getSelectedId()
-            guard taskid.count > 0 else {return}
+            guard taskid.count > 0 else {HUD.show(info: "No records selected."); return}
             self.showMsg("Delete This Task?", title: "Delete", handler: {[weak self] in
                 guard let ss = self else {return}
                 ss._delete(taskid)
                 })
             break
         case 5://submit
+            guard _disableOperationIndex.count == 0 else {
+                HUD.show(info: "The selected records contain data that cannot be executed in batch operation."); return
+            }
+            
             let taskid = _getSelectedId()
-            guard taskid.count > 0 else {return}
+            guard taskid.count > 0 else {HUD.show(info: "No records selected."); return}
             
             self.showMsg("Submit This Task?", title: "Submit", handler: {[weak self] in
                 guard let ss = self else {return}
@@ -77,6 +81,7 @@ class DefectReportController: BaseTabItemController ,UITableViewDelegate,UITable
     }
 
     func _initStatus()  {
+        _disableOperationIndex.removeAll()
         select_bg.isHidden = false
         delete_bg.isHidden = true
         _tableView.isEditing = false
@@ -101,7 +106,9 @@ class DefectReportController: BaseTabItemController ,UITableViewDelegate,UITable
         HUD.show()
         
         request(defect_submit_url, parameters: ["bizIds":ids], successHandler: { [weak self] (res) in
-            HUD.show(successInfo: "Submit Success")
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.init(uptimeNanoseconds: NSEC_PER_SEC * 10), execute: {
+                HUD.show(successInfo: "Submit Success")
+            })
             
             guard let ss = self else {return}
             ss._initStatus()
@@ -115,8 +122,10 @@ class DefectReportController: BaseTabItemController ,UITableViewDelegate,UITable
         HUD.show()
         
         netHelper_request(withUrl: defect_delete_url, method: .delete, parameters: ["bizIds":ids], successHandler: { [weak self] (res) in
-            HUD.show(successInfo: "Delete Success")
-            
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.init(uptimeNanoseconds: NSEC_PER_SEC * 10), execute: {
+                HUD.show(successInfo: "Delete Success")
+            })
+
             guard let ss = self else {return}
             ss._initStatus()
             ss.loadData()
@@ -174,6 +183,12 @@ class DefectReportController: BaseTabItemController ,UITableViewDelegate,UITable
         
         loadData()
         
+        let role = Tools.user_role()
+        if role == "offline" {
+            _supportStatus = ["offline"];
+        }else if role == "lm_leader" {
+            _supportStatus = ["lm_leader" , "backed"];
+        }
         
         /////
 //        rx_selected.value = _selectedIndexArrr
@@ -302,6 +317,17 @@ class DefectReportController: BaseTabItemController ,UITableViewDelegate,UITable
             _selectedIndexArrr.remove(at: _selectedIndexArrr.index(of: indexPath.row)!);
         }else {
             _selectedIndexArrr.append(indexPath.row);
+        }
+        
+        let d = dataArray[indexPath.row]
+        if let status = d["state"] as? String {
+            if !_supportStatus.contains(status){
+                if _disableOperationIndex.contains(indexPath.row){
+                    _disableOperationIndex.remove(at: _disableOperationIndex.index(of: indexPath.row)!);
+                }else{
+                    _disableOperationIndex.append(indexPath.row);
+                }
+            }
         }
         
         

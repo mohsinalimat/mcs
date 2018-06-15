@@ -22,6 +22,7 @@ class TaskHandCell: UITableViewCell {
     
     @IBOutlet weak var descri: UILabel!
     
+    @IBOutlet weak var remark: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -43,6 +44,12 @@ class TaskHandCell: UITableViewCell {
         defectAttriStr.addAttributes([NSFontAttributeName:UIFont.boldSystemFont(ofSize: 16),NSForegroundColorAttributeName:UIColor.darkGray], range: NSMakeRange(0, 12))
         descri.attributedText = defectAttriStr
  
+        let remarkDesc = String.stringIsNullOrNil(d["remarks"])
+        let remarkStr = "Remark: " + remarkDesc
+        let remarkAttriStr =  NSMutableAttributedString.init(string: remarkStr)
+        remarkAttriStr.addAttributes([NSFontAttributeName:UIFont.boldSystemFont(ofSize: 16),NSForegroundColorAttributeName:UIColor.darkGray], range: NSMakeRange(0, 7))
+        remark.attributedText = remarkAttriStr
+        
         
         let creattime = Tools.date(String.stringIsNullOrNil(d["createTime"]))
         if let d = creattime {
@@ -53,6 +60,8 @@ class TaskHandCell: UITableViewCell {
         if let d = scheduletime {
             time.text = Tools.dateToString(d, formatter: "yyyy-MM-dd")
         }
+        
+        
         
     }
     

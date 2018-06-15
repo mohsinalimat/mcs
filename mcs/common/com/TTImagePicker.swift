@@ -61,12 +61,16 @@ class TTImagePicker: NSObject , UIImagePickerControllerDelegate,UINavigationCont
         switch index {
         case 0:picker.sourceType = .camera;break
         case 1:picker.sourceType = .photoLibrary;
-            let rect = CGRect (x: 0, y: 0, width: 500, height: 600)
+            let rect = CGRect (x: 0, y: 0, width: 500, height: 400)
             picker.modalPresentationStyle = .popover
             picker.popoverPresentationController?.sourceView = _sourceView
             picker.popoverPresentationController?.sourceRect = CGRect (x: 240, y: 0, width: 10, height: 30)
             picker.preferredContentSize = rect.size
             picker.view.frame = rect
+        
+            if destController == nil {
+                picker.popoverPresentationController?.sourceRect = CGRect (x: 0, y: 0, width: 10, height: 30);
+            }
             break
         default:break
         }
@@ -85,7 +89,6 @@ class TTImagePicker: NSObject , UIImagePickerControllerDelegate,UINavigationCont
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let img = info["UIImagePickerControllerOriginalImage"] as? UIImage {
-            //kAttachmentDataArr.insert(img, at: 0)
             if let handler = imagePickerDidFinishedHandler {
                 handler(img);
             }

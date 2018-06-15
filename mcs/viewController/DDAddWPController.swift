@@ -11,7 +11,7 @@ import UIKit
 class DDAddWPController: BasePickerViewController {
 
     var isR:Bool = false
-    var dic:[String:Any]!
+    var dic:[String:Any]?
 
     @IBOutlet weak var ata: UITextField!
     @IBOutlet weak var stas: UIButton!
@@ -58,9 +58,9 @@ class DDAddWPController: BasePickerViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        if isR{
+        //if isR{
             _fillData(dic);
-        }
+        //}
 
     }
 
@@ -93,7 +93,9 @@ class DDAddWPController: BasePickerViewController {
     }
     
     
-    func _fillData(_ d:[String:Any]) {
+    func _fillData(_ d:[String:Any]?) {
+        guard let d = d else {return}
+        
         ata.text = String.isNullOrEmpty(d["wpAta"])
         ed_advice.text = String.isNullOrEmpty(d["wpEdAdvice"])
         stas.setTitle(String.isNullOrEmpty(d["wpStatus"]) == "0" ? "Open" : "Closed", for: .normal)
@@ -109,6 +111,7 @@ class DDAddWPController: BasePickerViewController {
         
 
         ///
+        guard isR else {return}
         let v = UIView (frame: self.view.frame)
         self.view.addSubview(v)
         self.navigationItem.rightBarButtonItem = nil

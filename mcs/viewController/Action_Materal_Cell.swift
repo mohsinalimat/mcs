@@ -34,16 +34,16 @@ class Action_Materal_Cell: UITableViewCell,UITableViewDelegate,UITableViewDataSo
             break
             
         case .addActoinValue4 , .creatReportValue3:
-            let v = TTSheetAction.share
-            v.selectedAtIndex = { [weak self](index) in
-                DispatchQueue.main.async {
+            
+            TTImagePicker().show(inView:nil, sourceView : sender , completion: { (ig) in
+                DispatchQueue.main.async {[weak self] in
                     guard let ss = self else {return}
-                    ss.imgPicker(index);
+                    kAttachmentDataArr.insert(ig, at: 0)
+                    ss.refreshAction()
                 }
-                
-            }
-
-            v.show();break
+            })
+            
+            break
         case .creatReportValue5:
             if let add = addAction {
                 add();
@@ -213,65 +213,5 @@ class Action_Materal_Cell: UITableViewCell,UITableViewDelegate,UITableViewDataSo
     }
     
     
-}
-
-
-//MARK:
-extension Action_Materal_Cell : UIImagePickerControllerDelegate,UINavigationControllerDelegate {
-
-    func imgPicker(_ index:Int)  {
-        if index == 0 {
-            guard UIImagePickerController.isSourceTypeAvailable(.camera) else {HUD.show(info: "NO Camera Available");return}
-            guard AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo) == .authorized else {
-                
-                AVCaptureDevice.requestAccess(forMediaType: AVMediaTypeVideo, completionHandler: { (b) in
-                    DispatchQueue.main.async {
-                        if b {
-                            print("Allow");
-                        }else {
-                            HUD.show(info: "Allow access to the camera in Settings");
-                            print("Not Allow");
-                        }
-                    }
-                })
-
-                return
-            }
-        }
-
-
-        let picker = UIImagePickerController.init();
-        picker.delegate  = self
-        picker.allowsEditing = true
-        
-        switch index {
-            case 0:picker.sourceType = .camera;break
-            case 1:picker.sourceType = .photoLibrary;break
-            default:break
-        }
-        
-
-        UIApplication.shared.keyWindow?.rootViewController?.present(picker, animated: true, completion: nil);
-    }
-    
-    
-    
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        picker.dismiss(animated: true, completion: nil)
-    }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        if let img = info["UIImagePickerControllerOriginalImage"] as? UIImage {
-            kAttachmentDataArr.insert(img, at: 0)
-        }
-        
-        picker.dismiss(animated: true, completion: nil)
-        refreshAction()
-    }
-    
-
-
-
 }
 

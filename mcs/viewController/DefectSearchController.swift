@@ -176,7 +176,7 @@ class DefectSearchController: UITableViewController {
             
             switch indexPath.row {
             case 4 ,6:
-                if indexPath.row == 6 && s_pending.isOn && _userRole == "lm_leader" {return}
+                if indexPath.row == 6 && s_pending.isOn /*&& _userRole == "lm_leader"*/ {return}
                 if let arr = plist_dic[indexPath.row == 4 ? "defect_type" : _userRole] as? [[String:String]] {
                     v.dataArray = arr
                 }
