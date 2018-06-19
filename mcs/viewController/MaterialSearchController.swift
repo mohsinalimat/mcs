@@ -7,20 +7,37 @@
 //
 
 import UIKit
+import Alamofire
+import MJRefresh
+
 
 class MaterialSearchController: BaseViewController  ,UITableViewDelegate,UITableViewDataSource{
 
     @IBOutlet weak var tableView: UITableView!
+    var dataArray = [[String:Any]]()
+    var _searchPars:[String:Any]?
+    var _pageNum:Int = 1
+    var _isSearch:Bool = false
     
+    @IBOutlet weak var s_pn: UITextField!
+    @IBOutlet weak var s_description: UITextField!
+    var _orderNumberBtn:UIButton!
+    
+    @IBAction func searchAction(_ sender: AnyObject) {
+        _isSearch = true;
+        
+        loadData()
+    }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.automaticallyAdjustsScrollViewInsets = false
         view.backgroundColor = UIColor.white
         
         _initSubviews()
         
-        self.automaticallyAdjustsScrollViewInsets = false
+        loadData()
         
     }
 
@@ -29,52 +46,161 @@ class MaterialSearchController: BaseViewController  ,UITableViewDelegate,UITable
         tableView.contentInset = UIEdgeInsets.zero
         tableView.scrollIndicatorInsets = UIEdgeInsets.zero
 
-//        print("search")
-//        print(tableView.frame)
+        addOrderBtn()
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        UIApplication.shared.keyWindow?.viewWithTag(2000)?.removeFromSuperview()
+    }
+    
+    
+    
+    func addOrderBtn() {
+        let btn = UIButton (frame: CGRect (x: kCurrentScreenWidth - 120, y: kCurrentScreenHeight - 150, width: 50, height: 50))
+        btn.layer.cornerRadius = 25
+        btn.layer.masksToBounds = true
+        btn.layer.borderColor = kTableviewBackgroundColor.cgColor
+        btn.layer.borderWidth = 1
+//        btn.setImage(UIImage (named: "icon_mine_topic_gray"), for: .normal)
+        btn.backgroundColor = UIColor.red
+        btn.setTitle("0", for: .normal)
+        btn.titleLabel?.font = UIFont.systemFont(ofSize: 18)
+        btn.setTitleColor(UIColor.white, for: .normal)
+        btn.tag = 2000
+        btn.addTarget(self, action: #selector(_toMyOrder(_ :)), for: .touchUpInside)
+        _orderNumberBtn = btn
+        
+        UIApplication.shared.keyWindow?.addSubview(btn)
+    }
+    
+    func _toMyOrder(_ btn:UIButton) {
+        let vc = MyOrderController()
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    
     
     //MARK: - init
     func _initSubviews()  {
-        
-        /////
         tableView.register(UINib (nibName: "MaterialSearchCell", bundle: nil), forCellReuseIdentifier: "MaterialSearchCellIdentifier")
         tableView.tableFooterView = UIView()
-        
-        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = 100
         tableView.separatorStyle = .none
 
         ///Refresh Data
-//        let header = TTRefreshHeader.init {
-//            DispatchQueue.main.async {
-//                //                self.dataArray.removeAll()
-//                //                self.getTaskPool()
-//            }
-//        }
-//        
-//        tableView.mj_header = header
+        let header = TTRefreshHeader.init {
+            DispatchQueue.main.async {[weak self] in
+                guard let ss = self else {return}
+                ss._pageNum =  1
+                ss.dataArray.removeAll()
+                ss.loadData()
+            }
+        }
+        
+        tableView.mj_header = header
+        
+        let footer = TTRefreshFooter.init{
+            DispatchQueue.main.async {[weak self] in
+                guard let ss = self else {return}
+                ss._pageNum = ss._pageNum + 1
+                ss.loadData()
+            }
+        }
+        
+        tableView.mj_footer = footer
+    }
+    
+    
+    
+    func loadData(_ d : [String:Any] = [:])  {
+        HUD.show(withStatus: hud_msg_loading)
+        
+        var pars : [String:Any] = d
+        pars["page"] = _pageNum
+
+        if _isSearch {
+            pars["stpn"] = String.isNullOrEmpty(s_pn.text);
+        }
+        
+        netHelper_request(withUrl: pn_list_url, method: .post, parameters: pars, successHandler: { [weak self](res) in
+            HUD.dismiss()
+            guard let ss = self else {return}
+            if ss._pageNum == 1 {
+                ss.dataArray.removeAll();
+                ss.tableView.mj_footer.resetNoMoreData()
+            }
+            
+            
+            if ss.tableView.mj_header.isRefreshing(){
+                ss.tableView.mj_header.endRefreshing();
+            } else if  ss.tableView.mj_footer.isRefreshing() {
+                ss.tableView.mj_footer.endRefreshing();
+            }
+            
+            guard let arr = res["body"] as? [[String:Any]] else {return};
+            if arr.count > 0 {
+                ss.dataArray = ss.dataArray + arr;
+                
+                if arr.count < 15 {
+                    ss.tableView.mj_footer.state = MJRefreshState.noMoreData;
+                }
+            }
+            
+            ss.tableView.reloadData()
+            
+        }) { (str) in
+            print(str);
+        }
         
     }
     
+    
+    
+    
+
     
     //MARK:
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return 10;
+        return dataArray.count;
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "MaterialSearchCellIdentifier", for: indexPath) as! MaterialSearchCell
-        
+        let d = dataArray[indexPath.row]
+        cell.fill(d)
+        cell.buttonActionHandler = {[weak self] index in
+            guard let ss = self else {return}
+            if index == 1 {
+                let vc = PNHistoryController();
+                vc.pn = String.isNullOrEmpty(d["stpn"])
+                ss.navigationController?.pushViewController(vc, animated: true)
+            }else {
+            
+            }
+
+        }
         
         return cell
         
     }
     
 
+    func _action(_ index:Int)  {
+        if index == 1{
+            let vc = PNHistoryController();
+            self.navigationController?.pushViewController(vc, animated: true)
+        }else if index == 2 {
+        
+        }
+    }
+    
+    
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

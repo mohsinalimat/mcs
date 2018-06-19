@@ -31,6 +31,11 @@
 		A1284D8C205BB00500B7B576 /* WarnInfoDetailController_new.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1284D8A205BB00500B7B576 /* WarnInfoDetailController_new.xib */; };
 		A13F1AEB200745F1004FDFF4 /* LoginViewFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13F1AEA200745F1004FDFF4 /* LoginViewFooter.swift */; };
 		A13F1AED20074693004FDFF4 /* LoginViewFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = A13F1AEC20074693004FDFF4 /* LoginViewFooter.xib */; };
+		A13FC99B20D8CBE10010DF6D /* PNHistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13FC99A20D8CBE10010DF6D /* PNHistoryController.swift */; };
+		A13FC99D20D8CC470010DF6D /* MyOrderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13FC99C20D8CC470010DF6D /* MyOrderController.swift */; };
+		A13FC9A020D8E0BC0010DF6D /* PNHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13FC99E20D8E0BC0010DF6D /* PNHistoryCell.swift */; };
+		A13FC9A120D8E0BC0010DF6D /* PNHistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A13FC99F20D8E0BC0010DF6D /* PNHistoryCell.xib */; };
+		A13FC9A320D905F40010DF6D /* MyOrderController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A13FC9A220D905F40010DF6D /* MyOrderController.xib */; };
 		A14BA8AE20733AEB0027D51F /* TaskChangeShiftReasonVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14BA8AC20733AEA0027D51F /* TaskChangeShiftReasonVC.swift */; };
 		A14BA8AF20733AEB0027D51F /* TaskChangeShiftReasonVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A14BA8AD20733AEB0027D51F /* TaskChangeShiftReasonVC.xib */; };
 		A14BA8B12073761D0027D51F /* TaskPoolDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A14BA8B02073761C0027D51F /* TaskPoolDetailController.xib */; };
@@ -267,6 +272,11 @@
 		A1284D8A205BB00500B7B576 /* WarnInfoDetailController_new.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WarnInfoDetailController_new.xib; sourceTree = "<group>"; };
 		A13F1AEA200745F1004FDFF4 /* LoginViewFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewFooter.swift; sourceTree = "<group>"; };
 		A13F1AEC20074693004FDFF4 /* LoginViewFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewFooter.xib; sourceTree = "<group>"; };
+		A13FC99A20D8CBE10010DF6D /* PNHistoryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNHistoryController.swift; sourceTree = "<group>"; };
+		A13FC99C20D8CC470010DF6D /* MyOrderController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOrderController.swift; sourceTree = "<group>"; };
+		A13FC99E20D8E0BC0010DF6D /* PNHistoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNHistoryCell.swift; sourceTree = "<group>"; };
+		A13FC99F20D8E0BC0010DF6D /* PNHistoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PNHistoryCell.xib; sourceTree = "<group>"; };
+		A13FC9A220D905F40010DF6D /* MyOrderController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyOrderController.xib; sourceTree = "<group>"; };
 		A14BA8AC20733AEA0027D51F /* TaskChangeShiftReasonVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskChangeShiftReasonVC.swift; sourceTree = "<group>"; };
 		A14BA8AD20733AEB0027D51F /* TaskChangeShiftReasonVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskChangeShiftReasonVC.xib; sourceTree = "<group>"; };
 		A14BA8B02073761C0027D51F /* TaskPoolDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskPoolDetailController.xib; sourceTree = "<group>"; };
@@ -624,6 +634,8 @@
 				A1BA5766209AB8BC00B2D6E0 /* MaterialOrderCell.xib */,
 				A1BA5769209AEEFA00B2D6E0 /* MaterialOrderHead.swift */,
 				A1BA576B209AEF7800B2D6E0 /* MaterialOrderHead.xib */,
+				A13FC99E20D8E0BC0010DF6D /* PNHistoryCell.swift */,
+				A13FC99F20D8E0BC0010DF6D /* PNHistoryCell.xib */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -906,6 +918,9 @@
 				A1EB214E208DC92000661C45 /* MaterialsViewController.swift */,
 				A1BA5758209AAEF800B2D6E0 /* MaterialSearchController.swift */,
 				A1BA5759209AAEF800B2D6E0 /* MaterialSearchController.xib */,
+				A13FC99A20D8CBE10010DF6D /* PNHistoryController.swift */,
+				A13FC99C20D8CC470010DF6D /* MyOrderController.swift */,
+				A13FC9A220D905F40010DF6D /* MyOrderController.xib */,
 				A1BA575C209AAF0E00B2D6E0 /* MaterialOrderController.swift */,
 				A1BA575D209AAF0E00B2D6E0 /* MaterialOrderController.xib */,
 			);
@@ -1087,6 +1102,7 @@
 				A1EB214C208DAC5100661C45 /* DDListCell.xib in Resources */,
 				A1C26DAE204FBA2700B11F63 /* FlightWarnListCell.xib in Resources */,
 				A1BDA7C720BCF0FF006DE281 /* DDNoticeStructureCell.xib in Resources */,
+				A13FC9A320D905F40010DF6D /* MyOrderController.xib in Resources */,
 				A1FE8BEC20C8D57C00155DBA /* HistoryFaultCell.xib in Resources */,
 				A120285C2008A1C000CB8633 /* error.png in Resources */,
 				A1BDA7CB20BCF131006DE281 /* DDNoticeRestrictionCell.xib in Resources */,
@@ -1107,6 +1123,7 @@
 				A1BDA7D720BD44BA006DE281 /* DDWPHeadView.xib in Resources */,
 				A1BC1F4C2015C733007D0E1C /* WarnListCell.xib in Resources */,
 				A1BDA7CF20BCF159006DE281 /* DDNoticeCabinCell.xib in Resources */,
+				A13FC9A120D8E0BC0010DF6D /* PNHistoryCell.xib in Resources */,
 				A1BA576C209AEF7800B2D6E0 /* MaterialOrderHead.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1203,6 +1220,7 @@
 				A1284D8B205BB00500B7B576 /* WarnInfoDetailController_new.swift in Sources */,
 				A1C546C8207A0F920060D921 /* Add_ComponentVC.swift in Sources */,
 				A1CF2A1120070AA1009FE6A4 /* BaseNavigationController.swift in Sources */,
+				A13FC99D20D8CC470010DF6D /* MyOrderController.swift in Sources */,
 				A1CF29FC20070029009FE6A4 /* ViewController.swift in Sources */,
 				A1AAF14B20491D7E00E8CB3B /* BaseTabItemController.swift in Sources */,
 				A12028612008A1C200CB8633 /* LocationManager.swift in Sources */,
@@ -1213,6 +1231,7 @@
 				A1982F0F200F1E0E00B24DA6 /* NetHelper.swift in Sources */,
 				A1D1335720C53D4F00A87346 /* DDRepActionController.swift in Sources */,
 				A1BC1F472015BBA0007D0E1C /* FlightWarnHeaderView.swift in Sources */,
+				A13FC99B20D8CBE10010DF6D /* PNHistoryController.swift in Sources */,
 				A1BC1F3B2015AC4A007D0E1C /* HistoryFaultController.swift in Sources */,
 				A1A658CD2011D4D00079B354 /* BaseCollectionView.swift in Sources */,
 				A1CF29FA20070029009FE6A4 /* AppDelegate.swift in Sources */,
@@ -1243,6 +1262,7 @@
 				A1BDA7CE20BCF159006DE281 /* DDNoticeCabinCell.swift in Sources */,
 				A165946F206E0DBB00CC8A0D /* TaskHandleController.swift in Sources */,
 				A1C6DD73206C7F0F00A09808 /* TaskPoolSelectController.swift in Sources */,
+				A13FC9A020D8E0BC0010DF6D /* PNHistoryCell.swift in Sources */,
 				A1E5C10E2048EAF900511F58 /* TaskPoolViewController.swift in Sources */,
 				A161217020904DE600F72C94 /* ReportBaseInfoCell.swift in Sources */,
 				A161216220901EBE00F72C94 /* ReporFormController.swift in Sources */,

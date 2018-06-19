@@ -7,6 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MaterialSearchController" customModule="mcs" customModuleProvider="target">
             <connections>
+                <outlet property="s_description" destination="m4t-pI-HxX" id="gIB-nq-rjx"/>
+                <outlet property="s_pn" destination="PaC-mn-TB5" id="7xP-ud-uuX"/>
                 <outlet property="tableView" destination="p50-Nz-sRL" id="N8Y-Jh-el7"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -37,9 +39,15 @@
                                 </userDefinedRuntimeAttribute>
                                 <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                             </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="searchAction:" destination="-1" eventType="touchUpInside" id="7hj-8L-lVe"/>
+                            </connections>
                         </button>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="m4t-pI-HxX">
                             <color key="backgroundColor" red="0.92538958790000003" green="0.92554813619999998" blue="0.92537957429999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" id="esI-0Q-o2P"/>
+                            </constraints>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <textInputTraits key="textInputTraits"/>
@@ -56,14 +64,13 @@
                     </subviews>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="A9Z-pc-btl"/>
-                        <constraint firstItem="m4t-pI-HxX" firstAttribute="leading" secondItem="PaC-mn-TB5" secondAttribute="trailing" constant="40" id="Fxy-dp-cDP"/>
+                        <constraint firstItem="m4t-pI-HxX" firstAttribute="leading" secondItem="PaC-mn-TB5" secondAttribute="trailing" constant="10" id="Fxy-dp-cDP"/>
                         <constraint firstItem="KIx-Mm-Jzo" firstAttribute="centerY" secondItem="PaC-mn-TB5" secondAttribute="centerY" id="H7b-Gd-lqi"/>
                         <constraint firstItem="PaC-mn-TB5" firstAttribute="centerY" secondItem="JXK-u2-I5d" secondAttribute="centerY" constant="3" id="SME-zo-BLr"/>
-                        <constraint firstItem="m4t-pI-HxX" firstAttribute="width" secondItem="PaC-mn-TB5" secondAttribute="width" id="Vtu-pv-Wes"/>
                         <constraint firstAttribute="width" constant="600" id="Xzw-b3-e1c"/>
                         <constraint firstItem="m4t-pI-HxX" firstAttribute="centerY" secondItem="PaC-mn-TB5" secondAttribute="centerY" id="c7I-vx-02z"/>
-                        <constraint firstItem="PaC-mn-TB5" firstAttribute="leading" secondItem="JXK-u2-I5d" secondAttribute="leading" constant="10" id="kI5-vK-e9k"/>
-                        <constraint firstItem="KIx-Mm-Jzo" firstAttribute="leading" secondItem="m4t-pI-HxX" secondAttribute="trailing" constant="20" id="wDw-cE-2qm"/>
+                        <constraint firstAttribute="trailing" secondItem="KIx-Mm-Jzo" secondAttribute="trailing" constant="20" id="rRh-HR-5Rb"/>
+                        <constraint firstItem="KIx-Mm-Jzo" firstAttribute="leading" secondItem="m4t-pI-HxX" secondAttribute="trailing" id="wDw-cE-2qm"/>
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aaq-2f-1Ks">

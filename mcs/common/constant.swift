@@ -82,6 +82,11 @@ let dd_cal_deadline_url = "/biz/calAcDl"
 
 ///dd
 let dd_list_url = "/biz/dd/list"
+let pn_list_url = "/biz/pnInStock/getList"
+let order_list_url = "/biz/getCurrentDayOrders"
+let submit_order_url = "/biz/preOrder"
+let pn_history_url = "/biz/pnMovementHistory/getList"
+
 
 
 ///vc constant
