@@ -39,6 +39,7 @@ class FlightInfoListCell: UICollectionViewCell {
 
     override func prepareForReuse() {
         warn_tap.isHidden = true
+        warn_tap.backgroundColor = UIColor.clear
         flightNo.text = nil
         iconImgWidth.constant = 0;
     }

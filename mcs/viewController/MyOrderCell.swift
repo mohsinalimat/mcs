@@ -1,15 +1,14 @@
 //
-//  MaterialSearchCell.swift
+//  MyOrderCell.swift
 //  mcs
 //
-//  Created by gener on 2018/5/3.
+//  Created by gener on 2018/6/20.
 //  Copyright © 2018年 Light. All rights reserved.
 //
 
 import UIKit
 
-class MaterialSearchCell: UITableViewCell {
-
+class MyOrderCell: UITableViewCell {
     @IBOutlet weak var pn_number: UILabel!
     
     @IBOutlet weak var pn_serial: UILabel!
@@ -22,41 +21,36 @@ class MaterialSearchCell: UITableViewCell {
     @IBOutlet weak var descri: UILabel!
     var buttonActionHandler:((Int) -> Void)?
     
-    @IBOutlet weak var addBtn: UIButton!
-    
-    @IBAction func buttonAction(_ sender: UIButton) {
-        if let hander = buttonActionHandler {
-            if sender.tag == 2 {
-                //sender.isHidden = true
-            }
-            
-            hander(sender.tag);
-        }
-    }
-    
+    @IBOutlet weak var stepper: UIStepper!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        stepper.addTarget(self, action: #selector(step(_ :)), for: .valueChanged)
     }
 
+    func step(_ s:UIStepper)  {
+        let n = Int.init(s.value)
+        pn_number.text = "\(n)"
+        
+        if let handler = buttonActionHandler {
+            handler(n);
+        }
+    }
     
-    func fill(_ d:[String:Any] , added:Bool = false) {
-        pn_number.text = String.isNullOrEmpty(d["stqtstk"])
+    
+    
+    func fill(_ d:[String:Any] , num:Int?) {
+        let n = num ?? 1
+        pn_number.text = "\(n)"
+        stepper.value = Double.init(n)
+        
         descri.text = String.isNullOrEmpty(d["description"])
         pn_serial.text = "PN: " +  String.isNullOrEmpty(d["stpn"])
-        code.text = String.isNullOrEmpty(d["companyCode"])
-        station.text = String.isNullOrEmpty(d["stcodmag"])
-        location.text = String.isNullOrEmpty(d["location"])
-        
-        //addBtn.isHidden = added
         
     }
     
-    
-    override func prepareForReuse() {
-        addBtn.isHidden = false
-    }
     
     
     override func setSelected(_ selected: Bool, animated: Bool) {

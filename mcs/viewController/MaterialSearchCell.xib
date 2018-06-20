@@ -49,11 +49,10 @@
                     </label>
                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="esJ-KX-eeN">
                         <constraints>
-                            <constraint firstAttribute="width" constant="150" id="KHQ-bg-aRG"/>
+                            <constraint firstAttribute="width" constant="50" id="KHQ-bg-aRG"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <inset key="imageEdgeInsets" minX="130" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        <state key="normal" title="Add To Order" backgroundImage="button_bg1">
+                        <state key="normal" image="add_subscribe_video">
                             <color key="titleColor" red="0.22230920200000001" green="0.59495002029999999" blue="0.98936182260000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </state>
                         <userDefinedRuntimeAttributes>
@@ -69,6 +68,7 @@
                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yj2-OT-dfp">
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="1dS-PD-43v"/>
+                            <constraint firstAttribute="width" constant="150" id="8nQ-jy-fRZ"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <inset key="imageEdgeInsets" minX="130" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -114,7 +114,6 @@
                     <constraint firstItem="m6W-xf-rpD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="3" id="75N-aM-ki7"/>
                     <constraint firstItem="m6W-xf-rpD" firstAttribute="leading" secondItem="lYw-JJ-WOG" secondAttribute="leading" id="AEI-ad-OoP"/>
                     <constraint firstItem="exa-nQ-CTa" firstAttribute="centerY" secondItem="m6W-xf-rpD" secondAttribute="centerY" id="ES5-4W-1sf"/>
-                    <constraint firstItem="esJ-KX-eeN" firstAttribute="width" secondItem="Yj2-OT-dfp" secondAttribute="width" id="III-06-nNb"/>
                     <constraint firstAttribute="trailingMargin" secondItem="esJ-KX-eeN" secondAttribute="trailing" constant="27" id="KSk-OZ-taK"/>
                     <constraint firstItem="esJ-KX-eeN" firstAttribute="leading" secondItem="Yj2-OT-dfp" secondAttribute="trailing" constant="20" id="LJy-jX-MLv"/>
                     <constraint firstItem="Umu-M7-0JE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="5" id="OGb-Vf-5pI"/>
@@ -135,6 +134,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="addBtn" destination="esJ-KX-eeN" id="HYB-JK-7Kz"/>
                 <outlet property="code" destination="fmr-B5-Wnn" id="v2g-bM-1Bc"/>
                 <outlet property="descri" destination="lYw-JJ-WOG" id="g2P-Jc-6p5"/>
                 <outlet property="location" destination="exa-nQ-CTa" id="aBV-qW-WNx"/>
@@ -146,6 +146,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="add_subscribe_video" width="25" height="25"/>
         <image name="button_bg1" width="200" height="30"/>
         <image name="line_v" width="1" height="1"/>
     </resources>

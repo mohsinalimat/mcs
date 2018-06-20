@@ -151,6 +151,8 @@ let defect_all_status : [String:String] = {
 var kAttachmentDataArr = [Any]()
 let kTemporaryDirectory = NSTemporaryDirectory().appending("cache/")
 
+var pn_selected_number = [String:Int]()
+
 
 //MARK:
 let hud_msg_loading = "Loading"

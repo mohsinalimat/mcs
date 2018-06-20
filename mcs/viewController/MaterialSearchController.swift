@@ -23,6 +23,9 @@ class MaterialSearchController: BaseViewController  ,UITableViewDelegate,UITable
     @IBOutlet weak var s_description: UITextField!
     var _orderNumberBtn:UIButton!
     
+    var _hasAddedPN = [String]()
+    var _addedArr = [[String:String]]()
+    
     @IBAction func searchAction(_ sender: AnyObject) {
         _isSearch = true;
         
@@ -46,7 +49,7 @@ class MaterialSearchController: BaseViewController  ,UITableViewDelegate,UITable
         tableView.contentInset = UIEdgeInsets.zero
         tableView.scrollIndicatorInsets = UIEdgeInsets.zero
 
-        addOrderBtn()
+        UIApplication.shared.keyWindow?.addSubview(_orderNumberBtn)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -75,8 +78,10 @@ class MaterialSearchController: BaseViewController  ,UITableViewDelegate,UITable
     }
     
     func _toMyOrder(_ btn:UIButton) {
-        let vc = MyOrderController()
+        guard _addedArr.count > 0 else {return}
         
+        let vc = MyOrderController()
+        vc.dataArray = _addedArr
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -112,6 +117,8 @@ class MaterialSearchController: BaseViewController  ,UITableViewDelegate,UITable
         }
         
         tableView.mj_footer = footer
+        
+        addOrderBtn()
     }
     
     
@@ -171,15 +178,17 @@ class MaterialSearchController: BaseViewController  ,UITableViewDelegate,UITable
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MaterialSearchCellIdentifier", for: indexPath) as! MaterialSearchCell
         let d = dataArray[indexPath.row]
-        cell.fill(d)
+        let pn = String.isNullOrEmpty(d["stpn"])
+        cell.fill(d )
+        
         cell.buttonActionHandler = {[weak self] index in
             guard let ss = self else {return}
             if index == 1 {
                 let vc = PNHistoryController();
-                vc.pn = String.isNullOrEmpty(d["stpn"])
+                vc.pn = pn
                 ss.navigationController?.pushViewController(vc, animated: true)
             }else {
-            
+                ss._add_pn(pn , indexPath.row)
             }
 
         }
@@ -189,16 +198,20 @@ class MaterialSearchController: BaseViewController  ,UITableViewDelegate,UITable
     }
     
 
-    func _action(_ index:Int)  {
-        if index == 1{
-            let vc = PNHistoryController();
-            self.navigationController?.pushViewController(vc, animated: true)
-        }else if index == 2 {
-        
+    
+    func _add_pn(_ pn:String , _ index:Int) {
+        if !_hasAddedPN.contains(pn){
+            _hasAddedPN.append(pn);
+            _orderNumberBtn.setTitle("\(_hasAddedPN.count)", for: .normal)
+            
+            let d  = dataArray[index]
+            let des = String.isNullOrEmpty(d["description"])
+            _addedArr.append(["stpn":pn,"description":des])
+  
+        }else {
+            HUD.show(info: "Added!");
         }
     }
-    
-    
     
     
     

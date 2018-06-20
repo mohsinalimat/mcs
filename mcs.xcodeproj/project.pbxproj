@@ -236,6 +236,8 @@
 		A1EB37562092F461008A0FC7 /* DDInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1EB37542092F461008A0FC7 /* DDInfoCell.xib */; };
 		A1EC58A920897BE500936D6B /* ViewDefectReportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EC58A820897BE500936D6B /* ViewDefectReportController.swift */; };
 		A1EE525F20995EB0000E3630 /* defectConstants.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1EE525E20995EB0000E3630 /* defectConstants.plist */; };
+		A1EFFEBC20D9EEFB0021AB6D /* MyOrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EFFEBA20D9EEFB0021AB6D /* MyOrderCell.swift */; };
+		A1EFFEBD20D9EEFB0021AB6D /* MyOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1EFFEBB20D9EEFB0021AB6D /* MyOrderCell.xib */; };
 		A1F293B2206DDA8900004E9C /* TaskPoolRootController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F293B1206DDA8900004E9C /* TaskPoolRootController.swift */; };
 		A1FE5095204796E1004F2330 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FE5094204796E0004F2330 /* BaseTabBarController.swift */; };
 		A1FE8BE620C8CA8D00155DBA /* HistoryFaultTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FE8BE520C8CA8D00155DBA /* HistoryFaultTopView.swift */; };
@@ -483,6 +485,8 @@
 		A1EB37542092F461008A0FC7 /* DDInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DDInfoCell.xib; sourceTree = "<group>"; };
 		A1EC58A820897BE500936D6B /* ViewDefectReportController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewDefectReportController.swift; sourceTree = "<group>"; };
 		A1EE525E20995EB0000E3630 /* defectConstants.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = defectConstants.plist; sourceTree = "<group>"; };
+		A1EFFEBA20D9EEFB0021AB6D /* MyOrderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOrderCell.swift; sourceTree = "<group>"; };
+		A1EFFEBB20D9EEFB0021AB6D /* MyOrderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyOrderCell.xib; sourceTree = "<group>"; };
 		A1F293B1206DDA8900004E9C /* TaskPoolRootController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskPoolRootController.swift; sourceTree = "<group>"; };
 		A1FE5094204796E0004F2330 /* BaseTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
 		A1FE8BE520C8CA8D00155DBA /* HistoryFaultTopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryFaultTopView.swift; sourceTree = "<group>"; };
@@ -630,6 +634,8 @@
 			children = (
 				A1BA5761209AB84000B2D6E0 /* MaterialSearchCell.swift */,
 				A1BA5762209AB84000B2D6E0 /* MaterialSearchCell.xib */,
+				A1EFFEBA20D9EEFB0021AB6D /* MyOrderCell.swift */,
+				A1EFFEBB20D9EEFB0021AB6D /* MyOrderCell.xib */,
 				A1BA5765209AB8BC00B2D6E0 /* MaterialOrderCell.swift */,
 				A1BA5766209AB8BC00B2D6E0 /* MaterialOrderCell.xib */,
 				A1BA5769209AEEFA00B2D6E0 /* MaterialOrderHead.swift */,
@@ -1060,6 +1066,7 @@
 				A1D15D8D20464466004A2C58 /* WarnFaultInfoCell.xib in Resources */,
 				A1CE0F7120A93AA800AF42D6 /* ReportInfoCell_R.xib in Resources */,
 				A1BDA7D320BD3D4D006DE281 /* DDWSHeadView.xib in Resources */,
+				A1EFFEBD20D9EEFB0021AB6D /* MyOrderCell.xib in Resources */,
 				A1B4E0C620AD892600EA7219 /* NRRCell_R.xib in Resources */,
 				A1AFF6A52074620E00ED1FC4 /* TaskAddActionVC.xib in Resources */,
 				A1FE8BE820C8CA9E00155DBA /* HistoryFaultTopView.xib in Resources */,
@@ -1287,6 +1294,7 @@
 				A1AB9EF3207B00FE000663C3 /* ActionListVC.swift in Sources */,
 				A1BDA7C620BCF0FF006DE281 /* DDNoticeStructureCell.swift in Sources */,
 				A1DF738D2043EF5B0099B858 /* WarnInfoDetailController.swift in Sources */,
+				A1EFFEBC20D9EEFB0021AB6D /* MyOrderCell.swift in Sources */,
 				A1BDA7DE20BD4F78006DE281 /* DDWPCell.swift in Sources */,
 				A1C6DD76206CEB3600A09808 /* BaseDataCheck.swift in Sources */,
 				A12028622008A1C200CB8633 /* Reachability.m in Sources */,
