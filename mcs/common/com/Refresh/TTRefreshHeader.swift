@@ -76,12 +76,12 @@ class TTRefreshHeader: MJRefreshHeader {
             switch newValue {
             case .idle:
                 self.loading.stopAnimating()
-                self.title.text = "下拉刷新"
+                self.title.text = "PullDown Refresh"
                 break
                 
             case .pulling:
                 self.loading.stopAnimating()
-                self.title.text = "松开刷新"
+                self.title.text = "Refreshing"
                 break
                 
             case .refreshing:

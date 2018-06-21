@@ -21,7 +21,7 @@
                     <color key="separatorColor" red="0.92538958790000003" green="0.92554813619999998" blue="0.92537957429999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <inset key="separatorInset" minX="30" minY="0.0" maxX="30" maxY="0.0"/>
                 </tableView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cIY-OD-obR">
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cIY-OD-obR">
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fVZ-sx-2iR">
                             <constraints>
@@ -59,7 +59,7 @@
                     <constraints>
                         <constraint firstItem="BbX-bP-Bsa" firstAttribute="leading" secondItem="6dR-TA-bWm" secondAttribute="trailing" constant="40" id="Lz7-ba-UCh"/>
                         <constraint firstAttribute="width" constant="600" id="RhG-Hy-pic"/>
-                        <constraint firstAttribute="height" constant="50" id="dbR-Yl-VFk"/>
+                        <constraint firstAttribute="height" id="dbR-Yl-VFk"/>
                         <constraint firstItem="fVZ-sx-2iR" firstAttribute="leading" secondItem="BbX-bP-Bsa" secondAttribute="trailing" constant="20" id="isq-9e-Utr"/>
                         <constraint firstItem="6dR-TA-bWm" firstAttribute="leading" secondItem="cIY-OD-obR" secondAttribute="leading" constant="10" id="maV-if-9Ts"/>
                         <constraint firstItem="6dR-TA-bWm" firstAttribute="centerY" secondItem="cIY-OD-obR" secondAttribute="centerY" id="ny0-OD-sc4"/>

@@ -111,6 +111,16 @@ func request(_ url :String,
 
 }
 
+func requestJSONEncoding(_ url :String,
+                 parameters:[String:Any]? = nil,
+                 successHandler:(([String:Any]) -> Void)? = nil,
+                 failureHandler:((String?) -> Void)? = nil)
+{
+    netHelper_request(withUrl: url, method: .post, parameters: parameters, encoding: JSONEncoding.default, successHandler: successHandler, failureHandler: failureHandler);
+}
+
+
+
 //MARK: - 上传文件
 func netHelper_upload(to:String,
             parameters:[String:Any]? = nil,

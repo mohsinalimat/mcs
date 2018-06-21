@@ -14,13 +14,91 @@ class MyOrderController: BaseViewController,UITableViewDelegate,UITableViewDataS
     @IBOutlet weak var pn_total: UILabel!
     @IBOutlet weak var qty: UILabel!
     
-    var dataArray = [[String:Any]]()
-
-    @IBAction func buttonAction(_ sender: UIButton) {
+    @IBOutlet weak var ac: UIButton!
+    @IBOutlet weak var shift: UIButton!
+    var pn_selected_reg:String?
+    var pn_selected_shift:String?
     
+    
+    var dataArray = [[String:String]]()
+    var leaveHandler:(([[String:String]]) -> Void)?
+    
+    @IBAction func buttonAction(_ sender: UIButton) {
+        switch sender.tag {
+        case 1:
+            guard dataArray.count > 0 else {return}
+            __clear();
+            break
+        case 2:
+            guard pn_selected_reg != nil else {HUD.show(info: "Select A/C "); return}
+            guard pn_selected_shift != nil else {HUD.show(info: "Select Shift "); return}
+            guard dataArray.count > 0 else {return}
+            
+            
+            var pnArr = [[String:String]]()
+            for _d in dataArray {
+                let pn = String.isNullOrEmpty(_d["stpn"])
+                let des = String.isNullOrEmpty(_d["description"])
+                let num = pn_selected_number[pn] ?? 1
+                
+                let new = ["pn" : pn,
+                           "description":des,
+                           "totalQty": "\(num)"]
+                
+                pnArr.append(new)
+            }
+            
+            
+            let d = ["shift":pn_selected_shift!,
+                     "ac":pn_selected_reg!,
+                     "taskPns":pnArr
+                ] as [String : Any]
+            
+            HUD.show()
+            requestJSONEncoding(submit_order_url, parameters: d, successHandler: {[weak self] (res) in
+                HUD.show(successInfo: "Success! ")
+                guard let ss = self else {return}
+                ss.__clear()
+                _  = ss.navigationController?.popViewController(animated: true)
+                })
+
+            break
+        
+        
+        case 3://reg
+        Tools.showDataPicekr (dataSource:Tools.acs()){ [weak self](obj) in
+            let obj = obj as! String
+            sender.setTitle(obj, for: .normal)
+            
+            guard let strongSelf = self else {return}
+            strongSelf.pn_selected_reg = obj
+        }
+        break
+            
+        case 4:
+            
+            Tools.showDataPicekr(dataSource:Tools.shift()) { [weak self](obj) in
+                guard let strongSelf = self else {return}
+                let obj = obj as! [String:String]
+                strongSelf.shift.setTitle(obj["value"], for: .normal)
+                strongSelf.pn_selected_shift = obj["value"]
+            }
+            
+            break
+            
+        default:break
+        }
     
     }
     
+    func __clear()  {
+        dataArray.removeAll();
+        tableView.reloadData()
+        
+        pn_selected_number.removeAll()
+        __calTotal()
+
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +109,12 @@ class MyOrderController: BaseViewController,UITableViewDelegate,UITableViewDataS
         _initSubviews()
     }
 
-    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if let handler = leaveHandler {
+            handler(dataArray);
+        }
+    }
     
     
     //MARK: - init
@@ -45,6 +128,7 @@ class MyOrderController: BaseViewController,UITableViewDelegate,UITableViewDataS
         
         
         __calTotal()
+        
     }
     
     

@@ -77,7 +77,7 @@ class TTRefreshFooter: MJRefreshAutoFooter {
             switch newValue {
             case .idle:
                 self.loading.stopAnimating()
-                self.title.text = "上拉加载更多"
+                self.title.text = "Pull Load More"
                 break
                 
             case .refreshing:
@@ -86,7 +86,7 @@ class TTRefreshFooter: MJRefreshAutoFooter {
                 break
                 
             case .noMoreData:
-                self.title.text = "没有更多数据"
+                self.title.text = "No More Data"
                 self.loading.stopAnimating()
                 break
                 

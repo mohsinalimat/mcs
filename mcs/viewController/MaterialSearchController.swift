@@ -50,6 +50,13 @@ class MaterialSearchController: BaseViewController  ,UITableViewDelegate,UITable
         tableView.scrollIndicatorInsets = UIEdgeInsets.zero
 
         UIApplication.shared.keyWindow?.addSubview(_orderNumberBtn)
+
+        if _hasAddedPN.count > 0 {
+            _orderNumberBtn.setTitle("\(_hasAddedPN.count)", for: .normal);
+        }else {
+            _orderNumberBtn.isHidden = true;
+        }
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -82,6 +89,22 @@ class MaterialSearchController: BaseViewController  ,UITableViewDelegate,UITable
         
         let vc = MyOrderController()
         vc.dataArray = _addedArr
+        
+        vc.leaveHandler = {[weak self] a in
+            guard let ss = self else {return}
+            ss._addedArr.removeAll()
+            ss._hasAddedPN.removeAll()
+            ss._addedArr = a
+            
+            for d in a {
+                if let pn = d["stpn"]{
+                    ss._hasAddedPN.append(pn);
+                }
+            }
+            
+            ss.tableView.reloadData()
+        }
+        
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -179,7 +202,7 @@ class MaterialSearchController: BaseViewController  ,UITableViewDelegate,UITable
         let cell = tableView.dequeueReusableCell(withIdentifier: "MaterialSearchCellIdentifier", for: indexPath) as! MaterialSearchCell
         let d = dataArray[indexPath.row]
         let pn = String.isNullOrEmpty(d["stpn"])
-        cell.fill(d )
+        cell.fill(d ,added: _hasAddedPN.contains(pn))
         
         cell.buttonActionHandler = {[weak self] index in
             guard let ss = self else {return}
@@ -207,7 +230,9 @@ class MaterialSearchController: BaseViewController  ,UITableViewDelegate,UITable
             let d  = dataArray[index]
             let des = String.isNullOrEmpty(d["description"])
             _addedArr.append(["stpn":pn,"description":des])
-  
+            _orderNumberBtn.isHidden = false;
+            
+            //tableView.reloadData()
         }else {
             HUD.show(info: "Added!");
         }

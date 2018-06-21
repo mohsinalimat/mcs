@@ -27,7 +27,7 @@ class MaterialSearchCell: UITableViewCell {
     @IBAction func buttonAction(_ sender: UIButton) {
         if let hander = buttonActionHandler {
             if sender.tag == 2 {
-                //sender.isHidden = true
+                sender.isHidden = true
             }
             
             hander(sender.tag);
@@ -49,7 +49,7 @@ class MaterialSearchCell: UITableViewCell {
         station.text = String.isNullOrEmpty(d["stcodmag"])
         location.text = String.isNullOrEmpty(d["location"])
         
-        //addBtn.isHidden = added
+        addBtn.isHidden = added
         
     }
     
