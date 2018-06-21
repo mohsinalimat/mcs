@@ -65,9 +65,10 @@ class MaterialSearchController: BaseViewController  ,UITableViewDelegate,UITable
     }
     
     
+    let orderBtnOriginRect = CGRect (x: kCurrentScreenWidth - 150, y: kCurrentScreenHeight - 150, width: 50, height: 50)
     
     func addOrderBtn() {
-        let btn = UIButton (frame: CGRect (x: kCurrentScreenWidth - 120, y: kCurrentScreenHeight - 150, width: 50, height: 50))
+        let btn = UIButton (frame: orderBtnOriginRect)
         btn.layer.cornerRadius = 25
         btn.layer.masksToBounds = true
         btn.layer.borderColor = kTableviewBackgroundColor.cgColor
@@ -232,7 +233,14 @@ class MaterialSearchController: BaseViewController  ,UITableViewDelegate,UITable
             _addedArr.append(["stpn":pn,"description":des])
             _orderNumberBtn.isHidden = false;
             
-            //tableView.reloadData()
+            
+            UIView.animate(withDuration: 0.5, animations: {
+                self._orderNumberBtn.transform = CGAffineTransform.init(scaleX: 3, y: 3)
+                }, completion: { (b) in
+                    self._orderNumberBtn.transform = CGAffineTransform.identity
+            })
+            
+            tableView.reloadData()
         }else {
             HUD.show(info: "Added!");
         }

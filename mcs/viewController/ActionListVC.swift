@@ -18,6 +18,7 @@ class ActionListVC: BaseViewController ,UITableViewDelegate,UITableViewDataSourc
     let disposeBag =  DisposeBag()
     
     @IBOutlet weak var _tableView: UITableView!
+    var bizPartList_r:[[String:Any]]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,6 +71,8 @@ class ActionListVC: BaseViewController ,UITableViewDelegate,UITableViewDataSourc
             guard let actionlist = body["actionList"] as? [[String : Any]] else {return}
             guard let strongSelf = self else{return}
             
+            strongSelf.bizPartList_r = body["partList"] as? [[String : Any]]
+            
             strongSelf.dataArray.removeAll()
             strongSelf.dataArray = strongSelf.dataArray + actionlist
             strongSelf._tableView.reloadData()
@@ -107,7 +110,7 @@ class ActionListVC: BaseViewController ,UITableViewDelegate,UITableViewDataSourc
         vc.r_index = indexPath.row + 1
         vc.read_only = true
         vc.action_detail_info_r = d;
-        
+        vc.bizPartList_r =  bizPartList_r
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

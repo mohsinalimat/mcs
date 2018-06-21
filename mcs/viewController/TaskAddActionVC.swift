@@ -27,6 +27,8 @@ class TaskAddActionVC: BaseViewController ,UITableViewDelegate,UITableViewDataSo
     var from_defect_report:Bool = false
     
     var action_detail_info_r = [String:Any]()
+    var bizPartList_r:[[String:Any]]?
+    
     
     var section2_selected_index:Int = 1;
     var reportInfoCell:AddActionInfoCell!
@@ -69,7 +71,7 @@ class TaskAddActionVC: BaseViewController ,UITableViewDelegate,UITableViewDataSo
             s_closed.isOn = false
             
             btn_save.isHidden = true
-            title = "Action \(r_index)" //String.isNullOrEmpty(action_detail_info_r["id"]);
+            title = "Action \(r_index)"
             s_performed.isOn = String.isNullOrEmpty(action_detail_info_r["perform"]) == "1" ? true : false
             s_closed.isOn = String.isNullOrEmpty(action_detail_info_r["closed"]) == "1" ? true : false
             
@@ -77,9 +79,13 @@ class TaskAddActionVC: BaseViewController ,UITableViewDelegate,UITableViewDataSo
                 addActionComponentDataArr = partlist;
             }
             
-            if let bizlist = action_detail_info_r["bizPartList"] as? [[String:String]] {
+//            if let bizlist = action_detail_info_r["bizPartList"] as? [[String:String]] {
+//                addActionMateralDataArr = bizlist;
+//            }
+            if let bizlist = bizPartList_r {
                 addActionMateralDataArr = bizlist;
             }
+
         }
         
         _tableView.reloadData()
