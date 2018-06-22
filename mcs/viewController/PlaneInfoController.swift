@@ -7,11 +7,15 @@
 //
 
 import UIKit
+import SwiftWebViewBridge
 
 class PlaneInfoController: BaseWebViewController {
 
     var _item:[UIBarButtonItem]?
     var _btn:UIButton!
+    
+    var _bridge:SwiftWebViewBridge!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +32,24 @@ class PlaneInfoController: BaseWebViewController {
         let items = [fixed,msgItem]
         _item = items
         
-
+        _bridge = SwiftWebViewBridge.bridge(webview, defaultHandler: { (data, responseBack) in
+            print("Swift received message from JS: \(data)")
+        })
+        
+        
+        
+//
+        _bridge.registerHandlerForJS(handlerName: "printReceivedParmas", handler: { [unowned self] jsonData, responseCallback in
+            // if you used self in any bridge handler/callback closure, remember to declare weak or unowned self, preventing from retaining cycle!
+            // Because VC owned bridge, brige owned this closure, and this cloure captured self!
+            
+            responseCallback([
+                "msg": "Swift has already finished its handler",
+                "returnValue": [1, 2, 3]
+                ])
+            })
+        
+        
         
         // Do any additional setup after loading the view.
         let d = ["id":"\(kFlightInfoListController_airId!)"]
@@ -37,6 +58,13 @@ class PlaneInfoController: BaseWebViewController {
         loadData()
     }
 
+//    LOGGING_RCVD: (
+//    {
+//    data = "id=e208c7af360f46fdb75d1f730d4c1708";
+//    }
+//    )
+//    Swift received message from JS: id=e208c7af360f46fdb75d1f730d4c1708
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         UIApplication.shared.keyWindow?.addSubview(_btn)

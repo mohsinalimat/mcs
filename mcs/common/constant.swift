@@ -14,8 +14,8 @@ let kCurrentScreenHeight = UIScreen.main.bounds.height
 let user_token = UserDefaults.standard.value(forKey: "user-token")
 
 ///MARK: -  url
-let BASE_URL = "http://smart.imsp.cn/mcs/rest"
-//let BASE_URL = "http://192.168.6.65:8080/mcs/rest"//linf
+//let BASE_URL = "http://smart.imsp.cn/mcs/rest"
+let BASE_URL = "http://192.168.6.65:8080/mcs/rest"//linf
 //let BASE_URL = "http://192.168.6.57:8081/mcs/rest"//ds
 //let BASE_URL = "http://192.168.6.59:8080/mcs/rest"//jx
 
@@ -85,7 +85,7 @@ let dd_list_url = "/biz/dd/list"
 let pn_list_url = "/biz/pnInStock/getList"
 let order_list_url = "/biz/getCurrentDayOrders"
 let submit_order_url = "/biz/preOrder"
-let pn_history_url = "/biz/pnMovementHistory/getList"
+let pn_history_url = "/biz/pnInStockChange/getList"//库存记录变动 "/biz/pnMovementHistory/getList"
 
 
 

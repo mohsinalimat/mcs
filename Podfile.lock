@@ -19,7 +19,7 @@ PODS:
     - FMDB/standard (= 2.7.2)
   - FMDB/standard (2.7.2)
   - IQKeyboardManagerSwift (5.0.0)
-  - Kingfisher (3.13.1)
+  - Kingfisher (3.13.0)
   - LKDBHelper (2.4.4):
     - LKDBHelper/standard (= 2.4.4)
   - LKDBHelper/standard (2.4.4):
@@ -33,13 +33,14 @@ PODS:
   - RxSwift (3.0.0)
   - SSZipArchive (2.0.2)
   - SVProgressHUD (2.1.2)
+  - SwiftWebViewBridge (0.3.0)
   - SwiftyJSON (3.1.4)
 
 DEPENDENCIES:
-  - AFNetworking (~> 3.2.0)
+  - AFNetworking (= 3.2.0)
   - Alamofire (~> 4.4)
   - IQKeyboardManagerSwift (= 5.0.0)
-  - Kingfisher (~> 3.13.0)
+  - Kingfisher (= 3.13.0)
   - LKDBHelper (~> 2.4.2)
   - MJRefresh
   - RxCocoa (= 3.0)
@@ -47,6 +48,7 @@ DEPENDENCIES:
   - RxSwift (= 3.0)
   - SSZipArchive (~> 2.0.2)
   - SVProgressHUD (~> 2.1.2)
+  - SwiftWebViewBridge (~> 0.3.0)
   - SwiftyJSON
 
 SPEC CHECKSUMS:
@@ -54,7 +56,7 @@ SPEC CHECKSUMS:
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
   FMDB: 6198a90e7b6900cfc046e6bc0ef6ebb7be9236aa
   IQKeyboardManagerSwift: 3f340202ebe1a7076279b9b9b3c817243ddb3aab
-  Kingfisher: ed9707a409cc47fddafbcd12a43a9757e3600af5
+  Kingfisher: 7eebf6000ac64401839f10da37f21eefa7d88970
   LKDBHelper: cf467ff69aaf1e13bd4964aca3a79881d54c6d14
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   RxCocoa: 0a2f3ae381cf16f4021a4cee7a4420f83058a965
@@ -62,8 +64,9 @@ SPEC CHECKSUMS:
   RxSwift: a930cd662f5b4a7ca9dc3518585dba91dadf497c
   SSZipArchive: 5fdf578dbbb60000b23439f80fa04e81d00740ee
   SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
+  SwiftWebViewBridge: 902b8e6945352c74aa5c0975c4dcd48f420f7d44
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: 4faee3009767e9e6e37e0bef1acf309c6617db41
+PODFILE CHECKSUM: d308e47f2eb2c6bf8efe4a9e64d22c96bef938ac
 
 COCOAPODS: 1.0.1

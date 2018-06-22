@@ -60,7 +60,7 @@ class PNHistoryController: BaseViewController,UITableViewDelegate,UITableViewDat
         
         var pars : [String:Any] = d
         pars["page"] = _pageNum
-        pars["pspn"] = pn
+        pars["mspn"] = pn
         
         netHelper_request(withUrl: pn_history_url, method: .post, parameters: pars, successHandler: { [weak self](res) in
             HUD.dismiss()

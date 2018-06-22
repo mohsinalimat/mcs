@@ -18,9 +18,7 @@ class PNHistoryCell: UITableViewCell {
     
     @IBOutlet weak var company_code: UILabel!
     
-    @IBOutlet weak var doc_type: UILabel!
     @IBOutlet weak var doc_date: UILabel!
-    @IBOutlet weak var toc: UILabel!
     @IBOutlet weak var store_code: UILabel!
     @IBOutlet weak var place: UILabel!
     @IBOutlet weak var position: UILabel!
@@ -39,16 +37,14 @@ class PNHistoryCell: UITableViewCell {
 
     
     func fill(_ d:[String:Any]) {
-        pn.text = String.isNullOrEmpty(d["pspn"])
+        pn.text = String.isNullOrEmpty(d["mspn"])
         item_num.text = String.isNullOrEmpty(d["itemNum"])
-        operation.text = String.isNullOrEmpty(d["operationType"])
+        operation.text = String.isNullOrEmpty(d["operationTypeCode"])
         company_code.text = String.isNullOrEmpty(d["companyCode"])
-        doc_type.text = String.isNullOrEmpty(d["docType"])
-        doc_date.text = String.isNullOrEmpty(d["docDate"])
-        toc.text = String.isNullOrEmpty(d["docNo"])
+        doc_date.text = String.isNullOrEmpty(d["moveDate"])
         store_code.text = String.isNullOrEmpty(d["storeCode"])
-        place.text = String.isNullOrEmpty(d["place"])
-        position.text = String.isNullOrEmpty(d["position"])
+        place.text = String.isNullOrEmpty(d["moveQty"])
+        position.text = String.isNullOrEmpty(d["rqNo"])
     }
     
     
