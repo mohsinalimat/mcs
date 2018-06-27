@@ -28,6 +28,8 @@ class FlightInfoListCell: UICollectionViewCell {
     
     @IBOutlet weak var warn_tap: UIButton!
     
+    @IBOutlet weak var icon_plane: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -42,10 +44,11 @@ class FlightInfoListCell: UICollectionViewCell {
         warn_tap.backgroundColor = UIColor.clear
         flightNo.text = nil
         iconImgWidth.constant = 0;
+        icon_plane.transform = CGAffineTransform.identity
     }
 
     
-    func fillCell(_ dic:[String:Any] , show:Bool? = false , left:Bool = true , warnStatus:[[String:Any]]? = nil )  {
+    func fillCell(_ dic:[String:Any] , show:Bool? = false , left:Bool = true , warnStatus:[[String:Any]]? = nil , thisDay:Bool = false )  {
         let fltno = left ? "fromFltNo":"toFltNo"
         flightNo.text = String.stringIsNullOrNil(dic[fltno])
         
@@ -72,7 +75,7 @@ class FlightInfoListCell: UICollectionViewCell {
         }*/
         
 
-        if flightNo.text == kFlightInfoListController_fltNo {
+        if thisDay && flightNo.text == kFlightInfoListController_fltNo {
             iconImgWidth.constant = 40;
         }else {
             iconImgWidth.constant = 0;
@@ -86,6 +89,9 @@ class FlightInfoListCell: UICollectionViewCell {
             }
         }
 
+        if left {
+            icon_plane.transform = CGAffineTransform.init(rotationAngle: CGFloat(M_PI_2));
+        }
     }
     
     

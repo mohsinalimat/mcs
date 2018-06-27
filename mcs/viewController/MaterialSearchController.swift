@@ -28,6 +28,7 @@ class MaterialSearchController: BaseViewController  ,UITableViewDelegate,UITable
     
     @IBAction func searchAction(_ sender: AnyObject) {
         _isSearch = true;
+        _pageNum = 1
         
         loadData()
     }
@@ -155,6 +156,7 @@ class MaterialSearchController: BaseViewController  ,UITableViewDelegate,UITable
 
         if _isSearch {
             pars["stpn"] = String.isNullOrEmpty(s_pn.text);
+            pars["description"] = String.isNullOrEmpty(s_description.text);
         }
         
         netHelper_request(withUrl: pn_list_url, method: .post, parameters: pars, successHandler: { [weak self](res) in
@@ -179,6 +181,8 @@ class MaterialSearchController: BaseViewController  ,UITableViewDelegate,UITable
                 if arr.count < 15 {
                     ss.tableView.mj_footer.state = MJRefreshState.noMoreData;
                 }
+            }else {
+                ss.tableView.mj_footer.state = MJRefreshState.noMoreData;
             }
             
             ss.tableView.reloadData()

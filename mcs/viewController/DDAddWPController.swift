@@ -72,6 +72,8 @@ class DDAddWPController: BasePickerViewController {
     
 
     override func finishedBtnAction() {
+        guard String.isNullOrEmpty(ata.text).lengthOfBytes(using: String.Encoding.utf8) > 0 else {return}
+        
         if let action = selectedAction {
             var igBase64Str = ""
             if let ig = igv.image , let data = UIImageJPEGRepresentation(ig, 0.5) {

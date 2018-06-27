@@ -58,7 +58,7 @@ class TaskChangeShiftReasonVC: BaseViewController ,UITextViewDelegate{
         navigationItem.leftBarButtonItem = leftitem
         
         let finishedbtn = UIButton (frame: CGRect (x: 0, y: 0, width: 60, height: 40))
-        finishedbtn.setTitle("确定", for: .normal)
+        finishedbtn.setTitle("OK", for: .normal)
         finishedbtn.setTitleColor(UIColor.white, for: .normal)
         finishedbtn.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: 1)
         finishedbtn.addTarget(self, action: #selector(finishedBtnAction), for: .touchUpInside)

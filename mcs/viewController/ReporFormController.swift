@@ -270,7 +270,29 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
         switch __defect_type() {
         case "TS": break
         case "DD":
-            let ddstatus        =   ddInfoCell.dd_status.count > 0 ? ddInfoCell.dd_status.joined(separator: ",") : ""
+            var arr = ddInfoCell.dd_status
+            
+            //ws
+            if dd_ws_arr.count > 0 {
+                params["wsListStr"] = dd_ws_arr;
+            }else {
+                if arr.contains("1"){
+                    arr.remove(at: arr.index(of: "1")!);
+                }
+            }
+            
+            
+            //wp
+            if dd_wp_arr.count > 0 {
+                params["wpListStr"] = dd_wp_arr;
+            }else {
+                if arr.contains("2"){
+                    arr.remove(at: arr.index(of: "2")!);
+                }
+            }
+            
+
+            let ddstatus        =   arr.count > 0 ? arr.joined(separator: ",") : ""
             params["cat"]       =   String.isNullOrEmpty(ddInfoCell.ddCat_selected ?? "")
             params["deferDay"]  =   String.isNullOrEmpty(ddInfoCell.day_tf.text)
             params["deferFh"]   =   String.isNullOrEmpty(ddInfoCell.fh_tf.text)
@@ -283,7 +305,6 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
             params["repFh"] = String.isNullOrEmpty(ddInfoCell.rep_fh.text)
             params["repFc"] = String.isNullOrEmpty(ddInfoCell.rep_fc.text)
             params["repMonth"] = String.isNullOrEmpty(ddInfoCell.rep_month.text)
-            
             params["precedureO"] =  String.isNullOrEmpty(ddInfoCell.produce_o)
             params["precedureM"] =  String.isNullOrEmpty(ddInfoCell.produce_m)
             params["enterInDdList"] = String.isNullOrEmpty(ddInfoCell.enterInDdList)
@@ -339,11 +360,7 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
                 }
             }
             
-            //ws
-            params["wsListStr"] = dd_ws_arr;
-            
-            //wp
-            params["wpListStr"] = dd_wp_arr
+
             break;
         case "NRR":
             params["formNo"] = String.isNullOrEmpty(nrrCell.formNo.text)
@@ -510,6 +527,7 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
                 HUD.show()
                 let vc = TaskAddActionVC()
                 vc.read_only = true
+                vc.from_defect_report = true
                 vc.r_index = index + 1
                 vc.action_detail_info_r = d;
                 

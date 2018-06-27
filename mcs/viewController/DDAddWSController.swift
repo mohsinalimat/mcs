@@ -83,6 +83,8 @@ class DDAddWSController: BasePickerViewController {
     
     override func finishedBtnAction() {
         if !isR {
+            guard String.isNullOrEmpty(rq_no.text).lengthOfBytes(using: String.Encoding.utf8) > 0  else {HUD.show(info: "RQ NO. Required"); return}
+            guard String.isNullOrEmpty(pn.text).lengthOfBytes(using: String.Encoding.utf8) > 0  else {HUD.show(info: "P/N Required"); return}
             if let action = selectedAction {
                 let d = ["rqNo":String.isNullOrEmpty(rq_no.text),
                          "pnNo":String.isNullOrEmpty(pn.text),
@@ -141,6 +143,8 @@ class DDAddWSController: BasePickerViewController {
         let _eta = Tools.date(String.stringIsNullOrNil(_d["scheduleDate"]))
         if let d = _eta {
             schedule_date.setTitle(Tools.dateToString(d, formatter: "dd/MM/yyyy"), for: .normal)
+        }else {
+            schedule_date.setTitle(String.stringIsNullOrNil(_d["scheduleDate"]), for: .normal);
         }
 
         maual.text = String.isNullOrEmpty(_d["manual"])
@@ -151,6 +155,8 @@ class DDAddWSController: BasePickerViewController {
         let arri = Tools.date(String.stringIsNullOrNil(_d["arrivalDate"]))
         if let d = arri {
             arri_date.setTitle(Tools.dateToString(d, formatter: "dd/MM/yyyy"), for: .normal)
+        }else {
+            arri_date.setTitle(String.stringIsNullOrNil(_d["arrivalDate"]), for: .normal);
         }
 
         remark.text = String.isNullOrEmpty(_d["remark"])

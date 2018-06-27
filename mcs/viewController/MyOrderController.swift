@@ -27,7 +27,11 @@ class MyOrderController: BaseViewController,UITableViewDelegate,UITableViewDataS
         switch sender.tag {
         case 1:
             guard dataArray.count > 0 else {return}
-            __clear();
+            self.showMsg("Clear All Record?", title: "OK", handler: {[weak self] in
+                guard let ss = self else {return}
+                ss.__clear()
+                })
+
             break
         case 2:
             guard pn_selected_reg != nil else {HUD.show(info: "Select A/C "); return}
@@ -164,20 +168,24 @@ class MyOrderController: BaseViewController,UITableViewDelegate,UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        
         if editingStyle == .delete {
-            let d = dataArray[indexPath.row]
-            let pn = String.isNullOrEmpty(d["stpn"])
-            pn_selected_number.removeValue(forKey: pn)
-            
-            dataArray.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .left)
-            
-            __calTotal()
+            self.showMsg("Delete This Record?", title: "Delete", handler: {[weak self] in
+                guard let ss = self else {return}
+                    ss.__delete(tableView, indexPath: indexPath)
+                })
         }
     }
     
-    
+    func __delete(_ tableView: UITableView ,indexPath: IndexPath)  {
+        let d = dataArray[indexPath.row]
+        let pn = String.isNullOrEmpty(d["stpn"])
+        pn_selected_number.removeValue(forKey: pn)
+        
+        dataArray.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .left)
+        
+        __calTotal()
+    }
     
     //MARK: -
     func _add(_ index:Int , num:Int)  {

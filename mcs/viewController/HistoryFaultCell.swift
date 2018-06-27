@@ -18,6 +18,7 @@ class HistoryFaultCell: UITableViewCell {
     @IBOutlet weak var defect_descr: UILabel!
     @IBOutlet weak var actions: UILabel!
     
+    @IBOutlet weak var reg: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,7 +27,7 @@ class HistoryFaultCell: UITableViewCell {
 
     
     
-    func fill(_ d:[String:Any]) {
+    func fill(_ d:[String:Any] , isAll:Bool = false) {
         
         type.text = String.isNullOrEmpty(d["bizType"])
         shift.text = "shift: \(String.isNullOrEmpty(d["shiftName"]))"
@@ -40,6 +41,14 @@ class HistoryFaultCell: UITableViewCell {
         ata.text = "ATA: \(String.isNullOrEmpty(d["ata"]))"
         defect_descr.text = String.isNullOrEmpty(d["defect"])
         actions.text = String.isNullOrEmpty(d["action"])
+        
+        if isAll {
+            reg.isHidden = false;
+            reg.text = String.isNullOrEmpty(d["acReg"])
+        }else {
+            reg.isHidden = true;
+        }
+        
     }
     
     

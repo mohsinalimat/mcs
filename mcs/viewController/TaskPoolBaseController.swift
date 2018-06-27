@@ -127,7 +127,7 @@ class TaskPoolBaseController: BaseViewController ,UITableViewDelegate,UITableVie
         //_tableView.separatorStyle = .none
         _tableView.delegate = self
         _tableView.dataSource = self
-        _tableView.rowHeight = 80
+        _tableView.rowHeight = 120
     
         
         topBgView.layer.borderColor = kTableviewBackgroundColor.cgColor
@@ -315,11 +315,20 @@ class TaskPoolBaseController: BaseViewController ,UITableViewDelegate,UITableVie
         
         action4.backgroundColor = UIColor.init(colorLiteralRed: 219/255.0, green: 118/255.0, blue: 51/255.0, alpha: 1)
         
+        let action5 = UITableViewRowAction.init(style: .default, title: "Edit Reason") { (action, indexPath) in
+            tableView.isEditing = false
+            
+            Tools.showAlert("TaskEditReasonController" , frame: CGRect(x: 0, y: 0, width: 500, height: 350))
+            
+        }
+        action5.backgroundColor = UIColor.init(colorLiteralRed: 200/255.0, green: 153/255.0, blue: 153/255.0, alpha: 1)
+        
+        
         if let canDelete = dataArray[indexPath.section]["allowDelete"] as? Bool {
-            return canDelete ? [action1,action2,action3,action4] : [action2,action3,action4];
+            return canDelete ? [action1,action2,action3,action4,action5] : [action2,action3,action4,action5];
         }
         
-        return [action2,action3,action4]
+        return [action2,action3,action4,action5]
     }
     
     

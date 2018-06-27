@@ -67,6 +67,9 @@ let taskPool_addAction_url      =       "/biz/taskAction/"
 let action_list_url             =       "/biz/getFeedbackData"
 let action_delete_url           =       "/biz/taskAction/"
 let action_detail_viewDefect_url =      "/biz/viewDefect"//type ,id
+let taskPool_getFltNo_url = "/biz/getAftFlNo"
+let taskPool_perform_url = "/biz/perform" //修改Reason，fltno , taskTo
+
 
 let defect_detail_preview_url = "/biz/printViewFault"//id
 
@@ -83,7 +86,7 @@ let dd_cal_deadline_url = "/biz/calAcDl"
 ///dd
 let dd_list_url = "/biz/dd/list"
 let pn_list_url = "/biz/pnInStock/getList"
-let order_list_url = "/biz/getCurrentDayOrders"
+let order_list_url = "/biz/getOrders"
 let submit_order_url = "/biz/preOrder"
 let pn_history_url = "/biz/pnInStockChange/getList"//库存记录变动 "/biz/pnMovementHistory/getList"
 
@@ -100,8 +103,8 @@ var kTaskpool_date:Date?
 var kActive_BASE_DATA:[String:Any]! //基础数据1
 enum SectionHeadButtonIndex :Int {
     case addActoinValue1 = 1;
-    case addActoinValue2 //2开始
-    case addActoinValue3
+    case addActoinValue2 //2Material
+    case addActoinValue3//component
     case addActoinValue4 //附件
     case creatReportValue1//base info
     case creatReportValue2//material tools

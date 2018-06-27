@@ -15,7 +15,7 @@
                 <frame key="frameInset" width="1024" height="119"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Kr-2J-05a">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ata" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Kr-2J-05a">
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -79,6 +79,11 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7MC-Qz-lU2">
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="NJw-nd-A0I" firstAttribute="leading" secondItem="0Kr-2J-05a" secondAttribute="leading" id="5TA-rx-ZPl"/>
@@ -92,6 +97,7 @@
                     <constraint firstAttribute="trailingMargin" secondItem="0qO-Da-gJM" secondAttribute="trailing" constant="50" id="Zlx-fP-TOt"/>
                     <constraint firstAttribute="bottomMargin" secondItem="vqe-4g-Uio" secondAttribute="bottom" constant="10" id="a9i-M0-Tnd"/>
                     <constraint firstItem="9hU-1q-kyR" firstAttribute="leading" secondItem="kMj-iG-IPt" secondAttribute="leadingMargin" constant="10" id="bMG-n4-peS"/>
+                    <constraint firstItem="7MC-Qz-lU2" firstAttribute="centerY" secondItem="0Kr-2J-05a" secondAttribute="centerY" id="cRI-bI-ydD"/>
                     <constraint firstItem="rBl-Li-20O" firstAttribute="centerY" secondItem="kMj-iG-IPt" secondAttribute="centerY" id="cTn-lL-dbG"/>
                     <constraint firstItem="VBD-W4-YlS" firstAttribute="leading" secondItem="9hU-1q-kyR" secondAttribute="leading" id="g4W-I0-h4x"/>
                     <constraint firstItem="0Kr-2J-05a" firstAttribute="top" secondItem="9hU-1q-kyR" secondAttribute="top" id="giS-KA-6AO"/>
@@ -105,12 +111,14 @@
                     <constraint firstItem="0qO-Da-gJM" firstAttribute="leading" secondItem="NJw-nd-A0I" secondAttribute="trailing" constant="8" id="qoC-rD-noh"/>
                     <constraint firstItem="9hU-1q-kyR" firstAttribute="top" secondItem="kMj-iG-IPt" secondAttribute="topMargin" id="tYM-3e-kNQ"/>
                     <constraint firstItem="vqe-4g-Uio" firstAttribute="leading" secondItem="0Kr-2J-05a" secondAttribute="leading" id="vvN-Se-a9v"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="7MC-Qz-lU2" secondAttribute="trailing" constant="100" id="wmy-JZ-6Cm"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="actions" destination="Z85-kB-S3r" id="Ufr-y9-SzU"/>
                 <outlet property="ata" destination="0Kr-2J-05a" id="uXK-9V-k88"/>
                 <outlet property="defect_descr" destination="0qO-Da-gJM" id="x8S-TJ-8ZU"/>
+                <outlet property="reg" destination="7MC-Qz-lU2" id="dbx-q9-sG4"/>
                 <outlet property="shift" destination="VBD-W4-YlS" id="uDO-n2-Tl0"/>
                 <outlet property="station" destination="iOL-r9-1bl" id="4JL-Bf-ODk"/>
                 <outlet property="time" destination="7yF-DX-JPZ" id="mbU-g6-dZm"/>

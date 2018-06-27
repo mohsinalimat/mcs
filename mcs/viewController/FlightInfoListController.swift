@@ -24,6 +24,8 @@ class FlightInfoListController: BaseViewController,UICollectionViewDelegate,UICo
     var dataArray:[[String:Any]] = []
     var warnDataArray = [[String:Any]]()//航班告警信息
     
+    var _currentDate:String!
+    
     @IBAction func selectDateAction(_ sender: UIButton) {
         let frame = CGRect (x: 0, y: 0, width: 500, height: 240)
         
@@ -132,6 +134,7 @@ class FlightInfoListController: BaseViewController,UICollectionViewDelegate,UICo
         ////
         flight_No.text = kFlightInfoListController_airId
         dateBtn.setTitle(kFlightInfoListController_flightDate, for: .normal)
+        _currentDate = kFlightInfoListController_flightDate
     }
     
     //MARK: -
@@ -159,7 +162,7 @@ class FlightInfoListController: BaseViewController,UICollectionViewDelegate,UICo
             return cell
         }
         
-        cell.fillCell(d,show: indexPath.row == 2,left: indexPath.row % 2 == 0 ,warnStatus: warnDataArray)////.....
+        cell.fillCell(d,show: indexPath.row == 2,left: indexPath.row % 2 == 0 ,warnStatus: warnDataArray , thisDay:_currentDate == String.isNullOrEmpty(dateBtn.currentTitle))////.....
         //cell.warn_tap.isHidden = !_flight_has_warn(d["acReg"] as! String)
         
         cell.backgroundColor = UIColor.white

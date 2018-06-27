@@ -24,13 +24,50 @@ class SearchItemSelectController: UITableViewController{
     
     var _hasSelectedArr = [Int]()
 
+    var hasBar:Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = kTableviewBackgroundColor
         _init()
         
+        if hasBar{
+            //_setTitleView("Change Reason")
+            
+            // Do any additional setup after loading the view.
+            
+            let backbtn = UIButton (frame: CGRect (x: 0, y: 0, width: 50, height: 35))
+            backbtn.setImage(UIImage (named: "back_arrow"), for: .normal)
+            backbtn.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 20)
+            backbtn.titleEdgeInsets = UIEdgeInsetsMake(0, -5, 0, 0)
+            backbtn.addTarget(self, action: #selector(navigationBackButtonAction), for: .touchUpInside)
+            backbtn.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+            backbtn.setTitleColor(UIColor.darkGray, for: .normal)
+            let leftitem = UIBarButtonItem.init(customView: backbtn)
+            navigationItem.leftBarButtonItem = leftitem
+            
+            let finishedbtn = UIButton (frame: CGRect (x: 0, y: 0, width: 60, height: 40))
+            finishedbtn.setTitle("OK", for: .normal)
+            finishedbtn.setTitleColor(UIColor.white, for: .normal)
+            finishedbtn.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: 1)
+            finishedbtn.addTarget(self, action: #selector(finishedBtnAction), for: .touchUpInside)
+            finishedbtn.tag = 100
+            finishedbtn.layer.cornerRadius = 10
+            finishedbtn.layer.masksToBounds = true
+            let ritem = UIBarButtonItem (customView: finishedbtn)
+            navigationItem.rightBarButtonItems = nil
+            navigationItem.rightBarButtonItem = ritem
+        }
     }
-
+    func finishedBtnAction() {
+        _submit();
+        
+        navigationBackButtonAction()
+    }
+    
+    func navigationBackButtonAction() {
+        _ = self.navigationController?.popViewController(animated: true)
+    }
 
     func _init()  {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "UITableViewCellIdentifier")
@@ -131,10 +168,12 @@ class SearchItemSelectController: UITableViewController{
     
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 65
+        return hasBar ? 0 : 65
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard !hasBar else {return nil}
+        
         let head_v = Bundle.main.loadNibNamed("SearBarView", owner: nil, options: nil)?.first as! SearBarView
         head_v.frame = CGRect (x: 0, y: 0, width: tableView.frame.width, height: 64)
         head_v.backgroundColor = UIColor.white

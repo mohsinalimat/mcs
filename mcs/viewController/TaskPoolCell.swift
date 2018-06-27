@@ -12,19 +12,16 @@ class TaskPoolCell: UITableViewCell {
 
     @IBOutlet weak var taskNo: UILabel!
     @IBOutlet weak var actions: UILabel!
-    @IBOutlet weak var from: UILabel!
-    @IBOutlet weak var to: UILabel!
-    
-    @IBOutlet weak var _line: UILabel!
-    
-    
-    @IBOutlet weak var fltno: UILabel!
+    @IBOutlet weak var from: UILabel!//
+    @IBOutlet weak var to: UILabel!//
+    @IBOutlet weak var _line: UILabel!///
+    @IBOutlet weak var fltno: UILabel!///
     
     @IBOutlet weak var descri: UILabel!
     
     @IBOutlet weak var reason: UILabel!
     
-    @IBOutlet weak var to_sb: UILabel!
+    @IBOutlet weak var to_sb: UILabel! ///////
     
     @IBOutlet weak var r_igv: UIImageView!
     @IBOutlet weak var p_igv: UIImageView!
@@ -49,12 +46,12 @@ class TaskPoolCell: UITableViewCell {
         
         
         
-        from.text = String.isNullOrEmpty(d["mh"])
-        to.text = String.isNullOrEmpty(d["finalAction"])
+        //from.text = String.isNullOrEmpty(d["mh"])
+        //to.text = String.isNullOrEmpty(d["finalAction"])
         
-        _line.isHidden = !(from.text != " " && to.text != " ")
+        //_line.isHidden = !(from.text != " " && to.text != " ")
             
-        fltno.text = String.isNullOrEmpty(d["fltNo"])
+        fltno.text = String.isNullOrEmpty(d["flNo"])
         
         to_sb.text = String.isNullOrEmpty(d["taskTo"])
         
@@ -67,7 +64,7 @@ class TaskPoolCell: UITableViewCell {
         
         let defectStr = "Description: " + defectDesc + "\n" + planingDesc
         let defectAttriStr =  NSMutableAttributedString.init(string: defectStr)
-        defectAttriStr.addAttributes([NSFontAttributeName:UIFont.boldSystemFont(ofSize: 14),NSForegroundColorAttributeName:UIColor.darkGray], range: NSMakeRange(0, 12))
+        defectAttriStr.addAttributes([NSFontAttributeName:UIFont.boldSystemFont(ofSize: 15),NSForegroundColorAttributeName:UIColor.darkGray], range: NSMakeRange(0, 12))
         //defectAttriStr.addAttributes([NSFontAttributeName:UIFont.boldSystemFont(ofSize: 13),NSForegroundColorAttributeName:UIColor.darkGray], range: NSMakeRange(defectStr.lengthOfBytes(using: String.Encoding.utf8) - planingDesc.lengthOfBytes(using: String.Encoding.utf8) - 1, planingDesc.lengthOfBytes(using: String.Encoding.utf8)))
         
         descri.attributedText = defectAttriStr
@@ -77,7 +74,7 @@ class TaskPoolCell: UITableViewCell {
         let rea_s = "Reason to postpone : "
         let reasonStr =  rea_s + reasonDesc
         let reasonAttriStr =  NSMutableAttributedString.init(string: reasonStr)
-        reasonAttriStr.addAttributes([NSFontAttributeName:UIFont.boldSystemFont(ofSize: 14),NSForegroundColorAttributeName:UIColor.darkGray], range: NSMakeRange(0, rea_s.lengthOfBytes(using: String.Encoding.utf8)))
+        reasonAttriStr.addAttributes([NSFontAttributeName:UIFont.boldSystemFont(ofSize: 15),NSForegroundColorAttributeName:UIColor.darkGray], range: NSMakeRange(0, rea_s.lengthOfBytes(using: String.Encoding.utf8)))
         
         reason.attributedText = reasonAttriStr
         

@@ -46,10 +46,10 @@
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="m4t-pI-HxX">
                             <color key="backgroundColor" red="0.92538958790000003" green="0.92554813619999998" blue="0.92537957429999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
-                                <constraint firstAttribute="width" id="esI-0Q-o2P"/>
+                                <constraint firstAttribute="width" constant="200" id="esI-0Q-o2P"/>
                             </constraints>
                             <nil key="textColor"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="P/N" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="PaC-mn-TB5">
@@ -58,19 +58,19 @@
                                 <constraint firstAttribute="width" constant="200" id="46r-3q-9hL"/>
                             </constraints>
                             <nil key="textColor"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                     </subviews>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="A9Z-pc-btl"/>
-                        <constraint firstItem="m4t-pI-HxX" firstAttribute="leading" secondItem="PaC-mn-TB5" secondAttribute="trailing" constant="10" id="Fxy-dp-cDP"/>
+                        <constraint firstItem="m4t-pI-HxX" firstAttribute="leading" secondItem="PaC-mn-TB5" secondAttribute="trailing" constant="30" id="Fxy-dp-cDP"/>
                         <constraint firstItem="KIx-Mm-Jzo" firstAttribute="centerY" secondItem="PaC-mn-TB5" secondAttribute="centerY" id="H7b-Gd-lqi"/>
                         <constraint firstItem="PaC-mn-TB5" firstAttribute="centerY" secondItem="JXK-u2-I5d" secondAttribute="centerY" constant="3" id="SME-zo-BLr"/>
                         <constraint firstAttribute="width" constant="600" id="Xzw-b3-e1c"/>
                         <constraint firstItem="m4t-pI-HxX" firstAttribute="centerY" secondItem="PaC-mn-TB5" secondAttribute="centerY" id="c7I-vx-02z"/>
                         <constraint firstAttribute="trailing" secondItem="KIx-Mm-Jzo" secondAttribute="trailing" constant="20" id="rRh-HR-5Rb"/>
-                        <constraint firstItem="KIx-Mm-Jzo" firstAttribute="leading" secondItem="m4t-pI-HxX" secondAttribute="trailing" id="wDw-cE-2qm"/>
+                        <constraint firstItem="KIx-Mm-Jzo" firstAttribute="leading" secondItem="m4t-pI-HxX" secondAttribute="trailing" constant="10" id="wDw-cE-2qm"/>
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aaq-2f-1Ks">

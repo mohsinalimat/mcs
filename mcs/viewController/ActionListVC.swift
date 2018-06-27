@@ -121,25 +121,34 @@ class ActionListVC: BaseViewController ,UITableViewDelegate,UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            guard let action_id = dataArray[indexPath.row]["id"] as? String else {return}
-            
-            let url = action_delete_url.appending("/\(action_id)")
-            
-            netHelper_request(withUrl: url, method: .delete, parameters: nil, successHandler: {[weak self] (res) in
-                    HUD.show(successInfo: "Delete Success");
-                    
-                    guard let ss = self else {return}
-                    
-                    ss.dataArray.remove(at: indexPath.row)
-                    tableView.deleteRows(at: [indexPath], with: .automatic);
-                    NotificationCenter.default.post(name: NSNotification.Name (rawValue: "addActionSubmintOkNotification"), object: nil)
-                }, failureHandler: { (str) in
-                 HUD.show(successInfo: "Delete Failure")
-            })
+            self.showMsg("Clear All Record?", title: "OK", handler: {[weak self] in
+                guard let ss = self else {return}
+                ss.__delete(tableView, indexPath: indexPath)
+                })
         }
-        
-        
     }
+    
+    
+    func __delete(_ tableView: UITableView ,indexPath: IndexPath)  {
+        guard let action_id = dataArray[indexPath.row]["id"] as? String else {return}
+        
+        let url = action_delete_url.appending("/\(action_id)")
+        
+        netHelper_request(withUrl: url, method: .delete, parameters: nil, successHandler: {[weak self] (res) in
+            HUD.show(successInfo: "Delete Success");
+            
+            guard let ss = self else {return}
+            
+            ss.dataArray.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic);
+            NotificationCenter.default.post(name: NSNotification.Name (rawValue: "addActionSubmintOkNotification"), object: nil)
+            }, failureHandler: { (str) in
+                HUD.show(successInfo: "Delete Failure")
+        })
+    
+    }
+
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

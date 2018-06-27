@@ -118,6 +118,7 @@
                 <outlet property="from" destination="Cyv-WR-mwo" id="hN9-aY-Hx5"/>
                 <outlet property="gate" destination="iHl-pB-2KG" id="g2s-pm-gdx"/>
                 <outlet property="iconImgWidth" destination="RRn-Np-U3s" id="Vwl-Af-ovJ"/>
+                <outlet property="icon_plane" destination="ROP-9X-FTp" id="j11-h6-8XF"/>
                 <outlet property="sta" destination="4NJ-xz-Ntn" id="WuP-OX-8Ww"/>
                 <outlet property="std" destination="kbM-RA-xuj" id="6u5-kq-JtT"/>
                 <outlet property="t1" destination="Lk8-UB-6Zw" id="c7Q-6O-vZf"/>

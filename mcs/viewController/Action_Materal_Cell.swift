@@ -190,18 +190,28 @@ class Action_Materal_Cell: UITableViewCell,UITableViewDelegate,UITableViewDataSo
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            if (kSectionHeadButtonSelectedIndex == .addActoinValue2) || (kSectionHeadButtonSelectedIndex == .creatReportValue2) {
-                addActionMateralDataArr.remove(at: indexPath.row)   
-            } else if kSectionHeadButtonSelectedIndex == .addActoinValue3 {
-                addActionComponentDataArr.remove(at: indexPath.row)
+            let vc = UIAlertController.init(title: "Delete?",message: nil, preferredStyle: .alert)
+            let action = UIAlertAction.init(title:"Cancel", style: .default)
+            let action2 = UIAlertAction.init(title: "Delete", style: .destructive) { (action) in
+                if (kSectionHeadButtonSelectedIndex == .addActoinValue2) || (kSectionHeadButtonSelectedIndex == .creatReportValue2) {
+                    addActionMateralDataArr.remove(at: indexPath.row)
+                } else if kSectionHeadButtonSelectedIndex == .addActoinValue3 {
+                    addActionComponentDataArr.remove(at: indexPath.row)
+                    
+                } else if kSectionHeadButtonSelectedIndex == .creatReportValue5 {
+                    defect_added_actions.remove(at: indexPath.row);
+                } else if (kSectionHeadButtonSelectedIndex == .addActoinValue4) || (kSectionHeadButtonSelectedIndex == .creatReportValue3) {
+                    kAttachmentDataArr.remove(at: indexPath.row)
+                }
                 
-            } else if kSectionHeadButtonSelectedIndex == .creatReportValue5 {
-                defect_added_actions.remove(at: indexPath.row);
-            } else if (kSectionHeadButtonSelectedIndex == .addActoinValue4) || (kSectionHeadButtonSelectedIndex == .creatReportValue3) {
-                kAttachmentDataArr.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .top)
+
             }
             
-            tableView.deleteRows(at: [indexPath], with: .top)
+            vc.addAction(action)
+            vc.addAction(action2)
+            UIApplication.shared.keyWindow?.rootViewController?.present(vc, animated: true, completion: nil);
+            
         }
     }
     

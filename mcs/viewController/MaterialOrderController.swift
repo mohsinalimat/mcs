@@ -12,11 +12,38 @@ import MJRefresh
 class MaterialOrderController: BaseViewController  ,UITableViewDelegate,UITableViewDataSource{
 
     @IBOutlet weak var tableView: UITableView!
+    
+    
+    @IBOutlet weak var begin_date: UIButton!
+    @IBOutlet weak var dateBtn: UIButton!
+    
+    @IBOutlet weak var pn: UITextField!
+    
+    @IBAction func search(_ sender: AnyObject) {
+        _isSearch = true;
+        _pageNum = 1;
+        
+        loadData()
+    }
+    
+    
     var dataArray = [[String:Any]]()
     var _searchPars:[String:Any]?
     var _pageNum:Int = 1
-
+    var _isSearch:Bool = false;
+    
+    
     var openedIndex:Int = -1
+    
+    @IBAction func selectDate(_ sender: UIButton) {
+        Tools.showDatePicekr { (obj) in
+            let obj = obj as! Date
+            let str = Tools.dateToString(obj, formatter: "dd/MM/yyyy")
+            sender.setTitle(str, for: .normal)
+        }
+        
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,13 +96,26 @@ class MaterialOrderController: BaseViewController  ,UITableViewDelegate,UITableV
         
         tableView.mj_footer = footer
         
+        //let str = Tools.dateToString(Date(), formatter: "dd/MM/yyyy")
+        begin_date.setTitle("Begin Date", for: .normal)
+        dateBtn.setTitle("End Date", for: .normal)
     }
     
     
     
     func loadData(_ d : [String:Any] = [:])  {
         HUD.show(withStatus: hud_msg_loading)
-        netHelper_request(withUrl: order_list_url, method: .post,  successHandler: { [weak self](res) in
+        
+        var pars = [String:Any]()
+        pars["page"] = _pageNum
+        
+        if _isSearch {
+            pars["pn"] = String.isNullOrEmpty(pn.text);
+            pars["beginDatetime"] = String.isNullOrEmpty(begin_date.currentTitle).contains("/") ? String.isNullOrEmpty(begin_date.currentTitle) : "";
+            pars["endDatetime"] = String.isNullOrEmpty(dateBtn.currentTitle).contains("/") ? String.isNullOrEmpty(dateBtn.currentTitle) : "";
+        }
+        
+        netHelper_request(withUrl: order_list_url, method: .post, parameters: pars,  successHandler: { [weak self](res) in
             HUD.dismiss()
             guard let ss = self else {return}
             if ss._pageNum == 1 {

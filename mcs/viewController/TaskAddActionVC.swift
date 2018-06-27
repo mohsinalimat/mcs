@@ -129,6 +129,8 @@ class TaskAddActionVC: BaseViewController ,UITableViewDelegate,UITableViewDataSo
     }
 
     func _save() {
+        guard String.stringIsNullOrNil(actionBaseInfoCell.descri.text).lengthOfBytes(using: String.Encoding.utf8) > 0 else { HUD.show(info: "Action Description Required!");return}
+        
         var params : [String:Any] = [
             "perform":"\(s_performed.isOn ? 1 : 0)",
             "closed":"\(s_closed.isOn ? 1 : 0)",
@@ -280,23 +282,46 @@ class TaskAddActionVC: BaseViewController ,UITableViewDelegate,UITableViewDataSo
             return v
         }
         
+        let bg = UIView (frame: CGRect (x: 0, y: 0, width: kCurrentScreenWidth, height: 50))
+
+        let t = __sectionTitle()
+        let v = MultiButtonView.init(CGRect (x: 15, y: 0, width: bg.frame.width - 30, height: bg.frame.height), titles: t , selectedIndex : section2_selected_index, width:(bg.frame.width - 240) / CGFloat.init(t.count))
         
-        let v = Bundle.main.loadNibNamed("TaskActionDetailView", owner: nil, options: nil)?.first as! TaskActionDetailView
-        v.changeActionHandler = {[weak self ] index in
-            guard let ss = self else {return}
-            ss.section2_selected_index = index
-            kSectionHeadButtonSelectedIndex = SectionHeadButtonIndex(rawValue: index)!
-            tableView.reloadData()
+        v.title = "Action Detail"
+        v.selectedActionHandler = { index in
+            DispatchQueue.main.async {[weak self ] in
+                guard let ss = self else {return}
+                ss.section2_selected_index = index
+
+                kSectionHeadButtonSelectedIndex = SectionHeadButtonIndex(rawValue: (ss.from_defect_report && index == 2) ? index + 1 : index)!
+                tableView.reloadData()
+            }
         }
         
-        v._selectedBtnAtIndex(section2_selected_index)
+        bg.addSubview(v);return bg
         
-        return v
+//        let v = Bundle.main.loadNibNamed("TaskActionDetailView", owner: nil, options: nil)?.first as! TaskActionDetailView
+//        v.changeActionHandler = {[weak self ] index in
+//            guard let ss = self else {return}
+//            ss.section2_selected_index = index
+//            kSectionHeadButtonSelectedIndex = SectionHeadButtonIndex(rawValue: index)!
+//            tableView.reloadData()
+//        }
+//        
+//        v._selectedBtnAtIndex(section2_selected_index)
+        
+//        return v
         
     }
 
     
-    
+    func __sectionTitle() -> [String] {
+        if from_defect_report {
+            return ["Basic Info & Detail","Component Change"];
+        }
+        
+        return ["Basic Info & Detail","Materal&Tools","Component Change"]
+    }
     
     
 

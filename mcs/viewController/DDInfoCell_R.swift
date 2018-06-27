@@ -53,10 +53,15 @@ class DDInfoCell_R: UITableViewCell {
         other_tf.text = other
         __selectedBtnWithTag(other, tag: 23)
 
-        let _eta = Tools.date(String.stringIsNullOrNil(d["dateLine"]))
-        if let d = _eta {
-            deadline_tf.text = Tools.dateToString(d, formatter: "yyyy-MM-dd")
+        if other.lengthOfBytes(using: String.Encoding.utf8) > 0 {
+            deadline_tf.text = other
+        }else {
+            let _eta = Tools.date(String.stringIsNullOrNil(d["dateLine"]))
+            if let d = _eta {
+                deadline_tf.text = Tools.dateToString(d, formatter: "yyyy-MM-dd")
+            }
         }
+
         
         let enterInDamageChart = String.isNullOrEmpty(d["enterInDamageChart"])
         __selectedBtnWithTag(enterInDamageChart, tag: enterInDamageChart == "1" ? 26:25)
