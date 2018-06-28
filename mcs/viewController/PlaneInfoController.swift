@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftWebViewBridge
+import SwiftyJSON
 
 class PlaneInfoController: BaseWebViewController {
 
@@ -32,21 +33,28 @@ class PlaneInfoController: BaseWebViewController {
         let items = [fixed,msgItem]
         _item = items
         
+        SwiftWebViewBridge.logging = false
+        
         _bridge = SwiftWebViewBridge.bridge(webview, defaultHandler: { (data, responseBack) in
             print("Swift received message from JS: \(data)")
         })
         
         
-        
-//
-        _bridge.registerHandlerForJS(handlerName: "printReceivedParmas", handler: { [unowned self] jsonData, responseCallback in
-            // if you used self in any bridge handler/callback closure, remember to declare weak or unowned self, preventing from retaining cycle!
-            // Because VC owned bridge, brige owned this closure, and this cloure captured self!
-            
-            responseCallback([
-                "msg": "Swift has already finished its handler",
-                "returnValue": [1, 2, 3]
-                ])
+        _bridge.registerHandlerForJS(handlerName: "getCertById", handler: { [unowned self] jsonData, responseCallback in
+           
+            DispatchQueue.main.async {
+                print("...from js")
+                
+                if let obj = jsonData as? [String:Any] {
+                    print(obj);
+                    if let _id = obj["id"] as? String {
+                        let v = PlaneCertInfoController()
+                        v._id = _id
+                        Tools.showVC(v, withBar: false, frame: CGRect (x: 0, y: 0, width: 600, height: 500))
+                    }
+                }
+            }
+
             })
         
         
@@ -58,6 +66,14 @@ class PlaneInfoController: BaseWebViewController {
         loadData()
     }
 
+    
+    func _showPlaneInfo() {
+        
+        
+    }
+    
+    
+    
 //    LOGGING_RCVD: (
 //    {
 //    data = "id=e208c7af360f46fdb75d1f730d4c1708";

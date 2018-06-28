@@ -149,6 +149,9 @@ class LoginViewController: BaseViewController,UITableViewDelegate,UITableViewDat
                 }
                 
                 UserDefaults.standard.set(name, forKey: "user-name")
+                UserDefaults.standard.set(body, forKey: "loginUserInfo")
+                UserDefaults.standard.set(["username":name,"password":pwd], forKey: "account")
+                
                 UserDefaults.standard.synchronize()
                 
                 let tab = BaseTabBarController()
@@ -162,7 +165,6 @@ class LoginViewController: BaseViewController,UITableViewDelegate,UITableViewDat
             u_name = ""
             u_pwd = ""
             _selectedValue.removeAll()
-            
             loginTableView.reloadData()
         }
         
@@ -172,9 +174,7 @@ class LoginViewController: BaseViewController,UITableViewDelegate,UITableViewDat
     func switchStatus(_ s:UISwitch)  {
         u_name = String.isNullOrEmpty(username_tf.text)
         u_pwd = String.isNullOrEmpty(pwd_tf.text)
-
         isOpenAll = s.isOn
-
         loginTableView.reloadData()
     }
     

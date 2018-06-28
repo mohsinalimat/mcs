@@ -68,6 +68,10 @@
 		A1891F5B2074C05600170BFC /* Action_Detail_Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1891F592074C05600170BFC /* Action_Detail_Cell.swift */; };
 		A1891F5C2074C05600170BFC /* Action_Detail_Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1891F5A2074C05600170BFC /* Action_Detail_Cell.xib */; };
 		A1891F5E2074C7D500170BFC /* TaskActionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1891F5D2074C7D500170BFC /* TaskActionDetailView.swift */; };
+		A18F9E7920E4E37800363C8F /* PlaneCertImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18F9E7720E4E37800363C8F /* PlaneCertImageCell.swift */; };
+		A18F9E7A20E4E37800363C8F /* PlaneCertImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A18F9E7820E4E37800363C8F /* PlaneCertImageCell.xib */; };
+		A18F9E7D20E4E39B00363C8F /* PlaneCertHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18F9E7B20E4E39B00363C8F /* PlaneCertHistoryCell.swift */; };
+		A18F9E7E20E4E39B00363C8F /* PlaneCertHistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A18F9E7C20E4E39B00363C8F /* PlaneCertHistoryCell.xib */; };
 		A1923FD3201733E20057AD1E /* BaseWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1923FD2201733E20057AD1E /* BaseWebViewController.swift */; };
 		A1982F0F200F1E0E00B24DA6 /* NetHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1982F0E200F1E0E00B24DA6 /* NetHelper.swift */; };
 		A1A20F54202AF3D300407276 /* FlightAllWarnController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A20F52202AF3D300407276 /* FlightAllWarnController.swift */; };
@@ -94,6 +98,10 @@
 		A1AB9EFC207B48E8000663C3 /* AddActionInfoCell_R.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1AB9EFA207B48E8000663C3 /* AddActionInfoCell_R.xib */; };
 		A1AB9EFF207B4935000663C3 /* Action_Detail_Cell_R.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AB9EFD207B4935000663C3 /* Action_Detail_Cell_R.swift */; };
 		A1AB9F00207B4935000663C3 /* Action_Detail_Cell_R.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1AB9EFE207B4935000663C3 /* Action_Detail_Cell_R.xib */; };
+		A1AD80E820E47D1300E371E7 /* TaskEditReasonOlnyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AD80E620E47D1300E371E7 /* TaskEditReasonOlnyController.swift */; };
+		A1AD80E920E47D1300E371E7 /* TaskEditReasonOlnyController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1AD80E720E47D1300E371E7 /* TaskEditReasonOlnyController.xib */; };
+		A1AD80EC20E4BC1900E371E7 /* PlaneCertInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AD80EA20E4BC1900E371E7 /* PlaneCertInfoController.swift */; };
+		A1AD80ED20E4BC1900E371E7 /* PlaneCertInfoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1AD80EB20E4BC1900E371E7 /* PlaneCertInfoController.xib */; };
 		A1AFF6A42074620E00ED1FC4 /* TaskAddActionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AFF6A22074620E00ED1FC4 /* TaskAddActionVC.swift */; };
 		A1AFF6A52074620E00ED1FC4 /* TaskAddActionVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1AFF6A32074620E00ED1FC4 /* TaskAddActionVC.xib */; };
 		A1AFF6A82074624D00ED1FC4 /* TaskActionListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AFF6A62074624D00ED1FC4 /* TaskActionListVC.swift */; };
@@ -314,6 +322,10 @@
 		A1891F592074C05600170BFC /* Action_Detail_Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Action_Detail_Cell.swift; sourceTree = "<group>"; };
 		A1891F5A2074C05600170BFC /* Action_Detail_Cell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Action_Detail_Cell.xib; sourceTree = "<group>"; };
 		A1891F5D2074C7D500170BFC /* TaskActionDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskActionDetailView.swift; sourceTree = "<group>"; };
+		A18F9E7720E4E37800363C8F /* PlaneCertImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaneCertImageCell.swift; sourceTree = "<group>"; };
+		A18F9E7820E4E37800363C8F /* PlaneCertImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaneCertImageCell.xib; sourceTree = "<group>"; };
+		A18F9E7B20E4E39B00363C8F /* PlaneCertHistoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaneCertHistoryCell.swift; sourceTree = "<group>"; };
+		A18F9E7C20E4E39B00363C8F /* PlaneCertHistoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaneCertHistoryCell.xib; sourceTree = "<group>"; };
 		A1923FD2201733E20057AD1E /* BaseWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseWebViewController.swift; sourceTree = "<group>"; };
 		A1982F0E200F1E0E00B24DA6 /* NetHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetHelper.swift; sourceTree = "<group>"; };
 		A1A20F52202AF3D300407276 /* FlightAllWarnController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlightAllWarnController.swift; sourceTree = "<group>"; };
@@ -341,6 +353,10 @@
 		A1AB9EFA207B48E8000663C3 /* AddActionInfoCell_R.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddActionInfoCell_R.xib; sourceTree = "<group>"; };
 		A1AB9EFD207B4935000663C3 /* Action_Detail_Cell_R.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Action_Detail_Cell_R.swift; sourceTree = "<group>"; };
 		A1AB9EFE207B4935000663C3 /* Action_Detail_Cell_R.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Action_Detail_Cell_R.xib; sourceTree = "<group>"; };
+		A1AD80E620E47D1300E371E7 /* TaskEditReasonOlnyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskEditReasonOlnyController.swift; sourceTree = "<group>"; };
+		A1AD80E720E47D1300E371E7 /* TaskEditReasonOlnyController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskEditReasonOlnyController.xib; sourceTree = "<group>"; };
+		A1AD80EA20E4BC1900E371E7 /* PlaneCertInfoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaneCertInfoController.swift; sourceTree = "<group>"; };
+		A1AD80EB20E4BC1900E371E7 /* PlaneCertInfoController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaneCertInfoController.xib; sourceTree = "<group>"; };
 		A1AFF6A22074620E00ED1FC4 /* TaskAddActionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskAddActionVC.swift; sourceTree = "<group>"; };
 		A1AFF6A32074620E00ED1FC4 /* TaskAddActionVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskAddActionVC.xib; sourceTree = "<group>"; };
 		A1AFF6A62074624D00ED1FC4 /* TaskActionListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskActionListVC.swift; sourceTree = "<group>"; };
@@ -784,6 +800,8 @@
 				A1A20F53202AF3D300407276 /* FlightAllWarnController.xib */,
 				A1BC1F3A2015AC4A007D0E1C /* HistoryFaultController.swift */,
 				A1BC1F3C2015AC73007D0E1C /* PlaneInfoController.swift */,
+				A1AD80EA20E4BC1900E371E7 /* PlaneCertInfoController.swift */,
+				A1AD80EB20E4BC1900E371E7 /* PlaneCertInfoController.xib */,
 				A1E65C572018236E006D1085 /* FIBViewController.swift */,
 				A1DF738B2043EF5B0099B858 /* WarnInfoDetailController.swift */,
 				A1DF738C2043EF5B0099B858 /* WarnInfoDetailController.xib */,
@@ -828,6 +846,10 @@
 				A1FE8BE720C8CA9E00155DBA /* HistoryFaultTopView.xib */,
 				A1FE8BE920C8D57C00155DBA /* HistoryFaultCell.swift */,
 				A1FE8BEA20C8D57C00155DBA /* HistoryFaultCell.xib */,
+				A18F9E7720E4E37800363C8F /* PlaneCertImageCell.swift */,
+				A18F9E7820E4E37800363C8F /* PlaneCertImageCell.xib */,
+				A18F9E7B20E4E39B00363C8F /* PlaneCertHistoryCell.swift */,
+				A18F9E7C20E4E39B00363C8F /* PlaneCertHistoryCell.xib */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -863,6 +885,8 @@
 				A1EC58A820897BE500936D6B /* ViewDefectReportController.swift */,
 				A1C13CD320E32BAD00DEB92E /* TaskEditReasonController.swift */,
 				A1C13CD420E32BAE00DEB92E /* TaskEditReasonController.xib */,
+				A1AD80E620E47D1300E371E7 /* TaskEditReasonOlnyController.swift */,
+				A1AD80E720E47D1300E371E7 /* TaskEditReasonOlnyController.xib */,
 			);
 			name = taskPool;
 			sourceTree = "<group>";
@@ -1085,6 +1109,7 @@
 				A1AFF6AF20746BC400ED1FC4 /* AddActionInfoCell.xib in Resources */,
 				A120283D2008812500CB8633 /* DatePickerController.xib in Resources */,
 				A1AFF6A92074624D00ED1FC4 /* TaskActionListVC.xib in Resources */,
+				A18F9E7E20E4E39B00363C8F /* PlaneCertHistoryCell.xib in Resources */,
 				A1D3E3B2200C3A2D00CE31F0 /* HomeCollectionViewCell.xib in Resources */,
 				A1BDA7E720BD5953006DE281 /* DDAddWPController.xib in Resources */,
 				A1BC1F482015BBA0007D0E1C /* FlightWarnHeaderView.xib in Resources */,
@@ -1096,6 +1121,7 @@
 				A1D1335820C53D5000A87346 /* DDRepActionController.xib in Resources */,
 				A1EB2147208DAC2500661C45 /* DDViewController.xib in Resources */,
 				A1CF29FF20070029009FE6A4 /* Main.storyboard in Resources */,
+				A1AD80ED20E4BC1900E371E7 /* PlaneCertInfoController.xib in Resources */,
 				A120285F2008A1C200CB8633 /* success.png in Resources */,
 				A1BA5764209AB84000B2D6E0 /* MaterialSearchCell.xib in Resources */,
 				A1284D8C205BB00500B7B576 /* WarnInfoDetailController_new.xib in Resources */,
@@ -1110,6 +1136,7 @@
 				A1AB9EF8207B0536000663C3 /* ActionListCell.xib in Resources */,
 				A1D15D91204644A7004A2C58 /* WarnDisPoseCell.xib in Resources */,
 				A1C546B22079B8F40060D921 /* Section_Comp_header.xib in Resources */,
+				A1AD80E920E47D1300E371E7 /* TaskEditReasonOlnyController.xib in Resources */,
 				A1C546B82079C34C0060D921 /* Section_TableViewCell.xib in Resources */,
 				A1C546C02079E5800060D921 /* Section_TableViewCell3.xib in Resources */,
 				A1659470206E0DBB00CC8A0D /* TaskHandleController.xib in Resources */,
@@ -1124,6 +1151,7 @@
 				A1C546AE2079B17D0060D921 /* Action_Materal_Cell.xib in Resources */,
 				A1BA177720A3E343008078EE /* NRRCell.xib in Resources */,
 				A1AAF15320494DCD00E8CB3B /* TaskHandCell.xib in Resources */,
+				A18F9E7A20E4E37800363C8F /* PlaneCertImageCell.xib in Resources */,
 				A1D3E3B4200C478300CE31F0 /* Assets.xcassets in Resources */,
 				A1C546B02079B8CF0060D921 /* Section_Matera_header.xib in Resources */,
 				A1E5C1142048EE7D00511F58 /* TaskPoolCell.xib in Resources */,
@@ -1275,6 +1303,7 @@
 				A1B144E2207F2BE8006B3806 /* DefectReportController.swift in Sources */,
 				A120283C2008812500CB8633 /* DatePickerController.swift in Sources */,
 				A1BDA7CE20BCF159006DE281 /* DDNoticeCabinCell.swift in Sources */,
+				A18F9E7D20E4E39B00363C8F /* PlaneCertHistoryCell.swift in Sources */,
 				A165946F206E0DBB00CC8A0D /* TaskHandleController.swift in Sources */,
 				A1C6DD73206C7F0F00A09808 /* TaskPoolSelectController.swift in Sources */,
 				A13FC9A020D8E0BC0010DF6D /* PNHistoryCell.swift in Sources */,
@@ -1282,6 +1311,7 @@
 				A161217020904DE600F72C94 /* ReportBaseInfoCell.swift in Sources */,
 				A161216220901EBE00F72C94 /* ReporFormController.swift in Sources */,
 				A120284520089D4200CB8633 /* constant.swift in Sources */,
+				A18F9E7920E4E37800363C8F /* PlaneCertImageCell.swift in Sources */,
 				A1BA5767209AB8BC00B2D6E0 /* MaterialOrderCell.swift in Sources */,
 				A1DCEDC720A055B30062EC7E /* FMDB.m in Sources */,
 				A12028432008977400CB8633 /* color.swift in Sources */,
@@ -1304,6 +1334,7 @@
 				A1DF738D2043EF5B0099B858 /* WarnInfoDetailController.swift in Sources */,
 				A1EFFEBC20D9EEFB0021AB6D /* MyOrderCell.swift in Sources */,
 				A1BDA7DE20BD4F78006DE281 /* DDWPCell.swift in Sources */,
+				A1AD80EC20E4BC1900E371E7 /* PlaneCertInfoController.swift in Sources */,
 				A1C6DD76206CEB3600A09808 /* BaseDataCheck.swift in Sources */,
 				A12028622008A1C200CB8633 /* Reachability.m in Sources */,
 				A1B03DE7207C912E00797564 /* TaskNumberListVC.swift in Sources */,
@@ -1339,6 +1370,7 @@
 				A1C26DAD204FBA2700B11F63 /* FlightWarnListCell.swift in Sources */,
 				A1D15D90204644A7004A2C58 /* WarnDisPoseCell.swift in Sources */,
 				A1CF2A1420070B90009FE6A4 /* LoginViewController.swift in Sources */,
+				A1AD80E820E47D1300E371E7 /* TaskEditReasonOlnyController.swift in Sources */,
 				A1923FD3201733E20057AD1E /* BaseWebViewController.swift in Sources */,
 				A1CF2A0F20070A5D009FE6A4 /* BaseViewController.swift in Sources */,
 				A1C0A3D8200DF04F00A1762C /* TTRefreshFooter.swift in Sources */,

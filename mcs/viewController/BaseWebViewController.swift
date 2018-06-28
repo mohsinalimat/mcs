@@ -84,6 +84,12 @@ class BaseWebViewController: BaseViewController,UIWebViewDelegate,UIGestureRecog
     
     //MARK:
     func webViewDidFinishLoad(_ webView: UIWebView) {
+        // 禁用用户选择
+        webView.stringByEvaluatingJavaScript(from: "document.documentElement.style.webkitUserSelect='none';")
+        
+        // 禁用长按弹出框
+        webView.stringByEvaluatingJavaScript(from: "document.documentElement.style.webkitTouchCallout='none';")
+ 
         HUD.dismiss()
     }
     

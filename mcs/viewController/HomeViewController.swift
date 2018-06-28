@@ -153,7 +153,10 @@ class HomeViewController: BaseTabItemController,UICollectionViewDelegate,UIColle
         let user = UILabel (frame: CGRect (x: 0, y: 0, width: 100, height: 30))
         user.font = UIFont.systemFont(ofSize: 20)
         user.textAlignment = .center
-        user.text = "\(UserDefaults.standard.value(forKey:"user-name")!)"
+        if let name = UserDefaults.standard.value(forKey: "loginUserInfo") as? [String:String] {
+            user.text = name["userName"];
+        }
+        //user.text = "\(UserDefaults.standard.value(forKey:"user-name")!)"
         navigationItem.titleView = user
         
         //msg

@@ -40,6 +40,7 @@ let get_task_pool_url = "/biz/task/pool"
 let get_aircraft_status_url = "/alarm/aircraft/status"//飞机状态-GET请求
 let get_warn_list_url = "/alarm/list" //航班告警列表
 let get_warn_info_url = "/alarm/detail"///{alarm_id} 告警详情-GET请求
+let get_cert_url = "/biz/getCert"//飞机证书
 
 ////base
 let login_basedata_url = "/biz/mobile/data/active" //登录时基础数据
@@ -96,7 +97,28 @@ let pn_history_url = "/biz/pnInStockChange/getList"//库存记录变动 "/biz/pn
 var kFlightInfoListController_flightDate:String! //航班日期
 var kFlightInfoListController_airId:String!//飞机ID
 var kFlightInfoListController_fltNo:String!//飞机航班号
-var kTaskPool_BASE_DATA:[String:Any]!
+
+var _kTaskPool_BASE_DATA:[String:Any]?
+var kTaskPool_BASE_DATA:[String:Any]! {
+    get {
+        if _kTaskPool_BASE_DATA != nil {
+            return _kTaskPool_BASE_DATA;
+        } else {
+            netHelper_request(withUrl: login_basedata_url, method: .post, parameters: nil, successHandler: {(result) in
+                guard let body = result["body"] as? [String : Any] else {return;}
+                _kTaskPool_BASE_DATA = body
+                }
+            )
+            return [:]
+        }
+    }
+
+    set {
+        _kTaskPool_BASE_DATA = newValue;
+    }
+}
+
+
 var kTaskpool_shift:[String:String]?
 var kTaskpool_station:String?
 var kTaskpool_date:Date?

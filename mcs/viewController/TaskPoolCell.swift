@@ -51,7 +51,7 @@ class TaskPoolCell: UITableViewCell {
         
         //_line.isHidden = !(from.text != " " && to.text != " ")
             
-        fltno.text = String.isNullOrEmpty(d["flNo"])
+        fltno.text = String.isNullOrEmpty(d["aftFlNo"])
         
         to_sb.text = String.isNullOrEmpty(d["taskTo"])
         

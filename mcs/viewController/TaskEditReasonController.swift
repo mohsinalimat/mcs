@@ -24,7 +24,7 @@ class TaskEditReasonController: BaseViewController {
 
         view.backgroundColor = UIColor.white
         _setTitleView("Update Reason Info")
-        
+        _initSubview()
         
         // Do any additional setup after loading the view.
         
@@ -96,6 +96,15 @@ class TaskEditReasonController: BaseViewController {
     
     }
     
+    func _initSubview() {
+        reason.text = String.isNullOrEmpty(taskPoolSelectedTask["reason"])
+        flNo.text = String.isNullOrEmpty(taskPoolSelectedTask["aftFlNo"]);
+        taskTo.text = String.isNullOrEmpty(taskPoolSelectedTask["taskTo"])
+    }
+    
+    
+    
+    
     
     //MARK:-
     func _request() {
@@ -112,8 +121,8 @@ class TaskEditReasonController: BaseViewController {
                               "oldTaskTo":String.isNullOrEmpty(taskPoolSelectedTask["taskTo"]),
                               
                               "performReason":String.isNullOrEmpty(reason.text),
-                              "aftFlNo":String.isNullOrEmpty(taskPoolSelectedTask["aftFlNo"]),
-                              "taskTo":String.isNullOrEmpty(taskPoolSelectedTask["taskTo"])
+                              "aftFlNo":String.isNullOrEmpty(flNo.text),
+                              "taskTo":String.isNullOrEmpty(taskTo.text)
                               ]
         
         

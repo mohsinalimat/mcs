@@ -318,8 +318,10 @@ class TaskPoolBaseController: BaseViewController ,UITableViewDelegate,UITableVie
         let action5 = UITableViewRowAction.init(style: .default, title: "Edit Reason") { (action, indexPath) in
             tableView.isEditing = false
             
-            Tools.showAlert("TaskEditReasonController" , frame: CGRect(x: 0, y: 0, width: 500, height: 350))
-            
+            let b = Tools.user_role() == "offline"
+            let v = b ? TaskEditReasonOlnyController() : TaskEditReasonController()
+        
+            Tools.showVC(v, frame: CGRect(x: 0, y: 0, width: 500, height: b ? 300 : 360))
         }
         action5.backgroundColor = UIColor.init(colorLiteralRed: 200/255.0, green: 153/255.0, blue: 153/255.0, alpha: 1)
         

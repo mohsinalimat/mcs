@@ -45,7 +45,7 @@ class TaskPoolRootController: BaseTabItemController {
     
     func navigatoinItemTitleView() -> UISegmentedControl  {
         let seg = UISegmentedControl.init(items: ["Task Pool","HandOver"])
-        seg.frame = CGRect (x: 0, y: 0, width: 500, height: 35)
+        seg.frame = CGRect (x: 0, y: 0, width: 500, height: 30)
         seg.addTarget(self, action: #selector(segClicked(_:)), for:.valueChanged )
         seg.selectedSegmentIndex = 0
         seg.tintColor = kViewDefaultBgColor
