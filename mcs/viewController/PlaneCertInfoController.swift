@@ -14,7 +14,6 @@ class PlaneCertInfoController: BaseViewController , UICollectionViewDelegate,UIC
     
     @IBOutlet weak var _collectionView: UICollectionView!
     @IBOutlet weak var _tableView: UITableView!
-    
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var stas: UILabel!
     @IBOutlet weak var loadDate: UILabel!
@@ -42,6 +41,10 @@ class PlaneCertInfoController: BaseViewController , UICollectionViewDelegate,UIC
         _tableView.dataSource = self
         _tableView.register(UINib (nibName: "PlaneCertHistoryCell", bundle: nil), forCellReuseIdentifier: "PlaneCertHistoryCellIdentifier")
         _tableView.rowHeight = 60
+        _tableView.tableFooterView = UIView()
+        _tableView.backgroundColor = kTableviewBackgroundColor
+        _tableView.layer.borderWidth = 1
+        _tableView.layer.borderColor = UIColor.lightGray.cgColor
     }
     
     func loadData() {

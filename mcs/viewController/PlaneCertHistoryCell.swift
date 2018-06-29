@@ -19,7 +19,7 @@ class PlaneCertHistoryCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.backgroundColor = kTableviewBackgroundColor
+        //self.backgroundColor = kTableviewBackgroundColor
     }
 
     
