@@ -179,6 +179,9 @@
 		A1C26DB2204FBD3B00B11F63 /* FlightWarnListHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1C26DB1204FBD3B00B11F63 /* FlightWarnListHeadView.xib */; };
 		A1C26DB4204FDDAC00B11F63 /* FlightWarnListTopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1C26DB3204FDDAC00B11F63 /* FlightWarnListTopView.xib */; };
 		A1C26DB6204FDDCC00B11F63 /* FlightWarnListTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C26DB5204FDDCC00B11F63 /* FlightWarnListTopView.swift */; };
+		A1C5207220E5C78B00D77536 /* TTImagePreviewCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C5207020E5C78B00D77536 /* TTImagePreviewCell2.swift */; };
+		A1C5207320E5C78B00D77536 /* TTImagePreviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C5207120E5C78B00D77536 /* TTImagePreviewController.swift */; };
+		A1C5207520E5DAFB00D77536 /* topBar_close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1C5207420E5DAFB00D77536 /* topBar_close@2x.png */; };
 		A1C546AD2079B17D0060D921 /* Action_Materal_Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C546AB2079B17C0060D921 /* Action_Materal_Cell.swift */; };
 		A1C546AE2079B17D0060D921 /* Action_Materal_Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1C546AC2079B17C0060D921 /* Action_Materal_Cell.xib */; };
 		A1C546B02079B8CF0060D921 /* Section_Matera_header.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1C546AF2079B8CF0060D921 /* Section_Matera_header.xib */; };
@@ -434,6 +437,9 @@
 		A1C26DB1204FBD3B00B11F63 /* FlightWarnListHeadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FlightWarnListHeadView.xib; sourceTree = "<group>"; };
 		A1C26DB3204FDDAC00B11F63 /* FlightWarnListTopView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FlightWarnListTopView.xib; sourceTree = "<group>"; };
 		A1C26DB5204FDDCC00B11F63 /* FlightWarnListTopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlightWarnListTopView.swift; sourceTree = "<group>"; };
+		A1C5207020E5C78B00D77536 /* TTImagePreviewCell2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTImagePreviewCell2.swift; sourceTree = "<group>"; };
+		A1C5207120E5C78B00D77536 /* TTImagePreviewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTImagePreviewController.swift; sourceTree = "<group>"; };
+		A1C5207420E5DAFB00D77536 /* topBar_close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "topBar_close@2x.png"; sourceTree = "<group>"; };
 		A1C546AB2079B17C0060D921 /* Action_Materal_Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Action_Materal_Cell.swift; sourceTree = "<group>"; };
 		A1C546AC2079B17C0060D921 /* Action_Materal_Cell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Action_Materal_Cell.xib; sourceTree = "<group>"; };
 		A1C546AF2079B8CF0060D921 /* Section_Matera_header.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Section_Matera_header.xib; sourceTree = "<group>"; };
@@ -533,6 +539,7 @@
 		A120284F2008A18000CB8633 /* com */ = {
 			isa = PBXGroup;
 			children = (
+				A1C5206F20E5C78B00D77536 /* TTImagePreviewController */,
 				A1DCEDC320A055B30062EC7E /* FMDB.h */,
 				A1DCEDC420A055B30062EC7E /* FMDB.m */,
 				A1DCEDC520A055B30062EC7E /* Model.h */,
@@ -683,6 +690,16 @@
 				A1C0A3D7200DF04B00A1762C /* TTRefreshHeader.swift */,
 			);
 			path = Refresh;
+			sourceTree = "<group>";
+		};
+		A1C5206F20E5C78B00D77536 /* TTImagePreviewController */ = {
+			isa = PBXGroup;
+			children = (
+				A1C5207420E5DAFB00D77536 /* topBar_close@2x.png */,
+				A1C5207020E5C78B00D77536 /* TTImagePreviewCell2.swift */,
+				A1C5207120E5C78B00D77536 /* TTImagePreviewController.swift */,
+			);
+			path = TTImagePreviewController;
 			sourceTree = "<group>";
 		};
 		A1C546C1207A0CAB0060D921 /* pop */ = {
@@ -1155,6 +1172,7 @@
 				A1D3E3B4200C478300CE31F0 /* Assets.xcassets in Resources */,
 				A1C546B02079B8CF0060D921 /* Section_Matera_header.xib in Resources */,
 				A1E5C1142048EE7D00511F58 /* TaskPoolCell.xib in Resources */,
+				A1C5207520E5DAFB00D77536 /* topBar_close@2x.png in Resources */,
 				A1B144DF207F2483006B3806 /* DefectReportCell.xib in Resources */,
 				A1A6B2782011B79D00F7D048 /* FlightInfoListController.xib in Resources */,
 				A1AAF1492049167600E8CB3B /* TaskPoolBaseController.xib in Resources */,
@@ -1240,6 +1258,7 @@
 			files = (
 				A1E65C582018236E006D1085 /* FIBViewController.swift in Sources */,
 				A1A6B2772011B79D00F7D048 /* FlightInfoListController.swift in Sources */,
+				A1C5207220E5C78B00D77536 /* TTImagePreviewCell2.swift in Sources */,
 				A1BDA7E620BD5953006DE281 /* DDAddWPController.swift in Sources */,
 				A1891F5E2074C7D500170BFC /* TaskActionDetailView.swift in Sources */,
 				A1633B1520944D1200342F92 /* SearchItemCell.swift in Sources */,
@@ -1311,6 +1330,7 @@
 				A161217020904DE600F72C94 /* ReportBaseInfoCell.swift in Sources */,
 				A161216220901EBE00F72C94 /* ReporFormController.swift in Sources */,
 				A120284520089D4200CB8633 /* constant.swift in Sources */,
+				A1C5207320E5C78B00D77536 /* TTImagePreviewController.swift in Sources */,
 				A18F9E7920E4E37800363C8F /* PlaneCertImageCell.swift in Sources */,
 				A1BA5767209AB8BC00B2D6E0 /* MaterialOrderCell.swift in Sources */,
 				A1DCEDC720A055B30062EC7E /* FMDB.m in Sources */,

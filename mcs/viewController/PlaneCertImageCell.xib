@@ -8,19 +8,22 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PlaneCertImageCellIdentifier" id="gTV-IL-0wX" customClass="PlaneCertImageCell" customModule="mcs" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="330" height="200"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="330" height="200"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_fib" translatesAutoresizingMaskIntoConstraints="NO" id="8KA-ZG-QYp"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_fib" translatesAutoresizingMaskIntoConstraints="NO" id="8KA-ZG-QYp">
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </imageView>
                 </subviews>
             </view>
+            <color key="backgroundColor" red="0.94891661405563354" green="0.94907897710800171" blue="0.94890636205673218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="8KA-ZG-QYp" secondAttribute="trailing" constant="10" id="7EN-uN-Yg3"/>
+                <constraint firstAttribute="trailing" secondItem="8KA-ZG-QYp" secondAttribute="trailing" constant="5" id="CWW-TR-BJB"/>
+                <constraint firstItem="8KA-ZG-QYp" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="J4A-CY-Hq5"/>
                 <constraint firstItem="8KA-ZG-QYp" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="N9Q-KA-0pN"/>
-                <constraint firstItem="8KA-ZG-QYp" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="RH7-Mz-GwC"/>
                 <constraint firstAttribute="bottom" secondItem="8KA-ZG-QYp" secondAttribute="bottom" id="RtO-70-F1J"/>
             </constraints>
             <connections>
