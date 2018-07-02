@@ -89,9 +89,8 @@ class FlightInfoListCell: UICollectionViewCell {
             }
         }
 
-        if left {
-            icon_plane.transform = CGAffineTransform.init(rotationAngle: CGFloat(M_PI_2));
-        }
+        
+        icon_plane.image = UIImage (named: left ? "icon_plane_arri":"icon_plane")
     }
     
     

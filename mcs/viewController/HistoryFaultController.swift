@@ -164,7 +164,7 @@ class HistoryFaultController: BaseViewController  ,UITableViewDelegate,UITableVi
         let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryFaultCellIdentifier", for: indexPath) as! HistoryFaultCell
         cell.backgroundColor = indexPath.row % 2 == 0 ? kTableViewCellbg_whiteColor : kTableViewCellbg_hightlightColor
         let d = dataArray[indexPath.row]
-        cell.fill(d)
+        cell.fill(d ,isAll: _isAll)
         
         return cell
     }

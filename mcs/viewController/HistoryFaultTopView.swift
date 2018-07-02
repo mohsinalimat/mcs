@@ -80,7 +80,7 @@ class HistoryFaultTopView: UIView {
         }else{
             reg.isHidden = false;
             selectRegBtn.isHidden = true
-            moreBtnWidth.constant = 50
+            moreBtnWidth.constant = 70
             selectRegBtnWidth.constant = 0;
             reg.text = kFlightInfoListController_airId
         }

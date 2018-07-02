@@ -3,7 +3,7 @@
     {
       "size" : "20x20",
       "idiom" : "ipad",
-      "filename" : "Icon-padNoti-20.png",
+      "filename" : "Icon-Spotlight-20.png",
       "scale" : "1x"
     },
     {
@@ -51,7 +51,7 @@
     {
       "size" : "83.5x83.5",
       "idiom" : "ipad",
-      "filename" : "ipadpro-83.5@2x.png",
+      "filename" : "Icon-iPadPro@2x.png",
       "scale" : "2x"
     }
   ],

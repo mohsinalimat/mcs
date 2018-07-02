@@ -20,6 +20,9 @@ class PlaneCertInfoController: BaseViewController , UICollectionViewDelegate,UIC
     @IBOutlet weak var endDate: UILabel!
     @IBOutlet weak var pageCtr: UIPageControl!
     
+    @IBOutlet weak var noInfo: UILabel!
+    
+    
     var attaches:[[String:Any]]?
     var history:[[String:Any]]?;
     
@@ -84,6 +87,12 @@ class PlaneCertInfoController: BaseViewController , UICollectionViewDelegate,UIC
         
         _collectionView.reloadData()
         _tableView.reloadData()
+        
+        if let h = history{
+            noInfo.isHidden = h.count > 0;
+        }
+        
+        
         pageCtr.currentPage = 0
         pageCtr.numberOfPages = (attaches?.count) ?? 0
     }
