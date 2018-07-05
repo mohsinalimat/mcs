@@ -10,6 +10,7 @@
                 <outlet property="add_tbn" destination="A2l-uc-1rL" id="AhP-q1-zKb"/>
                 <outlet property="descri" destination="wdk-pn-Jw8" id="3ZR-sy-BcY"/>
                 <outlet property="fin" destination="YnX-ET-0kn" id="jFG-u3-5qW"/>
+                <outlet property="ipc_btn" destination="yZg-zi-iYU" id="MX1-XB-Lgl"/>
                 <outlet property="mark" destination="jwi-i6-m8X" id="Ihx-qs-S3s"/>
                 <outlet property="pin" destination="HIl-at-SU6" id="5lo-75-FYI"/>
                 <outlet property="qty" destination="PHi-IG-LLU" id="DNK-bT-Ibp"/>
@@ -119,6 +120,15 @@
                     <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yZg-zi-iYU">
+                    <frame key="frameInset" minX="448" minY="18" width="50" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="20" maxY="0.0"/>
+                    <state key="normal" image="arrow_right_setup_night"/>
+                    <connections>
+                        <action selector="select_ipc_action:" destination="-1" eventType="touchUpInside" id="j5d-dx-LFi"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>

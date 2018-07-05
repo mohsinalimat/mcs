@@ -218,7 +218,12 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
     
     private func __fillData() {
         kSectionHeadButtonSelectedIndex = current_selected_index
-        addActionMateralDataArr = _current_materialArr
+        if !materalDataFromIPC  {
+            addActionMateralDataArr = _current_materialArr;
+        } else {
+            materalDataFromIPC = false;
+        }
+        
         
         guard kSectionHeadButtonSelectedIndex == .creatReportValue5 else {return}
         kAttachmentDataArr = _current_attachmnetArr

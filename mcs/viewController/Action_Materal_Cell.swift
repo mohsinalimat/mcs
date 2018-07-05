@@ -70,6 +70,21 @@ class Action_Materal_Cell: UITableViewCell,UITableViewDelegate,UITableViewDataSo
         _tableView.rowHeight = 60
         
         NotificationCenter.default.addObserver(self, selector: #selector(refreshAction), name:  NSNotification.Name.init("add_materialOrComponent_notification"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(noti(_ :)), name: NSNotification.Name.init("ipc_selected_ok_notification"), object: nil)
+    }
+    
+    func noti(_ n:Notification) {
+        if let arr = n.userInfo?["data"] as? [[String:Any]] {
+            for i in arr {
+            let d = ["pn":String.isNullOrEmpty(i["pnr"]) , "description":String.isNullOrEmpty(i["lbl"])]
+                addActionMateralDataArr.append(d)
+            }
+           
+            materalDataFromIPC = true
+            refreshAction()
+        }
+        
     }
 
     override func layoutSubviews() {
@@ -216,12 +231,22 @@ class Action_Materal_Cell: UITableViewCell,UITableViewDelegate,UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard kSectionHeadButtonSelectedIndex == .creatReportValue5 else { return}
-        if let handler = didSelectedRowAtIndex {
-            handler(indexPath.row);
-        }
+        switch kSectionHeadButtonSelectedIndex {
+        case .addActoinValue2, .creatReportValue2:
+            let v = Add_MateralVC()
+            v.index = indexPath.row
+            
+            Tools.showVC(v, withBar: true, frame: CGRect (x: 0, y: 0, width: 500, height: 500))
+            break
+            
+        case .creatReportValue5:
+            if let handler = didSelectedRowAtIndex {
+                handler(indexPath.row);
+            };break
+        
+        default:break
     }
-    
+    }
     
 }
 

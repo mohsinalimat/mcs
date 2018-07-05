@@ -62,6 +62,8 @@
 		A1659470206E0DBB00CC8A0D /* TaskHandleController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A165946E206E0DBB00CC8A0D /* TaskHandleController.xib */; };
 		A165B67C20107FA3006080D8 /* HomeDetailTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A165B67B20107FA3006080D8 /* HomeDetailTabController.swift */; };
 		A16770F220B418C700D93454 /* TTSheetAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16770F120B418C700D93454 /* TTSheetAction.swift */; };
+		A1704E5E20EC9DD700FA28C3 /* WebViewJavascriptBridge.js.txt in Resources */ = {isa = PBXBuildFile; fileRef = A1704E5C20EC9DD700FA28C3 /* WebViewJavascriptBridge.js.txt */; };
+		A1704E5F20EC9DD700FA28C3 /* WebViewJavascriptBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = A1704E5D20EC9DD700FA28C3 /* WebViewJavascriptBridge.m */; };
 		A17A5441207E0D2600D035B5 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A17A543E207E0D2600D035B5 /* RxCocoa.framework */; };
 		A17A5442207E0D2600D035B5 /* RxDataSources.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A17A543F207E0D2600D035B5 /* RxDataSources.framework */; };
 		A17A5443207E0D2600D035B5 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A17A5440207E0D2600D035B5 /* RxSwift.framework */; };
@@ -229,6 +231,7 @@
 		A1D4ADFF20BFD30000420AB5 /* TTImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D4ADFE20BFD30000420AB5 /* TTImagePickerViewController.swift */; };
 		A1D4AE0220BFD36D00420AB5 /* PublishImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D4AE0020BFD36D00420AB5 /* PublishImageCell.swift */; };
 		A1D4AE0320BFD36D00420AB5 /* PublishImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1D4AE0120BFD36D00420AB5 /* PublishImageCell.xib */; };
+		A1D7F83320EC6486008B118F /* SelectIPcController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D7F83220EC6485008B118F /* SelectIPcController.swift */; };
 		A1DCEDB520A023D30062EC7E /* DefectSearchCodeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DCEDB320A023D20062EC7E /* DefectSearchCodeController.swift */; };
 		A1DCEDB620A023D30062EC7E /* DefectSearchCodeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1DCEDB420A023D20062EC7E /* DefectSearchCodeController.xib */; };
 		A1DCEDC720A055B30062EC7E /* FMDB.m in Sources */ = {isa = PBXBuildFile; fileRef = A1DCEDC420A055B30062EC7E /* FMDB.m */; };
@@ -319,6 +322,9 @@
 		A165946E206E0DBB00CC8A0D /* TaskHandleController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskHandleController.xib; sourceTree = "<group>"; };
 		A165B67B20107FA3006080D8 /* HomeDetailTabController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeDetailTabController.swift; sourceTree = "<group>"; };
 		A16770F120B418C700D93454 /* TTSheetAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTSheetAction.swift; sourceTree = "<group>"; };
+		A1704E5B20EC9DD700FA28C3 /* WebViewJavascriptBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewJavascriptBridge.h; sourceTree = "<group>"; };
+		A1704E5C20EC9DD700FA28C3 /* WebViewJavascriptBridge.js.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = WebViewJavascriptBridge.js.txt; sourceTree = "<group>"; };
+		A1704E5D20EC9DD700FA28C3 /* WebViewJavascriptBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewJavascriptBridge.m; sourceTree = "<group>"; };
 		A17A543E207E0D2600D035B5 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = "../../../../Library/Developer/Xcode/DerivedData/mcs-eoyeqdslwdymqccjeinitcdyuynk/Build/Products/Debug-iphoneos/RxCocoa/RxCocoa.framework"; sourceTree = "<group>"; };
 		A17A543F207E0D2600D035B5 /* RxDataSources.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxDataSources.framework; path = "../../../../Library/Developer/Xcode/DerivedData/mcs-eoyeqdslwdymqccjeinitcdyuynk/Build/Products/Debug-iphoneos/RxDataSources/RxDataSources.framework"; sourceTree = "<group>"; };
 		A17A5440207E0D2600D035B5 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = "../../../../Library/Developer/Xcode/DerivedData/mcs-eoyeqdslwdymqccjeinitcdyuynk/Build/Products/Debug-iphoneos/RxSwift/RxSwift.framework"; sourceTree = "<group>"; };
@@ -489,6 +495,7 @@
 		A1D4ADFE20BFD30000420AB5 /* TTImagePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTImagePickerViewController.swift; sourceTree = "<group>"; };
 		A1D4AE0020BFD36D00420AB5 /* PublishImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublishImageCell.swift; sourceTree = "<group>"; };
 		A1D4AE0120BFD36D00420AB5 /* PublishImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PublishImageCell.xib; sourceTree = "<group>"; };
+		A1D7F83220EC6485008B118F /* SelectIPcController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectIPcController.swift; sourceTree = "<group>"; };
 		A1DCEDB320A023D20062EC7E /* DefectSearchCodeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefectSearchCodeController.swift; sourceTree = "<group>"; };
 		A1DCEDB420A023D20062EC7E /* DefectSearchCodeController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DefectSearchCodeController.xib; sourceTree = "<group>"; };
 		A1DCEDC320A055B30062EC7E /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDB.h; sourceTree = "<group>"; };
@@ -545,6 +552,7 @@
 				A1DCEDC520A055B30062EC7E /* Model.h */,
 				A1DCEDC620A055B30062EC7E /* Model.m */,
 				A12028502008A18700CB8633 /* Extension.swift */,
+				A1704E5A20EC9DD700FA28C3 /* WebViewJavascriptBridge */,
 				A1C0A3D5200DF04B00A1762C /* Refresh */,
 				A12028512008A18C00CB8633 /* hud */,
 				A12028572008A19200CB8633 /* LocationManager.swift */,
@@ -578,6 +586,16 @@
 				A120285A2008A19700CB8633 /* Reachability.m */,
 			);
 			path = Reachability;
+			sourceTree = "<group>";
+		};
+		A1704E5A20EC9DD700FA28C3 /* WebViewJavascriptBridge */ = {
+			isa = PBXGroup;
+			children = (
+				A1704E5B20EC9DD700FA28C3 /* WebViewJavascriptBridge.h */,
+				A1704E5C20EC9DD700FA28C3 /* WebViewJavascriptBridge.js.txt */,
+				A1704E5D20EC9DD700FA28C3 /* WebViewJavascriptBridge.m */,
+			);
+			path = WebViewJavascriptBridge;
 			sourceTree = "<group>";
 		};
 		A1B144DA207F2420006B3806 /* defectReport */ = {
@@ -709,6 +727,7 @@
 				A1C546C3207A0F540060D921 /* Add_MateralVC.xib */,
 				A1C546C6207A0F920060D921 /* Add_ComponentVC.swift */,
 				A1C546C7207A0F920060D921 /* Add_ComponentVC.xib */,
+				A1D7F83220EC6485008B118F /* SelectIPcController.swift */,
 			);
 			name = pop;
 			sourceTree = "<group>";
@@ -1112,6 +1131,7 @@
 				A1D15D8920464436004A2C58 /* WarnDetailTopCell.xib in Resources */,
 				A1D15D8D20464466004A2C58 /* WarnFaultInfoCell.xib in Resources */,
 				A1CE0F7120A93AA800AF42D6 /* ReportInfoCell_R.xib in Resources */,
+				A1704E5E20EC9DD700FA28C3 /* WebViewJavascriptBridge.js.txt in Resources */,
 				A1BDA7D320BD3D4D006DE281 /* DDWSHeadView.xib in Resources */,
 				A1EFFEBD20D9EEFB0021AB6D /* MyOrderCell.xib in Resources */,
 				A1B4E0C620AD892600EA7219 /* NRRCell_R.xib in Resources */,
@@ -1343,6 +1363,7 @@
 				A1633B102094459500342F92 /* SearBarView.swift in Sources */,
 				A1BC1F3D2015AC73007D0E1C /* PlaneInfoController.swift in Sources */,
 				A1A20F58202AFDB000407276 /* AllWarnTableViewCell.swift in Sources */,
+				A1D7F83320EC6486008B118F /* SelectIPcController.swift in Sources */,
 				A1BDA7DA20BD4F66006DE281 /* DDWSCell.swift in Sources */,
 				A1BC1F3620157D2F007D0E1C /* TextMsgViewCell.swift in Sources */,
 				A1D15D8820464436004A2C58 /* WarnDetailTopCell.swift in Sources */,
@@ -1382,6 +1403,7 @@
 				A1BDA7C220BCF09B006DE281 /* DDNoticeDefaultCell.swift in Sources */,
 				A14BA8AE20733AEB0027D51F /* TaskChangeShiftReasonVC.swift in Sources */,
 				A161216720902D1200F72C94 /* DefectReportBtnView.swift in Sources */,
+				A1704E5F20EC9DD700FA28C3 /* WebViewJavascriptBridge.m in Sources */,
 				A161217320906E8B00F72C94 /* MultiButtonView.swift in Sources */,
 				A1C26DB0204FBD2800B11F63 /* FlightWarnListHeadView.swift in Sources */,
 				A1BA576A209AEEFA00B2D6E0 /* MaterialOrderHead.swift in Sources */,

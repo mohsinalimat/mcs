@@ -13,5 +13,6 @@
 #import "Model.h"
 
 #import "FMDB.h"
+#import "WebViewJavascriptBridge.h"
 
 #endif /* mcs_bridging_header_h */

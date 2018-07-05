@@ -83,6 +83,9 @@ let defect_flightNo_url = "/biz/defect/getFlightStatusList"
 let defect_faultDetail_url = "/biz/viewBizFault"
 let download_url = "/biz/download"
 let dd_cal_deadline_url = "/biz/calAcDl"
+let get_ipc_url = "/biz/getIpcManUrl"
+
+
 
 ///dd
 let dd_list_url = "/biz/dd/list"
@@ -163,6 +166,7 @@ var report_flight_no:String?
 var report_flight_date:Date?
 var report_release_ref:String?
 var report_refresh_cat:Bool = false
+var materalDataFromIPC = false
 
 var defect_added_actions = [[String:Any]]()
 let defect_all_status : [String:String] = {

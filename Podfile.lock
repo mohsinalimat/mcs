@@ -35,6 +35,7 @@ PODS:
   - SVProgressHUD (2.1.2)
   - SwiftWebViewBridge (0.3.0)
   - SwiftyJSON (3.1.4)
+  - Then (2.3.0)
 
 DEPENDENCIES:
   - AFNetworking (= 3.2.0)
@@ -50,6 +51,7 @@ DEPENDENCIES:
   - SVProgressHUD (~> 2.1.2)
   - SwiftWebViewBridge (~> 0.3.0)
   - SwiftyJSON
+  - Then (~> 2.3.0)
 
 SPEC CHECKSUMS:
   AFNetworking: 8ac6017b94ea105479f7776e5288e48ae9c59bb4
@@ -66,7 +68,8 @@ SPEC CHECKSUMS:
   SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
   SwiftWebViewBridge: 902b8e6945352c74aa5c0975c4dcd48f420f7d44
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+  Then: ee21c97b85ff6062b9b0080c9abb1eea46743345
 
-PODFILE CHECKSUM: d308e47f2eb2c6bf8efe4a9e64d22c96bef938ac
+PODFILE CHECKSUM: 614be31cffce2238344d9a7d79128c72d6748ac8
 
 COCOAPODS: 1.0.1

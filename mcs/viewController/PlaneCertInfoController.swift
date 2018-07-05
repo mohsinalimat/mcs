@@ -51,7 +51,10 @@ class PlaneCertInfoController: BaseViewController , UICollectionViewDelegate,UIC
     }
     
     func loadData() {
+        HUD.show()
         request(get_cert_url, parameters: ["id":_id], successHandler: {[weak self] (res) in
+            HUD.dismiss()
+            
             guard let ss = self else {return}
             guard let d = res["body"] as? [String:Any] else {return}
             ss._fillData(d);

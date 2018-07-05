@@ -27,8 +27,11 @@ class Add_MateralVC: BaseViewController {
     @IBOutlet weak var mark: UITextField!
     
     @IBOutlet weak var add_tbn: UIButton!
+    @IBOutlet weak var ipc_btn: UIButton!
     
     let disposeBag = DisposeBag.init()
+    
+    var index:Int = -1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,11 +41,25 @@ class Add_MateralVC: BaseViewController {
         
         _addCloseItem()
         
-        pin.rx.text.orEmpty.map {$0.lengthOfBytes(using: String.Encoding.utf8) > 0}.bindTo(add_tbn.ex_isEnabled).addDisposableTo(disposeBag);
+        if index >= 0 {
+            _fill(addActionMateralDataArr[index]);
+            ipc_btn.isHidden = true
+        }
         
+        pin.rx.text.orEmpty.map {$0.lengthOfBytes(using: String.Encoding.utf8) > 0}.bindTo(add_tbn.ex_isEnabled).addDisposableTo(disposeBag);
     }
 
+    func _fill(_ d:[String:Any]) {
+        pin.text = String.isNullOrEmpty(d["pn"]);
+        type_btn.setTitle(String.isNullOrEmpty(d["partType"]), for: .normal)
+        descri.text = String.isNullOrEmpty(d["description"])
+        qty.text  = String.isNullOrEmpty(d["qty"])
+        fin.text = String.isNullOrEmpty(d["fin"])
+        mark.text = String.isNullOrEmpty(d["remark"])
+        store_in.text = String.isNullOrEmpty(d["storeInAmasis"])
+    }
     
+
     @IBAction func selectAction(_ sender: UIButton) {
         
         Tools.showDataPicekr (self,dataSource:["MATERIAL","TOOL"] ){ [weak self](obj) in
@@ -56,6 +73,21 @@ class Add_MateralVC: BaseViewController {
     }
     
     
+    @IBAction func select_ipc_action(_ sender: UIButton) {
+        guard report_reg != nil else { HUD.show(info: "Select Reg!"); return};
+        
+        request(get_ipc_url, parameters: ["acReg":report_reg!], successHandler: {[unowned self]  (res) in
+            guard let u = res["body"] as? String else {return}
+            let v = SelectIPcController()
+            v.req_url = u
+            v.view.frame = UIScreen.main.bounds
+            
+            let root = UIApplication.shared.keyWindow?.rootViewController
+            self.dismiss(animated: false, completion: nil)
+            root?.present(v, animated: true, completion: nil)
+        })
+    
+    }
     
     
     @IBAction func addAction(_ sender: AnyObject) {
@@ -68,7 +100,13 @@ class Add_MateralVC: BaseViewController {
          "remark":String.isNullOrEmpty(mark.text),
          "storeInAmasis":String.isNullOrEmpty(store_in.text)]
         
-        addActionMateralDataArr.insert(d, at: 0);
+        if index >= 0 {
+            addActionMateralDataArr.insert(d, at: index);
+            addActionMateralDataArr.remove(at: index + 1)
+        }else {
+            addActionMateralDataArr.insert(d, at: 0);
+        }
+        
         
         NotificationCenter.default.post(name: NSNotification.Name.init("add_materialOrComponent_notification"), object: nil);
         
