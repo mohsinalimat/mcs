@@ -11,7 +11,7 @@
             <rect key="frame" x="0.0" y="0.0" width="1024" height="400"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Wef-as-Tae" id="fH9-Ju-4Kh">
-                <frame key="frameInset" width="1024" height="400"/>
+                <frame key="frameInset" width="1024" height="399"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ptT-go-Tuf">
@@ -178,6 +178,7 @@
                 <outlet property="amm" destination="6tx-Hv-I8V" id="Cu0-yh-Lbt"/>
                 <outlet property="defect_detail" destination="Iza-NI-MdC" id="40L-pe-MyV"/>
                 <outlet property="descri" destination="pa5-Oo-hsI" id="WDu-5x-iDf"/>
+                <outlet property="detail_" destination="P3T-Ip-KTQ" id="gGh-s3-c22"/>
                 <outlet property="flt_date" destination="uUd-dj-Bhq" id="55P-l9-NYz"/>
                 <outlet property="flt_date2" destination="rp4-7N-fNv" id="Cz5-Zf-b96"/>
                 <outlet property="mel" destination="xYD-LX-qbm" id="nte-RM-uzO"/>
@@ -185,6 +186,7 @@
                 <outlet property="release_ref2" destination="MRc-0i-sp5" id="Pwh-Bq-aO7"/>
                 <outlet property="shift_date" destination="0Sz-67-Fxo" id="Hg6-vG-bwA"/>
                 <outlet property="shift_date2" destination="m3C-X1-2Sz" id="So0-QB-g9z"/>
+                <outlet property="tempAction_" destination="KLj-yF-qOa" id="JLP-Rw-h53"/>
                 <outlet property="temp_action" destination="dk8-hO-nSm" id="gnI-7p-RYP"/>
                 <outlet property="ts" destination="rXa-m9-f8f" id="4fH-Sa-S5O"/>
                 <outlet property="ts2" destination="1YZ-Gz-o7i" id="uJ9-S1-pQg"/>

@@ -11,7 +11,7 @@ import RxDataSources
 import RxSwift
 import RxCocoa
 
-class BaseViewController: UIViewController {
+class BaseViewController: UIViewController,ShowAlertControllerAble {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,21 +59,7 @@ class BaseViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
 
-    
-    func showMsg( _ msg:String , title:String , handler:@escaping ((Void) -> Void)) {
-        
-        let vc = UIAlertController.init(title: msg,message: nil, preferredStyle: .alert)
-        let action = UIAlertAction.init(title:"Cancel", style: .default)
-        let action2 = UIAlertAction.init(title: title, style: .destructive) { (action) in
-            handler();
-        }
-        
-        vc.addAction(action)
-        vc.addAction(action2)
-        self.navigationController?.present(vc, animated: true, completion: nil);
-        
-    }
-    
+
     
     //MARK:
     func encodingParameters(_ arr :[[String:Any]], key:String) -> [String:String] {

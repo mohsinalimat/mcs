@@ -146,10 +146,9 @@ class DDViewController: BaseTabItemController  ,UITableViewDelegate,UITableViewD
     func _initSubviews()  {
         tableView.register(UINib (nibName: "DDListCell", bundle: nil), forCellReuseIdentifier: "DDListCellIdentifier")
         tableView.tableFooterView = UIView()
-
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.rowHeight = 140
+        tableView.rowHeight = 150
         tableView.separatorStyle = .none
         
         ///Refresh Data

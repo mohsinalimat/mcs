@@ -185,17 +185,12 @@ class HomeViewController: BaseTabItemController,UICollectionViewDelegate,UIColle
     }
     
     func msgBtnAction()  {
-        let vc = UIAlertController.init(title: "EXIT?",message: nil, preferredStyle: .alert)
-        let action = UIAlertAction.init(title:"Cancel", style: .default)
-        let action2 = UIAlertAction.init(title: "OK", style: .default) { (action) in
+        showMsg("EXIT?", title: "OK") {
             let loginvc = LoginViewController()
             
             UIApplication.shared.keyWindow?.rootViewController = loginvc
         }
-
-        vc.addAction(action)
-        vc.addAction(action2)
-        self.navigationController?.present(vc, animated: true, completion: nil);
+        
     }
     
     func fibBtnAction() {

@@ -223,6 +223,7 @@
 		A1D15D8D20464466004A2C58 /* WarnFaultInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1D15D8B20464466004A2C58 /* WarnFaultInfoCell.xib */; };
 		A1D15D90204644A7004A2C58 /* WarnDisPoseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D15D8E204644A7004A2C58 /* WarnDisPoseCell.swift */; };
 		A1D15D91204644A7004A2C58 /* WarnDisPoseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1D15D8F204644A7004A2C58 /* WarnDisPoseCell.xib */; };
+		A1D39A6B20EE1D1C0001B34D /* ShowAlertControllerAble.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D39A6A20EE1D1B0001B34D /* ShowAlertControllerAble.swift */; };
 		A1D3E3B1200C3A2D00CE31F0 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D3E3AF200C3A2D00CE31F0 /* HomeCollectionViewCell.swift */; };
 		A1D3E3B2200C3A2D00CE31F0 /* HomeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1D3E3B0200C3A2D00CE31F0 /* HomeCollectionViewCell.xib */; };
 		A1D3E3B4200C478300CE31F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1D3E3B3200C478300CE31F0 /* Assets.xcassets */; };
@@ -487,6 +488,7 @@
 		A1D15D8B20464466004A2C58 /* WarnFaultInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WarnFaultInfoCell.xib; sourceTree = "<group>"; };
 		A1D15D8E204644A7004A2C58 /* WarnDisPoseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WarnDisPoseCell.swift; sourceTree = "<group>"; };
 		A1D15D8F204644A7004A2C58 /* WarnDisPoseCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WarnDisPoseCell.xib; sourceTree = "<group>"; };
+		A1D39A6A20EE1D1B0001B34D /* ShowAlertControllerAble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowAlertControllerAble.swift; sourceTree = "<group>"; };
 		A1D3E3AF200C3A2D00CE31F0 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeCollectionViewCell.swift; path = ../HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		A1D3E3B0200C3A2D00CE31F0 /* HomeCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HomeCollectionViewCell.xib; path = ../HomeCollectionViewCell.xib; sourceTree = "<group>"; };
 		A1D3E3B3200C478300CE31F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -818,6 +820,7 @@
 				A1B03DE0207C5EF800797564 /* BaseTableViewVC.swift */,
 				A1B03DE2207C7FD700797564 /* BaseTableViewVCCell.swift */,
 				A1B03DE3207C7FD700797564 /* BaseTableViewVCCell.xib */,
+				A1D39A6A20EE1D1B0001B34D /* ShowAlertControllerAble.swift */,
 			);
 			name = BaseVC;
 			sourceTree = "<group>";
@@ -1413,6 +1416,7 @@
 				A1D15D90204644A7004A2C58 /* WarnDisPoseCell.swift in Sources */,
 				A1CF2A1420070B90009FE6A4 /* LoginViewController.swift in Sources */,
 				A1AD80E820E47D1300E371E7 /* TaskEditReasonOlnyController.swift in Sources */,
+				A1D39A6B20EE1D1C0001B34D /* ShowAlertControllerAble.swift in Sources */,
 				A1923FD3201733E20057AD1E /* BaseWebViewController.swift in Sources */,
 				A1CF2A0F20070A5D009FE6A4 /* BaseViewController.swift in Sources */,
 				A1C0A3D8200DF04F00A1762C /* TTRefreshFooter.swift in Sources */,

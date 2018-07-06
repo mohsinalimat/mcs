@@ -24,6 +24,8 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
     
     var current_selected_index = SectionHeadButtonIndex (rawValue: 1)!
     var _current_materialArr = [[String:Any]]()
+    var _current_componentArr = [[String:String]]()
+    
     var _current_defect_type:String?
     var _current_attachmnetArr = [Any]()
     
@@ -149,6 +151,12 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
                 kAttachmentDataArr = attachment
             }
             
+            if let attachment = dic["attachments"] as? [[String:Any]] {
+//                ss._current_attachmnetArr = attachment
+//                kAttachmentDataArr = attachment
+            }
+            
+            
             if let actionList = dic["actionList"] as? [[String:Any]] {
                 defect_added_actions = actionList;
             }
@@ -224,28 +232,32 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
             materalDataFromIPC = false;
         }
         
+        addActionComponentDataArr = _current_componentArr
         
         guard kSectionHeadButtonSelectedIndex == .creatReportValue5 else {return}
         kAttachmentDataArr = _current_attachmnetArr
+        
         _tableView.reloadData()
     }
 
     private func __saveData() {
         _current_materialArr = addActionMateralDataArr
+        _current_componentArr = addActionComponentDataArr
         
         guard kSectionHeadButtonSelectedIndex == .creatReportValue5 else {return}
         _current_attachmnetArr = kAttachmentDataArr
     }
     
     
-    
     func _save() {
+        let _is_nrr = (__defect_type() == "NRR")
+        
         guard reportInfoCell.reg.currentTitle != nil else { HUD.show(info: "Select Reg!"); return}
         guard reportInfoCell.station.currentTitle != nil else { HUD.show(info: "Select Station!"); return}
         guard reportInfoCell.issueBy.currentTitle != nil else { HUD.show(info: "Select Issue!"); return}
         //guard baseInfoCell.release_btn.currentTitle != nil else { HUD.show(info: "Select Release Ref!"); return}
         guard baseInfoCell.fltNo_btn.currentTitle != nil else { HUD.show(info: "Select Flt No!"); return}
-        guard baseInfoCell.detail_tf.text.lengthOfBytes(using: String.Encoding.utf8) > 0 else { HUD.show(info: "Input Detail!"); return}
+        guard baseInfoCell.detail_tf.text.lengthOfBytes(using: String.Encoding.utf8) > 0 else { HUD.show(info: _is_nrr ? "Input Remark" : "Input Detail!"); return}
         var params  = [
             "reportType":kDefectType[String.isNullOrEmpty(typeBtn.currentTitle)]!,
             "acReg"     :   String.isNullOrEmpty(reportInfoCell.reg.currentTitle),
@@ -272,106 +284,116 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
             "actionListStr":defect_added_actions
         ] as [String : Any]
         
+        
+        
         switch __defect_type() {
-        case "TS": break
+        case "TS":break
         case "DD":
-            var arr = ddInfoCell.dd_status
-            
-            //ws
-            if dd_ws_arr.count > 0 {
-                params["wsListStr"] = dd_ws_arr;
-            }else {
-                if arr.contains("1"){
-                    arr.remove(at: arr.index(of: "1")!);
+            if ddInfoCell != nil {
+                var arr = ddInfoCell.dd_status
+                
+                //ws
+                if dd_ws_arr.count > 0 {
+                    params["wsListStr"] = dd_ws_arr;
+                }else {
+                    if arr.contains("1"){
+                        arr.remove(at: arr.index(of: "1")!);
+                    }
                 }
-            }
-            
-            
-            //wp
-            if dd_wp_arr.count > 0 {
-                params["wpListStr"] = dd_wp_arr;
-            }else {
-                if arr.contains("2"){
-                    arr.remove(at: arr.index(of: "2")!);
+                
+                
+                //wp
+                if dd_wp_arr.count > 0 {
+                    params["wpListStr"] = dd_wp_arr;
+                }else {
+                    if arr.contains("2"){
+                        arr.remove(at: arr.index(of: "2")!);
+                    }
                 }
-            }
-            
-
-            let ddstatus        =   arr.count > 0 ? arr.joined(separator: ",") : ""
-            params["cat"]       =   String.isNullOrEmpty(ddInfoCell.ddCat_selected ?? "")
-            params["deferDay"]  =   String.isNullOrEmpty(ddInfoCell.day_tf.text)
-            params["deferFh"]   =   String.isNullOrEmpty(ddInfoCell.fh_tf.text)
-            params["deferFc"]   =   String.isNullOrEmpty(ddInfoCell.fc_tf.text)
-            params["deferOther"] =  String.isNullOrEmpty(ddInfoCell.other_tf.text)
-            params["dateLine"]  =   String.isNullOrEmpty(ddInfoCell.deadline_btn.currentTitle)
-            params["enterInDamageChart"] = String.isNullOrEmpty(ddInfoCell.in_chart)
-            params["repetitiveAction"] = String.isNullOrEmpty(ddInfoCell.need_repetitive)
-            params["repDay"] = String.isNullOrEmpty(ddInfoCell.rep_day.text)
-            params["repFh"] = String.isNullOrEmpty(ddInfoCell.rep_fh.text)
-            params["repFc"] = String.isNullOrEmpty(ddInfoCell.rep_fc.text)
-            params["repMonth"] = String.isNullOrEmpty(ddInfoCell.rep_month.text)
-            params["precedureO"] =  String.isNullOrEmpty(ddInfoCell.produce_o)
-            params["precedureM"] =  String.isNullOrEmpty(ddInfoCell.produce_m)
-            params["enterInDdList"] = String.isNullOrEmpty(ddInfoCell.enterInDdList)
-            params["repetitiveDefect"] = String.isNullOrEmpty(ddInfoCell.repetitive_defect)
-            params["receiveBy"] =   String.isNullOrEmpty(ddInfoCell.rec_by.currentTitle)
-            params["receiveDate"] = String.isNullOrEmpty(ddInfoCell.rec_date.currentTitle)
-            params["statusOfDd"] =  ddstatus
-            params["umWo"]      =   String.isNullOrEmpty(ddInfoCell.um_tf.text)
-            params["ddSource"]  =   String.isNullOrEmpty(ddInfoCell.dd_source.currentTitle)
-            
-            //Notice
-            params["isShowFailure"] = dd_notice_selected ? "1" : ""
-            if dd_notice_selected {
-                let type = dd_notice_type ?? " "
-                switch type {
-                case " ":
-                    let cell = dd_notice_cell as! DDNoticeDefaultCell
-                    params["type"] = String.isNullOrEmpty(cell.type.text);
-                    params["noticeEquip"] = String.isNullOrEmpty(cell.equip.text);
-                    params["pos"] = String.isNullOrEmpty(cell.pos.text);
-                    params["failureX"] = String.isNullOrEmpty(cell.x.text);
-                    params["failurey"] = String.isNullOrEmpty(cell.y.text);
-                    params["failureSize"] = String.isNullOrEmpty(cell.size.text);
-                    params["failureDetail"] = String.isNullOrEmpty(cell.detail.text);
-                    params["noticeSys"] = String.isNullOrEmpty(cell.sys.text);
-                    params["restrictionDetail"] = String.isNullOrEmpty(cell.restriction_detail.text);
-
-                    break
-                case "STRUCTURE":
-                    let cell = dd_notice_cell as! DDNoticeStructureCell
-                    params["failureType"] = "0"
-                    params["type"] = String.isNullOrEmpty(cell.type.text);
-                    params["pos"] = String.isNullOrEmpty(cell.pos.text);
-                    params["failureX"] = String.isNullOrEmpty(cell.x.text);
-                    params["failurey"] = String.isNullOrEmpty(cell.y.text);
-                    params["failureSize"] = String.isNullOrEmpty(cell.size.text);
-                    params["failureDetail"] = String.isNullOrEmpty(cell.detail.text);
-                    break
-                case "RESTRICTION":
-                    let cell = dd_notice_cell as! DDNoticeRestrictionCell
-                    params["failureType"] = "1"
-                    params["noticeSys"] = String.isNullOrEmpty(cell.sys.text);
-                    params["restrictionDetail"] = String.isNullOrEmpty(cell.restriction_detail.text);
-                    break
-                case "CABIN":
-                    let cell = dd_notice_cell as! DDNoticeCabinCell
-                    params["failureType"] = "2"
-                    params["noticeEquip"] = String.isNullOrEmpty(cell.equip.text);
-                    params["pos"] = String.isNullOrEmpty(cell.pos.text);
-                    params["failureDetail"] = String.isNullOrEmpty(cell.detail.text);
-                    break
-                default: break
+                
+                let ddstatus        =   arr.count > 0 ? arr.joined(separator: ",") : ""
+                params["cat"]       =   String.isNullOrEmpty(ddInfoCell.ddCat_selected ?? "")
+                params["deferDay"]  =   String.isNullOrEmpty(ddInfoCell.day_tf.text)
+                params["deferFh"]   =   String.isNullOrEmpty(ddInfoCell.fh_tf.text)
+                params["deferFc"]   =   String.isNullOrEmpty(ddInfoCell.fc_tf.text)
+                params["deferOther"] =  String.isNullOrEmpty(ddInfoCell.other_tf.text)
+                params["dateLine"]  =   String.isNullOrEmpty(ddInfoCell.deadline_btn.currentTitle)
+                params["enterInDamageChart"] = String.isNullOrEmpty(ddInfoCell.in_chart)
+                params["repetitiveAction"] = String.isNullOrEmpty(ddInfoCell.need_repetitive)
+                params["repDay"] = String.isNullOrEmpty(ddInfoCell.rep_day.text)
+                params["repFh"] = String.isNullOrEmpty(ddInfoCell.rep_fh.text)
+                params["repFc"] = String.isNullOrEmpty(ddInfoCell.rep_fc.text)
+                params["repMonth"] = String.isNullOrEmpty(ddInfoCell.rep_month.text)
+                params["precedureO"] =  String.isNullOrEmpty(ddInfoCell.produce_o)
+                params["precedureM"] =  String.isNullOrEmpty(ddInfoCell.produce_m)
+                params["enterInDdList"] = String.isNullOrEmpty(ddInfoCell.enterInDdList)
+                params["repetitiveDefect"] = String.isNullOrEmpty(ddInfoCell.repetitive_defect)
+                params["receiveBy"] =   String.isNullOrEmpty(ddInfoCell.rec_by.currentTitle)
+                params["receiveDate"] = String.isNullOrEmpty(ddInfoCell.rec_date.currentTitle)
+                params["statusOfDd"] =  ddstatus
+                params["umWo"]      =   String.isNullOrEmpty(ddInfoCell.um_tf.text)
+                params["ddSource"]  =   String.isNullOrEmpty(ddInfoCell.dd_source.currentTitle)
+                params["componentsListStr"] = addActionComponentDataArr
+                
+                //Notice
+                params["isShowFailure"] = dd_notice_selected ? "1" : ""
+                if dd_notice_selected {
+                    let type = dd_notice_type ?? " "
+                    switch type {
+                    case " ":
+                        let cell = dd_notice_cell as! DDNoticeDefaultCell
+                        params["type"] = String.isNullOrEmpty(cell.type.text);
+                        params["noticeEquip"] = String.isNullOrEmpty(cell.equip.text);
+                        params["pos"] = String.isNullOrEmpty(cell.pos.text);
+                        params["failureX"] = String.isNullOrEmpty(cell.x.text);
+                        params["failurey"] = String.isNullOrEmpty(cell.y.text);
+                        params["failureSize"] = String.isNullOrEmpty(cell.size.text);
+                        params["failureDetail"] = String.isNullOrEmpty(cell.detail.text);
+                        params["noticeSys"] = String.isNullOrEmpty(cell.sys.text);
+                        params["restrictionDetail"] = String.isNullOrEmpty(cell.restriction_detail.text);
+                        break
+                    case "STRUCTURE":
+                        let cell = dd_notice_cell as! DDNoticeStructureCell
+                        params["failureType"] = "0"
+                        params["type"] = String.isNullOrEmpty(cell.type.text);
+                        params["pos"] = String.isNullOrEmpty(cell.pos.text);
+                        params["failureX"] = String.isNullOrEmpty(cell.x.text);
+                        params["failurey"] = String.isNullOrEmpty(cell.y.text);
+                        params["failureSize"] = String.isNullOrEmpty(cell.size.text);
+                        params["failureDetail"] = String.isNullOrEmpty(cell.detail.text);
+                        break
+                    case "RESTRICTION":
+                        let cell = dd_notice_cell as! DDNoticeRestrictionCell
+                        params["failureType"] = "1"
+                        params["noticeSys"] = String.isNullOrEmpty(cell.sys.text);
+                        params["restrictionDetail"] = String.isNullOrEmpty(cell.restriction_detail.text);
+                        break
+                    case "CABIN":
+                        let cell = dd_notice_cell as! DDNoticeCabinCell
+                        params["failureType"] = "2"
+                        params["noticeEquip"] = String.isNullOrEmpty(cell.equip.text);
+                        params["pos"] = String.isNullOrEmpty(cell.pos.text);
+                        params["failureDetail"] = String.isNullOrEmpty(cell.detail.text);
+                        break
+                    default: break
+                    }
                 }
-            }
+            };break;
             
-
-            break;
         case "NRR":
-            params["formNo"] = String.isNullOrEmpty(nrrCell.formNo.text)
-            params["inspType"] = String.isNullOrEmpty(nrrCell.insp)
-            params["skill"] = String.isNullOrEmpty(nrrCell.skil)
-            params["nrrStatus"] = String.isNullOrEmpty(nrrCell.status)
+            params["detail"] = ""
+            params["temporaryDesc"] = ""
+            params["melCode"] = ""
+            params["ammCode"] = ""
+            
+            params["remark"] = String.isNullOrEmpty(baseInfoCell.detail_tf.text)
+            if  nrrCell != nil {
+                params["formNo"] = String.isNullOrEmpty(nrrCell.formNo.text)
+                params["inspType"] = String.isNullOrEmpty(nrrCell.insp)
+                params["skill"] = String.isNullOrEmpty(nrrCell.skil)
+                params["nrrStatus"] = String.isNullOrEmpty(nrrCell.status)
+            }
+
             break
         default:break
         }
@@ -438,6 +460,8 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
             if !read_only {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ReportBaseInfoCellIdentifier", for: indexPath) as! ReportBaseInfoCell;
                 baseInfoCell = cell
+                cell.isNRR(__defect_type() == "NRR")
+                
                 if is_from_warn {
                     cell.fill(warnInfo);
                 }
@@ -445,6 +469,7 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
             }
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "ReportBaseInfoCell_RIdentifier", for: indexPath) as! ReportBaseInfoCell_R;
+            cell.isNRR(__defect_type() == "NRR")
             cell.fill(_defect_info)
             return cell
         } else if section2_selected_index == 2 || section2_selected_index == 3{
@@ -459,8 +484,15 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
                     //print("....");
                 };break
             case "DD":
+                if section2_selected_index == 4 {
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "Action_Materal_CellIdentifier", for: indexPath) as! Action_Materal_Cell;
+                    cell.read_only = read_only
+                    cell._tableView.reloadData()
+                    return cell
+                }
+                
                 //MARK:DD Cell
-                if section2_selected_index == 4 {//DD
+                if section2_selected_index == 5 {//DD
                     if read_only && indexPath.section == 1 && indexPath.row == 0 {////R
                         let cell = tableView.dequeueReusableCell(withIdentifier: "DDInfoCell_RIdentifier", for: indexPath) as! DDInfoCell_R;
                         cell.fill(_defect_info)
@@ -605,6 +637,14 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
                         case 4:kSectionHeadButtonSelectedIndex = SectionHeadButtonIndex(rawValue: 4 + 5)!;break
                         default:break
                         };break
+                        
+                    case "DD":
+                        switch index {
+                        case 4:kSectionHeadButtonSelectedIndex = SectionHeadButtonIndex(rawValue: 3)!;break
+                        case 5:kSectionHeadButtonSelectedIndex = SectionHeadButtonIndex(rawValue: 4 + 4)!;break
+                        case 6:kSectionHeadButtonSelectedIndex = SectionHeadButtonIndex(rawValue: 4 + 5)!;break
+                        default:break
+                        };break
                     default:break
                     }
                     
@@ -739,7 +779,7 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
         switch  type {
         case "TS":return ["Basic Info & Detail","Materal&Tools ","Attachment","Action"]
             
-        case "DD":return ["Basic Info & Detail","Materal&Tools ","Attachment","DD","Action"]
+        case "DD":return ["Basic Info & Detail","Materal&Tools ","Attachment","Component", "DD", "Action"]
 
         case "NRR":return ["Basic Info & Detail","Materal&Tools ","Attachment","NRR","Action"]
         default:break

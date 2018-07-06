@@ -11,7 +11,7 @@ import RxCocoa
 import RxSwift
 
 class ReportBaseInfoCell: UITableViewCell,UITextFieldDelegate {
-
+    @IBOutlet weak var bg: UIView!
     @IBOutlet weak var transferredBtn: UIButton!
     @IBOutlet weak var transferred_tf: UITextField!
     @IBOutlet weak var release_btn: UIButton!
@@ -21,15 +21,15 @@ class ReportBaseInfoCell: UITableViewCell,UITextFieldDelegate {
     @IBOutlet weak var shift_btn: UIButton!
     @IBOutlet weak var shiftDate_btn: UIButton!
     @IBOutlet weak var description_tf: UITextView!
-    
     @IBOutlet weak var tsm_tf: UITextField!
     @IBOutlet weak var mel_tf: UITextField!
-    @IBOutlet weak var amm_tf: UITextField!
-    
+    @IBOutlet weak var amm_tf: UITextField!    
     @IBOutlet weak var detail_tf: UITextView!
+    @IBOutlet weak var detail_: UILabel!
     @IBOutlet weak var tempAction_tf: UITextView!
-    var shift_id:String?
+    @IBOutlet weak var tempAction_: UILabel!
     
+    var shift_id:String?
     let disposeBag = DisposeBag.init()
     var flts = [[String:String]]()
     
@@ -163,6 +163,31 @@ class ReportBaseInfoCell: UITableViewCell,UITextFieldDelegate {
         return false
     }
     
+    
+    @IBAction func _clear(_ sender: UIButton) {
+        let tag = sender.tag
+        _descri_code.removeValue(forKey: "\(tag == 21 ? 10 : tag)")
+        
+        if let tf = bg.viewWithTag(tag) as? UITextField {
+            tf.text = nil;
+        }
+        
+        var s = "";
+        for (_ ,v) in _descri_code{ s = (s.lengthOfBytes(using: String.Encoding.utf8) > 0 ? (s + "\n") : "") + v }
+        description_tf.text = s
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -193,6 +218,18 @@ class ReportBaseInfoCell: UITableViewCell,UITextFieldDelegate {
         
     }
 
+    
+    func isNRR(_ b:Bool) {
+        mel_tf.isHidden = b
+        amm_tf.isHidden = b
+        
+        tempAction_tf.isHidden = b
+        tempAction_.isHidden = b
+        detail_.text = b ? "Remark" : "Defect Detail"
+    }
+    
+    
+    
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

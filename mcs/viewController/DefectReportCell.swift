@@ -62,7 +62,8 @@ class DefectReportCell: UITableViewCell {
         
         status.text = defect_all_status[String.isNullOrEmpty(d["state"])]
         
-        let detail = String.isNullOrEmpty(d["detail"])
+        let isnrr = String.isNullOrEmpty(d["reportType"]) == "NRR"
+        let detail = String.isNullOrEmpty(d[isnrr ? "remark" : "detail"])
         let tmp = String.isNullOrEmpty(d["temporaryDesc"])
         let defectDesc = detail + "  " + (tmp.lengthOfBytes(using: String.Encoding.utf8) > 0 ? "(\(tmp))" : "")
         

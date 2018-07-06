@@ -28,7 +28,7 @@ class TaskPoolBaseController: BaseViewController ,UITableViewDelegate,UITableVie
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         _initSubviews()
         
         ///..........
@@ -143,7 +143,7 @@ class TaskPoolBaseController: BaseViewController ,UITableViewDelegate,UITableVie
         
         _tableView.mj_header = header
         
-        
+    
     }
     
     func _init_top() {
@@ -327,7 +327,7 @@ class TaskPoolBaseController: BaseViewController ,UITableViewDelegate,UITableVie
         
         
         if let canDelete = dataArray[indexPath.section]["allowDelete"] as? Bool {
-            return canDelete ? [action1,action2,action3,action4,action5] : [action2,action3,action4,action5];
+            return (canDelete && (Tools.user_role() == LM_LEADER)) ? [action1,action2,action3,action4,action5] : [action2,action3,action4,action5];
         }
         
         return [action2,action3,action4,action5]

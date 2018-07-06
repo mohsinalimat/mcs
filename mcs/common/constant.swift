@@ -17,7 +17,6 @@ let user_token = UserDefaults.standard.value(forKey: "user-token")
 let BASE_URL = "http://smart.imsp.cn/mcs/rest"
 //let BASE_URL = "http://192.168.6.65:8080/mcs/rest"//linf
 //let BASE_URL = "http://192.168.6.57:8081/mcs/rest"//ds
-//let BASE_URL = "http://192.168.6.59:8080/mcs/rest"//jx
 
 let login_url = "/login"
 let task_number_url = "/biz/task/count"  //任务数
@@ -136,6 +135,8 @@ enum SectionHeadButtonIndex :Int {
     case creatReportValue3//attachment
     case creatReportValue4//dd/nrr
     case creatReportValue5//action
+    case spare
+    case spare1
 }
 
 var kSectionHeadButtonSelectedIndex:SectionHeadButtonIndex = .addActoinValue1
@@ -182,6 +183,8 @@ let kTemporaryDirectory = NSTemporaryDirectory().appending("cache/")
 
 var pn_selected_number = [String:Int]()
 
+let LM_LEADER = "lm_leader"
+let LM_OFFNE = "offline"
 
 //MARK:
 let hud_msg_loading = "Loading"

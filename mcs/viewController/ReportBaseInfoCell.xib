@@ -201,6 +201,33 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" tag="20" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C6j-6r-eS2">
+                                <frame key="frameInset" minX="724" minY="8" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="5" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" image="close_discover"/>
+                                <connections>
+                                    <action selector="_clear:" destination="dDj-dY-E85" eventType="touchUpInside" id="rnr-EX-Vdw"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="21" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ESY-rj-qC8">
+                                <frame key="frameInset" minX="826" minY="8" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="5" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" image="close_discover"/>
+                                <connections>
+                                    <action selector="_clear:" destination="dDj-dY-E85" eventType="touchUpInside" id="JBV-tc-33m"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="22" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ALV-QC-ons">
+                                <frame key="frameInset" minX="934" minY="8" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="5" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" image="close_discover"/>
+                                <connections>
+                                    <action selector="_clear:" destination="dDj-dY-E85" eventType="touchUpInside" id="14l-pA-Nsy"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.93709164860000005" green="0.93694382909999996" blue="0.95754462480000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -214,7 +241,9 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="amm_tf" destination="udv-Zk-LCd" id="YL9-fo-myf"/>
+                <outlet property="bg" destination="14V-d5-1ks" id="0VT-MZ-Ba2"/>
                 <outlet property="description_tf" destination="9zl-m7-hJJ" id="moD-oe-ofi"/>
+                <outlet property="detail_" destination="weO-Bk-wFY" id="48Z-UF-Z3d"/>
                 <outlet property="detail_tf" destination="PKB-UR-qbw" id="YMb-Vi-mL4"/>
                 <outlet property="fltDate_btn" destination="odJ-DG-rKz" id="mip-az-3eU"/>
                 <outlet property="fltNo_btn" destination="Ixt-iK-X6Y" id="fuH-UU-jst"/>
@@ -223,6 +252,7 @@
                 <outlet property="release_tf" destination="9Ij-Jy-UYV" id="9C2-LI-ggz"/>
                 <outlet property="shiftDate_btn" destination="tXQ-JD-fcM" id="FbW-Mm-YHB"/>
                 <outlet property="shift_btn" destination="DdW-QO-xYh" id="2kM-Jb-JkL"/>
+                <outlet property="tempAction_" destination="fYg-xr-Qf2" id="WR9-s8-sVG"/>
                 <outlet property="tempAction_tf" destination="3sO-ky-0CJ" id="Q8Z-Sm-8RH"/>
                 <outlet property="transferredBtn" destination="Sc0-e0-KMX" id="eyZ-un-arr"/>
                 <outlet property="transferred_tf" destination="osk-cl-BGw" id="P18-wf-7Mf"/>
@@ -232,5 +262,6 @@
     </objects>
     <resources>
         <image name="button_bg1" width="200" height="30"/>
+        <image name="close_discover" width="16" height="16"/>
     </resources>
 </document>

@@ -26,11 +26,9 @@ class SelectIPcController: BaseWebViewController {
         webview.frame = UIScreen.main.bounds;
         webview.scrollView.showsVerticalScrollIndicator = false
         webview.delegate = self
+        webview.addSubview(_cloeseBtn)
         
         _bridge = WebViewJavascriptBridge.init(for: webview, webViewDelegate: self, handler: {[unowned self] (obj,callback) in
-            print("1")
-            
-
             DispatchQueue.main.async {
                 NotificationCenter.default.post(name: NSNotification.Name.init("ipc_selected_ok_notification"), object: nil, userInfo: ["data":obj])
             }
@@ -53,7 +51,6 @@ class SelectIPcController: BaseWebViewController {
         HUD.show(withStatus: hud_msg_loading)
         let req = URLRequest.init(url: URL(string: url)!)
         webview.loadRequest(req)
-        
     }
     
     override func webViewDidFinishLoad(_ webView: UIWebView) {
@@ -69,8 +66,6 @@ class SelectIPcController: BaseWebViewController {
             HUD.dismiss()
         }
     
-    
-        webView.addSubview(_cloeseBtn)
     }
     
 

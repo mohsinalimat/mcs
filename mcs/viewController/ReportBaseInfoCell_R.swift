@@ -32,11 +32,24 @@ class ReportBaseInfoCell_R: UITableViewCell {
     
     @IBOutlet weak var temp_action: UITextView!
     
+    @IBOutlet weak var tempAction_: UILabel!
+    
+    @IBOutlet weak var detail_: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
+    func isNRR(_ b:Bool) {
+        tempAction_.isHidden = b
+        detail_.text = b ? "Remark:" : "Defect Detail:"
+    }
+    
+    
+    
+    
+    
     func _ts_type(_ type:String) -> String  {
         var s = ""
         switch type {
@@ -99,7 +112,9 @@ class ReportBaseInfoCell_R: UITableViewCell {
             NSForegroundColorAttributeName:UIColor.darkGray,
             NSKernAttributeName:1 ]
         
-        let defect_detailAttriStr = NSAttributedString.init(string: String.isNullOrEmpty(d["detail"]), attributes: attributes_dic)
+        let isnrr = String.isNullOrEmpty(d["reportType"]) == "NRR"
+        
+        let defect_detailAttriStr = NSAttributedString.init(string: String.isNullOrEmpty(d[isnrr ? "remark" : "detail"]), attributes: attributes_dic)
         defect_detail.attributedText = defect_detailAttriStr
 
         let descriAttriStr = NSAttributedString.init(string: String.isNullOrEmpty(d["description"]), attributes: attributes_dic)

@@ -18,10 +18,12 @@ class DDListCell: UITableViewCell {
     @IBOutlet weak var o: UILabel!
     @IBOutlet weak var cat: UILabel!
     @IBOutlet weak var r: UILabel!
-    @IBOutlet weak var issue_date: UILabel!
+    @IBOutlet weak var close_date: UILabel!
     @IBOutlet weak var dead_line: UILabel!
     @IBOutlet weak var stas: UILabel!
     
+    @IBOutlet weak var issue_date: UILabel!
+    @IBOutlet weak var mark: UILabel!
     
     let dd_list_status = [
         "1":"determineReceive",
@@ -62,11 +64,18 @@ class DDListCell: UITableViewCell {
             issue_date.text = Tools.dateToString(d, formatter: "yyyy-MM-dd")
         }
         
+        let closetime = Tools.date(String.stringIsNullOrNil(d["closeDate"]))
+        if let d = closetime {
+            close_date.text = Tools.dateToString(d, formatter: "yyyy-MM-dd")
+        }
+        
+        
         let deadlinetime = Tools.date(String.stringIsNullOrNil(d["dateLine"]))
         if let d = deadlinetime {
             dead_line.text = Tools.dateToString(d, formatter: "yyyy-MM-dd")
         }
         
+        mark.text = "Remark: " + String.isNullOrEmpty(d["remark"])
         stas.text = dd_list_status[String.isNullOrEmpty(d["state"])] ?? "init"
         m.text = String.isNullOrEmpty(d["precedureM"]) == "1" ? "Y" : "N"
         o.text = String.isNullOrEmpty(d["precedureO"]) == "1" ? "Y" : "N"
@@ -76,13 +85,35 @@ class DDListCell: UITableViewCell {
     
     
     
-    
+    override func prepareForReuse() {
+        _init()
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        _init();
+        
     }
 
+    func _init() {
+        dd_no.text = nil
+        descri.text = nil
+        final_action.text = nil
+        fault_code.text = nil
+        m.text = nil
+        o.text = nil
+        cat.text = nil
+        r.text = nil
+        close_date.text = nil
+        dead_line.text = nil
+        issue_date.text = nil
+        mark.text = nil
+        stas.text = nil
+    }
+    
+    
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
