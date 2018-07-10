@@ -426,12 +426,12 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
     
     //MARK: -
     func numberOfSections(in tableView: UITableView) -> Int {
-        return (__defect_type() == "DD" && section2_selected_index == 4) ? 4 : 2
+        return (__defect_type() == "DD" && section2_selected_index == 5) ? 4 : 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard section != 0 else {return 1}
-        guard section != 1 else {return dd_notice_selected && section2_selected_index == 4 ? 2 : 1}
+        guard section != 1 else {return dd_notice_selected && section2_selected_index == 5 ? 2 : 1}
         guard section != 2 else {return dd_ws_selected ? (dd_ws_arr.count > 0 ? dd_ws_arr.count:1) : 0}
         guard section != 3 else {return dd_wp_selected ? (dd_wp_arr.count > 0 ? dd_wp_arr.count:1) : 0}
         return 0
@@ -640,7 +640,7 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
                         
                     case "DD":
                         switch index {
-                        case 4:kSectionHeadButtonSelectedIndex = SectionHeadButtonIndex(rawValue: 3)!;break
+                        case 4:kSectionHeadButtonSelectedIndex = SectionHeadButtonIndex(rawValue: 10)!;break
                         case 5:kSectionHeadButtonSelectedIndex = SectionHeadButtonIndex(rawValue: 4 + 4)!;break
                         case 6:kSectionHeadButtonSelectedIndex = SectionHeadButtonIndex(rawValue: 4 + 5)!;break
                         default:break
@@ -765,8 +765,7 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
                 dd_wp_arr.remove(at: indexPath.row);
             }
             
-            
-//            tableView.deleteRows(at: [indexPath], with: .top)
+
             tableView.reloadSections([indexPath.section], animationStyle: .none)
         }
     }
@@ -862,25 +861,7 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
         
     }
     
-    
-    
-    
-//    $(".defer-dl").each(function(){
-//    if($(this).val()){
-//        flag = false;
-//    }
-//    });
-//    
-//    if((!date && day) || ((!fldate || !flNo) && (fh || fc))  || !acReg || flag)
-//    {
-//        var flNoTip = "";
-//        if(fh || fc){
-//        flNoTip = "and FL No. / Date";
-//        }
-//        BS.errorMsg("Please check A/C Reg and Issued Day "+flNoTip+" and Defer Type not null!");
-//        return false;
-//    }
-    
+
     //MARK:
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MsgCellIdentifier" id="KGk-i7-Jjw" customClass="MsgCell" customModule="mcs" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="1024" height="80"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <frame key="frameInset" width="1024" height="80"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2018-07-09 12:30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LT5-Bh-Hmo">
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shift: A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YCh-o9-Qw1">
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hhv-Lf-EQ3">
+                        <string key="text">Description : The handlers of AM  15624233(B-MBC) jobs are adjusted to: AM02811/Danny,AM04757/Jason wang , Posted by: Tim application(_:didRegisterForRemoteNotificationsWithDeviceToken:)9E44301DED3A7CC240E7C47ADAE4ABB0CDE5A936F16F824F</string>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" red="0.3885628172588832" green="0.3885628172588832" blue="0.3885628172588832" alpha="0.939453125" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="38C-6S-cRH">
+                        <color key="backgroundColor" red="0.94891661410000006" green="0.9490789771" blue="0.94890636210000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="2" id="Ehk-dg-h04"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RV5-vr-7Cd">
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="yRe-Vt-KlN"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mcc发布班次广播" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ih9-Zn-Kl2">
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="ih9-Zn-Kl2" firstAttribute="leading" secondItem="RV5-vr-7Cd" secondAttribute="trailing" constant="15" id="2aY-5h-UeA"/>
+                    <constraint firstItem="YCh-o9-Qw1" firstAttribute="centerY" secondItem="ih9-Zn-Kl2" secondAttribute="centerY" id="Cih-zH-qjw"/>
+                    <constraint firstItem="38C-6S-cRH" firstAttribute="top" secondItem="hhv-Lf-EQ3" secondAttribute="bottom" constant="8" id="IrM-dN-5LR"/>
+                    <constraint firstItem="RV5-vr-7Cd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="5" id="P3s-vc-1LI"/>
+                    <constraint firstAttribute="bottom" secondItem="38C-6S-cRH" secondAttribute="bottom" id="Ygl-vc-fqi"/>
+                    <constraint firstItem="RV5-vr-7Cd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="cGd-HZ-z4a"/>
+                    <constraint firstItem="LT5-Bh-Hmo" firstAttribute="leading" secondItem="YCh-o9-Qw1" secondAttribute="trailing" constant="200" id="f6S-58-oih"/>
+                    <constraint firstItem="38C-6S-cRH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="h5W-e1-jqX"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="LT5-Bh-Hmo" secondAttribute="trailing" constant="30" id="hhu-Tx-YRg"/>
+                    <constraint firstItem="hhv-Lf-EQ3" firstAttribute="top" secondItem="RV5-vr-7Cd" secondAttribute="bottom" constant="8" id="m07-2g-rin"/>
+                    <constraint firstAttribute="trailing" secondItem="38C-6S-cRH" secondAttribute="trailing" id="pKl-Od-7Ha"/>
+                    <constraint firstItem="ih9-Zn-Kl2" firstAttribute="centerY" secondItem="RV5-vr-7Cd" secondAttribute="centerY" id="uMT-On-A5G"/>
+                    <constraint firstItem="LT5-Bh-Hmo" firstAttribute="centerY" secondItem="YCh-o9-Qw1" secondAttribute="centerY" id="vbY-3W-cqk"/>
+                    <constraint firstItem="hhv-Lf-EQ3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="vcQ-Xj-Ce6"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="hhv-Lf-EQ3" secondAttribute="trailing" constant="20" id="yDW-kt-bwA"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="date" destination="LT5-Bh-Hmo" id="HFG-4g-KAe"/>
+                <outlet property="descri" destination="hhv-Lf-EQ3" id="ZJF-vt-A4p"/>
+                <outlet property="shift" destination="YCh-o9-Qw1" id="NA1-xZ-OIt"/>
+                <outlet property="type" destination="ih9-Zn-Kl2" id="aJO-8O-QMc"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

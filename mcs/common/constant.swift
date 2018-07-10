@@ -26,7 +26,7 @@ let get_flightInfo_url = "/biz/task/flightStatusByNo" //根据日期和航班号
 let plane_info_url = "/biz/viewAcReg"
 let defect_history_url = "/biz/defect/history"
 let history_detail_url = "/biz/defect/history/viewDetail"
-
+let noti_msg_url = "/biz/findAnnouncementsByBeginDate"
 
 /*
  必须aircraftNo : B-MBM   // 飞机号
@@ -135,7 +135,7 @@ enum SectionHeadButtonIndex :Int {
     case creatReportValue3//attachment
     case creatReportValue4//dd/nrr
     case creatReportValue5//action
-    case spare
+    case ddComponent
     case spare1
 }
 
@@ -185,6 +185,8 @@ var pn_selected_number = [String:Int]()
 
 let LM_LEADER = "lm_leader"
 let LM_OFFNE = "offline"
+
+var Msg:[[String:Any]]?
 
 //MARK:
 let hud_msg_loading = "Loading"

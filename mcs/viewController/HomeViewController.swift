@@ -15,6 +15,7 @@ class HomeViewController: BaseTabItemController,UICollectionViewDelegate,UIColle
     var _collectionView : UICollectionView!
     let ImgCollectionViewCellReuseId = "HomeCollectionViewCellIdentifier"
     var _msgBtn:UIButton!
+    var _msgNum:UILabel!
     
     var dataArray:[[String:Any]] = []
     var taskNoData:[String:Int] = [:]
@@ -27,6 +28,8 @@ class HomeViewController: BaseTabItemController,UICollectionViewDelegate,UIColle
         getFlightStatusData()
         
         getActiveData()
+        
+        getMsg()
         
         print(NSHomeDirectory())
     }
@@ -107,7 +110,51 @@ class HomeViewController: BaseTabItemController,UICollectionViewDelegate,UIColle
         })
     }
     
+    func getMsg() {
+        let date = Tools.dateToString(Date(), formatter: "dd/MM/yyyy")
+        let d = ["date":date]
+        
+        guard let name = UserDefaults.standard.value(forKey: "loginUserInfo") as? [String:String] , let user = name["userName"] else { return}
+        let uid = date + user;
+        let _u = UserDefaults.standard.value(forKey: user)
+        if _u != nil {
+            guard uid != String.isNullOrEmpty(_u) else {
+                if let data = UserDefaults.standard.value(forKey: "msg_data") as? Data{
+                    do{
+                        if let arr = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments) as? [[String:Any]] {
+                            Msg = arr;
+                        }
+                    }catch{ }
+                };return
+            }
+        }
+        
+        
+        netHelper_request(withUrl: noti_msg_url, method: .post, parameters:d, successHandler: {[unowned self] (res) in
+            guard let arr = res["body"] as? [[String:Any]] else {return}
+            if arr.count > 0 {
+                Msg = arr
 
+                do{
+                    let json = try JSONSerialization.data(withJSONObject: arr, options: []);
+                    UserDefaults.standard.set(json, forKey: "msg_data")
+                }catch{
+                    print(error.localizedDescription);
+                }
+                
+                UserDefaults.standard.set(uid, forKey: user)
+                UserDefaults.standard.synchronize()
+                self._msgNum.isHidden = false
+                self._msgNum.text = "\(arr.count)"
+                self.showMsg("New Message Notification", title: "Open", handler: {
+                    self._msgNum.isHidden = true
+                    self.msgBtnAction()
+                })
+            }
+            
+            })
+        
+    }
     
     
     //MARK: -
@@ -127,19 +174,13 @@ class HomeViewController: BaseTabItemController,UICollectionViewDelegate,UIColle
         _collectionView.register(UINib (nibName: "HomeCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: ImgCollectionViewCellReuseId)
         _collectionView.contentInset = UIEdgeInsetsMake(0, 0, 10, 0)
         _collectionView.backgroundColor = UIColor.clear //kTableviewBackgroundColor
-        
         _collectionView.showsVerticalScrollIndicator = false
         view.addSubview(_collectionView)
         
         let header = TTRefreshHeader.init {
             DispatchQueue.main.async {
                 self.dataArray.removeAll()
-                
                 self.getFlightStatusData()
-                
-                
-                
-
             }
         }
         
@@ -156,18 +197,34 @@ class HomeViewController: BaseTabItemController,UICollectionViewDelegate,UIColle
         if let name = UserDefaults.standard.value(forKey: "loginUserInfo") as? [String:String] {
             user.text = name["userName"];
         }
-        //user.text = "\(UserDefaults.standard.value(forKey:"user-name")!)"
         navigationItem.titleView = user
         
         //msg
+        let num = UILabel (frame:  CGRect (x: 30, y: -5, width: 30, height: 16))
+        num.font = UIFont.systemFont(ofSize: 10)
+        num.textColor = UIColor.white
+        num.backgroundColor = UIColor.red
+        num.textAlignment = .center
+        num.layer.cornerRadius = 8
+        num.layer.masksToBounds = true
+        num.isHidden = true
+        _msgNum = num
+        
         let msgBtn = UIButton (frame: CGRect (x: 0, y: 5, width: 50, height: 40))
-        msgBtn.setImage(UIImage (named: "icon_exit"), for: .normal)//30 30
-        msgBtn.setImage(UIImage (named: "icon_exit"), for: .highlighted)
-//        msgBtn.imageEdgeInsets = UIEdgeInsetsMake(5, 10, 5, 10)
-//        msgBtn.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0)
+        msgBtn.setImage(UIImage (named: "msg"), for: .normal)
+        msgBtn.setImage(UIImage (named: "msg"), for: .highlighted)
         msgBtn.addTarget(self, action: #selector(msgBtnAction), for: .touchUpInside)
         _msgBtn = msgBtn
+        
+        msgBtn.addSubview(num)
         let msgItem  = UIBarButtonItem (customView: msgBtn)
+        
+        //exit
+        let exitBtn = UIButton (frame: CGRect (x: 0, y: 5, width: 50, height: 40))
+        exitBtn.setImage(UIImage (named: "icon_exit"), for: .normal)
+        exitBtn.setImage(UIImage (named: "icon_exit"), for: .highlighted)
+        exitBtn.addTarget(self, action: #selector(exitAction), for: .touchUpInside)
+        let exitItem  = UIBarButtonItem (customView: exitBtn)
         
         //FIB
         let flibBtn = UIButton (frame: CGRect (x: 0, y: 5, width: 50, height: 40))
@@ -181,17 +238,23 @@ class HomeViewController: BaseTabItemController,UICollectionViewDelegate,UIColle
         let fixed = UIBarButtonItem (barButtonSystemItem: .fixedSpace, target: nil, action: nil)
         fixed.width = 20
         
-        navigationItem.rightBarButtonItems = [fixed,msgItem,fixed,fibItem]
+        navigationItem.rightBarButtonItems = [fixed, exitItem ,fixed , msgItem,fixed,fibItem]
     }
     
     func msgBtnAction()  {
+        let v = MsgViewController();
+        self.navigationController?.pushViewController(v, animated: true)
+    }
+    
+    func exitAction() {
         showMsg("EXIT?", title: "OK") {
             let loginvc = LoginViewController()
             
             UIApplication.shared.keyWindow?.rootViewController = loginvc
         }
-        
     }
+    
+    
     
     func fibBtnAction() {
         

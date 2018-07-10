@@ -49,6 +49,11 @@ class Action_Materal_Cell: UITableViewCell,UITableViewDelegate,UITableViewDataSo
                 add();
             }
             break
+            
+        case .ddComponent:
+            Tools.showAlert("DDComponentController" ,withBar: true,frame:CGRect (x: 0, y: 0, width: 500, height: 600))
+            break
+            
         default:break
         }
     }
