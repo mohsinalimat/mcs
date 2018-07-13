@@ -108,7 +108,7 @@ class TaskEditReasonController: BaseViewController {
     
     //MARK:-
     func _request() {
-        guard String.isNullOrEmpty(reason.text).lengthOfBytes(using: String.Encoding.utf8) > 0 else {HUD.show(info: "Require All Info"); return}
+        guard String.isNullOrEmpty(taskTo.text).lengthOfBytes(using: String.Encoding.utf8) > 0 || String.isNullOrEmpty(flNo.text).lengthOfBytes(using: String.Encoding.utf8) > 0 || String.isNullOrEmpty(reason.text).lengthOfBytes(using: String.Encoding.utf8) > 0 else {HUD.show(info: "至少选择一个数据!"); return}
         
         let d:[String:Any] = [
                               "planningTime":Tools.dateToString(kTaskpool_date!, formatter: "dd/MM/yyyy"),

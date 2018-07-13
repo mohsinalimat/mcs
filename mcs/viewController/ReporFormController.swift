@@ -289,6 +289,10 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
         switch __defect_type() {
         case "TS":break
         case "DD":
+            ///components
+            let com = [["pn":"pn01","sn":"sn","fin":"fin","pos":"pos","fh":"fh","fc":"fc","acReg":"B-MBM","enableMonitoring":"1"]]
+            params["componentsListStr"] = com //...
+            
             if ddInfoCell != nil {
                 var arr = ddInfoCell.dd_status
                 
@@ -333,8 +337,7 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
                 params["statusOfDd"] =  ddstatus
                 params["umWo"]      =   String.isNullOrEmpty(ddInfoCell.um_tf.text)
                 params["ddSource"]  =   String.isNullOrEmpty(ddInfoCell.dd_source.currentTitle)
-                params["componentsListStr"] = addActionComponentDataArr
-                
+
                 //Notice
                 params["isShowFailure"] = dd_notice_selected ? "1" : ""
                 if dd_notice_selected {
@@ -384,8 +387,7 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
             params["detail"] = ""
             params["temporaryDesc"] = ""
             params["melCode"] = ""
-            params["ammCode"] = ""
-            
+            params["ammCode"] = ""            
             params["remark"] = String.isNullOrEmpty(baseInfoCell.detail_tf.text)
             if  nrrCell != nil {
                 params["formNo"] = String.isNullOrEmpty(nrrCell.formNo.text)

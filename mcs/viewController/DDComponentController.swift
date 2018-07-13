@@ -9,7 +9,17 @@
 import UIKit
 
 class DDComponentController: BaseViewController {
+    @IBOutlet weak var pn: UITextField!
+    @IBOutlet weak var sn: UITextField!
+    @IBOutlet weak var fin: UITextField!
+    @IBOutlet weak var fh: UITextField!
+    @IBOutlet weak var fc: UITextField!
+    @IBOutlet weak var reg: UIButton!
+    @IBOutlet weak var pos: UITextField!
+    @IBOutlet weak var enable_monitoring: UISwitch!
 
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,6 +30,12 @@ class DDComponentController: BaseViewController {
     }
     
     
+    @IBAction func addAction(_ sender: UIButton) {
+    
+    
+    
+    
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

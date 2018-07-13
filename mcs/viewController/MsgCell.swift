@@ -31,7 +31,7 @@ class MsgCell: UITableViewCell {
         switch t {
             case "0":type.text = "mcc发布班次广播";break
             case "1":type.text = "代办人员变动广播";break
-            case "2":type.text = "航班变动广播";break
+            case "2":type.text = "航班到达广播";break
             default:break
         }
        

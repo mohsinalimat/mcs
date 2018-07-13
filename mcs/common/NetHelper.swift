@@ -55,6 +55,11 @@ func netHelper_request(withUrl:String,
                        successHandler:(([String:Any]) -> Void)? = nil,
                        failureHandler:((String?) -> Void)? = nil)
 {
+    if let delegate = UIApplication.shared.delegate as? AppDelegate{
+        guard delegate._networkReachabilityManager.isReachable else {HUD.show(info: "unable to connect to the network, please check the network Settings!"); return}
+    }
+    
+    
     guard withUrl.lengthOfBytes(using: String.Encoding.utf8) > 0 else { return}
     var header:HTTPHeaders = [:]
     if let token = UserDefaults.standard.value(forKey: "user-token") as? String {
@@ -84,7 +89,6 @@ func netHelper_request(withUrl:String,
                     break
                     
                 case .failure(let error):
-                    print("----------------------")
                     print(dataResponse.response?.statusCode);
                     
                     if let code = dataResponse.response?.statusCode {

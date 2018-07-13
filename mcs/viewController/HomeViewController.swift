@@ -29,11 +29,27 @@ class HomeViewController: BaseTabItemController,UICollectionViewDelegate,UIColle
         
         getActiveData()
         
-        getMsg()
-        
+        //getMsg()
+        NotificationCenter.default.addObserver(self, selector: #selector(newMsg(_ :)), name: NSNotification.Name.init("new_msg_notification"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(msgRead(_ :)), name: NSNotification.Name.init("new_msg_read_notification"), object: nil)
         print(NSHomeDirectory())
     }
 
+    //MARK:-
+    func msgRead(_ noti:Notification) {
+        self._msgNum.isHidden = true;
+    }
+    
+    
+    
+    func newMsg(_ noti:Notification)  {
+        if let cnt = noti.userInfo?["cnt"] as? Int ,cnt > 0 {
+            self._msgNum.isHidden = false
+            self._msgNum.text = "\(cnt)"
+        }
+        
+    }
+    
     
     //MARK:- Request
     func getFlightStatusData()  {
@@ -114,7 +130,7 @@ class HomeViewController: BaseTabItemController,UICollectionViewDelegate,UIColle
         let date = Tools.dateToString(Date(), formatter: "dd/MM/yyyy")
         let d = ["date":date]
         
-        guard let name = UserDefaults.standard.value(forKey: "loginUserInfo") as? [String:String] , let user = name["userName"] else { return}
+        /*guard let name = UserDefaults.standard.value(forKey: "loginUserInfo") as? [String:String] , let user = name["userName"] else { return}
         let uid = date + user;
         let _u = UserDefaults.standard.value(forKey: user)
         if _u != nil {
@@ -127,7 +143,7 @@ class HomeViewController: BaseTabItemController,UICollectionViewDelegate,UIColle
                     }catch{ }
                 };return
             }
-        }
+        }*/
         
         
         netHelper_request(withUrl: noti_msg_url, method: .post, parameters:d, successHandler: {[unowned self] (res) in
@@ -142,7 +158,7 @@ class HomeViewController: BaseTabItemController,UICollectionViewDelegate,UIColle
                     print(error.localizedDescription);
                 }
                 
-                UserDefaults.standard.set(uid, forKey: user)
+                //UserDefaults.standard.set(uid, forKey: user)
                 UserDefaults.standard.synchronize()
                 self._msgNum.isHidden = false
                 self._msgNum.text = "\(arr.count)"
@@ -188,6 +204,8 @@ class HomeViewController: BaseTabItemController,UICollectionViewDelegate,UIColle
         
         //addNavigationItem
         addNavigationItem()
+        
+        userIsLogin = true
     }
     
     func addNavigationItem()  {
@@ -248,6 +266,7 @@ class HomeViewController: BaseTabItemController,UICollectionViewDelegate,UIColle
     
     func exitAction() {
         showMsg("EXIT?", title: "OK") {
+            userIsLogin = false
             let loginvc = LoginViewController()
             
             UIApplication.shared.keyWindow?.rootViewController = loginvc

@@ -70,6 +70,7 @@ class Action_Materal_Cell: UITableViewCell,UITableViewDelegate,UITableViewDataSo
         _tableView.register(UINib (nibName: "Section_TableViewCell2", bundle: nil), forCellReuseIdentifier: "Section_TableViewCell2Identifier")
         _tableView.register(UINib (nibName: "Section_TableViewCell3", bundle: nil), forCellReuseIdentifier: "Section_TableViewCell3Identifier")
         _tableView.register(UINib (nibName: "ActionListCell", bundle: nil), forCellReuseIdentifier: "ActionListCellIdentifier")
+        _tableView.register(UINib (nibName: "DDComponentCell", bundle: nil), forCellReuseIdentifier: "DDComponentCellIdentifier")
         
         _tableView.tableFooterView = UIView()
         _tableView.rowHeight = 60
@@ -127,6 +128,8 @@ class Action_Materal_Cell: UITableViewCell,UITableViewDelegate,UITableViewDataSo
             
         case .creatReportValue5: //action
             return defect_added_actions.count;
+        case .ddComponent:return 1;
+            
         default:return 0
         }
     }
@@ -152,6 +155,13 @@ class Action_Materal_Cell: UITableViewCell,UITableViewDelegate,UITableViewDataSo
             cell.fill(d , index: indexPath.row + 1)
             return cell
             
+        case .ddComponent:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "DDComponentCellIdentifier", for: indexPath) as! DDComponentCell
+//            let d = defect_added_actions[indexPath.row]
+//            
+//            cell.fill(d , index: indexPath.row + 1)
+            return cell
+            
         default: break
         }
         
@@ -166,13 +176,14 @@ class Action_Materal_Cell: UITableViewCell,UITableViewDelegate,UITableViewDataSo
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         guard kSectionHeadButtonSelectedIndex != .creatReportValue5 else {return 80;}
         guard kSectionHeadButtonSelectedIndex != .creatReportValue3 , kSectionHeadButtonSelectedIndex != .addActoinValue4  else {return 280;}
+        guard kSectionHeadButtonSelectedIndex != .ddComponent else {return 280}
         
         return 60;
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         switch kSectionHeadButtonSelectedIndex {
-        case .creatReportValue4, .creatReportValue5, .addActoinValue4 , .creatReportValue3 :
+        case .creatReportValue4, .creatReportValue5, .addActoinValue4 , .creatReportValue3,.ddComponent :
             return 0;
             
         default:return 40
@@ -189,6 +200,8 @@ class Action_Materal_Cell: UITableViewCell,UITableViewDelegate,UITableViewDataSo
         case .addActoinValue4 , .creatReportValue3:
             name = "Section_Attach_header";
             break
+            
+        case .ddComponent:return nil
             
         default: name = "Section_Matera_header";
             break
@@ -249,6 +262,10 @@ class Action_Materal_Cell: UITableViewCell,UITableViewDelegate,UITableViewDataSo
                 handler(indexPath.row);
             };break
         
+        case .ddComponent:
+            
+            break
+            
         default:break
     }
     }

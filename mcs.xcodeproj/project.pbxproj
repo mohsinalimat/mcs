@@ -30,6 +30,8 @@
 		A12028622008A1C200CB8633 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = A120285A2008A19700CB8633 /* Reachability.m */; };
 		A124D41620722D21005E279D /* TaskChangeShiftVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A124D41420722D21005E279D /* TaskChangeShiftVC.swift */; };
 		A124D41720722D21005E279D /* TaskChangeShiftVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A124D41520722D21005E279D /* TaskChangeShiftVC.xib */; };
+		A127372720F886E2005628F1 /* DDComponentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A127372520F886E2005628F1 /* DDComponentCell.swift */; };
+		A127372820F886E2005628F1 /* DDComponentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A127372620F886E2005628F1 /* DDComponentCell.xib */; };
 		A1284D8B205BB00500B7B576 /* WarnInfoDetailController_new.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1284D89205BB00500B7B576 /* WarnInfoDetailController_new.swift */; };
 		A1284D8C205BB00500B7B576 /* WarnInfoDetailController_new.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1284D8A205BB00500B7B576 /* WarnInfoDetailController_new.xib */; };
 		A13F1AEB200745F1004FDFF4 /* LoginViewFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13F1AEA200745F1004FDFF4 /* LoginViewFooter.swift */; };
@@ -295,6 +297,8 @@
 		A120285A2008A19700CB8633 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		A124D41420722D21005E279D /* TaskChangeShiftVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskChangeShiftVC.swift; sourceTree = "<group>"; };
 		A124D41520722D21005E279D /* TaskChangeShiftVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskChangeShiftVC.xib; sourceTree = "<group>"; };
+		A127372520F886E2005628F1 /* DDComponentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDComponentCell.swift; sourceTree = "<group>"; };
+		A127372620F886E2005628F1 /* DDComponentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DDComponentCell.xib; sourceTree = "<group>"; };
 		A1284D89205BB00500B7B576 /* WarnInfoDetailController_new.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WarnInfoDetailController_new.swift; sourceTree = "<group>"; };
 		A1284D8A205BB00500B7B576 /* WarnInfoDetailController_new.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WarnInfoDetailController_new.xib; sourceTree = "<group>"; };
 		A13F1AEA200745F1004FDFF4 /* LoginViewFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewFooter.swift; sourceTree = "<group>"; };
@@ -684,6 +688,8 @@
 				A1BA177520A3E343008078EE /* NRRCell.xib */,
 				A1B4E0C320AD892600EA7219 /* NRRCell_R.swift */,
 				A1B4E0C420AD892600EA7219 /* NRRCell_R.xib */,
+				A127372520F886E2005628F1 /* DDComponentCell.swift */,
+				A127372620F886E2005628F1 /* DDComponentCell.xib */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -1157,6 +1163,7 @@
 				A1AFF6A52074620E00ED1FC4 /* TaskAddActionVC.xib in Resources */,
 				A1FE8BE820C8CA9E00155DBA /* HistoryFaultTopView.xib in Resources */,
 				A120285D2008A1C000CB8633 /* error@2x.png in Resources */,
+				A127372820F886E2005628F1 /* DDComponentCell.xib in Resources */,
 				A13F1AED20074693004FDFF4 /* LoginViewFooter.xib in Resources */,
 				A1C13CD620E32BAE00DEB92E /* TaskEditReasonController.xib in Resources */,
 				A1BDA7E320BD593E006DE281 /* DDAddWSController.xib in Resources */,
@@ -1367,6 +1374,7 @@
 				A1BDA7CE20BCF159006DE281 /* DDNoticeCabinCell.swift in Sources */,
 				A18F9E7D20E4E39B00363C8F /* PlaneCertHistoryCell.swift in Sources */,
 				A165946F206E0DBB00CC8A0D /* TaskHandleController.swift in Sources */,
+				A127372720F886E2005628F1 /* DDComponentCell.swift in Sources */,
 				A1C6DD73206C7F0F00A09808 /* TaskPoolSelectController.swift in Sources */,
 				A13FC9A020D8E0BC0010DF6D /* PNHistoryCell.swift in Sources */,
 				A1E5C10E2048EAF900511F58 /* TaskPoolViewController.swift in Sources */,

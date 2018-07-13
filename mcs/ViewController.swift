@@ -14,55 +14,41 @@ class ViewController: BaseWebViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-       // loadData()
         HUD.show()
-        
-        let req = URLRequest.init(url: URL.init(string: "https://threejs.org/examples/#webgl_loader_pdb")!)
-        webview.loadRequest(req);
-        
-    }
-
     
-    
-    override func loadData()  {
-
+        let config = URLSessionConfiguration.default
+        let session = URLSession.init(configuration: config, delegate: self, delegateQueue: OperationQueue.main)
+        
+        let req = URLRequest.init(url: URL.init(string: "http://smart.imsp.cn/mcs/rest/biz/mobile/data/active")!)
+        let task = session.dataTask(with: req)
         
         
+        task.resume()
         
-        
-        /*let d = ["shift":"1fc5dd3670fe4717997d4c122488bd39",
-                 "scheduleTime":"22/01/2018",
-                 "station":"MFM"]
-        
-        requestWithUrl(get_task_pool_url, parameters: d)*/
-        
-//        var header:HTTPHeaders = [:]
-//        if let token = user_token as? String {
-//            header["Authorization"] = token;
-//        }
-//        
-//        
-//        Alamofire.request(BASE_URL + get_task_pool_url, method: .post, parameters: d, encoding: JSONEncoding.default, headers: header).responseJSON { (dataResponse) in
-//            
-//            
-//        }
-        
-        
-        
-        
-    }
-    
-    
-    
-    
-    
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
 
 }
 
+extension ViewController:URLSessionDataDelegate{
+    func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
+        print("complete")
+        print(Thread.isMainThread)
+        
+        HUD.dismiss()
+    }
+    
+    func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive data: Data) {
+        do{
+            let obj = try JSONSerialization.jsonObject(with: data, options: [])
+            print(obj);
+        }catch{
+            print(error.localizedDescription);
+        }
+     
+        print(Thread.isMainThread)
+    }
+    
+    
+    
+}

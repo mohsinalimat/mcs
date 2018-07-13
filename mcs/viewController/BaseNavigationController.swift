@@ -28,22 +28,20 @@ class BaseNavigationController: UINavigationController {
     
     override func pushViewController(_ viewController: UIViewController, animated: Bool) {
         if self.viewControllers.count > 0 {
-            let backbtn = UIButton (frame: CGRect (x: 0, y: 0, width: 50, height: 35))
-            backbtn.setImage(UIImage (named: "leftbackicon_sdk_login"), for: .normal)
-            backbtn.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 20)
-            backbtn.titleEdgeInsets = UIEdgeInsetsMake(0, -5, 0, 0)
-            backbtn.addTarget(self, action: #selector(navigationBackButtonAction), for: .touchUpInside)
-            //backbtn.setTitle("返回", for: .normal)
-            backbtn.titleLabel?.font = UIFont.systemFont(ofSize: 16)
-            backbtn.setTitleColor(UIColor.darkGray, for: .normal)
-            let leftitem = UIBarButtonItem.init(customView: backbtn)
-            viewController.navigationItem.leftBarButtonItem = leftitem
-            
+            _addLeftItem(viewController)
             viewController.hidesBottomBarWhenPushed = true
         }
         
         //self.navigationBar.barTintColor = (viewController.value(forKey: "t_barTintColor") as? UIColor ) ?? UIColor.white
         super.pushViewController(viewController, animated: animated)
+    }
+    
+    override func present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)? = nil) {
+        if viewControllerToPresent.navigationController != nil {
+            _addLeftItem(viewControllerToPresent);
+        }
+        
+        super.present(viewControllerToPresent, animated: flag, completion: completion)
     }
     
     
@@ -56,6 +54,24 @@ class BaseNavigationController: UINavigationController {
     
     func navigationBackButtonAction() {
         _ = self.popViewController(animated: true)
+    }
+    
+    
+    
+    
+    
+    func _addLeftItem(_ viewController:UIViewController) {
+        let backbtn = UIButton (frame: CGRect (x: 0, y: 0, width: 50, height: 35))
+        backbtn.setImage(UIImage (named: "leftbackicon_sdk_login"), for: .normal)
+        backbtn.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 20)
+        backbtn.titleEdgeInsets = UIEdgeInsetsMake(0, -5, 0, 0)
+        backbtn.addTarget(self, action: #selector(navigationBackButtonAction), for: .touchUpInside)
+        //backbtn.setTitle("返回", for: .normal)
+        backbtn.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        backbtn.setTitleColor(UIColor.darkGray, for: .normal)
+        let leftitem = UIBarButtonItem.init(customView: backbtn)
+        viewController.navigationItem.leftBarButtonItem = leftitem
+
     }
     
     

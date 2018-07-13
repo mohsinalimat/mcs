@@ -69,8 +69,6 @@ let action_delete_url           =       "/biz/taskAction/"
 let action_detail_viewDefect_url =      "/biz/viewDefect"//type ,id
 let taskPool_getFltNo_url = "/biz/getAftFlNo"
 let taskPool_perform_url = "/biz/perform" //修改Reason，fltno , taskTo
-
-
 let defect_detail_preview_url = "/biz/printViewFault"//id
 
 ////defect
@@ -94,12 +92,10 @@ let submit_order_url = "/biz/preOrder"
 let pn_history_url = "/biz/pnInStockChange/getList"//库存记录变动 "/biz/pnMovementHistory/getList"
 
 
-
 ///vc constant
 var kFlightInfoListController_flightDate:String! //航班日期
 var kFlightInfoListController_airId:String!//飞机ID
 var kFlightInfoListController_fltNo:String!//飞机航班号
-
 var _kTaskPool_BASE_DATA:[String:Any]?
 var kTaskPool_BASE_DATA:[String:Any]! {
     get {
@@ -168,13 +164,9 @@ var report_flight_date:Date?
 var report_release_ref:String?
 var report_refresh_cat:Bool = false
 var materalDataFromIPC = false
-
 var defect_added_actions = [[String:Any]]()
 let defect_all_status : [String:String] = {
-    if let arr = plist_dic["total_status"] as? [String:String] {
-        return arr
-    }
-    
+    if let arr = plist_dic["total_status"] as? [String:String] {return arr}
     return [:];
 }()
 
@@ -187,6 +179,14 @@ let LM_LEADER = "lm_leader"
 let LM_OFFNE = "offline"
 
 var Msg:[[String:Any]]?
+var new_msg_cnt:Int = 0
+var app_timer_cnt:Int = 0
+let APP_TIMER_INTERVAL = 2
+let APP_TIMER_LOOP_INTERVAL = 600
+
+var now_is_msgController = false
+var userIsLogin:Bool = false
+
 
 //MARK:
 let hud_msg_loading = "Loading"

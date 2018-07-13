@@ -12,27 +12,17 @@ import Alamofire
 class LoginViewController: BaseViewController,UITableViewDelegate,UITableViewDataSource{
 
     @IBOutlet weak var loginTableView: UITableView!
-    
     @IBOutlet weak var versoinInfo: UILabel!
-    
-    
     let titleArr = ["User","Password","Shift","Schedule Time","Station"]
     
     var isOpenAll:Bool = false
-    
     var username_tf:UITextField!
     var pwd_tf:UITextField!
-    
     var _selectedValue = [Int:Any]()
-    
     //test
     var u_name = "offline"
     var u_pwd = "111111"
 
-    override func awakeFromNib() {
-
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -40,29 +30,6 @@ class LoginViewController: BaseViewController,UITableViewDelegate,UITableViewDat
         
         _initSubview();
         loginTableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 15);
-        
-        
-        var header:HTTPHeaders = [:]
-        if let token = user_token as? String {
-            header["Authorization"] = token;
-            header["content-type"] = "multipart/form-data"
-        }
-        
-        
-//        Alamofire.upload(multipartFormData: { (multipartData) in
-//            let img = UIImage (named: "login_bg")
-//            
-//            let img_data = UIImageJPEGRepresentation(img!, 0.1)
-//            multipartData.append(img_data!, withName: "files", fileName: "ig001.png", mimeType: "image/png")//image/jpeg
-//            multipartData.append("123".data(using: String.Encoding.utf8)!, withName: "key")
-//            
-//            
-//        }, to:  "http://192.168.6.54:80/Test/withupload.php", headers: header) { (encodingResult) in
-//            print(encodingResult)
-//            
-//        }
-
-        
     }
 
     func _initSubview() {
@@ -72,9 +39,7 @@ class LoginViewController: BaseViewController,UITableViewDelegate,UITableViewDat
         let _footview = footview()
         //footview.frame =  CGRect (x: 0, y: 0, width: 500, height: 100)
         loginTableView.tableFooterView = _footview
-        
         loginTableView.rowHeight = 60;
-
         loginTableView.separatorColor = kTableviewBackgroundColor
 
         if let v = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ,let build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
@@ -151,7 +116,6 @@ class LoginViewController: BaseViewController,UITableViewDelegate,UITableViewDat
                 UserDefaults.standard.set(name, forKey: "user-name")
                 UserDefaults.standard.set(body, forKey: "loginUserInfo")
                 UserDefaults.standard.set(["username":name,"password":pwd], forKey: "account")
-                
                 UserDefaults.standard.synchronize()
                 
                 let tab = BaseTabBarController()
@@ -232,7 +196,6 @@ class LoginViewController: BaseViewController,UITableViewDelegate,UITableViewDat
             pwd_tf = userpwd;
             
         } else {
-            
             cell.textLabel?.text = titleArr[indexPath.row]
             cell.textLabel?.textColor = UIColor.darkGray
             cell.textLabel?.font  = UIFont.systemFont(ofSize: 15)

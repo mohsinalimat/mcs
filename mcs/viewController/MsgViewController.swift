@@ -11,9 +11,8 @@ import Then
 
 class MsgViewController: BaseViewController {
     var tableview:UITableView!
-
     var dataArray = [[String:Any]]()
-    
+    var isOpened = false
     
     
     override func viewDidLoad() {
@@ -26,15 +25,20 @@ class MsgViewController: BaseViewController {
     }
     
     func loadData() {
-        HUD.show()
         if let arr = Msg {
             dataArray = arr;
             title = "Message(\(arr.count))"
             tableview.reloadData()
+        }else {
+            getMsg();
         }
-        HUD.dismiss()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        new_msg_cnt = 0
+        now_is_msgController = false
+    }
     
     func _init()  {
         view.backgroundColor = UIColor.white;
@@ -56,11 +60,71 @@ class MsgViewController: BaseViewController {
         exitBtn.setImage(UIImage (named: "delete"), for: .normal)
         exitBtn.setImage(UIImage (named: "delete"), for: .highlighted)
         exitBtn.addTarget(self, action: #selector(exitAction), for: .touchUpInside)
-        let exitItem  = UIBarButtonItem (customView: exitBtn)
+        //let exitItem  = UIBarButtonItem (customView: exitBtn)
         let fixed = UIBarButtonItem (barButtonSystemItem: .fixedSpace, target: nil, action: nil)
         fixed.width = 20
         
         //navigationItem.rightBarButtonItems = [fixed, exitItem]
+        
+        ///Refresh Data
+        let header = TTRefreshHeader.init {
+            DispatchQueue.main.async {[weak self] in
+                guard let ss = self else {return}
+                ss.dataArray.removeAll()
+                ss.getMsg()
+            }
+        }
+        
+        tableview.mj_header = header
+        now_is_msgController = true;
+        if isOpened{
+            let backbtn = UIButton (frame: CGRect (x: 0, y: 0, width: 50, height: 35))
+            backbtn.setImage(UIImage (named: "leftbackicon_sdk_login"), for: .normal)
+            backbtn.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 20)
+            backbtn.titleEdgeInsets = UIEdgeInsetsMake(0, -5, 0, 0)
+            backbtn.addTarget(self, action: #selector(navigationBackButtonAction), for: .touchUpInside)
+            backbtn.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+            backbtn.setTitleColor(UIColor.darkGray, for: .normal)
+            let leftitem = UIBarButtonItem.init(customView: backbtn)
+            self.navigationItem.leftBarButtonItem = leftitem
+
+        }
+        
+        NotificationCenter.default.post(name: NSNotification.Name.init("new_msg_read_notification"), object: nil)
+    }
+    
+    func navigationBackButtonAction() {
+        self.dismiss(animated: true, completion: nil)
+    }
+
+    func getMsg() {
+        let date = Tools.dateToString(Date(), formatter: "dd/MM/yyyy")
+        let d = ["date":date]
+        app_timer_cnt = 0
+        
+        HUD.show()
+        netHelper_request(withUrl: noti_msg_url, method: .post, parameters:d, successHandler: {[weak self] (res) in
+            HUD.dismiss()
+            
+            guard let ss = self else {return}
+            if ss.tableview.mj_header.isRefreshing(){
+                ss.tableview.mj_header.endRefreshing();
+            }
+            
+            guard let arr = res["body"] as? [[String:Any]] else {return}
+            if arr.count > 0 {
+                Msg = arr
+                ss.title = "Message(\(arr.count))"
+                ss.dataArray = arr
+                ss.tableview.reloadData()
+            }
+            
+            })
+        
+    }
+    
+    deinit {
+        print("msg controller")
     }
     
     func exitAction(){
@@ -68,8 +132,6 @@ class MsgViewController: BaseViewController {
     
         }
     }
-    
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -91,7 +153,7 @@ extension MsgViewController:UITableViewDelegate,UITableViewDataSource {
         
         cell.fill(d)
         
-        //cell.backgroundColor = indexPath.row % 2 == 0 ? kTableViewCellbg_whiteColor : kTableViewCellbg_hightlightColor
+        cell.backgroundColor = indexPath.row < new_msg_cnt ? kTableViewCellbg_hightlightColor : kTableViewCellbg_whiteColor
         
         return cell
     }
