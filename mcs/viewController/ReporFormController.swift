@@ -151,9 +151,8 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
                 kAttachmentDataArr = attachment
             }
             
-            if let attachment = dic["attachments"] as? [[String:Any]] {
-//                ss._current_attachmnetArr = attachment
-//                kAttachmentDataArr = attachment
+            if let attachment = dic["components"] as? [[String:Any]] {
+                ddComponentArr = attachment
             }
             
             
@@ -213,6 +212,7 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
         addActionComponentDataArr.removeAll()
         defect_added_actions.removeAll()
         kAttachmentDataArr.removeAll()
+        ddComponentArr.removeAll()
         
         ///clear data
         report_refresh_cat = false
@@ -290,8 +290,10 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
         case "TS":break
         case "DD":
             ///components
-            let com = [["pn":"pn01","sn":"sn","fin":"fin","pos":"pos","fh":"fh","fc":"fc","acReg":"B-MBM","enableMonitoring":"1"]]
-            params["componentsListStr"] = com //...
+            if ddComponentArr.count > 0 {
+                params["componentsListStr"] = ddComponentArr;
+            }
+           
             
             if ddInfoCell != nil {
                 var arr = ddInfoCell.dd_status

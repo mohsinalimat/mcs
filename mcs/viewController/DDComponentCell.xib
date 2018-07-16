@@ -138,6 +138,16 @@
                     <constraint firstItem="EjD-J9-Tpj" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="XxV-vT-sgw"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="enable" destination="la6-Dr-l36" id="c6W-P8-ADP"/>
+                <outlet property="fc" destination="EMU-8f-vxY" id="aF6-1h-FR9"/>
+                <outlet property="fh" destination="wJP-dU-Sut" id="gmR-Gp-XzI"/>
+                <outlet property="fin" destination="yEX-uS-5h2" id="6SQ-Np-dj9"/>
+                <outlet property="pn" destination="6V7-yz-VxA" id="0Tq-Pf-g6s"/>
+                <outlet property="pos" destination="GbQ-bx-LT2" id="ebR-XU-iTY"/>
+                <outlet property="reg" destination="0x2-ey-bC0" id="XDT-LT-Dpl"/>
+                <outlet property="sn" destination="9YP-4t-Pja" id="khK-tU-A40"/>
+            </connections>
         </tableViewCell>
     </objects>
 </document>

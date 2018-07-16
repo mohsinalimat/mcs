@@ -14,7 +14,6 @@ class Action_Materal_Cell: UITableViewCell,UITableViewDelegate,UITableViewDataSo
     var section_index = 0
     var read_only:Bool = false
     var info:[String:Any]!
-    
     var didSelectedRowAtIndex:((Int) -> Void)?
     var addAction:((Void) -> Void)?
     
@@ -113,22 +112,30 @@ class Action_Materal_Cell: UITableViewCell,UITableViewDelegate,UITableViewDataSo
     
     //MARK:-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        addBtn_H.constant = 30
+        
         switch kSectionHeadButtonSelectedIndex {
         case .addActoinValue2, .creatReportValue2:
-            
             return addActionMateralDataArr.count;
+            
         case .addActoinValue3:
             return addActionComponentDataArr.count;
             
         case .addActoinValue4 , .creatReportValue3://附件
             return kAttachmentDataArr.count
             
-        case .creatReportValue4:
-            return 0;
+        case .creatReportValue4: return 0;
             
         case .creatReportValue5: //action
             return defect_added_actions.count;
-        case .ddComponent:return 1;
+            
+        case .ddComponent:
+            if ddComponentArr.count > 0 {
+                addBtn_H.constant = 0
+                return 1;
+            }
+            
+            return 0;
             
         default:return 0
         }
@@ -157,9 +164,9 @@ class Action_Materal_Cell: UITableViewCell,UITableViewDelegate,UITableViewDataSo
             
         case .ddComponent:
             let cell = tableView.dequeueReusableCell(withIdentifier: "DDComponentCellIdentifier", for: indexPath) as! DDComponentCell
-//            let d = defect_added_actions[indexPath.row]
-//            
-//            cell.fill(d , index: indexPath.row + 1)
+            let d = ddComponentArr[indexPath.row]
+            
+            cell.fill(d)
             return cell
             
         default: break
@@ -225,16 +232,20 @@ class Action_Materal_Cell: UITableViewCell,UITableViewDelegate,UITableViewDataSo
         if editingStyle == .delete {
             let vc = UIAlertController.init(title: "Delete?",message: nil, preferredStyle: .alert)
             let action = UIAlertAction.init(title:"Cancel", style: .default)
-            let action2 = UIAlertAction.init(title: "Delete", style: .destructive) { (action) in
+            let action2 = UIAlertAction.init(title: "Delete", style: .destructive) {[weak self] (action) in
                 if (kSectionHeadButtonSelectedIndex == .addActoinValue2) || (kSectionHeadButtonSelectedIndex == .creatReportValue2) {
                     addActionMateralDataArr.remove(at: indexPath.row)
                 } else if kSectionHeadButtonSelectedIndex == .addActoinValue3 {
                     addActionComponentDataArr.remove(at: indexPath.row)
-                    
                 } else if kSectionHeadButtonSelectedIndex == .creatReportValue5 {
                     defect_added_actions.remove(at: indexPath.row);
                 } else if (kSectionHeadButtonSelectedIndex == .addActoinValue4) || (kSectionHeadButtonSelectedIndex == .creatReportValue3) {
                     kAttachmentDataArr.remove(at: indexPath.row)
+                }else if kSectionHeadButtonSelectedIndex == .ddComponent {
+                    ddComponentArr.removeAll();
+                    if let ss = self {
+                        ss.addBtn_H.constant = 30;
+                    }
                 }
                 
                 tableView.deleteRows(at: [indexPath], with: .top)
@@ -244,7 +255,6 @@ class Action_Materal_Cell: UITableViewCell,UITableViewDelegate,UITableViewDataSo
             vc.addAction(action)
             vc.addAction(action2)
             UIApplication.shared.keyWindow?.rootViewController?.present(vc, animated: true, completion: nil);
-            
         }
     }
     
