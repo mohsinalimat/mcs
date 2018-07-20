@@ -239,8 +239,8 @@ class HomeViewController: BaseTabItemController,UICollectionViewDelegate,UIColle
         
         //exit
         let exitBtn = UIButton (frame: CGRect (x: 0, y: 5, width: 50, height: 40))
-        exitBtn.setImage(UIImage (named: "icon_exit"), for: .normal)
-        exitBtn.setImage(UIImage (named: "icon_exit"), for: .highlighted)
+        exitBtn.setImage(UIImage (named: "setter"), for: .normal)
+        exitBtn.setImage(UIImage (named: "setter"), for: .highlighted)//icon_exit
         exitBtn.addTarget(self, action: #selector(exitAction), for: .touchUpInside)
         let exitItem  = UIBarButtonItem (customView: exitBtn)
         
@@ -265,12 +265,18 @@ class HomeViewController: BaseTabItemController,UICollectionViewDelegate,UIColle
     }
     
     func exitAction() {
-        showMsg("EXIT?", title: "OK") {
-            userIsLogin = false
-            let loginvc = LoginViewController()
+        let v = UIStoryboard (name: "Main", bundle: nil).instantiateViewController(withIdentifier: "setter_storyboard")
+        
+        self.navigationController?.pushViewController(v, animated: true)
+        
+        return
             
-            UIApplication.shared.keyWindow?.rootViewController = loginvc
-        }
+//        showMsg("EXIT?", title: "OK") {
+//            userIsLogin = false
+//            let loginvc = LoginViewController()
+//            
+//            UIApplication.shared.keyWindow?.rootViewController = loginvc
+//        }
     }
     
     

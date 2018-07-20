@@ -56,6 +56,8 @@ class HistoryFaultController: BaseViewController  ,UITableViewDelegate,UITableVi
                 ss._isSearch = true
                 ss._searchPars = pars
                 ss._pageNum =  1
+                ss.dataArray.removeAll()
+                ss.tableView.reloadData()
                 ss.loadData(pars!)
                 break
             default: break
@@ -110,7 +112,7 @@ class HistoryFaultController: BaseViewController  ,UITableViewDelegate,UITableVi
         
         var pars =  [String:Any]()
         pars["page"] = _pageNum
-        pars["scheduleTime"] = Tools.dateToString(Date(), formatter: "dd/MM/yyyy");
+        //pars["scheduleTime"] = Tools.dateToString(Date(), formatter: "dd/MM/yyyy");
         if !_isAll {
             pars["acs"] = String.isNullOrEmpty(kFlightInfoListController_airId);
         }

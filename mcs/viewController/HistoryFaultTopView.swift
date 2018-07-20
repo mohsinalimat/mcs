@@ -34,11 +34,14 @@ class HistoryFaultTopView: UIView {
         case 1,2:
             var d = [
                 "ata":String.isNullOrEmpty(ata.text),
-                "scheduleTime":String.isNullOrEmpty(selectDateBtn.currentTitle),
                 "component": String.isNullOrEmpty(component.text),
                 "description":String.isNullOrEmpty(desc.text)
             ]
 
+            if String.isNullOrEmpty(selectDateBtn.currentTitle) != "Select Date" {
+               d["scheduleTime"] = String.isNullOrEmpty(selectDateBtn.currentTitle)
+            }
+            
             if isAll {
                 d["acs"] = String.isNullOrEmpty(selectRegBtn.currentTitle) == "Select" ? "" : String.isNullOrEmpty(selectRegBtn.currentTitle);
             } else {
@@ -64,7 +67,10 @@ class HistoryFaultTopView: UIView {
                 sender.setTitle(obj, for: .normal)
             }
             break
-            
+        
+        case 5:
+            selectDateBtn.setTitle("Select Date", for: .normal);
+            break
         default: break
         }
  
@@ -88,8 +94,8 @@ class HistoryFaultTopView: UIView {
 
     
     override func awakeFromNib() {
-        let currentDateStr = Tools.dateToString(Date(), formatter: "dd/MM/yyyy")
-        selectDateBtn.setTitle(currentDateStr, for: .normal)
+        //let currentDateStr = Tools.dateToString(Date(), formatter: "dd/MM/yyyy")
+        //selectDateBtn.setTitle(currentDateStr, for: .normal)
     }
 }
 

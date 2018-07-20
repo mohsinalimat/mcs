@@ -12,6 +12,7 @@
 		A118E92D20F30075000C4404 /* MsgViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A118E92C20F30075000C4404 /* MsgViewController.swift */; };
 		A118E93020F30874000C4404 /* MsgCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A118E92E20F30874000C4404 /* MsgCell.swift */; };
 		A118E93120F30874000C4404 /* MsgCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A118E92F20F30874000C4404 /* MsgCell.xib */; };
+		A118FFDB2101AD3300657924 /* SetterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A118FFDA2101AD3300657924 /* SetterController.swift */; };
 		A120283820084EFB00CB8633 /* DataPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A120283620084EFB00CB8633 /* DataPickerController.swift */; };
 		A120283920084EFB00CB8633 /* DataPickerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A120283720084EFB00CB8633 /* DataPickerController.xib */; };
 		A120283C2008812500CB8633 /* DatePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A120283A2008812400CB8633 /* DatePickerController.swift */; };
@@ -278,6 +279,7 @@
 		A118E92C20F30075000C4404 /* MsgViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MsgViewController.swift; sourceTree = "<group>"; };
 		A118E92E20F30874000C4404 /* MsgCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MsgCell.swift; sourceTree = "<group>"; };
 		A118E92F20F30874000C4404 /* MsgCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MsgCell.xib; sourceTree = "<group>"; };
+		A118FFDA2101AD3300657924 /* SetterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetterController.swift; sourceTree = "<group>"; };
 		A120283620084EFB00CB8633 /* DataPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataPickerController.swift; sourceTree = "<group>"; };
 		A120283720084EFB00CB8633 /* DataPickerController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DataPickerController.xib; sourceTree = "<group>"; };
 		A120283A2008812400CB8633 /* DatePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerController.swift; sourceTree = "<group>"; };
@@ -866,6 +868,7 @@
 				A1284D8A205BB00500B7B576 /* WarnInfoDetailController_new.xib */,
 				A1CF47D720CE4779009F2902 /* TTWebViewController.swift */,
 				A118E92C20F30075000C4404 /* MsgViewController.swift */,
+				A118FFDA2101AD3300657924 /* SetterController.swift */,
 			);
 			name = home;
 			sourceTree = "<group>";
@@ -1431,6 +1434,7 @@
 				A120285E2008A1C100CB8633 /* HUD.swift in Sources */,
 				A1BC1F442015BA3D007D0E1C /* FlightLineView.swift in Sources */,
 				A1EB2146208DAC2500661C45 /* DDViewController.swift in Sources */,
+				A118FFDB2101AD3300657924 /* SetterController.swift in Sources */,
 				A1BDA7C220BCF09B006DE281 /* DDNoticeDefaultCell.swift in Sources */,
 				A14BA8AE20733AEB0027D51F /* TaskChangeShiftReasonVC.swift in Sources */,
 				A161216720902D1200F72C94 /* DefectReportBtnView.swift in Sources */,

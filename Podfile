@@ -17,4 +17,7 @@ pod 'Kingfisher', '3.13.0'
 pod 'AFNetworking', '3.2.0'
 pod 'SwiftWebViewBridge', '~> 0.3.0'
 pod 'Then', '~> 2.3.0'
+#pod 'Bugly', '~> 2.5.0'
+#pod 'Pgyer'
+#pod 'PgyUpdate'
 end
