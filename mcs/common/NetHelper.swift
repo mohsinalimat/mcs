@@ -78,7 +78,6 @@ func netHelper_request(withUrl:String,
                                 success(dic);
                             }
                         }else{
-                            //print(dic)
                             if let failure = failureHandler {
                                 failure(dic["msg"] as? String)
                             } else {

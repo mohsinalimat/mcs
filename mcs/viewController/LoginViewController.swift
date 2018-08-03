@@ -30,7 +30,34 @@ class LoginViewController: BaseViewController,UITableViewDelegate,UITableViewDat
         
         _initSubview();
         loginTableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 15);
+
+        //...
+        //_dctt();
+}
+
+func _dctt() {
+    let d = ["phone_number":"18016373660",
+             "pwd":"123456",
+             ]
+    Alamofire.request("http://39.106.164.101/tt/login.php", method: .post, parameters: d, encoding: URLEncoding.default, headers: nil).responseJSON { (res) in
+        guard let d = res.result.value as? [String:Any] else {return}
+        guard let dic = d["body"] as? [String:Any] else {return}
+        do {
+            let data = try JSONSerialization.data(withJSONObject: dic, options: [])
+            UserDefaults.standard.setValue(data, forKey: "tt")
+            UserDefaults.standard.synchronize()
+        }catch{
+            print(error.localizedDescription);
+        }
+        
+
+        print(dic)
     }
+    
+    
+    
+}
+
 
     func _initSubview() {
 
@@ -54,7 +81,6 @@ class LoginViewController: BaseViewController,UITableViewDelegate,UITableViewDat
         netHelper_request(withUrl: login_basedata_url, method: .post, parameters: nil, successHandler: {(result) in
             guard let body = result["body"] as? [String : Any] else {return;}
             HUD.dismiss()
-            
             kTaskPool_BASE_DATA = body
             
             }

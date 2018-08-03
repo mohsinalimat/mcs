@@ -45,19 +45,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
        
        AMMModel.isExistTable()
        IQKeyboardManager.sharedManager().enable = true
-       //IQKeyboardManager.sharedManager().enableAutoToolbar = false
        
         _initNotification()
         _getMsgTimer = Timer.scheduledTimer(timeInterval: TimeInterval(APP_TIMER_INTERVAL), target: self, selector: #selector(getMsg), userInfo: nil, repeats: true)
 
-        let d = UIDevice.current
-        print(d.name + "/" + (d.identifierForVendor?.uuidString)! )
+        //let d = UIDevice.current
+        //print(d.name + "/" + (d.identifierForVendor?.uuidString)! )
     }
     
     func getMsg() {
         guard userIsLogin else {return}
         app_timer_cnt = app_timer_cnt + 1;
-        //print(app_timer_cnt)
         guard app_timer_cnt > APP_TIMER_LOOP_INTERVAL / APP_TIMER_INTERVAL else {return}
         app_timer_cnt = 0;
 

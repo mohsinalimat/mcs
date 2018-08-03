@@ -32,7 +32,6 @@ class BaseNavigationController: UINavigationController {
             viewController.hidesBottomBarWhenPushed = true
         }
         
-        //self.navigationBar.barTintColor = (viewController.value(forKey: "t_barTintColor") as? UIColor ) ?? UIColor.white
         super.pushViewController(viewController, animated: animated)
     }
     
@@ -66,7 +65,6 @@ class BaseNavigationController: UINavigationController {
         backbtn.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 20)
         backbtn.titleEdgeInsets = UIEdgeInsetsMake(0, -5, 0, 0)
         backbtn.addTarget(self, action: #selector(navigationBackButtonAction), for: .touchUpInside)
-        //backbtn.setTitle("返回", for: .normal)
         backbtn.titleLabel?.font = UIFont.systemFont(ofSize: 16)
         backbtn.setTitleColor(UIColor.darkGray, for: .normal)
         let leftitem = UIBarButtonItem.init(customView: backbtn)

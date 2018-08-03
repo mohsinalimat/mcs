@@ -11,17 +11,4 @@ import UIKit
 class BaseDataCheck: NSObject {
 
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }

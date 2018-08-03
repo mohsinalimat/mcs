@@ -148,13 +148,17 @@ let defect_transferred_form = [" ":"null","TLB":"0","CLB":"1","NIL":"2"]
 let defect_release_ref = ["","MEL","AMM","CDL","SRM","RPAS","NIL"]
 let g_staffs = (kActive_BASE_DATA["staffs"] as? [String]) ?? []
 let kDefectType = ["Defect Report":"TS" ,"DD":"DD" , "NRR":"NRR"]
-let plist_dic : [String:Any] =  {
+var plist_dic : [String:Any] =  {
     let path = Bundle.main.url(forResource: "defectConstants", withExtension: "plist")
     let d = NSDictionary.init(contentsOf: path!)
     return d as! [String : Any];
 }()
 
-
+var plist_dic_lazy:[String:Any] {
+    let path = Bundle.main.url(forResource: "defectConstants", withExtension: "plist")
+    let d = NSDictionary.init(contentsOf: path!)
+    return d as! [String : Any];
+}
 
 //TMP
 var report_reg:String?//reg

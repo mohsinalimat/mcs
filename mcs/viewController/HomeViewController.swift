@@ -20,7 +20,8 @@ class HomeViewController: BaseTabItemController,UICollectionViewDelegate,UIColle
     var dataArray:[[String:Any]] = []
     var taskNoData:[String:Int] = [:]
     var warnNoData:[[String:Any]] = []
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         _initSubview()
@@ -33,8 +34,42 @@ class HomeViewController: BaseTabItemController,UICollectionViewDelegate,UIColle
         NotificationCenter.default.addObserver(self, selector: #selector(newMsg(_ :)), name: NSNotification.Name.init("new_msg_notification"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(msgRead(_ :)), name: NSNotification.Name.init("new_msg_read_notification"), object: nil)
         print(NSHomeDirectory())
+        
+        //...test
+        //print(plist_dic_lazy)
+        //HUD.showText("数据加载完成", view: view)
+        //_dctt()
     }
 
+    func _dctt() {
+        if let data = UserDefaults.standard.value(forKey: "tt") as? Data {
+            do{
+                if let dic = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments) as? [String:Any] {
+                    print(dic)
+                    
+                    print("------")
+                    if let name = dic["name"] as? String {
+                        print("- \(name)");
+                    }
+                    
+                    if let name = dic["nickName"] as? String {
+                        print("- \(name)");
+                    }
+                }
+
+                
+            }catch{
+            
+            }
+            
+
+        }
+        
+        
+        
+    }
+    
+    
     //MARK:-
     func msgRead(_ noti:Notification) {
         self._msgNum.isHidden = true;
