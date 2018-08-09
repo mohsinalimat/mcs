@@ -78,7 +78,7 @@
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <inset key="imageEdgeInsets" minX="130" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        <state key="normal" title="View Record" backgroundImage="button_bg1">
+                        <state key="normal" title="view Record" backgroundImage="button_bg1">
                             <color key="titleColor" red="0.22230920195579529" green="0.59495002031326294" blue="0.98936182260513306" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </state>
                         <userDefinedRuntimeAttributes>
@@ -114,6 +114,42 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5gW-XX-4L2">
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="3dA-dR-Agg"/>
+                            <constraint firstAttribute="width" constant="150" id="r6u-5k-Yyc"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <inset key="imageEdgeInsets" minX="130" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <state key="normal" title="Interchange" backgroundImage="button_bg1">
+                            <color key="titleColor" red="0.22230920200000001" green="0.59495002029999999" blue="0.98936182260000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </state>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="0"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="buttonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Chu-dE-OSL"/>
+                        </connections>
+                    </button>
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DPH-1u-orM">
+                        <color key="backgroundColor" red="0.60000002384185791" green="0.40000000596046448" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="VBO-Hk-AzB"/>
+                            <constraint firstAttribute="height" constant="18" id="rDK-cj-183"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="9"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="rxD-CR-vld" firstAttribute="top" secondItem="esJ-KX-eeN" secondAttribute="bottom" constant="8" id="0Rj-32-js3"/>
@@ -124,12 +160,16 @@
                     <constraint firstItem="m6W-xf-rpD" firstAttribute="leading" secondItem="lYw-JJ-WOG" secondAttribute="leading" id="AEI-ad-OoP"/>
                     <constraint firstItem="exa-nQ-CTa" firstAttribute="centerY" secondItem="m6W-xf-rpD" secondAttribute="centerY" id="ES5-4W-1sf"/>
                     <constraint firstAttribute="trailingMargin" secondItem="esJ-KX-eeN" secondAttribute="trailing" constant="27" id="KSk-OZ-taK"/>
+                    <constraint firstItem="fmr-B5-Wnn" firstAttribute="leading" secondItem="DPH-1u-orM" secondAttribute="trailing" constant="50" id="KYS-fj-XoH"/>
                     <constraint firstItem="esJ-KX-eeN" firstAttribute="leading" secondItem="Yj2-OT-dfp" secondAttribute="trailing" constant="50" id="LJy-jX-MLv"/>
                     <constraint firstItem="Umu-M7-0JE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="5" id="OGb-Vf-5pI"/>
                     <constraint firstItem="esJ-KX-eeN" firstAttribute="centerY" secondItem="Yj2-OT-dfp" secondAttribute="centerY" id="SMJ-41-enR"/>
+                    <constraint firstItem="Yj2-OT-dfp" firstAttribute="leading" secondItem="5gW-XX-4L2" secondAttribute="trailing" constant="15" id="SQS-vz-Ax2"/>
                     <constraint firstAttribute="trailing" secondItem="rxD-CR-vld" secondAttribute="trailing" id="XFn-hT-Xgi"/>
+                    <constraint firstItem="Yj2-OT-dfp" firstAttribute="centerY" secondItem="5gW-XX-4L2" secondAttribute="centerY" id="Xel-aq-708"/>
                     <constraint firstItem="Vfj-h2-kbs" firstAttribute="leading" secondItem="Umu-M7-0JE" secondAttribute="trailing" constant="10" id="az7-Wg-gex"/>
                     <constraint firstItem="lYw-JJ-WOG" firstAttribute="top" secondItem="m6W-xf-rpD" secondAttribute="bottom" constant="5" id="bA4-tZ-FPF"/>
+                    <constraint firstItem="5gW-XX-4L2" firstAttribute="leading" secondItem="lYw-JJ-WOG" secondAttribute="trailing" constant="30" id="bZM-ih-FMc"/>
                     <constraint firstItem="fmr-B5-Wnn" firstAttribute="centerY" secondItem="m6W-xf-rpD" secondAttribute="centerY" id="efk-HV-mge"/>
                     <constraint firstAttribute="trailing" secondItem="exa-nQ-CTa" secondAttribute="trailing" constant="80" id="hKP-Ht-yIs"/>
                     <constraint firstItem="m6W-xf-rpD" firstAttribute="leading" secondItem="Vfj-h2-kbs" secondAttribute="trailing" constant="20" id="hdg-wD-b4T"/>
@@ -138,14 +178,15 @@
                     <constraint firstItem="rxD-CR-vld" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="mpD-7c-fgr"/>
                     <constraint firstItem="KBy-DV-01p" firstAttribute="leading" secondItem="fmr-B5-Wnn" secondAttribute="trailing" constant="100" id="nQd-h5-ovh"/>
                     <constraint firstItem="exa-nQ-CTa" firstAttribute="leading" secondItem="KBy-DV-01p" secondAttribute="trailing" constant="50" id="qe8-no-Zmk"/>
+                    <constraint firstItem="fmr-B5-Wnn" firstAttribute="centerY" secondItem="DPH-1u-orM" secondAttribute="centerY" id="qos-Vn-GrR"/>
                     <constraint firstItem="esJ-KX-eeN" firstAttribute="height" secondItem="Yj2-OT-dfp" secondAttribute="height" id="xQf-El-hOX"/>
-                    <constraint firstItem="Yj2-OT-dfp" firstAttribute="leading" secondItem="lYw-JJ-WOG" secondAttribute="trailing" constant="100" id="xma-jt-Qp4"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="addBtn" destination="esJ-KX-eeN" id="HYB-JK-7Kz"/>
                 <outlet property="code" destination="fmr-B5-Wnn" id="v2g-bM-1Bc"/>
                 <outlet property="descri" destination="lYw-JJ-WOG" id="g2P-Jc-6p5"/>
+                <outlet property="interchange_status" destination="DPH-1u-orM" id="ozJ-vu-TnL"/>
                 <outlet property="location" destination="exa-nQ-CTa" id="aBV-qW-WNx"/>
                 <outlet property="pn_number" destination="Umu-M7-0JE" id="g3R-mE-Jmr"/>
                 <outlet property="pn_serial" destination="m6W-xf-rpD" id="NGy-Td-MSf"/>

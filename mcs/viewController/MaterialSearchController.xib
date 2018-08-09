@@ -9,7 +9,10 @@
             <connections>
                 <outlet property="s_description" destination="m4t-pI-HxX" id="gIB-nq-rjx"/>
                 <outlet property="s_pn" destination="PaC-mn-TB5" id="7xP-ud-uuX"/>
+                <outlet property="search_bg" destination="JXK-u2-I5d" id="24B-Xk-f3y"/>
+                <outlet property="search_bg_h" destination="A9Z-pc-btl" id="e1b-NA-Dpm"/>
                 <outlet property="tableView" destination="p50-Nz-sRL" id="N8Y-Jh-el7"/>
+                <outlet property="table_to_top_h" destination="Z2f-gG-c0U" id="uw8-8f-AqZ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

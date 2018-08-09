@@ -90,7 +90,7 @@ let pn_list_url = "/biz/pnInStock/getList"
 let order_list_url = "/biz/getOrders"
 let submit_order_url = "/biz/preOrder"
 let pn_history_url = "/biz/pnInStockChange/getList"//库存记录变动 "/biz/pnMovementHistory/getList"
-
+let pn_interchange_url = "/biz/pnInStock/interchange/getList"
 
 ///vc constant
 var kFlightInfoListController_flightDate:String! //航班日期

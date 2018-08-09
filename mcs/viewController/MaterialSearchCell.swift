@@ -23,6 +23,7 @@ class MaterialSearchCell: UITableViewCell {
     var buttonActionHandler:((Int) -> Void)?
     
     @IBOutlet weak var addBtn: UIButton!
+    @IBOutlet weak var interchange_status: UILabel!
     
     @IBAction func buttonAction(_ sender: UIButton) {
         if let hander = buttonActionHandler {
@@ -41,8 +42,10 @@ class MaterialSearchCell: UITableViewCell {
     }
 
     
-    func fill(_ d:[String:Any] , added:Bool = false) {
-        pn_number.text = String.isNullOrEmpty(d["stqtstk"])
+    func fill(_ d:[String:Any] , added:Bool = false , isInterchange:Bool = false) {
+        let n = String.isNullOrEmpty(d["stqtstk"])
+        pn_number.text = n.lengthOfBytes(using: String.Encoding.utf8) > 0 ? n : "0"
+        
         descri.text = String.isNullOrEmpty(d["description"])
         pn_serial.text = "PN: " +  String.isNullOrEmpty(d["stpn"])
         code.text = String.isNullOrEmpty(d["companyCode"])
@@ -50,6 +53,18 @@ class MaterialSearchCell: UITableViewCell {
         location.text = String.isNullOrEmpty(d["location"])
         
         addBtn.isHidden = added
+        
+        if isInterchange {
+            interchange_status.isHidden = false
+            interchange_status.text = String.isNullOrEmpty(d["interchange"])
+            
+            for i in [1,3] {
+            let v = self.contentView.viewWithTag(i)
+                if v is UIButton {
+                    v?.isHidden = true;
+                }
+            }
+        }
         
     }
     

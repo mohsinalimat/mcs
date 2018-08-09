@@ -36,23 +36,23 @@ class LoginViewController: BaseViewController,UITableViewDelegate,UITableViewDat
 }
 
 func _dctt() {
-    let d = ["phone_number":"18016373660",
-             "pwd":"123456",
-             ]
-    Alamofire.request("http://39.106.164.101/tt/login.php", method: .post, parameters: d, encoding: URLEncoding.default, headers: nil).responseJSON { (res) in
-        guard let d = res.result.value as? [String:Any] else {return}
-        guard let dic = d["body"] as? [String:Any] else {return}
-        do {
-            let data = try JSONSerialization.data(withJSONObject: dic, options: [])
-            UserDefaults.standard.setValue(data, forKey: "tt")
-            UserDefaults.standard.synchronize()
-        }catch{
-            print(error.localizedDescription);
-        }
-        
-
-        print(dic)
-    }
+//    let d = ["phone_number":"18016373660",
+//             "pwd":"123456",
+//             ]
+//    Alamofire.request("http://39.106.164.101/tt/login.php", method: .post, parameters: d, encoding: URLEncoding.default, headers: nil).responseJSON { (res) in
+//        guard let d = res.result.value as? [String:Any] else {return}
+//        guard let dic = d["body"] as? [String:Any] else {return}
+//        do {
+//            let data = try JSONSerialization.data(withJSONObject: dic, options: [])
+//            UserDefaults.standard.setValue(data, forKey: "tt")
+//            UserDefaults.standard.synchronize()
+//        }catch{
+//            print(error.localizedDescription);
+//        }
+//        
+//
+//        print(dic)
+//    }
     
     
     

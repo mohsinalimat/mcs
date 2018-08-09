@@ -16,13 +16,25 @@ class FlightInfoListCell: UICollectionViewCell {
     @IBOutlet weak var from: UILabel!
     
     @IBOutlet weak var std: UILabel!
-    
     @IBOutlet weak var sta: UILabel!
+    
+    @IBOutlet weak var std2: UILabel!
+    @IBOutlet weak var sta2: UILabel!
+    
+    
     
     @IBOutlet weak var gate: UILabel!
     
     @IBOutlet weak var t1: UILabel!
     @IBOutlet weak var t2: UILabel!
+    @IBOutlet weak var t3: UILabel!
+    @IBOutlet weak var t4: UILabel!
+    
+    
+    
+    
+    
+    
     
     @IBOutlet weak var directionLab: UILabel!
     
@@ -56,6 +68,8 @@ class FlightInfoListCell: UICollectionViewCell {
         from.text = String.stringIsNullOrNil(dic[left ? "fromApt" :"toApt"])
         t1.text = left ? "STA":"STD"
         t2.text = left ? "ATA":"ATD"
+        t3.text = left ? "STD":"STA"
+        t4.text = left ? "ATD":"ATA"
         
         ///站位
         let zhanwei = left ? "ac_stop_arr":"ac_stop"
@@ -63,6 +77,9 @@ class FlightInfoListCell: UICollectionViewCell {
         
         std.text = String.stringIsNullOrNil(dic[left ? "sta":"std"])
         sta.text = String.stringIsNullOrNil(dic[left ? "ata":"atd"])
+        
+        std2.text = String.stringIsNullOrNil(dic[left ? "fromstd":"tosta"])
+        sta2.text = String.stringIsNullOrNil(dic[left ? "outTime":"inTime"])
         
         /*let _std = Tools.date(String.stringIsNullOrNil(dic["std"]))
         if let d = _std {

@@ -26,16 +26,17 @@ class SearchItemSelectController: UITableViewController{
 
     var hasBar:Bool = false
     
+    var headTitle:String?
+    var dimissHandler :Bool?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = kTableviewBackgroundColor
+        tableView.showsVerticalScrollIndicator = false
+        
         _init()
         
         if hasBar{
-            //_setTitleView("Change Reason")
-            
-            // Do any additional setup after loading the view.
-            
             let backbtn = UIButton (frame: CGRect (x: 0, y: 0, width: 50, height: 35))
             backbtn.setImage(UIImage (named: "back_arrow"), for: .normal)
             backbtn.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 20)
@@ -66,6 +67,21 @@ class SearchItemSelectController: UITableViewController{
     }
     
     func navigationBackButtonAction() {
+        if let dismiss = dimissHandler {
+            
+            UIView.animate(withDuration: 0.3, animations: { [weak self] in
+                guard let ss = self else {return}
+                ss.view.frame = CGRect (x:ss.view.frame.maxX, y: 0, width: ss.view.frame.width, height: ss.view.frame.height)
+            }) { [weak self](b) in
+                guard let ss = self else {return}
+                ss.navigationController?.view.removeFromSuperview()
+                ss.navigationController?.removeFromParentViewController()
+                
+                UIApplication.shared.keyWindow?.viewWithTag(1001)?.removeFromSuperview()
+            }
+
+        }
+        
         _ = self.navigationController?.popViewController(animated: true)
     }
 
@@ -98,18 +114,6 @@ class SearchItemSelectController: UITableViewController{
                     }
                 }
 
-                
-//                let d = last as! [String:String]
-//                let key = d["key"]
-//                let ds = dataArray as! [[String:String]]
-//                for i in 0..<ds.count {
-//                    let d = ds[i]
-//                    let k = d["key"];
-//                    if k == key{
-//                        _hasSelectedArr.append(i);
-//                        break
-//                    }
-//                }
             }
 
         }
@@ -177,7 +181,7 @@ class SearchItemSelectController: UITableViewController{
         let head_v = Bundle.main.loadNibNamed("SearBarView", owner: nil, options: nil)?.first as! SearBarView
         head_v.frame = CGRect (x: 0, y: 0, width: tableView.frame.width, height: 64)
         head_v.backgroundColor = UIColor.white
-        head_v.title.text = "Defect Type"
+        head_v.title.text = headTitle ?? "Defect Type"
         
         head_v.selectedActionHandler = { [weak self] index in
             guard let  ss  = self else {return}
@@ -186,6 +190,8 @@ class SearchItemSelectController: UITableViewController{
                 ss._submit();
             }
             
+            ///
+            ss.navigationBackButtonAction()
             _ = ss.navigationController?.popViewController(animated: true)
         }
         
