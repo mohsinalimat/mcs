@@ -82,8 +82,13 @@ class Action_Materal_Cell: UITableViewCell,UITableViewDelegate,UITableViewDataSo
     func noti(_ n:Notification) {
         if let arr = n.userInfo?["data"] as? [[String:Any]] {
             for i in arr {
-            let d = ["pn":String.isNullOrEmpty(i["pnr"]) , "description":String.isNullOrEmpty(i["lbl"])]
-                addActionMateralDataArr.append(d)
+                let pn = String.isNullOrEmpty(i["pnr"])
+                let d = ["pn": pn, "description":String.isNullOrEmpty(i["lbl"])]
+                
+                if !ipcIsExist(pn) {
+                    addActionMateralDataArr.append(d);
+                }
+
             }
            
             materalDataFromIPC = true
@@ -92,6 +97,22 @@ class Action_Materal_Cell: UITableViewCell,UITableViewDelegate,UITableViewDataSo
         
     }
 
+    func ipcIsExist(_ pn:String) -> Bool {
+        
+        for d in addActionMateralDataArr {
+            let p = String.isNullOrEmpty(d["pn"])
+            
+            if p == pn {
+                return true
+            }
+        }
+        
+        return false
+    }
+    
+    
+    
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         if read_only {

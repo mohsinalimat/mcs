@@ -74,9 +74,17 @@ class Add_MateralVC: BaseViewController {
     
     
     @IBAction func select_ipc_action(_ sender: UIButton) {
-        guard report_reg != nil else { HUD.show(info: "Select Reg!"); return};
+        var reg = ""
         
-        request(get_ipc_url, parameters: ["acReg":report_reg!], successHandler: {[unowned self]  (res) in
+        if isTaskPoolAction {
+            reg = String.isNullOrEmpty(taskPoolSelectedTask["ac"])
+            
+        }else {
+            guard let ac = report_reg  else { HUD.show(info: "Select Reg!"); return};
+            reg = ac
+        }
+        
+        request(get_ipc_url, parameters: ["acReg":reg], successHandler: {[unowned self]  (res) in
             guard let u = res["body"] as? String else {return}
             let v = SelectIPcController()
             v.req_url = u

@@ -88,7 +88,10 @@ func netHelper_request(withUrl:String,
                     break
                     
                 case .failure(let error):
+                    print("----------------------------")
+                    print(error.localizedDescription)
                     print(dataResponse.response?.statusCode);
+                    print("----------------------------")
                     
                     if let code = dataResponse.response?.statusCode {
                         HUD.show(info: "Response ErrorCode:\(code)");

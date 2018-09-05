@@ -42,11 +42,7 @@ class SelectIPcController: BaseWebViewController {
         
     }
 
-    deinit {
-        print("..")
-    }
-    
-    
+
     override func requestWithUrl(_ url: String, parameters: [String : Any]?) {
         HUD.show(withStatus: hud_msg_loading)
         let req = URLRequest.init(url: URL(string: url)!)

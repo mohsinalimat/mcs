@@ -66,10 +66,10 @@ let taskPool_changeShift_url    =       "/biz/task/changeShift"
 let taskPool_addAction_url      =       "/biz/taskAction/"
 let action_list_url             =       "/biz/getFeedbackData"
 let action_delete_url           =       "/biz/taskAction/"
-let action_detail_viewDefect_url =      "/biz/viewDefect"//type ,id
+let action_detail_viewDefect_url =      "/biz/viewDefect"//type ,id 查看DD、TS故障详情
 let taskPool_getFltNo_url = "/biz/getAftFlNo"
 let taskPool_perform_url = "/biz/perform" //修改Reason，fltno , taskTo
-let defect_detail_preview_url = "/biz/printViewFault"//id
+let defect_detail_preview_url = "/biz/printViewFault"//id Defect - view
 
 ////defect
 let defect_list_url     =   "/biz/fault/list"
@@ -161,7 +161,9 @@ var plist_dic_lazy:[String:Any] {
 }
 
 //TMP
-var report_reg:String?//reg
+var report_reg:String?//reg1
+var isTaskPoolAction:Bool = false //标记当前操作
+
 var report_station:String?
 var report_date:Date? //issue date
 var report_flight_no:String?

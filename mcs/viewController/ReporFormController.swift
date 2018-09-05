@@ -97,6 +97,8 @@ class ReporFormController: BaseViewController  ,UITableViewDelegate,UITableViewD
             _tableView.reloadData()
             
             NotificationCenter.default.addObserver(self, selector: #selector(ddNoticeTypeChanged(_ :)), name: NSNotification.Name.init("ddNoticeTypeChangedNotification"), object: nil)
+            
+            isTaskPoolAction = false
         }
         
     }

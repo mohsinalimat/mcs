@@ -72,7 +72,7 @@ class TTImagePreviewCell2: UICollectionViewCell,UIScrollViewDelegate {
     /// - parameter asset:      所指向的图片资源
     /// - parameter type:       cell类型
     /// - parameter isSelected: 是否选中确定角标icon
-    func setImage(_ asset:PHAsset , type:ImageCellTpye , isSelected:Bool? = false) {
+    func setImage(_ asset:PHAsset , type:Int , isSelected:Bool? = false) {
         //获取相册图片
         let requestOption = PHImageRequestOptions.init()
         requestOption.resizeMode = .exact

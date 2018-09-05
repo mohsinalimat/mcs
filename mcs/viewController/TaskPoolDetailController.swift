@@ -84,6 +84,7 @@ class TaskPoolDetailController: BaseWebViewController {
         let vc = ViewDefectReportController()
         vc.type_id = taskPoolSelectedTask["parentId"] as? String
         vc.type = taskPoolSelectedTask["parentType"] as? String
+        vc.is_dd = true
         
         self.navigationController?.pushViewController(vc, animated: true)
         
@@ -169,7 +170,8 @@ class TaskPoolDetailController: BaseWebViewController {
         }
         
         
-
+        ///////////////////
+        isTaskPoolAction = true
         
         
     }

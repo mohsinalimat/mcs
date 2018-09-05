@@ -19,6 +19,7 @@ class ViewDefectReportController: BaseWebViewController {
         super.viewDidLoad()
         title = "Defect Report View"
 
+        
         if is_dd {
             guard let parent_id = type_id , let parent_type = type else { return ;}
             let d = ["type":parent_type,"id":parent_id]
