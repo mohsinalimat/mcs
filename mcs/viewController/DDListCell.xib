@@ -12,7 +12,7 @@
             <rect key="frame" x="0.0" y="0.0" width="1024" height="150"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <frame key="frameInset" width="1024" height="149"/>
+                <frame key="frameInset" width="1024" height="149.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1111" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zgn-Co-EvS">
@@ -162,6 +162,7 @@
                     <constraint firstAttribute="trailingMargin" secondItem="dQd-0P-I5F" secondAttribute="trailing" constant="80" id="EpY-1p-B0Z"/>
                     <constraint firstItem="Hxm-uD-Jrb" firstAttribute="centerY" secondItem="9OA-55-tce" secondAttribute="centerY" id="Iau-nx-NDc"/>
                     <constraint firstItem="9OA-55-tce" firstAttribute="centerX" secondItem="TQv-wu-ivs" secondAttribute="centerX" id="IoC-0d-bCe"/>
+                    <constraint firstItem="C5h-9x-oNa" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="zKu-bz-gaU" secondAttribute="trailing" constant="20" id="Lt9-DJ-O9Z"/>
                     <constraint firstItem="Iuh-GN-E9b" firstAttribute="leading" secondItem="TQv-wu-ivs" secondAttribute="trailing" constant="30" id="Pu5-e1-u7a"/>
                     <constraint firstItem="EfJ-L9-7Bm" firstAttribute="centerY" secondItem="9OA-55-tce" secondAttribute="centerY" id="Rd7-TG-gdv"/>
                     <constraint firstItem="OP7-GV-E1s" firstAttribute="leading" secondItem="TQv-wu-ivs" secondAttribute="leading" id="Sa8-5N-O4E"/>

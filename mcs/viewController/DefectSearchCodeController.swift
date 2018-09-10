@@ -9,7 +9,7 @@
 import UIKit
 import RxCocoa
 import RxSwift
-
+import MJRefresh
 class DefectSearchCodeController: BaseViewController ,UITableViewDelegate,UITableViewDataSource{
 
     var docType:String!
@@ -22,6 +22,9 @@ class DefectSearchCodeController: BaseViewController ,UITableViewDelegate,UITabl
     var dataArray = [Any]()
     
     let disposeBag = DisposeBag.init()
+    
+    var _pageNumber = 1
+    var _searchCode:String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,6 +65,9 @@ class DefectSearchCodeController: BaseViewController ,UITableViewDelegate,UITabl
             guard let ss = self else {return};
                 
             if let v = event.element {
+                ss.dataArray.removeAll()
+                ss._pageNumber = 1
+                ss._searchCode = v
                 ss._search(v)
             }
         }.addDisposableTo(disposeBag)
@@ -73,16 +79,39 @@ class DefectSearchCodeController: BaseViewController ,UITableViewDelegate,UITabl
         tableView.tableFooterView = UIView()
         tableView.register(UINib (nibName: "BaseTableViewVCCell", bundle: nil), forCellReuseIdentifier: "BaseTableViewVCCellIdentifier")
         tableView.rowHeight = 50
+        
+        let footer = TTRefreshFooter.init{[weak self] in
+            guard let ss = self else {return}
+            
+            ss._pageNumber = ss._pageNumber + 1
+            ss._search(ss._searchCode)
+        }
+        
+        tableView.mj_footer = footer
+        tableView.mj_footer.isHidden = true
     }
     
     func _search(_ s:String? = nil)  {
         guard let code = s else {return}
-        dataArray.removeAll();
 
         if code.lengthOfBytes(using: String.Encoding.utf8) > 0 {
             if docType == "AMM"{
-                if let arr =   AMMModel.search(with: "taskCode LIKE '\(code)%%'", orderBy: nil){
-                    dataArray = dataArray + arr
+                if let arr =   /*AMMModel.search(with: "taskCode LIKE '\(code)%%'", orderBy: nil)*/
+                        AMMModel.search(withWhere: "taskCode LIKE '\(code)%%'", orderBy: nil, offset: (_pageNumber - 1) * 100, count: 100)
+                {
+                    if tableView.mj_footer.isHidden {
+                        tableView.mj_footer.isHidden = false;
+                    }
+                    
+                    tableView.mj_footer.state = arr.count < 100 ? MJRefreshState.noMoreData : MJRefreshState.idle
+                
+                    
+                    ////////////////
+                    var a = [Any]()
+                    a = a + arr
+                    let new = _fliterData(a)
+
+                    dataArray = dataArray + new
                 }
             }else if docType == "MEL"{
                 if let arr =   MELModel.search(with: "code LIKE '\(code)%%'", orderBy: nil){
@@ -91,15 +120,34 @@ class DefectSearchCodeController: BaseViewController ,UITableViewDelegate,UITabl
             }else {
                 if let arr =   TSMModel.search(with: "code LIKE '\(code)%%'", orderBy: nil){
                     dataArray = dataArray + arr
+                    
+
                 }
 
             }
         }
         
+        
         tableView.reloadData()
     }
     
-    
+    //过滤ATA重复数据
+    func _fliterData(_ arr: [Any]) -> [Any] {
+        var new = [Any]();
+        var added = [String]()
+        
+        for m in arr {
+            let model = m as! AMMModel
+            let s = "\(String.isNullOrEmpty(model.taskCode))\(String.isNullOrEmpty(model.taskName))"
+            if !added.contains(s){
+                added.append(s);
+                new.append(model)
+            }
+        }
+        
+        
+        return new
+    }
     
     
     //MARK:

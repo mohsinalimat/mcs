@@ -303,6 +303,7 @@ class TaskPoolBaseController: BaseViewController ,UITableViewDelegate,UITableVie
         
         let action4 = UITableViewRowAction.init(style: .default, title: "Add Action") { (action, indexPath) in
             tableView.isEditing = false
+            isTaskPoolAction = true
             
             DispatchQueue.main.async {
                 HUD.show()
