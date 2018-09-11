@@ -59,6 +59,14 @@ class FlightInfoListController: BaseViewController,UICollectionViewDelegate,UICo
     }
 
     func get_flight_data()  {
+        
+        guard kFlightInfoListController_flightDate != nil , kFlightInfoListController_airId != nil else {
+            displayMsg("NO Flight Data")
+            HUD.showText("NO Flight Data", view: self.view)
+            return
+        }
+
+        
         let d = ["fltDate":"\(kFlightInfoListController_flightDate!)","acId":"\(kFlightInfoListController_airId!)"]
         
         arr_dataArray.removeAll()

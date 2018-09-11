@@ -362,22 +362,22 @@ class HomeViewController: BaseTabItemController,UICollectionViewDelegate,UIColle
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let d = dataArray[indexPath.row]
         
-        guard d["fltNo"] != nil else {
+        guard let acId = d["acId"] as? String else {
             HUD.show(info: "暂无航班信息!");return
         }
         
+        kFlightInfoListController_airId = acId;
         
-        if let acId = d["acId"] as? String, let date = d["fltDate"] as? String , let fltno = d["fltNo"] as? String {
+        if let date = d["fltDate"] as? String , let fltno = d["fltNo"] as? String {
             ///date
             kFlightInfoListController_flightDate = date
-            kFlightInfoListController_airId = acId
+            //kFlightInfoListController_airId = acId
             kFlightInfoListController_fltNo = fltno
         }
         
         let vc = HomeDetailTabController.init()
 
         self.navigationController?.pushViewController(vc, animated: true)
-        
     }
     
     

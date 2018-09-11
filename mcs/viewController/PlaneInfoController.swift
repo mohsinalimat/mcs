@@ -40,7 +40,7 @@ class PlaneInfoController: BaseWebViewController {
         })
         
         
-        _bridge.registerHandlerForJS(handlerName: "getCertById", handler: { [unowned self] jsonData, responseCallback in
+        _bridge.registerHandlerForJS(handlerName: "getCertById", handler: { jsonData, responseCallback in
            
             DispatchQueue.main.async {
                 print("...from js")
