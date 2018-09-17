@@ -30,7 +30,7 @@ class Action_Detail_Cell_R: UITableViewCell {
     func fill(_ d :[String:Any])  {
         flt_no.text = String.isNullOrEmpty(d["flNo"])
         
-        let _eta = Tools.date(String.stringIsNullOrNil(d["createDatetime"]))
+        let _eta = Tools.date(String.stringIsNullOrNil(d["actionDate"]))
         if let d = _eta {
             date.text = Tools.dateToString(d, formatter: "yyyy-MM-dd")
         }
