@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MaterialSearchController" customModule="mcs" customModuleProvider="target">
+            <connections>
+                <outlet property="s_description" destination="m4t-pI-HxX" id="gIB-nq-rjx"/>
+                <outlet property="s_pn" destination="PaC-mn-TB5" id="7xP-ud-uuX"/>
+                <outlet property="search_bg" destination="JXK-u2-I5d" id="24B-Xk-f3y"/>
+                <outlet property="search_bg_h" destination="A9Z-pc-btl" id="e1b-NA-Dpm"/>
+                <outlet property="tableView" destination="p50-Nz-sRL" id="N8Y-Jh-el7"/>
+                <outlet property="table_to_top_h" destination="Z2f-gG-c0U" id="uw8-8f-AqZ"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="64" width="1024" height="704"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="p50-Nz-sRL">
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="separatorColor" red="0.92538958790000003" green="0.92554813619999998" blue="0.92537957429999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <inset key="separatorInset" minX="30" minY="0.0" maxX="30" maxY="0.0"/>
+                </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JXK-u2-I5d">
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KIx-Mm-Jzo">
+                            <constraints>
+                                <constraint firstAttribute="height" constant="35" id="gV2-FA-lpX"/>
+                                <constraint firstAttribute="width" constant="60" id="pfk-cu-RVR"/>
+                            </constraints>
+                            <state key="normal" image="search_subscibe_titilebar">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="searchAction:" destination="-1" eventType="touchUpInside" id="7hj-8L-lVe"/>
+                            </connections>
+                        </button>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="m4t-pI-HxX">
+                            <color key="backgroundColor" red="0.92538958790000003" green="0.92554813619999998" blue="0.92537957429999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="200" id="esI-0Q-o2P"/>
+                            </constraints>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="P/N" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="PaC-mn-TB5">
+                            <color key="backgroundColor" red="0.92538958790000003" green="0.92554813619999998" blue="0.92537957429999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="200" id="46r-3q-9hL"/>
+                            </constraints>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="A9Z-pc-btl"/>
+                        <constraint firstItem="m4t-pI-HxX" firstAttribute="leading" secondItem="PaC-mn-TB5" secondAttribute="trailing" constant="30" id="Fxy-dp-cDP"/>
+                        <constraint firstItem="KIx-Mm-Jzo" firstAttribute="centerY" secondItem="PaC-mn-TB5" secondAttribute="centerY" id="H7b-Gd-lqi"/>
+                        <constraint firstItem="PaC-mn-TB5" firstAttribute="centerY" secondItem="JXK-u2-I5d" secondAttribute="centerY" constant="3" id="SME-zo-BLr"/>
+                        <constraint firstAttribute="width" constant="600" id="Xzw-b3-e1c"/>
+                        <constraint firstItem="m4t-pI-HxX" firstAttribute="centerY" secondItem="PaC-mn-TB5" secondAttribute="centerY" id="c7I-vx-02z"/>
+                        <constraint firstAttribute="trailing" secondItem="KIx-Mm-Jzo" secondAttribute="trailing" constant="20" id="rRh-HR-5Rb"/>
+                        <constraint firstItem="KIx-Mm-Jzo" firstAttribute="leading" secondItem="m4t-pI-HxX" secondAttribute="trailing" constant="10" id="wDw-cE-2qm"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aaq-2f-1Ks">
+                    <color key="backgroundColor" red="0.92538958790000003" green="0.92554813619999998" blue="0.92537957429999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="2" id="jsw-uT-l9E"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <constraints>
+                <constraint firstItem="JXK-u2-I5d" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="2" id="4MS-FT-1hc"/>
+                <constraint firstItem="p50-Nz-sRL" firstAttribute="top" secondItem="Aaq-2f-1Ks" secondAttribute="bottom" id="78i-5F-NNo"/>
+                <constraint firstAttribute="trailing" secondItem="Aaq-2f-1Ks" secondAttribute="trailing" id="9mt-1Q-BI1"/>
+                <constraint firstAttribute="trailing" secondItem="p50-Nz-sRL" secondAttribute="trailing" id="CuP-xy-Szr"/>
+                <constraint firstItem="p50-Nz-sRL" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Ttt-Bp-Wxz"/>
+                <constraint firstItem="p50-Nz-sRL" firstAttribute="top" secondItem="JXK-u2-I5d" secondAttribute="bottom" constant="4" id="Z2f-gG-c0U"/>
+                <constraint firstAttribute="trailing" secondItem="JXK-u2-I5d" secondAttribute="trailing" id="eEs-wP-RUl"/>
+                <constraint firstItem="Aaq-2f-1Ks" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="pZH-Ql-XQr"/>
+                <constraint firstAttribute="bottom" secondItem="p50-Nz-sRL" secondAttribute="bottom" id="xCt-4x-mqI"/>
+            </constraints>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="search_subscibe_titilebar" width="18" height="18"/>
+    </resources>
+</document>

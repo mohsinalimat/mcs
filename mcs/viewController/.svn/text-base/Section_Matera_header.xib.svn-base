@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="1000" height="40"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="P/N" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="scv-Ye-HbE">
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" red="0.55424391615147495" green="0.55424391615147495" blue="0.55424391615147495" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1fu-Gf-LCh">
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" red="0.55424391615147495" green="0.55424391615147495" blue="0.55424391615147495" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Qty" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SKE-wh-pg2">
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" red="0.55424391615147495" green="0.55424391615147495" blue="0.55424391615147495" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FIN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NpM-zH-2Rr">
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" red="0.55424391615147495" green="0.55424391615147495" blue="0.55424391615147495" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Store In Amasis" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AkA-ZJ-PpE">
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" red="0.55424391615147495" green="0.55424391615147495" blue="0.55424391615147495" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qED-Hg-LCw">
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" red="0.55424391615147495" green="0.55424391615147495" blue="0.55424391615147495" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remark" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JJX-qs-kKD">
+                    <constraints>
+                        <constraint firstAttribute="width" constant="200" id="KLY-Ja-pIl"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" red="0.55424391615147495" green="0.55424391615147495" blue="0.55424391615147495" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="0.94499540329999998" green="0.94515722989999995" blue="0.94498521089999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="JJX-qs-kKD" firstAttribute="width" secondItem="qED-Hg-LCw" secondAttribute="width" id="0sA-zx-HOk"/>
+                <constraint firstAttribute="bottom" secondItem="JJX-qs-kKD" secondAttribute="bottom" id="3fR-rN-4Ea"/>
+                <constraint firstItem="scv-Ye-HbE" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="6V1-zN-khT"/>
+                <constraint firstItem="JJX-qs-kKD" firstAttribute="height" secondItem="qED-Hg-LCw" secondAttribute="height" id="6uT-vF-AB9"/>
+                <constraint firstItem="AkA-ZJ-PpE" firstAttribute="width" secondItem="scv-Ye-HbE" secondAttribute="width" id="Ado-oS-Yly"/>
+                <constraint firstItem="SKE-wh-pg2" firstAttribute="centerY" secondItem="scv-Ye-HbE" secondAttribute="centerY" id="Akd-Ub-K4U"/>
+                <constraint firstItem="JJX-qs-kKD" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Cv9-po-pjs"/>
+                <constraint firstItem="AkA-ZJ-PpE" firstAttribute="leading" secondItem="NpM-zH-2Rr" secondAttribute="trailing" id="DeL-PL-F4p"/>
+                <constraint firstItem="JJX-qs-kKD" firstAttribute="centerY" secondItem="scv-Ye-HbE" secondAttribute="centerY" id="NYh-Va-iQN"/>
+                <constraint firstItem="AkA-ZJ-PpE" firstAttribute="centerY" secondItem="scv-Ye-HbE" secondAttribute="centerY" id="Nfb-rW-ekT"/>
+                <constraint firstItem="JJX-qs-kKD" firstAttribute="leading" secondItem="qED-Hg-LCw" secondAttribute="trailing" id="OrB-TN-BVZ"/>
+                <constraint firstItem="qED-Hg-LCw" firstAttribute="centerY" secondItem="scv-Ye-HbE" secondAttribute="centerY" id="Sla-IF-Cp0"/>
+                <constraint firstItem="1fu-Gf-LCh" firstAttribute="width" secondItem="scv-Ye-HbE" secondAttribute="width" id="Usr-vI-mve"/>
+                <constraint firstItem="1fu-Gf-LCh" firstAttribute="leading" secondItem="scv-Ye-HbE" secondAttribute="trailing" id="W1K-AC-D9g"/>
+                <constraint firstItem="qED-Hg-LCw" firstAttribute="leading" secondItem="AkA-ZJ-PpE" secondAttribute="trailing" constant="10" id="ZQI-VR-sRD"/>
+                <constraint firstAttribute="trailing" secondItem="JJX-qs-kKD" secondAttribute="trailing" id="aWT-II-YQE"/>
+                <constraint firstItem="SKE-wh-pg2" firstAttribute="leading" secondItem="1fu-Gf-LCh" secondAttribute="trailing" id="g66-Ag-c6V"/>
+                <constraint firstItem="SKE-wh-pg2" firstAttribute="width" secondItem="scv-Ye-HbE" secondAttribute="width" id="iyi-VB-Gi1"/>
+                <constraint firstItem="NpM-zH-2Rr" firstAttribute="centerY" secondItem="scv-Ye-HbE" secondAttribute="centerY" id="jHX-1p-dcl"/>
+                <constraint firstItem="NpM-zH-2Rr" firstAttribute="leading" secondItem="SKE-wh-pg2" secondAttribute="trailing" id="lh7-Dy-wan"/>
+                <constraint firstItem="1fu-Gf-LCh" firstAttribute="centerY" secondItem="scv-Ye-HbE" secondAttribute="centerY" id="rjk-S2-IEO"/>
+                <constraint firstItem="NpM-zH-2Rr" firstAttribute="width" secondItem="scv-Ye-HbE" secondAttribute="width" id="x6M-i2-fZJ"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="93" y="66"/>
+        </view>
+    </objects>
+</document>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="LoginViewFooter" customModule="mcs" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="500" height="100"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Zw-Na-iwN"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cVp-zc-oVp">
+                    <color key="backgroundColor" red="0.67189747095108032" green="0.61549240350723267" blue="0.6149255633354187" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="36a-4X-E3g"/>
+                    </constraints>
+                    <state key="normal" title="登录">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T2W-pz-zPj">
+                    <color key="backgroundColor" red="0.67189747099999997" green="0.61549240350000001" blue="0.61492556330000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <state key="normal" title="重置">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shift Info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wQM-sg-T0v">
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="8Zw-Na-iwN" firstAttribute="leading" secondItem="wQM-sg-T0v" secondAttribute="trailing" constant="10" id="2dQ-Cc-Zay"/>
+                <constraint firstItem="T2W-pz-zPj" firstAttribute="height" secondItem="cVp-zc-oVp" secondAttribute="height" id="8jF-rq-XXv"/>
+                <constraint firstItem="T2W-pz-zPj" firstAttribute="leading" secondItem="cVp-zc-oVp" secondAttribute="trailing" constant="50" id="9B1-Ot-zcu"/>
+                <constraint firstItem="8Zw-Na-iwN" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="BIQ-JV-oEJ"/>
+                <constraint firstItem="T2W-pz-zPj" firstAttribute="centerY" secondItem="cVp-zc-oVp" secondAttribute="centerY" id="BZA-iM-rnA"/>
+                <constraint firstAttribute="trailing" secondItem="8Zw-Na-iwN" secondAttribute="trailing" constant="8" id="E8B-av-scQ"/>
+                <constraint firstItem="T2W-pz-zPj" firstAttribute="top" secondItem="8Zw-Na-iwN" secondAttribute="bottom" constant="16" id="FS1-a8-FsW"/>
+                <constraint firstAttribute="trailing" secondItem="T2W-pz-zPj" secondAttribute="trailing" constant="10" id="Kuk-Ii-ofR"/>
+                <constraint firstItem="T2W-pz-zPj" firstAttribute="width" secondItem="cVp-zc-oVp" secondAttribute="width" id="Mhg-Rf-caU"/>
+                <constraint firstItem="8Zw-Na-iwN" firstAttribute="centerY" secondItem="wQM-sg-T0v" secondAttribute="centerY" id="QYO-XS-GnW"/>
+                <constraint firstItem="cVp-zc-oVp" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="i5w-eh-leE"/>
+                <constraint firstAttribute="bottom" secondItem="cVp-zc-oVp" secondAttribute="bottom" constant="5" id="vOq-oB-kxu"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="54" y="-210"/>
+        </view>
+    </objects>
+</document>

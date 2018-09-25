@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="SearBarView" customModule="mcs" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="60"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Record Query" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0YL-oh-M1b">
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hVt-ks-rNl">
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="Hka-Vt-Aib"/>
+                        <constraint firstAttribute="width" constant="40" id="LpW-DT-YqK"/>
+                    </constraints>
+                    <state key="normal" image="leftbackicon_sdk_login"/>
+                    <connections>
+                        <action selector="okAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="yjt-Qs-NsY"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SXs-e9-c2n">
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="JhV-go-fIH"/>
+                        <constraint firstAttribute="width" constant="65" id="eqh-2x-GHT"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" title="OK"/>
+                    <connections>
+                        <action selector="okAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="cGG-4V-x6N"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.91700808730000005" green="0.91700808730000005" blue="0.91700808730000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="0YL-oh-M1b" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="2Ih-yS-u4r"/>
+                <constraint firstItem="hVt-ks-rNl" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="bmK-PB-Ea7"/>
+                <constraint firstItem="hVt-ks-rNl" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="5" id="cqP-hu-wPC"/>
+                <constraint firstAttribute="trailing" secondItem="SXs-e9-c2n" secondAttribute="trailing" constant="20" id="kun-2B-PNc"/>
+                <constraint firstItem="0YL-oh-M1b" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="25" id="mbH-F9-sBY"/>
+                <constraint firstItem="SXs-e9-c2n" firstAttribute="centerY" secondItem="hVt-ks-rNl" secondAttribute="centerY" id="mhO-Qj-qtG"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="title" destination="0YL-oh-M1b" id="S1G-UL-Fs8"/>
+            </connections>
+        </view>
+    </objects>
+    <resources>
+        <image name="leftbackicon_sdk_login" width="16" height="16"/>
+    </resources>
+</document>

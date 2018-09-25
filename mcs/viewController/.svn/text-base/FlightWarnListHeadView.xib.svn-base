@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="FlightWarnListHeadView" customModule="mcs" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="1024" height="40"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="To3-AV-J1S">
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="15" id="LtB-6b-COU"/>
+                        <constraint firstAttribute="height" constant="15" id="N75-Op-85r"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R4U-9C-xcv">
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="Xns-Wj-EgX"/>
+                        <constraint firstAttribute="width" constant="30" id="mLs-5f-1AG"/>
+                    </constraints>
+                    <state key="normal" image="select_default"/>
+                    <state key="selected" image="select_press"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hgx-e1-r03"/>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Hgx-e1-r03" secondAttribute="trailing" id="8F5-Fv-6sS"/>
+                <constraint firstItem="R4U-9C-xcv" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="30" id="OEo-yB-AY5"/>
+                <constraint firstItem="To3-AV-J1S" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Pt7-m9-83y"/>
+                <constraint firstItem="Hgx-e1-r03" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="T0x-g0-kWd"/>
+                <constraint firstAttribute="bottom" secondItem="Hgx-e1-r03" secondAttribute="bottom" id="lSE-Ld-VvR"/>
+                <constraint firstAttribute="bottom" secondItem="R4U-9C-xcv" secondAttribute="bottom" constant="5" id="rdL-Df-cxM"/>
+                <constraint firstItem="Hgx-e1-r03" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="u2A-GP-63o"/>
+                <constraint firstItem="To3-AV-J1S" firstAttribute="leading" secondItem="R4U-9C-xcv" secondAttribute="trailing" constant="134.5" id="y8F-or-F2V"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="selecedtBtn" destination="R4U-9C-xcv" id="nHn-V3-1WK"/>
+                <outlet property="statusLable" destination="To3-AV-J1S" id="r4n-1B-SGm"/>
+                <outlet property="topButton" destination="Hgx-e1-r03" id="PIF-l4-pQk"/>
+            </connections>
+        </view>
+    </objects>
+    <resources>
+        <image name="select_default" width="22" height="22"/>
+        <image name="select_press" width="22" height="22"/>
+    </resources>
+</document>

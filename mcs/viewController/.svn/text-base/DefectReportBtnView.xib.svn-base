@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="YAy-BX-EsA" customClass="DefectReportBtnView" customModule="mcs" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="1024" height="60"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CNk-jY-rXh">
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Defect Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oDy-HH-NjW">
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t7M-Ig-q3c">
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <state key="normal" title="Materal&amp;Tools ">
+                                <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i3T-84-PNL">
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <state key="normal" title="Component Change">
+                                <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O0o-Wv-Fxp">
+                            <constraints>
+                                <constraint firstAttribute="width" constant="179" id="fyc-Pk-4Qe"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <state key="normal" title="Basic Info &amp; Detail">
+                                <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E70-K8-QPy">
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <state key="normal" title="Attachment">
+                                <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.94499540329999998" green="0.94515722989999995" blue="0.94498521089999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="E70-K8-QPy" firstAttribute="width" secondItem="O0o-Wv-Fxp" secondAttribute="width" id="Ct6-8Z-KI7"/>
+                        <constraint firstAttribute="bottom" secondItem="E70-K8-QPy" secondAttribute="bottom" id="Doa-WH-e6c"/>
+                        <constraint firstAttribute="trailing" secondItem="E70-K8-QPy" secondAttribute="trailing" id="H7V-Lb-NBf"/>
+                        <constraint firstItem="i3T-84-PNL" firstAttribute="height" secondItem="O0o-Wv-Fxp" secondAttribute="height" id="KBr-Im-Gom"/>
+                        <constraint firstItem="t7M-Ig-q3c" firstAttribute="height" secondItem="O0o-Wv-Fxp" secondAttribute="height" id="QSw-SQ-bfB"/>
+                        <constraint firstItem="t7M-Ig-q3c" firstAttribute="centerY" secondItem="O0o-Wv-Fxp" secondAttribute="centerY" id="VBw-c4-EJ9"/>
+                        <constraint firstItem="i3T-84-PNL" firstAttribute="width" secondItem="O0o-Wv-Fxp" secondAttribute="width" id="cVv-gO-QxF"/>
+                        <constraint firstItem="oDy-HH-NjW" firstAttribute="centerY" secondItem="CNk-jY-rXh" secondAttribute="centerY" id="ck4-x0-8Ai"/>
+                        <constraint firstItem="t7M-Ig-q3c" firstAttribute="width" secondItem="O0o-Wv-Fxp" secondAttribute="width" id="dGW-2e-CCk"/>
+                        <constraint firstItem="E70-K8-QPy" firstAttribute="top" secondItem="CNk-jY-rXh" secondAttribute="top" id="gRa-CI-atX"/>
+                        <constraint firstItem="E70-K8-QPy" firstAttribute="height" secondItem="O0o-Wv-Fxp" secondAttribute="height" id="iHo-sx-iBf"/>
+                        <constraint firstItem="i3T-84-PNL" firstAttribute="centerY" secondItem="O0o-Wv-Fxp" secondAttribute="centerY" id="meM-d3-t5U"/>
+                        <constraint firstItem="E70-K8-QPy" firstAttribute="leading" secondItem="i3T-84-PNL" secondAttribute="trailing" id="nz2-Qe-brc"/>
+                        <constraint firstItem="i3T-84-PNL" firstAttribute="leading" secondItem="t7M-Ig-q3c" secondAttribute="trailing" id="qjI-s8-LME"/>
+                        <constraint firstItem="oDy-HH-NjW" firstAttribute="leading" secondItem="CNk-jY-rXh" secondAttribute="leading" constant="20" id="rgu-QH-NFZ"/>
+                        <constraint firstItem="E70-K8-QPy" firstAttribute="centerY" secondItem="O0o-Wv-Fxp" secondAttribute="centerY" id="xld-At-PyG"/>
+                        <constraint firstItem="t7M-Ig-q3c" firstAttribute="leading" secondItem="O0o-Wv-Fxp" secondAttribute="trailing" id="zn0-Xj-fjk"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="CNk-jY-rXh" firstAttribute="top" secondItem="YAy-BX-EsA" secondAttribute="top" id="32P-O7-qfQ"/>
+                <constraint firstItem="CNk-jY-rXh" firstAttribute="leading" secondItem="YAy-BX-EsA" secondAttribute="leading" constant="15" id="FKb-bN-Mwv"/>
+                <constraint firstAttribute="bottom" secondItem="CNk-jY-rXh" secondAttribute="bottom" id="W5A-ap-wh3"/>
+                <constraint firstAttribute="trailing" secondItem="CNk-jY-rXh" secondAttribute="trailing" constant="15" id="hPY-r4-I2I"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-36" y="-86"/>
+        </view>
+    </objects>
+</document>

@@ -32,7 +32,9 @@ class Add_ComponentVC: BaseViewController {
 
     @IBAction func selectAction(_ sender: UIButton) {
         
-        Tools.showDataPicekr (self,dataSource:["MATERIAL","TOOL"] ){ [weak self](obj) in
+        let arr = kSectionHeadButtonSelectedIndex == .addActoinValue3 ? ["RPL","SWP"] : ["MATERIAL","TOOL"]
+        
+        Tools.showDataPicekr (self,dataSource:arr ){ [weak self](obj) in
             guard let strongSelf = self else {return}
             
             let obj = obj as! String

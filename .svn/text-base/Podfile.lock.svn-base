@@ -1,0 +1,78 @@
+PODS:
+  - AFNetworking (3.2.0):
+    - AFNetworking/NSURLSession (= 3.2.0)
+    - AFNetworking/Reachability (= 3.2.0)
+    - AFNetworking/Security (= 3.2.0)
+    - AFNetworking/Serialization (= 3.2.0)
+    - AFNetworking/UIKit (= 3.2.0)
+  - AFNetworking/NSURLSession (3.2.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.2.0)
+  - AFNetworking/Security (3.2.0)
+  - AFNetworking/Serialization (3.2.0)
+  - AFNetworking/UIKit (3.2.0):
+    - AFNetworking/NSURLSession
+  - Alamofire (4.5.0)
+  - FMDB (2.7.2):
+    - FMDB/standard (= 2.7.2)
+  - FMDB/standard (2.7.2)
+  - IQKeyboardManagerSwift (5.0.0)
+  - Kingfisher (3.13.0)
+  - LKDBHelper (2.4.4):
+    - LKDBHelper/standard (= 2.4.4)
+  - LKDBHelper/standard (2.4.4):
+    - FMDB
+  - MBProgressHUD (1.1.0)
+  - MJRefresh (3.1.12)
+  - RxCocoa (3.0.0):
+    - RxSwift (~> 3.0)
+  - RxDataSources (1.0.4):
+    - RxCocoa (~> 3.0)
+    - RxSwift (~> 3.0)
+  - RxSwift (3.0.0)
+  - SSZipArchive (2.0.2)
+  - SVProgressHUD (2.1.2)
+  - SwiftWebViewBridge (0.3.0)
+  - SwiftyJSON (3.1.4)
+  - Then (2.3.0)
+
+DEPENDENCIES:
+  - AFNetworking (= 3.2.0)
+  - Alamofire (~> 4.4)
+  - IQKeyboardManagerSwift (= 5.0.0)
+  - Kingfisher (= 3.13.0)
+  - LKDBHelper (~> 2.4.2)
+  - MBProgressHUD (~> 1.1.0)
+  - MJRefresh
+  - RxCocoa (= 3.0)
+  - RxDataSources (~> 1.0.4)
+  - RxSwift (= 3.0)
+  - SSZipArchive (~> 2.0.2)
+  - SVProgressHUD (~> 2.1.2)
+  - SwiftWebViewBridge (~> 0.3.0)
+  - SwiftyJSON
+  - Then (~> 2.3.0)
+
+SPEC CHECKSUMS:
+  AFNetworking: 8ac6017b94ea105479f7776e5288e48ae9c59bb4
+  Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
+  FMDB: 6198a90e7b6900cfc046e6bc0ef6ebb7be9236aa
+  IQKeyboardManagerSwift: 3f340202ebe1a7076279b9b9b3c817243ddb3aab
+  Kingfisher: 7eebf6000ac64401839f10da37f21eefa7d88970
+  LKDBHelper: cf467ff69aaf1e13bd4964aca3a79881d54c6d14
+  MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
+  MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
+  RxCocoa: 0a2f3ae381cf16f4021a4cee7a4420f83058a965
+  RxDataSources: b3389acc5fe2eefb8fcd81a2b76a876ad08bc82a
+  RxSwift: a930cd662f5b4a7ca9dc3518585dba91dadf497c
+  SSZipArchive: 5fdf578dbbb60000b23439f80fa04e81d00740ee
+  SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
+  SwiftWebViewBridge: 902b8e6945352c74aa5c0975c4dcd48f420f7d44
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+  Then: ee21c97b85ff6062b9b0080c9abb1eea46743345
+
+PODFILE CHECKSUM: 76ad525b69c7c9d5680b1e9639ed5faae69a6d57
+
+COCOAPODS: 1.0.1
